@@ -22,9 +22,9 @@ public class RedBlackTree {
         Node insNode = new Node(key, Node.Colour.RED);
         insNode.setLeftChild(nullNode);
         insNode.setRightChild(nullNode);
-        Node search = root;
+        Node search = nullNode;
         Node help = root;
-        while (help != nullNode){
+        while (help != nullNode){ //Platz suchen
             search = help;
             if (key == help.getKey()) return;
             if (key < help.getKey())
@@ -120,14 +120,71 @@ public class RedBlackTree {
         nLc.setRightChild(nP);
         nP.setParent(nLc);
     }
-
+    private void deleteFixup (Node node){
+        
+    }
     public void delete (double key){
         Node delNode = root;
-        while (delNode){
-            
+            while (delNode != nullNode ){
+                if (key == delNode.getKey())
+                    break;
+                if (key < delNode.getKey())
+                    delNode = delNode.getLeftChild();
+                else
+                    delNode = delNode.getRightChild();
         }
+        if (delNode == nullNode)
+            return;
+        boolean delFixup = delNode.isBlack();
+        Node fixUpNode = delNode.getRightChild(); 
+        if (delNode.getLeftChild() == nullNode){
+            transplant(delNode, delNode.getRightChild()); 
+        }
+        else if (delNode.getRightChild() == nullNode){
+            transplant(delNode, delNode.getLeftChild());
+             fixUpNode = delNode.getLeftChild(); 
+        }
+        else{ //Beide Subtrees vorhanden. Das kleinste Element des rechten Baumes verwenden
+            Node rightMin = getMinNode(delNode.getRightChild());
+            delFixup = rightMin.isBlack();
+            fixUpNode = rightMin.getRightChild();
+            if (rightMin.getParent() != delNode){
+                transplant(rightMin, rightMin.getRightChild());
+                rightMin.setRightChild(delNode.getRightChild());
+                rightMin.getRightChild().setParent(rightMin);
+            }
+            transplant(delNode, rightMin);
+            rightMin.setLeftChild(delNode.getLeftChild());
+            rightMin.getLeftChild().setParent(rightMin);
+            rightMin.setColour(delNode.getColour());
+        }
+        if (delFixup)
+            deleteFixup(fixUpNode);
     }
-    
+    private Node getMinNode(Node t){
+        Node temp = t;
+        while (temp.getLeftChild() != nullNode && temp.getLeftChild() != null)
+            temp = temp.getLeftChild();
+        return temp;
+    }
+    /**
+     * 
+     * @param place Darf nicht null sein.
+     * @param tree Darf nicht null sein  oder auf nullNode zeigen
+     */
+    private void transplant (Node place, Node tree){
+        if (place.getParent() == nullNode || place.getParent() == null ){
+            root = tree; 
+            tree.setParent(nullNode);
+            return;
+        }
+        Node placeParent = place.getParent();
+        if (place == placeParent.getLeftChild())
+            placeParent.setLeftChild(tree);
+        else
+            placeParent.setRightChild(tree);
+        tree.setParent(placeParent);
+    }
     
     
 }

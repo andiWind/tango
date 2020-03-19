@@ -30,7 +30,10 @@ class Node {
     }
     void setColour (Colour c){
         colour = c;
-    } 
+    }
+    Colour getColour (){
+        return colour;
+    }
     boolean isRed (){
         return colour == Colour.RED;
     }
