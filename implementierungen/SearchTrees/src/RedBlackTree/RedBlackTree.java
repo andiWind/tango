@@ -5,21 +5,29 @@
  */
 package RedBlackTree;
 
+import GUI.GUINode;
+import GUI.GUITree;
+
+
 /**
  *
  * @author andreas
  */
-public class RedBlackTree {
+public class RedBlackTree  implements GUITree{
     private Node root;
     private final Node nullNode;
     
+    
     public RedBlackTree (){
-        nullNode = new Node (0, Node.Colour.BLACK);
+        nullNode = new Node (0, Node.RBColor.BLACK);
         root = nullNode;
     }
-    
+    @Override
+    public GUINode getRoot (){
+        return root;
+    }
     public void insert (double key){
-        Node insNode = new Node(key, Node.Colour.RED);
+        Node insNode = new Node(key, Node.RBColor.RED);
         insNode.setLeftChild(nullNode);
         insNode.setRightChild(nullNode);
         Node search = nullNode;
@@ -58,9 +66,9 @@ public class RedBlackTree {
         Node lowerRedNode = insNode;
         Node higherRedNode = insNode.getParent(); //Wurzel ist schwarz, also liegt higherRedNode tiefer
         if (higherRedNode.getParent().getRightChild().isRed()){
-            higherRedNode.getParent().getRightChild().setColour(Node.Colour.BLACK);
-            higherRedNode.setColour(Node.Colour.BLACK);
-            higherRedNode.getParent().setColour(Node.Colour.RED);
+            higherRedNode.getParent().getRightChild().setColor(Node.RBColor.BLACK);
+            higherRedNode.setColor(Node.RBColor.BLACK);
+            higherRedNode.getParent().setColor(Node.RBColor.RED);
             return higherRedNode.getParent();
         }
         if (lowerRedNode == higherRedNode.getRightChild()){ //Links Rotation
@@ -69,8 +77,8 @@ public class RedBlackTree {
             higherRedNode = lowerRedNode;
             lowerRedNode = temp;   
         }
-        higherRedNode.setColour(Node.Colour.BLACK);
-        higherRedNode.getParent().setColour(Node.Colour.RED);
+        higherRedNode.setColor(Node.RBColor.BLACK);
+        higherRedNode.getParent().setColor(Node.RBColor.RED);
         rotateRight(higherRedNode.getParent());
         return null;
     }
@@ -78,9 +86,9 @@ public class RedBlackTree {
         Node lowerRedNode = insNode;
         Node higherRedNode = insNode.getParent(); //Wurzel ist schwarz, also liegt higherRedNode tiefer
         if (higherRedNode.getParent().getLeftChild().isRed()){
-            higherRedNode.getParent().getLeftChild().setColour(Node.Colour.BLACK);
-            higherRedNode.setColour(Node.Colour.BLACK);
-            higherRedNode.getParent().setColour(Node.Colour.RED);
+            higherRedNode.getParent().getLeftChild().setColor(Node.RBColor.BLACK);
+            higherRedNode.setColor(Node.RBColor.BLACK);
+            higherRedNode.getParent().setColor(Node.RBColor.RED);
             return higherRedNode.getParent();
         }
         if (lowerRedNode == higherRedNode.getLeftChild()){ //Rechts Rotation
@@ -89,8 +97,8 @@ public class RedBlackTree {
             higherRedNode = lowerRedNode;
             lowerRedNode = temp;   
         }
-        higherRedNode.setColour(Node.Colour.BLACK);
-        higherRedNode.getParent().setColour(Node.Colour.RED);
+        higherRedNode.setColor(Node.RBColor.BLACK);
+        higherRedNode.getParent().setColor(Node.RBColor.RED);
         rotateLeft(higherRedNode.getParent());
         return null;
     }
@@ -136,30 +144,30 @@ public class RedBlackTree {
             else
                 tempNode = deleteFixupRightCase(tempNode);
         }
-        node.setColour(Node.Colour.BLACK);
+        node.setColor(Node.RBColor.BLACK);
     }
     private Node deleteFixupLeftCase (Node insNode){
         Node nodeBro = insNode.getParent().getRightChild();
         if (nodeBro.isRed()){ //Fall 1
-            nodeBro.setColour(Node.Colour.BLACK);
-            nodeBro.getParent().setColour(Node.Colour.RED);
+            nodeBro.setColor(Node.RBColor.BLACK);
+            nodeBro.getParent().setColor(Node.RBColor.RED);
             rotateLeft(insNode.getParent());
             nodeBro = insNode.getParent().getRightChild();
         }
         if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
-            nodeBro.setColour(Node.Colour.RED);
+            nodeBro.setColor(Node.RBColor.RED);
             return insNode.getParent();
         }
         else{ 
             if (nodeBro.getLeftChild().isBlack()){
-                nodeBro.getRightChild().setColour(Node.Colour.BLACK);
-                nodeBro.setColour(Node.Colour.RED);
+                nodeBro.getRightChild().setColor(Node.RBColor.BLACK);
+                nodeBro.setColor(Node.RBColor.RED);
                 rotateRight(nodeBro);
                 nodeBro = insNode.getParent().getRightChild();
             }
-            nodeBro.setColour(insNode.getParent().getColour());
-            insNode.getParent().setColour(Node.Colour.BLACK);
-            nodeBro.setColour(Node.Colour.BLACK);
+            nodeBro.setColor(insNode.getParent().getColor());
+            insNode.getParent().setColor(Node.RBColor.BLACK);
+            nodeBro.setColor(Node.RBColor.BLACK);
             rotateLeft(insNode.getParent());
             return root;
         }
@@ -169,25 +177,25 @@ public class RedBlackTree {
     private Node deleteFixupRightCase (Node insNode){
         Node nodeBro = insNode.getParent().getLeftChild();
         if (nodeBro.isRed()){ //Fall 1
-            nodeBro.setColour(Node.Colour.BLACK);
-            nodeBro.getParent().setColour(Node.Colour.RED);
+            nodeBro.setColor(Node.RBColor.BLACK);
+            nodeBro.getParent().setColor(Node.RBColor.RED);
             rotateRight(insNode.getParent());
             nodeBro = insNode.getParent().getLeftChild();
         }
         if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
-            nodeBro.setColour(Node.Colour.RED);
+            nodeBro.setColor(Node.RBColor.RED);
             return insNode.getParent();
         }
         else{ 
             if (nodeBro.getRightChild().isBlack()){
-                nodeBro.getLeftChild().setColour(Node.Colour.BLACK);
-                nodeBro.setColour(Node.Colour.RED);
+                nodeBro.getLeftChild().setColor(Node.RBColor.BLACK);
+                nodeBro.setColor(Node.RBColor.RED);
                 rotateLeft(nodeBro);
                 nodeBro = insNode.getParent().getLeftChild();
             }
-            nodeBro.setColour(insNode.getParent().getColour());
-            insNode.getParent().setColour(Node.Colour.BLACK);
-            nodeBro.setColour(Node.Colour.BLACK);
+            nodeBro.setColor(insNode.getParent().getColor());
+            insNode.getParent().setColor(Node.RBColor.BLACK);
+            nodeBro.setColor(Node.RBColor.BLACK);
             rotateRight(insNode.getParent());
             return root;
         }
@@ -227,7 +235,7 @@ public class RedBlackTree {
             transplant(delNode, rightMin);
             rightMin.setLeftChild(delNode.getLeftChild());
             rightMin.getLeftChild().setParent(rightMin);
-            rightMin.setColour(delNode.getColour());
+            rightMin.setColor(delNode.getColor());
         }
         if (delFixup)
             deleteFixup(fixUpNode);
@@ -256,6 +264,7 @@ public class RedBlackTree {
             placeParent.setRightChild(tree);
         tree.setParent(placeParent);
     }
-    
+   
+   
     
 }

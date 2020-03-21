@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Starter;
+package GUI;
 
-import GUI.TreeCanvas;
+import java.awt.Color;
 
 /**
  *
- * @author andre
+ * @author andreas
  */
-public class Start {
-    public static void main (String[] args){
-         new TreeCanvas();
-    }
+public interface GUINode {
+   
+   Color getGUIColor();
+   GUINode getLeftChild();
+   GUINode getRightChild();
+   
 }

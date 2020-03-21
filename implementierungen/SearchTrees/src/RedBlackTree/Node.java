@@ -5,48 +5,50 @@
  */
 package RedBlackTree;
 
+import GUI.GUINode;
+
 /**
  *
  * @author andreas
  */
-class Node {
+class Node implements GUINode {
 
     private Node parent;
     private Node left;
     private Node right;
     private final double key;
-    private Colour colour;
+    private RBColor color;
     
-    Node (double k, Colour c){
+    Node (double k, RBColor c){
         key = k;
-        colour = c;
+        color = c;
     }
-     Node (double k, Colour c, Node p, Node l, Node r){
+     Node (double k, RBColor c, Node p, Node l, Node r){
         key = k;
-        colour = c;
+        color = c;
         parent = p;
         left = l;
         right = r;
     }
-    void setColour (Colour c){
-        colour = c;
+    void setColor (RBColor c){
+        color = c;
     }
-    Colour getColour (){
-        return colour;
+    RBColor getColor (){
+        return color;
     }
     boolean isRed (){
-        return colour == Colour.RED;
+        return color == RBColor.RED;
     }
     boolean isBlack (){
-         return colour == Colour.BLACK;
+         return color == RBColor.BLACK;
     }
     double getKey (){
         return key;
     }
-    Node getLeftChild(){
+    public Node getLeftChild(){
         return left;
     }
-    Node getRightChild(){
+    public Node getRightChild(){
         return right;
     }
     Node getParent(){
@@ -62,8 +64,11 @@ class Node {
         parent = p;
     }
    
-    enum Colour
+    enum RBColor
     {
         RED, BLACK
+    }
+    public java.awt.Color getGUIColor (){
+        return (color == RBColor.BLACK ? java.awt.Color.BLACK : java.awt.Color.RED );
     }
 }

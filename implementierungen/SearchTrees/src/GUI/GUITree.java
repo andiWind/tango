@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Starter;
-
-import GUI.TreeCanvas;
+package GUI;
 
 /**
  *
- * @author andre
+ * @author andreas
  */
-public class Start {
-    public static void main (String[] args){
-         new TreeCanvas();
-    }
+public interface GUITree {
+    GUINode getRoot ();
 }
