@@ -96,33 +96,104 @@ public class RedBlackTree {
     }
     
     
-    private void rotateLeft (Node n){ // Wurzel wird nie übergeben
-        Node nP = n.getParent();
-        Node nRc = n.getRightChild();
-        nP.setLeftChild(nRc);
-        nRc.setParent(nP);
-        
-        n.setRightChild(nRc.getLeftChild());
-        nRc.setParent(n);
-        
-        nRc.setLeftChild(nP);
-        nP.setParent(nRc);
+    private void rotateLeft (Node n){ 
+      Node nP = n.getParent();
+      Node nRc = n.getRightChild();
+      
+      n.setRightChild(nRc.getLeftChild());
+      n.getRightChild().setParent(n);
+      
+      if (nP.getLeftChild() == n)
+          nP.setLeftChild(nRc);
+      else 
+          nP.setRightChild(nRc);
+      nRc.setParent(nP);
+      
+      nRc.setLeftChild(n);
+      n.setParent(nRc);
     }
-    private void rotateRight (Node n){ // Wurzel wird nie übergeben
-        Node nP = n.getParent();
-        Node nLc = n.getLeftChild();
-        nP.setRightChild(nLc);
-        nLc.setParent(nP);
-        
-        n.setLeftChild(nLc.getRightChild());
-        nLc.setParent(n);
-        
-        nLc.setRightChild(nP);
-        nP.setParent(nLc);
+    private void rotateRight (Node n){ 
+      Node nP = n.getParent();
+      Node nLc = n.getRightChild();
+      
+      n.setLeftChild(nLc.getRightChild());
+      n.getLeftChild().setParent(n);
+      
+      if (nP.getLeftChild() == n)
+          nP.setLeftChild(nLc);
+      else 
+          nP.setRightChild(nLc);
+      nLc.setParent(nP);
+      
+      nLc.setRightChild(n);
+      n.setParent(nLc);
     }
     private void deleteFixup (Node node){
+        Node tempNode = node;
+        while (tempNode != root && tempNode.isBlack()){
+            if (tempNode.getParent().getLeftChild() == tempNode)
+                tempNode = deleteFixupLeftCase(tempNode);
+            else
+                tempNode = deleteFixupRightCase(tempNode);
+        }
+        node.setColour(Node.Colour.BLACK);
+    }
+    private Node deleteFixupLeftCase (Node insNode){
+        Node nodeBro = insNode.getParent().getRightChild();
+        if (nodeBro.isRed()){ //Fall 1
+            nodeBro.setColour(Node.Colour.BLACK);
+            nodeBro.getParent().setColour(Node.Colour.RED);
+            rotateLeft(insNode.getParent());
+            nodeBro = insNode.getParent().getRightChild();
+        }
+        if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
+            nodeBro.setColour(Node.Colour.RED);
+            return insNode.getParent();
+        }
+        else{ 
+            if (nodeBro.getLeftChild().isBlack()){
+                nodeBro.getRightChild().setColour(Node.Colour.BLACK);
+                nodeBro.setColour(Node.Colour.RED);
+                rotateRight(nodeBro);
+                nodeBro = insNode.getParent().getRightChild();
+            }
+            nodeBro.setColour(insNode.getParent().getColour());
+            insNode.getParent().setColour(Node.Colour.BLACK);
+            nodeBro.setColour(Node.Colour.BLACK);
+            rotateLeft(insNode.getParent());
+            return root;
+        }
         
     }
+    
+    private Node deleteFixupRightCase (Node insNode){
+        Node nodeBro = insNode.getParent().getLeftChild();
+        if (nodeBro.isRed()){ //Fall 1
+            nodeBro.setColour(Node.Colour.BLACK);
+            nodeBro.getParent().setColour(Node.Colour.RED);
+            rotateRight(insNode.getParent());
+            nodeBro = insNode.getParent().getLeftChild();
+        }
+        if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
+            nodeBro.setColour(Node.Colour.RED);
+            return insNode.getParent();
+        }
+        else{ 
+            if (nodeBro.getRightChild().isBlack()){
+                nodeBro.getLeftChild().setColour(Node.Colour.BLACK);
+                nodeBro.setColour(Node.Colour.RED);
+                rotateLeft(nodeBro);
+                nodeBro = insNode.getParent().getLeftChild();
+            }
+            nodeBro.setColour(insNode.getParent().getColour());
+            insNode.getParent().setColour(Node.Colour.BLACK);
+            nodeBro.setColour(Node.Colour.BLACK);
+            rotateRight(insNode.getParent());
+            return root;
+        }
+        
+    }
+   
     public void delete (double key){
         Node delNode = root;
             while (delNode != nullNode ){
