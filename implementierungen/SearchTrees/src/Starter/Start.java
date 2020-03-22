@@ -5,7 +5,7 @@
  */
 package Starter;
 
-import GUI.TreeCanvas;
+import GUI.GUI;
 
 /**
  *
@@ -13,6 +13,6 @@ import GUI.TreeCanvas;
  */
 public class Start {
     public static void main (String[] args){
-         new TreeCanvas();
+         new GUI(null);
     }
 }

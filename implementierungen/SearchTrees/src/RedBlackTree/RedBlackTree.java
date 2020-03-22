@@ -172,8 +172,7 @@ public class RedBlackTree  implements GUITree{
             return root;
         }
         
-    }
-    
+    }  
     private Node deleteFixupRightCase (Node insNode){
         Node nodeBro = insNode.getParent().getLeftChild();
         if (nodeBro.isRed()){ //Fall 1
@@ -200,8 +199,7 @@ public class RedBlackTree  implements GUITree{
             return root;
         }
         
-    }
-   
+    }  
     public void delete (double key){
         Node delNode = root;
             while (delNode != nullNode ){
@@ -266,5 +264,4 @@ public class RedBlackTree  implements GUITree{
     }
    
    
-    
 }
