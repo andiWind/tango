@@ -6,20 +6,17 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
+
 
 /**
  *
@@ -27,7 +24,7 @@ import javax.swing.JTextField;
  */
 public class GUI extends JFrame{
     private GUITree guiTree;
-    private GUICanvas guiCanvas;
+    private volatile GUICanvas guiCanvas;
     private JMenuBar guiMenuBar; 
     private JMenu menu;
     private JMenuItem aktionOpen;
@@ -66,19 +63,27 @@ public class GUI extends JFrame{
         menu = new JMenu("Menü");
         aktionOpen = new JMenuItem("Aktion");
         menu.add(aktionOpen);
-        aktionOpen.addActionListener(new ActionListener() {
+        aktionOpen.addMouseListener(new MouseListener() {
+              
                 @Override
-                public void actionPerformed( ActionEvent e ) {
-                    
-                    aktion.setVisible(true);
-                    System.out.print("hallo");
+                 public void mouseExited(MouseEvent e) {     
                 }
+                @Override
+                 public void mouseEntered(MouseEvent e) {
+                } 
+                @Override
+                 public void mouseReleased(MouseEvent e) {
+                }  
+                @Override
+                 public void mousePressed(MouseEvent e) {
+                    aktion.setVisible(true);
+                    //guiCanvas.repaint();
+                }  
+                @Override
+                 public void mouseClicked(MouseEvent e) {
+                }   
             }
         );
-        
-        
-        
-        
        // openAktion.addActionListener();
         guiMenuBar.add(menu);
         guiMenuBar.setVisible(true);
@@ -88,10 +93,7 @@ public class GUI extends JFrame{
         aktion = new JDialog(this);
         aktion.setDefaultCloseOperation(HIDE_ON_CLOSE );
         aktion.setVisible(true);
-      
-        
         setVisible(true); 
     }
-    
-   
+
 }
