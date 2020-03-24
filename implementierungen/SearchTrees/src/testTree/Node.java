@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RedBlackTree;
+package testTree;
 
+import RedBlackTree.*;
 import GUI.GUINode;
 
 /**
@@ -30,9 +31,6 @@ class Node implements GUINode {
         left = l;
         right = r;
     }
-    public double getKey(){
-        return key;
-    } 
     void setColor (RBColor c){
         color = c;
     }
@@ -45,7 +43,9 @@ class Node implements GUINode {
     boolean isBlack (){
          return color == RBColor.BLACK;
     }
-   
+    public double getKey (){
+        return key;
+    }
     public Node getLeftChild(){
         return left;
     }

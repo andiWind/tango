@@ -16,5 +16,6 @@ public interface GUINode {
    Color getGUIColor();
    GUINode getLeftChild();
    GUINode getRightChild();
+   double getKey();
    
 }
