@@ -13,26 +13,33 @@ import GUI.GUINode;
  */
 class Node implements GUINode {
 
+    private boolean nullNode;
     private Node parent;
     private Node left;
     private Node right;
-    private final double key;
+    private final int key;
     private RBColor color;
     
-    Node (double k, RBColor c){
+    Node (int k, RBColor c, boolean nn){
         key = k;
         color = c;
+        nullNode = nn;
     }
-     Node (double k, RBColor c, Node p, Node l, Node r){
+     Node (int k, RBColor c, Node p, Node l, Node r, boolean nn){
         key = k;
         color = c;
         parent = p;
         left = l;
         right = r;
+        nullNode = nn;
     }
-    public double getKey(){
+    public int getKey(){
         return key;
     } 
+    public String getKeyString(){
+        if (nullNode) return "null";
+        return Integer.toString(key);
+    }
     void setColor (RBColor c){
         color = c;
     }
@@ -45,16 +52,16 @@ class Node implements GUINode {
     boolean isBlack (){
          return color == RBColor.BLACK;
     }
-   
+   public Node getParent(){
+       return parent;
+   }
     public Node getLeftChild(){
         return left;
     }
     public Node getRightChild(){
         return right;
     }
-    Node getParent(){
-        return parent;
-    }
+    
     void setLeftChild(Node l){
         left = l;
     }

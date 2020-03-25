@@ -17,20 +17,23 @@ class Node implements GUINode {
     private Node parent;
     private Node left;
     private Node right;
-    private final double key;
+    private final int key;
     private RBColor color;
     
-    Node (double k, RBColor c){
+    Node (int k, RBColor c){
         key = k;
         color = c;
     }
-     Node (double k, RBColor c, Node p, Node l, Node r){
+     Node (int k, RBColor c, Node p, Node l, Node r){
         key = k;
         color = c;
         parent = p;
         left = l;
         right = r;
     }
+    public String getKeyString(){
+       return Integer.toString(key);
+    } 
     void setColor (RBColor c){
         color = c;
     }
@@ -43,18 +46,19 @@ class Node implements GUINode {
     boolean isBlack (){
          return color == RBColor.BLACK;
     }
-    public double getKey (){
+    public int getKey (){
         return key;
     }
+     public Node getParent(){
+       return parent;
+   }
     public Node getLeftChild(){
         return left;
     }
     public Node getRightChild(){
         return right;
     }
-    Node getParent(){
-        return parent;
-    }
+    
     void setLeftChild(Node l){
         left = l;
     }

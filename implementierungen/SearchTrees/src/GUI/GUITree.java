@@ -11,4 +11,8 @@ package GUI;
  */
 public interface GUITree {
     GUINode getRoot ();
+    void insert(int key);
+    void delete(int key);
+    GUINode search (int key);
+    String getName();
 }

@@ -8,14 +8,22 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 
 /**
@@ -30,17 +38,14 @@ public class GUI extends JFrame{
     private JMenuItem aktionOpen;
     private JDialog aktion;
     
-        
+    int test = 0;
         
        
     
     private void initCanvas(){
-        
         add(guiCanvas, BorderLayout.CENTER);
-       
         guiCanvas.setSize(this.getSize().width, this.getSize().height);
         guiCanvas.setVisible(true);
-       
     }
    
     
@@ -91,7 +96,52 @@ public class GUI extends JFrame{
        
         
         aktion = new JDialog(this);
+        aktion.setLayout(new GridLayout(3,3));
         aktion.setDefaultCloseOperation(HIDE_ON_CLOSE );
+        aktion.setSize(400, 200);
+        
+        aktion.add(new JLabel("Suchen:"));
+        JSpinner searchSpinner = new JSpinner(new SpinnerNumberModel(0, Integer.MIN_VALUE, Integer.MAX_VALUE, 1));
+        aktion.add(searchSpinner);
+        JButton searchButton = new JButton("OK");
+        searchButton.addActionListener(new ActionListener(){
+               
+            public void actionPerformed(ActionEvent e) {
+                guiTree.search((int)searchSpinner.getValue());
+                guiCanvas.repaint();
+                } 
+            }    
+        );
+        aktion.add(searchButton);
+        
+        aktion.add(new JLabel("Einfügen:"));
+        JSpinner insertSpinner = new JSpinner(new SpinnerNumberModel(0, Integer.MIN_VALUE, Integer.MAX_VALUE, 1));
+        aktion.add(insertSpinner);
+        JButton insertButton = new JButton("OK");
+        insertButton.addActionListener(new ActionListener(){
+               
+            public void actionPerformed(ActionEvent e) {
+                test++;
+                guiTree.insert((int)insertSpinner.getValue());
+                guiCanvas.repaint();
+                } 
+            }    
+        );
+        aktion.add(insertButton);
+        
+        aktion.add(new JLabel("Löschen:"));
+        JSpinner deleteSpinner = new JSpinner(new SpinnerNumberModel(0, Integer.MIN_VALUE, Integer.MAX_VALUE, 1));
+        aktion.add(deleteSpinner);
+        JButton deleteButton = new JButton("OK");
+        aktion.add(deleteButton);
+        deleteButton.addActionListener(new ActionListener(){
+               
+            public void actionPerformed(ActionEvent e) {
+                guiTree.delete((int)deleteSpinner.getValue());
+                guiCanvas.repaint();
+                } 
+            }    
+        );
         aktion.setVisible(true);
         setVisible(true); 
     }

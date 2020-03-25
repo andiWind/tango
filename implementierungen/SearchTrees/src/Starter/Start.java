@@ -13,6 +13,6 @@ import GUI.GUI;
  */
 public class Start {
     public static void main (String[] args){
-         new GUI(new testTree.testTree());
+         new GUI(new RedBlackTree.RedBlackTree());
     }
 }

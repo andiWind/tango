@@ -5,7 +5,7 @@
  */
 package testTree;
 
-import RedBlackTree.*;
+
 import GUI.GUINode;
 import GUI.GUITree;
 
@@ -27,16 +27,44 @@ public class testTree  implements GUITree{
         Node lr = new Node(4, Node.RBColor.BLACK);
         Node llr = new Node(3, Node.RBColor.RED);
         root.setLeftChild(l);
+        l.setParent(root);
         l.setLeftChild(ll);
+        ll.setParent(l);
         l.setRightChild(lr);
+        lr.setParent(l);
         ll.setRightChild(llr);
+        llr.setParent(ll);
         
     }
     @Override
+    public Node search (int key){
+        System.out.println("Button suchen geklickt!");
+       if (root == null) return null;
+       Node searchNode = root;
+       Node helpNode = root;
+       while(helpNode != null){
+           searchNode = helpNode;
+           if (searchNode.getKey() == key){
+               return searchNode;
+           }
+           else if (searchNode.getKey() < key){
+               helpNode = searchNode.getLeftChild();
+           }
+           else{
+               helpNode = searchNode.getRightChild();
+           }
+       }
+       return searchNode;
+   }
+    
     public GUINode getRoot (){
         return root;
     }
-    public void insert (double key){
+     public String getName(){
+        return "TESTREE";
+    }
+    public void insert (int key){
+        System.out.println("Button einfügen geklickt!");
         Node insNode = new Node(key, Node.RBColor.RED);
         insNode.setLeftChild(nullNode);
         insNode.setRightChild(nullNode);
@@ -210,7 +238,8 @@ public class testTree  implements GUITree{
         }
         
     }  
-    public void delete (double key){
+    public void delete (int key){
+        System.out.println("Button löschen geklickt!");
         Node delNode = root;
             while (delNode != nullNode ){
                 if (key == delNode.getKey())

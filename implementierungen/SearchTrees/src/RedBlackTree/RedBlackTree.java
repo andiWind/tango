@@ -17,39 +17,43 @@ public class RedBlackTree  implements GUITree{
     private Node root;
     private final Node nullNode;
     
-    
+    public String getName(){
+        return "RED-BLACK";
+    }
     public RedBlackTree (){
-        nullNode = new Node (0, Node.RBColor.BLACK);
-        root = nullNode;
+        nullNode = new Node (0, Node.RBColor.BLACK, true);
+   
     }
     @Override
     public GUINode getRoot (){
         return root;
     }
-    public void insert (double key){
-        Node insNode = new Node(key, Node.RBColor.RED);
+    public void insert (int key){
+        Node insNode = new Node(key, Node.RBColor.RED, false);
         insNode.setLeftChild(nullNode);
         insNode.setRightChild(nullNode);
-        Node search = nullNode;
-        Node help = root;
-        while (help != nullNode){ //Platz suchen
-            search = help;
-            if (key == help.getKey()) return;
-            if (key < help.getKey())
-                help = help.getLeftChild();
-            else
-                help = help.getRightChild();
-        }
-        insNode.setParent(search);
-        if (key < search.getKey())
-            search.setLeftChild(insNode);        
-        else
-             search.setRightChild(insNode); 
-        if (root == nullNode) 
+        Node search = search(key);
+        if (search == null){
             root = insNode;  
+            insNode.setParent(nullNode);
+        }
+        else if(search.getKey() == key){
+            return;
+        }
+        else  {
+            insNode.setParent(search);
+            if (key < search.getKey())
+                search.setLeftChild(insNode);        
+            else
+                search.setRightChild(insNode); 
+        }
         insertFixup(insNode);
     }
     private void insertFixup (Node insNode){
+        if(root == insNode){
+            root.setColor(Node.RBColor.BLACK);
+            return;
+        }
         Node tempNode = insNode;
         while (tempNode != null || tempNode.getParent().isRed()){
             if (tempNode.getParent() == tempNode.getParent().getParent().getLeftChild() ){ //Der obere der zwei roten Knoten hängt links
@@ -200,7 +204,8 @@ public class RedBlackTree  implements GUITree{
         }
         
     }  
-    public void delete (double key){
+    @Override
+    public void delete (int key){
         Node delNode = root;
             while (delNode != nullNode ){
                 if (key == delNode.getKey())
@@ -263,5 +268,22 @@ public class RedBlackTree  implements GUITree{
         tree.setParent(placeParent);
     }
    
-   
+   public Node search (int key){
+       if (root == null) return null;
+       Node searchNode = root;
+       Node helpNode = root;
+       while(helpNode != null){
+           searchNode = helpNode;
+           if (searchNode.getKey() == key){
+               return searchNode;
+           }
+           else if (searchNode.getKey() < key){
+               helpNode = searchNode.getLeftChild();
+           }
+           else{
+               helpNode = searchNode.getRightChild();
+           }
+       }
+       return searchNode;
+   }
 }
