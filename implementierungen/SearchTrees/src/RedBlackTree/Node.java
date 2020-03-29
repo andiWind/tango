@@ -13,7 +13,7 @@ import GUI.GUINode;
  */
 class Node implements GUINode {
 
-    private boolean nullNode;
+    private final boolean  nullNode;
     private Node parent;
     private Node left;
     private Node right;

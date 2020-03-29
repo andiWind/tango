@@ -6,6 +6,7 @@
 package testTree;
 
 
+import GUI.GUICanvas;
 import GUI.GUINode;
 import GUI.GUITree;
 
@@ -302,5 +303,7 @@ public class testTree  implements GUITree{
         tree.setParent(placeParent);
     }
    
-   
+   public void setCanvas(GUICanvas c){
+       
+   }
 }

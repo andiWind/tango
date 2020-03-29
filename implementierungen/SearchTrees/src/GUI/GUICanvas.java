@@ -23,6 +23,11 @@ public class GUICanvas extends Canvas {
         tree = t;
         repaint();
     }
+    
+    public void p_wiederLoeschen(){
+        this.paint(this.getGraphics());
+    } 
+    
     private int getHeigh(GUINode root, int h){
         if (root == null) return h;
         h++;
@@ -50,7 +55,7 @@ public class GUICanvas extends Canvas {
         writeNodeArraysHelp(root.getRightChild(), level + 1, tempNumOfNode + 1) ;
     }
     private boolean checkParentPointer(GUINode node, GUINode parent){
-        if (node == null) return true;
+        if (node == null || "null".equals(node.getKeyString())) return true;
         if(node.getParent() != parent){
             return false;
         }

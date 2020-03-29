@@ -15,4 +15,7 @@ public interface GUITree {
     void delete(int key);
     GUINode search (int key);
     String getName();
+    
+    //wieder entfernen
+    void setCanvas(GUICanvas c);
 }

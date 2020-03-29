@@ -5,7 +5,8 @@
  */
 package RedBlackTree;
 
-import GUI.GUINode;
+import GUI.GUICanvas;
+
 import GUI.GUITree;
 
 
@@ -17,6 +18,26 @@ public class RedBlackTree  implements GUITree{
     private Node root;
     private final Node nullNode;
     
+    
+    //wieder entfernen 
+    GUICanvas guiCanvas;
+    public void setCanvas(GUICanvas c){
+        guiCanvas = c;
+        buildDebuggTree();
+     /////////////////////////////////////   
+    }
+    private void buildDebuggTree(){
+        insert(40);insert(43);
+        insert(27);insert(30);
+        insert(20);insert(19);
+        insert(14);insert(7);
+        insert(37);insert(3);
+        insert(78);insert(11);
+        
+    }
+    
+    ///////////////////////////////////////////////////////////////////////////
+    
     public String getName(){
         return "RED-BLACK";
     }
@@ -25,9 +46,10 @@ public class RedBlackTree  implements GUITree{
    
     }
     @Override
-    public GUINode getRoot (){
+    public Node getRoot (){
         return root;
     }
+    @Override
     public void insert (int key){
         Node insNode = new Node(key, Node.RBColor.RED, false);
         insNode.setLeftChild(nullNode);
@@ -47,6 +69,8 @@ public class RedBlackTree  implements GUITree{
             else
                 search.setRightChild(insNode); 
         }
+        
+       
         insertFixup(insNode);
     }
     private void insertFixup (Node insNode){
@@ -55,7 +79,7 @@ public class RedBlackTree  implements GUITree{
             return;
         }
         Node tempNode = insNode;
-        while (tempNode != null || tempNode.getParent().isRed()){
+        while (tempNode != null && tempNode.getParent().isRed()){
             if (tempNode.getParent() == tempNode.getParent().getParent().getLeftChild() ){ //Der obere der zwei roten Knoten hängt links
                tempNode =  insertFixupLeftCase(tempNode);
             }
@@ -63,7 +87,8 @@ public class RedBlackTree  implements GUITree{
                tempNode =  insertFixupRightCase(tempNode); 
             }
         }
-        
+        if(root != null)
+            root.setColor(Node.RBColor.BLACK);
     }
     
     private Node insertFixupLeftCase (Node insNode){
@@ -109,6 +134,8 @@ public class RedBlackTree  implements GUITree{
     
     
     private void rotateLeft (Node n){ 
+      Node nullNodeParentSave = nullNode.getParent();
+        
       Node nP = n.getParent();
       Node nRc = n.getRightChild();
       
@@ -117,28 +144,39 @@ public class RedBlackTree  implements GUITree{
       
       if (nP.getLeftChild() == n)
           nP.setLeftChild(nRc);
-      else 
+      else if (nP.getRightChild() == n)
           nP.setRightChild(nRc);
+      else //nP ist nullNode, n ist die Wurzel
+          root = nRc;
       nRc.setParent(nP);
       
       nRc.setLeftChild(n);
       n.setParent(nRc);
+      
+      nullNode.setParent(nullNodeParentSave);
     }
     private void rotateRight (Node n){ 
+      Node nullNodeParentSave = nullNode.getParent();  
+        
       Node nP = n.getParent();
-      Node nLc = n.getRightChild();
+      Node nLc = n.getLeftChild();
       
       n.setLeftChild(nLc.getRightChild());
       n.getLeftChild().setParent(n);
       
       if (nP.getLeftChild() == n)
           nP.setLeftChild(nLc);
-      else 
+      else if (nP.getRightChild() == n)
           nP.setRightChild(nLc);
+      else //nP ist nullNode, n ist die Wurzel
+          root = nLc;
+
       nLc.setParent(nP);
       
       nLc.setRightChild(n);
       n.setParent(nLc);
+      
+      nullNode.setParent(nullNodeParentSave);
     }
     private void deleteFixup (Node node){
         Node tempNode = node;
@@ -150,72 +188,105 @@ public class RedBlackTree  implements GUITree{
         }
         node.setColor(Node.RBColor.BLACK);
     }
-    private Node deleteFixupLeftCase (Node insNode){
-        Node nodeBro = insNode.getParent().getRightChild();
+    private Node deleteFixupLeftCase (Node inputNode){
+        guiCanvas.p_wiederLoeschen();
+        Node nodeBro = inputNode.getParent().getRightChild();
         if (nodeBro.isRed()){ //Fall 1
             nodeBro.setColor(Node.RBColor.BLACK);
             nodeBro.getParent().setColor(Node.RBColor.RED);
-            rotateLeft(insNode.getParent());
-            nodeBro = insNode.getParent().getRightChild();
+            rotateLeft(inputNode.getParent());
+            nodeBro = inputNode.getParent().getRightChild();
+            
+             guiCanvas.p_wiederLoeschen();
+            
         }
         if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
             nodeBro.setColor(Node.RBColor.RED);
-            return insNode.getParent();
-        }
-        else{ 
-            if (nodeBro.getLeftChild().isBlack()){
-                nodeBro.getRightChild().setColor(Node.RBColor.BLACK);
-                nodeBro.setColor(Node.RBColor.RED);
-                rotateRight(nodeBro);
-                nodeBro = insNode.getParent().getRightChild();
-            }
-            nodeBro.setColor(insNode.getParent().getColor());
-            insNode.getParent().setColor(Node.RBColor.BLACK);
-            nodeBro.setColor(Node.RBColor.BLACK);
-            rotateLeft(insNode.getParent());
-            return root;
-        }
-        
-    }  
-    private Node deleteFixupRightCase (Node insNode){
-        Node nodeBro = insNode.getParent().getLeftChild();
-        if (nodeBro.isRed()){ //Fall 1
-            nodeBro.setColor(Node.RBColor.BLACK);
-            nodeBro.getParent().setColor(Node.RBColor.RED);
-            rotateRight(insNode.getParent());
-            nodeBro = insNode.getParent().getLeftChild();
-        }
-        if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
-            nodeBro.setColor(Node.RBColor.RED);
-            return insNode.getParent();
+            
+             guiCanvas.p_wiederLoeschen();
+            
+            return inputNode.getParent();
+
         }
         else{ 
             if (nodeBro.getRightChild().isBlack()){
                 nodeBro.getLeftChild().setColor(Node.RBColor.BLACK);
                 nodeBro.setColor(Node.RBColor.RED);
-                rotateLeft(nodeBro);
-                nodeBro = insNode.getParent().getLeftChild();
+                rotateRight(nodeBro);
+                nodeBro = inputNode.getParent().getRightChild();
+            
+                 guiCanvas.p_wiederLoeschen();
+            
             }
-            nodeBro.setColor(insNode.getParent().getColor());
-            insNode.getParent().setColor(Node.RBColor.BLACK);
+            nodeBro.setColor(inputNode.getParent().getColor());
+            inputNode.getParent().setColor(Node.RBColor.BLACK);
+            nodeBro.getRightChild().setColor(Node.RBColor.BLACK);
+            rotateLeft(inputNode.getParent());
+            
+             guiCanvas.p_wiederLoeschen();
+            
+            return root;
+        }
+        
+    }  
+    private Node deleteFixupRightCase (Node inputNode){
+        Node nodeBro = inputNode.getParent().getLeftChild();
+        if (nodeBro.isRed()){ //Fall 1
             nodeBro.setColor(Node.RBColor.BLACK);
-            rotateRight(insNode.getParent());
+            nodeBro.getParent().setColor(Node.RBColor.RED);
+            rotateRight(inputNode.getParent());
+            nodeBro = inputNode.getParent().getLeftChild();
+            
+            
+             
+            
+            //wieder entfernen
+            guiCanvas.p_wiederLoeschen();
+        
+            
+            
+        }
+        if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
+            nodeBro.setColor(Node.RBColor.RED);
+            
+            
+            //wieder entfernen
+            guiCanvas.p_wiederLoeschen();
+            
+            
+            return inputNode.getParent();
+        }
+        else{ 
+            if (nodeBro.getLeftChild().isBlack()){
+                nodeBro.getRightChild().setColor(Node.RBColor.BLACK);
+                nodeBro.setColor(Node.RBColor.RED);
+                rotateLeft(nodeBro);
+                nodeBro = inputNode.getParent().getLeftChild();
+                
+                
+                //wieder entfernen
+                guiCanvas.p_wiederLoeschen();
+                
+                return root;
+                
+            }
+            nodeBro.setColor(inputNode.getParent().getColor());
+            inputNode.getParent().setColor(Node.RBColor.BLACK);
+            nodeBro.getLeftChild().setColor(Node.RBColor.BLACK);
+            rotateRight(inputNode.getParent());
+            
+            //wieder entfernen
+            guiCanvas.p_wiederLoeschen();
+            
+            
             return root;
         }
         
     }  
     @Override
     public void delete (int key){
-        Node delNode = root;
-            while (delNode != nullNode ){
-                if (key == delNode.getKey())
-                    break;
-                if (key < delNode.getKey())
-                    delNode = delNode.getLeftChild();
-                else
-                    delNode = delNode.getRightChild();
-        }
-        if (delNode == nullNode)
+        Node delNode = search(key);
+        if (delNode == null || delNode.getKey() != key)
             return;
         boolean delFixup = delNode.isBlack();
         Node fixUpNode = delNode.getRightChild(); 
@@ -265,19 +336,20 @@ public class RedBlackTree  implements GUITree{
             placeParent.setLeftChild(tree);
         else
             placeParent.setRightChild(tree);
-        tree.setParent(placeParent);
+        tree.setParent(placeParent); //Setzt evtl. NUllNode.parent, wichtig für FixUp
     }
    
+    @Override
    public Node search (int key){
        if (root == null) return null;
        Node searchNode = root;
        Node helpNode = root;
-       while(helpNode != null){
+       while(helpNode != nullNode){
            searchNode = helpNode;
            if (searchNode.getKey() == key){
                return searchNode;
            }
-           else if (searchNode.getKey() < key){
+           else if (key < searchNode.getKey() ){
                helpNode = searchNode.getLeftChild();
            }
            else{

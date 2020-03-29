@@ -52,6 +52,11 @@ public class GUI extends JFrame{
     public GUI (GUITree guiT){
         guiTree = guiT;
         guiCanvas = new GUICanvas(guiTree);
+        
+        
+        guiTree.setCanvas(guiCanvas);
+        
+        
         setTitle("Dynamische Suchbäume");
         setBackground (Color.LIGHT_GRAY);
         setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -124,6 +129,7 @@ public class GUI extends JFrame{
                 test++;
                 guiTree.insert((int)insertSpinner.getValue());
                 guiCanvas.repaint();
+               
                 } 
             }    
         );
