@@ -26,13 +26,23 @@ public class RedBlackTree  implements GUITree{
         buildDebuggTree();
      /////////////////////////////////////   
     }
+    private void randomTest(){
+        for (int i = 0; i < 2000; i++){
+            int k = (int) (Math.random() * 1000);
+            if (i % 11 == 0)
+               insert(k);
+            else
+               delete(k);   
+        }
+    }
     private void buildDebuggTree(){
-        insert(40);insert(43);
-        insert(27);insert(30);
-        insert(20);insert(19);
-        insert(14);insert(7);
-        insert(37);insert(3);
-        insert(78);insert(11);
+      //  insert(40);insert(43);
+       // insert(27);insert(30);
+      //  insert(20);insert(19);
+      //  insert(14);insert(7);
+      //  insert(37);insert(3);
+      //  insert(78);insert(11);
+       // randomTest();
         
     }
     
@@ -181,30 +191,27 @@ public class RedBlackTree  implements GUITree{
     private void deleteFixup (Node node){
         Node tempNode = node;
         while (tempNode != root && tempNode.isBlack()){
+            
             if (tempNode.getParent().getLeftChild() == tempNode)
                 tempNode = deleteFixupLeftCase(tempNode);
             else
                 tempNode = deleteFixupRightCase(tempNode);
         }
-        node.setColor(Node.RBColor.BLACK);
+        tempNode.setColor(Node.RBColor.BLACK);
     }
     private Node deleteFixupLeftCase (Node inputNode){
-        guiCanvas.p_wiederLoeschen();
         Node nodeBro = inputNode.getParent().getRightChild();
         if (nodeBro.isRed()){ //Fall 1
             nodeBro.setColor(Node.RBColor.BLACK);
             nodeBro.getParent().setColor(Node.RBColor.RED);
             rotateLeft(inputNode.getParent());
             nodeBro = inputNode.getParent().getRightChild();
-            
-             guiCanvas.p_wiederLoeschen();
+       
             
         }
         if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
             nodeBro.setColor(Node.RBColor.RED);
-            
-             guiCanvas.p_wiederLoeschen();
-            
+      
             return inputNode.getParent();
 
         }
@@ -214,8 +221,7 @@ public class RedBlackTree  implements GUITree{
                 nodeBro.setColor(Node.RBColor.RED);
                 rotateRight(nodeBro);
                 nodeBro = inputNode.getParent().getRightChild();
-            
-                 guiCanvas.p_wiederLoeschen();
+
             
             }
             nodeBro.setColor(inputNode.getParent().getColor());
@@ -223,37 +229,22 @@ public class RedBlackTree  implements GUITree{
             nodeBro.getRightChild().setColor(Node.RBColor.BLACK);
             rotateLeft(inputNode.getParent());
             
-             guiCanvas.p_wiederLoeschen();
-            
             return root;
         }
         
     }  
     private Node deleteFixupRightCase (Node inputNode){
+
         Node nodeBro = inputNode.getParent().getLeftChild();
         if (nodeBro.isRed()){ //Fall 1
             nodeBro.setColor(Node.RBColor.BLACK);
             nodeBro.getParent().setColor(Node.RBColor.RED);
             rotateRight(inputNode.getParent());
             nodeBro = inputNode.getParent().getLeftChild();
-            
-            
-             
-            
-            //wieder entfernen
-            guiCanvas.p_wiederLoeschen();
-        
-            
-            
         }
         if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
             nodeBro.setColor(Node.RBColor.RED);
-            
-            
-            //wieder entfernen
-            guiCanvas.p_wiederLoeschen();
-            
-            
+ 
             return inputNode.getParent();
         }
         else{ 
@@ -263,22 +254,11 @@ public class RedBlackTree  implements GUITree{
                 rotateLeft(nodeBro);
                 nodeBro = inputNode.getParent().getLeftChild();
                 
-                
-                //wieder entfernen
-                guiCanvas.p_wiederLoeschen();
-                
-                return root;
-                
             }
             nodeBro.setColor(inputNode.getParent().getColor());
             inputNode.getParent().setColor(Node.RBColor.BLACK);
             nodeBro.getLeftChild().setColor(Node.RBColor.BLACK);
             rotateRight(inputNode.getParent());
-            
-            //wieder entfernen
-            guiCanvas.p_wiederLoeschen();
-            
-            
             return root;
         }
         
@@ -301,7 +281,10 @@ public class RedBlackTree  implements GUITree{
             Node rightMin = getMinNode(delNode.getRightChild());
             delFixup = rightMin.isBlack();
             fixUpNode = rightMin.getRightChild();
-            if (rightMin.getParent() != delNode){
+            if (rightMin.getParent() == delNode){
+                rightMin.getRightChild().setParent(rightMin); //Wird benötigt falls rightMin.getRightChild() der nullNode ist.
+            }
+            else{
                 transplant(rightMin, rightMin.getRightChild());
                 rightMin.setRightChild(delNode.getRightChild());
                 rightMin.getRightChild().setParent(rightMin);
@@ -341,7 +324,7 @@ public class RedBlackTree  implements GUITree{
    
     @Override
    public Node search (int key){
-       if (root == null) return null;
+       if (root == null || root == nullNode) return null;
        Node searchNode = root;
        Node helpNode = root;
        while(helpNode != nullNode){
