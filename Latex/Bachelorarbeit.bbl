@@ -1,13 +1,3 @@
-\begin{thebibliography}{1}
-
-\bibitem{wilberLowerBounds}
-Robert. Wilber.
-\newblock Lower bounds for accessing binary search trees with rotations.
-\newblock {\em SIAM Journal on Computing}, 18(1):56--67, 1989.
-
-\bibitem{demainDinamicOpti}
-Erik~D. Demaine, Dion. Harmon, John. Iacono, and Mihai. Patrascu.
-\newblock Dynamic optimality—almost.
-\newblock {\em SIAM Journal on Computing}, 37(1):240--251, 2007.
+\begin{thebibliography}{}
 
 \end{thebibliography}

@@ -39,7 +39,31 @@ Zusammenfassung
 
 \section {Einleitung}
 \section{Fazit}
+\section{Balancierte Suchbaum}
+\section{Rot-Schwarz-Baum}
+Der Rot-Schwarz-Baum gehört zu den binären Suchbäumen mit speziellen Invarianten, um balanciert zu bleiben. Zusätzlichen zu den Zeigern  \textit{Links}, \textit{Rechts} und \textit{Vater} benötigt jeder Knoten ein zusätzliches Bit Speicherplatz, um die Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Bit unterschiedenen Zustände als \textit{Rot} und \textit{Schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten. Zeiger auf Kinder oder Väter die aktuell im Baum nicht vorhanden sind zeigen auf einen schwarzen Sonderknoten. Dieser Sonderknoten wird in dieser Arbeit durch den Schlüsselwert  \textit{null} dargestellt. Als \textit{Schwarzhöhe} eines Knotens wird die Anzahl der schwarzen Knoten bis zu einem Blatt bezeichnet. Aufgrund der Eigenschaft fünf ist die Schwarzhöhe eines Knotens wohldefiniert.
 
+
+\noindent Folgende zusätzliche Eigenschaften müssen für eine gültige Rot-Schwarz-Baum Darstellung erfüllt sein. 
+
+\begin{enumerate}
+	\item Jeder Knoten ist entweder rot oder schwarz.
+	\item Die Wurzel ist schwarz.
+	\item Jedes Blatt ist schwarz.
+	\item Beide Kinder eines roten Knotens sind schwarz.
+	\item Für jeden Knoten enthalten alle Pfade, die an diesem Knoten starten und in einem Blatt enden, die gleiche Anzahl an schwarzen Knoten. 
+\end{enumerate}  
+
+\noindent  Der Zweck dieser Einschränkungen ist es die Höhe des Rot-Schwarz-Baumes zu begrenzen, und so die üblichen Operationen effizient ausführen zu können.
+
+\begin{lemma}
+	Given two line segments whose lengths are $a$ and $b$ respectively there is a 
+	real number $r$ such that $b=ra$.
+\end{lemma}
+
+
+
+\newpage
 \bibliography{literaturverzeichnis}
 \bibliographystyle{unsrt}
 
