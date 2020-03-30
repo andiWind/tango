@@ -39,12 +39,17 @@ Zusammenfassung
 
 \section {Einleitung}
 \section{Fazit}
-\section{Balancierte Suchbaum}
+\section{Dynamische binäre Suchbäume}
+innerer Knoten\\
+Teilbaum\\
+Höhe Nur eine Wurzel vorhanden, dann Höhe 0\\
+innerer Knoten, auch Wurzel\\
+\section{Balancierte Suchbäume}
 \section{Rot-Schwarz-Baum}
-Der Rot-Schwarz-Baum gehört zu den binären Suchbäumen mit speziellen Invarianten, um balanciert zu bleiben. Zusätzlichen zu den Zeigern  \textit{Links}, \textit{Rechts} und \textit{Vater} benötigt jeder Knoten ein zusätzliches Bit Speicherplatz, um die Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Bit unterschiedenen Zustände als \textit{Rot} und \textit{Schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten. Zeiger auf Kinder oder Väter die aktuell im Baum nicht vorhanden sind zeigen auf einen schwarzen Sonderknoten. Dieser Sonderknoten wird in dieser Arbeit durch den Schlüsselwert  \textit{null} dargestellt. Als \textit{Schwarzhöhe} eines Knotens wird die Anzahl der schwarzen Knoten bis zu einem Blatt bezeichnet. Aufgrund der Eigenschaft fünf ist die Schwarzhöhe eines Knotens wohldefiniert.
+Der Rot-Schwarz-Baum gehört zu den binären Suchbäumen mit speziellen Invarianten, um balanciert zu bleiben. Zusätzlichen zu den Zeigern  \textit{Links}, \textit{Rechts} und \textit{Vater} benötigt jeder Knoten ein zusätzliches Bit Speicherplatz, um die Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Bit unterschiedenen Zustände als \textit{Rot} und \textit{Schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten. Zeiger auf Kinder oder Väter die aktuell im Baum nicht vorhanden sind zeigen auf einen schwarzen Sonderknoten. Dieser Sonderknoten wird in dieser Arbeit durch den Schlüsselwert  \textit{null} dargestellt. Als \textit{Schwarz-Höhe} $\mathit{bh(x)}$ eines Knotens wird die Anzahl der schwarzen Knoten bis zu einem Blatt bezeichnet. Die eigene Farbe des betrachteten Knotens bleibt bei der Betrachtung außen vor. Aufgrund der Eigenschaft fünf ist die Schwarz-Höhe eines Knotens wohldefiniert. Die Höhe $h$ ist beim Rot-Schwarz-Baum wie bei anderen binären Suchbäumen definiert, berücksichtigt also auch die roten Knoten. 
 
 
-\noindent Folgende zusätzliche Eigenschaften müssen für eine gültige Rot-Schwarz-Baum Darstellung erfüllt sein. 
+\noindent Folgende zusätzliche Eigenschaften müssen bei einem Rot-Schwarz-Baum erfüllt sein. 
 
 \begin{enumerate}
 	\item Jeder Knoten ist entweder rot oder schwarz.
@@ -55,11 +60,34 @@ Der Rot-Schwarz-Baum gehört zu den binären Suchbäumen mit speziellen Invarian
 \end{enumerate}  
 
 \noindent  Der Zweck dieser Einschränkungen ist es die Höhe des Rot-Schwarz-Baumes zu begrenzen, und so die üblichen Operationen effizient ausführen zu können.
+\\
 
-\begin{lemma}
-	Given two line segments whose lengths are $a$ and $b$ respectively there is a 
-	real number $r$ such that $b=ra$.
-\end{lemma}
+
+
+\noindent\textbf{Lemma: Höhe des Rot-Schwarz-Baum}:\\
+Für einen Rot-Schwarz-Baum mit Höhe $h$ und $n$ inneren Knoten gilt $h \leq  2 lg(n + 1)$. \\
+\noindent\textbf{Beweis:}\\
+ Zunächst wird gezeigt, dass ein Teilbaum mit Wurzel $x$ und Schwarzhöhe $\mathit{bh(x)}$ zumindest über $2^{bh(x)} - 1$ innere Knoten verfügt. Dies wird durch Induktion über die Höhe $\mathit{h_{x}}$ gezeigt. Für $\mathit{h_{x}} = 0$ besteht $x$  nur aus einem Blatt und enthält keine inneren Knoten. Natürlich gilt in diesem Fall auch $\mathit{bh(t_1) = 0}$.  \\
+Induktionsanfang mit $\mathit{h_{x} = 0}$ :\\
+$2^{0} - 1 = 0$\\
+Induktionsschritt:\\
+Nun wird ein Teilbaum $x_1$ mit Höhe $h + 1$ betrachtet. Jedes seiner beiden Kinder hat entweder Schwarzhöhe  $\mathit{bh(x)}$, wenn es rot ist, oder $\mathit{bh(x) - 1}$, wenn es schwarz ist. Die Höhe beider Kinder ist niedriger als die eigene Höhe von $x$, somit kann jeweils die Induktionsnahme eingesetzt werden. Jedes Kind hat also mindestens $2^{bh(x_1)-1} - 1$ innere Knoten. Addiert ergibt sich   \\
+$2^{bh(x_1)-1} - 1 + 2^{bh(x_1)-1} - 1  = 2^{bh(x_1)} - 2 $ \\
+Addiert man einen inneren Knoten aufgrund der Wurzel des Teilbaumes hinzu, erhält man die Behauptung.\\
+$2^{bh(x_1)} - 2 + 1 = 2^{bh(x_1)} - 1 $\\
+Es gilt also $n \geq 2^{\mathit{bh(x)}} - 1$.
+
+\noindent Auf einem Pfad in einem Rot-Schwarz-Baum $t$ von der Wurzel bis zu einem Blatt sind der erste und der letzte Knoten, sowie mindestens jeder zweite innere Knoten schwarz. Es gilt also $\mathit{bh(t)} \geq \frac{h(t)}{2}$. 
+Damit kann man in der Ungleichung $\mathit{bh(t)}$ durch $\mathit{h(t)}$ ersetzen, woraus dann das Lemma folgt.\\
+$n \geq 2^{\frac{\mathit{h(t)}}{2}} - 1 \Rightarrow n + 1 \geq 2^{\frac{\mathit{h(t)}}{2}} \Rightarrow
+\lg(n + 1) \geq \frac{h(t)}{2} \Rightarrow 2 lg(n + 1) \geq h(t) $ 
+ 
+
+
+
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 \babel@toc {german}{}
 \contentsline {section}{\numberline {1}Einleitung}{4}% 
 \contentsline {section}{\numberline {2}Fazit}{4}% 
-\contentsline {section}{\numberline {3}Balancierte Suchbaum}{4}% 
-\contentsline {section}{\numberline {4}Rot-Schwarz-Baum}{4}% 
+\contentsline {section}{\numberline {3}Dynamische binäre Suchbäume}{4}% 
+\contentsline {section}{\numberline {4}Balancierte Suchbäume}{4}% 
+\contentsline {section}{\numberline {5}Rot-Schwarz-Baum}{4}% 
