@@ -48,6 +48,7 @@ Rotationen\\
 Einfügen\\
 Suchen\\
 Löschen\\
+Bruder\\
 \section{Balancierte Suchbäume}
 \subsection{Rot-Schwarz-Baum}
 Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zusätzlich zu den Zeigern \textit{links}, \textit{rechts} und \textit{vater} benötigt jeder Knoten ein zusätzliches Bit Speicherplatz, um die Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Bit unterschiedenen Zustände als \textit{Rot} und \textit{Schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten. Zeiger auf Kinder oder Väter die aktuell im Baum nicht vorhanden sind zeigen auf einen schwarzen Sonderknoten. Dieser Sonderknoten enthält in dieser Arbeit den Schlüsselwert \textit{null}.  
@@ -69,18 +70,44 @@ Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zu
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/IOBaum"}
 	\caption{Rot-Schwarz-Baum ohne Verletzung von Eigenschaften. }
-	\label{fig:RBT_IO}
+	\label{fig:IOBaum}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/NIOBaumZweiRote"}
-	\caption{Rot-Schwarz-Baum ohne Verletzung von Eigenschaften. }
-	\label{fig:RBT_IO}
+	\caption{Rot-Schwarz-Baum bei dem Eigenschaft 4 verletzt ist. }
+	\label{fig:NIOBaumZweiRote}
 \end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/NIOBaumPfadlänge"}
+	\caption{Rot-Schwarz-Baum bei dem Eigenschaft fünf verletzt ist.  }
+	\label{fig:NIOBaumPfadlänge}
+\end{figure}
+
+
+\subsubsection{Einfügen beim Rot-Schwarz-Baum}
+Ein neuer Schlüssel wird zunächst wie in Ref: (normales Einfügen) eingefügt. Zusätzlich werden dann noch die Zeiger auf die Kinder auf den schwarzen Sonderzeiger gesetzt. Der neue Knoten wird rot gefärbt. Durch den neu eingefügten Knoten können Korrekturen notwendig werden, um die Rot-Schwarz-Baum Eigenschaften zu erhalten. Zunächst betrachten wir welche der fünf Eigenschaften betroffen sein können. Es ist immer noch jeder Knoten entweder rot oder schwarz. Aufgrund des Sonderknotens sind die Blätter immer noch schwarz. Da der neue Knoten rot ist, ändern sich die Schwarz-Höhen nicht, so dass Eigenschaft fünf erhalten bleibt. Wurde in den leeren Baum eingefügt, so wurde jedoch eine rote Wurzel eingefügt. Dies kann sehr einfach behandelt werden. Ist die Wurzel nach dem einfügen rot, so kann sie einfach schwarz gefärbt werden. Komplizierter wird es wenn der Vater des neuen Knotens ebenfalls rot ist und deshalb Eigenschaft vier verletzt wurde. Dieses Problem wird mit einer zusätzlichen Routine behandelt. Diese Routine arbeitet sich von der Einfügestelle solange nach oben durch, bis alle Eigenschaften wieder eingehalten werden. Pro Iteration werden sechs Fälle unterschieden. Im folgenden wird auf die drei Fälle eingegangen bei denen der obere der beiden roten Knoten links anhängt. Die restlichen sind jeweils symmetrisch. Der untere rote Knoten wird als $x$ bezeichnet, der obere als $y$.  \\
+\textbf{Fall 1: Der Bruder von y ist rot }
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall1"}
+	\caption{Rot-Schwarz-Baum bei dem Eigenschaft fünf verletzt ist.  }
+	\label{fig:EinfügenFixUpFall1}
+\end{figure}
+
+
+
+   
+\subsubsection{Löschen beim Rot-Schwarz-Baum}
+
+\subsubsection{Suchen beim Rot-Schwarz-Baum}
+
+
 \noindent\textbf{Lemma: Maximale Höhe des Rot-Schwarz-Baum}:\\
 Für einen Rot-Schwarz-Baum mit Höhe $h$ und $n$ inneren Knoten gilt $h \leq  2 lg(n + 1)$. \\
 \noindent\textbf{Beweis:}\\
- Zunächst wird gezeigt, dass ein Teilbaum $t_1$ mit Wurzel $x_1$ und Schwarzhöhe $\mathit{bh(x_1)}$ zumindest über $2^{bh(x_1)} - 1$ innere Knoten verfügt, also $n \geq 2^{bh(x_1)} - 1 $. Dies wird durch Induktion über die Höhe $\mathit{h_{x_1}}$ gezeigt. Für $\mathit{h_{x_1}} = 0$ besteht $t_1$ nur aus einem Blatt und enthält keine inneren Knoten. Natürlich gilt in diesem Fall auch $\mathit{bh(t_1) = 0}$.  \\
+Zunächst wird gezeigt, dass ein Teilbaum $t_1$ mit Wurzel $x_1$ und Schwarzhöhe $\mathit{bh(x_1)}$ zumindest über $2^{bh(x_1)} - 1$ innere Knoten verfügt, also $n \geq 2^{bh(x_1)} - 1 $. Dies wird durch Induktion über die Höhe $\mathit{h_{x_1}}$ gezeigt. Für $\mathit{h_{x_1}} = 0$ besteht $t_1$ nur aus einem Blatt und enthält keine inneren Knoten. Natürlich gilt in diesem Fall auch $\mathit{bh(t_1) = 0}$.  \\
 Induktionsanfang mit $\mathit{h_{x_1} = 0}$ :\\
 $2^{0} - 1 = 0$\\
 Induktionsschritt:\\
@@ -94,15 +121,6 @@ Es gilt also $n \geq 2^{\mathit{bh(x)}} - 1$.
 Damit kann man in der Ungleichung $\mathit{bh(t_3)}$ durch $\mathit{h(t_3)}$ ersetzen, woraus dann das Lemma folgt.\\
 $n \geq 2^{\frac{\mathit{h(t_3)}}{2}} - 1 \Rightarrow n + 1 \geq 2^{\frac{\mathit{h(t_3)}}{2}} \Rightarrow
 \lg(n + 1) \geq \frac{h(t_3)}{2} \Rightarrow 2 lg(n + 1) \geq h(t_3) $ 
- 
-
-\subsubsection{Einfügen beim Rot-Schwarz-Baum}
-Ein neuer Schlüssel wird zunächst wie in Ref: (normales Einfügen) eingefügt. Zusätzlich werden dann noch die Zeiger auf die Kinder auf den schwarzen Sonderzeiger gesetzt. Der neue Knoten wird rot gefärbt. Durch den neu eingefügten Knoten können Korrekturen notwendig werden, um die Rot-Schwarz-Baum Eigenschaften zu erhalten. Zunächst betrachten wir die fünf Eigenschaften um zu erkennen welche betroffen sein können. Es ist immer noch jeder Knoten entweder rot oder schwarz. Aufgrund des Sonderknotens sind die Blätter immer noch schwarz. Da der neue Knoten rot ist bleiben auch die Schwarz-Höhen der Knoten unverändert, so dass Eigenschaft fünf erhalten bleibt. Wurde in den leeren Baum eingefügt, so wurde jedoch eine rote Wurzel eingefügt. Ist der Vater des neuen Knotens rot, so wurde Eigenschaft vier verletzt. Zur Korrektur wird eine zusätzliche Routine verwendet. Diese arbeitet sich von der Einfügestelle solange nach oben durch, bis alle Eigenschaften wieder eingehalten werden. Pro Iteration werden acht Fälle unterschieden, von denen jeweils zwei symmetrisch sind.
-
-   
-\subsubsection{Löschen beim Rot-Schwarz-Baum}
-
-\subsubsection{Suchen beim Rot-Schwarz-Baum}
 
 
 
