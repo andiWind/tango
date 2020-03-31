@@ -65,9 +65,18 @@ Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zu
 
 \noindent  Der Zweck dieser Einschränkungen ist es die Höhe des Rot-Schwarz-Baumes zu begrenzen, um die üblichen Operationen effizient ausführen zu können. Als Schwarz-Höhe $\mathit{bh(x)}$ eines Knoten $x$ wird die Anzahl der schwarzen Knoten in einem Pfad, der am dem Knotens startet und bei einem Blatt endet, bezeichnet. Die eigene Farbe des betrachteten Knotens bleibt dabei außen vor. Aufgrund der Eigenschaft fünf ist die Schwarz-Höhe eines Knotens wohldefiniert. Die Höhe $h$ ist beim Rot-Schwarz-Baum wie bei anderen binären Suchbäumen definiert und berücksichtigt auch die roten Knoten. 
 \\
-
-
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/IOBaum"}
+	\caption{Rot-Schwarz-Baum ohne Verletzung von Eigenschaften. }
+	\label{fig:RBT_IO}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/NIOBaumZweiRote"}
+	\caption{Rot-Schwarz-Baum ohne Verletzung von Eigenschaften. }
+	\label{fig:RBT_IO}
+\end{figure}
 \noindent\textbf{Lemma: Maximale Höhe des Rot-Schwarz-Baum}:\\
 Für einen Rot-Schwarz-Baum mit Höhe $h$ und $n$ inneren Knoten gilt $h \leq  2 lg(n + 1)$. \\
 \noindent\textbf{Beweis:}\\
@@ -88,7 +97,7 @@ $n \geq 2^{\frac{\mathit{h(t_3)}}{2}} - 1 \Rightarrow n + 1 \geq 2^{\frac{\mathi
  
 
 \subsubsection{Einfügen beim Rot-Schwarz-Baum}
-Ein neuer Schlüssel wird zunächst wie in Ref: (normales Einfügen) eingefügt. Zusätzlich werden dann noch die Zeiger auf die Kinder auf den schwarzen Sonderzeiger gesetzt. Der neue Knoten wird rot gefärbt. Durch den neu eingefügten Knoten können Korrekturen notwendig werden, um die Rot-Schwarz-Baum Eigenschaften zu erhalten. Zunächst betrachten wir die fünf Eigenschaften um zu erkennen welche betroffen sein können. Es ist immer noch jeder Knoten entweder rot oder schwarz. Aufgrund des Sonderknotens sind die Blätter immer noch schwarz. Da der neue Knoten rot ist bleiben auch die Schwarz-Höhen der Knoten unverändert, so dass Eigenschaft fünf erhalten bleibt. Wurde in den leeren Baum eingefügt, so wurde jedoch eine rote Wurzel eingefügt. Ist der Vater des neuen Knotens rot, so wurde Eigenschaft vier verletzt.
+Ein neuer Schlüssel wird zunächst wie in Ref: (normales Einfügen) eingefügt. Zusätzlich werden dann noch die Zeiger auf die Kinder auf den schwarzen Sonderzeiger gesetzt. Der neue Knoten wird rot gefärbt. Durch den neu eingefügten Knoten können Korrekturen notwendig werden, um die Rot-Schwarz-Baum Eigenschaften zu erhalten. Zunächst betrachten wir die fünf Eigenschaften um zu erkennen welche betroffen sein können. Es ist immer noch jeder Knoten entweder rot oder schwarz. Aufgrund des Sonderknotens sind die Blätter immer noch schwarz. Da der neue Knoten rot ist bleiben auch die Schwarz-Höhen der Knoten unverändert, so dass Eigenschaft fünf erhalten bleibt. Wurde in den leeren Baum eingefügt, so wurde jedoch eine rote Wurzel eingefügt. Ist der Vater des neuen Knotens rot, so wurde Eigenschaft vier verletzt. Zur Korrektur wird eine zusätzliche Routine verwendet. Diese arbeitet sich von der Einfügestelle solange nach oben durch, bis alle Eigenschaften wieder eingehalten werden. Pro Iteration werden acht Fälle unterschieden, von denen jeweils zwei symmetrisch sind.
 
    
 \subsubsection{Löschen beim Rot-Schwarz-Baum}
