@@ -89,23 +89,32 @@ Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zu
 \subsubsection{Einfügen in den Rot-Schwarz-Baum}
 Ein neuer Schlüssel wird zunächst wie in Ref: (normales Einfügen) eingefügt. Zusätzlich werden dann noch die Zeiger auf die Kinder auf den schwarzen Sonderzeiger gesetzt. Der neue Knoten wird rot gefärbt. Durch den neu eingefügten Knoten können Korrekturen notwendig werden, um die Rot-Schwarz-Baum Eigenschaften zu erhalten. Zunächst betrachten wir welche der fünf Eigenschaften betroffen sein können. Es ist immer noch jeder Knoten entweder rot oder schwarz. Aufgrund des Sonderknotens sind die Blätter immer noch schwarz. Da der neue Knoten rot ist, ändern sich die Schwarz-Höhen anderer Knoten nicht. Beide Pfade die von neu eingefügten Knoten starten können haben Schwarz-Höhe eins. Eigenschaft fünf bleibt also erhalten. Eigenschaft vier ist verletzt, wenn der Vater des neuen Knotens ebenfalls rot ist. Eine rote Wurzel erhält man nur wenn in den leeren Baum eingefügt wurde. Es kann also nur eine der beiden Eigenschaften zwei oder vier verletzt sein, aber nicht beide.
 
- \noindent Zur Korrektur wird mit einer zusätzlichen Routine gearbeitet. Diese Routine arbeitet sich von der Einfügestelle solange nach oben in einer Schleife durch, bis alle Eigenschaften wieder erfüllt sind. Die Schleifenbedingung ist, dass eine Verletzung vorliegt. Dazu muss einfach geprüft werden ob der betrachtete rote Knoten die Wurzel ist, oder einen roten Vorgänger hat. Beim ersten Durchlauf wird der neu eingefügte Knoten übergeben. Innerhalb der Schleife werden fünf Fälle unterschieden. Im folgenden wird auf drei Fälle detailliert eingegangen. Die restlichen zwei verhalten sich symmetrisch zu einem solchen. Jeder der Fälle verantwortet, dass zum Start der nächsten Iteration wieder nur eine der beiden Eigenschaften zwei oder vier verletzt ist. Eigenschaft eins bleibt in der Beschreibung außen vor, da es während der gesamten Laufzeit der Routine nur rote und schwarze Knoten gibt. \\
+ \noindent Zur Korrektur wird mit einer zusätzlichen Routine gearbeitet. Diese Routine arbeitet sich von der Einfügestelle solange nach oben in einer Schleife durch, bis alle Eigenschaften wieder erfüllt sind. Die Schleifenbedingung ist, dass eine Verletzung vorliegt. Dazu muss einfach geprüft werden ob der betrachtete rote Knoten die Wurzel ist, oder einen roten Vorgänger hat. Beim ersten Durchlauf wird der neu eingefügte Knoten übergeben. Innerhalb der Schleife werden sechs Fälle unterschieden. Im folgenden wird auf vier Fälle detailliert eingegangen. Die restlichen zwei verhalten sich symmetrisch zu einem solchen. Jeder der Fälle verantwortet, dass zum Start der nächsten Iteration wieder nur eine der beiden Eigenschaften zwei oder vier verletzt ist. Eigenschaft eins bleibt in der Beschreibung außen vor, da es während der gesamten Laufzeit der Routine nur Knoten gibt, die rot oder schwarz sind. \\
 \textbf{Fall 1: Die Wurzel ist rot: }
 Dieser Fall wird behandelt in dem man die Wurzel schwarz färbt. Man muss noch zeigen, dass es durch das Umfärben zu keiner weiteren Verletzung gekommen ist. Bei den Eigenschaften zwei und drei sieht man das direkt. Die Vierte kann nicht verletzt worden sein, da kein roter Knoten hinzugekommen ist. Die Fünfte wurde nicht beeinträchtigt, da die Wurzel bei keiner Schwarz-Höhe eines Knotens beachtet werden muss.   \\
 Es wird also keine Eigenschaft mehr verletzt und die Schleife wird keine weitere Iteration durchführen.
 
-\noindent Die Fälle 2 - 5 behandeln nun die Situation zweier aufeinanderfolgender roter Knoten. Der untere rote Knoten wird als $x$ bezeichnet, der obere als $y$. Da in einen Baum eingefügt wurde, der alle fünf Eigenschaften erfüllt muss $y$ einen Bruder haben.  Denn da $y$ rot ist, kann es nicht die Wurzel sein, also muss auch $y$ einen Vater $z$ haben. Von $z$ aus starten über $y$ mindestens zwei Pfade zu schwarzen Blättern. Hätte $z$ nicht auch einen rechten Kind Knoten, wäre bereits vor der Iteration Eigenschaft fünf verletzt gewesen.  \\
-\noindent\textbf{Fall 2: $y$ ist ein linker Nachfolger und sein Bruder ist rot: }
+\noindent Die Fälle 2 - 6 behandeln nun die Situation zweier aufeinanderfolgender roter Knoten. Der untere rote Knoten wird als $x$ bezeichnet, der obere als $y$. Da in einen Baum eingefügt wurde, der alle fünf Eigenschaften erfüllt muss $y$ einen Bruder haben.  Denn da $y$ rot ist, kann es nicht die Wurzel sein, also muss auch $y$ einen Vater $z$ haben. Von $z$ aus starten über $y$ mindestens zwei Pfade zu schwarzen Blättern. Hätte $z$ nicht auch einen rechten Kind Knoten, wäre bereits vor der Iteration Eigenschaft fünf verletzt gewesen.  \\
+\noindent\textbf{Fall 2: Der Bruder von $y$ ist rot: }
 \noindent Diesen Fall veranschaulicht Abbildung \ref{fig:EinfügenFixUpFall1}. Da $y$ rot ist, muss $z$ nach Eigenschaft vier schwarz sein. Nun wird $z$ rot gefärbt und beide Kinder von $z$, also $y$ und dessen Bruder, schwarz. Somit hat $x$ nun einen schwarzen Vorgänger und die Verletzung der Eigenschaft vier wurde an dieser Stelle behoben. Wie sieht es aber mit den Verletzungen insgesamt aus ? \\
-Der rot umgefärbte Knoten $z$ hat zwei Kinder, somit wurde kein Blatt rot gefärbt. Die Schwarz-Höhen der Pfade mit $z$ als inneren Knoten ändern sich nicht, da sie auch genau eines der schwarz umgefärbten Kinder von $z$ enthalten müssen. Die Schwarz-Höhen der Pfade mit $z$ als Startknoten werden um eins verringert. Dies gilt jedoch für jeden von ihnen, so dass Eigenschaft fünf weiterhin nicht verletzt wird. Wenn der rot gefärbte Knoten $z$ nicht die Wurzel ist, könnte es einen roten Vorgänger haben und Eigenschaft vier ist weiterhin Verletzt, das Problem liegt nun aber zwei Baumebenen höher. Wenn $z$ die Wurzel ist kann Eigenschaft vier nicht mehr verletzt sein, allerdings hat man nun eine rote Wurzel. Man ist also in der Situation die nächste Iteration durchführen zu können.\\
+Der rot umgefärbte Knoten $z$ hat zwei Kinder, somit wurde kein Blatt rot gefärbt. Die Schwarz-Höhen der Pfade mit $z$ als inneren Knoten ändern sich nicht, da sie auch genau eines der schwarz umgefärbten Kinder von $z$ enthalten müssen. Die Schwarz-Höhen der Pfade mit $z$ als Startknoten werden um eins verringert. Dies gilt jedoch für jeden von ihnen, so dass Eigenschaft fünf weiterhin nicht verletzt wird. Wenn der rot gefärbte Knoten $z$ nicht die Wurzel ist, könnte er einen roten Vorgänger haben und Eigenschaft vier ist weiterhin Verletzt, das Problem liegt nun aber zwei Baumebenen höher. Wenn $z$ die Wurzel ist kann Eigenschaft vier nicht mehr verletzt sein, allerdings hat man nun eine rote Wurzel. Man ist also in der Situation die nächste Iteration durchführen zu können.\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall2"}
+	\caption{Einfügen Korrektur. Dargestellt ist eine Iteration mit Fall 2  }
+	\label{fig:EinfügenFixUpFall2}
+\end{figure}
+
+\noindent\textbf{Fall 3: $y$ ist ein linker Nachfolger und sein Bruder ist schwarz. $z$ ist linker Nachfolger: }
+
      
 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall1"}
-	\caption{Einfügen Korrektur. Dargestellt ist eine Iteration mit Fall 1  }
-	\label{fig:EinfügenFixUpFall1}
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall3"}
+	\caption{Einfügen Korrektur. Dargestellt ist Fall 3  }
+	\label{fig:EinfügenFixUpFall3}
 \end{figure}
 
 
