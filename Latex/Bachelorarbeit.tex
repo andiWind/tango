@@ -49,9 +49,11 @@ Einfügen\\
 Suchen\\
 Löschen\\
 Bruder\\
+Höhe\\
+Pfad\\
 \section{Balancierte Suchbäume}
 \subsection{Rot-Schwarz-Baum}
-Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zusätzlich zu den Zeigern \textit{links}, \textit{rechts} und \textit{vater} benötigt jeder Knoten ein zusätzliches Bit Speicherplatz, um die Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Bit unterschiedenen Zustände als \textit{Rot} und \textit{Schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten. Zeiger auf Kinder oder Väter die aktuell im Baum nicht vorhanden sind zeigen auf einen schwarzen Sonderknoten. Dieser Sonderknoten enthält in dieser Arbeit den Schlüsselwert \textit{null}.  
+Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zusätzlich zu den Zeigern \textit{links}, \textit{rechts} und \textit{vorgaenger} benötigt jeder Knoten ein zusätzliches Bit Speicherplatz, um die Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Bit unterschiedenen Zustände als \textit{Rot} und \textit{Schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten und im folgenden wird einfach von roten bzw. schwarzen Knoten gesprochen. Zeiger auf Nachfolger oder Vorgänger die aktuell im Baum nicht vorhanden sind zeigen auf einen schwarzen Sonderknoten. Dieser Sonderknoten enthält in dieser Arbeit den Schlüsselwert \textit{null}.  
 
 
 \noindent Folgende zusätzliche Eigenschaften müssen bei einem Rot-Schwarz-Baum erfüllt sein. 
@@ -60,11 +62,11 @@ Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zu
 	\item Jeder Knoten ist entweder rot oder schwarz.
 	\item Die Wurzel ist schwarz.
 	\item Jedes Blatt ist schwarz.
-	\item Beide Kinder eines roten Knotens sind schwarz.
+	\item Beide Nachfolger eines roten Knotens sind schwarz.
 	\item Für jeden Knoten enthalten alle Pfade, die an diesem Knoten starten und in einem Blatt enden, die gleiche Anzahl an schwarzen Knoten. 
 \end{enumerate}  
 
-\noindent  Der Zweck dieser Einschränkungen ist es die Höhe des Rot-Schwarz-Baumes zu begrenzen, um die üblichen Operationen effizient ausführen zu können. Als Schwarz-Höhe $\mathit{bh(x)}$ eines Knoten $x$ wird die Anzahl der schwarzen Knoten in einem Pfad, der am dem Knotens startet und bei einem Blatt endet, bezeichnet. Die eigene Farbe des betrachteten Knotens bleibt dabei außen vor. Aufgrund der Eigenschaft fünf ist die Schwarz-Höhe eines Knotens wohldefiniert. Die Höhe $h$ ist beim Rot-Schwarz-Baum wie bei anderen binären Suchbäumen definiert und berücksichtigt auch die roten Knoten. 
+\noindent  Der Zweck dieser Einschränkungen ist es die Höhe des Rot-Schwarz-Baumes zu begrenzen, um die üblichen Operationen effizient ausführen zu können. Als \textbf{Schwarz-Höhe} $\mathit{bh(x)}$ eines Knoten $x$ wird die Anzahl der schwarzen Knoten in einem Pfad, der an dem Knoten startet und in einem Blatt endet, bezeichnet. Die eigene Farbe des betrachteten Knotens bleibt dabei außen vor. Aufgrund der Eigenschaft fünf ist die Schwarz-Höhe eines Knotens wohldefiniert. Die Höhe $h$ ist beim Rot-Schwarz-Baum wie bei anderen binären Suchbäumen definiert und berücksichtigt auch die roten Knoten. Die Schwarz-Höhe der Wurzel des Baumes in Abbildung \ref{fig:IOBaum} ist also zwei. Im Folgenden wird manchmal nur die Nummer einer Eigenschaft verwendet. Bezieht sich der Text also beispielsweise auf Eigenschaft zwei, ist damit die Eigenschaft bzgl. der schwarzen Wurzel gemeint.
 \\
 \begin{figure}[h]
 	\centering
@@ -75,7 +77,7 @@ Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zu
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/NIOBaumZweiRote"}
-	\caption{Rot-Schwarz-Baum bei dem Eigenschaft 4 verletzt ist. }
+	\caption{Rot-Schwarz-Baum bei dem Eigenschaft vier und fünf verletzt sind. }
 	\label{fig:NIOBaumZweiRote}
 \end{figure}
 \begin{figure}[h]
@@ -87,40 +89,68 @@ Der Rot-Schwarz-Baum gehört zur Gruppe der balancierten binären Suchbäume. Zu
 
 
 \subsubsection{Einfügen in den Rot-Schwarz-Baum}
-Ein neuer Schlüssel wird zunächst wie in Ref: (normales Einfügen) eingefügt. Zusätzlich werden dann noch die Zeiger auf die Kinder auf den schwarzen Sonderzeiger gesetzt. Der neue Knoten wird rot gefärbt. Durch den neu eingefügten Knoten können Korrekturen notwendig werden, um die Rot-Schwarz-Baum Eigenschaften zu erhalten. Zunächst betrachten wir welche der fünf Eigenschaften betroffen sein können. Es ist immer noch jeder Knoten entweder rot oder schwarz. Aufgrund des Sonderknotens sind die Blätter immer noch schwarz. Da der neue Knoten rot ist, ändern sich die Schwarz-Höhen anderer Knoten nicht. Beide Pfade die von neu eingefügten Knoten starten können haben Schwarz-Höhe eins. Eigenschaft fünf bleibt also erhalten. Eigenschaft vier ist verletzt, wenn der Vater des neuen Knotens ebenfalls rot ist. Eine rote Wurzel erhält man nur wenn in den leeren Baum eingefügt wurde. Es kann also nur eine der beiden Eigenschaften zwei oder vier verletzt sein, aber nicht beide.
+Ein neuer Schlüssel wird zunächst wie in Ref: (normales Einfügen) eingefügt. Zusätzlich werden dann noch die Zeiger \textit{links} und  \textit{rechts} auf den schwarzen Sonderknoten gesetzt. Die Farbe neu eingefügter Knoten ist rot. Durch den neu eingefügten Knoten können Korrekturen notwendig werden, um die Rot-Schwarz-Baum Eigenschaften zu erhalten. Zunächst betrachten wir der Reihe nach welche der fünf Eigenschaften betroffen sein können. Es wird davon ausgegangen, dass in einen Rot-Schwarz-Baum ohne Verletzung von Eigenschaften eingefügt wurde. \\
 
- \noindent Zur Korrektur wird mit einer zusätzlichen Routine gearbeitet. Diese Routine arbeitet sich von der Einfügestelle solange nach oben in einer Schleife durch, bis alle Eigenschaften wieder erfüllt sind. Die Schleifenbedingung ist, dass eine Verletzung vorliegt. Dazu muss einfach geprüft werden ob der betrachtete rote Knoten die Wurzel ist, oder einen roten Vorgänger hat. Beim ersten Durchlauf wird der neu eingefügte Knoten übergeben. Innerhalb der Schleife werden sechs Fälle unterschieden. Im folgenden wird auf vier Fälle detailliert eingegangen. Die restlichen zwei verhalten sich symmetrisch zu einem solchen. Jeder der Fälle verantwortet, dass zum Start der nächsten Iteration wieder nur eine der beiden Eigenschaften zwei oder vier verletzt ist. Eigenschaft eins bleibt in der Beschreibung außen vor, da es während der gesamten Laufzeit der Routine nur Knoten gibt, die rot oder schwarz sind. \\
-\textbf{Fall 1: Die Wurzel ist rot: }
-Dieser Fall wird behandelt in dem man die Wurzel schwarz färbt. Man muss noch zeigen, dass es durch das Umfärben zu keiner weiteren Verletzung gekommen ist. Bei den Eigenschaften zwei und drei sieht man das direkt. Die Vierte kann nicht verletzt worden sein, da kein roter Knoten hinzugekommen ist. Die Fünfte wurde nicht beeinträchtigt, da die Wurzel bei keiner Schwarz-Höhe eines Knotens beachtet werden muss.   \\
-Es wird also keine Eigenschaft mehr verletzt und die Schleife wird keine weitere Iteration durchführen.
+\begin{enumerate}
+	\item Es ist immer noch jeder Knoten entweder rot oder schwarz.
+	\item Wurde in den leeren Baum eingefügt, so ist der neu eingefügte rote Knoten die Wurzel, was eine Verletzung darstellt. Waren bereits Knoten im Baum vorhanden bleibt die Wurzel unverändert.
+	\item Aufgrund des Sonderknotens sind die Blätter immer noch schwarz.
+	\item Der Baum wird nur direkt an der Einfügestelle verändert. Der neue Knoten hat schwarze Nachfolger, er könnte jedoch einen roten Vorgänger haben, so dass diese Eigenschaft verletzt wäre.
+	\item Da der neue Knoten rot ist, ändern sich keine Schwarz-Höhen von bereits enthaltenen Knoten. Die Schwarz-Höhe des neuen Knoten ist immer $1$, denn beide Nachfolger verweisen auf den schwarzen Sonderknoten. Eigenschaft fünf bleibt also erhalten. 
+\end{enumerate}  
 
-\noindent Die Fälle 2 - 6 behandeln nun die Situation zweier aufeinanderfolgender roter Knoten. Der untere rote Knoten wird als $x$ bezeichnet, der obere als $y$. Da in einen Baum eingefügt wurde, der alle fünf Eigenschaften erfüllt muss $y$ einen Bruder haben.  Denn da $y$ rot ist, kann es nicht die Wurzel sein, also muss auch $y$ einen Vater $z$ haben. Von $z$ aus starten über $y$ mindestens zwei Pfade zu schwarzen Blättern. Hätte $z$ nicht auch einen rechten Kind Knoten, wäre bereits vor der Iteration Eigenschaft fünf verletzt gewesen.  \\
+\noindent Es können also die Eigenschaften zwei und vier betroffen sein. Jedoch nur eine von ihnen, denn Eigenschaft zwei wird genau dann verletzt wenn der neue Knoten der Einzige im Baum ist. Dann kann er aber keinen roten Vorgänger haben.
+
+ \noindent Zur Korrektur wird eine zusätzliche Routine eingesetzt. Diese Routine arbeitet sich von der Einfügestelle solange nach oben in einer Schleife durch, bis alle Eigenschaften wieder erfüllt sind. Die Schleifenbedingung ist, dass eine Verletzung vorliegt. Dazu muss geprüft werden ob der betrachtete Knoten die rote Wurzel des Gesamtbaumes ist, oder ob er und sein Vorgänger beide rot sind. Beim ersten Durchlauf wird der neu eingefügte Knoten übergeben. Innerhalb der Schleife werden sechs Fälle unterschieden. Im folgenden wird auf vier Fälle detailliert eingegangen. Die restlichen zwei verhalten sich symmetrisch zu einem solchen. Jeder der Fälle verantwortet, dass zum Start der nächsten Iteration wieder nur maximal eine der beiden Eigenschaften zwei oder vier verletzt sein kann und Eigenschaft vier lediglich an einer Stelle verletzt wird.  Eigenschaft eins bleibt in der Beschreibung außen vor, da es während der gesamten Laufzeit der Routine nur Knoten gibt, die entweder rot oder schwarz sind. \\
+ 
+\noindent\textbf{Fall 1: Die Wurzel ist rot: }
+Dieser Fall wird behandelt in dem man die Wurzel schwarz färbt. Man muss noch zeigen, dass es durch das Umfärben zu keiner anderen Verletzung gekommen ist. 
+\begin{enumerate}
+	\item -
+	\item Die Wurzel wurde schwarz gefärbt.
+	\item Die Blätter sind unverändert.
+	\item Es wurden weder rote Knoten hinzugefügt, noch wurden Zeiger umgesetzt. 
+	\item Da Umfärben der Wurzel kann hierauf keinen Einfluss haben, da sie in der Berechnung der Schwarz-Höhe jedes  Knotens außen vor ist.
+\end{enumerate}  
+
+\noindent Es wird also keine Eigenschaft mehr verletzt und die Schleife wird keine weitere Iteration durchführen.
+
+\noindent Die Fälle 2 - 6 behandeln nun die Situation zweier aufeinanderfolgender roter Knoten.  Der untere rote Knoten wird als $x$ bezeichnet, der obere als $y$. Da Eigenschaft fünf nach jeder Iteration erfüllt ist muss $y$ einen Bruder haben. Denn da $y$ rot ist und Fall 1 nicht ausgewählt wurde, kann es nicht die Wurzel sein. Also muss auch $y$ einen Vorgänger $z$ haben. Von $z$ aus starten über $y$ mindestens zwei Pfade zu schwarzen Blättern. Hätte $z$ nicht auch einen rechten Nachfolger, wäre bereits vor der Iteration Eigenschaft fünf verletzt gewesen. Wenn sich auf die Situation nach der Fallbehandlung bezogen wird, wird den Variablen ein Hochstrich hinzugefügt. Wurde beispielsweise Knoten $y$ von rot nach schwarz gefärbt, so ist $y$ rot und $y'$ schwarz. \\
 \noindent\textbf{Fall 2: Der Bruder von $y$ ist rot: }
-\noindent Diesen Fall veranschaulicht Abbildung \ref{fig:EinfügenFixUpFall1}. Da $y$ rot ist, muss $z$ nach Eigenschaft vier schwarz sein. Nun wird $z$ rot gefärbt und beide Kinder von $z$, also $y$ und dessen Bruder, schwarz. Somit hat $x$ nun einen schwarzen Vorgänger und die Verletzung der Eigenschaft vier wurde an dieser Stelle behoben. Wie sieht es aber mit den Verletzungen insgesamt aus ? \\
-Der rot umgefärbte Knoten $z$ hat zwei Kinder, somit wurde kein Blatt rot gefärbt. Die Schwarz-Höhen der Pfade mit $z$ als inneren Knoten ändern sich nicht, da sie auch genau eines der schwarz umgefärbten Kinder von $z$ enthalten müssen. Die Schwarz-Höhen der Pfade mit $z$ als Startknoten werden um eins verringert. Dies gilt jedoch für jeden von ihnen, so dass Eigenschaft fünf weiterhin nicht verletzt wird. Wenn der rot gefärbte Knoten $z$ nicht die Wurzel ist, könnte er einen roten Vorgänger haben und Eigenschaft vier ist weiterhin Verletzt, das Problem liegt nun aber zwei Baumebenen höher. Wenn $z$ die Wurzel ist kann Eigenschaft vier nicht mehr verletzt sein, allerdings hat man nun eine rote Wurzel. Man ist also in der Situation die nächste Iteration durchführen zu können.\\
+\noindent Diesen Fall veranschaulicht Abbildung \ref{fig:EinfügenFixUpFall2}. Da $y$ rot ist, muss $z$ nach Eigenschaft schwarz sein, ansonsten wäre Eigenschaft vier mehrfach verletzt gewesen. Nun wird $z$ rot gefärbt und beide Nachfolger von $z$, also $y$ und dessen Bruder, schwarz. Somit hat $x$ nun einen schwarzen Vorgänger und die Verletzung der Eigenschaft vier wurde an dieser Stelle behoben. Wie sieht es aber mit den Verletzungen insgesamt aus ? \\
+Der rot umgefärbte Knoten $z$ hat zwei Nachfolger, somit wurde kein Blatt rot gefärbt. Die Schwarz-Höhen der Pfade mit $z$ als inneren Knoten ändern sich nicht, da sie auch genau eines der schwarz umgefärbten Nachfolger von $z$ enthalten müssen. Die Schwarz-Höhen der Pfade mit $z$ als Startknoten werden um eins verringert. Dies gilt jedoch für jeden von ihnen, so dass Eigenschaft fünf weiterhin nicht verletzt wird. Wenn der rot gefärbte Knoten $z$ nicht die Wurzel ist, könnte er einen roten Vorgänger haben und Eigenschaft vier ist weiterhin Verletzt, das Problem liegt nun aber zwei Baumebenen höher. Wenn $z$ die Wurzel ist kann Eigenschaft vier nicht mehr verletzt sein, allerdings hat man nun eine rote Wurzel. Man ist also in der Situation die nächste Iteration durchführen zu können.\\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall2"}
-	\caption{Einfügen Korrektur. Dargestellt ist eine Iteration mit Fall 2  }
+	\caption{Korrektur nach dem Einfügen. Dargestellt ist Fall 2  }
 	\label{fig:EinfügenFixUpFall2}
 \end{figure}
 
-\noindent\textbf{Fall 3: $y$ ist ein linker Nachfolger und sein Bruder ist schwarz. $z$ ist linker Nachfolger: }
+\noindent\textbf{Fall 3: $y$ ist ein linker Nachfolger und sein Bruder ist schwarz. $x$ ist linker Nachfolger: }\\
+\noindent Abbildung \ref{fig:EinfügenFixUpFall3} zeigt eine entsprechende Situation. Da in dieser Situation, die Wurzel schwarz sein muss, gibt es den Vorgänger $z$ von $y$. Da es nur eine Stelle im Baum geben kann an der Eigenschaft vier verletzt wird, muss $z$ schwarz sein. Es wird nun eine Rechtsrotation auf $z$ ausgeführt. Anschließend wird $z$ rot gefärbt und $y$ schwarz. Die Eigenschaften 2 - 5 werden nun wieder nacheinander betrachtet. Dazu werden vier weitere Variablen auf Knoten verwendet. Es zeigt $xl$ den linken Nachfolger von $x$, $xr$ entsprechend den rechten Nachfolger.  $yr$ und $zr$ bezeichnen die rechten Nachfolger von $y$ bzw. $z$. Nachfolgend wird verwendet, dass die Teilbäume mit Wurzel $xl$, $xr$, $yr$ und $zr$ durch die Ausführung unverändert bleiben.
+Wenn $z$ zu Beginn nicht die Wurzel des Gesamtbaumes war, blieb diese unbearbeitet. Ansonsten ist wurde durch die Rotation $y$ zur neuen Wurzel und $y$ wurde schwarz gefärbt. \\
+Alle vier Plätze in der zweiten Ebene unter $z$ werden von den unveränderten Teilbäumen mit den Wurzeln $xl$, $xr$, $yr$ oder $zr$ besetzt. An den Blättern verändert sich also durch die Ausführung nichts.   \\
+Nun wird betrachtet ob es noch aufeinanderfolgende rote Knoten im Baum gibt. Knoten $x$ ist jetzt direkter linker Nachfolger der neuen schwarzen Wurzel $y$ des Teilbaumes. An den nachfolgenden Teilbäumen von $x$ hat sich nichts geändert. Die linke Seite des neu entstandenen Baumes enthält also keine aufeinanderfolgenden roten Knoten. Der rechte Nachfolger von $y$ ist nun das rote $z$. Rechts an $z$ hängt nun eine unveränderter Teilbaum, dessen Wurzel zuvor Bruder von $y$ war. Dieser ist nach Fallunterscheidung ein schwarzer Knoten. Links hängt ebenfalls ein unveränderter Teilbaum, dessen Wurzel zuvor rechter Nachfolger von $y$ war. Der rechts Nachfolger von $y$ muss zu Beginn schwarz gewesen sein, ansonsten wäre Eigenschaft vier an zwei Stellen gegeben, die Eigenschaft vier verletzten. Im Teilbaum mit Wurzel $y$ gibt es also keine aufeinanderfolgenden roten Knoten. Da $y$ schwarz gefärbt wurde kann auch nach oben keine neue Verletzung entstanden sein. 
+Wir kommen zu den Schwarz-Höhen und betrachten zunächst die Ausgangssituation. Es gilt  $\mathit{bh(xl)} = \mathit{bh(xr)} = \mathit{bh(yr)} =  \mathit{bh(zr)} = \mathit{bh(z)} - 1$. Nun betrachten wir den Baum nach der Änderung. Wie oben bereits erwähnt wird die zweite Ebene unter der Wurzel von den Knoten $\mathit{xl'}$, $\mathit{xr'}$, $\mathit{yr'}$ und $\mathit{zr'}$ gebildet. Es müssen also lediglich die Knoten $x'$, $y'$ und $z'$ betrachtet werden. An $x'$ und an $z'$ folgen schwarze Knoten mit der Schwarz-Höhe $\mathit{bh(z)} - 1$. Die Schwarz-Höhen von $x'$ und $z'$ ist also wohldefiniert und es gilt $mathit{bh(x')} = \mathit{bh(z')} = \mathit{bh(z)}$. $y'$ Nachfolger sind die roten Knoten $x'$ und $z'$. Da die beide Nachfolger rot sind gilt $\mathit{bh(y')} = mathit{bh(x')} = \mathit{bh(z')}$. Somit sind alle Schwarz-Höhen im betrachteten Teilbaum in Ordnung. Die neue Wurzel der Teilbaumes $y'$ hat die gleiche Schwarz-Höhe und die gleiche Farbe wie die vorherige Wurzel $z$. Damit kann es auch im Gesamtbaum zu keiner Verletzung der Eigenschaft gekommen sein.
+Es ist keine der Eigenschaften verletzt, daher wird es zu keiner Iteration mehr kommen.
+\noindent\textbf{Fall 4: $y$ ist ein linker Nachfolger und sein Bruder ist schwarz. $x$ ist rechter Nachfolger: }\\      
+Dieser in Abbildung \ref{fig:EinfügenFixUpFall4} gezeigte Fall wird so umgeformt, dass eine Situation entsteht bei der Fall drei angewendet werden kann. Dazu wird eine Linksrotation an Knoten $y$ durchgeführt. Wieder müssen die Auswirkungen auf die Eigenschaften 2- 5 betrachtet werden. Veränderungen gab es durch die Rotation lediglich im Teilbaum mit Wurzel $z$.Ist $z$ die Wurzel des Gesamtbaumes, so ist es auch $z'$ und $z'$ ist ein schwarzer Knoten. Es seien $\mathit{xl}$ und $\mathit{xr}$ die linken bzw. schwarzen Nachfolgeknoten von $x$. $\mathit{yl}$ ist der linke Nachfolger von $y$. Die Teilbäume  $\mathit{xl}$, $\mathit{xr}$ und $\mathit{yr}$ enthalten alle Blätter innerhalb des linken Teilbaumes von $z$. Außerdem bleiben die Teilbäume  $\mathit{xl}$, $\mathit{xr}$ und $\mathit{yr}$ durch die Rotation unverändert und sie enthalten auch alle Blätter des linken Teilbaumes von $z'$.
+Der rechte Teilbaum von $z$ bleibt unverändert. Eigenschaft drei wird also weiterhin eingehalten. 
 
-     
 
+Da $x$ und $y$ rot sind müssen $z$, $\mathit{xl}$ und $\mathit{xr}$ schwarz sein. Durch die Rotation ist $y'$ linker Nachfolger von $x'$. $x'$ ist Nachfolger vom schwarzen $z'$. Alle verbleibenden Nachfolger von $x'$ und $y'$ werden durch die unveränderten Teilbäume $\mathit{xl}$, $\mathit{xr}$ und $\mathit{yr}$ gebildet. Deren Wurzeln müssen schwarz sein, ansonsten hätte es in ursprünglichen Baum an mehr als einer Stelle eine Verletzung von Eigenschaft vier gegeben. Durch die Rotation verbleibt es also bei einer Verletzung der Eigenschaft vier in der gleiche Baumebene. Die beiden beteiligten roten Knoten hängen nun aber links nun aber links.  
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall3"}
-	\caption{Einfügen Korrektur. Dargestellt ist Fall 3  }
+	\caption{Korrektur nach dem Einfügen. Dargestellt ist Fall 3  }
 	\label{fig:EinfügenFixUpFall3}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall4"}
-	\caption{Einfügen Korrektur. Dargestellt ist Fall 4  }
+	\caption{Korrektur nach dem Einfügen. Dargestellt ist Fall 4  }
 	\label{fig:EinfügenFixUpFall4}
 \end{figure}
 
@@ -138,7 +168,7 @@ Zunächst wird gezeigt, dass ein Teilbaum $t_1$ mit Wurzel $x_1$ und Schwarzhöh
 Induktionsanfang mit $\mathit{h_{x_1} = 0}$ :\\
 $2^{0} - 1 = 0$\\
 Induktionsschritt:\\
-Nun wird ein Teilbaum $T_2$ mit Wurzel $x_2$ mit Höhe $h + 1$ betrachtet. Jedes seiner beiden Kinder hat entweder Schwarzhöhe  $\mathit{bh(x_2)}$, wenn es rot ist, oder $\mathit{bh(x_2) - 1}$, wenn es schwarz ist. Die Höhe beider Kinder ist niedriger als die eigene Höhe von $x_2$. Somit kann bei beiden Kindern jeweils die Induktionsnahme für die Mindestanzahl der inneren Knoten eingesetzt werden.   \\
+Nun wird ein Teilbaum $T_2$ mit Wurzel $x_2$ mit Höhe $h + 1$ betrachtet. Jedes seiner beiden Nachfolger hat entweder Schwarzhöhe  $\mathit{bh(x_2)}$, wenn es rot ist, oder $\mathit{bh(x_2) - 1}$, wenn es schwarz ist. Die Höhe beider Nachfolger ist niedriger als die eigene Höhe von $x_2$. Somit kann bei beiden Nachfolgern jeweils die Induktionsnahme für die Mindestanzahl der inneren Knoten eingesetzt werden.   \\
 $2^{bh(x_1)-1} - 1 + 2^{bh(x_1)-1} - 1  = 2^{bh(x_1)} - 2 $ \\
 Addiert man einen inneren Knoten aufgrund der Wurzel $x_2$ hinzu, erhält man die Behauptung.\\
 $2^{bh(x_1)} - 2 + 1 = 2^{bh(x_1)} - 1 $.\\
