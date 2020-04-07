@@ -5,6 +5,9 @@
  */
 package TangoTree;
 
+import GUI.GUICanvas;
+import GUI.GUINode;
+import GUI.GUITree;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -14,7 +17,7 @@ import java.util.List;
  *
  * @author andre
  */
-public class TangoTree {
+public class TangoTree implements GUITree{
     private Node root;
     
    private int[] buildKeyArray(Collection <Integer> keyList){
@@ -54,18 +57,63 @@ public class TangoTree {
         if (numOfNodes < 1)
             throw new IllegalArgumentException();
         Node perfectBalancedTree = buildPerfectBalancedTree(new Node(1), numOfNodes);
-        
+        root = perfectBalancedTree;
+        setKeysInPBT(perfectBalancedTree, keyArray, 0);
         
         
     }
-    
+    private int setKeysInPBT(Node node, int[] sortedKeys, int writedNumbers){
+        int tempWritedNumbers = writedNumbers;
+        if (node.left != null)
+            tempWritedNumbers = setKeysInPBT(node.left, sortedKeys, tempWritedNumbers);
+        node.key = sortedKeys[tempWritedNumbers++];
+        if (node.right != null)
+            tempWritedNumbers = setKeysInPBT(node.right, sortedKeys, tempWritedNumbers);
+        return  tempWritedNumbers;    
+    }
     private Node buildPerfectBalancedTree (Node node, int numOfNodes ){
-        if (node.key * 2 <= numOfNodes)
-             node.left = buildPerfectBalancedTree(new Node(node.key * 2), numOfNodes);
-        if (node.key * 2 + 1 <= numOfNodes)
-             node.right = buildPerfectBalancedTree(new Node(node.key * 2 + 1), numOfNodes);
+        if (node.key * 2 <= numOfNodes){
+            Node child = new Node(node.key * 2);
+            child.parent = node;
+            node.left = buildPerfectBalancedTree(child, numOfNodes);
+        }
+        if (node.key * 2 + 1 <= numOfNodes){
+            Node child = new Node(node.key * 2 + 1);
+            child.parent = node;
+            node.right = buildPerfectBalancedTree(child, numOfNodes);
+        }
         return node;
      
+    }
+
+    @Override
+    public GUINode getRoot() {
+         return root;
+    }
+
+    @Override
+    public void insert(int key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(int key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public GUINode search(int key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getName() {
+        return "Tango-Tree";
+    }
+
+    @Override
+    public void setCanvas(GUICanvas c) {
+        
     }
     
 }

@@ -17,20 +17,32 @@ import java.util.List;
 public class Start {
     public static void main (String[] args){
         List<Integer> keys = new LinkedList();
-        keys.add(null);
-        keys.add(4);
-        keys.add(11);
-        keys.add(-12);
-        keys.add(12);
-        keys.add(42);
-        keys.add(23);
-        keys.add(null);
-        keys.add(12);
-        keys.add(1);
         keys.add(0);
-        keys.add(null);
+        keys.add(1);
+        keys.add(2);
+        keys.add(3);
+        keys.add(4);
+        keys.add(5);
+        keys.add(6);
+        keys.add(7);
+        keys.add(8);
+        keys.add(9);
+        keys.add(10);
+        keys.add(11);
+        keys.add(12);
+        keys.add(13);
+        keys.add(14);
+        keys.add(15);
+        keys.add(16);
+        keys.add(17);
+        keys.add(18);
+        keys.add(19);
+        keys.add(20);
+        keys.add(21);
+        keys.add(22);
+        keys.add(23);
         
-        new TangoTree.TangoTree(keys);
+        new GUI(new TangoTree.TangoTree(keys));
 //  new GUI(new RedBlackTree.RedBlackTree());
     }
 }
