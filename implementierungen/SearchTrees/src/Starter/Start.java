@@ -6,6 +6,9 @@
 package Starter;
 
 import GUI.GUI;
+import java.util.LinkedList;
+import java.util.List;
+
 
 /**
  *
@@ -13,6 +16,21 @@ import GUI.GUI;
  */
 public class Start {
     public static void main (String[] args){
-         new GUI(new RedBlackTree.RedBlackTree());
+        List<Integer> keys = new LinkedList();
+        keys.add(null);
+        keys.add(4);
+        keys.add(11);
+        keys.add(-12);
+        keys.add(12);
+        keys.add(42);
+        keys.add(23);
+        keys.add(null);
+        keys.add(12);
+        keys.add(1);
+        keys.add(0);
+        keys.add(null);
+        
+        new TangoTree.TangoTree(keys);
+//  new GUI(new RedBlackTree.RedBlackTree());
     }
 }
