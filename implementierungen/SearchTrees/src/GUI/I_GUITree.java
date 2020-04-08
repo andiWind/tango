@@ -5,18 +5,17 @@
  */
 package GUI;
 
-import java.awt.Color;
-
 /**
  *
  * @author andreas
  */
-public interface GUINode {
-   
-   Color getGUIColor();
-   GUINode getLeftChild();
-   GUINode getRightChild();
-   GUINode getParent();
-   String getKeyString();
-   
+public interface I_GUITree {
+    I_GUINode getRoot ();
+    void insert(int key);
+    void delete(int key);
+    I_GUINode search (int key);
+    String getName();
+    
+    //wieder entfernen
+    void setCanvas(GUICanvas c);
 }

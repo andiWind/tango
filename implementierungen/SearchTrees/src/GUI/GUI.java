@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -31,7 +30,7 @@ import javax.swing.SpinnerNumberModel;
  * @author andreas
  */
 public class GUI extends JFrame{
-    private GUITree guiTree;
+    private I_GUITree guiTree;
     private volatile GUICanvas guiCanvas;
     private JMenuBar guiMenuBar; 
     private JMenu menu;
@@ -49,7 +48,7 @@ public class GUI extends JFrame{
     }
    
     
-    public GUI (GUITree guiT){
+    public GUI (I_GUITree guiT){
         guiTree = guiT;
         guiCanvas = new GUICanvas(guiTree);
         

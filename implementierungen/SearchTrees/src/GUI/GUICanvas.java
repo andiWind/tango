@@ -16,10 +16,10 @@ import java.awt.Graphics;
  * @author andreas
  */
 public class GUICanvas extends Canvas {
-    private GUITree tree;
-    private GUINode[][] nodeArrays;
+    private I_GUITree tree;
+    private I_GUINode[][] nodeArrays;
     
-    void setTree (GUITree t){
+    void setTree (I_GUITree t){
         tree = t;
         repaint();
     }
@@ -28,43 +28,43 @@ public class GUICanvas extends Canvas {
         this.paint(this.getGraphics());
     } 
     
-    private int getHeigh(GUINode root, int h){
+    private int getHeigh(I_GUINode root, int h){
         if (root == null) return h;
         h++;
-        int hLeft = getHeigh(root.getLeftChild(), h);
-        int hRight = getHeigh(root.getRightChild(), h);
+        int hLeft = getHeigh(root.getLeftFromGui(), h);
+        int hRight = getHeigh(root.getRightFromGui(), h);
         return hLeft > hRight ? hLeft : hRight;
     }
     
-    GUICanvas (GUITree t){
+    GUICanvas (I_GUITree t){
         tree = t;
     }
-    private void writeNodeArrays(GUINode root, int treeHeigh){
-        nodeArrays = new GUINode[treeHeigh][];
+    private void writeNodeArrays(I_GUINode root, int treeHeigh){
+        nodeArrays = new I_GUINode[treeHeigh][];
         for (int i = 0; i < treeHeigh; i++){
            int numOfNodes = (int)Math.pow(2, i);
-           nodeArrays[i] = new GUINode[numOfNodes];
+           nodeArrays[i] = new I_GUINode[numOfNodes];
        } 
        writeNodeArraysHelp(root, 0, 0);
     }
-    private void writeNodeArraysHelp(GUINode root, int level, int numOfNode){
+    private void writeNodeArraysHelp(I_GUINode root, int level, int numOfNode){
         if (root == null) return;
         nodeArrays[level][numOfNode] = root;
         int tempNumOfNode =  numOfNode * 2 ;
-        writeNodeArraysHelp(root.getLeftChild(), level + 1, tempNumOfNode) ;
-        writeNodeArraysHelp(root.getRightChild(), level + 1, tempNumOfNode + 1) ;
+        writeNodeArraysHelp(root.getLeftFromGui(), level + 1, tempNumOfNode) ;
+        writeNodeArraysHelp(root.getRightFromGui(), level + 1, tempNumOfNode + 1) ;
     }
-    private boolean checkParentPointer(GUINode node, GUINode parent){
-        if (node == null || "null".equals(node.getKeyString())) return true;
-        if(node.getParent() != parent){
+    private boolean checkParentPointer(I_GUINode node, I_GUINode parent){
+        if (node == null || "null".equals(node.getKeyStringFromGui())) return true;
+        if(node.getParentFromGui() != parent){
             return false;
         }
-        return checkParentPointer(node.getLeftChild(), node) && checkParentPointer(node.getRightChild(), node)  ;
+        return checkParentPointer(node.getLeftFromGui(), node) && checkParentPointer(node.getRightFromGui(), node)  ;
     }
      @Override
     public void paint(Graphics g){
         super.paint(g);
-        GUINode root = tree.getRoot();
+        I_GUINode root = tree.getRoot();
         int heigh = getHeigh(root, 0);
         int width = this.getWidth();
         Font standardFont = g.getFont();
@@ -73,7 +73,7 @@ public class GUICanvas extends Canvas {
         g.setFont(standardFont);
         
         
-        if (root != null && !checkParentPointer(root, root.getParent())){
+        if (root != null && !checkParentPointer(root, root.getParentFromGui())){
             g.setFont( new Font("", 1, 30));
             g.drawString("ParentpointerFehler", 40, 40 );
             g.setFont(standardFont);
@@ -100,7 +100,7 @@ public class GUICanvas extends Canvas {
                     if (nodeArrays[heigh - 1][j] != null){
                         g.setColor(nodeArrays[heigh - 1][j].getGUIColor());
                         g.drawRect(x1 - (recWidth + widthDiff / 2), (i - 1) * heighDiff + 50, recWidth, recHeigh);
-                        String key  =nodeArrays[heigh - 1][j].getKeyString();
+                        String key  =nodeArrays[heigh - 1][j].getKeyStringFromGui();
                         g.drawString(key, x1 - (recWidth + widthDiff / 2), (i - 1) * heighDiff + 50 + recHeigh );
                         g.setColor(Color.BLACK);
                     }
@@ -112,13 +112,13 @@ public class GUICanvas extends Canvas {
                     if (nodeArrays[i - 1][j] != null){
                         g.setColor(nodeArrays[i - 1][j].getGUIColor());
                         g.drawRect(mids[2*j] - recWidth / 2, (i - 1 )* heighDiff + 50, recWidth, recHeigh);    
-                        String key  = nodeArrays[i - 1][j].getKeyString();
+                        String key  = nodeArrays[i - 1][j].getKeyStringFromGui();
                         g.drawString(key, mids[2*j] - recWidth / 2, (i - 1 )* heighDiff + 50 + recHeigh);
                         g.setColor(Color.BLACK);
-                        if(nodeArrays[i - 1][j].getLeftChild() != null)
+                        if(nodeArrays[i - 1][j].getLeftFromGui() != null)
                             g.drawLine(mids[2*j], (i -1) * heighDiff + 50 + recHeigh, mids[2*j] - widthDiff / 2, (i) *heighDiff + 50 );
                         
-                        if(nodeArrays[i - 1][j].getRightChild() != null)
+                        if(nodeArrays[i - 1][j].getRightFromGui() != null)
                             g.drawLine(mids[2*j],  (i- 1) * heighDiff + 50 + recHeigh, mids[2*j] + widthDiff / 2,  (i) *heighDiff+ 50 );
                         
                     }  

@@ -4,14 +4,15 @@
  * and open the template in the editor.
  */
 package RedBlackTree;
-
-import GUI.GUINode;
+import GUI.I_GUINode;
+import TangoTree.TangoNode;
 
 /**
  *
  * @author andreas
  */
-class Node implements GUINode {
+class Node extends TangoNode implements I_GUINode {
+
 
     private final boolean  nullNode;
     private Node parent;
@@ -19,6 +20,7 @@ class Node implements GUINode {
     private Node right;
     private final int key;
     private RBColor color;
+
     
     Node (int k, RBColor c, boolean nn){
         key = k;
@@ -36,10 +38,7 @@ class Node implements GUINode {
     public int getKey(){
         return key;
     } 
-    public String getKeyString(){
-        if (nullNode) return "null";
-        return Integer.toString(key);
-    }
+    
     void setColor (RBColor c){
         color = c;
     }
@@ -52,13 +51,16 @@ class Node implements GUINode {
     boolean isBlack (){
          return color == RBColor.BLACK;
     }
+    
    public Node getParent(){
        return parent;
    }
-    public Node getLeftChild(){
+    
+    Node getLeftIntern(){ //With NullNode
         return left;
     }
-    public Node getRightChild(){
+
+    Node getRightIntern(){ // With NullNode
         return right;
     }
     
@@ -71,7 +73,50 @@ class Node implements GUINode {
     void setParent(Node p){
         parent = p;
     }
-   
+
+    @Override
+    public I_GUINode getLeftFromGui() {
+      
+        if (left.nullNode)
+            return super.getLeftFromGui();
+        return left;
+    }
+
+    @Override
+    public I_GUINode getRightFromGui() {
+        if (right.nullNode)
+            return super.getRightFromGui();
+        return right;
+    }
+
+    @Override
+    public I_GUINode getParentFromGui() {
+        if (parent.nullNode)
+            return super.getParentFromGui();
+        return parent;
+    }
+
+    @Override
+    public String getKeyStringFromGui() {
+        if (nullNode) return "null";
+        return Integer.toString(key);
+    }
+
+    @Override
+    public Node getLeft() {
+        if (left.nullNode)
+            return null;
+        return left;
+        
+    }
+
+    @Override
+    public Node getRight() {
+         if (right.nullNode)
+             return null;
+        return right;
+    }
+
     enum RBColor
     {
         RED, BLACK

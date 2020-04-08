@@ -5,17 +5,18 @@
  */
 package GUI;
 
+import java.awt.Color;
+
 /**
  *
  * @author andreas
  */
-public interface GUITree {
-    GUINode getRoot ();
-    void insert(int key);
-    void delete(int key);
-    GUINode search (int key);
-    String getName();
-    
-    //wieder entfernen
-    void setCanvas(GUICanvas c);
+public interface I_GUINode {
+   
+   Color getGUIColor();
+   I_GUINode getLeftFromGui();
+   I_GUINode getRightFromGui();
+   I_GUINode getParentFromGui();
+   String getKeyStringFromGui();
+   
 }

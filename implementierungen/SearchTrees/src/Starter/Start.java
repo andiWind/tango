@@ -17,7 +17,7 @@ import java.util.List;
 public class Start {
     public static void main (String[] args){
         List<Integer> keys = new LinkedList();
-        keys.add(0);
+        
         keys.add(1);
         keys.add(2);
         keys.add(3);
@@ -40,9 +40,9 @@ public class Start {
         keys.add(20);
         keys.add(21);
         keys.add(22);
-        keys.add(23);
+   
         
-        new GUI(new TangoTree.TangoTree(keys));
-//  new GUI(new RedBlackTree.RedBlackTree());
+       new GUI(new TangoTree.TangoTree(keys));
+        //new GUI(new RedBlackTree.RedBlackTree());
     }
 }

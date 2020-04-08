@@ -6,15 +6,16 @@
 package RedBlackTree;
 
 import GUI.GUICanvas;
+import GUI.I_GUITree;
+import TangoTree.I_TangoAuxTree;
 
-import GUI.GUITree;
 
 
 /**
  *
  * @author andreas
  */
-public class RedBlackTree  implements GUITree{
+public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     private Node root;
     private final Node nullNode;
     
@@ -59,30 +60,29 @@ public class RedBlackTree  implements GUITree{
     public Node getRoot (){
         return root;
     }
-    @Override
-    public void insert (int key){
+    
+    public void insert (int  key){
         Node insNode = new Node(key, Node.RBColor.RED, false);
         insNode.setLeftChild(nullNode);
         insNode.setRightChild(nullNode);
-        Node search = search(key);
+        Node search = search(insNode.getKey());
         if (search == null){
             root = insNode;  
             insNode.setParent(nullNode);
         }
-        else if(search.getKey() == key){
+        else if(search.getKey() == insNode.getKey()){
             return;
         }
         else  {
             insNode.setParent(search);
-            if (key < search.getKey())
+            if (insNode.getKey() < search.getKey())
                 search.setLeftChild(insNode);        
             else
                 search.setRightChild(insNode); 
         }
-        
-       
         insertFixup(insNode);
     }
+   
     private void insertFixup (Node insNode){
         if(root == insNode){
             root.setColor(Node.RBColor.BLACK);
@@ -90,7 +90,7 @@ public class RedBlackTree  implements GUITree{
         }
         Node tempNode = insNode;
         while (tempNode != null && tempNode.getParent().isRed()){
-            if (tempNode.getParent() == tempNode.getParent().getParent().getLeftChild() ){ //Der obere der zwei roten Knoten hängt links
+            if (tempNode.getParent() == tempNode.getParent().getParent().getLeftIntern() ){ //Der obere der zwei roten Knoten hängt links
                tempNode =  insertFixupLeftCase(tempNode);
             }
             else{ //Der obere der zwei roten Knoten hängt rechts
@@ -104,13 +104,13 @@ public class RedBlackTree  implements GUITree{
     private Node insertFixupLeftCase (Node insNode){
         Node lowerRedNode = insNode;
         Node higherRedNode = insNode.getParent(); //Wurzel ist schwarz, also liegt higherRedNode tiefer
-        if (higherRedNode.getParent().getRightChild().isRed()){
-            higherRedNode.getParent().getRightChild().setColor(Node.RBColor.BLACK);
+        if (higherRedNode.getParent().getRightIntern().isRed()){
+            higherRedNode.getParent().getRightIntern().setColor(Node.RBColor.BLACK);
             higherRedNode.setColor(Node.RBColor.BLACK);
             higherRedNode.getParent().setColor(Node.RBColor.RED);
             return higherRedNode.getParent();
         }
-        if (lowerRedNode == higherRedNode.getRightChild()){ //Links Rotation
+        if (lowerRedNode == higherRedNode.getRightIntern()){ //Links Rotation
             rotateLeft(higherRedNode);
             Node temp = higherRedNode;
             higherRedNode = lowerRedNode;
@@ -124,13 +124,13 @@ public class RedBlackTree  implements GUITree{
     private Node insertFixupRightCase (Node insNode){
         Node lowerRedNode = insNode;
         Node higherRedNode = insNode.getParent(); //Wurzel ist schwarz, also liegt higherRedNode tiefer
-        if (higherRedNode.getParent().getLeftChild().isRed()){
-            higherRedNode.getParent().getLeftChild().setColor(Node.RBColor.BLACK);
+        if (higherRedNode.getParent().getLeftIntern().isRed()){
+            higherRedNode.getParent().getLeftIntern().setColor(Node.RBColor.BLACK);
             higherRedNode.setColor(Node.RBColor.BLACK);
             higherRedNode.getParent().setColor(Node.RBColor.RED);
             return higherRedNode.getParent();
         }
-        if (lowerRedNode == higherRedNode.getLeftChild()){ //Rechts Rotation
+        if (lowerRedNode == higherRedNode.getLeftIntern()){ //Rechts Rotation
             rotateRight(higherRedNode);
             Node temp = higherRedNode;
             higherRedNode = lowerRedNode;
@@ -147,14 +147,14 @@ public class RedBlackTree  implements GUITree{
       Node nullNodeParentSave = nullNode.getParent();
         
       Node nP = n.getParent();
-      Node nRc = n.getRightChild();
+      Node nRc = n.getRightIntern();
       
-      n.setRightChild(nRc.getLeftChild());
-      n.getRightChild().setParent(n);
+      n.setRightChild(nRc.getLeftIntern());
+      n.getRightIntern().setParent(n);
       
-      if (nP.getLeftChild() == n)
+      if (nP.getLeftIntern() == n)
           nP.setLeftChild(nRc);
-      else if (nP.getRightChild() == n)
+      else if (nP.getRightIntern() == n)
           nP.setRightChild(nRc);
       else //nP ist nullNode, n ist die Wurzel
           root = nRc;
@@ -169,14 +169,14 @@ public class RedBlackTree  implements GUITree{
       Node nullNodeParentSave = nullNode.getParent();  
         
       Node nP = n.getParent();
-      Node nLc = n.getLeftChild();
+      Node nLc = n.getLeftIntern();
       
-      n.setLeftChild(nLc.getRightChild());
-      n.getLeftChild().setParent(n);
+      n.setLeftChild(nLc.getRightIntern());
+      n.getLeftIntern().setParent(n);
       
-      if (nP.getLeftChild() == n)
+      if (nP.getLeftIntern() == n)
           nP.setLeftChild(nLc);
-      else if (nP.getRightChild() == n)
+      else if (nP.getRightIntern() == n)
           nP.setRightChild(nLc);
       else //nP ist nullNode, n ist die Wurzel
           root = nLc;
@@ -192,7 +192,7 @@ public class RedBlackTree  implements GUITree{
         Node tempNode = node;
         while (tempNode != root && tempNode.isBlack()){
             
-            if (tempNode.getParent().getLeftChild() == tempNode)
+            if (tempNode.getParent().getLeftIntern() == tempNode)
                 tempNode = deleteFixupLeftCase(tempNode);
             else
                 tempNode = deleteFixupRightCase(tempNode);
@@ -200,33 +200,33 @@ public class RedBlackTree  implements GUITree{
         tempNode.setColor(Node.RBColor.BLACK);
     }
     private Node deleteFixupLeftCase (Node inputNode){
-        Node nodeBro = inputNode.getParent().getRightChild();
+        Node nodeBro = inputNode.getParent().getRightIntern();
         if (nodeBro.isRed()){ //Fall 1
             nodeBro.setColor(Node.RBColor.BLACK);
             nodeBro.getParent().setColor(Node.RBColor.RED);
             rotateLeft(inputNode.getParent());
-            nodeBro = inputNode.getParent().getRightChild();
+            nodeBro = inputNode.getParent().getRightIntern();
        
             
         }
-        if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
+        if (nodeBro.getLeftIntern().isBlack() && nodeBro.getRightIntern().isBlack()){ //Fall 2
             nodeBro.setColor(Node.RBColor.RED);
       
             return inputNode.getParent();
 
         }
         else{ 
-            if (nodeBro.getRightChild().isBlack()){
-                nodeBro.getLeftChild().setColor(Node.RBColor.BLACK);
+            if (nodeBro.getRightIntern().isBlack()){
+                nodeBro.getLeftIntern().setColor(Node.RBColor.BLACK);
                 nodeBro.setColor(Node.RBColor.RED);
                 rotateRight(nodeBro);
-                nodeBro = inputNode.getParent().getRightChild();
+                nodeBro = inputNode.getParent().getRightIntern();
 
             
             }
             nodeBro.setColor(inputNode.getParent().getColor());
             inputNode.getParent().setColor(Node.RBColor.BLACK);
-            nodeBro.getRightChild().setColor(Node.RBColor.BLACK);
+            nodeBro.getRightIntern().setColor(Node.RBColor.BLACK);
             rotateLeft(inputNode.getParent());
             
             return root;
@@ -235,29 +235,29 @@ public class RedBlackTree  implements GUITree{
     }  
     private Node deleteFixupRightCase (Node inputNode){
 
-        Node nodeBro = inputNode.getParent().getLeftChild();
+        Node nodeBro = inputNode.getParent().getLeftIntern();
         if (nodeBro.isRed()){ //Fall 1
             nodeBro.setColor(Node.RBColor.BLACK);
             nodeBro.getParent().setColor(Node.RBColor.RED);
             rotateRight(inputNode.getParent());
-            nodeBro = inputNode.getParent().getLeftChild();
+            nodeBro = inputNode.getParent().getLeftIntern();
         }
-        if (nodeBro.getLeftChild().isBlack() && nodeBro.getRightChild().isBlack()){ //Fall 2
+        if (nodeBro.getLeftIntern().isBlack() && nodeBro.getRightIntern().isBlack()){ //Fall 2
             nodeBro.setColor(Node.RBColor.RED);
  
             return inputNode.getParent();
         }
         else{ 
-            if (nodeBro.getLeftChild().isBlack()){
-                nodeBro.getRightChild().setColor(Node.RBColor.BLACK);
+            if (nodeBro.getLeftIntern().isBlack()){
+                nodeBro.getRightIntern().setColor(Node.RBColor.BLACK);
                 nodeBro.setColor(Node.RBColor.RED);
                 rotateLeft(nodeBro);
-                nodeBro = inputNode.getParent().getLeftChild();
+                nodeBro = inputNode.getParent().getLeftIntern();
                 
             }
             nodeBro.setColor(inputNode.getParent().getColor());
             inputNode.getParent().setColor(Node.RBColor.BLACK);
-            nodeBro.getLeftChild().setColor(Node.RBColor.BLACK);
+            nodeBro.getLeftIntern().setColor(Node.RBColor.BLACK);
             rotateRight(inputNode.getParent());
             return root;
         }
@@ -269,29 +269,29 @@ public class RedBlackTree  implements GUITree{
         if (delNode == null || delNode.getKey() != key)
             return;
         boolean delFixup = delNode.isBlack();
-        Node fixUpNode = delNode.getRightChild(); 
-        if (delNode.getLeftChild() == nullNode){
-            transplant(delNode, delNode.getRightChild()); 
+        Node fixUpNode = delNode.getRightIntern(); 
+        if (delNode.getLeftIntern() == nullNode){
+            transplant(delNode, delNode.getRightIntern()); 
         }
-        else if (delNode.getRightChild() == nullNode){
-            transplant(delNode, delNode.getLeftChild());
-             fixUpNode = delNode.getLeftChild(); 
+        else if (delNode.getRightIntern() == nullNode){
+            transplant(delNode, delNode.getLeftIntern());
+             fixUpNode = delNode.getLeftIntern(); 
         }
         else{ //Beide Subtrees vorhanden. Das kleinste Element des rechten Baumes verwenden
-            Node rightMin = getMinNode(delNode.getRightChild());
+            Node rightMin = getMinNode(delNode.getRightIntern());
             delFixup = rightMin.isBlack();
-            fixUpNode = rightMin.getRightChild();
+            fixUpNode = rightMin.getRightIntern();
             if (rightMin.getParent() == delNode){
-                rightMin.getRightChild().setParent(rightMin); //Wird benötigt falls rightMin.getRightChild() der nullNode ist.
+                rightMin.getRightIntern().setParent(rightMin); //Wird benötigt falls rightMin.getRightIntern() der nullNode ist.
             }
             else{
-                transplant(rightMin, rightMin.getRightChild());
-                rightMin.setRightChild(delNode.getRightChild());
-                rightMin.getRightChild().setParent(rightMin);
+                transplant(rightMin, rightMin.getRightIntern());
+                rightMin.setRightChild(delNode.getRightIntern());
+                rightMin.getRightIntern().setParent(rightMin);
             }
             transplant(delNode, rightMin);
-            rightMin.setLeftChild(delNode.getLeftChild());
-            rightMin.getLeftChild().setParent(rightMin);
+            rightMin.setLeftChild(delNode.getLeftIntern());
+            rightMin.getLeftIntern().setParent(rightMin);
             rightMin.setColor(delNode.getColor());
         }
         if (delFixup)
@@ -299,8 +299,8 @@ public class RedBlackTree  implements GUITree{
     }
     private Node getMinNode(Node t){
         Node temp = t;
-        while (temp.getLeftChild() != nullNode && temp.getLeftChild() != null)
-            temp = temp.getLeftChild();
+        while (temp.getLeftIntern() != nullNode && temp.getLeftIntern() != null)
+            temp = temp.getLeftIntern();
         return temp;
     }
     /**
@@ -315,7 +315,7 @@ public class RedBlackTree  implements GUITree{
             return;
         }
         Node placeParent = place.getParent();
-        if (place == placeParent.getLeftChild())
+        if (place == placeParent.getLeftIntern())
             placeParent.setLeftChild(tree);
         else
             placeParent.setRightChild(tree);
@@ -333,12 +333,27 @@ public class RedBlackTree  implements GUITree{
                return searchNode;
            }
            else if (key < searchNode.getKey() ){
-               helpNode = searchNode.getLeftChild();
+               helpNode = searchNode.getLeftIntern();
            }
            else{
-               helpNode = searchNode.getRightChild();
+               helpNode = searchNode.getRightIntern();
            }
        }
        return searchNode;
    }
+
+    @Override
+    public I_TangoAuxTree split(int key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public I_TangoAuxTree merge(I_TangoAuxTree tree) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
+   
+   
 }

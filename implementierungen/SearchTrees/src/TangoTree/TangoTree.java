@@ -6,21 +6,22 @@
 package TangoTree;
 
 import GUI.GUICanvas;
-import GUI.GUINode;
-import GUI.GUITree;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import GUI.I_GUITree;
+import RedBlackTree.RedBlackTree;
+import GUI.I_GUINode;
 
 /**
  *
  * @author andre
  */
-public class TangoTree implements GUITree{
-    private Node root;
+public class TangoTree implements I_GUITree{
+    private TangoNode root;
+   
     
-   private int[] buildKeyArray(Collection <Integer> keyList){
+   private int[] buildKeyArray(List <Integer> keyList){
        List<Integer> nullList = new LinkedList();
        nullList.add(null);
        keyList.removeAll(nullList);
@@ -56,11 +57,47 @@ public class TangoTree implements GUITree{
         int numOfNodes = keyArray.length;
         if (numOfNodes < 1)
             throw new IllegalArgumentException();
-        Node perfectBalancedTree = buildPerfectBalancedTree(new Node(1), numOfNodes);
-        root = perfectBalancedTree;
-        setKeysInPBT(perfectBalancedTree, keyArray, 0);
+        Node pBT = buildPerfectBalancedTree(new Node(), numOfNodes, 1);
+        setKeysInPBT(pBT, keyArray, 0);
+    
+        //Zum Start ist mostRecent immer false, also links
+        List<List<Node>> pathLists = new LinkedList();
+        pathLists.add(getNextLeftPath(pBT, true)); //Ersten Pfad zum linkesten Kind holen
+        List<Node> aktPathList;
+        while(!pathLists.isEmpty()){
+            aktPathList = pathLists.get(0);
+            for(Node node : aktPathList){
+                List<Node> newPathList = getNextLeftPath(node, false);
+                if(newPathList != null)
+                    pathLists.add(newPathList);
+            }
+            I_TangoAuxTree auxTree = new RedBlackTree(); //Hier Bindung zum gewählten Hilfsbaum 
+             for (Node node : aktPathList){
+                auxTree.insert(node.key);
+            }
+            if (root == null)     
+                root = auxTree.getRoot();
+            else
+                insertAuxTree(auxTree);
+            pathLists.remove(0);
+        } 
         
         
+    }
+    private List<Node> getNextLeftPath(Node node, boolean first){
+        List<Node> ret = new LinkedList();
+        if (!first){
+            if (node.right != null)
+                node = node.right;
+            else
+                return null;
+        }
+        ret.add(node);
+        while(node.left != null){
+            node = node.left;
+            ret.add(node);
+        }
+         return ret;
     }
     private int setKeysInPBT(Node node, int[] sortedKeys, int writedNumbers){
         int tempWritedNumbers = writedNumbers;
@@ -71,23 +108,38 @@ public class TangoTree implements GUITree{
             tempWritedNumbers = setKeysInPBT(node.right, sortedKeys, tempWritedNumbers);
         return  tempWritedNumbers;    
     }
-    private Node buildPerfectBalancedTree (Node node, int numOfNodes ){
-        if (node.key * 2 <= numOfNodes){
-            Node child = new Node(node.key * 2);
-            child.parent = node;
-            node.left = buildPerfectBalancedTree(child, numOfNodes);
+    private Node buildPerfectBalancedTree (Node node, int numOfNodes, int nodeNumber ){
+        nodeNumber *= 2;
+        if (nodeNumber <= numOfNodes){
+            node.left = buildPerfectBalancedTree(new Node(), numOfNodes, nodeNumber);
         }
-        if (node.key * 2 + 1 <= numOfNodes){
-            Node child = new Node(node.key * 2 + 1);
-            child.parent = node;
-            node.right = buildPerfectBalancedTree(child, numOfNodes);
+        nodeNumber += 1;
+        if (nodeNumber  <= numOfNodes){
+            node.right = buildPerfectBalancedTree(new Node(), numOfNodes, nodeNumber);
         }
         return node;
      
     }
-
+    private void insertAuxTree(I_TangoAuxTree auxTree){
+        TangoNode auxTreeRoot = auxTree.getRoot();
+        auxTreeRoot.setRoot(true);
+        TangoNode place = root; 
+        TangoNode placeHelp = place;
+        while(placeHelp != null){
+                place = placeHelp;
+            if (auxTreeRoot.getKey() < place.getKey() )
+                placeHelp = place.getLeftIntern();
+            else
+                placeHelp = place.getRightIntern();
+        }
+        auxTreeRoot.setParentNodeAuxTree(place);
+        if (auxTreeRoot.getKey() < place.getKey() )
+            place.setLeftAuxTree(auxTreeRoot);  
+        else
+            place.setRightAuxTree(auxTreeRoot);
+    }
     @Override
-    public GUINode getRoot() {
+    public I_GUINode getRoot() {
          return root;
     }
 
@@ -102,7 +154,7 @@ public class TangoTree implements GUITree{
     }
 
     @Override
-    public GUINode search(int key) {
+    public I_GUINode search(int key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -115,5 +167,14 @@ public class TangoTree implements GUITree{
     public void setCanvas(GUICanvas c) {
         
     }
-    
+
+   
+    private class Node{
+       Node left;
+       Node right;
+       int key;
+       void setKey (int k){
+           key = k;
+       }
+    }
 }
