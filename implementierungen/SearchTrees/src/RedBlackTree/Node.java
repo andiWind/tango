@@ -21,12 +21,14 @@ public class Node extends TangoNode implements I_GUINode {
     private Node right;
     private final int key;
     private RBColor color;
+    private int blackHigh;
 
     
     Node (int k, RBColor c, boolean nn){
         key = k;
         color = c;
         nullNode = nn;
+        blackHigh = 1;
     }
      Node (int k, RBColor c, Node p, Node l, Node r, boolean nn){
         key = k;
@@ -35,11 +37,25 @@ public class Node extends TangoNode implements I_GUINode {
         left = l;
         right = r;
         nullNode = nn;
+        blackHigh = 1;
     }
     public int getKey(){
         return key;
     } 
-    
+    int getBlackHigh(){
+        return blackHigh;
+    }
+    void setBlackHigh(int bh){
+        if(bh > 0);
+            blackHigh = bh;
+    }
+    void decBlackHigh(){
+        if (blackHigh > 1)
+            blackHigh--;
+    }
+    void incBlackHigh(){
+        blackHigh++;
+    }
     void setColor (RBColor c){
         color = c;
     }
@@ -53,6 +69,7 @@ public class Node extends TangoNode implements I_GUINode {
          return color == RBColor.BLACK;
     }
     
+    @Override
    public Node getParent(){
        return parent;
    }
@@ -100,7 +117,8 @@ public class Node extends TangoNode implements I_GUINode {
     @Override
     public String getKeyStringFromGui() {
         if (nullNode) return "null";
-        return Integer.toString(key);
+       // return Integer.toString(key);
+       return Integer.toString(key) + "_" + Integer.toString(blackHigh);
     }
 
     @Override
@@ -122,7 +140,8 @@ public class Node extends TangoNode implements I_GUINode {
     {
         RED, BLACK
     }
-    public java.awt.Color getColorFromGui (){
+    @Override
+    public Color getColorFromGui (){
         Color ret = super.getColorFromGui(); 
         if (ret != null)
             return ret;

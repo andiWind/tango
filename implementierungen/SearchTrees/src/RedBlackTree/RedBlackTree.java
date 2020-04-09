@@ -37,12 +37,12 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         }
     }
     private void buildDebuggTree(){
-      //  insert(40);insert(43);
-       // insert(27);insert(30);
-      //  insert(20);insert(19);
-      //  insert(14);insert(7);
-      //  insert(37);insert(3);
-      //  insert(78);insert(11);
+        insert(40);insert(43);
+        insert(27);insert(30);
+        insert(20);insert(19);
+        insert(14);insert(7);
+        insert(37);insert(3);
+        insert(78);insert(11);
        // randomTest();
         
     }
@@ -108,13 +108,12 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
             higherRedNode.getParent().getRightIntern().setColor(Node.RBColor.BLACK);
             higherRedNode.setColor(Node.RBColor.BLACK);
             higherRedNode.getParent().setColor(Node.RBColor.RED);
+            higherRedNode.getParent().incBlackHigh();
             return higherRedNode.getParent();
         }
         if (lowerRedNode == higherRedNode.getRightIntern()){ //Links Rotation
             rotateLeft(higherRedNode);
-            Node temp = higherRedNode;
             higherRedNode = lowerRedNode;
-            lowerRedNode = temp;   
         }
         higherRedNode.setColor(Node.RBColor.BLACK);
         higherRedNode.getParent().setColor(Node.RBColor.RED);
@@ -128,13 +127,12 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
             higherRedNode.getParent().getLeftIntern().setColor(Node.RBColor.BLACK);
             higherRedNode.setColor(Node.RBColor.BLACK);
             higherRedNode.getParent().setColor(Node.RBColor.RED);
+            higherRedNode.getParent().incBlackHigh();
             return higherRedNode.getParent();
         }
         if (lowerRedNode == higherRedNode.getLeftIntern()){ //Rechts Rotation
             rotateRight(higherRedNode);
-            Node temp = higherRedNode;
             higherRedNode = lowerRedNode;
-            lowerRedNode = temp;   
         }
         higherRedNode.setColor(Node.RBColor.BLACK);
         higherRedNode.getParent().setColor(Node.RBColor.RED);
@@ -200,64 +198,65 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         tempNode.setColor(Node.RBColor.BLACK);
     }
     private Node deleteFixupLeftCase (Node inputNode){
-        Node nodeBro = inputNode.getParent().getRightIntern();
-        if (nodeBro.isRed()){ //Fall 1
-            nodeBro.setColor(Node.RBColor.BLACK);
-            nodeBro.getParent().setColor(Node.RBColor.RED);
+        Node inputNodeBro = inputNode.getParent().getRightIntern();
+        if (inputNodeBro.isRed()){ //Fall 1
+            inputNodeBro.setColor(Node.RBColor.BLACK);
+            inputNodeBro.getParent().setColor(Node.RBColor.RED);
             rotateLeft(inputNode.getParent());
-            nodeBro = inputNode.getParent().getRightIntern();
+            inputNodeBro = inputNode.getParent().getRightIntern();
        
             
         }
-        if (nodeBro.getLeftIntern().isBlack() && nodeBro.getRightIntern().isBlack()){ //Fall 2
-            nodeBro.setColor(Node.RBColor.RED);
-      
+        if (inputNodeBro.getLeftIntern().isBlack() && inputNodeBro.getRightIntern().isBlack()){ //Fall 2
+            inputNodeBro.setColor(Node.RBColor.RED);
+            inputNode.getParent().decBlackHigh();
             return inputNode.getParent();
 
         }
         else{ 
-            if (nodeBro.getRightIntern().isBlack()){
-                nodeBro.getLeftIntern().setColor(Node.RBColor.BLACK);
-                nodeBro.setColor(Node.RBColor.RED);
-                rotateRight(nodeBro);
-                nodeBro = inputNode.getParent().getRightIntern();
-
-            
+            if (inputNodeBro.getRightIntern().isBlack()){
+                inputNodeBro.getLeftIntern().setColor(Node.RBColor.BLACK);
+                inputNodeBro.setColor(Node.RBColor.RED);
+                rotateRight(inputNodeBro);
+                inputNodeBro = inputNode.getParent().getRightIntern();
             }
-            nodeBro.setColor(inputNode.getParent().getColor());
+            inputNodeBro.setColor(inputNode.getParent().getColor());
             inputNode.getParent().setColor(Node.RBColor.BLACK);
-            nodeBro.getRightIntern().setColor(Node.RBColor.BLACK);
+            inputNodeBro.getRightIntern().setColor(Node.RBColor.BLACK);
+            inputNode.getParent().decBlackHigh();
+            inputNodeBro.incBlackHigh();
             rotateLeft(inputNode.getParent());
-            
             return root;
         }
         
     }  
     private Node deleteFixupRightCase (Node inputNode){
 
-        Node nodeBro = inputNode.getParent().getLeftIntern();
-        if (nodeBro.isRed()){ //Fall 1
-            nodeBro.setColor(Node.RBColor.BLACK);
-            nodeBro.getParent().setColor(Node.RBColor.RED);
+        Node inputNodeBro = inputNode.getParent().getLeftIntern();
+        if (inputNodeBro.isRed()){ //Fall 1
+            inputNodeBro.setColor(Node.RBColor.BLACK);
+            inputNodeBro.getParent().setColor(Node.RBColor.RED);
             rotateRight(inputNode.getParent());
-            nodeBro = inputNode.getParent().getLeftIntern();
+            inputNodeBro = inputNode.getParent().getLeftIntern();
         }
-        if (nodeBro.getLeftIntern().isBlack() && nodeBro.getRightIntern().isBlack()){ //Fall 2
-            nodeBro.setColor(Node.RBColor.RED);
- 
+        if (inputNodeBro.getLeftIntern().isBlack() && inputNodeBro.getRightIntern().isBlack()){ //Fall 2
+            inputNodeBro.setColor(Node.RBColor.RED);
+            inputNode.getParent().decBlackHigh();
             return inputNode.getParent();
         }
         else{ 
-            if (nodeBro.getLeftIntern().isBlack()){
-                nodeBro.getRightIntern().setColor(Node.RBColor.BLACK);
-                nodeBro.setColor(Node.RBColor.RED);
-                rotateLeft(nodeBro);
-                nodeBro = inputNode.getParent().getLeftIntern();
+            if (inputNodeBro.getLeftIntern().isBlack()){
+                inputNodeBro.getRightIntern().setColor(Node.RBColor.BLACK);
+                inputNodeBro.setColor(Node.RBColor.RED);
+                rotateLeft(inputNodeBro);
+                inputNodeBro = inputNode.getParent().getLeftIntern();
                 
             }
-            nodeBro.setColor(inputNode.getParent().getColor());
+            inputNodeBro.setColor(inputNode.getParent().getColor());
             inputNode.getParent().setColor(Node.RBColor.BLACK);
-            nodeBro.getLeftIntern().setColor(Node.RBColor.BLACK);
+            inputNodeBro.getLeftIntern().setColor(Node.RBColor.BLACK);
+            inputNode.getParent().decBlackHigh();
+            inputNodeBro.incBlackHigh();
             rotateRight(inputNode.getParent());
             return root;
         }
@@ -293,6 +292,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
             rightMin.setLeftChild(delNode.getLeftIntern());
             rightMin.getLeftIntern().setParent(rightMin);
             rightMin.setColor(delNode.getColor());
+            rightMin.setBlackHigh(delNode.getBlackHigh());
         }
         if (delFixup)
             deleteFixup(fixUpNode);

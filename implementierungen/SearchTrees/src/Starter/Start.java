@@ -42,7 +42,7 @@ public class Start {
         keys.add(22);
    
         
-       new GUI(new TangoTree.TangoTree(keys));
-        //new GUI(new RedBlackTree.RedBlackTree());
+       //new GUI(new TangoTree.TangoTree(keys));
+        new GUI(new RedBlackTree.RedBlackTree());
     }
 }
