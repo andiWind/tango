@@ -7,6 +7,7 @@ package RedBlackTree;
 
 import GUI.GUICanvas;
 import GUI.I_GUITree;
+import RedBlackTree.Node.RBColor;
 import TangoTree.I_TangoAuxTree;
 
 
@@ -17,7 +18,7 @@ import TangoTree.I_TangoAuxTree;
  */
 public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     private Node root;
-    private final Node nullNode;
+    private Node nullNode;
     
     
     //wieder entfernen 
@@ -49,6 +50,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     
     ///////////////////////////////////////////////////////////////////////////
     
+    @Override
     public String getName(){
         return "RED-BLACK";
     }
@@ -61,6 +63,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         return root;
     }
     
+    @Override
     public void insert (int  key){
         Node insNode = new Node(key, Node.RBColor.RED, false);
         insNode.setLeftChild(nullNode);
@@ -203,15 +206,12 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
             inputNodeBro.setColor(Node.RBColor.BLACK);
             inputNodeBro.getParent().setColor(Node.RBColor.RED);
             rotateLeft(inputNode.getParent());
-            inputNodeBro = inputNode.getParent().getRightIntern();
-       
-            
+            inputNodeBro = inputNode.getParent().getRightIntern();   
         }
         if (inputNodeBro.getLeftIntern().isBlack() && inputNodeBro.getRightIntern().isBlack()){ //Fall 2
             inputNodeBro.setColor(Node.RBColor.RED);
             inputNode.getParent().decBlackHigh();
             return inputNode.getParent();
-
         }
         else{ 
             if (inputNodeBro.getRightIntern().isBlack()){
@@ -228,7 +228,6 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
             rotateLeft(inputNode.getParent());
             return root;
         }
-        
     }  
     private Node deleteFixupRightCase (Node inputNode){
 
@@ -274,7 +273,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         }
         else if (delNode.getRightIntern() == nullNode){
             transplant(delNode, delNode.getLeftIntern());
-             fixUpNode = delNode.getLeftIntern(); 
+            fixUpNode = delNode.getLeftIntern(); 
         }
         else{ //Beide Subtrees vorhanden. Das kleinste Element des rechten Baumes verwenden
             Node rightMin = getMinNode(delNode.getRightIntern());
@@ -343,17 +342,116 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
    }
 
     @Override
+    //Kleiner als key dann in ret
     public I_TangoAuxTree split(int key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       RedBlackTree ret = new RedBlackTree(); 
+       RedBlackTree newThis = new RedBlackTree(); 
+       Node searchNodeRet = null;
+       Node searchNodeNewThis = null;
+       Node splitNode = root;
+       while (splitNode != null){
+           if (key < splitNode.getKey()){
+                if(searchNodeRet != null)
+                    while(searchNodeRet.getBlackHigh() > splitNode.getRight().getBlackHigh() )
+                        searchNodeRet = searchNodeRet.getRight();
+                ret.mergeBySplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
+                if(searchNodeRet == null)
+                    searchNodeRet = ret.root;
+                splitNode = splitNode.getLeft();
+           }
+           else if (key > splitNode.getKey()) {
+               if(searchNodeNewThis != null)
+                    while(searchNodeNewThis.getBlackHigh() > splitNode.getLeft().getBlackHigh() )
+                        searchNodeNewThis = searchNodeNewThis.getRight();
+                newThis.mergeBySplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
+                if(searchNodeNewThis == null)
+                    searchNodeNewThis = ret.root;
+               splitNode = splitNode.getRight();
+           }
+           else{
+               if(searchNodeRet != null)
+                    while(searchNodeRet.getBlackHigh() > splitNode.getRight().getBlackHigh() )
+                        searchNodeRet = searchNodeRet.getRight();
+                ret.mergeBySplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
+                
+                if(searchNodeNewThis != null)
+                    while(searchNodeNewThis.getBlackHigh() > splitNode.getLeft().getBlackHigh() )
+                        searchNodeNewThis = searchNodeNewThis.getRight();
+                newThis.mergeBySplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
+                break;
+           }    
+       }
+       root = newThis.root;
+       nullNode = newThis.nullNode;
+       return ret;
+    }
+    private RedBlackTree mergeBySplit (Node t2, Node searchNode, int key ){
+        Node newNode = new Node(key, RBColor.RED, false);
+        if(searchNode.getKey() < key)
+            return mergeLeftCase(t2, newNode, searchNode);
+        return mergeRightCase(t2, newNode, searchNode);
     }
 
     @Override
-    public I_TangoAuxTree merge(I_TangoAuxTree tree) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //Alle keys von tree müssen entweder kleiner oder größer als die von this sein
+    //Der resultierende Baum enthält die nullNodes von beiden Bäumen, -> kein Problem
+    public I_TangoAuxTree merge(I_TangoAuxTree tree, int key) {
+        if (tree.getClass() != RedBlackTree.class)
+            throw new IllegalArgumentException();
+        RedBlackTree t2 = (RedBlackTree)tree;
+        I_TangoAuxTree ret;
+        if (root.getBlackHigh() < t2.root.getBlackHigh()){
+            return t2.merge(this, key);
+        }
+        Node searchNode = root;
+        Node newNode = new Node(key, RBColor.RED, false);
+        if(key < root.getKey()){
+            while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh()) ) {
+                searchNode = searchNode.getLeft();
+            }
+            ret = mergeLeftCase(t2.root, newNode, searchNode);
+        }
+        else{
+             while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh()) ) {
+                searchNode = searchNode.getRight();
+            }
+            ret = mergeRightCase(t2.root, newNode, searchNode);
+        }  
+        return ret;
     }
 
    
-
-   
+    private RedBlackTree mergeLeftCase(Node t2Root, Node newNode, Node searchNode){
+        if (searchNode == null){
+            root = t2Root;
+            return this;
+        }
+        searchNode.getParent().setLeftChild(newNode);
+        newNode.setParent(searchNode.getParent());
+        newNode.setRightChild(searchNode);
+        searchNode.setParent(newNode);
+        newNode.setLeftChild(t2Root);
+        t2Root.setParent(newNode);
+        if (searchNode == root)
+            root = newNode;
+        insertFixup(newNode);
+        return this;
+    }
+    private RedBlackTree mergeRightCase(Node t2Root, Node newNode,  Node searchNode){
+         if (searchNode == null){
+            root = t2Root;
+            return this;
+        }
+        searchNode.getParent().setRightChild(newNode);
+        newNode.setParent(searchNode.getParent());
+        newNode.setLeftChild(searchNode);
+        searchNode.setParent(newNode);
+        newNode.setRightChild(t2Root);
+        t2Root.setParent(newNode);
+        if (searchNode == root)
+            root = newNode;
+        insertFixup(newNode);
+        return this;
+    }
    
 }

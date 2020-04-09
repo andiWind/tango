@@ -12,7 +12,7 @@ package TangoTree;
 public interface I_TangoAuxTree {
     
     I_TangoAuxTree split( int key);
-    I_TangoAuxTree merge( I_TangoAuxTree tree);
+    I_TangoAuxTree merge( I_TangoAuxTree tree, int key);
     void insert (int key);
     TangoNode getRoot ();
  
