@@ -75,10 +75,13 @@ public class TangoTree implements I_GUITree{
              for (Node node : aktPathList){
                 auxTree.insert(node.key);
             }
-            if (root == null)     
+            if (root == null)   {  
                 root = auxTree.getRoot();
-            else
+                root.setRoot(true);
+            }
+            else{
                 insertAuxTree(auxTree);
+            }
             pathLists.remove(0);
         } 
         

@@ -6,12 +6,13 @@
 package RedBlackTree;
 import GUI.I_GUINode;
 import TangoTree.TangoNode;
+import java.awt.Color;
 
 /**
  *
  * @author andreas
  */
-class Node extends TangoNode implements I_GUINode {
+public class Node extends TangoNode implements I_GUINode {
 
 
     private final boolean  nullNode;
@@ -121,7 +122,10 @@ class Node extends TangoNode implements I_GUINode {
     {
         RED, BLACK
     }
-    public java.awt.Color getGUIColor (){
-        return (color == RBColor.BLACK ? java.awt.Color.BLACK : java.awt.Color.RED );
+    public java.awt.Color getColorFromGui (){
+        Color ret = super.getColorFromGui(); 
+        if (ret != null)
+            return ret;
+        return (color == RBColor.BLACK ? Color.BLACK : Color.RED );
     }
 }

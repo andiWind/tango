@@ -13,7 +13,7 @@ import java.awt.Color;
  */
 public interface I_GUINode {
    
-   Color getGUIColor();
+   Color getColorFromGui();
    I_GUINode getLeftFromGui();
    I_GUINode getRightFromGui();
    I_GUINode getParentFromGui();

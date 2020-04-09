@@ -53,8 +53,10 @@ public abstract class TangoNode implements I_GUINode{
         return parentNodeAuxTree;
     }
     @Override
-    public Color getGUIColor() {
-        return Color.GRAY;
+    public Color getColorFromGui() {
+        if(isRoot )
+            return Color.GREEN;
+        return null;
     }
 
     @Override

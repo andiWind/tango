@@ -98,7 +98,7 @@ public class GUICanvas extends Canvas {
                 for (int j = 0; j < numOfNodes; j++){
                     int x1 = xCord + (j * recWidth + j  * widthDiff) ;
                     if (nodeArrays[heigh - 1][j] != null){
-                        g.setColor(nodeArrays[heigh - 1][j].getGUIColor());
+                        g.setColor(nodeArrays[heigh - 1][j].getColorFromGui());
                         g.drawRect(x1 - (recWidth + widthDiff / 2), (i - 1) * heighDiff + 50, recWidth, recHeigh);
                         String key  =nodeArrays[heigh - 1][j].getKeyStringFromGui();
                         g.drawString(key, x1 - (recWidth + widthDiff / 2), (i - 1) * heighDiff + 50 + recHeigh );
@@ -110,7 +110,7 @@ public class GUICanvas extends Canvas {
             else{
                 for (int j = 0; j < numOfNodes; j++){
                     if (nodeArrays[i - 1][j] != null){
-                        g.setColor(nodeArrays[i - 1][j].getGUIColor());
+                        g.setColor(nodeArrays[i - 1][j].getColorFromGui());
                         g.drawRect(mids[2*j] - recWidth / 2, (i - 1 )* heighDiff + 50, recWidth, recHeigh);    
                         String key  = nodeArrays[i - 1][j].getKeyStringFromGui();
                         g.drawString(key, mids[2*j] - recWidth / 2, (i - 1 )* heighDiff + 50 + recHeigh);
