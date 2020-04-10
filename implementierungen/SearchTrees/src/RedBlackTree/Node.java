@@ -24,20 +24,20 @@ public class Node extends TangoNode implements I_GUINode {
     private int blackHigh;
 
     
-    Node (int k, RBColor c, boolean nn){
+    Node (int k, RBColor c, boolean nn, int bh){
         key = k;
         color = c;
         nullNode = nn;
-        blackHigh = 1;
+        blackHigh = bh;
     }
-     Node (int k, RBColor c, Node p, Node l, Node r, boolean nn){
+     Node (int k, RBColor c, Node p, Node l, Node r, boolean nn, int bh){
         key = k;
         color = c;
         parent = p;
         left = l;
         right = r;
         nullNode = nn;
-        blackHigh = 1;
+        blackHigh = bh;
     }
     public int getKey(){
         return key;

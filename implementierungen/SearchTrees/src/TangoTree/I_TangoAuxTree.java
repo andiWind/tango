@@ -5,11 +5,13 @@
  */
 package TangoTree;
 
+import GUI.I_GUITree;
+
 /**
  *
  * @author andre
  */
-public interface I_TangoAuxTree {
+public interface I_TangoAuxTree extends I_GUITree{
     
     I_TangoAuxTree split( int key);
     I_TangoAuxTree merge( I_TangoAuxTree tree, int key);

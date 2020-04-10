@@ -25,8 +25,6 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     GUICanvas guiCanvas;
     public void setCanvas(GUICanvas c){
         guiCanvas = c;
-        buildDebuggTree();
-     /////////////////////////////////////   
     }
     private void randomTest(){
         for (int i = 0; i < 2000; i++){
@@ -38,12 +36,18 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         }
     }
     private void buildDebuggTree(){
-        insert(40);insert(43);
-        insert(27);insert(30);
-        insert(20);insert(19);
-        insert(14);insert(7);
-        insert(37);insert(3);
-        insert(78);insert(11);
+        insert(40);
+        insert(43);
+        insert(27);
+        insert(30);
+        insert(20);
+        insert(19);
+        insert(14);
+        insert(7);
+        insert(37);
+        insert(3);
+        insert(78);
+        insert(11);
        // randomTest();
         
     }
@@ -55,7 +59,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         return "RED-BLACK";
     }
     public RedBlackTree (){
-        nullNode = new Node (0, Node.RBColor.BLACK, true);
+        nullNode = new Node (0, Node.RBColor.BLACK, true,1);
    
     }
     @Override
@@ -65,7 +69,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     
     @Override
     public void insert (int  key){
-        Node insNode = new Node(key, Node.RBColor.RED, false);
+        Node insNode = new Node(key, Node.RBColor.RED, false,1);
         insNode.setLeftChild(nullNode);
         insNode.setRightChild(nullNode);
         Node search = search(insNode.getKey());
@@ -295,6 +299,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         }
         if (delFixup)
             deleteFixup(fixUpNode);
+       
     }
     private Node getMinNode(Node t){
         Node temp = t;
@@ -354,7 +359,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
                 if(searchNodeRet != null)
                     while(searchNodeRet.getBlackHigh() > splitNode.getRight().getBlackHigh() )
                         searchNodeRet = searchNodeRet.getRight();
-                ret.mergeBySplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
+                ret.mergeForSplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
                 if(searchNodeRet == null)
                     searchNodeRet = ret.root;
                 splitNode = splitNode.getLeft();
@@ -363,7 +368,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
                if(searchNodeNewThis != null)
                     while(searchNodeNewThis.getBlackHigh() > splitNode.getLeft().getBlackHigh() )
                         searchNodeNewThis = searchNodeNewThis.getRight();
-                newThis.mergeBySplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
+                newThis.mergeForSplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
                 if(searchNodeNewThis == null)
                     searchNodeNewThis = ret.root;
                splitNode = splitNode.getRight();
@@ -372,22 +377,34 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
                if(searchNodeRet != null)
                     while(searchNodeRet.getBlackHigh() > splitNode.getRight().getBlackHigh() )
                         searchNodeRet = searchNodeRet.getRight();
-                ret.mergeBySplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
+                ret.mergeForSplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
                 
                 if(searchNodeNewThis != null)
                     while(searchNodeNewThis.getBlackHigh() > splitNode.getLeft().getBlackHigh() )
                         searchNodeNewThis = searchNodeNewThis.getRight();
-                newThis.mergeBySplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
+                newThis.mergeForSplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
                 break;
            }    
        }
        root = newThis.root;
        nullNode = newThis.nullNode;
+       nullNode.setParent(null);
+       nullNode.setLeftChild(null);
+       nullNode.setRightChild(null);
        return ret;
     }
-    private RedBlackTree mergeBySplit (Node t2, Node searchNode, int key ){
-        Node newNode = new Node(key, RBColor.RED, false);
-        if(searchNode.getKey() < key)
+    private RedBlackTree mergeForSplit (Node t2, Node searchNode, int key ){
+        int newNodeBlackHigh = t2.getBlackHigh();
+        if(t2.isBlack())
+            newNodeBlackHigh++;
+        Node newNode = new Node(key, RBColor.RED, false, newNodeBlackHigh);
+        if(searchNode == null){ //Erster Teilbaum wird abgespalten
+            RedBlackTree ret = new RedBlackTree();
+            ret.root = t2;
+            t2.setParent(ret.nullNode);
+            ret.nullNode.setParent(t2);
+        }
+        else if(searchNode.getKey() < key)
             return mergeLeftCase(t2, newNode, searchNode);
         return mergeRightCase(t2, newNode, searchNode);
     }
@@ -395,6 +412,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     @Override
     //Alle keys von tree müssen entweder kleiner oder größer als die von this sein
     //Der resultierende Baum enthält die nullNodes von beiden Bäumen, -> kein Problem
+    //Nach der Operation gibt es nur noch den Returnbaum. Keiner der EInzelbäume existiert mehr
     public I_TangoAuxTree merge(I_TangoAuxTree tree, int key) {
         if (tree.getClass() != RedBlackTree.class)
             throw new IllegalArgumentException();
@@ -404,19 +422,25 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
             return t2.merge(this, key);
         }
         Node searchNode = root;
-        Node newNode = new Node(key, RBColor.RED, false);
+        Node newNode = new Node(key, RBColor.RED, false, t2.root.getBlackHigh() +1);
         if(key < root.getKey()){
-            while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh()) ) {
+            while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh() ) ) {
                 searchNode = searchNode.getLeft();
             }
             ret = mergeLeftCase(t2.root, newNode, searchNode);
         }
         else{
-             while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh()) ) {
+             while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh() ) ) {
                 searchNode = searchNode.getRight();
-            }
+             }
             ret = mergeRightCase(t2.root, newNode, searchNode);
-        }  
+        }
+    //Zugriffe über alte Zeiger auf den eingefügten Baum verhindern
+        t2.root = null;
+        t2.nullNode.setLeftChild(null);
+        t2.nullNode.setRightChild(null);
+        t2.nullNode.setParent(null);
+        
         return ret;
     }
 
