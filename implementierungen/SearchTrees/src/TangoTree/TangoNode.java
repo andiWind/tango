@@ -74,8 +74,7 @@ public abstract class TangoNode implements I_GUINode{
         return parentNodeAuxTree;
     } 
 
-    @Override
-    public abstract String getKeyStringFromGui();
+  
     public abstract TangoNode getParent();
     public abstract TangoNode getLeft();
     public abstract TangoNode getRight();

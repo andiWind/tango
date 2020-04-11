@@ -18,7 +18,6 @@ import TangoTree.I_TangoAuxTree;
  */
 public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     private Node root;
-    private Node nullNode;
     
     
     //wieder entfernen 
@@ -59,8 +58,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         return "RED-BLACK";
     }
     public RedBlackTree (){
-        nullNode = new Node (0, Node.RBColor.BLACK, true,1);
-   
+      
     }
     @Override
     public Node getRoot (){
@@ -69,13 +67,10 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     
     @Override
     public void insert (int  key){
-        Node insNode = new Node(key, Node.RBColor.RED, false,1);
-        insNode.setLeftChild(nullNode);
-        insNode.setRightChild(nullNode);
+        Node insNode = new Node(key, Node.RBColor.RED, 1);
         Node search = search(insNode.getKey());
         if (search == null){
             root = insNode;  
-            insNode.setParent(nullNode);
         }
         else if(search.getKey() == insNode.getKey()){
             return;
@@ -83,121 +78,183 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         else  {
             insNode.setParent(search);
             if (insNode.getKey() < search.getKey())
-                search.setLeftChild(insNode);        
+                search.setLeft(insNode);        
             else
-                search.setRightChild(insNode); 
+                search.setRight(insNode); 
         }
         insertFixup(insNode);
     }
    
     private void insertFixup (Node insNode){
-        if(root == insNode){
-            root.setColor(Node.RBColor.BLACK);
-            return;
-        }
         Node tempNode = insNode;
-        while (tempNode != null && tempNode.getParent().isRed()){
-            if (tempNode.getParent() == tempNode.getParent().getParent().getLeftIntern() ){ //Der obere der zwei roten Knoten hängt links
+        while (tempNode != root && tempNode.getParent() != null && tempNode.getParent().isRed()){
+            if (tempNode.getParent() == tempNode.getParent().getParent().getLeft() ){ //Der obere der zwei roten Knoten hängt links
                tempNode =  insertFixupLeftCase(tempNode);
             }
             else{ //Der obere der zwei roten Knoten hängt rechts
                tempNode =  insertFixupRightCase(tempNode); 
             }
         }
-        if(root != null)
-            root.setColor(Node.RBColor.BLACK);
+        root.setColor(Node.RBColor.BLACK);
     }
     
     private Node insertFixupLeftCase (Node insNode){
         Node lowerRedNode = insNode;
-        Node higherRedNode = insNode.getParent(); //Wurzel ist schwarz, also liegt higherRedNode tiefer
-        if (higherRedNode.getParent().getRightIntern().isRed()){
-            higherRedNode.getParent().getRightIntern().setColor(Node.RBColor.BLACK);
+        Node higherRedNode = insNode.getParent(); 
+        Node higherRedNodePar = higherRedNode.getParent();//Wurzel ist schwarz, also liegt higherRedNode tiefer
+        if (higherRedNodePar.IsRightChildRed()){
+            higherRedNodePar.getRight().setColor(Node.RBColor.BLACK);
             higherRedNode.setColor(Node.RBColor.BLACK);
-            higherRedNode.getParent().setColor(Node.RBColor.RED);
-            higherRedNode.getParent().incBlackHigh();
-            return higherRedNode.getParent();
+            higherRedNodePar.setColor(Node.RBColor.RED);
+            higherRedNodePar.incBlackHigh();
+            return higherRedNodePar;
         }
-        if (lowerRedNode == higherRedNode.getRightIntern()){ //Links Rotation
+        if (lowerRedNode == higherRedNode.getRight()){ //Links Rotation
             rotateLeft(higherRedNode);
             higherRedNode = lowerRedNode;
+            higherRedNodePar = higherRedNode.getParent();
         }
         higherRedNode.setColor(Node.RBColor.BLACK);
-        higherRedNode.getParent().setColor(Node.RBColor.RED);
-        rotateRight(higherRedNode.getParent());
-        return null;
+        higherRedNodePar.setColor(Node.RBColor.RED);
+        rotateRight(higherRedNodePar);
+        return root;
     }
     private Node insertFixupRightCase (Node insNode){
         Node lowerRedNode = insNode;
-        Node higherRedNode = insNode.getParent(); //Wurzel ist schwarz, also liegt higherRedNode tiefer
-        if (higherRedNode.getParent().getLeftIntern().isRed()){
-            higherRedNode.getParent().getLeftIntern().setColor(Node.RBColor.BLACK);
+        Node higherRedNode = insNode.getParent(); 
+        Node higherRedNodePar = higherRedNode.getParent();//Wurzel ist schwarz, also liegt higherRedNode tiefer
+        if (higherRedNodePar.IsLeftChildRed() ){
+            higherRedNodePar.getLeft().setColor(Node.RBColor.BLACK);
             higherRedNode.setColor(Node.RBColor.BLACK);
-            higherRedNode.getParent().setColor(Node.RBColor.RED);
-            higherRedNode.getParent().incBlackHigh();
-            return higherRedNode.getParent();
+            higherRedNodePar.setColor(Node.RBColor.RED);
+            higherRedNodePar.incBlackHigh();
+            return higherRedNodePar;
         }
-        if (lowerRedNode == higherRedNode.getLeftIntern()){ //Rechts Rotation
+        if (higherRedNodePar.getRight() != null &&  lowerRedNode == higherRedNode.getLeft()){ //Rechts Rotation
             rotateRight(higherRedNode);
             higherRedNode = lowerRedNode;
+            higherRedNodePar = higherRedNode.getParent();
         }
         higherRedNode.setColor(Node.RBColor.BLACK);
-        higherRedNode.getParent().setColor(Node.RBColor.RED);
-        rotateLeft(higherRedNode.getParent());
-        return null;
+        higherRedNodePar.setColor(Node.RBColor.RED);
+        rotateLeft(higherRedNodePar);
+        return root;
     }
     
-    
+    //Der obere Knoten der Rotation wird übergeben
     private void rotateLeft (Node n){ 
-      Node nullNodeParentSave = nullNode.getParent();
-        
       Node nP = n.getParent();
-      Node nRc = n.getRightIntern();
+      Node nRc = n.getRight(); //nRc muss existieren
       
-      n.setRightChild(nRc.getLeftIntern());
-      n.getRightIntern().setParent(n);
-      
-      if (nP.getLeftIntern() == n)
-          nP.setLeftChild(nRc);
-      else if (nP.getRightIntern() == n)
-          nP.setRightChild(nRc);
-      else //nP ist nullNode, n ist die Wurzel
+      n.setRight(nRc.getLeft());
+      if(n.getRight() != null)
+            n.getRight().setParent(n);
+      if (nP == null)
           root = nRc;
+      else if (nP.getRight() == n)
+          nP.setRight(nRc);
+      else 
+           nP.setLeft(nRc);
       nRc.setParent(nP);
       
-      nRc.setLeftChild(n);
+      nRc.setLeft(n);
       n.setParent(nRc);
       
-      nullNode.setParent(nullNodeParentSave);
     }
+    //Der obere Knoten der Rotation wird übergeben
     private void rotateRight (Node n){ 
-      Node nullNodeParentSave = nullNode.getParent();  
-        
+      
       Node nP = n.getParent();
-      Node nLc = n.getLeftIntern();
+      Node nLc = n.getLeft(); //nLc muss existieren
       
-      n.setLeftChild(nLc.getRightIntern());
-      n.getLeftIntern().setParent(n);
+      n.setLeft(nLc.getRight());
+      if (n.getLeft() != null)
+        n.getLeft().setParent(n);
       
-      if (nP.getLeftIntern() == n)
-          nP.setLeftChild(nLc);
-      else if (nP.getRightIntern() == n)
-          nP.setRightChild(nLc);
-      else //nP ist nullNode, n ist die Wurzel
+      if (nP  == null)
           root = nLc;
+      else if (nP.getRight() == n)
+          nP.setRight(nLc);
+      else //nP ist nullNode, n ist die Wurzel
+            nP.setLeft(nLc);
 
       nLc.setParent(nP);
       
-      nLc.setRightChild(n);
+      nLc.setRight(n);
       n.setParent(nLc);
-      
-      nullNode.setParent(nullNodeParentSave);
+     
+    }
+     @Override
+    public void delete (int key){
+        Node delNode = search(key);
+        if (delNode == null || delNode.getKey() != key)
+            return;
+        boolean delFixUp = delNode.isBlack();
+        Node fixUpNode;
+        Node fixUpTempNode = null;
+        if(delNode.getLeft() == null &&  delNode.getRight() == null){
+            if (delNode == root){
+                root = null;
+                return;
+            }
+            else{
+            //Die deleteFixUp Methode benötigt einen Knoten mit i.O. Schwarz-Höhe von dem aus sie sich nach oben arbeiten kann.
+            //Da in diesem Fall ein solcher nicht mehr existieren würde bleibt der DelNode zunächst angehängt und wird nach FixUp entfernt.
+            //entfernt. 
+                fixUpTempNode = delNode; 
+                fixUpNode = delNode;
+            }
+        }
+        else if (delNode.getLeft() == null){
+            transplant(delNode, delNode.getRight()); 
+            fixUpNode = delNode.getRight(); 
+        }
+        else if (delNode.getRight() == null){
+            transplant(delNode, delNode.getLeft());
+            fixUpNode = delNode.getLeft(); 
+        }
+        else{ //Beide Subtrees vorhanden. Das kleinste Element des rechten Baumes verwenden
+            Node rightMin = getMinNode(delNode.getRight());
+            delFixUp = rightMin.isBlack();
+            if (rightMin.getRight() == null){
+            //Die deleteFixUp Methode benötigt einen Knoten mit i.O. Schwarz-Höhe von dem aus sie sich nach oben arbeiten kann.
+            //Da in diesem Fall ein solcher nicht mehr existieren würde wird ein solcher temporär angehängt und wird nach FixUp entfernt.
+            //entfernt. 
+                fixUpTempNode = new Node(0, RBColor.BLACK, 1); 
+                fixUpTempNode.setParent(rightMin);
+                rightMin.setRight(fixUpTempNode);  
+            }
+            fixUpNode = rightMin.getRight();
+            //RightMin herauslösen
+            transplant(rightMin, rightMin.getRight());
+            //RightMin anstelle von DelNode einfügen.
+            rightMin.setRight(delNode.getRight());
+            rightMin.getRight().setParent(rightMin);
+         
+            transplant(delNode, rightMin);
+            rightMin.setLeft(delNode.getLeft());
+            rightMin.getLeft().setParent(rightMin);
+            rightMin.setColor(delNode.getColor());
+            rightMin.setBlackHigh(delNode.getBlackHigh());
+        }
+        
+        
+        if (delFixUp)
+            deleteFixup(fixUpNode);
+        
+        if (fixUpTempNode != null){
+            if (fixUpTempNode.getParent().getLeft() == fixUpTempNode)
+                fixUpTempNode.getParent().setLeft(null);
+            else
+                fixUpTempNode.getParent().setRight(null);
+            fixUpTempNode.setParent(null);
+        }
     }
     private void deleteFixup (Node node){
         Node tempNode = node;
         while (tempNode != root && tempNode.isBlack()){
             
-            if (tempNode.getParent().getLeftIntern() == tempNode)
+            if (tempNode.getParent().getLeft() == tempNode)
                 tempNode = deleteFixupLeftCase(tempNode);
             else
                 tempNode = deleteFixupRightCase(tempNode);
@@ -205,28 +262,29 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         tempNode.setColor(Node.RBColor.BLACK);
     }
     private Node deleteFixupLeftCase (Node inputNode){
-        Node inputNodeBro = inputNode.getParent().getRightIntern();
+        //Hängt 
+        Node inputNodeBro = inputNode.getParent().getRight(); 
         if (inputNodeBro.isRed()){ //Fall 1
             inputNodeBro.setColor(Node.RBColor.BLACK);
             inputNodeBro.getParent().setColor(Node.RBColor.RED);
             rotateLeft(inputNode.getParent());
-            inputNodeBro = inputNode.getParent().getRightIntern();   
+            inputNodeBro = inputNode.getParent().getRight();   
         }
-        if (inputNodeBro.getLeftIntern().isBlack() && inputNodeBro.getRightIntern().isBlack()){ //Fall 2
+        if ( inputNodeBro.IsLeftChildBlack() && inputNodeBro.IsRightChildBlack()){ //Fall 2
             inputNodeBro.setColor(Node.RBColor.RED);
             inputNode.getParent().decBlackHigh();
             return inputNode.getParent();
         }
         else{ 
-            if (inputNodeBro.getRightIntern().isBlack()){
-                inputNodeBro.getLeftIntern().setColor(Node.RBColor.BLACK);
+            if (inputNodeBro.getRight().isBlack()){
+                inputNodeBro.getLeft().setColor(Node.RBColor.BLACK);
                 inputNodeBro.setColor(Node.RBColor.RED);
                 rotateRight(inputNodeBro);
-                inputNodeBro = inputNode.getParent().getRightIntern();
+                inputNodeBro = inputNode.getParent().getRight();
             }
             inputNodeBro.setColor(inputNode.getParent().getColor());
             inputNode.getParent().setColor(Node.RBColor.BLACK);
-            inputNodeBro.getRightIntern().setColor(Node.RBColor.BLACK);
+            inputNodeBro.getRight().setColor(Node.RBColor.BLACK);
             inputNode.getParent().decBlackHigh();
             inputNodeBro.incBlackHigh();
             rotateLeft(inputNode.getParent());
@@ -234,30 +292,31 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         }
     }  
     private Node deleteFixupRightCase (Node inputNode){
+        //Null Prüfungen entfallen. Die Objekte müssen existieren, da ansonsten der Baum vor dem löschen bereits eine Eigenschaft verletzt hätte
 
-        Node inputNodeBro = inputNode.getParent().getLeftIntern();
+        Node inputNodeBro = inputNode.getParent().getLeft();  //Kann nicht null sein, ansonsten wäre vor dem Löschen die Schwarz-Höhe verletzt gewesen
         if (inputNodeBro.isRed()){ //Fall 1
             inputNodeBro.setColor(Node.RBColor.BLACK);
             inputNodeBro.getParent().setColor(Node.RBColor.RED);
             rotateRight(inputNode.getParent());
-            inputNodeBro = inputNode.getParent().getLeftIntern();
+            inputNodeBro = inputNode.getParent().getLeft();
         }
-        if (inputNodeBro.getLeftIntern().isBlack() && inputNodeBro.getRightIntern().isBlack()){ //Fall 2
+        if (inputNodeBro.IsLeftChildBlack() && inputNodeBro.IsRightChildBlack()){ //Fall 2
             inputNodeBro.setColor(Node.RBColor.RED);
             inputNode.getParent().decBlackHigh();
             return inputNode.getParent();
         }
         else{ 
-            if (inputNodeBro.getLeftIntern().isBlack()){
-                inputNodeBro.getRightIntern().setColor(Node.RBColor.BLACK);
+            if (inputNodeBro.getLeft().isBlack()){
+                inputNodeBro.getRight().setColor(Node.RBColor.BLACK);
                 inputNodeBro.setColor(Node.RBColor.RED);
                 rotateLeft(inputNodeBro);
-                inputNodeBro = inputNode.getParent().getLeftIntern();
+                inputNodeBro = inputNode.getParent().getLeft();
                 
             }
             inputNodeBro.setColor(inputNode.getParent().getColor());
             inputNode.getParent().setColor(Node.RBColor.BLACK);
-            inputNodeBro.getLeftIntern().setColor(Node.RBColor.BLACK);
+            inputNodeBro.getLeft().setColor(Node.RBColor.BLACK);
             inputNode.getParent().decBlackHigh();
             inputNodeBro.incBlackHigh();
             rotateRight(inputNode.getParent());
@@ -265,82 +324,48 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         }
         
     }  
-    @Override
-    public void delete (int key){
-        Node delNode = search(key);
-        if (delNode == null || delNode.getKey() != key)
-            return;
-        boolean delFixup = delNode.isBlack();
-        Node fixUpNode = delNode.getRightIntern(); 
-        if (delNode.getLeftIntern() == nullNode){
-            transplant(delNode, delNode.getRightIntern()); 
-        }
-        else if (delNode.getRightIntern() == nullNode){
-            transplant(delNode, delNode.getLeftIntern());
-            fixUpNode = delNode.getLeftIntern(); 
-        }
-        else{ //Beide Subtrees vorhanden. Das kleinste Element des rechten Baumes verwenden
-            Node rightMin = getMinNode(delNode.getRightIntern());
-            delFixup = rightMin.isBlack();
-            fixUpNode = rightMin.getRightIntern();
-            if (rightMin.getParent() == delNode){
-                rightMin.getRightIntern().setParent(rightMin); //Wird benötigt falls rightMin.getRightIntern() der nullNode ist.
-            }
-            else{
-                transplant(rightMin, rightMin.getRightIntern());
-                rightMin.setRightChild(delNode.getRightIntern());
-                rightMin.getRightIntern().setParent(rightMin);
-            }
-            transplant(delNode, rightMin);
-            rightMin.setLeftChild(delNode.getLeftIntern());
-            rightMin.getLeftIntern().setParent(rightMin);
-            rightMin.setColor(delNode.getColor());
-            rightMin.setBlackHigh(delNode.getBlackHigh());
-        }
-        if (delFixup)
-            deleteFixup(fixUpNode);
-       
-    }
-    private Node getMinNode(Node t){
-        Node temp = t;
-        while (temp.getLeftIntern() != nullNode && temp.getLeftIntern() != null)
-            temp = temp.getLeftIntern();
+   
+    private Node getMinNode(Node node){
+        Node temp = node;
+        while (temp.getLeft() !=  null)
+            temp = temp.getLeft();
         return temp;
     }
     /**
      * 
      * @param place Darf nicht null sein.
-     * @param tree Darf nicht null sein  oder auf nullNode zeigen
+     * @param tree Darf nicht null sein  
+     * 
      */
     private void transplant (Node place, Node tree){
-        if (place.getParent() == nullNode || place.getParent() == null ){
+        if (place.getParent() == null ){
             root = tree; 
-            tree.setParent(nullNode);
+            tree.setParent(null);
             return;
         }
         Node placeParent = place.getParent();
-        if (place == placeParent.getLeftIntern())
-            placeParent.setLeftChild(tree);
+        if (place == placeParent.getLeft())
+            placeParent.setLeft(tree);
         else
-            placeParent.setRightChild(tree);
-        tree.setParent(placeParent); //Setzt evtl. NUllNode.parent, wichtig für FixUp
+            placeParent.setRight(tree);
+        tree.setParent(placeParent); 
     }
    
     @Override
    public Node search (int key){
-       if (root == null || root == nullNode) return null;
+       if (root == null ) return null;
        Node searchNode = root;
        Node helpNode = root;
-       while(helpNode != nullNode){
+       while(helpNode != null){
            searchNode = helpNode;
            if (searchNode.getKey() == key){
                return searchNode;
            }
            else if (key < searchNode.getKey() ){
-               helpNode = searchNode.getLeftIntern();
+               helpNode = searchNode.getLeft();
            }
            else{
-               helpNode = searchNode.getRightIntern();
+               helpNode = searchNode.getRight();
            }
        }
        return searchNode;
@@ -356,53 +381,57 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
        Node splitNode = root;
        while (splitNode != null){
            if (key < splitNode.getKey()){
-                if(searchNodeRet != null)
-                    while(searchNodeRet.getBlackHigh() > splitNode.getRight().getBlackHigh() )
-                        searchNodeRet = searchNodeRet.getRight();
-                ret.mergeForSplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
-                if(searchNodeRet == null)
-                    searchNodeRet = ret.root;
+                if (splitNode.getRight() != null){ 
+                    if(searchNodeRet != null)
+                        while(searchNodeRet.getBlackHigh() > splitNode.getRight().getBlackHigh() )
+                            searchNodeRet = searchNodeRet.getRight();
+                   
+                    ret = ret.mergeForSplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
+                    if(searchNodeRet == null)
+                        searchNodeRet = ret.root;
+                }
                 splitNode = splitNode.getLeft();
+                
            }
            else if (key > splitNode.getKey()) {
-               if(searchNodeNewThis != null)
-                    while(searchNodeNewThis.getBlackHigh() > splitNode.getLeft().getBlackHigh() )
-                        searchNodeNewThis = searchNodeNewThis.getRight();
-                newThis.mergeForSplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
-                if(searchNodeNewThis == null)
-                    searchNodeNewThis = ret.root;
-               splitNode = splitNode.getRight();
+                if( splitNode.getLeft() != null){
+                    if(searchNodeNewThis != null)
+                        while(searchNodeNewThis.getBlackHigh() > splitNode.getLeft().getBlackHigh() )
+                            searchNodeNewThis = searchNodeNewThis.getRight();
+                    newThis = newThis.mergeForSplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
+                    if(searchNodeNewThis == null)
+                        searchNodeNewThis = ret.root;
+                }    
+                    splitNode = splitNode.getRight();
+                
            }
            else{
-               if(searchNodeRet != null)
-                    while(searchNodeRet.getBlackHigh() > splitNode.getRight().getBlackHigh() )
-                        searchNodeRet = searchNodeRet.getRight();
-                ret.mergeForSplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
-                
-                if(searchNodeNewThis != null)
-                    while(searchNodeNewThis.getBlackHigh() > splitNode.getLeft().getBlackHigh() )
-                        searchNodeNewThis = searchNodeNewThis.getRight();
-                newThis.mergeForSplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
-                break;
+                if(splitNode.getRight() != null){
+                    if(searchNodeRet != null)
+                        while(searchNodeRet.getBlackHigh() > splitNode.getRight().getBlackHigh() )
+                            searchNodeRet = searchNodeRet.getRight();
+                    ret.mergeForSplit(splitNode.getRight(), searchNodeRet, splitNode.getKey());
+                }
+                if(splitNode.getLeft() != null){
+                    if(searchNodeNewThis != null)
+                        while(searchNodeNewThis.getBlackHigh() > splitNode.getLeft().getBlackHigh() )
+                            searchNodeNewThis = searchNodeNewThis.getRight();
+                    newThis.mergeForSplit(splitNode.getRight(), searchNodeNewThis, splitNode.getKey());
+                    break;
+                }
            }    
        }
        root = newThis.root;
-       nullNode = newThis.nullNode;
-       nullNode.setParent(null);
-       nullNode.setLeftChild(null);
-       nullNode.setRightChild(null);
        return ret;
     }
     private RedBlackTree mergeForSplit (Node t2, Node searchNode, int key ){
         int newNodeBlackHigh = t2.getBlackHigh();
         if(t2.isBlack())
             newNodeBlackHigh++;
-        Node newNode = new Node(key, RBColor.RED, false, newNodeBlackHigh);
+        Node newNode = new Node(key, RBColor.RED,  newNodeBlackHigh);
         if(searchNode == null){ //Erster Teilbaum wird abgespalten
             RedBlackTree ret = new RedBlackTree();
             ret.root = t2;
-            t2.setParent(ret.nullNode);
-            ret.nullNode.setParent(t2);
         }
         else if(searchNode.getKey() < key)
             return mergeLeftCase(t2, newNode, searchNode);
@@ -417,12 +446,16 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         if (tree.getClass() != RedBlackTree.class)
             throw new IllegalArgumentException();
         RedBlackTree t2 = (RedBlackTree)tree;
+        if(t2.root == null)
+            return this;
+        if(root == null)
+            return t2;
         I_TangoAuxTree ret;
         if (root.getBlackHigh() < t2.root.getBlackHigh()){
             return t2.merge(this, key);
         }
         Node searchNode = root;
-        Node newNode = new Node(key, RBColor.RED, false, t2.root.getBlackHigh() +1);
+        Node newNode = new Node(key, RBColor.RED, t2.root.getBlackHigh() +1);
         if(key < root.getKey()){
             while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh() ) ) {
                 searchNode = searchNode.getLeft();
@@ -435,45 +468,38 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
              }
             ret = mergeRightCase(t2.root, newNode, searchNode);
         }
-    //Zugriffe über alte Zeiger auf den eingefügten Baum verhindern
         t2.root = null;
-        t2.nullNode.setLeftChild(null);
-        t2.nullNode.setRightChild(null);
-        t2.nullNode.setParent(null);
-        
         return ret;
     }
 
    
     private RedBlackTree mergeLeftCase(Node t2Root, Node newNode, Node searchNode){
-        if (searchNode == null){
-            root = t2Root;
-            return this;
-        }
-        searchNode.getParent().setLeftChild(newNode);
-        newNode.setParent(searchNode.getParent());
-        newNode.setRightChild(searchNode);
-        searchNode.setParent(newNode);
-        newNode.setLeftChild(t2Root);
-        t2Root.setParent(newNode);
-        if (searchNode == root)
+        if (searchNode == root){
             root = newNode;
+        }
+        else{
+            searchNode.getParent().setLeft(newNode);
+            newNode.setParent(searchNode.getParent());
+        }
+        newNode.setRight(searchNode);
+        searchNode.setParent(newNode);
+        newNode.setLeft(t2Root);
+        t2Root.setParent(newNode);
         insertFixup(newNode);
         return this;
     }
     private RedBlackTree mergeRightCase(Node t2Root, Node newNode,  Node searchNode){
-         if (searchNode == null){
-            root = t2Root;
-            return this;
-        }
-        searchNode.getParent().setRightChild(newNode);
-        newNode.setParent(searchNode.getParent());
-        newNode.setLeftChild(searchNode);
-        searchNode.setParent(newNode);
-        newNode.setRightChild(t2Root);
-        t2Root.setParent(newNode);
         if (searchNode == root)
             root = newNode;
+        else{
+            searchNode.getParent().setRight(newNode);
+            newNode.setParent(searchNode.getParent());
+        }
+        newNode.setLeft(searchNode);
+        searchNode.setParent(newNode);
+        newNode.setRight(t2Root);
+        t2Root.setParent(newNode);
+       
         insertFixup(newNode);
         return this;
     }

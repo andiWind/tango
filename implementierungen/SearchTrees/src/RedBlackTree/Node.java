@@ -15,7 +15,6 @@ import java.awt.Color;
 public class Node extends TangoNode implements I_GUINode {
 
 
-    private final boolean  nullNode;
     private Node parent;
     private Node left;
     private Node right;
@@ -24,21 +23,20 @@ public class Node extends TangoNode implements I_GUINode {
     private int blackHigh;
 
     
-    Node (int k, RBColor c, boolean nn, int bh){
+    Node (int k, RBColor c, int bh){
         key = k;
         color = c;
-        nullNode = nn;
         blackHigh = bh;
     }
-     Node (int k, RBColor c, Node p, Node l, Node r, boolean nn, int bh){
+     Node (int k, RBColor c, Node p, Node l, Node r,  int bh){
         key = k;
         color = c;
         parent = p;
         left = l;
         right = r;
-        nullNode = nn;
         blackHigh = bh;
     }
+    @Override
     public int getKey(){
         return key;
     } 
@@ -74,18 +72,10 @@ public class Node extends TangoNode implements I_GUINode {
        return parent;
    }
     
-    Node getLeftIntern(){ //With NullNode
-        return left;
-    }
-
-    Node getRightIntern(){ // With NullNode
-        return right;
-    }
-    
-    void setLeftChild(Node l){
+    void setLeft(Node l){
         left = l;
     }
-    void setRightChild(Node r){
+    void setRight(Node r){
         right = r;
     }
     void setParent(Node p){
@@ -95,47 +85,60 @@ public class Node extends TangoNode implements I_GUINode {
     @Override
     public I_GUINode getLeftFromGui() {
       
-        if (left.nullNode)
+        if (left == null)
             return super.getLeftFromGui();
         return left;
     }
 
     @Override
     public I_GUINode getRightFromGui() {
-        if (right.nullNode)
+        if (right ==  null)
             return super.getRightFromGui();
         return right;
     }
 
     @Override
     public I_GUINode getParentFromGui() {
-        if (parent.nullNode)
+        if (parent == null)
             return super.getParentFromGui();
         return parent;
     }
 
     @Override
     public String getKeyStringFromGui() {
-        if (nullNode) return "null";
        // return Integer.toString(key);
        return Integer.toString(key) + "_" + Integer.toString(blackHigh);
     }
 
     @Override
     public Node getLeft() {
-        if (left.nullNode)
-            return null;
         return left;
-        
     }
 
     @Override
     public Node getRight() {
-         if (right.nullNode)
-             return null;
         return right;
     }
-
+    boolean IsLeftChildBlack(){
+        if (left == null)
+            return true;
+        return left.isBlack();
+    }
+    boolean IsRightChildBlack(){
+        if (right == null)
+            return true;
+        return right.isBlack();
+    }
+    boolean IsLeftChildRed(){
+        if (left == null)
+            return false;
+        return left.isRed();
+    }
+    boolean IsRightChildRed(){
+        if (right == null)
+            return false;
+        return right.isRed();
+    }
     enum RBColor
     {
         RED, BLACK
