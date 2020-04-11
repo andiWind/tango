@@ -78,8 +78,8 @@ public class Start {
          rbt1.insert(30);
          
        //new GUI(new TangoTree.TangoTree(keys1));
-      // rbt1.merge(rbt2, 20);
-       new GUI(rbt1);
-     // new GUI(rbt1.split(20));
+    //  new GUI(rbt1.merge(rbt2, 20));
+      // new GUI(rbt1);
+     new GUI(rbt1.split(20));
     }
 }
