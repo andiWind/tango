@@ -79,7 +79,7 @@ public class Start {
          
        //new GUI(new TangoTree.TangoTree(keys1));
     //  new GUI(rbt1.merge(rbt2, 20));
-      // new GUI(rbt1);
-     new GUI(rbt1.split(20));
+       new GUI(rbt1);
+   //  new GUI(rbt1.split(20));
     }
 }
