@@ -14,7 +14,7 @@ import GUI.I_GUITree;
 public interface I_TangoAuxTree extends I_GUITree{
     
     I_TangoAuxTree split( int key);
-    I_TangoAuxTree merge( I_TangoAuxTree tree, int key);
+    void merge( I_TangoAuxTree tree, int key);
     void insert (int key);
     TangoNode getRoot ();
  
