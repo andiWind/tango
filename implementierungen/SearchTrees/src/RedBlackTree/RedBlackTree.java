@@ -8,7 +8,8 @@ package RedBlackTree;
 import GUI.GUICanvas;
 import GUI.I_GUITree;
 import RedBlackTree.Node.RBColor;
-import TangoTree.I_TangoAuxTree;
+import TangoTree.TangoAuxTree;
+import TangoTree.TangoNode;
 
 
 
@@ -17,7 +18,7 @@ import TangoTree.I_TangoAuxTree;
  *
  * @author andreas
  */
-public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
+public class RedBlackTree extends TangoAuxTree implements I_GUITree {
     private Node root;
     
     
@@ -66,9 +67,21 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         return root;
     }
     
+   // @Override
+    public void insert(int key, int depth){
+        int blackHigh = 1;
+        Node insNode = new Node(key, Node.RBColor.RED, blackHigh, depth);
+        insert(insNode);
+    }
     @Override
-    public void insert (int  key){
-        Node insNode = new Node(key, Node.RBColor.RED, 1);
+    public void insert(int key){
+        int blackHigh = 1;
+        Node insNode = new Node(key, Node.RBColor.RED, blackHigh);
+        insert(insNode);
+    }
+    
+    private void insert (Node  insNode){
+        
         Node search = search(insNode.getKey());
         if (search == null){
             root = insNode;  
@@ -141,8 +154,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         rotateLeft(higherRedNodePar);
         return root;
     }
-    
-    //Der obere Knoten der Rotation wird übergeben
+     //Der obere Knoten der Rotation wird übergeben
     private void rotateLeft (Node n){ 
       Node nP = n.getParent();
       Node nRc = n.getRight(); //nRc muss existieren
@@ -165,18 +177,18 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
     //Der obere Knoten der Rotation wird übergeben
     private void rotateRight (Node n){ 
       
-      Node nP = n.getParent();
-      Node nLc = n.getLeft(); //nLc muss existieren
+        Node nP = n.getParent();
+        Node nLc = n.getLeft(); //nLc muss existieren
       
-      n.setLeft(nLc.getRight());
-      if (n.getLeft() != null)
-        n.getLeft().setParent(n);
+        n.setLeft( nLc.getRight());
+        if (n.getLeft() != null)
+            n.getLeft().setParent(n);
       
-      if (nP  == null)
-          root = nLc;
-      else if (nP.getRight() == n)
-          nP.setRight(nLc);
-      else //nP ist nullNode, n ist die Wurzel
+        if (nP  == null)
+            root = nLc;
+        else if (nP.getRight() == n)
+            nP.setRight(nLc);
+        else //nP ist nullNode, n ist die Wurzel
             nP.setLeft(nLc);
 
       nLc.setParent(nP);
@@ -185,6 +197,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
       n.setParent(nLc);
      
     }
+   
      @Override
     public void delete (int key){
         Node delNode = search(key);
@@ -210,7 +223,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         }
         
         else{ //Beide Subtrees vorhanden. Das kleinste Element des rechten Baumes verwenden um DelNode zu ersetzen
-            Node rightMin = getMinNode(delNode.getRight());
+            Node rightMin = getPredecessor(delNode);
             // rightMin entfernen
            if(rightMin.isBlack()){
                  if(rightMin.IsRightChildRed())
@@ -308,8 +321,10 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         
     }  
    
-    private Node getMinNode(Node node){
-        Node temp = node;
+    private Node getPredecessor(Node node){
+        Node temp = node.getRight();
+        if (temp == null)
+            return null;
         while (temp.getLeft() !=  null)
             temp = temp.getLeft();
         return temp;
@@ -355,9 +370,9 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
        }
        return searchNode;
    }
-  
+   
     @Override
-    public I_TangoAuxTree split(int key) {
+    public TangoNode split(int key) {
         RedBlackTree smallerKeys = new RedBlackTree(); 
         RedBlackTree biggerKeys = new RedBlackTree();
         Node searchNodeSmalKeys = null;
@@ -443,7 +458,7 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         
         root = biggerKeys.root;
         biggerKeys.root = null;
-        return smallerKeys;
+        return smallerKeys.root;
     }
     
     
@@ -459,10 +474,10 @@ public class RedBlackTree  implements I_GUITree, I_TangoAuxTree {
         return newNode;
     }
 
-    @Override
+  //  @Override
     //Alle keys von tree müssen entweder kleiner oder größer als die von this sein
     //Nach der Operation gibt es nur noch den Returnbaum, d. h. die Wurzelzeiger der alten Instanzen werden abgehängt.
-    public void merge(I_TangoAuxTree tree, int key) {
+    public void merge(TangoAuxTree tree, int key) {
         if (tree.getClass() != RedBlackTree.class)
             throw new IllegalArgumentException();
         RedBlackTree t2 = (RedBlackTree)tree;

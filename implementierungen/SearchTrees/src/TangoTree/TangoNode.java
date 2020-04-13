@@ -8,48 +8,64 @@ package TangoTree;
 import GUI.I_GUINode;
 import java.awt.Color;
 
+
 /**
  *
  * @author andreas
  */
 public abstract class TangoNode implements I_GUINode{
     private boolean mostRecent;
-    private int dep;
-    private int minDep;
-    private int maxDep;
+    protected int depth;
+    protected int minDepth;
+    protected int maxDepth;
     private boolean isRoot;
-    private TangoNode leftAuxTree;
-    private TangoNode rightAuxTree;
-    private TangoNode parentNodeAuxTree;
+    protected TangoNode leftAuxTree;
+    protected TangoNode rightAuxTree;
+    protected TangoNode parentNodeAuxTree;
     
+    void setMinDepth(int m){
+        minDepth = m;
+    }
+    protected void setMaxDepth(int m){
+        maxDepth = m;
+    }        
+    protected int getDepth(){
+        return depth;
+    }  
+    protected int getMinDepth(){
+        return minDepth;
+    }  
+    protected int getMaxDepth(){
+        return maxDepth;
+    }  
     void setMostRecent(boolean b){
         mostRecent = b;
     }
     boolean getMostRecent(){
         return mostRecent;
     }
-    void setRoot(boolean b){
+    void setIsRoot(boolean b){
         isRoot = b;
     }
     boolean isRoot (){
         return isRoot;
     }
-    void setLeftAuxTree (TangoNode node){
+    protected void setLeftAuxTree (TangoNode node){
         leftAuxTree = node;
     }
-    void setRightAuxTree (TangoNode node){
+    protected void setRightAuxTree (TangoNode node){
         rightAuxTree = node;
     }
-    void setParentNodeAuxTree (TangoNode node){
+    protected void setParentNodeAuxTree (TangoNode node){
         parentNodeAuxTree = node;
     }
-    TangoNode getLeftAuxTree (){
+    protected TangoNode getLeftAuxTree (){
         return leftAuxTree;
     }
-    TangoNode getRightAuxTree (){
+    protected TangoNode getRightAuxTree (){
         return rightAuxTree;
     }
-    TangoNode getParentNodeAuxTree (){
+    protected TangoNode getParentNodeAuxTree (){
         return parentNodeAuxTree;
     }
     @Override
@@ -80,13 +96,13 @@ public abstract class TangoNode implements I_GUINode{
     public abstract TangoNode getRight();
     public abstract int getKey();
     
-    TangoNode getLeftIntern(){
+    protected TangoNode getLeftTango(){
         TangoNode ret = getLeft();
         if (ret != null)
             return ret;
         return leftAuxTree; 
     }
-    TangoNode getRightIntern(){
+    protected TangoNode getRightTango(){
         TangoNode ret = getRight();
         if (ret != null)
             return ret;

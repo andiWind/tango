@@ -15,12 +15,13 @@ import java.awt.Color;
 public class Node extends TangoNode implements I_GUINode {
 
 
-    private Node parent;
-    private Node left;
-    private Node right;
+    
     private final int key;
     private RBColor color;
     private int blackHigh;
+    private Node left;
+    private Node right;
+    private Node parent;
 
     
     Node (int k, RBColor c, int bh){
@@ -28,14 +29,13 @@ public class Node extends TangoNode implements I_GUINode {
         color = c;
         blackHigh = bh;
     }
-     Node (int k, RBColor c, Node p, Node l, Node r,  int bh){
+    Node (int k, RBColor c, int bh, int d){
+        depth = d;
         key = k;
         color = c;
-        parent = p;
-        left = l;
-        right = r;
         blackHigh = bh;
     }
+    
     @Override
     public int getKey(){
         return key;
@@ -107,14 +107,16 @@ public class Node extends TangoNode implements I_GUINode {
     @Override
     public String getKeyStringFromGui() {
        // return Integer.toString(key);
-       return Integer.toString(key) + "_" + Integer.toString(blackHigh);
+       return Integer.toString(key) + "_" + Integer.toString(depth) + "_" + Integer.toString(maxDepth) + "_" + Integer.toString(minDepth);
     }
 
+    
+    
     @Override
     public Node getLeft() {
         return left;
     }
-
+    
     @Override
     public Node getRight() {
         return right;
