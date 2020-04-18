@@ -10,8 +10,10 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import GUI.I_GUITree;
-import RedBlackTree.RedBlackTree;
 import GUI.I_GUINode;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -19,7 +21,8 @@ import GUI.I_GUINode;
  */
 public class TangoTree implements I_GUITree{
     private TangoNode root;
-   
+    private final Class<? extends TangoAuxTree > auxTreeClass;
+    private TangoAuxTree auxTree;
     
    private int[] buildKeyArray(List <Integer> keyList){
        List<Integer> nullList = new LinkedList();
@@ -52,84 +55,83 @@ public class TangoTree implements I_GUITree{
       return ret;
    }
     
-   public  TangoTree(List<Integer> keyList){
+   public  TangoTree(List<Integer> keyList, Class<? extends TangoAuxTree > auxTreeClass) throws BuildAuxTreeFaildException{
+        //Test AuxTree Class
+        try {
+            auxTree = auxTreeClass.newInstance();  
+        } 
+        catch (Exception ex) {
+            throw new BuildAuxTreeFaildException("Von der übergebenen Klasse konnte kein TangoAuxTree gebildet werden. Parameterloser Konstruktor notwendig.");
+        }
+        this.auxTreeClass = auxTreeClass;
         int[] keyArray = buildKeyArray(keyList);
         int numOfNodes = keyArray.length;
         if (numOfNodes < 1)
             throw new IllegalArgumentException();
         int numOfNode = 1;
         int depth = 1;
-        Node pBT = buildPerfectBalancedTree(new Node(), numOfNodes, numOfNode, depth);
+        PerfectTreeNode pBT = buildPerfectBalancedTree(new PerfectTreeNode(), numOfNodes, numOfNode, depth);
         setKeysInPBT(pBT, keyArray, 0);
-    
-        //Zum Start ist mostRecent immer false, also links
-        List<List<Node>> pathLists = new LinkedList();
-        pathLists.add(getNextLeftPath(pBT, true)); //Ersten Pfad zum linkesten Kind holen
-        List<Node> aktPathList;
-        while(!pathLists.isEmpty()){
-            aktPathList = pathLists.get(0);
-            for(Node node : aktPathList){
-                List<Node> newPathList = getNextLeftPath(node, false);
-                if(newPathList != null)
-                    pathLists.add(newPathList);
-            }
-            TangoAuxTree auxTree = new RedBlackTree(); //Hier Bindung zum gewählten Hilfsbaum 
-            for (Node node : aktPathList){
-                auxTree.insert(node.key, node.depth);
-            }
-            writeMaxDepth(auxTree.getRoot());
-            writeMinDepth(auxTree.getRoot());
-            if (root == null)   {  
-                root = auxTree.getRoot();
-                root.setIsRoot(true);
-            }
-            else{
-                insertAuxTree(auxTree);
-            }
-            pathLists.remove(0);
-        } 
+        //Die Hilfstruktur wird nun nachgebaut
+        //Zum Start ist jeder Knoten ein eigener Hifsbaum
+         root = buildStartTango(pBT);
         
+        
+        
+        
+      
  
     }
-    private int writeMaxDepth(TangoNode node){
-        if (node.getLeft() != null)
-            node.setMaxDepth(writeMaxDepth(node.getLeft()));
-        else
-            node.setMaxDepth(node.getDepth()); 
-        if (node.getRight() != null)
-            writeMaxDepth(node.getRight());
-        return node.getMaxDepth();    
-    }
-     private int writeMinDepth(TangoNode node){
-        if (node.getRight() != null)
-            node.setMinDepth(writeMinDepth(node.getRight()));
-        else
-            node.setMinDepth(node.getDepth()); 
-        if (node.getLeft() != null)
-            writeMinDepth(node.getLeft());
-        return node.getMinDepth();    
-    }
-   
-    private List<Node> getNextLeftPath(Node node, boolean first){
-        List<Node> ret = new LinkedList();
-        if (!first){
-            if (node.right != null)
-                node = node.right;
-            else
-                return null;
-        }
-        ret.add(node);
-        while(node.left != null){
-            node = node.left;
-            ret.add(node);
-        }
-         return ret;
-    }
-    private void cut(){
+    private TangoNode buildStartTango(PerfectTreeNode helpNode) {
+        if (helpNode == null)
+            return null;
+        TangoAuxTree auxTree = null;
+        try {
+            auxTree = auxTreeClass.newInstance();
+        } catch (Exception ex) { }
         
+      
+        auxTree.insert(helpNode.key);
+        TangoNode node = auxTree.getRoot();
+        node.setDepth(helpNode.depth);
+        node.setMaxDepth(helpNode.depth);
+        node.setMinDepth(helpNode.depth);
+        node.setIsRoot(true);
+        node.setLeft(null);
+        node.setRight(null);
+        node.setParent(null);
+        node.setLeftAuxTree(buildStartTango(helpNode.left));
+        if( node.getLeftTango() != null)
+            node.getLeftTango().setParentNodeAuxTree(node);
+        node.setRightAuxTree(buildStartTango(helpNode.right));
+        if( node.getRightTango() != null)
+            node.getRightTango().setParentNodeAuxTree(node);  
+        return node;
     }
-    
-    private int setKeysInPBT(Node node, int[] sortedKeys, int writedNumbers){
+    @Override
+     public TangoNode search(int key){
+         
+        TangoNode search = root;
+        while(search != null && search.getKey() != key ){
+            if (search.getKey() < key)
+                search = search.getLeftTango();
+            else if((search.getKey() > key))
+                search = search.getRightTango();
+            else 
+                break;
+            
+        }   
+            
+            
+            
+            
+           
+        
+        return search;
+    }      
+   
+ 
+    private int setKeysInPBT(PerfectTreeNode node, int[] sortedKeys, int writedNumbers){
         int tempWritedNumbers = writedNumbers;
         if (node.left != null)
             tempWritedNumbers = setKeysInPBT(node.left, sortedKeys, tempWritedNumbers);
@@ -138,35 +140,18 @@ public class TangoTree implements I_GUITree{
             tempWritedNumbers = setKeysInPBT(node.right, sortedKeys, tempWritedNumbers);
         return  tempWritedNumbers;    
     }
-    private Node buildPerfectBalancedTree (Node node, int numOfNodes, int nodeNumber, int depth ){
+    private PerfectTreeNode buildPerfectBalancedTree (PerfectTreeNode node, int numOfNodes, int nodeNumber, int depth ){
          node.depth = depth;
         if (2 * nodeNumber <= numOfNodes){
-            node.left = buildPerfectBalancedTree(new Node(), numOfNodes, 2 * nodeNumber, depth + 1);
+            node.left = buildPerfectBalancedTree(new PerfectTreeNode(), numOfNodes, 2 * nodeNumber, depth + 1);
         }
         if (2 * nodeNumber + 1  <= numOfNodes){
-            node.right = buildPerfectBalancedTree(new Node(), numOfNodes,2 * nodeNumber + 1, depth + 1);
+            node.right = buildPerfectBalancedTree(new PerfectTreeNode(), numOfNodes,2 * nodeNumber + 1, depth + 1);
         }
         return node;
      
     }
-    private void insertAuxTree(TangoAuxTree auxTree){
-        TangoNode auxTreeRoot = auxTree.getRoot();
-        auxTreeRoot.setIsRoot(true);
-        TangoNode place = root; 
-        TangoNode placeHelp = place;
-        while(placeHelp != null){
-                place = placeHelp;
-            if (auxTreeRoot.getKey() < place.getKey() )
-                placeHelp = place.getLeftTango();
-            else
-                placeHelp = place.getRightTango();
-        }
-        auxTreeRoot.setParentNodeAuxTree(place);
-        if (auxTreeRoot.getKey() < place.getKey() )
-            place.setLeftAuxTree(auxTreeRoot);  
-        else
-            place.setRightAuxTree(auxTreeRoot);
-    }
+    
     @Override
     public I_GUINode getRoot() {
          return root;
@@ -182,11 +167,7 @@ public class TangoTree implements I_GUITree{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public I_GUINode search(int key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-    }
+   
 
     @Override
     public String getName() {
@@ -197,11 +178,11 @@ public class TangoTree implements I_GUITree{
     public void setCanvas(GUICanvas c) {
         
     }
-
+ 
    
-    private class Node{
-       Node left;
-       Node right;
+    private class PerfectTreeNode{
+       PerfectTreeNode left;
+       PerfectTreeNode right;
        int key;
        int depth;
     }

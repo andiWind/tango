@@ -1,7 +1,7 @@
 package console;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+//import org.apache.log4j.Logger;
+//import org.apache.log4j.PropertyConfigurator;
 
 /**
  * The main startup class. Handles bringing up the application into a running
@@ -11,7 +11,7 @@ import org.apache.log4j.PropertyConfigurator;
  * 
  */
 public class StatMain {
-	private static final Logger log = Logger.getLogger(StatMain.class);
+
 
 	private static String _configFile;
 
@@ -26,11 +26,10 @@ public class StatMain {
 
 		sr.start();
 
-		log.info("Finished.");
 	}
 
 	private static void startLog4j() {
-		PropertyConfigurator.configure(_configFile);
+
 	}
 
 	private static void parseCommandLine(String[] args) {

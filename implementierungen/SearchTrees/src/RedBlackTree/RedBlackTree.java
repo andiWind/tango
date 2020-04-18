@@ -14,6 +14,8 @@ import TangoTree.TangoNode;
 
 
 
+
+
 /**
  *
  * @author andreas
@@ -67,21 +69,11 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         return root;
     }
     
-   // @Override
-    public void insert(int key, int depth){
-        int blackHigh = 1;
-        Node insNode = new Node(key, Node.RBColor.RED, blackHigh, depth);
-        insert(insNode);
-    }
+   
     @Override
-    public void insert(int key){
+    public void insert (int key){
         int blackHigh = 1;
         Node insNode = new Node(key, Node.RBColor.RED, blackHigh);
-        insert(insNode);
-    }
-    
-    private void insert (Node  insNode){
-        
         Node search = search(insNode.getKey());
         if (search == null){
             root = insNode;  
@@ -156,45 +148,16 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
     }
      //Der obere Knoten der Rotation wird übergeben
     private void rotateLeft (Node n){ 
-      Node nP = n.getParent();
-      Node nRc = n.getRight(); //nRc muss existieren
-      
-      n.setRight(nRc.getLeft());
-      if(n.getRight() != null)
-            n.getRight().setParent(n);
-      if (nP == null)
-          root = nRc;
-      else if (nP.getRight() == n)
-          nP.setRight(nRc);
-      else 
-           nP.setLeft(nRc);
-      nRc.setParent(nP);
-      
-      nRc.setLeft(n);
-      n.setParent(nRc);
+        if(root == n)
+            root = n.getRight();
+         super.rotateLeft(n);
       
     }
     //Der obere Knoten der Rotation wird übergeben
     private void rotateRight (Node n){ 
-      
-        Node nP = n.getParent();
-        Node nLc = n.getLeft(); //nLc muss existieren
-      
-        n.setLeft( nLc.getRight());
-        if (n.getLeft() != null)
-            n.getLeft().setParent(n);
-      
-        if (nP  == null)
-            root = nLc;
-        else if (nP.getRight() == n)
-            nP.setRight(nLc);
-        else //nP ist nullNode, n ist die Wurzel
-            nP.setLeft(nLc);
-
-      nLc.setParent(nP);
-      
-      nLc.setRight(n);
-      n.setParent(nLc);
+        if(root == n)
+            root = n.getLeft();
+        super.rotateRight(n);
      
     }
    
@@ -370,178 +333,174 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
        }
        return searchNode;
    }
-   
-    @Override
-    public TangoNode split(int key) {
-        RedBlackTree smallerKeys = new RedBlackTree(); 
-        RedBlackTree biggerKeys = new RedBlackTree();
-        Node searchNodeSmalKeys = null;
-        Node searchNodeBigKeys = null;
-        Node splitNode = root;
-        Integer nextMergeKeySmall = null;
-        Integer nextMergeKeyBig = null;
-        while (splitNode != null){
-            if (splitNode.getKey() <= key ){
-                Node mergeTree = splitNode.getLeft();
-                if(mergeTree != null)
-                    mergeTree.setColor(RBColor.BLACK);
-                if(smallerKeys.root == null){
-                    smallerKeys.root = mergeTree;
-                    searchNodeSmalKeys = smallerKeys.root;
-                    if(splitNode.getKey() != key)
-                        nextMergeKeySmall = splitNode.getKey();
-                    else
-                        nextMergeKeySmall = null;
-                }
-                else if (mergeTree != null && nextMergeKeySmall != null ){
-                    while(!(searchNodeSmalKeys.isBlack() && searchNodeSmalKeys.getBlackHigh() == mergeTree.getBlackHigh())){
-                        searchNodeSmalKeys = searchNodeSmalKeys.getRight();
-                    }
-                    searchNodeSmalKeys = smallerKeys.mergeForSplit(mergeTree, searchNodeSmalKeys, nextMergeKeySmall);
-                    if(splitNode.getKey() != key)
-                        nextMergeKeySmall = splitNode.getKey();
-                    else
-                        nextMergeKeySmall = null;
-                }
-                else if(mergeTree == null && nextMergeKeySmall != null){
-                    while(!(searchNodeSmalKeys.isBlack() && searchNodeSmalKeys.getBlackHigh() == 1)){
-                        searchNodeSmalKeys = searchNodeSmalKeys.getRight();
-                    }
-                    searchNodeSmalKeys = smallerKeys.mergeForSplit(new Node(splitNode.getKey(),RBColor.BLACK,1), searchNodeSmalKeys, nextMergeKeySmall);
-                    nextMergeKeySmall = null;
-                }
-                else {//(mergeTree == null && nextMergeKeySmall == null)
-                     if(splitNode.getKey() != key)
-                        nextMergeKeySmall = splitNode.getKey();
-                    else
-                        nextMergeKeySmall = null;
-                }
-                if(splitNode.getKey() != key)
-                    splitNode = splitNode.getRight();
-            }
-            if (splitNode.getKey() >= key  ) {
-                Node mergeTree = splitNode.getRight();
-                 if(mergeTree != null)
-                    mergeTree.setColor(RBColor.BLACK);
-                if(biggerKeys.root == null){
-                    biggerKeys.root = mergeTree;
-                    searchNodeBigKeys = biggerKeys.root;
-                    nextMergeKeyBig = splitNode.getKey();
-                }
-                else if (mergeTree != null && nextMergeKeyBig != null ){
-                    while(!(searchNodeBigKeys.isBlack() && searchNodeBigKeys.getBlackHigh() == mergeTree.getBlackHigh())){
-                        searchNodeBigKeys = searchNodeBigKeys.getLeft();
-                    }
-                    searchNodeBigKeys = biggerKeys.mergeForSplit(mergeTree, searchNodeBigKeys, nextMergeKeyBig);
-                    nextMergeKeyBig = splitNode.getKey();
-                }
-                else if(mergeTree == null && nextMergeKeyBig != null){
-                    while(!(searchNodeBigKeys.isBlack() && searchNodeBigKeys.getBlackHigh() == 1)){
-                        searchNodeBigKeys = searchNodeBigKeys.getLeft();
-                    }
-                    searchNodeBigKeys = biggerKeys.mergeForSplit(new Node(splitNode.getKey(),RBColor.BLACK,1), searchNodeBigKeys, nextMergeKeyBig);
-                    nextMergeKeyBig = null;
-                }
-                else {//(mergeTree == null && nextMergeKeySmall == null)
-                    nextMergeKeyBig = splitNode.getKey();
-                }
-                if(splitNode.getKey() == key)
-                    break;
+    private Node getMergeNodeLeft(Node node, int blackHigh){
+        while(node != null){
+            if(node.isBlack() && node.getBlackHigh() == blackHigh)
+                return node;
+            node = node.getLeft();
+        }
+        return null;
+    }
+     private Node getMergeNodeRight(Node node, int blackHigh){
+        while(node != null){
+            if(node.isBlack() && node.getBlackHigh() == blackHigh)
+                return node;
+            node = node.getRight();
+        }
+        return null;
+    }
+  
+    @Override //Implementiert split für TangoCut
+    public Node split(TangoNode in, int key) {
+        if (in == null)
+            return null;
+        Node searchL = null; //Hilfsvariable damit merge nicht immer ab der Wurzel suchen muss 
+        Node searchR = null;
+        Node treeL = null;
+        Node treeR = null;
+        Node input = (Node) in; 
+        Node splitNode = input;
+        Node pivotL = null; //Vorherige Splitnodes die für Merge verwendet werden können
+        Node pivotR = null; 
+        while(splitNode != null){ //Bei einem split füt TangoCut ist der Splitkey immer im Baum vorhanden
+            Node splitL = splitNode.getLeft(); 
+            Node splitR = splitNode.getRight();
+            //Knoten von einander lösen
+            splitL.setParent(null);
+            splitR.setParent(null);
+            splitNode.setLeft(null);
+            splitNode.setRight(null);
+            splitNode.setParent(null);
+        ////////////////////////////////////
+            if(splitNode.getKey() < key){
+                splitL.setColor(RBColor.BLACK);
+                treeL = merge(treeL, pivotL, splitL, searchL);
+                pivotL = splitNode;
                 splitNode = splitNode.getLeft();
-                
+            }    
+            else if (splitNode.getKey() > key){
+                splitR.setColor(RBColor.BLACK);
+                treeL = merge(treeR, pivotR, splitR, searchR);
+                pivotR = splitNode;
+                splitNode = splitNode.getRight();
+            }
+            else{
+                splitL.setColor(RBColor.BLACK);
+                treeL = merge(treeL, pivotL, splitL, searchL);
+                splitR.setColor(RBColor.BLACK);
+                treeR = merge(treeR, pivotR, splitR, searchR);
+                break;
             }
         }    
-        if (nextMergeKeySmall != null)
-            smallerKeys.insert(nextMergeKeySmall);
-        if (nextMergeKeyBig != null)
-            biggerKeys.insert(nextMergeKeyBig);
-        
-        root = biggerKeys.root;
-        biggerKeys.root = null;
-        return smallerKeys.root;
+        splitNode.setLeft(treeL);
+        if(treeL != null)
+            treeL.setParent(splitNode);
+        splitNode.setRight(treeR);
+        if(treeR != null)
+            treeR.setParent(splitNode);    
+        return splitNode;  
     }
-    
-    
-    //t2 ist ein Teilbaum mit der maximal gleichen SchwarzHöhe wie this.root
-    private Node mergeForSplit (Node t2, Node searchNode, int key ){
-        if(t2 != null)
-            t2.setColor(RBColor.BLACK);
-        Node newNode = new Node(key, RBColor.RED,  searchNode.getBlackHigh() + 1);
-        if(searchNode.getKey() < key)
-            mergeRightCase(t2, newNode, searchNode);
-        else
-            mergeLeftCase(t2, newNode, searchNode);
-        return newNode;
+    @Override
+    public Node merge(TangoNode treeL, TangoNode mid, TangoNode treeR) {
+        return merge((Node) treeL,(Node)  mid, (Node) treeR, null); 
     }
-
-  //  @Override
-    //Alle keys von tree müssen entweder kleiner oder größer als die von this sein
-    //Nach der Operation gibt es nur noch den Returnbaum, d. h. die Wurzelzeiger der alten Instanzen werden abgehängt.
-    public void merge(TangoAuxTree tree, int key) {
-        if (tree.getClass() != RedBlackTree.class)
-            throw new IllegalArgumentException();
-        RedBlackTree t2 = (RedBlackTree)tree;
-        if(t2.root == null)
-            return;
-        if(root == null){
-            root = t2.root;
-            t2.root = null;
+    private Node merge(Node treeL, Node mid, Node treeR, Node searchPar) {
+        if(mid == null){
+            if(treeL ==  null)
+                return treeR;
+            else
+                return treeL;
         }
-        if (root.getBlackHigh() < t2.root.getBlackHigh()){
-            t2.merge(this, key);
-            root = t2.root;
-            t2.root = null;
+        mid.setColor(RBColor.BLACK);
+        mid.setBlackHigh(1);
+        if (treeL == null && treeR == null){
+            return mid;
         }
-        Node searchNode = root;
-        Node newNode = new Node(key, RBColor.RED, t2.root.getBlackHigh() +1);
-        if(key < root.getKey()){
-            while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh() ) ) {
-                searchNode = searchNode.getLeft();
+        Node ret;
+        mid.setColor(RBColor.RED);
+        Node search = searchPar;
+        if(treeR == null){
+            ret = treeL;
+            if(search == null){
+                search = treeL;
             }
-            mergeLeftCase(t2.root, newNode, searchNode);
+            while (!(search.isBlack() && search.getBlackHigh() == 1))
+                search = search.getRight();
+            mid.setBlackHigh(1);
+            mid.setLeft(search);
+            search.setParent(mid);
+            if(search.getParent() == null){
+                ret = mid;
+            }
+            else{
+                search.getParent().setRight(mid);
+                mid.setParent(search.getParent());
+            }
+        }
+        else if (treeL == null){
+            ret = treeR;
+            if(search == null){
+                search = treeR;
+            }
+            while (!(search.isBlack() && search.getBlackHigh() == 1))
+                search = search.getLeft();
+            mid.setBlackHigh(1);
+            mid.setRight(search);
+            search.setParent(mid);
+            if(search.getParent() == null){
+                ret = mid;
+            }
+            else{
+                search.getParent().setLeft(mid);
+                mid.setParent(search.getParent());
+            }   
         }
         else{
-             while (! (searchNode.isBlack() && searchNode.getBlackHigh() == t2.getRoot().getBlackHigh() ) ) {
-                searchNode = searchNode.getRight();
-             }
-            mergeRightCase(t2.root, newNode, searchNode);
-        }
-        t2.root = null;
-    
+            if(treeR.getBlackHigh() > treeL.getBlackHigh()){ //treeL wird links bei treeR angefügt
+                ret = treeR;
+                if(search == null){
+                    search = treeR;
+                }
+                while (!(search.isBlack() && search.getBlackHigh() == treeR.getBlackHigh()))
+                    search = search.getLeft();
+                mid.setBlackHigh(treeR.getBlackHigh() + 1);
+                mid.setRight(search);
+                search.setParent(mid);
+                search.getParent().setLeft(mid);
+                mid.setParent(search.getParent());
+                mid.setLeft(treeL);
+                treeL.setParent(mid);
+            }
+            else{
+                ret = treeL;
+                if(search == null){
+                    search = treeL;
+                }
+                while (!(search.isBlack() && search.getBlackHigh() == treeL.getBlackHigh()))
+                    search = search.getRight();
+                mid.setBlackHigh(treeL.getBlackHigh() + 1);
+                mid.setLeft(search);
+                if(search.getParent() == null){
+                    ret = mid;
+                }
+                else{    
+                    search.setParent(mid);
+                    search.getParent().setRight(mid);
+                }
+                mid.setParent(search.getParent());
+                mid.setRight(treeR);
+                treeR.setParent(mid);
+                
+            }
+       }  
+       insertFixup(mid);
+       super.aktDepthsSingleNode(mid);
+       return ret;
     }
 
    
-    private RedBlackTree mergeLeftCase(Node t2Root, Node newNode, Node searchNode){
-        if (searchNode == root){
-            root = newNode;
-        }
-        else{
-            searchNode.getParent().setLeft(newNode);
-            newNode.setParent(searchNode.getParent());
-        }
-        newNode.setRight(searchNode);
-        searchNode.setParent(newNode);
-        newNode.setLeft(t2Root);
-        if(t2Root != null)
-            t2Root.setParent(newNode);
-        insertFixup(newNode);
-        return this;
-    }
-    private RedBlackTree mergeRightCase(Node t2Root, Node newNode,  Node searchNode){
-        if (searchNode == root)
-            root = newNode;
-        else{
-            searchNode.getParent().setRight(newNode);
-            newNode.setParent(searchNode.getParent());
-        }
-        newNode.setLeft(searchNode);
-        searchNode.setParent(newNode);
-        newNode.setRight(t2Root);
-        if(t2Root != null)
-           t2Root.setParent(newNode);
-       
-        insertFixup(newNode);
-        return this;
-    }
+
    
+   
+
 }

@@ -29,12 +29,8 @@ public class Node extends TangoNode implements I_GUINode {
         color = c;
         blackHigh = bh;
     }
-    Node (int k, RBColor c, int bh, int d){
-        depth = d;
-        key = k;
-        color = c;
-        blackHigh = bh;
-    }
+    
+    
     
     @Override
     public int getKey(){
@@ -68,21 +64,6 @@ public class Node extends TangoNode implements I_GUINode {
     }
     
     @Override
-   public Node getParent(){
-       return parent;
-   }
-    
-    void setLeft(Node l){
-        left = l;
-    }
-    void setRight(Node r){
-        right = r;
-    }
-    void setParent(Node p){
-        parent = p;
-    }
-
-    @Override
     public I_GUINode getLeftFromGui() {
       
         if (left == null)
@@ -107,20 +88,24 @@ public class Node extends TangoNode implements I_GUINode {
     @Override
     public String getKeyStringFromGui() {
        // return Integer.toString(key);
-       return Integer.toString(key) + "_" + Integer.toString(depth) + "_" + Integer.toString(maxDepth) + "_" + Integer.toString(minDepth);
+       return Integer.toString(key) + "_" + Integer.toString(getDepth()) + "_" + Integer.toString(getMaxDepth()) + "_" + Integer.toString(getMinDepth());
     }
 
     
     
     @Override
-    public Node getLeft() {
+    protected Node getLeft() {
         return left;
     }
     
     @Override
-    public Node getRight() {
+    protected Node getRight() {
         return right;
     }
+    @Override
+   protected Node getParent(){
+       return parent;
+   }
     boolean IsLeftChildBlack(){
         if (left == null)
             return true;
@@ -140,6 +125,36 @@ public class Node extends TangoNode implements I_GUINode {
         if (right == null)
             return false;
         return right.isRed();
+    }
+
+    @Override
+    protected void setParent(TangoNode node) {
+         if (node == null){
+            parent = null;
+            return;
+        }   
+        if(node.getClass() == Node.class)
+            parent = (Node) node;
+    }
+
+    @Override
+    protected void setLeft(TangoNode node) {
+         if (node == null){
+            left = null;
+            return;
+        }   
+        if(node.getClass() == Node.class)
+            left = (Node) node;
+    }
+
+    @Override
+    protected void setRight(TangoNode node) {
+        if (node == null){
+            right = null;
+            return;
+        }   
+        if(node.getClass() == Node.class)
+            right = (Node) node;
     }
     enum RBColor
     {

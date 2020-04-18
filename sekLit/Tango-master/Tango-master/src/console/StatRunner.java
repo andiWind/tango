@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 import tango.BasicBST;
 import tango.BinarySearchTree;
@@ -18,7 +18,7 @@ import tango.TreeStats;
 import tango.UnbalancedTango;
 
 public class StatRunner {
-	private static final Logger log = Logger.getLogger(StatRunner.class);
+	//private static final Logger log = Logger.getLogger(StatRunner.class);
 
 	private static final String cTreeType = StatRunner.class.getSimpleName()
 			+ ".treeType";
@@ -97,10 +97,10 @@ public class StatRunner {
 			}
 
 		} catch (NumberFormatException e) {
-			log.fatal(e.getMessage());
+		//	log.fatal(e.getMessage());
 			System.exit(-1);
 		} catch (ItemNotFoundException e) {
-			log.fatal(e.getMessage());
+		//	log.fatal(e.getMessage());
 			System.exit(-1);
 		}
 
@@ -108,22 +108,22 @@ public class StatRunner {
 		 * Check other conditions
 		 */
 		if (_treeType == TreeType.UNKNOWN) {
-			log.fatal("Unknown Tree Type.");
+		//	log.fatal("Unknown Tree Type.");
 			System.exit(-1);
 		}
 
 		if (_curSeqType == SequenceType.UNKNOWN) {
-			log.fatal("Unknown Sequence Type.");
+		//	log.fatal("Unknown Sequence Type.");
 			System.exit(-1);
 		}
 
 		if (_minLevels < 1) {
-			log.fatal("minLevels must be >= 1");
+		//	log.fatal("minLevels must be >= 1");
 			System.exit(-1);
 		}
 
 		if (_maxLevels < _minLevels) {
-			log.fatal("maxLevels must be at least equal to minLevels");
+		//	log.fatal("maxLevels must be at least equal to minLevels");
 			System.exit(-1);
 		}
 
@@ -153,7 +153,7 @@ public class StatRunner {
 				genSquareRootSequence(_curN);
 				break;
 			default:
-				log.fatal("Unhandled sequence type");
+			//	log.fatal("Unhandled sequence type");
 				System.exit(-1);
 				break;
 			}
@@ -161,7 +161,7 @@ public class StatRunner {
 	}
 
 	private void genIncreasingSequence(int n) {
-		log.info("Generating increasing sequence from 1 to " + n);
+	//	log.info("Generating increasing sequence from 1 to " + n);
 
 		for (int i = 1; i <= n; ++i) {
 			_sequence.add(Integer.valueOf(i));
@@ -169,7 +169,7 @@ public class StatRunner {
 	}
 
 	private void genDecreasingSequence(int n) {
-		log.info("Generating decreasing sequence from " + n + " to 1");
+	//	log.info("Generating decreasing sequence from " + n + " to 1");
 
 		for (int i = n; i > 0; --i) {
 			_sequence.add(Integer.valueOf(i));
@@ -177,7 +177,7 @@ public class StatRunner {
 	}
 
 	private void genPermutationSequence(int n) {
-		log.info("Generating a permutation of the values 1 to " + n);
+	//	log.info("Generating a permutation of the values 1 to " + n);
 
 		int[] arr = new int[n];
 
@@ -200,8 +200,8 @@ public class StatRunner {
 	}
 
 	private void genRandomSequence(int n) {
-		log.info("Generating a random sequence of value from [1," + n + "]"
-				+ " of length " + n);
+	//	log.info("Generating a random sequence of value from [1," + n + "]"
+		//		+ " of length " + n);
 
 		for (int i = 1; i <= n; ++i) {
 			_sequence.add(_rnd.nextInt(n) + 1);
@@ -209,7 +209,7 @@ public class StatRunner {
 	}
 
 	private void genSquareRootSequence(int n) {
-		log.info("Generating Sqrt sequence of the values 1 to " + n);
+	//	log.info("Generating Sqrt sequence of the values 1 to " + n);
 
 		int sqr = (int) (Math.floor(Math.sqrt(n)));
 
@@ -231,7 +231,7 @@ public class StatRunner {
 			br = new BufferedReader(new FileReader(_seqFile));
 
 		} catch (FileNotFoundException e) {
-			log.fatal(_seqFile + " could not be found for opening");
+	//		log.fatal(_seqFile + " could not be found for opening");
 			System.exit(-1);
 		}
 
@@ -247,14 +247,14 @@ public class StatRunner {
 			br.close();
 
 		} catch (NumberFormatException e) {
-			log.fatal("Error parsing '" + line + "' from file");
+	//		log.fatal("Error parsing '" + line + "' from file");
 			System.exit(-1);
 		} catch (IOException e) {
-			log.fatal("IOException processing file");
+	//		log.fatal("IOException processing file");
 			System.exit(-1);
 		}
 
-		log.info("Loaded " + _seqFile + " with " + _sequence.size() + " items");
+	//	log.info("Loaded " + _seqFile + " with " + _sequence.size() + " items");
 	}
 
 	private void prepTree() {
@@ -270,7 +270,7 @@ public class StatRunner {
 		} else if (_treeType == TreeType.BASIC) {
 			_tree = new BasicBST();
 		} else {
-			log.fatal("Unhandled tree type");
+		//	log.fatal("Unhandled tree type");
 			System.exit(-1);
 		}
 
@@ -280,20 +280,20 @@ public class StatRunner {
 	private void execSequence() {
 		int n = _sequence.size();
 
-		log.info("Executing search sequence of length " + n + "...");
-		log.debug("Sequence is: " + _sequence);
+		//log.info("Executing search sequence of length " + n + "...");
+		//log.debug("Sequence is: " + _sequence);
 
 		try {
 			for (int i = 0; i < n; ++i) {
 				_tree.search(_sequence.get(i));
 			}
 		} catch (AssertionError e) {
-			log.fatal("Assertion Failure: " + e.getMessage());
+		//	log.fatal("Assertion Failure: " + e.getMessage());
 
 			// but, we move on without exiting
 
 		} catch (Exception e) {
-			log.fatal("Unexpected Error: " + e.getMessage());
+		//	log.fatal("Unexpected Error: " + e.getMessage());
 			e.printStackTrace();
 			System.exit(-1);
 		}
@@ -308,7 +308,7 @@ public class StatRunner {
 				_sequence.size(), _curSet, stats.getRotations(),
 				stats.getTraversals(), stats.getOtherTraversals());
 
-		log.info(lg);
+		//log.info(lg);
 	}
 
 	private void swap(int[] arr, int i, int j) {

@@ -14,21 +14,26 @@ import java.awt.Color;
  * @author andreas
  */
 public abstract class TangoNode implements I_GUINode{
-    private boolean mostRecent;
-    protected int depth;
-    protected int minDepth;
-    protected int maxDepth;
+
+    private int depth;
+    private int minDepth;
+    private int maxDepth;
     private boolean isRoot;
-    protected TangoNode leftAuxTree;
-    protected TangoNode rightAuxTree;
-    protected TangoNode parentNodeAuxTree;
+    private TangoNode leftAuxTree;
+    private TangoNode rightAuxTree;
+    private TangoNode parentNodeAuxTree;
+
     
-    void setMinDepth(int m){
+ 
+    protected final void setMinDepth(int m){
         minDepth = m;
     }
-    protected void setMaxDepth(int m){
+    protected final void setMaxDepth(int m){
         maxDepth = m;
-    }        
+    }  
+    protected final void setDepth(int d){
+        depth = d;
+    }  
     protected int getDepth(){
         return depth;
     }  
@@ -38,34 +43,29 @@ public abstract class TangoNode implements I_GUINode{
     protected int getMaxDepth(){
         return maxDepth;
     }  
-    void setMostRecent(boolean b){
-        mostRecent = b;
-    }
-    boolean getMostRecent(){
-        return mostRecent;
-    }
+   
     void setIsRoot(boolean b){
         isRoot = b;
     }
     boolean isRoot (){
         return isRoot;
     }
-    protected void setLeftAuxTree (TangoNode node){
+     void setLeftAuxTree (TangoNode node){
         leftAuxTree = node;
     }
-    protected void setRightAuxTree (TangoNode node){
+    void setRightAuxTree (TangoNode node){
         rightAuxTree = node;
     }
-    protected void setParentNodeAuxTree (TangoNode node){
+    void setParentNodeAuxTree (TangoNode node){
         parentNodeAuxTree = node;
     }
-    protected TangoNode getLeftAuxTree (){
+    TangoNode getLeftAuxTree (){
         return leftAuxTree;
     }
-    protected TangoNode getRightAuxTree (){
+    TangoNode getRightAuxTree (){
         return rightAuxTree;
     }
-    protected TangoNode getParentNodeAuxTree (){
+    TangoNode getParentNodeAuxTree (){
         return parentNodeAuxTree;
     }
     @Override
@@ -91,11 +91,14 @@ public abstract class TangoNode implements I_GUINode{
     } 
 
   
-    public abstract TangoNode getParent();
-    public abstract TangoNode getLeft();
-    public abstract TangoNode getRight();
+    protected abstract TangoNode getParent();
+    protected abstract TangoNode getLeft();
+    protected abstract TangoNode getRight();
+    protected abstract void setParent(TangoNode node);
+    protected abstract void setLeft(TangoNode node);
+    protected abstract void setRight(TangoNode node);
     public abstract int getKey();
-    
+  
     protected TangoNode getLeftTango(){
         TangoNode ret = getLeft();
         if (ret != null)
@@ -108,9 +111,10 @@ public abstract class TangoNode implements I_GUINode{
             return ret;
         return rightAuxTree; 
     }
-    TangoNode getParentIntern(){
+    TangoNode getParentTango(){
         if (isRoot)
             return parentNodeAuxTree;
         return getParent();
     }
+   
 }

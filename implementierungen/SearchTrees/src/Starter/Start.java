@@ -7,8 +7,11 @@ package Starter;
 
 import GUI.GUI;
 import RedBlackTree.RedBlackTree;
+import TangoTree.BuildAuxTreeFaildException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -77,12 +80,17 @@ public class Start {
          rbt1.insert(29);
          rbt1.insert(30);
          
-     //  new GUI(new TangoTree.TangoTree(keys1));
-     rbt1.merge(rbt2, 20);
-      new GUI(rbt1);
- 
-    // new GUI(rbt1);
-  
-     //new GUI(rbt1.split(8));
+        try {
+            new GUI(new TangoTree.TangoTree(keys1, RedBlackTree.class));
+            // rbt1.merge(rbt2, 20);
+            //new GUI(rbt1);
+            
+            // new GUI(rbt1);
+            
+            //new GUI(rbt1.split(8));
+        }
+        catch (BuildAuxTreeFaildException ex) {
+            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
