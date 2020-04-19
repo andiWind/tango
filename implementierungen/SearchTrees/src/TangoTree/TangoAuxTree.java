@@ -24,6 +24,7 @@ public abstract class TangoAuxTree {
                 node = help;
                 help = help.getRight();
             }
+            return node;
         }
         else{ //Gesuchter Knoten ist der erste Knoten in Pfad nach oben bei dem rechts angehängt wurde
             while(node.getParent() != null){
@@ -33,7 +34,7 @@ public abstract class TangoAuxTree {
                 node = node.getParent();
             }
         }
-        //Node ist der Kleinste Knoten im Baum
+        //Node ist der Kleinste Knoten im Baum, es gibt keinen Vorgänger
         return null;
     }
     private TangoNode getSuccessor(TangoNode node){
@@ -46,6 +47,7 @@ public abstract class TangoAuxTree {
                 node = help;
                 help = help.getLeft();
             }
+            return node;
         }
         else{ //Gesuchter Knoten ist der erste Knoten in Pfad nach oben bei dem rechts angehängt wurde
             while(node.getParent() != null){
@@ -127,8 +129,7 @@ public abstract class TangoAuxTree {
             node.setMinDepth(node.getRight().getMinDepth());
             
     } 
-    private TangoNode getSplitterLeft(int depth){
-        TangoNode node = getRoot();
+    private TangoNode getSplitterLeft(TangoNode node ,int depth){
         while(node != null){
             if(node.getLeft() != null && node.getLeft().getMaxDepth() > depth){
                 node = node.getLeft();
@@ -137,15 +138,14 @@ public abstract class TangoAuxTree {
                 break;
             }
             else{
-                node = node.getRight(); //Kann nicht null sein
+                node = node.getRight(); 
             }
         }
-        //node zeigt jetzt auf den kleinsten Knoten der abgespaltet werden soll
+        //node zeigt jetzt auf den kleinsten Knoten der abgespaltet werden soll, wenn ein solcher existiert
         // benötigt wird aber der Vorgänger
         return getPredecessor(node);
     }
-    private TangoNode getSplitterRight(int depth){
-        TangoNode node = getRoot();
+    private TangoNode getSplitterRight(TangoNode node ,int depth){
         while(node != null){
             if(node.getRight() != null && node.getRight().getMaxDepth() > depth){
                 node = node.getRight();
@@ -154,29 +154,17 @@ public abstract class TangoAuxTree {
                 break;
             }
             else{
-                node = node.getLeft(); //Kann nicht null sein
+                node = node.getLeft();
             }
         }
-        //node zeigt jetzt auf den größten Knoten der abgespaltet werden soll
+        //node zeigt jetzt auf den größten Knoten der abgespaltet werden soll, wenn ein solcher existiert
         // benötigt wird aber der Nachfolger
         return getSuccessor(node);
     }
-    //Läuft von einem Übergebenen Auxtree Blatt nach oben und aktualisiert die Min. bzw. Maxtiefe
-    private void actDepthsAfterConcatenate(TangoNode node){
-        node.setMaxDepth(node.getDepth());
-        node.setMinDepth(node.getDepth());
-        TangoNode nodeParent = node.getParent();
-        while(nodeParent != null){
-            if(nodeParent.getMaxDepth() < node.getMaxDepth()){
-                nodeParent.setMaxDepth(node.getMaxDepth());
-            }
-            if(nodeParent.getMinDepth() < node.getMinDepth()){
-                nodeParent.setMinDepth(node.getMinDepth());
-            }
-            node = nodeParent;
-            nodeParent = node.getParent();
-        }
-    }
+    /*Läuft von einem Übergebenen Auxtree Blatt nach oben und aktualisiert die Min. bzw. Maxtiefe so
+     dass der übergebene Knoten entfernt werden kann
+    */
+  
     TangoNode concatenate (TangoNode node){
         if (node.getLeft() != null && node.getLeft().isRoot() ){
             node.setLeftAuxTree(node.getLeft());
@@ -194,21 +182,29 @@ public abstract class TangoAuxTree {
         detachAuxtree(node.getRight());
         
         TangoNode newTree;
+        //Knoten abtrennen vor der Übergabe nach "außen" in die Hilfsstruktur
+        node.setLeft(null);
+        node.setRight(null);
+        if(left != null)
+            left.setParent(null);
+        if(right != null)
+            right.setParent(null);
+        //////////////
         newTree = merge(left, node, right);
-        actDepthsAfterConcatenate(node);
         newTree.setIsRoot(true);
         return newTree;
     }
-    void changePaths(TangoNode rootHigherPath, TangoNode rootMergePath){
-        if (rootHigherPath == null || rootMergePath == null )
-            return;
+    TangoNode changePaths(TangoNode rootTango, TangoNode rootMergePath){
+        if (rootTango == null || rootMergePath == null )
+            return null;
         boolean isTangoRoot = false;
         boolean isRightAuxTreeChild = false;
-        TangoNode higherPathParent = rootHigherPath.getParentNodeAuxTree();
-        //alte Auxtree Struktur auftrennen
-        detachAuxtree(rootHigherPath);
+        //MergePath abhängen
         detachAuxtree(rootMergePath);
-        TangoNode rootAfterCut = cut(rootHigherPath, rootMergePath.getMinDepth() - 1 );
+        TangoNode newRoot = cut(rootTango, rootMergePath.getMinDepth() - 1 );
+        newRoot = join(newRoot, rootMergePath );
+        return newRoot;
+        
         
         
     }
@@ -219,7 +215,6 @@ public abstract class TangoAuxTree {
         TangoNode rootParent = root.getParentNodeAuxTree();
         if(rootParent == null)
             return;
-        root.setIsRoot(false);
         if(rootParent.getLeftAuxTree() == root){
             rootParent.setLeftAuxTree(null); 
         } 
@@ -233,14 +228,14 @@ public abstract class TangoAuxTree {
             return null;
         tree1.setIsRoot(false);
         tree2.setIsRoot(false);
-        if(tree2.getMaxDepth() > tree1.getMaxDepth()){
+        if(tree1.getMaxDepth() > tree2.getMaxDepth()){
             TangoNode temp = tree1;
             tree1 = tree2;
             tree2 = temp;
         }
         //Die Schlüsselwerte von tree2 befinden sich alle zwischen zwei aufeinanderfolgenden Schlüsselwerten innerhalb tree1.
         //Die Knoten mit diesen beiden Schlüsseln werden gesucht
-        TangoNode smallerKeyNode = search(tree2.getKey());
+        TangoNode smallerKeyNode = search(tree1, tree2.getKey());
         TangoNode biggerKeyNode;
         if(smallerKeyNode.getKey() > tree2.getKey()){
             biggerKeyNode = smallerKeyNode;
@@ -280,13 +275,18 @@ public abstract class TangoAuxTree {
         return newTree;
     }
     TangoNode cut (TangoNode node, int depth){
-  
+        //Wurde keine Wurzel übergeben, muss diese erstmel gesucht werden 
+        while(!node.isRoot())
+            node = node.getParent();
         TangoNode l;
         TangoNode r;
-        TangoNode splitterLeft = getSplitterLeft(depth);
-        TangoNode splitterRight = getSplitterRight(depth);
-        if(splitterRight == null){
-            //spliterLeft kann nich auch  null sein
+        TangoNode splitterLeft = getSplitterLeft(node, depth);
+        TangoNode splitterRight = getSplitterRight(node, depth);
+        if (splitterRight == null && splitterLeft == null){
+            return node; //Es gibt keinen Knoten der zurückgegeben werden soll, es wird der unveränderte AuxTree zurückgegeben
+        }
+        else if(splitterRight == null){
+            //spliterLeft kann nich auch  null sein           
             l = split(node, splitterLeft.getKey());
             l.getRight().setIsRoot(true);
             return concatenate(l);
@@ -312,9 +312,9 @@ public abstract class TangoAuxTree {
     protected abstract TangoNode split( TangoNode Tree, int key);
     protected abstract TangoNode merge(TangoNode treeL, TangoNode mid, TangoNode treeR);
     protected abstract void insert (int key);
-    protected abstract TangoNode search (int key);
+    protected abstract TangoNode search (TangoNode startNode, int key);
     protected abstract TangoNode getRoot ();
-    
+    protected abstract void setTree (TangoNode node);
     
     
 }

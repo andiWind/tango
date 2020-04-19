@@ -11,8 +11,6 @@ import java.util.LinkedList;
 import java.util.List;
 import GUI.I_GUITree;
 import GUI.I_GUINode;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
@@ -20,10 +18,31 @@ import java.util.logging.Logger;
  * @author andreas
  */
 public class TangoTree implements I_GUITree{
-    private TangoNode root;
+
     private final Class<? extends TangoAuxTree > auxTreeClass;
     private TangoAuxTree auxTree;
     
+    public  TangoTree(List<Integer> keyList, Class<? extends TangoAuxTree > auxTreeClass) throws BuildAuxTreeFaildException{
+        //Test AuxTree Class
+        try {
+            auxTree = auxTreeClass.newInstance();  
+        } 
+        catch (Exception ex) {
+            throw new BuildAuxTreeFaildException("Von der übergebenen Klasse konnte kein TangoAuxTree gebildet werden. Parameterloser Konstruktor notwendig.");
+        }
+        this.auxTreeClass = auxTreeClass;
+        int[] keyArray = buildKeyArray(keyList);
+        int numOfNodes = keyArray.length;
+        if (numOfNodes < 1)
+            throw new IllegalArgumentException();
+        int numOfNode = 1;
+        int depth = 1;
+        PerfectTreeNode pBT = buildPerfectBalancedTree(new PerfectTreeNode(), numOfNodes, numOfNode, depth);
+        setKeysInPBT(pBT, keyArray, 0);
+        //Die Hilfstruktur wird nun nachgebaut
+        //Zum Start ist jeder Knoten ein eigener Hifsbaum
+         auxTree.setTree(buildStartTango(pBT));
+    }   
    private int[] buildKeyArray(List <Integer> keyList){
        List<Integer> nullList = new LinkedList();
        nullList.add(null);
@@ -55,33 +74,7 @@ public class TangoTree implements I_GUITree{
       return ret;
    }
     
-   public  TangoTree(List<Integer> keyList, Class<? extends TangoAuxTree > auxTreeClass) throws BuildAuxTreeFaildException{
-        //Test AuxTree Class
-        try {
-            auxTree = auxTreeClass.newInstance();  
-        } 
-        catch (Exception ex) {
-            throw new BuildAuxTreeFaildException("Von der übergebenen Klasse konnte kein TangoAuxTree gebildet werden. Parameterloser Konstruktor notwendig.");
-        }
-        this.auxTreeClass = auxTreeClass;
-        int[] keyArray = buildKeyArray(keyList);
-        int numOfNodes = keyArray.length;
-        if (numOfNodes < 1)
-            throw new IllegalArgumentException();
-        int numOfNode = 1;
-        int depth = 1;
-        PerfectTreeNode pBT = buildPerfectBalancedTree(new PerfectTreeNode(), numOfNodes, numOfNode, depth);
-        setKeysInPBT(pBT, keyArray, 0);
-        //Die Hilfstruktur wird nun nachgebaut
-        //Zum Start ist jeder Knoten ein eigener Hifsbaum
-         root = buildStartTango(pBT);
-        
-        
-        
-        
-      
  
-    }
     private TangoNode buildStartTango(PerfectTreeNode helpNode) {
         if (helpNode == null)
             return null;
@@ -111,25 +104,46 @@ public class TangoTree implements I_GUITree{
     @Override
      public TangoNode search(int key){
          
-        TangoNode search = root;
-        while(search != null && search.getKey() != key ){
-            if (search.getKey() < key)
+        TangoNode search = auxTree.getRoot();
+        if(search == null )
+            return null;
+        while(true){
+            if (search.getKey() < key && search.getLeftTango() != null){
                 search = search.getLeftTango();
-            else if((search.getKey() > key))
+            }
+            else if(search.getKey() > key  && search.getLeftTango() != null){
                 search = search.getRightTango();
-            else 
+            }
+            else{ 
                 break;
-            
+            }
+            if(search.isRoot()){
+                auxTree.setTree(auxTree.changePaths(getAuxRoot(search.getParentNodeAuxTree()), search));
+            }
         }   
-            
-            
-            
-            
-           
-        
+        auxTree.cut(search, search.getDepth());
+        auxTree.join(search, getMarketPredecessor(search));
+       
         return search;
-    }      
-   
+    }     
+    private TangoNode getMarketPredecessor(TangoNode node){
+        if(node == null)
+            return null;
+        node = node.getLeftTango();
+        while(node != null){
+            if (node.isRoot())
+                break;
+            node = node.getRightTango();
+            
+        }
+        return node;
+    } 
+    private TangoNode getAuxRoot(TangoNode node){
+        while(!node.isRoot()){
+            node = node.getParent();
+        }
+        return node;
+    }
  
     private int setKeysInPBT(PerfectTreeNode node, int[] sortedKeys, int writedNumbers){
         int tempWritedNumbers = writedNumbers;
@@ -154,17 +168,17 @@ public class TangoTree implements I_GUITree{
     
     @Override
     public I_GUINode getRoot() {
-         return root;
+         return auxTree.getRoot();
     }
 
     @Override
     public void insert(int key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void delete(int key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    

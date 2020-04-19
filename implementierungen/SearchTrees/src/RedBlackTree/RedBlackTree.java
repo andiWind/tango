@@ -75,7 +75,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         int blackHigh = 1;
         Node insNode = new Node(key, Node.RBColor.RED, blackHigh);
         Node search = search(insNode.getKey());
-        if (search == null){
+        if (root == null){
             root = insNode;  
         }
         else if(search.getKey() == insNode.getKey()){
@@ -313,25 +313,28 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         if (tree != null)
             tree.setParent(placeParent); 
     }
-   
     @Override
+   public Node search (TangoNode startNode, int key){
+        Node searchNode = (Node) startNode;
+        if (searchNode == null ) return null;
+            Node helpNode = searchNode;
+        while(helpNode != null){
+            searchNode = helpNode;
+            if (searchNode.getKey() == key){
+                break;
+            }
+            else if (key < searchNode.getKey() ){
+                helpNode = searchNode.getLeft();
+            }
+            else{
+                helpNode = searchNode.getRight();
+            }
+        }
+        return searchNode;
+   }
+   @Override
    public Node search (int key){
-       if (root == null ) return null;
-       Node searchNode = root;
-       Node helpNode = root;
-       while(helpNode != null){
-           searchNode = helpNode;
-           if (searchNode.getKey() == key){
-               return searchNode;
-           }
-           else if (key < searchNode.getKey() ){
-               helpNode = searchNode.getLeft();
-           }
-           else{
-               helpNode = searchNode.getRight();
-           }
-       }
-       return searchNode;
+      return search(root, key);
    }
     private Node getMergeNodeLeft(Node node, int blackHigh){
         while(node != null){
@@ -362,12 +365,14 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         Node splitNode = input;
         Node pivotL = null; //Vorherige Splitnodes die für Merge verwendet werden können
         Node pivotR = null; 
-        while(splitNode != null){ //Bei einem split füt TangoCut ist der Splitkey immer im Baum vorhanden
+        while(splitNode != null){ //Bei einem split füt TangoCut ist der Splitkey immer im Baum vorhanden und die Schleife bricht immer mit break ab
             Node splitL = splitNode.getLeft(); 
             Node splitR = splitNode.getRight();
             //Knoten von einander lösen
-            splitL.setParent(null);
-            splitR.setParent(null);
+            if(splitL != null)
+                splitL.setParent(null);
+            if(splitL != null)
+                splitR.setParent(null);
             splitNode.setLeft(null);
             splitNode.setRight(null);
             splitNode.setParent(null);
@@ -385,9 +390,11 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                 splitNode = splitNode.getRight();
             }
             else{
-                splitL.setColor(RBColor.BLACK);
+                if(splitL != null)
+                    splitL.setColor(RBColor.BLACK);
                 treeL = merge(treeL, pivotL, splitL, searchL);
-                splitR.setColor(RBColor.BLACK);
+                if(splitR != null)
+                    splitR.setColor(RBColor.BLACK);
                 treeR = merge(treeR, pivotR, splitR, searchR);
                 break;
             }
@@ -411,14 +418,15 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
             else
                 return treeL;
         }
-        mid.setColor(RBColor.BLACK);
         mid.setBlackHigh(1);
         if (treeL == null && treeR == null){
+            mid.setColor(RBColor.BLACK);
             return mid;
         }
         Node ret;
         mid.setColor(RBColor.RED);
         Node search = searchPar;
+        Node fixUpNode = null;
         if(treeR == null){
             ret = treeL;
             if(search == null){
@@ -427,15 +435,19 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
             while (!(search.isBlack() && search.getBlackHigh() == 1))
                 search = search.getRight();
             mid.setBlackHigh(1);
-            mid.setLeft(search);
-            search.setParent(mid);
             if(search.getParent() == null){
+                mid.setColor(RBColor.BLACK);
                 ret = mid;
+                fixUpNode = search;
             }
             else{
                 search.getParent().setRight(mid);
                 mid.setParent(search.getParent());
+                fixUpNode = mid;
             }
+            mid.setLeft(search);
+            search.setParent(mid);
+ 
         }
         else if (treeL == null){
             ret = treeR;
@@ -445,15 +457,19 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
             while (!(search.isBlack() && search.getBlackHigh() == 1))
                 search = search.getLeft();
             mid.setBlackHigh(1);
-            mid.setRight(search);
-            search.setParent(mid);
             if(search.getParent() == null){
+                mid.setColor(RBColor.BLACK);
                 ret = mid;
+                fixUpNode = search;
             }
             else{
                 search.getParent().setLeft(mid);
                 mid.setParent(search.getParent());
+                fixUpNode = mid;
             }   
+            mid.setRight(search);
+            search.setParent(mid);
+   
         }
         else{
             if(treeR.getBlackHigh() > treeL.getBlackHigh()){ //treeL wird links bei treeR angefügt
@@ -465,8 +481,14 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                     search = search.getLeft();
                 mid.setBlackHigh(treeR.getBlackHigh() + 1);
                 mid.setRight(search);
+                if(search.getParent() == null){
+                    ret = mid;
+                }
+                else{    
                 search.setParent(mid);
                 search.getParent().setLeft(mid);
+                fixUpNode = mid;
+                }
                 mid.setParent(search.getParent());
                 mid.setLeft(treeL);
                 treeL.setParent(mid);
@@ -486,16 +508,22 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                 else{    
                     search.setParent(mid);
                     search.getParent().setRight(mid);
+                    fixUpNode = mid;
                 }
                 mid.setParent(search.getParent());
                 mid.setRight(treeR);
                 treeR.setParent(mid);
                 
-            }
-       }  
-       insertFixup(mid);
-       super.aktDepthsSingleNode(mid);
-       return ret;
+            }  
+        }  
+        insertFixup(fixUpNode);
+        super.aktDepthsSingleNode(mid);
+        return ret;
+    }
+
+    @Override
+    protected void setTree(TangoNode node) {
+        root = (Node)node; 
     }
 
    
