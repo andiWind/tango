@@ -197,8 +197,6 @@ public abstract class TangoAuxTree {
     TangoNode changePaths(TangoNode rootTango, TangoNode rootMergePath){
         if (rootTango == null || rootMergePath == null )
             return null;
-        boolean isTangoRoot = false;
-        boolean isRightAuxTreeChild = false;
         //MergePath abhängen
         detachAuxtree(rootMergePath);
         TangoNode newRoot = cut(rootTango, rootMergePath.getMinDepth() - 1 );
@@ -233,7 +231,7 @@ public abstract class TangoAuxTree {
             tree1 = tree2;
             tree2 = temp;
         }
-        //Die Schlüsselwerte von tree2 befinden sich alle zwischen zwei aufeinanderfolgenden Schlüsselwerten innerhalb tree1.
+        //Die Schlüsselwerte von tree2 befinden sich alle zwischen zwei  Schlüsselwerten innerhalb tree1.
         //Die Knoten mit diesen beiden Schlüsseln werden gesucht
         TangoNode smallerKeyNode = search(tree1, tree2.getKey());
         TangoNode biggerKeyNode;
@@ -283,7 +281,7 @@ public abstract class TangoAuxTree {
         TangoNode splitterLeft = getSplitterLeft(node, depth);
         TangoNode splitterRight = getSplitterRight(node, depth);
         if (splitterRight == null && splitterLeft == null){
-            return node; //Es gibt keinen Knoten der zurückgegeben werden soll, es wird der unveränderte AuxTree zurückgegeben
+            return node; //Es gibt keinen Pfad der abgetrennt werden soll, es wird der unveränderte AuxTree zurückgegeben
         }
         else if(splitterRight == null){
             //spliterLeft kann nich auch  null sein           
@@ -308,7 +306,19 @@ public abstract class TangoAuxTree {
         }
   
     }
-  
+    //Diese Methode kann von den ableitenden Klassen verwendet werden um bei Veränderungen an der Baumstruktur 
+    //die Zeiger nach ausen mitzupflegen
+    protected TangoNode getAuxTree(TangoNode node, boolean leftRight){
+        if(node == null)
+            return null;
+        if(!leftRight && node.getLeftTango() != null && node.getLeftTango().isRoot()){
+            return  node.getLeftTango();
+        }
+        if(leftRight && node.getRightTango() != null && node.getRightTango().isRoot()){
+            return  node.getRightTango();
+        }
+        return null;
+    }
     protected abstract TangoNode split( TangoNode Tree, int key);
     protected abstract TangoNode merge(TangoNode treeL, TangoNode mid, TangoNode treeR);
     protected abstract void insert (int key);

@@ -21,7 +21,11 @@ public class TangoTree implements I_GUITree{
 
     private final Class<? extends TangoAuxTree > auxTreeClass;
     private TangoAuxTree auxTree;
-    
+    GUICanvas guiCanvas;
+     
+    public void setCanvas(GUICanvas c){
+        guiCanvas = c;
+    }
     public  TangoTree(List<Integer> keyList, Class<? extends TangoAuxTree > auxTreeClass) throws BuildAuxTreeFaildException{
         //Test AuxTree Class
         try {
@@ -108,11 +112,11 @@ public class TangoTree implements I_GUITree{
         if(search == null )
             return null;
         while(true){
-            if (search.getKey() < key && search.getLeftTango() != null){
-                search = search.getLeftTango();
+            if (search.getKey() < key && search.getRightTango() != null){
+                search = search.getRightTango();
             }
             else if(search.getKey() > key  && search.getLeftTango() != null){
-                search = search.getRightTango();
+                search = search.getLeftTango();
             }
             else{ 
                 break;
@@ -120,6 +124,8 @@ public class TangoTree implements I_GUITree{
             if(search.isRoot()){
                 auxTree.setTree(auxTree.changePaths(getAuxRoot(search.getParentNodeAuxTree()), search));
             }
+            
+            guiCanvas.repaint();
         }   
         auxTree.cut(search, search.getDepth());
         auxTree.join(search, getMarketPredecessor(search));
@@ -188,11 +194,7 @@ public class TangoTree implements I_GUITree{
         return "Tango-Tree";
     }
 
-    @Override
-    public void setCanvas(GUICanvas c) {
-        
-    }
- 
+    
    
     private class PerfectTreeNode{
        PerfectTreeNode left;

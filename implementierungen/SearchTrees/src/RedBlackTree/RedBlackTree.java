@@ -368,37 +368,42 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         while(splitNode != null){ //Bei einem split füt TangoCut ist der Splitkey immer im Baum vorhanden und die Schleife bricht immer mit break ab
             Node splitL = splitNode.getLeft(); 
             Node splitR = splitNode.getRight();
-            //Knoten von einander lösen
-            if(splitL != null)
+            //Knoten von einander lösen, Wurzeln schwarz färben
+            if(splitL != null){
                 splitL.setParent(null);
-            if(splitL != null)
+                splitL.setColor(RBColor.BLACK);
+            }
+            if(splitR != null){
                 splitR.setParent(null);
+                splitR.setColor(RBColor.BLACK);
+            }
             splitNode.setLeft(null);
             splitNode.setRight(null);
             splitNode.setParent(null);
         ////////////////////////////////////
             if(splitNode.getKey() < key){
-                splitL.setColor(RBColor.BLACK);
                 treeL = merge(treeL, pivotL, splitL, searchL);
                 pivotL = splitNode;
                 splitNode = splitNode.getLeft();
             }    
             else if (splitNode.getKey() > key){
-                splitR.setColor(RBColor.BLACK);
-                treeL = merge(treeR, pivotR, splitR, searchR);
+                treeR = merge(treeR, pivotR, splitR, searchR);
                 pivotR = splitNode;
                 splitNode = splitNode.getRight();
             }
             else{
-                if(splitL != null)
-                    splitL.setColor(RBColor.BLACK);
                 treeL = merge(treeL, pivotL, splitL, searchL);
-                if(splitR != null)
-                    splitR.setColor(RBColor.BLACK);
                 treeR = merge(treeR, pivotR, splitR, searchR);
                 break;
             }
-        }    
+        } 
+       // Bricht die Schleife mit null ab, müssen übrig gebliebene Pivots eingefügt werden. 
+       //Wird für eine Tango Implementierung nicht benötigt
+       // if(pivotR != null)  
+       //     insert(pivotR.getKey());
+       // if(pivotL != null)
+       //     insert(pivotL.getKey());
+        
         splitNode.setLeft(treeL);
         if(treeL != null)
             treeL.setParent(splitNode);
