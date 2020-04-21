@@ -15,26 +15,32 @@ import java.awt.Color;
 public class Node extends TangoNode implements I_GUINode {
 
 
-    
-    private final int key;
     private RBColor color;
     private int blackHigh;
-    private Node left;
-    private Node right;
-    private Node parent;
+
 
     
     Node (int k, RBColor c, int bh){
-        key = k;
+        super(k);
         color = c;
         blackHigh = bh;
     }
     
-    
-    
+    @Override
+    protected Node getAuxTreeLeft(){
+        return (Node) super.getAuxTreeLeft();
+    }
+    @Override
+    protected Node getAuxTreeRight(){
+        return (Node) super.getAuxTreeRight();
+    }
+    @Override
+    protected Node getAuxTreeParent(){
+        return (Node) super.getAuxTreeParent();
+    }
     @Override
     public int getKey(){
-        return key;
+        return super.getKey();
     } 
     int getBlackHigh(){
         return blackHigh;
@@ -66,95 +72,80 @@ public class Node extends TangoNode implements I_GUINode {
     @Override
     public I_GUINode getLeftFromGui() {
       
-        if (left == null)
+        if (getLeft() == null)
             return super.getLeftFromGui();
-        return left;
+        return getLeft();
     }
 
     @Override
     public I_GUINode getRightFromGui() {
-        if (right ==  null)
+        if (getRight() ==  null)
             return super.getRightFromGui();
-        return right;
+        return getRight();
     }
 
     @Override
     public I_GUINode getParentFromGui() {
-        if (parent == null)
+        if (getParent() == null)
             return super.getParentFromGui();
-        return parent;
+        return getParent();
     }
 
     @Override
     public String getKeyStringFromGui() {
        // return Integer.toString(key);
-       return Integer.toString(key) + "_" + Integer.toString(getDepth()) + "_" + Integer.toString(getMaxDepth()) + "_" + Integer.toString(getMinDepth());
+       return Integer.toString(getKey()) + "_" + Integer.toString(getDepth()) + "_" + Integer.toString(getMaxDepth()) + "_" + Integer.toString(getMinDepth());
     }
 
     
     
     @Override
     protected Node getLeft() {
-        return left;
+        return (Node) super.getLeft();
     }
     
     @Override
     protected Node getRight() {
-        return right;
+        return (Node) super.getRight();
     }
     @Override
    protected Node getParent(){
-       return parent;
+       return (Node) super.getParent();
    }
     boolean IsLeftChildBlack(){
-        if (left == null)
+        if (getLeft() == null)
             return true;
-        return left.isBlack();
+        return getLeft().isBlack();
     }
     boolean IsRightChildBlack(){
-        if (right == null)
+        if (getRight() == null)
             return true;
-        return right.isBlack();
+        return getRight().isBlack();
     }
     boolean IsLeftChildRed(){
-        if (left == null)
+        if (getLeft() == null)
             return false;
-        return left.isRed();
+        return getLeft().isRed();
     }
     boolean IsRightChildRed(){
-        if (right == null)
+        if (getRight() == null)
             return false;
-        return right.isRed();
+        return getRight().isRed();
     }
 
     @Override
     protected void setParent(TangoNode node) {
-         if (node == null){
-            parent = null;
-            return;
-        }   
-        if(node.getClass() == Node.class)
-            parent = (Node) node;
+        super.setParent(node);
     }
 
     @Override
     protected void setLeft(TangoNode node) {
-         if (node == null){
-            left = null;
-            return;
-        }   
-        if(node.getClass() == Node.class)
-            left = (Node) node;
+       super.setLeft(node);
     }
 
     @Override
     protected void setRight(TangoNode node) {
-        if (node == null){
-            right = null;
-            return;
-        }   
-        if(node.getClass() == Node.class)
-            right = (Node) node;
+        super.setRight(node);   
     }
     enum RBColor
     {
@@ -166,5 +157,8 @@ public class Node extends TangoNode implements I_GUINode {
         if (ret != null)
             return ret;
         return (color == RBColor.BLACK ? Color.BLACK : Color.RED );
+    }
+    boolean isAroot( ){
+        return super.isRoot();
     }
 }

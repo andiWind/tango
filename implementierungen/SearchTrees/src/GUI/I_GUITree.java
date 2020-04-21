@@ -16,6 +16,5 @@ public interface I_GUITree {
     I_GUINode search (int key);
     String getName();
     
-    //wieder entfernen
-    void setCanvas(GUICanvas c);
+
 }

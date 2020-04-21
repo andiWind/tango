@@ -8,6 +8,7 @@ package Starter;
 import GUI.GUI;
 import RedBlackTree.RedBlackTree;
 import TangoTree.BuildAuxTreeFaildException;
+import TangoTree.TangoTree;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -81,7 +82,9 @@ public class Start {
          rbt1.insert(30);
          
         try {
-            new GUI(new TangoTree.TangoTree(keys1, RedBlackTree.class));
+            TangoTree t = new TangoTree(keys1, RedBlackTree.class);
+            new GUI(t);
+            t.search(1);
             // rbt1.merge(rbt2, 20);
             //new GUI(rbt1);
             

@@ -82,14 +82,14 @@ public class TangoTree implements I_GUITree{
     private TangoNode buildStartTango(PerfectTreeNode helpNode) {
         if (helpNode == null)
             return null;
-        TangoAuxTree auxTree = null;
+        TangoAuxTree auxiTree = null;
         try {
-            auxTree = auxTreeClass.newInstance();
+            auxiTree = auxTreeClass.newInstance();
         } catch (Exception ex) { }
         
       
-        auxTree.insert(helpNode.key);
-        TangoNode node = auxTree.getRoot();
+        auxiTree.insert(helpNode.key);
+        TangoNode node = auxiTree.getRoot();
         node.setDepth(helpNode.depth);
         node.setMaxDepth(helpNode.depth);
         node.setMinDepth(helpNode.depth);
@@ -97,17 +97,16 @@ public class TangoTree implements I_GUITree{
         node.setLeft(null);
         node.setRight(null);
         node.setParent(null);
-        node.setLeftAuxTree(buildStartTango(helpNode.left));
+        node.setLeft(buildStartTango(helpNode.left));
         if( node.getLeftTango() != null)
-            node.getLeftTango().setParentNodeAuxTree(node);
-        node.setRightAuxTree(buildStartTango(helpNode.right));
+            node.getLeftTango().setParent(node);
+        node.setRight(buildStartTango(helpNode.right));
         if( node.getRightTango() != null)
-            node.getRightTango().setParentNodeAuxTree(node);  
+            node.getRightTango().setParent(node);  
         return node;
     }
     @Override
-     public TangoNode search(int key){
-         
+     public TangoNode search(int key){  
         TangoNode search = auxTree.getRoot();
         if(search == null )
             return null;
@@ -122,10 +121,9 @@ public class TangoTree implements I_GUITree{
                 break;
             }
             if(search.isRoot()){
-                auxTree.setTree(auxTree.changePaths(getAuxRoot(search.getParentNodeAuxTree()), search));
+                auxTree.setTree(auxTree.changePaths(getAuxRoot(search.getParentTango()), search));
             }
-            
-            guiCanvas.repaint();
+ 
         }   
         auxTree.cut(search, search.getDepth());
         auxTree.join(search, getMarketPredecessor(search));
@@ -146,7 +144,7 @@ public class TangoTree implements I_GUITree{
     } 
     private TangoNode getAuxRoot(TangoNode node){
         while(!node.isRoot()){
-            node = node.getParent();
+            node = node.getParentTango();
         }
         return node;
     }

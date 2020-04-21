@@ -19,11 +19,14 @@ public abstract class TangoNode implements I_GUINode{
     private int minDepth;
     private int maxDepth;
     private boolean isRoot;
-    private TangoNode leftAuxTree;
-    private TangoNode rightAuxTree;
-    private TangoNode parentNodeAuxTree;
+    private TangoNode left;
+    private TangoNode right;
+    private TangoNode parent;
+    private final int key;
 
-    
+    protected TangoNode (int k){
+        key = k;
+    }
  
     protected final void setMinDepth(int m){
         minDepth = m;
@@ -47,27 +50,19 @@ public abstract class TangoNode implements I_GUINode{
     void setIsRoot(boolean b){
         isRoot = b;
     }
-    boolean isRoot (){
+    protected boolean isRoot (){
         return isRoot;
     }
-     void setLeftAuxTree (TangoNode node){
-        leftAuxTree = node;
+    protected void setLeft (TangoNode node){
+        left = node;
     }
-    void setRightAuxTree (TangoNode node){
-        rightAuxTree = node;
+    protected void setRight (TangoNode node){
+        right = node;
     }
-    void setParentNodeAuxTree (TangoNode node){
-        parentNodeAuxTree = node;
+    protected void setParent (TangoNode node){
+        parent = node;
     }
-    TangoNode getLeftAuxTree (){
-        return leftAuxTree;
-    }
-    TangoNode getRightAuxTree (){
-        return rightAuxTree;
-    }
-    TangoNode getParentNodeAuxTree (){
-        return parentNodeAuxTree;
-    }
+  
     @Override
     public Color getColorFromGui() {
         if(isRoot )
@@ -77,44 +72,75 @@ public abstract class TangoNode implements I_GUINode{
 
     @Override
     public I_GUINode getLeftFromGui() {
-        return leftAuxTree;
+        return left;
     }
 
     @Override
     public I_GUINode getRightFromGui() {
-        return rightAuxTree;
+        return right;
     }
 
     @Override
     public I_GUINode getParentFromGui(){
-        return parentNodeAuxTree;
+        return parent;
     } 
 
-  
-    protected abstract TangoNode getParent();
-    protected abstract TangoNode getLeft();
-    protected abstract TangoNode getRight();
-    protected abstract void setParent(TangoNode node);
-    protected abstract void setLeft(TangoNode node);
-    protected abstract void setRight(TangoNode node);
-    public abstract int getKey();
-  
-    protected TangoNode getLeftTango(){
-        TangoNode ret = getLeft();
-        if (ret != null)
-            return ret;
-        return leftAuxTree; 
+    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+    protected TangoNode getParent(){
+        if (parent == null || isRoot )
+            return null;
+        return parent;
     }
-    protected TangoNode getRightTango(){
-        TangoNode ret = getRight();
-        if (ret != null)
-            return ret;
-        return rightAuxTree; 
+    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+    protected TangoNode getLeft(){
+        if (left == null || left.isRoot )
+            return null;
+        return left;
+    }
+    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+    protected TangoNode getRight(){
+        if (right == null || right.isRoot )
+            return null;
+        return right;
+    }
+     //Diese Methode kann von den ableitenden Klassen verwendet werden um bei Veränderungen an der Baumstruktur 
+    //die Zeiger nach ausen mitzupflegen
+    protected TangoNode getAuxTreeLeft(){
+        if(getLeftTango() != null && getLeftTango().isRoot()){
+            return  getLeftTango();
+        }
+        return null;
+    }
+     //Diese Methode kann von den ableitenden Klassen verwendet werden um bei Veränderungen an der Baumstruktur 
+    //die Zeiger nach ausen mitzupflegen
+    protected TangoNode getAuxTreeRight(){
+        if(getRightTango() != null && getRightTango().isRoot()){
+            return  getRightTango();
+        }
+        return null;
+    }
+     //Diese Methode kann von den ableitenden Klassen verwendet werden um bei Veränderungen an der Baumstruktur 
+    //die Zeiger nach ausen mitzupflegen
+    protected TangoNode getAuxTreeParent(){
+       
+        if(isRoot() && getParent() != null ){
+            return  getParent();
+        }
+        return null;
+    }
+    
+    public int getKey(){
+        return key;
+    }
+  
+    TangoNode getLeftTango(){
+        return left;
+    }
+    TangoNode getRightTango(){
+        return right; 
     }
     TangoNode getParentTango(){
-        if (isRoot)
-            return parentNodeAuxTree;
-        return getParent();
+       return parent;
     }
    
 }
