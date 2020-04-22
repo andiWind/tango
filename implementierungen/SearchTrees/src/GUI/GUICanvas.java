@@ -83,10 +83,15 @@ public class GUICanvas extends Canvas {
         writeNodeArrays(root, heigh);
         g.setColor(Color.black);
         
+        //int recWidth = 50;
+        //int recHeigh = 15;
+        //int xCord = 0;
+        //int widthDiff = 10;
+        //int heighDiff = 85;
         int recWidth = 50;
         int recHeigh = 15;
         int xCord = 0;
-        int widthDiff = 10;
+        int widthDiff = 5;
         int heighDiff = 85;
         int[] mids = null;
         g.setColor(Color.BLACK);

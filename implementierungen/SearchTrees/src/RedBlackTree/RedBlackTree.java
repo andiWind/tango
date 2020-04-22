@@ -342,9 +342,9 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
             return null;
         Node searchL = null; //Hilfsvariable damit merge nicht immer ab der Wurzel suchen muss 
         Node searchR = null;
-        Node treeL = null; 
+        Node treeLroot = null; 
         boolean treeLisExtern = false;
-        Node treeR = null;
+        Node treeRroot = null;
         boolean treeRisExtern = false;
         Node splitNode = (Node) node; 
         Node pivotL = null; //Vorherige Splitnodes die für Merge verwendet werden können
@@ -354,7 +354,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
             boolean splitLisExtern = false;
             Node splitR = splitNode.getRight();
             boolean splitRisExtern = false;
-            //Knoten von einander lösen, Wurzeln schwarz färben
+        
             if(splitL != null){
                 splitL.setParent(null);
                 splitL.setColor(RBColor.BLACK);
@@ -375,8 +375,8 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
             }
         ////////////////////////////////////
             if(splitNode.getKey() < key){
-                treeL = merge(treeL, treeLisExtern, pivotL, splitL, splitLisExtern, searchL);
-                if(splitLisExtern && treeL == splitL)
+                treeLroot = merge(treeLroot, treeLisExtern, pivotL, splitL, splitLisExtern, searchL);
+                if(splitLisExtern && treeLroot == splitL)
                     treeLisExtern = true;
                 searchL = pivotL;
                 pivotL = splitNode;
@@ -386,8 +386,8 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                 pivotL.setParent(null);
             }    
             else if (splitNode.getKey() > key){
-                treeR = merge(treeR, treeRisExtern, pivotR, splitR, splitRisExtern, searchR);
-                if(splitRisExtern && treeR == splitR)
+                treeRroot = merge(treeRroot, treeRisExtern, pivotR, splitR, splitRisExtern, searchR);
+                if(splitRisExtern && treeRroot == splitR)
                     treeRisExtern = true;
                 searchR = pivotR;
                 pivotR = splitNode;
@@ -397,8 +397,8 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                 pivotR.setParent(null);
             }
             else{
-                treeL = merge(treeL, treeLisExtern, pivotL, splitL, splitLisExtern, searchL);
-                treeR = merge(splitR, splitRisExtern, pivotR, treeR, treeRisExtern, searchR);
+                treeLroot = merge(treeLroot, treeLisExtern, pivotL, splitL, splitLisExtern, searchL);
+                treeRroot = merge(splitR, splitRisExtern, pivotR, treeRroot, treeRisExtern, searchR);
                 break;
             }
         } 
@@ -408,117 +408,124 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
        //     insert(pivotR.getKey());
        // if(pivotL != null)
        //     insert(pivotL.getKey());
-        splitNode.setBlackHigh(0); //Sonderwert für undefiniert, da treeL und treeR unterschiedliche Schwarz-Höhen haben können
-        attachNodes(splitNode, treeL, treeR);
+        splitNode.setBlackHigh(0); //Sonderwert für undefiniert, da treeLroot und treeRroot unterschiedliche Schwarz-Höhen haben können
+        attachNodes(splitNode, treeLroot, treeRroot);
         return splitNode;  
     }
     @Override
     public Node merge(TangoNode treeLinput, TangoNode midInput, TangoNode treeRinput) {
         Node mid = (Node) midInput;
-        Node treeL = (Node) treeLinput;
-        Node treeR = (Node) treeRinput;
+        Node treeLroot = (Node) treeLinput;
+        Node treeRroot = (Node) treeRinput;
         boolean treeLisExtern = false;
         boolean treeRisExtern = false;
-        if(treeL != null && treeL.isAroot()) 
+        if(treeLroot != null && treeLroot.isAroot()) 
             treeLisExtern = true;
-        if(treeR != null && treeR.isAroot())
+        if(treeRroot != null && treeRroot.isAroot())
             treeRisExtern = true;
-        return merge(treeL, treeLisExtern, mid, treeR, treeRisExtern, null); 
+        return merge(treeLroot, treeLisExtern, mid, treeRroot, treeRisExtern, null); 
     }
    
-    private Node merge(Node treeL, boolean treeLisExtern, Node mid, Node treeR, boolean treeRisExtern, Node search) {
+    private Node merge(Node treeLroot, boolean treeLisExtern, Node mid, Node treeRroot, boolean treeRisExtern, Node search) {
         //Es kann nichts verbunden werden. 
         if(mid == null){ 
-            if(treeL != null)
-                return treeL;
-            return treeR;
+            if(treeLroot != null)
+                return treeLroot;
+            return treeRroot;
         }
-        if(treeL == null && treeR == null){
+        if(treeLroot == null && treeRroot == null){
             return mid;
-        }
+        }   
         mid.setBlackHigh(1);
-        if ((treeL == null || treeLisExtern) && (treeR == null || treeRisExtern)){ 
+        if ((treeLroot == null || treeLisExtern) && (treeRroot == null || treeRisExtern)){ 
             mid.setColor(RBColor.BLACK);
-            attachNodes(mid, treeL, treeR);
+            attachNodes(mid, treeLroot, treeRroot);
             return mid;
         }
         Node ret;
         mid.setColor(RBColor.RED);
-        Node fixUpNode = mid;
-        if(treeR == null || treeRisExtern){ //mid rechts unten bei treeL einfügen
-            ret = treeL;
+        Node fixUpNodeRB = mid;
+        Node fixUpNodeDepth = mid;
+        if(treeRroot == null || treeRisExtern){ //mid rechts unten bei treeLroot einfügen
+            ret = treeLroot;
             if(search == null){
-                search = treeL;
+                search = treeLroot;
             }
             while (!(search.isBlack() && search.getBlackHigh() == 1))
                 search = search.getRight();
-            if(search.getParent() == null){ //mid wird neue Wurzel
-                mid.setColor(RBColor.BLACK);
-                ret = mid;
-                fixUpNode = null;
+            if(search.getRight() == null){ //Ganz unten anhängen, es wird praktisch eingefügt
+                attachNodes(mid, search.getAuxTreeRight(), treeRroot); 
+                attachNodes(search, null, mid); 
+                super.updateDepthSingleNode(mid);
+                fixUpNodeDepth = search;
+                fixUpNodeRB = search;
             }
-            else{
+            else{ //
+                search = search.getRight();
                 attachNodes(search.getParent(), null, mid);
+                attachNodes(mid, search, treeRroot);
+                fixUpNodeRB = search;
             }
-            attachNodes(mid, search, treeR);
-
         }
-        else if (treeL == null  || treeLisExtern){ //mid links unten bei treeR einfügen
-            ret = treeR;
+        else if (treeLroot == null  || treeLisExtern){ //mid links unten bei treeRroot einfügen
+            ret = treeRroot;
             if(search == null){
-                search = treeR;
+                search = treeRroot;
             }
             while (!(search.isBlack() && search.getBlackHigh() == 1))
                 search = search.getLeft();
-            if(search.getParent() == null){
-                mid.setColor(RBColor.BLACK);
-                ret = mid;
-                fixUpNode = null;
+            if(search.getLeft() == null){ //Ganz unten anhängen, es wird praktisch eingefügt
+                attachNodes(mid, treeLroot, search.getAuxTreeLeft()); 
+                attachNodes(search, mid, null);
+                super.updateDepthSingleNode(mid);
+                fixUpNodeDepth = search;
+                fixUpNodeRB = search;
             }
             else{
-                attachNodes(search.getParent(), mid, null);
-                fixUpNode = null;
-            }   
-            attachNodes(mid, treeL, search);
-       
-        }
-        else if(treeR.getBlackHigh() > treeL.getBlackHigh()){ //treeL wird links bei treeR angefügt
-            ret = treeR;
-            if(search == null){
-                search = treeR;
-            }
-            while (!(search.isBlack() && search.getBlackHigh() == treeL.getBlackHigh()))
                 search = search.getLeft();
-            mid.setBlackHigh(treeL.getBlackHigh() + 1);
+                attachNodes(search.getParent(), mid, null);
+                attachNodes(mid, treeLroot, search);
+                fixUpNodeRB = search;
+            }   
+        }
+        else if(treeRroot.getBlackHigh() > treeLroot.getBlackHigh()){ //treeL wird links bei treeRroot angefügt
+            ret = treeRroot;
+            if(search == null){
+                search = treeRroot;
+            }
+            while (!(search.isBlack() && search.getBlackHigh() == treeLroot.getBlackHigh()))
+                search = search.getLeft();
+            mid.setBlackHigh(treeLroot.getBlackHigh() + 1);
             if(search.getParent() == null){
                 ret = mid;
                 mid.setColor(RBColor.BLACK);
-                fixUpNode = null;
+                fixUpNodeRB = null;
             }
             attachNodes(search.getParent(), mid, null);
-            attachNodes(mid, treeL, search);
+            attachNodes(mid, treeLroot, search);
         }
-        else{ //treeR wird rechts bei treeL angefügt
-            ret = treeL;
+        else{ //treeR wird rechts bei treeLroot angefügt
+            ret = treeLroot;
             if(search == null){
-                search = treeL;
+                search = treeLroot;
             }
-            while (!(search.isBlack() && search.getBlackHigh() == treeR.getBlackHigh()))
+            while (!(search.isBlack() && search.getBlackHigh() == treeRroot.getBlackHigh()))
                 search = search.getRight();
-            mid.setBlackHigh(treeR.getBlackHigh() + 1);
+            mid.setBlackHigh(treeRroot.getBlackHigh() + 1);
             if(search.getParent() == null){
                 ret = mid;
                 mid.setColor(RBColor.BLACK);
-                fixUpNode = null;
+                fixUpNodeRB = null;
             }
             attachNodes(search.getParent(), null, mid);
-            attachNodes(mid, search, treeR);
+            attachNodes(mid, search, treeRroot);
             
         }  
-      
-        insertFixup(fixUpNode);
-        super.aktDepthsSingleNode(mid);
-        return ret;
+        RedBlackTree fixUpTree = new RedBlackTree(); //wird verwendet um die FixUp routinen mit der richtigen Wurzel anzustoßen
+        super.updateDepthsPath(fixUpNodeDepth);
+        fixUpTree.setTree(ret);
+        fixUpTree.insertFixup(fixUpNodeRB);
+        return fixUpTree.getRoot();
     }
 
     @Override

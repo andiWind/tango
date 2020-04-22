@@ -125,8 +125,8 @@ public class TangoTree implements I_GUITree{
             }
  
         }   
-        auxTree.cut(search, search.getDepth());
-        auxTree.join(search, getMarketPredecessor(search));
+        auxTree.setTree(auxTree.cut(search, search.getDepth()));
+        auxTree.setTree(auxTree.join(search, getMarketPredecessor(search)));
        
         return search;
     }     

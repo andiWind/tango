@@ -76,10 +76,7 @@ public abstract class TangoAuxTree {
     protected void rotateLeft (TangoNode node){ 
         TangoNode nodeParent = node.getParent();
         TangoNode nodeRightChild = node.getRight(); //nRc muss existieren
-      
-        node.setRight(nodeRightChild.getLeftTango());
-        if(node.getRight() != null)
-            node.getRight().setParent(node);
+        attachNodes(node, null, nodeRightChild.getLeftTango());
         if(nodeParent != null){
             if (nodeParent.getRight() == node)
                 nodeParent.setRight(nodeRightChild);
@@ -87,24 +84,16 @@ public abstract class TangoAuxTree {
                 nodeParent.setLeft(nodeRightChild);
         }
         nodeRightChild.setParent(nodeParent);
-        nodeRightChild.setLeft(node);
-        node.setParent(nodeRightChild);
-        
-        aktDepthsSingleNode(node);
-        aktDepthsSingleNode(nodeRightChild);
-      
+        attachNodes(nodeRightChild, node, null);
+        updateDepthsPath(node);
+
     }
      //Der obere Knoten der Rotation wird übergeben
     protected void rotateRight (TangoNode node){ 
       
         TangoNode nodeParent = node.getParent();
         TangoNode nodeLeftChild = node.getLeft(); //nLc muss existieren
-        
-        node.setLeft(nodeLeftChild.getRightTango());
-        
-        if (node.getLeft() != null)
-            node.getLeft().setParent(node);
-
+        attachNodes(node, nodeLeftChild.getRightTango(), null);
         if (nodeParent  != null){
             if (nodeParent.getRight() == node)
                 nodeParent.setRight(nodeLeftChild);
@@ -112,26 +101,72 @@ public abstract class TangoAuxTree {
                 nodeParent.setLeft(nodeLeftChild);
         }
         nodeLeftChild.setParent(nodeParent);
-        nodeLeftChild.setRight(node);
-        node.setParent(nodeLeftChild);
-        
-        aktDepthsSingleNode(node);
-        aktDepthsSingleNode(nodeLeftChild);
+        attachNodes(nodeLeftChild, null, node);
+        updateDepthsPath(node);
+    
 
     }
-    protected void aktDepthsSingleNode(TangoNode node){
-        node.setMaxDepth(node.getDepth());
-        node.setMinDepth(node.getDepth());
-        if (node.getLeft() != null && node.getLeft().getMaxDepth() > node.getMaxDepth())
-            node.setMaxDepth(node.getLeft().getMaxDepth());
-        if (node.getRight() != null && node.getRight().getMaxDepth() > node.getMaxDepth())
-            node.setMaxDepth(node.getRight().getMaxDepth());
+    private int getMax (int i1, int i2, int i3){
+        if(i1 > i2 && i1 > i3)
+            return i1;
+        return i2 > i3 ? i2 : i3;
+    }
+    private int getMin (int i1, int i2, int i3){
+        if(i1 < i2 && i1 < i3)
+            return i1;
+        return i2 < i3 ? i2 : i3;
+    }
+    private boolean updateMaxDepthSingleNode(TangoNode node){
+        TangoNode left = node.getLeft() ;
+        TangoNode right = node.getRight() ;
+        int newValue;
+        //MaxDepth pflegen
+            int leftVal = 0;
+            int rightVal = 0;
+            if(left != null)
+                leftVal = left.getMaxDepth();
+            if(right != null)
+                rightVal = right.getMaxDepth();
+            newValue = getMax(node.getDepth(), leftVal, rightVal);
+            if (node.getMaxDepth() != newValue){
+                node.setMaxDepth(newValue); 
+                return true;
+            }
+            return false;
+    }
+     private boolean updateMinDepthSingleNode(TangoNode node){
+        TangoNode left = node.getLeft() ;
+        TangoNode right = node.getRight() ;
+        int newValue;
+        //MaxDepth pflegen
+            int leftVal = Integer.MAX_VALUE;
+            int rightVal = Integer.MAX_VALUE;
+            if(left != null)
+                leftVal = left.getMinDepth();
+            if(right != null)
+                rightVal = right.getMinDepth();
+            newValue = getMin(node.getDepth(), leftVal, rightVal);
+            if (node.getMinDepth() != newValue){
+                node.setMinDepth(newValue); 
+                return true;
+            }
+            return false;
+    }
+    protected boolean updateDepthSingleNode(TangoNode node){
+        boolean noChange = true;
+        if (updateMaxDepthSingleNode(node))
+            noChange = false;
+        if (updateMinDepthSingleNode(node))
+            noChange = false;
+        return noChange;    
         
-        if (node.getLeft() != null && node.getLeft().getMinDepth() < node.getMinDepth())
-            node.setMinDepth(node.getLeft().getMinDepth());
-        if (node.getRight() != null && node.getRight().getMinDepth() < node.getMinDepth())
-            node.setMinDepth(node.getRight().getMinDepth());
-            
+    }
+    protected void updateDepthsPath(TangoNode node){
+        boolean noChange = false;
+        while(node != null && !noChange){
+            noChange = updateDepthSingleNode(node);
+            node = node.getParent();
+        }      
     } 
     private TangoNode getSplitterLeft(TangoNode node ,int depth){
         while(node != null){
@@ -205,8 +240,14 @@ public abstract class TangoAuxTree {
         root.setParent(null);
     }
     TangoNode join (TangoNode tree1, TangoNode tree2){
-        if(tree1 == null || tree2 == null)
-            return null;
+        while(tree1 != null && !tree1.isRoot() )
+            tree1 = tree1.getParent();
+        while(tree2 != null && !tree2.isRoot())
+            tree2 = tree2.getParent();
+        if(tree1 == null )
+            return tree2;
+        if(tree2 == null )
+            return tree1;
         tree1.setIsRoot(false);
         tree2.setIsRoot(false);
         if(tree2.getMinDepth() < tree1.getMinDepth()){
@@ -253,7 +294,7 @@ public abstract class TangoAuxTree {
     TangoNode cut (TangoNode node, int depth){
         //Wurde keine Wurzel übergeben, muss diese erstmel gesucht werden 
         while(!node.isRoot())
-            node = node.getParentTango();
+            node = node.getParent();
         TangoNode l;
         TangoNode r;
         TangoNode splitterLeft = getSplitterLeft(node, depth);
