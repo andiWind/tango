@@ -38,6 +38,8 @@ public class GUICanvas extends Canvas {
     
     GUICanvas (I_GUITree t){
         tree = t;
+    
+        
     }
     private void writeNodeArrays(I_GUINode root, int treeHeigh){
         nodeArrays = new I_GUINode[treeHeigh][];
@@ -85,13 +87,12 @@ public class GUICanvas extends Canvas {
         
         //int recWidth = 50;
         //int recHeigh = 15;
-        //int xCord = 0;
+        int xCord = 0;
         //int widthDiff = 10;
         //int heighDiff = 85;
-        int recWidth = 50;
+        int recWidth = 20;
         int recHeigh = 15;
-        int xCord = 0;
-        int widthDiff = 5;
+        int widthDiff = 10;
         int heighDiff = 85;
         int[] mids = null;
         g.setColor(Color.BLACK);

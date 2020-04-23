@@ -121,33 +121,13 @@ public class TangoTree implements I_GUITree{
                 break;
             }
             if(search.isRoot()){
-                auxTree.setTree(auxTree.changePaths(getAuxRoot(search.getParentTango()), search));
+                search = auxTree.updatePaths(search);
+                auxTree.setTree(search);
             }
- 
-        }   
-        auxTree.setTree(auxTree.cut(search, search.getDepth()));
-        auxTree.setTree(auxTree.join(search, getMarketPredecessor(search)));
-       
+        }
+        auxTree.setTree(auxTree.updatePreferredChildToLeft(search));
         return search;
-    }     
-    private TangoNode getMarketPredecessor(TangoNode node){
-        if(node == null)
-            return null;
-        node = node.getLeftTango();
-        while(node != null){
-            if (node.isRoot())
-                break;
-            node = node.getRightTango();
-            
-        }
-        return node;
-    } 
-    private TangoNode getAuxRoot(TangoNode node){
-        while(!node.isRoot()){
-            node = node.getParentTango();
-        }
-        return node;
-    }
+    }   
  
     private int setKeysInPBT(PerfectTreeNode node, int[] sortedKeys, int writedNumbers){
         int tempWritedNumbers = writedNumbers;

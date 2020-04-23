@@ -386,7 +386,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                 pivotL.setParent(null);
             }    
             else if (splitNode.getKey() > key){
-                treeRroot = merge(treeRroot, treeRisExtern, pivotR, splitR, splitRisExtern, searchR);
+                treeRroot = merge(splitR, splitRisExtern, pivotR, treeRroot, treeRisExtern, searchR);
                 if(splitRisExtern && treeRroot == splitR)
                     treeRisExtern = true;
                 searchR = pivotR;
@@ -433,9 +433,6 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                 return treeLroot;
             return treeRroot;
         }
-        if(treeLroot == null && treeRroot == null){
-            return mid;
-        }   
         mid.setBlackHigh(1);
         if ((treeLroot == null || treeLisExtern) && (treeRroot == null || treeRisExtern)){ 
             mid.setColor(RBColor.BLACK);

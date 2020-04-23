@@ -23,7 +23,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -36,7 +36,7 @@ public class GUI extends JFrame{
     private JMenu menu;
     private JMenuItem aktionOpen;
     private JDialog aktion;
-    
+    private JScrollPane scrollPane;
     int test = 0;
         
        
@@ -60,6 +60,7 @@ public class GUI extends JFrame{
         
         guiCanvas.setSize(this.getSize().width, this.getSize().height);
         guiCanvas.setVisible(true);
+         
         add(guiCanvas, BorderLayout.CENTER);
       
         
