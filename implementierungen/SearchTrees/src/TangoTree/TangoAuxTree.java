@@ -60,15 +60,20 @@ public abstract class TangoAuxTree {
         //Node ist der Kleinste Knoten im Baum
         return null;
     }
-    protected void attachNodes (TangoNode parent, TangoNode left, TangoNode right  ){
+    protected void attachNodeLeft (TangoNode parent, TangoNode left ){
         if (parent == null)
             return;
-        if(left != null){
-            parent.setLeft(left);
-            left.setParent(parent);
+        parent.setLeft(left);
+        if(left != null){    
+            left.setParent(parent);    
         }
+      
+    }
+    protected void attachNodeRight (TangoNode parent, TangoNode right  ){
+        if (parent == null)
+            return;
+        parent.setRight(right);
         if(right != null){
-            parent.setRight(right);
             right.setParent(parent);
         }
     }
@@ -76,7 +81,7 @@ public abstract class TangoAuxTree {
     protected void rotateLeft (TangoNode node){ 
         TangoNode nodeParent = node.getParent();
         TangoNode nodeRightChild = node.getRight(); //nRc muss existieren
-        attachNodes(node, null, nodeRightChild.getLeftTango());
+        attachNodeRight(node, nodeRightChild.getLeftTango());
         if(nodeParent != null){
             if (nodeParent.getRight() == node)
                 nodeParent.setRight(nodeRightChild);
@@ -84,7 +89,7 @@ public abstract class TangoAuxTree {
                 nodeParent.setLeft(nodeRightChild);
         }
         nodeRightChild.setParent(nodeParent);
-        attachNodes(nodeRightChild, node, null);
+        attachNodeLeft(nodeRightChild, node);
         updateDepthsPath(node);
 
     }
@@ -93,7 +98,7 @@ public abstract class TangoAuxTree {
       
         TangoNode nodeParent = node.getParent();
         TangoNode nodeLeftChild = node.getLeft(); //nLc muss existieren
-        attachNodes(node, nodeLeftChild.getRightTango(), null);
+        attachNodeLeft(node, nodeLeftChild.getRightTango());
         if (nodeParent  != null){
             if (nodeParent.getRight() == node)
                 nodeParent.setRight(nodeLeftChild);
@@ -101,7 +106,7 @@ public abstract class TangoAuxTree {
                 nodeParent.setLeft(nodeLeftChild);
         }
         nodeLeftChild.setParent(nodeParent);
-        attachNodes(nodeLeftChild, null, node);
+        attachNodeRight(nodeLeftChild, node);
         updateDepthsPath(node);
     
 
@@ -225,6 +230,10 @@ public abstract class TangoAuxTree {
         rootMergePath.setIsRoot(false);
         detachAuxtree(rootMergePath);
         TangoNode newRoot = cut(tangoRoot, rootMergePath.getMinDepth() - 1 );
+        
+        
+        
+        
         TangoNode ret = join(newRoot, rootMergePath );
         ret.setIsRoot(true);
         return ret;   
@@ -235,13 +244,6 @@ public abstract class TangoAuxTree {
         TangoNode auxTreeRoot = getAuxRoot(node);
         auxTreeRoot.setIsRoot(false);
         TangoNode cutTree = cut(auxTreeRoot, node.getDepth());
-        
-        
-             TangoNode save = getRoot();
-             this.setTree(cutTree);
-             this.setTree(save);
-             
-           
         TangoNode ret = join(cutTree, getMarketPredecessor(node));
         ret.setIsRoot(true);
         return ret;
@@ -305,19 +307,19 @@ public abstract class TangoAuxTree {
         TangoNode r;
         if(biggerKeyNode == null){
             l = split(tree1, smallerKeyNode.getKey());
-            attachNodes(l, null, tree2);
+            attachNodeRight(l, tree2);
             return concatenate(l);
         }
         else if (smallerKeyNode == null){
             r = split(tree1, biggerKeyNode.getKey());
-            attachNodes(r, tree2, null);  
+            attachNodeLeft(r, tree2);  
             return concatenate(r);
         }
         else{
             l = split(tree1, smallerKeyNode.getKey());
             r = split(l.getRight(), biggerKeyNode.getKey());
-            attachNodes(r, tree2, null);
-            attachNodes(l, null, concatenate(r));
+            attachNodeLeft(r, tree2);
+            attachNodeRight(l, concatenate(r));
             return concatenate(l);
         }
     }
@@ -344,9 +346,9 @@ public abstract class TangoAuxTree {
         else{
              l = split(node, splitterLeft.getKey());
              r = split(l.getRight(), splitterRight.getKey());
-             attachNodes(l, null, r);
+             attachNodeRight(l,  r);
              r.getLeft().setIsRoot(true);
-             attachNodes(l, null, concatenate(r));
+             attachNodeRight(l, concatenate(r));
              return concatenate(l);
         }
   
