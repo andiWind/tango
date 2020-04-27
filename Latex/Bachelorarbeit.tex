@@ -37,10 +37,37 @@ Zusammenfassung
 
 \newpage
 
-\section {Einleitung}
 \section{Fazit}
-\section{Dynamische binäre Suchbäume}
-innerer Knoten\\
+\section {Einleitung}
+Hier werden binäre Suchbäume im Allgemeinem beschrieben. Außerdem werden Begriffe definiert, die in den nachfolgenden Kapiteln verwendet werden.\\
+Ein \textbf{Baum} $T$ ist ein zusammenhängender, gerichteter Graph, der keine Zyklen enthält. In einem nicht leerem Baum gibt es genau einen Knoten ohne eingehende Kante, diesen bezeichnet man als \textbf{Wurzel}. Alle anderen Knoten haben genau eine eingehende Kante. Jeder Knoten $v$ in $T$ ist Wurzel eines \textbf{Teilbaumes} $T(v)$, der $v$ und alle von $v$ erreichbaren Knoten enthält. Knoten ohne ausgehende Kante nennt man \textbf{Blatt}, alle anderen Knoten werden als \textbf{innere Knoten} bezeichnet.  Enthält der Baum eine Kante von Knoten $v_1$ zu Knoten $v_2$ so nennt man $v_2$ ein \textbf{Kind} von $v_1$ und $v_1$ bezeichnet man als den  \textbf{Vater} von $v_2$. Die Wurzel hat also keinen Vater, alle anderen Knoten genau einen.\\
+Bei einem \textbf{binärem Baum} kommt folgende Einschränkung hinzu:  \\
+\textit{Ein Knoten hat maximal zwei Kinder.}\\ 
+Entsprechend ihrer Zeichnung benennt man die Kinder in Binärbäumen als \textbf{linkes Kind} oder \textbf{rechtes Kind}. Sei $v_l$ das linke Kind von $v$, dann bezeichnet man den  
+
+
+\noindent Bei einem \textbf{binären Suchbaum} ist jedem Knoten ein innerhalb der Baumstruktur ein eindeutiger \textbf{Schlüssel} aus einer Schlüsselmenge zugeordnet. Als Schlüsselmenge kann jede Menge $M$ verwendet werden, auf der eine totale Ordnung(noch erklären) definiert ist. Hier und den folgenden Kapiteln wird als Schlüsselmenge immer $\mathbb{N}$ und als Relation die kleiner-gleich-Beziehung verwendet. Damit aus dem binären Baum ein binärer Suchbaum wird, benötigt man noch folgende Eigenschaft:\\
+\textit{Für jeden Knoten im binären Suchbaum muss nun gelten, dass alle Schlüssel die in seinem linken Teilbaum enthaltenen sind kleiner sind als der eigene Schlüssel und alle im rechten Teilbaum enthaltenen größer.} \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/IoSuchbaum"}
+	\caption{Ein binärer Suchbaum }
+	\label{fig:IoSuchbaum}
+\end{figure}
+
+Es gibt eine rekursive Definition für binäre Suchbäume, aus der die gerade geforderten Eigenschaften direkt ersichtlich sind.
+Diese soll auch hier verwendet werden.\\ 
+
+\textbf{Definition} 
+
+
+
+
+\noindent 
+
+
+
 Teilbaum\\
 Höhe Nur eine Wurzel vorhanden, dann Höhe 0\\
 innerer Knoten, auch Wurzel\\

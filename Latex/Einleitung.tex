@@ -1,0 +1,95 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage{float}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{csquotes}
+\usepackage[font=small,labelfont=bf]{caption}
+
+%\usepackage[pages=some]{background} % Draft Wasserzeichen mit Option pages=all sonst pages=some
+
+
+
+\title{Bachelorarbeit}
+\author{
+
+	Andreas Windorfer\\
+}
+\date{\today}
+
+
+\begin {document}
+
+
+\maketitle
+\newpage
+Zusammenfassung
+\newpage
+\tableofcontents
+
+
+\newpage
+
+\section{Fazit}
+\section {Einleitung}
+Hier werden binäre Suchbäume im Allgemeinem beschrieben. Außerdem werden Begriffe definiert, die in den nachfolgenden Kapiteln verwendet werden.\\
+\subsection{Definition binärer Suchbaum}
+Ein \textbf{Baum} $T$ ist ein zusammenhängender, gerichteter Graph, der keine Zyklen enthält. In einem nicht leerem Baum gibt es genau einen Knoten ohne eingehende Kante, diesen bezeichnet man als \textbf{Wurzel}. Alle anderen Knoten haben genau eine eingehende Kante. Jeder Knoten $v$ in $T$ ist Wurzel eines \textbf{Teilbaumes} $T(v)$, der $v$ und alle von $v$ erreichbaren Knoten enthält. Knoten ohne ausgehende Kante nennt man \textbf{Blatt}, alle anderen Knoten werden als \textbf{innere Knoten} bezeichnet.  Enthält der Baum eine Kante von Knoten $v_1$ zu Knoten $v_2$ so nennt man $v_2$ ein \textbf{Kind} von $v_1$ und $v_1$ bezeichnet man als den  \textbf{Vater} von $v_2$. Die Wurzel hat also keinen Vater, alle anderen Knoten genau einen.\\
+Bei einem \textbf{binärem Baum} kommt folgende Einschränkung hinzu:  \\
+\textit{Ein Knoten hat maximal zwei Kinder.}\\ 
+Entsprechend ihrer Zeichnung benennt man die Kinder in Binärbäumen als \textbf{linkes Kind} oder \textbf{rechtes Kind}. Sei $v_l$ das linke Kind von $v$, dann bezeichnet man den  
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/ioSuchbaum"}
+	\caption{Ein binärer Suchbaum }
+	\label{fig:ioSuchbaum}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/nioSuchbaum"}
+	\caption{Kein binärer Suchbaum }
+	\label{fig:nioSuchbaum}
+\end{figure}
+
+\noindent Bei einem \textbf{binären Suchbaum} ist jedem Knoten ein innerhalb der Baumstruktur ein eindeutiger \textbf{Schlüssel} aus einer Schlüsselmenge zugeordnet. Als Schlüsselmenge kann jede Menge $M$ verwendet werden, auf der eine totale Ordnung(noch erklären) definiert ist. Hier und den folgenden Kapiteln wird als Schlüsselmenge immer $\mathbb{N}$ und als Relation die kleiner-gleich-Beziehung verwendet. Damit aus dem binären Baum ein binärer Suchbaum wird, benötigt man noch folgende Eigenschaft:\\
+\textit{Für jeden Knoten im binären Suchbaum muss gelten, dass alle Schlüssel die in seinem linken Teilbaum enthaltenen sind kleiner sind als der eigene Schlüssel und alle im rechten Teilbaum enthaltenen größer.} \\
+
+\noindent Es gibt eine rekursive Definition für binäre Suchbäume, aus der die gerade geforderten Eigenschaften direkt ersichtlich sind.
+Diese soll auch hier verwendet werden.\\ 
+
+
+\newtheorem{defi}{Definition}[section]
+\begin{defi}Binärer Suchbaum\end{defi}
+\begin{enumerate}
+	\item Der leere Baum ohne Knoten ist ein binärer Suchbaum.
+	\item Der Baum mit dem einzigen Knoten $v$ der Schlüssel $k_v$ enthält ist ein binärer Suchbaum.
+	\item Es seien $T_1$ und $T_2$ binäre Suchbäume mit Schlüsselmenge $K_1$ bzw. $K_2$. Sei $i \in \mathbb{N} $, mit $\max{(K_1)} < i < \min{(K_2)}$. Erzeuge einen neuen Knoten $w$ mit Schlüssel $i$. Setze $T_1$ als linken Teilbaum von $w$ und $T_2$ als rechten Teilbaum von $w$. Die so entstandenen Struktur ist ein binärer Suchbaum mit Wurzel $w$. 
+	\item Eine Struktur die sich nicht durch Anwenden von Punkt 1, 2 und 3 erzeugen lässt, ist kein binärer Suchbaum.  
+\end{enumerate}
+	
+\subsection{Einführung weiterer Begriffe zum binären Suchbaum}	
+\noindent Zwei verschiedene Knoten mit dem selben Vater nennt man \textbf{Brüder}. Ein \textbf{Pfad} $P_{jk}$ ist eine Folge von Knoten $v_0$, $v_2$,...,$v_n$, mit $v_0 = v_j$, $v_n = v_k$ und $\forall i \in \{ 1, 2,..., n \} \colon v_{i-1}$ \textit{ist Vater von} $v_i$. $n$ ist die \textbf{Länge des Pfades}. Man teilt den Knoten in einem Suchbaum auch eine \textbf{Tiefe} und eine \textbf{Höhe} zu. Für einen Knoten $v$ gilt, dass die Länge des Pfades von der Wurzel zu ihm seiner Tiefe entspricht. Die Länge des längsten von $v$ aus startenden Pfades ist die Höhe von $v$. Die Höhe der Wurzel entspricht der \textbf{Höhe des Gesamtbaumes}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/suchbaum2_2"}
+	\caption{Ein weiterer binärer Suchbaum }
+	\label{fig:suchbaum2_2}
+\end{figure}
+
+\paragraph{Rotationen}
+Will man aus einem binären Suchbaum $T_2$ aus einem anderen ableiten muss man vorsichtig sein, keine der geforderten Eigenschaften zu verletzen. Rotationen bieten hierzu eine sichere Möglichkeit an. Es wird zwischen Links- und Rechtsrotationen unterschieden. 
+
+
+\newpage
+\bibliography{literaturverzeichnis}
+\bibliographystyle{unsrt}
+
+\end {document}

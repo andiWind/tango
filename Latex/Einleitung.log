@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  27 APR 2020 10:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  27 APR 2020 15:19
 entering extended mode
-**./Bachelorarbeit.tex
-(Bachelorarbeit.tex
+**./Einleitung.tex
+(Einleitung.tex
 LaTeX2e <2019-10-01> patch level 1
 ("C:\Users\andre\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2019/08/27 v1.4j Standard LaTeX document class
@@ -318,8 +318,8 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'german'.
- (Bachelorarbeit.aux)
-\openout1 = `Bachelorarbeit.aux'.
+ (Einleitung.aux)
+\openout1 = `Einleitung.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
@@ -423,263 +423,87 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/andre/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-(Bachelorarbeit.toc)
+(Einleitung.toc)
 \tf@toc=\write3
-\openout3 = `Bachelorarbeit.toc'.
+\openout3 = `Einleitung.toc'.
 
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 49--51
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
 
  []
 
-<Medien/Einleitung/IoSuchbaum.png, id=16, 2035.605pt x 885.90974pt>
-File: Medien/Einleitung/IoSuchbaum.png Graphic file (type png)
-<use Medien/Einleitung/IoSuchbaum.png>
-Package pdftex.def Info: Medien/Einleitung/IoSuchbaum.png  used on input line 5
-4.
+<Medien/Einleitung/ioSuchbaum.png, id=16, 2035.605pt x 885.90974pt>
+File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
+<use Medien/Einleitung/ioSuchbaum.png>
+Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 5
+1.
 (pdftex.def)             Requested size: 390.0pt x 169.73045pt.
+<Medien/Einleitung/nioSuchbaum.png, id=18, 1650.76724pt x 948.54375pt>
+File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
+<use Medien/Einleitung/nioSuchbaum.png>
+Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
+57.
+(pdftex.def)             Requested size: 390.0pt x 224.09464pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--61
+Underfull \hbox (badness 10000) in paragraph at lines 62--64
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--83
-
- []
-
-[4] [5 <./Medien/Einleitung/IoSuchbaum.png>]
-<Medien/RotSchwarzBaum/IOBaum.png, id=34, 3443.6655pt x 1560.42975pt>
-File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/IOBaum.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 1
-02.
-(pdftex.def)             Requested size: 390.0pt x 176.71938pt.
-<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=35, 3443.6655pt x 1560.42975pt>
-File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
-ut line 108.
-(pdftex.def)             Requested size: 390.0pt x 176.71938pt.
-<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=36, 3443.6655pt x 2020.54875pt
->
-File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png  used on i
-nput line 114.
-(pdftex.def)             Requested size: 390.0pt x 228.82806pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+[4 <./Medien/Einleitung/ioSuchbaum.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 65--67
 
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
-
+\c@defi=\count123
+[5 <./Medien/Einleitung/nioSuchbaum.png>]
+Overfull \hbox (3.91624pt too wide) in paragraph at lines 78--78
+[]\T1/cmr/bx/n/14.4 Einf�hrung wei-te-rer Be-grif-fe zum bi-n�ren Such-baum 
  []
 
-[7 <./Medien/RotSchwarzBaum/IOBaum.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 147--149
-
- []
-
-[8 <./Medien/RotSchwarzBaum/NIOBaumZweiRote.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 150--152
-
- []
-
-[9 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
-<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=55, 4609.6215pt x 5658.741pt
->
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
- input line 165.
-(pdftex.def)             Requested size: 390.0pt x 478.69849pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 170--172
-
- []
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 174.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 174
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 174.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 174
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 174.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 174
-.
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 186--188
-
- []
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 190.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 190
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 190.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 190
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 190.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 190
-.
-
-[11]
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 196.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 196
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 196.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 196
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 196.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 196
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 196.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 196
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 196.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 196
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 196.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 196
-.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
-
- []
-
-<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=63, 5134.7835pt x 4559.0325p
-t>
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
- input line 211.
-(pdftex.def)             Requested size: 390.0pt x 346.22572pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=64, 5014.3335pt x 4327.16624
-pt>
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
- input line 218.
-(pdftex.def)             Requested size: 390.0pt x 336.5404pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[12] [13] (Bachelorarbeit.bbl
+<Medien/Einleitung/suchbaum2_2.png, id=36, 1680.2775pt x 1065.38025pt>
+File: Medien/Einleitung/suchbaum2_2.png Graphic file (type png)
+<use Medien/Einleitung/suchbaum2_2.png>
+Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line 
+82.
+(pdftex.def)             Requested size: 390.0pt x 247.27568pt.
+[6 <./Medien/Einleitung/suchbaum2_2.png>] [7] (Einleitung.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [14] [15 <./Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>] [16 <./Medien/Rot
-SchwarzBaum/EinfügenFixUpFall3.png>] [17 <./Medien/RotSchwarzBaum/EinfügenFix
-UpFall4.png>] (Bachelorarbeit.aux) ) 
+) [8] (Einleitung.aux) ) 
 Here is how much of TeX's memory you used:
- 6509 strings out of 492453
- 97834 string characters out of 3120076
- 187400 words of memory out of 3000000
- 10728 multiletter control sequences out of 15000+200000
- 19568 words of font info for 56 fonts, out of 3000000 for 9000
+ 6472 strings out of 492453
+ 96141 string characters out of 3120076
+ 182365 words of memory out of 3000000
+ 10699 multiletter control sequences out of 15000+200000
+ 18520 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,6n,42p,1090b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\andre\AppData\Local\MiKTeX\2.9\f
-onts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andre\AppData\Local\Mi
-KTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppDat
-a\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\an
-dre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C
-:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1
-200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dp
-i600\ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
-ppen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/l
-jfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\
-fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/andre/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andre/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Use
-rs/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12
-.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr6.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/andre/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andr
-e/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti7.pfb><C
-:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmti8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (17 pages, 3300513 bytes).
+ 53i,6n,42p,846b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fon
+ts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKT
+eX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\
+Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andr
+e\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\
+Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx172
+8.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
+00\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljf
+our/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/andre/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andre/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
+rs/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.
+pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Einleitung.pdf (8 pages, 556321 bytes).
 PDF statistics:
- 430 PDF objects out of 1000 (max. 8388607)
+ 344 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -38,25 +38,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                delete(k);   
         }
     }
-    private void buildDebuggTree(){
-        insert(40);
-        insert(43);
-        insert(27);
-        insert(30);
-        insert(20);
-        insert(19);
-        insert(14);
-        insert(7);
-        insert(37);
-        insert(3);
-        insert(78);
-        insert(11);
-       // randomTest();
-        
-    }
-    
-    ///////////////////////////////////////////////////////////////////////////
-    
+   
     @Override
     public String getName(){
         return "RED-BLACK";

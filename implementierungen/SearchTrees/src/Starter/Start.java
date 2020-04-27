@@ -45,7 +45,18 @@ public class Start {
         keys1.add(20);
         keys1.add(21);
         keys1.add(22);
-   
+        keys1.add(23);
+        keys1.add(24);
+        keys1.add(25);
+        keys1.add(26);
+        keys1.add(27);
+        keys1.add(28);
+        keys1.add(29);
+        keys1.add(30);
+        keys1.add(31);
+        keys1.add(32);
+        
+        
         List<Integer> keys2 = new LinkedList();
         keys2.add(23);
         keys2.add(24);
@@ -88,7 +99,7 @@ public class Start {
             t.search(14);
             t.search(8);
             t.search(5);
-              t.search(10);
+            t.search(10);
             t.search(6);
             t.search(3);
             t.search(1);
