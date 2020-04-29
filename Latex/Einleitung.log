@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  27 APR 2020 15:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  29 APR 2020 14:24
 entering extended mode
 **./Einleitung.tex
 (Einleitung.tex
@@ -432,18 +432,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--43
 
  []
 
-<Medien/Einleitung/ioSuchbaum.png, id=16, 2035.605pt x 885.90974pt>
+<Medien/Einleitung/ioSuchbaum.png, id=16, 2849.847pt x 1239.4305pt>
 File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/ioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 5
 1.
-(pdftex.def)             Requested size: 390.0pt x 169.73045pt.
-<Medien/Einleitung/nioSuchbaum.png, id=18, 1650.76724pt x 948.54375pt>
+(pdftex.def)             Requested size: 390.0pt x 169.60426pt.
+<Medien/Einleitung/nioSuchbaum.png, id=18, 2310.231pt x 1327.359pt>
 File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/nioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
 57.
-(pdftex.def)             Requested size: 390.0pt x 224.09464pt.
+(pdftex.def)             Requested size: 390.0pt x 224.06824pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -459,51 +459,132 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--67
 
 \c@defi=\count123
 [5 <./Medien/Einleitung/nioSuchbaum.png>]
-Overfull \hbox (3.91624pt too wide) in paragraph at lines 78--78
-[]\T1/cmr/bx/n/14.4 Einführung wei-te-rer Be-grif-fe zum bi-nären Such-baum 
+Overfull \hbox (15.74591pt too wide) in paragraph at lines 79--79
+[]\T1/cmr/bx/n/14.4 Weitere Be-grif-fe und Ei-gen-schaf-ten zum bi-nären Such-
  []
 
-<Medien/Einleitung/suchbaum2_2.png, id=36, 1680.2775pt x 1065.38025pt>
+<Medien/Einleitung/suchbaum2_2.png, id=36, 2351.78625pt x 1490.56876pt>
 File: Medien/Einleitung/suchbaum2_2.png Graphic file (type png)
 <use Medien/Einleitung/suchbaum2_2.png>
 Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line 
-82.
-(pdftex.def)             Requested size: 390.0pt x 247.27568pt.
-[6 <./Medien/Einleitung/suchbaum2_2.png>] [7] (Einleitung.bbl
+83.
+(pdftex.def)             Requested size: 390.0pt x 247.18416pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/Einleitung/linksRechts.png, id=37, 3468.96pt x 1233.408pt>
+File: Medien/Einleitung/linksRechts.png Graphic file (type png)
+<use Medien/Einleitung/linksRechts.png>
+Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
+92.
+(pdftex.def)             Requested size: 390.0pt x 138.6489pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+[6] [7 <./Medien/Einleitung/suchbaum2_2.png>]
+<Medien/Einleitung/VorgÃ¤ngerNachfolger.png, id=49, 2439.71475pt x 1502.61375pt
+>
+File: Medien/Einleitung/VorgÃ¤ngerNachfolger.png Graphic file (type png)
+<use Medien/Einleitung/VorgÃ¤ngerNachfolger.png>
+Package pdftex.def Info: Medien/Einleitung/VorgÃ¤ngerNachfolger.png  used on in
+put line 113.
+(pdftex.def)             Requested size: 390.0pt x 240.19383pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
+
+ []
+
+<Medien/Einleitung/Linksrotation.png, id=50, 3844.764pt x 1209.92026pt>
+File: Medien/Einleitung/Linksrotation.png Graphic file (type png)
+<use Medien/Einleitung/Linksrotation.png>
+Package pdftex.def Info: Medien/Einleitung/Linksrotation.png  used on input lin
+e 127.
+(pdftex.def)             Requested size: 467.99881pt x 147.27036pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 127--128
+ [][] 
+ []
+
+<Medien/Einleitung/Rechtsrotation.png, id=51, 4064.58525pt x 1239.4305pt>
+File: Medien/Einleitung/Rechtsrotation.png Graphic file (type png)
+<use Medien/Einleitung/Rechtsrotation.png>
+Package pdftex.def Info: Medien/Einleitung/Rechtsrotation.png  used on input li
+ne 133.
+(pdftex.def)             Requested size: 467.99881pt x 142.69226pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 133--134
+ [][] 
+ []
+
+<Medien/Einleitung/LinksRechtsRotation.png, id=52, 4079.03925pt x 1239.4305pt>
+File: Medien/Einleitung/LinksRechtsRotation.png Graphic file (type png)
+<use Medien/Einleitung/LinksRechtsRotation.png>
+Package pdftex.def Info: Medien/Einleitung/LinksRechtsRotation.png  used on inp
+ut line 139.
+(pdftex.def)             Requested size: 467.99881pt x 142.20055pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 139--140
+ [][] 
+ []
+
+[8 <./Medien/Einleitung/linksRechts.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+(Einleitung.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [8] (Einleitung.aux) ) 
+) [9 <./Medien/Einleitung/VorgÃ¤ngerNachfolger.png>] [10 <./Medien/Einleitung/L
+inksrotation.png> <./Medien/Einleitung/Rechtsrotation.png>] [11 <./Medien/Einle
+itung/LinksRechtsRotation.png>] (Einleitung.aux) ) 
 Here is how much of TeX's memory you used:
- 6472 strings out of 492453
- 96141 string characters out of 3120076
- 182365 words of memory out of 3000000
- 10699 multiletter control sequences out of 15000+200000
- 18520 words of font info for 53 fonts, out of 3000000 for 9000
+ 6523 strings out of 492453
+ 97838 string characters out of 3120076
+ 187408 words of memory out of 3000000
+ 10742 multiletter control sequences out of 15000+200000
+ 19568 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,6n,42p,846b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfo
-ur/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fon
-ts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKT
-eX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\
-Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andr
-e\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\
-Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx172
-8.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
-00\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
-en/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljf
-our/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/andre/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andre/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
-rs/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.
-pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Einleitung.pdf (8 pages, 556321 bytes).
+ 53i,6n,42p,1421b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\andre\AppData\Loca
+l\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\Ap
+pData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\User
+s\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk
+> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\e
+cbx1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/e
+c/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/
+jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/
+pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\
+2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Loc
+al\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/andre/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/U
+sers/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
+i8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmr12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/andre/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/a
+ndre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm
+10.pfb>
+Output written on Einleitung.pdf (11 pages, 2182706 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
+ 404 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

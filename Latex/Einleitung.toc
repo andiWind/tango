@@ -2,5 +2,7 @@
 \contentsline {section}{\numberline {1}Fazit}{4}% 
 \contentsline {section}{\numberline {2}Einleitung}{4}% 
 \contentsline {subsection}{\numberline {2.1}Definition binärer Suchbaum}{4}% 
-\contentsline {subsection}{\numberline {2.2}Einführung weiterer Begriffe zum binären Suchbaum}{6}% 
-\contentsline {paragraph}{Rotationen}{7}% 
+\contentsline {subsection}{\numberline {2.2}Weitere Begriffe und Eigenschaften zum binären Suchbaum}{6}% 
+\contentsline {paragraph}{Verändern eines BST durch Rotationen.}{8}% 
+\contentsline {paragraph}{Suchen im Baum.}{9}% 
+\contentsline {paragraph}{Unterschiedliche Baumhöhen.}{9}% 
