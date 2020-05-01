@@ -59,8 +59,9 @@ Entsprechend ihrer Zeichnung benennt man die Kinder in Binärbäumen als \textbf
 	\label{fig:nioSuchbaum}
 \end{figure}
 
-\noindent Bei einem \textbf{binären Suchbaum} ist jedem Knoten ein innerhalb der Baumstruktur ein eindeutiger \textbf{Schlüssel} aus einem \textbf{Universum} zugeordnet. Als Universum kann jede Menge $M$ verwendet werden, auf der eine totale Ordnung(noch erklären) definiert ist. Hier und den folgenden Kapiteln wird als Universum immer $\mathbb{N}$ und als Relation die kleiner-gleich-Beziehung verwendet. Die in einem binärem Suchbaum enthaltenen Schlüssel bezeichnen wir als seine \textbf{Schlüsselmenge}.  Damit aus dem binären Baum ein binärer Suchbaum wird, benötigt man noch folgende Eigenschaft:\\
+\noindent Bei einem \textbf{binären Suchbaum} ist jedem Knoten ein innerhalb der Baumstruktur ein eindeutiger \textbf{Schlüssel} aus einem \textbf{Universum} zugeordnet. Als Universum kann jede Menge $M$ verwendet werden, auf der eine totale Ordnung definiert ist. Auf totale Ordnungen wird in der dieser Einleitung noch eingegangen. Hier und den folgenden Kapiteln wird als Universum immer $\mathbb{N}$ verwendet. Die in einem binärem Suchbaum enthaltenen Schlüssel bezeichnen wir als seine \textbf{Schlüsselmenge}.  Damit aus dem binären Baum ein binärer Suchbaum wird, benötigt man noch folgende Eigenschaft:\\
 \textit{Für jeden Knoten im binären Suchbaum muss gelten, dass alle Schlüssel die in seinem linken Teilbaum enthaltenen sind kleiner sind als der eigene Schlüssel und alle im rechten Teilbaum enthaltenen größer.} \\
+
 
 \noindent Es gibt eine rekursive Definition für binäre Suchbäume, aus der die gerade geforderten Eigenschaften direkt ersichtlich sind.
 Diese soll auch hier verwendet werden.\\ 
@@ -114,6 +115,22 @@ Da dieser Schlüssel bei der Inorder-Traversierung direkt nach $v$ ausgegeben wi
 	\caption{Darstellung von Vorgänger und Nachfolger. }
 	\label{fig:VorgängerNachfolger}
 \end{figure}
+\paragraph{Total geordnete Menge} 
+Eine Menge $M$ wird als \textbf{total geordnet} bezeichnet wenn auf ihr eine zweistellige Relation $\leq$ definiert ist, die folgende Eigenschaften erfüllt.\\
+Für alle $a$,$b$,$c$ $\in M$ gilt:
+\begin{align*}
+\text{1. } & (a,a) \in R  &\text{  (reflexiv)}\\
+\text{2. } & (a,b) \in R  \land  (a,b) \in R \Rightarrow a = b  &\text{  (antisymmetrisch)}\\
+\text{3. } & (a,b) \in R  \land  (b,c) \in R \Rightarrow  (a,c) \in R  &\text{  (transitiv)}\\
+\text{4. } & (a,b) \notin R \Rightarrow  (b,a) \in R   &\text{  (total)}\\
+\end{align*}
+Die Eigenschaften 1,2 und 4 werden benötigt um für zwei beliebige Elemente aus der Menge feststellen zu können ob sie gleich sind. Oder bei Ungleichheit, welches Element weiter Links bzw. Rechts im BST liegen muss. Dafür wird z.B getestet ob die Elemente $(a,b)$ und $(b, a)$ in der Relation liegen. Eigenschaft 3 ist notwendig, denn liegt $b$ weiter rechts im BST als $a$ und $c$ liegt weiter rechts als $b$, dann liegt $c$ natürlich auch weiter rechts als $a$. \\
+Die hier verwendete "Kleiner-Gleich-Beziehung" auf den natürlichen Zahlen erfüllt alle Eigenschaften.
+\\
+\\
+
+
+
 
 \paragraph{Verändern eines BST durch Rotationen.}
 Wird ein BST $T_1$ durch eine Veränderung in einen BST $T_2$ überführt, kann es passieren dass sich Eigenschaften eines Knoten ändern. Um nicht immer erwähnen zu müssen auf welchen BST sich eine Aussage bezieht, wird es ab jetzt durchgängig so sein, dass sich ein Variablenname ohne angefügten Apostroph auf $T_1$ bezieht. Der gleiche Variablenname mit angefügtem Apostroph bezieht sich dann auf den Knoten in $T_2$, mit dem gleichen Schlüssel. $x$ bezieht sich beispielsweise auf einen Knoten in $T_1$ mit Schlüssel $k$. $x'$ bezieht sich dann auf den Knoten mit Schlüssel $k$ in $T_2$. \\
@@ -192,19 +209,10 @@ Da die Höhe $h$ eines BST $T$ mit $n$ Knoten entscheidend für die Laufzeit der
 	&2^{h - 1} \leq n < 2^h\\
 	\Rightarrow & h =  \lfloor \log_2{(n)} \rfloor
 	\end{align*}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 \end{proof}
 
+\noindent 
 
 
 \bibliography{literaturverzeichnis}

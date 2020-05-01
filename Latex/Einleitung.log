@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  1 MAY 2020 14:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  1 MAY 2020 17:25
 entering extended mode
 **./Einleitung.tex
 (Einleitung.tex
@@ -456,14 +456,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--64
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--67
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
 [4]
 \c@defi=\count123
 
-Overfull \hbox (15.74591pt too wide) in paragraph at lines 79--79
+Overfull \hbox (15.74591pt too wide) in paragraph at lines 80--80
 []\T1/cmr/bx/n/14.4 Weitere Be-grif-fe und Ei-gen-schaf-ten zum bi-n�ren Such-
  []
 
@@ -471,7 +471,7 @@ Overfull \hbox (15.74591pt too wide) in paragraph at lines 79--79
 File: Medien/Einleitung/suchbaum2_2.png Graphic file (type png)
 <use Medien/Einleitung/suchbaum2_2.png>
 Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line 
-83.
+84.
 (pdftex.def)             Requested size: 390.0pt x 247.18416pt.
 [5 <./Medien/Einleitung/ioSuchbaum.png>]
 
@@ -482,10 +482,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/Einleitung/linksRechts.png Graphic file (type png)
 <use Medien/Einleitung/linksRechts.png>
 Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
-92.
+93.
 (pdftex.def)             Requested size: 390.0pt x 138.6489pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--97
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
@@ -495,50 +495,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 96--97
 File: Medien/Einleitung/VorgängerNachfolger.png Graphic file (type png)
 <use Medien/Einleitung/VorgängerNachfolger.png>
 Package pdftex.def Info: Medien/Einleitung/VorgängerNachfolger.png  used on in
-put line 113.
+put line 114.
 (pdftex.def)             Requested size: 390.0pt x 240.19383pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
 
  []
 
-<Medien/Einleitung/Linksrotation.png, id=52, 3844.764pt x 1209.92026pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+
+ []
+
+[9 <./Medien/Einleitung/VorgängerNachfolger.png>]
+<Medien/Einleitung/Linksrotation.png, id=59, 3844.764pt x 1209.92026pt>
 File: Medien/Einleitung/Linksrotation.png Graphic file (type png)
 <use Medien/Einleitung/Linksrotation.png>
 Package pdftex.def Info: Medien/Einleitung/Linksrotation.png  used on input lin
-e 127.
+e 144.
 (pdftex.def)             Requested size: 467.99881pt x 147.27036pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 127--128
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 144--145
  [][] 
  []
 
-<Medien/Einleitung/Rechtsrotation.png, id=53, 4064.58525pt x 1239.4305pt>
+<Medien/Einleitung/Rechtsrotation.png, id=60, 4064.58525pt x 1239.4305pt>
 File: Medien/Einleitung/Rechtsrotation.png Graphic file (type png)
 <use Medien/Einleitung/Rechtsrotation.png>
 Package pdftex.def Info: Medien/Einleitung/Rechtsrotation.png  used on input li
-ne 133.
+ne 150.
 (pdftex.def)             Requested size: 467.99881pt x 142.69226pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 133--134
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 150--151
  [][] 
  []
 
-<Medien/Einleitung/LinksRechtsRotation.png, id=54, 4079.03925pt x 1239.4305pt>
+<Medien/Einleitung/LinksRechtsRotation.png, id=61, 4079.03925pt x 1239.4305pt>
 File: Medien/Einleitung/LinksRechtsRotation.png Graphic file (type png)
 <use Medien/Einleitung/LinksRechtsRotation.png>
 Package pdftex.def Info: Medien/Einleitung/LinksRechtsRotation.png  used on inp
-ut line 139.
+ut line 156.
 (pdftex.def)             Requested size: 467.99881pt x 142.20055pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 139--140
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 156--157
  [][] 
  []
 
-[8] [9 <./Medien/Einleitung/VorgängerNachfolger.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -546,40 +562,48 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
 <use Medien/Einleitung/SuchenEinfügen.png>
 Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
-ine 149.
+ine 166.
 (pdftex.def)             Requested size: 467.99881pt x 146.5079pt.
-
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 149--150
- [][] 
- []
-
-[10 <./Medien/Einleitung/Linksrotation.png> <./Medien/Einleitung/Rechtsrotation
-.png>] [11 <./Medien/Einleitung/LinksRechtsRotation.png> <./Medien/Einleitung/S
-uchenEinfügen.png>]
-<Medien/Einleitung/löschen.png, id=73, 4020.621pt x 1205.10225pt>
-File: Medien/Einleitung/löschen.png Graphic file (type png)
-<use Medien/Einleitung/löschen.png>
-Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 166
-.
-(pdftex.def)             Requested size: 467.99881pt x 140.26637pt.
 
 Overfull \hbox (77.99881pt too wide) in paragraph at lines 166--167
  [][] 
  []
 
+[10]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11 <./Medien/Einleitung/Linksrotation.png> <./Medien/Einleitung/Rechtsrotation
+.png>]
+<Medien/Einleitung/löschen.png, id=71, 4020.621pt x 1205.10225pt>
+File: Medien/Einleitung/löschen.png Graphic file (type png)
+<use Medien/Einleitung/löschen.png>
+Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 183
+.
+(pdftex.def)             Requested size: 467.99881pt x 140.26637pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 183--184
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12 <./Medien/Einleitung/LinksRechtsRotation.png> <./Medien/Einleitung/SuchenEi
+nfügen.png>]
 \c@Lemma=\count124
-[12 <./Medien/Einleitung/löschen.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 181--184
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--191
+[13 <./Medien/Einleitung/löschen.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 206--208
 
  []
 
@@ -587,15 +611,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 189--191
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [13] (Einleitung.aux) ) 
+) [14] (Einleitung.aux) ) 
 Here is how much of TeX's memory you used:
- 6547 strings out of 492453
- 98466 string characters out of 3120076
- 188427 words of memory out of 3000000
- 10764 multiletter control sequences out of 15000+200000
- 19568 words of font info for 56 fonts, out of 3000000 for 9000
+ 6557 strings out of 492453
+ 98582 string characters out of 3120076
+ 185427 words of memory out of 3000000
+ 10772 multiletter control sequences out of 15000+200000
+ 21098 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,8n,42p,1421b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,14n,42p,1421b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljf
 our/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fo
 nts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiK
@@ -619,9 +643,9 @@ ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData
 /Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/a
 ndre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on Einleitung.pdf (13 pages, 2706309 bytes).
+Output written on Einleitung.pdf (14 pages, 2709811 bytes).
 PDF statistics:
- 434 PDF objects out of 1000 (max. 8388607)
+ 440 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
