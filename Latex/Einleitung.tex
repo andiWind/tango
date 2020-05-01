@@ -174,19 +174,37 @@ Auch beim \textbf{Löschen} eines Schlüssels $k$, führt man zunächst eine Suc
 \paragraph{Unterschiedliche Baumhöhen.} 
 Da die Höhe $h$ eines BST $T$ mit $n$ Knoten entscheidend für die Laufzeit der vorgestellten Operationen ist, wird hier auf diese eingegangen. Die maximale Höhe $n$ erreicht ein BST wenn es ein Blatt im BST gibt und jeder andere Knoten ein Halbblatt ist. Die Baumstruktur geht in diesem Fall über zu einer Listenstruktur über, dies wird als \textbf{entarten} bezeichnet. Minimal wird $h$ wenn $T$ \textbf{vollständig balanciert} ist. Das ist der Fall wenn alle Ebenen bis auf die Unterste vollständig besetzt sind.
 \newtheorem{Lemma}{Lemma}[section]
-\begin{Lemma} Die Höhe eines vollständig balancierten BST $T$ mit $n$ Knoten ist $ \lceil\log_2{(n + 1)} \rceil - 1$. 
+\begin{Lemma} Die Höhe eines vollständig balancierten BST $T$ mit $n$ Knoten ist $ \lfloor \log_2{(n)} \rfloor + 1 $. 
 \end{Lemma}
 \begin{proof}
+	
+	Es sei $\mathit{N(h)}$ die maximale Anzahl an Knoten in einem vollständig balancierten BST mit Höhe $h$.
+	$\mathit{N(h)}$  berechnet sich mit\\
+	 $\mathit{N(h)} = \sum\limits_{i=0}^{h-1} 2^i = 2^h - 1$ \\
+										 
+\noindent	$h$ ist minimal wenn gilt:\\
+	\begin{align*}
+	\mathit{N(h-1)} &< n \leq \mathit{N(h)}\\
+	\Leftrightarrow \mathit{N(h-1)} + 1 &\leq n < \mathit{N(h)} + 1\\
+	\end{align*}
+	Einsetzen:\\
+	\begin{align*}
+	&2^{h - 1} \leq n < 2^h\\
+	\Rightarrow & h =  \lfloor \log_2{(n)} \rfloor
+	\end{align*}
 
-Bei einem vollständig balancierten BST mit Höhe $h$ sind die oberen $h - 1$ Ebenen vollständig besetzt. Die $h$-te Ebene enthält mindestens einen Knoten, maximal ist auch sie voll besetzt.
-Zuerst wird gezeigt, dass  $\lceil\log_2{(n + 1)}\rceil - 2$ Ebenen nicht ausreichen. \\
-$\sum \limits_{i=0}^{\lceil\log_2{(n + 1)}\rceil - 2} 2^i = 2^{\lceil\log_2{(n + 1)}\rceil - 1} - 1 \leq 2^{(\log_2{(n + 1)}) - 1} - 1$ \\
-Nun wird gezeigt das $ \lceil\log_2{n} \rceil - 1$ Ebenen ausreichend sind.\\
-$\sum \limits_{i=0}^{\lceil\log_2{n}\rceil - 1} 2^i =  2^{\lceil\log_2{n}\rceil} - 1 \geq 2^{\log_2{n}} - 1 $
-
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 \end{proof}
+
 
 
 \bibliography{literaturverzeichnis}
