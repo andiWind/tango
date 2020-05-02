@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  2 MAY 2020 14:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  2 MAY 2020 20:53
 entering extended mode
 **./RotSchwarzBaum.tex
 (RotSchwarzBaum.tex
@@ -462,12 +462,7 @@ LaTeX Warning: Reference `BST Operationen' on page 5 undefined on input line 78
 .
 
 [5 <./Medien/RotSchwarzBaum/IOBaum.png> <./Medien/RotSchwarzBaum/NIOBaumZweiRot
-e.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
-
- []
-
-[6 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
+e.png>] [6 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
@@ -477,12 +472,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--97
 
  []
 
-[7]
+
 Underfull \hbox (badness 10000) in paragraph at lines 107--109
 
  []
 
-
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 110--112
 
  []
@@ -492,109 +487,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--112
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
- input line 125.
+ input line 126.
 (pdftex.def)             Requested size: 390.0pt x 478.69849pt.
-[8]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--132
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
 
  []
 
+[8]
 
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 134.
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 135.
 
 
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 134
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 135
 .
 
 
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 134.
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 135.
 
 
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 134
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 135
 .
 
 
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 134.
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 135.
 
 
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 134
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 135
 .
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 146--148
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
 
  []
 
 
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 150.
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
 
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 150
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 150.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 150
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 150.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 150
-.
+ []
 
 [10]
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
-.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+Underfull \hbox (badness 10000) in paragraph at lines 162--166
 
  []
 
@@ -618,12 +554,12 @@ Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11] [12] (RotSchwarzBaum.bbl
+[11] (RotSchwarzBaum.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [13] [14 <./Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>] [15 <./Medien/Rot
-SchwarzBaum/EinfügenFixUpFall3.png>] [16 <./Medien/RotSchwarzBaum/EinfügenFix
+) [12] [13 <./Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>] [14 <./Medien/Rot
+SchwarzBaum/EinfügenFixUpFall3.png>] [15 <./Medien/RotSchwarzBaum/EinfügenFix
 UpFall4.png>] (RotSchwarzBaum.aux)
 
 LaTeX Warning: There were undefined references.
@@ -632,11 +568,11 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  6500 strings out of 492453
  97554 string characters out of 3120076
- 186392 words of memory out of 3000000
+ 185392 words of memory out of 3000000
  10721 multiletter control sequences out of 15000+200000
  19568 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,6n,42p,1178b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,6n,42p,1270b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -659,9 +595,9 @@ onts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/andre/AppData/Local/Progra
 ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on RotSchwarzBaum.pdf (16 pages, 3042032 bytes).
+Output written on RotSchwarzBaum.pdf (15 pages, 3040294 bytes).
 PDF statistics:
- 386 PDF objects out of 1000 (max. 8388607)
+ 382 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

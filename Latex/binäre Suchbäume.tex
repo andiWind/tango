@@ -161,23 +161,23 @@ Sei $x$ der Knoten auf dem eine Linksrotation durchgeführt wird. Sei $z$ der Va
 \paragraph{Grundoperationen Suchen, Einfügen und Löschen} \label{BST Operationen}
 Hier geht es nur um die Standardvariante eines BST. Später werden Varianten gezeigt die von diesem Verhalten zum Teil deutlich abweichen. Es sei ein BST $T$ gegeben.\\
   Die Operation \textbf{Suchen(Schlüssel $k$)} gibt den Knoten aus dem BST zurück, dessen Schlüssel mit $k$ übereinstimmt. Die Operation startet bei der Wurzel und vergleicht den darin enthaltenen Schlüssel mit dem Gesuchten. Ist der gesuchte Schlüssel kleiner, muss er sich im linken Teilbaum des betrachtetem Knoten befinden und die Suche wird bei dessen Wurzel fortgesetzt. Ist der Schlüssel größer, muss er sich im rechten Teilbaum befinden und die Suche wird bei dessen Wurzel fortgesetzt. Dieses Verhalten iteriert man solange bis der gesuchte Schlüssel gefunden ist, oder der Teilbaum bei dem die Suche fortgesetzt werden müsste, leer ist. Ist das Letztere der Fall, ist der gesuchte Schlüssel im Baum nicht vorhanden und es wird kein Knoten zurückgegeben. In keinem Fall kommt es zu einer Veränderung des BST.\\
-  Beim \textbf{Einfügen(Schlüssel $k$)} wird zunächst eine Suche nach $k$ ausgeführt. Findet man den Schlüssel wird das Einfügen abgebrochen und der BST bleibt unverändert. Wurde ein leerer Teilbaum $T_2$ erreicht, wird ein neu erzeugter Knoten mit Schlüssel $k$ an der Position von $T_2$ eingefügt.  \\
+  Beim \textbf{Einfügen(Schlüssel $k$)} wird zunächst wie beim Suchen nach $k$ verhalten. Findet man den Schlüssel wird das Einfügen abgebrochen und der BST bleibt unverändert. Wird ein leerer Teilbaum $T_2$ erreicht, wird ein neu erzeugter Knoten mit Schlüssel $k$ an der Position von $T_2$ eingefügt.  \\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/SuchenEinfügen"}
 	\caption{Links zeigt eine Suche nach dem Schlüssel 15. Rechts das Einfügen des Schlüssels 13}
 	\label{fig:SuchenEinfügen}
 \end{figure}
-
-Auch beim \textbf{Löschen(Schlüssel $k$)} wird zunächst eine Suche nach diesem ausgeführt. Ist $k$ im BST nicht vorhanden wird abgebrochen und der BST bleibt unverändert. Ansonsten werden drei Fälle unterschieden.
+\noindent Auch beim \textbf{Löschen(Schlüssel $k$)} wird sich zunächst wie beim Suchen verhalten. Ist $k$ im BST nicht vorhanden wird abgebrochen und der BST bleibt unverändert. Ansonsten werden drei Fälle unterschieden.
+Sei $v$ der Knoten mit Schlüssel $k$.
 \begin{enumerate}
 	\item $v$ ist ein Blatt: \\
 	$v$ kann ohne weiteres aus dem BST entfernt werden.
 	\item $v$ hat genau ein Kind $c$:\\
-     Ist $v$ die Wurzel kann er ohne weiteres entfernt werden. Ansonsten ist $v$ entweder ein linkes oder ein rechtes Kind eines Knoten $w$. $c$ nimmt nun den Platz von $v$ im BST ein. Das bedeutet, dass die Kante von $w$ nach $v$ entfernt wird. Außerdem wird eine Kante von $w$ nach $c$ so eingefügt, dass $c$ wie zuvor $v$ das linke bzw. rechte Kind von $w$ wird. 
+     Ist $v$ die Wurzel kann er entfernt und $c$ wird zur neuen Wurzel. Ansonsten ist $v$ entweder ein linkes oder ein rechtes Kind eines Knoten $w$. $c$ nimmt nun den Platz von $v$ im BST ein. Das bedeutet, dass die Kante von $w$ nach $v$ entfernt wird. Außerdem wird eine Kante von $w$ nach $c$ so eingefügt, dass $c$ wie zuvor $v$ das linke bzw. rechte Kind von $w$ wird. 
 	\item $v$ hat zwei Kinder:\\
 	Sei $T_l$ der linke Teilbaum von $v$ und $T_r$ der Rechte.
-	Sei $z$ der Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$. Als Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$, kann $w$ kein linkes Kind haben. Ist $z$ ein Blatt wird es vom Baum abgehängt. Hat $z$ ein rechtes Kind $z_r$, so nimmt dieses, analog zur Beschreibung im Fall 2, den Platz von $z$ ein. Die ausgehende Kante von $z$ wird noch entfernt, so dass $z$ ein Knoten ohne verbliebene Kanten ist. $z$ nimmt nun den Platz von $v$, $T_l$ wird links an $z$ angefügt und $T_r$ rechts. 
+	Sei $z$ der Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$. Als Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$, kann $w$ kein linkes Kind haben. Ist $z$ ein Blatt wird es vom Baum abgehängt. Hat $z$ ein rechtes Kind $z_r$, so nimmt dieses, analog zur Beschreibung im Fall 2, den Platz von $z$ ein. Die ausgehende Kante von $z$ wird noch entfernt, so dass $z$ ein Knoten ohne verbliebene Kanten ist. $z$ nimmt nun den Platz von $v$ ein, $T_l$ wird links an $z$ angefügt und $T_r$ rechts. War $v$ zu Beginn die Wurzel, so wird $z$ zur neuen Wurzel. 
 \end{enumerate} 
 \begin{figure}[h]
 	\centering
