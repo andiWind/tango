@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  1 MAY 2020 17:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  2 MAY 2020 14:02
 entering extended mode
-**./Einleitung.tex
-(Einleitung.tex
+**./RotSchwarzBaum.tex
+(RotSchwarzBaum.tex
 LaTeX2e <2019-10-01> patch level 1
 ("C:\Users\andre\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2019/08/27 v1.4j Standard LaTeX document class
@@ -318,8 +318,8 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'german'.
- (Einleitung.aux)
-\openout1 = `Einleitung.aux'.
+ (RotSchwarzBaum.aux)
+\openout1 = `RotSchwarzBaum.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
@@ -423,229 +423,245 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/andre/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-(Einleitung.toc)
+(RotSchwarzBaum.toc)
 \tf@toc=\write3
-\openout3 = `Einleitung.toc'.
+\openout3 = `RotSchwarzBaum.toc'.
 
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
-
- []
-
-<Medien/Einleitung/ioSuchbaum.png, id=16, 3054.612pt x 1268.94075pt>
-File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
-<use Medien/Einleitung/ioSuchbaum.png>
-Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 5
-1.
-(pdftex.def)             Requested size: 390.0pt x 162.00563pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/Einleitung/nioSuchbaum.png, id=18, 2310.231pt x 1327.359pt>
-File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
-<use Medien/Einleitung/nioSuchbaum.png>
-Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
-57.
-(pdftex.def)             Requested size: 390.0pt x 224.06824pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--64
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--68
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
 [4]
-\c@defi=\count123
+<Medien/RotSchwarzBaum/IOBaum.png, id=27, 2527.64325pt x 1209.92026pt>
+File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/IOBaum.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 6
+0.
+(pdftex.def)             Requested size: 390.0pt x 186.66798pt.
+<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=29, 2527.64325pt x 1209.92026pt>
 
-Overfull \hbox (15.74591pt too wide) in paragraph at lines 80--80
-[]\T1/cmr/bx/n/14.4 Weitere Be-grif-fe und Ei-gen-schaf-ten zum bi-n�ren Such-
- []
+File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
+ut line 66.
+(pdftex.def)             Requested size: 390.0pt x 186.66798pt.
+<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=30, 2527.64325pt x 1532.124pt>
 
-<Medien/Einleitung/suchbaum2_2.png, id=28, 2351.78625pt x 1490.56876pt>
-File: Medien/Einleitung/suchbaum2_2.png Graphic file (type png)
-<use Medien/Einleitung/suchbaum2_2.png>
-Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line 
-84.
-(pdftex.def)             Requested size: 390.0pt x 247.18416pt.
-[5 <./Medien/Einleitung/ioSuchbaum.png>]
+File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png  used on i
+nput line 72.
+(pdftex.def)             Requested size: 390.0pt x 236.37799pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6 <./Medien/Einleitung/nioSuchbaum.png>]
-<Medien/Einleitung/linksRechts.png, id=44, 3468.96pt x 1233.408pt>
-File: Medien/Einleitung/linksRechts.png Graphic file (type png)
-<use Medien/Einleitung/linksRechts.png>
-Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
-93.
-(pdftex.def)             Requested size: 390.0pt x 138.6489pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
+LaTeX Warning: Reference `BST Operationen' on page 5 undefined on input line 78
+.
+
+[5 <./Medien/RotSchwarzBaum/IOBaum.png> <./Medien/RotSchwarzBaum/NIOBaumZweiRot
+e.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-[7 <./Medien/Einleitung/suchbaum2_2.png> <./Medien/Einleitung/linksRechts.png>]
-<Medien/Einleitung/VorgängerNachfolger.png, id=51, 2439.71475pt x 1502.61375pt
+[6 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
+
+ []
+
+<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=46, 4609.6215pt x 5658.741pt
 >
-File: Medien/Einleitung/VorgängerNachfolger.png Graphic file (type png)
-<use Medien/Einleitung/VorgängerNachfolger.png>
-Package pdftex.def Info: Medien/Einleitung/VorgängerNachfolger.png  used on in
-put line 114.
-(pdftex.def)             Requested size: 390.0pt x 240.19383pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
+ input line 125.
+(pdftex.def)             Requested size: 390.0pt x 478.69849pt.
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 126--131
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--131
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
-
- []
-
-[9 <./Medien/Einleitung/VorgängerNachfolger.png>]
-<Medien/Einleitung/Linksrotation.png, id=59, 3844.764pt x 1209.92026pt>
-File: Medien/Einleitung/Linksrotation.png Graphic file (type png)
-<use Medien/Einleitung/Linksrotation.png>
-Package pdftex.def Info: Medien/Einleitung/Linksrotation.png  used on input lin
-e 144.
-(pdftex.def)             Requested size: 467.99881pt x 147.27036pt.
-
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 144--145
- [][] 
- []
-
-<Medien/Einleitung/Rechtsrotation.png, id=60, 4064.58525pt x 1239.4305pt>
-File: Medien/Einleitung/Rechtsrotation.png Graphic file (type png)
-<use Medien/Einleitung/Rechtsrotation.png>
-Package pdftex.def Info: Medien/Einleitung/Rechtsrotation.png  used on input li
-ne 150.
-(pdftex.def)             Requested size: 467.99881pt x 142.69226pt.
-
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 150--151
- [][] 
- []
-
-<Medien/Einleitung/LinksRechtsRotation.png, id=61, 4079.03925pt x 1239.4305pt>
-File: Medien/Einleitung/LinksRechtsRotation.png Graphic file (type png)
-<use Medien/Einleitung/LinksRechtsRotation.png>
-Package pdftex.def Info: Medien/Einleitung/LinksRechtsRotation.png  used on inp
-ut line 156.
-(pdftex.def)             Requested size: 467.99881pt x 142.20055pt.
-
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 156--157
- [][] 
- []
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 130--132
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/Einleitung/SuchenEinfügen.png, id=62, 3874.27425pt x 1212.9315pt>
-File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
-<use Medien/Einleitung/SuchenEinfügen.png>
-Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
-ine 166.
-(pdftex.def)             Requested size: 467.99881pt x 146.5079pt.
-
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 166--167
- [][] 
  []
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 134.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 134
+.
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 134.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 134
+.
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 134.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 134
+.
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 146--148
+
+ []
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 150.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 150
+.
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 150.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 150
+.
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 150.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 150
+.
 
 [10]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
 
-[11 <./Medien/Einleitung/Linksrotation.png> <./Medien/Einleitung/Rechtsrotation
-.png>]
-<Medien/Einleitung/löschen.png, id=71, 4020.621pt x 1205.10225pt>
-File: Medien/Einleitung/löschen.png Graphic file (type png)
-<use Medien/Einleitung/löschen.png>
-Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 183
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
 .
-(pdftex.def)             Requested size: 467.99881pt x 140.26637pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 183--184
- [][] 
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
+.
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
+.
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
+.
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
+.
+
+
+LaTeX Warning: Command \quotedblbase invalid in math mode on input line 156.
+
+
+LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 156
+.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+
  []
 
+<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=57, 5134.7835pt x 4559.0325p
+t>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
+ input line 171.
+(pdftex.def)             Requested size: 390.0pt x 346.22572pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <./Medien/Einleitung/LinksRechtsRotation.png> <./Medien/Einleitung/SuchenEi
-nfügen.png>]
-\c@Lemma=\count124
+<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=58, 5014.3335pt x 4327.16624
+pt>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
+ input line 178.
+(pdftex.def)             Requested size: 390.0pt x 336.5404pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--201
+LaTeX Warning: `h' float specifier changed to `ht'.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
-
- []
-
-[13 <./Medien/Einleitung/löschen.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 206--208
-
- []
-
-(Einleitung.bbl
+[11] [12] (RotSchwarzBaum.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [14] (Einleitung.aux) ) 
+) [13] [14 <./Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>] [15 <./Medien/Rot
+SchwarzBaum/EinfügenFixUpFall3.png>] [16 <./Medien/RotSchwarzBaum/EinfügenFix
+UpFall4.png>] (RotSchwarzBaum.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6557 strings out of 492453
- 98582 string characters out of 3120076
- 185427 words of memory out of 3000000
- 10772 multiletter control sequences out of 15000+200000
- 21098 words of font info for 58 fonts, out of 3000000 for 9000
+ 6500 strings out of 492453
+ 97554 string characters out of 3120076
+ 186392 words of memory out of 3000000
+ 10721 multiletter control sequences out of 15000+200000
+ 19568 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,14n,42p,1421b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljf
-our/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fo
-nts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiK
-TeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData
-\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\and
-re\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:
-\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx17
-28.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi
-600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/lj
-four/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/andre/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/andre/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andre/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/U
-sers/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmr8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/a
-ndre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm
-10.pfb>
-Output written on Einleitung.pdf (14 pages, 2709811 bytes).
+ 53i,6n,42p,1178b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
+ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andre\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Us
+ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.
+pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecrm2074.pk><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andre/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andre/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/andre/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Use
+rs/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/andre/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+Output written on RotSchwarzBaum.pdf (16 pages, 3042032 bytes).
 PDF statistics:
- 440 PDF objects out of 1000 (max. 8388607)
+ 386 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

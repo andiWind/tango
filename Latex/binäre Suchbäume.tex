@@ -38,7 +38,7 @@ Zusammenfassung
 \newpage
 
 \section{Fazit}
-\section {Einleitung}
+\section {Binäre Suchbäume}
 Es gibt viele Varianten von binären Suchbäumen mit unterschiedlichen Anforderungen und Leistungsdaten. In diesem Kapitel werden binäre Suchbäume im Allgemeinem beschrieben. Außerdem werden Begriffe definiert, die in den nachfolgenden Kapiteln verwendet werden. \\
 \subsection{Definition binärer Suchbaum}
 Ein \textbf{Baum} $T$ ist ein zusammenhängender, gerichteter Graph, der keine Zyklen enthält. In einem nicht leerem Baum gibt es genau einen Knoten ohne eingehende Kante, diesen bezeichnet man als \textbf{Wurzel}. Alle anderen Knoten haben genau eine eingehende Kante. Jeder Knoten $v$ in $T$ ist Wurzel eines \textbf{Teilbaumes} $T(v)$, der $v$ und alle von $v$ erreichbaren Knoten enthält. Knoten ohne ausgehende Kante nennt man \textbf{Blatt}, alle anderen Knoten werden als \textbf{innere Knoten} bezeichnet. Enthält der Baum eine Kante von Knoten $v_1$ zu Knoten $v_2$ so nennt man $v_2$ ein \textbf{Kind} von $v_1$ und $v_1$ bezeichnet man als den  \textbf{Vater} von $v_2$. Die Wurzel hat also keinen Vater, alle anderen Knoten genau einen.\\
@@ -78,7 +78,7 @@ Diese soll auch hier verwendet werden.\\
 	
 \noindent Anstatt binärer Suchbaum schreibt man häufig \textbf{BST} für Binary Search Tree. Diese Abkürzung wird hier ab jetzt auch verwendet. 	
 \subsection{Weitere Begriffe und Eigenschaften zum binären Suchbaum}	
-\noindent Zwei verschiedene Knoten mit dem selben Vater nennt man \textbf{Brüder}. Ein \textbf{Pfad} $P_{jk}$ ist eine Folge von Knoten $v_0$, $v_2$,...,$v_n$, mit $v_0 = v_j$, $v_n = v_k$ und $\forall i \in \{ 1, 2,..., n \} \colon v_{i-1}$ \textit{ist Vater von} $v_i$. $n$ ist die \textbf{Länge des Pfades}. Die Knoten  $v_0$ bis $v_{n-1}$ sind \textbf{Vorfahren} von $v_n$. Den Knoten in einem BST wird auch eine \textbf{Tiefe} und eine \textbf{Höhe} zugeteilt. Für einen Knoten $v$ gilt, dass die Länge des Pfades von der Wurzel zu ihm seiner Tiefe entspricht. Sei $l$ maximale Länge eines von $v$ aus startenden Pfades. Die Höhe von $v$ ist dann $h+1$. Die Höhe der Wurzel entspricht der \textbf{Höhe des Gesamtbaumes}. Einen BST $T$ mit Gesamthöhe $h_T$ unterteilt man von oben nach unten in die \textbf{Ebenen} $\mathit{1,2...,h_T}$. Wobei die Wurzel in der Ebene eins liegt, deren Kinder in der Ebene zwei usw. Enthält eine Ebene ihre maximale Anzahl an Knoten nennt man sie \textbf{vollständig besetzt}.
+\noindent Zwei verschiedene Knoten mit dem selben Vater nennt man \textbf{Brüder}. Ein \textbf{Pfad} $P_{jk}$ ist eine Folge von Knoten $(v_0$, $v_1$,...,$v_n)$, mit $v_0 = v_j$, $v_n = v_k$ und $\forall i \in \{ 1, 2,..., n \} \colon v_{i-1}$ \textit{ist Vater von} $v_i$. $n$ ist die \textbf{Länge des Pfades}. Die Knoten  $v_0$ bis $v_{n-1}$ sind \textbf{Vorfahren} von $v_n$. Den Knoten in einem BST wird auch eine \textbf{Tiefe} und eine \textbf{Höhe} zugeteilt. Für einen Knoten $v$ gilt, dass die Länge des Pfades von der Wurzel zu ihm seiner Tiefe entspricht. Sei $l$ maximale Länge eines von $v$ aus startenden Pfades. Die Höhe von $v$ ist dann $h+1$. Die Höhe der Wurzel entspricht der \textbf{Höhe des Gesamtbaumes}. Einen BST $T$ mit Gesamthöhe $h_T$ unterteilt man von oben nach unten in die \textbf{Ebenen} $\mathit{1,2...,h_T}$. Wobei die Wurzel in der Ebene eins liegt, deren Kinder in der Ebene zwei usw. Enthält eine Ebene ihre maximale Anzahl an Knoten nennt man sie \textbf{vollständig besetzt}.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/suchbaum2_2"}
@@ -157,10 +157,11 @@ Sei $x$ der Knoten auf dem eine Linksrotation durchgeführt wird. Sei $z$ der Va
 	\caption{Gegenseitiges aufheben von Rotationen}
 	\label{fig:LinksRechtsRotation}
 \end{figure}
-\paragraph{Grundoperationen Suchen, Einfügen und Löschen} 
+
+\paragraph{Grundoperationen Suchen, Einfügen und Löschen} \label{BST Operationen}
 Hier geht es nur um die Standardvariante eines BST. Später werden Varianten gezeigt die von diesem Verhalten zum Teil deutlich abweichen. Es sei ein BST $T$ gegeben.\\
- Beim \textbf{Suchen} startet man bei der Wurzel und vergleicht den darin enthaltenen Schlüssel mit dem Gesuchten. Ist der gesuchte Schlüssel kleiner, muss er sich im linken Teilbaum des betrachtetem Knoten befinden und die Suche wird bei dessen Wurzel fortgesetzt. Ist der Schlüssel größer, muss er sich im rechten Teilbaum befinden und die Suche wird bei dessen Wurzel fortgesetzt. Diese Verhalten iteriert man solange bis der gesuchte Schlüssel gefunden ist, oder der Knoten bei dem die Suche fortgesetzt werden müsste, im BST nicht vorhanden ist. Ist das Letztere der Fall, ist der gesuchte Schlüssel im Baum nicht vorhanden. \\
-Beim \textbf{Einfügen} eines Schlüssels $k$, führt man zunächst eine Suche nach diesem aus. Findet man den Schlüssel wird das Einfügen abgebrochen. Wurde ein leerer Teilbaum $T_2$ erreicht, wird ein neu erzeugter Knoten mit Schlüssel $k$ an der Position von $T_2$ eingefügt.  \\
+  Die Operation \textbf{Suchen(Schlüssel $k$)} gibt den Knoten aus dem BST zurück, dessen Schlüssel mit $k$ übereinstimmt. Die Operation startet bei der Wurzel und vergleicht den darin enthaltenen Schlüssel mit dem Gesuchten. Ist der gesuchte Schlüssel kleiner, muss er sich im linken Teilbaum des betrachtetem Knoten befinden und die Suche wird bei dessen Wurzel fortgesetzt. Ist der Schlüssel größer, muss er sich im rechten Teilbaum befinden und die Suche wird bei dessen Wurzel fortgesetzt. Dieses Verhalten iteriert man solange bis der gesuchte Schlüssel gefunden ist, oder der Teilbaum bei dem die Suche fortgesetzt werden müsste, leer ist. Ist das Letztere der Fall, ist der gesuchte Schlüssel im Baum nicht vorhanden und es wird kein Knoten zurückgegeben. In keinem Fall kommt es zu einer Veränderung des BST.\\
+  Beim \textbf{Einfügen(Schlüssel $k$)} wird zunächst eine Suche nach $k$ ausgeführt. Findet man den Schlüssel wird das Einfügen abgebrochen und der BST bleibt unverändert. Wurde ein leerer Teilbaum $T_2$ erreicht, wird ein neu erzeugter Knoten mit Schlüssel $k$ an der Position von $T_2$ eingefügt.  \\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/SuchenEinfügen"}
@@ -168,7 +169,7 @@ Beim \textbf{Einfügen} eines Schlüssels $k$, führt man zunächst eine Suche n
 	\label{fig:SuchenEinfügen}
 \end{figure}
 
-Auch beim \textbf{Löschen} eines Schlüssels $k$, führt man zunächst eine Suche nach diesem aus. Wird ein Knoten $v$ mit Schlüssel $k$ gefunden, werden drei Fälle unterschieden.
+Auch beim \textbf{Löschen(Schlüssel $k$)} wird zunächst eine Suche nach diesem ausgeführt. Ist $k$ im BST nicht vorhanden wird abgebrochen und der BST bleibt unverändert. Ansonsten werden drei Fälle unterschieden.
 \begin{enumerate}
 	\item $v$ ist ein Blatt: \\
 	$v$ kann ohne weiteres aus dem BST entfernt werden.
@@ -212,7 +213,7 @@ Da die Höhe $h$ eines BST $T$ mit $n$ Knoten entscheidend für die Laufzeit der
 	
 \end{proof}
 
-\noindent 
+
 
 
 \bibliography{literaturverzeichnis}
