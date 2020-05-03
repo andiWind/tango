@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  2 MAY 2020 20:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  3 MAY 2020 17:37
 entering extended mode
 **./RotSchwarzBaum.tex
 (RotSchwarzBaum.tex
@@ -433,20 +433,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--55
  []
 
 [4]
-<Medien/RotSchwarzBaum/IOBaum.png, id=27, 2527.64325pt x 1209.92026pt>
+<Medien/RotSchwarzBaum/IOBaum.png, id=28, 2527.64325pt x 1209.92026pt>
 File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/IOBaum.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 6
 0.
 (pdftex.def)             Requested size: 390.0pt x 186.66798pt.
-<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=29, 2527.64325pt x 1209.92026pt>
+<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=30, 2527.64325pt x 1209.92026pt>
 
 File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
 ut line 66.
 (pdftex.def)             Requested size: 390.0pt x 186.66798pt.
-<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=30, 2527.64325pt x 1532.124pt>
+<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=31, 2527.64325pt x 1532.124pt>
 
 File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
@@ -482,13 +482,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--112
 
  []
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=46, 4609.6215pt x 5658.741pt
->
+<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=47, 5045.04825pt x 1736.889p
+t>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
  input line 126.
-(pdftex.def)             Requested size: 390.0pt x 478.69849pt.
+(pdftex.def)             Requested size: 390.0pt x 134.26297pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -497,82 +497,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 131--133
 
  []
 
-[8]
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 135.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 135
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 135.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 135
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 135.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 135
-.
-
-[9]
+[8] [9 <./Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 147--149
 
  []
 
-
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 160--161
 
  []
 
-[10]
+
 Underfull \hbox (badness 10000) in paragraph at lines 162--166
 
  []
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=57, 5134.7835pt x 4559.0325p
-t>
+<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=59, 6919.25024pt x 1239.4305
+pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
- input line 171.
-(pdftex.def)             Requested size: 390.0pt x 346.22572pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=58, 5014.3335pt x 4327.16624
+ input line 172.
+(pdftex.def)             Requested size: 390.0pt x 69.8426pt.
+<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=60, 6450.69975pt x 1444.1955
 pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
- input line 178.
-(pdftex.def)             Requested size: 390.0pt x 336.5404pt.
+ input line 179.
+(pdftex.def)             Requested size: 390.0pt x 87.30908pt.
+\c@Lemma=\count123
+[11 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png> <./Medien/RotSchwarzBaum/
+EinfügenFixUpFall4.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 194--200
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+ []
 
-[11] (RotSchwarzBaum.bbl
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
+
+ []
+
+[12] (RotSchwarzBaum.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [12] [13 <./Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>] [14 <./Medien/Rot
-SchwarzBaum/EinfügenFixUpFall3.png>] [15 <./Medien/RotSchwarzBaum/EinfügenFix
-UpFall4.png>] (RotSchwarzBaum.aux)
+) [13] (RotSchwarzBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6500 strings out of 492453
- 97554 string characters out of 3120076
- 185392 words of memory out of 3000000
- 10721 multiletter control sequences out of 15000+200000
+ 6506 strings out of 492453
+ 97597 string characters out of 3120076
+ 185391 words of memory out of 3000000
+ 10727 multiletter control sequences out of 15000+200000
  19568 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,6n,42p,1270b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,8n,42p,1259b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -587,17 +569,15 @@ pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
 ic/amsfonts/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andre/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andre/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/andre/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Use
-rs/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/andre/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on RotSchwarzBaum.pdf (15 pages, 3040294 bytes).
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/andre/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/U
+sers/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
+y8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmti8.pfb>
+Output written on RotSchwarzBaum.pdf (13 pages, 2185920 bytes).
 PDF statistics:
- 382 PDF objects out of 1000 (max. 8388607)
+ 383 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
