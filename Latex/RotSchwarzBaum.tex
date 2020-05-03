@@ -186,35 +186,33 @@ Zu Veränderungen kommt es durch die Rotation lediglich im linken Teilbaum von $
 \subsubsection{Löschen aus dem Rot-Schwarz-Baum}
 Evtl. noch machen, für tango eigentlich nicht notwendig
 \subsubsection{Laufzeit der Grundoperationen}
-Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$ Knoten $\mathit{O(n)}$ gilt. Das wird nun gezeigt. 
+Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$ Knoten $h = \mathit{O(\log {n})}$  gilt. Das wird nun gezeigt. 
 \newtheorem{Lemma}{Lemma}[section]
-\begin{Lemma} Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten gilt $h \leq  2 lg(n + 1)$. 
+\begin{Lemma} Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten gilt $h = \mathit{O(\log {n})}$ . 
 \end{Lemma}
 \begin{proof}
-	Sei $w$ die Wurzel von $T$
+	Sei $w$ die Wurzel von $T$ und $m$ 
 	Zunächst wird gezeigt, dass T mindestens $2^\mathit{bh(w)} - 1$ innere Knoten enthält.
 	Dies geschieht mit Induktion über $h$. Für $h = 0$ mit $2^0 - 1 = 0 $ stimmt die Behauptung, denn der Baum ist leer. Für $h = 1$ mit $2^0 - 1 = 0 $ stimmt die Behauptung ebenfalls, denn der Baum besteht aus einem einzigem Blatt.     
     Induktionsschritt mit Höhe $h + 1$:\\
     Sei $\mathit{tl}$ der linke Teilbaum von $w$ und $\mathit{tr}$ der rechte Teilbaum von $w$.  
-    Im Induktionsschritt kann nun verwendet werden, dass $h > 1$ gilt und $w$ ein innerer Knoten sein muss. $\mathit{tl}$ und $\mathit{tr}$ haben Schwarz-Höhe $\mathit{bh(w)} - 1$ wenn ihre Wurzel schwarz ist und Schwarz-Höhe $\mathit{bh(w)}$ wenn ihre Wurzel rot ist. Ihre Höhe ist $h-1$ und somit enthalten sie nach Induktionsnahme mindestens  $2^\mathit{bh(w)- 1} - 1$ innere Knoten. Aufaddieren ergibt die Behauptung:\\    
+    Im Induktionsschritt kann nun verwendet werden, dass $h > 1$ gilt und $w$ ein innerer Knoten sein muss. $\mathit{tl}$ und $\mathit{tr}$ haben Schwarz-Höhe $\mathit{bh(w)} - 1$ wenn ihre Wurzel schwarz ist und Schwarz-Höhe $\mathit{bh(w)}$ wenn ihre Wurzel rot ist. Ihre Höhe ist $h-1$ und somit enthalten sie nach Induktionsnahme mindestens  $2^\mathit{bh(w)- 1} - 1$ innere Knoten. Aufaddieren ergibt die Behauptung.\\    
     \begin{align*}
-    &2^\mathit{bh(w)- 1} - 1  + 1  + 2^\mathit{bh(w)- 1} - 1\\
-   =&2^\mathit{bh(w)} - 1
+    &m \geq 2^\mathit{bh(w)- 1} - 1  + 1  + 2^\mathit{bh(w)- 1} - 1 = 2^\mathit{bh(w)} - 1\\
     \end{align*}
-    
-    
-    Für die Höhe $x_h$ eines Knoten $x$ gilt folgender Zusammenhang:\\
+  
+    \noindent Für einen Knoten $x$ gilt folgender Zusammenhang, da höchstens jeder zweite Knoten in einem Pfad rot sein kann\\
     \begin{align*}
-    x_h \leq 2 * \mathit{bh(x) } + 1
+    \mathit{h(x)} \leq 2 \cdot \mathit{bh(x) } + 1 
     \end{align*}
-    Denn höchstens jeder zweite Knoten in einem Pfad kann rot sein.\\
     Es gilt also:\\
-    $n \geq 2^\mathit{bh(w)} - 1$
-	
-	
-	
-
-	
+     \begin{align*}
+    &m \geq 2^\mathit{bh(x)} - 1\\
+    \Rightarrow  &2 \cdot log_2(m + 1) \geq h(x) + 1
+    \end{align*}
+    
+    \noindent Damit gilt $h = \mathit{O(\log {m})}$. Mit Blättern steigt die Höhe des Baumes um eins, damit ist auch das Lemma gezeigt.
+   
 \end{proof}
 
 

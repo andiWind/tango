@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  30 APR 2020 14:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  3 MAY 2020 20:02
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -428,256 +428,454 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout3 = `Bachelorarbeit.toc'.
 
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 49--51
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
 
  []
 
-<Medien/Einleitung/IoSuchbaum.png, id=16, 2849.847pt x 1239.4305pt>
-File: Medien/Einleitung/IoSuchbaum.png Graphic file (type png)
-<use Medien/Einleitung/IoSuchbaum.png>
-Package pdftex.def Info: Medien/Einleitung/IoSuchbaum.png  used on input line 5
-4.
-(pdftex.def)             Requested size: 390.0pt x 169.60426pt.
+<Medien/Einleitung/ioSuchbaum.png, id=16, 3054.612pt x 1268.94075pt>
+File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
+<use Medien/Einleitung/ioSuchbaum.png>
+Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 5
+1.
+(pdftex.def)             Requested size: 390.0pt x 162.00563pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/Einleitung/nioSuchbaum.png, id=18, 2310.231pt x 1327.359pt>
+File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
+<use Medien/Einleitung/nioSuchbaum.png>
+Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
+57.
+(pdftex.def)             Requested size: 390.0pt x 224.06824pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--61
+Underfull \hbox (badness 10000) in paragraph at lines 62--64
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--81
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
-[4] [5 <./Medien/Einleitung/IoSuchbaum.png>]
-<Medien/RotSchwarzBaum/IOBaum.png, id=34, 3443.6655pt x 1560.42975pt>
+[4]
+\c@defi=\count123
+
+Overfull \hbox (15.74591pt too wide) in paragraph at lines 80--80
+[]\T1/cmr/bx/n/14.4 Weitere Be-grif-fe und Ei-gen-schaf-ten zum bi-n�ren Such-
+ []
+
+<Medien/Einleitung/suchbaum2_2.png, id=28, 2351.78625pt x 1490.56876pt>
+File: Medien/Einleitung/suchbaum2_2.png Graphic file (type png)
+<use Medien/Einleitung/suchbaum2_2.png>
+Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line 
+84.
+(pdftex.def)             Requested size: 390.0pt x 247.18416pt.
+[5 <./Medien/Einleitung/ioSuchbaum.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6 <./Medien/Einleitung/nioSuchbaum.png>]
+<Medien/Einleitung/linksRechts.png, id=44, 3468.96pt x 1233.408pt>
+File: Medien/Einleitung/linksRechts.png Graphic file (type png)
+<use Medien/Einleitung/linksRechts.png>
+Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
+93.
+(pdftex.def)             Requested size: 390.0pt x 138.6489pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+
+ []
+
+[7 <./Medien/Einleitung/suchbaum2_2.png> <./Medien/Einleitung/linksRechts.png>]
+<Medien/Einleitung/VorgängerNachfolger.png, id=51, 2439.71475pt x 1502.61375pt
+>
+File: Medien/Einleitung/VorgängerNachfolger.png Graphic file (type png)
+<use Medien/Einleitung/VorgängerNachfolger.png>
+Package pdftex.def Info: Medien/Einleitung/VorgängerNachfolger.png  used on in
+put line 114.
+(pdftex.def)             Requested size: 390.0pt x 240.19383pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+
+ []
+
+[9 <./Medien/Einleitung/VorgängerNachfolger.png>]
+<Medien/Einleitung/Linksrotation.png, id=59, 3844.764pt x 1209.92026pt>
+File: Medien/Einleitung/Linksrotation.png Graphic file (type png)
+<use Medien/Einleitung/Linksrotation.png>
+Package pdftex.def Info: Medien/Einleitung/Linksrotation.png  used on input lin
+e 144.
+(pdftex.def)             Requested size: 467.99881pt x 147.27036pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 144--145
+ [][] 
+ []
+
+<Medien/Einleitung/Rechtsrotation.png, id=60, 4064.58525pt x 1239.4305pt>
+File: Medien/Einleitung/Rechtsrotation.png Graphic file (type png)
+<use Medien/Einleitung/Rechtsrotation.png>
+Package pdftex.def Info: Medien/Einleitung/Rechtsrotation.png  used on input li
+ne 150.
+(pdftex.def)             Requested size: 467.99881pt x 142.69226pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 150--151
+ [][] 
+ []
+
+<Medien/Einleitung/LinksRechtsRotation.png, id=61, 4079.03925pt x 1239.4305pt>
+File: Medien/Einleitung/LinksRechtsRotation.png Graphic file (type png)
+<use Medien/Einleitung/LinksRechtsRotation.png>
+Package pdftex.def Info: Medien/Einleitung/LinksRechtsRotation.png  used on inp
+ut line 156.
+(pdftex.def)             Requested size: 467.99881pt x 142.20055pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 156--157
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/Einleitung/SuchenEinfügen.png, id=62, 3874.27425pt x 1212.9315pt>
+File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
+<use Medien/Einleitung/SuchenEinfügen.png>
+Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
+ine 167.
+(pdftex.def)             Requested size: 467.99881pt x 146.5079pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 167--168
+ [][] 
+ []
+
+[10]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11 <./Medien/Einleitung/Linksrotation.png> <./Medien/Einleitung/Rechtsrotation
+.png>] [12 <./Medien/Einleitung/LinksRechtsRotation.png> <./Medien/Einleitung/S
+uchenEinfügen.png>]
+<Medien/Einleitung/löschen.png, id=76, 4020.621pt x 1205.10225pt>
+File: Medien/Einleitung/löschen.png Graphic file (type png)
+<use Medien/Einleitung/löschen.png>
+Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 184
+.
+(pdftex.def)             Requested size: 467.99881pt x 140.26637pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 184--185
+ [][] 
+ []
+
+\c@Lemma=\count124
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--202
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
+
+ []
+
+[13 <./Medien/Einleitung/löschen.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
+
+ []
+
+<Medien/RotSchwarzBaum/IOBaum.png, id=86, 2527.64325pt x 1209.92026pt>
 File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/IOBaum.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 1
-00.
-(pdftex.def)             Requested size: 390.0pt x 176.71938pt.
-<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=35, 3443.6655pt x 1560.42975pt>
+Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 2
+33.
+(pdftex.def)             Requested size: 390.0pt x 186.66798pt.
+<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=87, 2527.64325pt x 1209.92026pt>
+
 File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
-ut line 106.
-(pdftex.def)             Requested size: 390.0pt x 176.71938pt.
-<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=36, 3443.6655pt x 2020.54875pt
->
+ut line 239.
+(pdftex.def)             Requested size: 390.0pt x 186.66798pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=88, 2527.64325pt x 1532.124pt>
+
 File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png  used on i
-nput line 112.
-(pdftex.def)             Requested size: 390.0pt x 228.82806pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+nput line 245.
+(pdftex.def)             Requested size: 390.0pt x 236.37799pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
-
- []
-
-[6 <./Medien/RotSchwarzBaum/IOBaum.png>] [7 <./Medien/RotSchwarzBaum/NIOBaumZwe
-iRote.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+[15 <./Medien/RotSchwarzBaum/IOBaum.png>] [16 <./Medien/RotSchwarzBaum/NIOBaumZ
+weiRote.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 266--267
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--135
+Underfull \hbox (badness 10000) in paragraph at lines 268--270
 
  []
 
-[8 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 145--147
+[17 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 280--282
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--150
+Underfull \hbox (badness 10000) in paragraph at lines 283--285
 
  []
 
-[9]
-<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=55, 4609.6215pt x 5658.741pt
->
+[18]
+<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=104, 5045.04825pt x 1736.889
+pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
- input line 163.
-(pdftex.def)             Requested size: 390.0pt x 478.69849pt.
+ input line 299.
+(pdftex.def)             Requested size: 390.0pt x 134.26297pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 304--306
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+ []
 
+[19 <./Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 320--322
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--170
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
 
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 172.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 172
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 172.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 172
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 172.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 172
-.
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 184--186
+Underfull \hbox (badness 10000) in paragraph at lines 335--339
 
  []
 
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 188.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 188
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 188.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 188
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 188.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 188
-.
-
-[11]
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 194.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 194
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 194.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 194
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 194.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 194
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 194.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 194
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 194.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 194
-.
-
-
-LaTeX Warning: Command \quotedblbase invalid in math mode on input line 194.
-
-
-LaTeX Warning: Command \textquotedblleft invalid in math mode on input line 194
-.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
-
- []
-
-<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=63, 5134.7835pt x 4559.0325p
-t>
+<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=113, 6919.25024pt x 1239.430
+5pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
- input line 209.
-(pdftex.def)             Requested size: 390.0pt x 346.22572pt.
+ input line 345.
+(pdftex.def)             Requested size: 390.0pt x 69.8426pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=64, 5014.3335pt x 4327.16624
-pt>
+<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=114, 6450.69975pt x 1444.195
+5pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
- input line 216.
-(pdftex.def)             Requested size: 390.0pt x 336.5404pt.
+ input line 352.
+(pdftex.def)             Requested size: 390.0pt x 87.30908pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12] [13] (Bachelorarbeit.bbl
+\c@LemmaRBTHöhe=\count125
+
+! LaTeX Error: No counter 'LemmaRBTH�he' defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.364 \begin{LemmaRBTHöhe}
+                            Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten ...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 367--373
+
+ []
+
+! You can't use `\relax' after \the.
+<recently read> \c@LemmaRBTH�he 
+                                
+l.375 	\end{align*}
+                   
+I'm forgetting what you said and using zero instead.
+
+! Undefined control sequence.
+\restorecounters@ ...mma 1\global \c@LemmaRBTH�he 
+                                                  0\let \restorecounters@ \@...
+l.375 	\end{align*}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use a prefix with `the character 0'.
+<to be read again> 
+                   0
+l.375 	\end{align*}
+                   
+I'll pretend you didn't say \long or \outer or \global or \protected.
+
+! Improper \halign inside $$'s.
+<recently read> \halign 
+                        
+l.375 	\end{align*}
+                   
+Displays can use special alignments (like \eqalignno)
+only if nothing but the alignment itself is between $$'s.
+So I've deleted the formulas that preceded this alignment.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
+
+ []
+
+! You can't use `\relax' after \the.
+<recently read> \c@LemmaRBTH�he 
+                                
+l.380 	\end{align*}
+                   
+I'm forgetting what you said and using zero instead.
+
+! Undefined control sequence.
+\restorecounters@ ...mma 1\global \c@LemmaRBTH�he 
+                                                  0\let \restorecounters@ \@...
+l.380 	\end{align*}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use a prefix with `the character 0'.
+<to be read again> 
+                   0
+l.380 	\end{align*}
+                   
+I'll pretend you didn't say \long or \outer or \global or \protected.
+
+! Improper \halign inside $$'s.
+<recently read> \halign 
+                        
+l.380 	\end{align*}
+                   
+Displays can use special alignments (like \eqalignno)
+only if nothing but the alignment itself is between $$'s.
+So I've deleted the formulas that preceded this alignment.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 380--382
+
+ []
+
+[22 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png> <./Medien/RotSchwarzBaum/
+EinfügenFixUpFall4.png>]
+! You can't use `\relax' after \the.
+<recently read> \c@LemmaRBTH�he 
+                                
+l.385 	\end{align*}
+                   
+I'm forgetting what you said and using zero instead.
+
+! Undefined control sequence.
+\restorecounters@ ...mma 1\global \c@LemmaRBTH�he 
+                                                  0\let \restorecounters@ \@...
+l.385 	\end{align*}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use a prefix with `the character 0'.
+<to be read again> 
+                   0
+l.385 	\end{align*}
+                   
+I'll pretend you didn't say \long or \outer or \global or \protected.
+
+! Improper \halign inside $$'s.
+<recently read> \halign 
+                        
+l.385 	\end{align*}
+                   
+Displays can use special alignments (like \eqalignno)
+only if nothing but the alignment itself is between $$'s.
+So I've deleted the formulas that preceded this alignment.
+
+[23] (Bachelorarbeit.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [14] [15 <./Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>] [16 <./Medien/Rot
-SchwarzBaum/EinfügenFixUpFall3.png>] [17 <./Medien/RotSchwarzBaum/EinfügenFix
-UpFall4.png>] (Bachelorarbeit.aux) ) 
+) [24] (Bachelorarbeit.aux) ) 
 Here is how much of TeX's memory you used:
- 6509 strings out of 492453
- 97834 string characters out of 3120076
- 187400 words of memory out of 3000000
- 10728 multiletter control sequences out of 15000+200000
- 19568 words of font info for 56 fonts, out of 3000000 for 9000
+ 6622 strings out of 492453
+ 100980 string characters out of 3120076
+ 187498 words of memory out of 3000000
+ 10830 multiletter control sequences out of 15000+200000
+ 21098 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,6n,42p,1090b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\andre\AppData\Local\MiKTeX\2.9\f
-onts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andre\AppData\Local\Mi
-KTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppDat
-a\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\an
-dre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C
-:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1
-200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dp
-i600\ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
-ppen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/l
-jfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\
-fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/andre/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andre/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Use
-rs/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12
-.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr6.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/andre/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andr
-e/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti7.pfb><C
-:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmti8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (17 pages, 3399781 bytes).
+ 53i,14n,42p,1425b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk
+/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.
+9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local
+\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\App
+Data\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users
+\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk>
+ <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ec
+bx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/j
+knappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/p
+k/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/andre/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/andre/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/and
+re/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmr12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Use
+rs/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb>
+Output written on Bachelorarbeit.pdf (24 pages, 4754525 bytes).
 PDF statistics:
- 430 PDF objects out of 1000 (max. 8388607)
+ 505 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

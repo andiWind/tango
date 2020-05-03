@@ -1,8 +1,14 @@
 \babel@toc {german}{}
 \contentsline {section}{\numberline {1}Fazit}{4}% 
-\contentsline {section}{\numberline {2}Einleitung}{4}% 
-\contentsline {section}{\numberline {3}Balancierte Suchbäume}{5}% 
-\contentsline {subsection}{\numberline {3.1}Rot-Schwarz-Baum}{5}% 
-\contentsline {subsubsection}{\numberline {3.1.1}Einfügen in den Rot-Schwarz-Baum}{7}% 
-\contentsline {subsubsection}{\numberline {3.1.2}Löschen aus dem Rot-Schwarz-Baum}{12}% 
-\contentsline {subsubsection}{\numberline {3.1.3}Suchen im Rot-Schwarz-Baum}{12}% 
+\contentsline {section}{\numberline {2}Binäre Suchbäume}{4}% 
+\contentsline {subsection}{\numberline {2.1}Definition binärer Suchbaum}{4}% 
+\contentsline {subsection}{\numberline {2.2}Weitere Begriffe und Eigenschaften zum binären Suchbaum}{5}% 
+\contentsline {paragraph}{Total geordnete Menge}{8}% 
+\contentsline {paragraph}{Verändern eines BST durch Rotationen.}{9}% 
+\contentsline {paragraph}{Grundoperationen Suchen, Einfügen und Löschen}{10}% 
+\contentsline {paragraph}{Unterschiedliche Baumhöhen.}{13}% 
+\contentsline {subsection}{\numberline {2.3}Rot-Schwarz-Baum}{14}% 
+\contentsline {subsubsection}{\numberline {2.3.1}Suchen im Rot-Schwarz-Baum}{15}% 
+\contentsline {subsubsection}{\numberline {2.3.2}Einfügen in den Rot-Schwarz-Baum}{16}% 
+\contentsline {subsubsection}{\numberline {2.3.3}Löschen aus dem Rot-Schwarz-Baum}{21}% 
+\contentsline {subsubsection}{\numberline {2.3.4}Laufzeit der Grundoperationen}{22}% 
