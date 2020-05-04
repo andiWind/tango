@@ -166,17 +166,17 @@ Zu Veränderungen kommt es durch die Rotation lediglich im linken Teilbaum von $
 
 
 
-\noindent  Sei $h$ die Höhe des Gesamtbaumes vor Aufruf von einfügen-Fixup. Fall 2 kann maximal $\frac{h}{2}$ mal ausgewählt werden, bevor $x$ oder $y$ an der Wurzel liegt. Nach einer Iteration bei der nicht Fall 2 ausgewählt wird, terminiert einfügen-fixup.  
-\begin{figure}[h]
+\noindent  Sei $h$ die Höhe des Gesamtbaumes vor Aufruf von einfügen-Fixup. Fall 2 kann maximal $\frac{h}{2}$ mal ausgewählt werden, bevor $x$ oder $y$ an der Wurzel liegt. Nach einer Iteration bei der nicht Fall 2 ausgewählt wird, terminiert einfügen-fixup. Der Aufwand in jedem Fall ist unabhängig von $n$. Für die Laufzeit gilt deshalb $\mathit{O(h)}$.
+\begin{figure}[H]
 	\centering
-	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall3"}
+	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall3"}
 	\caption{einfügen-fixup. Dargestellt ist Fall 3  }
 	\label{fig:EinfügenFixUpFall3}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall4"}
+	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall4"}
 	\caption{einfügen-fixup. Dargestellt ist Fall 4  }
 	\label{fig:EinfügenFixUpFall4}
 \end{figure}
@@ -199,7 +199,7 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
     Im Induktionsschritt kann nun verwendet werden, dass $h > 1$ gilt und $w$ ein innerer Knoten sein muss. $\mathit{tl}$ und $\mathit{tr}$ haben Schwarz-Höhe $\mathit{bh(w)} - 1$ wenn ihre Wurzel schwarz ist und Schwarz-Höhe $\mathit{bh(w)}$ wenn ihre Wurzel rot ist. Ihre Höhe ist $h-1$ und somit enthalten sie nach Induktionsnahme mindestens  $2^\mathit{bh(w)- 1} - 1$ innere Knoten. Aufaddieren ergibt die Behauptung.\\    
     \begin{align*}
     &m \geq 2^\mathit{bh(w)- 1} - 1  + 1  + 2^\mathit{bh(w)- 1} - 1 = 2^\mathit{bh(w)} - 1\\
-     \Rightarrow  &log_2(m + 1) \geq\mathit{bh(w)} \\
+     \Rightarrow  &log_2(m + 1) \geq\mathit{bh(w)} 
     \end{align*}
   
     \noindent Es gilt folgender Zusammenhang, da höchstens jeder zweite Knoten in einem Pfad rot sein kann\\
@@ -222,8 +222,7 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
   
    
 \end{proof}
-
-Suchen im RBT hat daher eine Laufzeit von $\mathit{O(\log {n})$. Einfügen hat $\mathit{O(\log {n})$ Kosten für den Aufruf von Suchen. einfügenFixup bearveitet 
+\noindent suchen und einfügenFixup haben daher eine Laufzeit von $\mathit{O(\log {n})}$. Einfügen hat  Kosten $\mathit{O(\log {n})}$ für suchen und  $\mathit{O(\log {n})}$ für einfügenFixup, insgesamt also  $\mathit{O(\log {n})}$.
 
 
 
