@@ -2,6 +2,8 @@
 \contentsline {section}{\numberline {1}Fazit}{4}% 
 \contentsline {section}{\numberline {2}Rot-Schwarz-Baum}{4}% 
 \contentsline {paragraph}{Suchen im Rot-Schwarz-Baum}{5}% 
-\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{5}% 
-\contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{13}% 
-\contentsline {paragraph}{Laufzeit der Grundoperationen}{13}% 
+\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{6}% 
+\contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{15}% 
+\contentsline {paragraph}{Laufzeit der Grundoperationen}{15}% 
+\contentsline {subsection}{\numberline {2.1}Tango-Baum konformes vereinigen}{16}% 
+\contentsline {subsection}{\numberline {2.2}Tango-Baum konformes aufteilen}{17}% 

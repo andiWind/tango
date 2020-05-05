@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  4 MAY 2020 21:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  5 MAY 2020 16:05
 entering extended mode
 **./RotSchwarzBaum.tex
 (RotSchwarzBaum.tex
@@ -464,12 +464,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: Reference `BST Operationen' on page 5 undefined on input line 78
 .
 
-[5 <./Medien/RotSchwarzBaum/IOBaum.png>]
+[5 <./Medien/RotSchwarzBaum/IOBaum.png>] [6 <./Medien/RotSchwarzBaum/NIOBaumZwe
+iRote.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
-[6 <./Medien/RotSchwarzBaum/NIOBaumZweiRote.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 95--97
 
  []
@@ -484,14 +485,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--112
 
  []
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=46, 5074.5585pt x 1736.889pt
+[8]
+<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=50, 5074.5585pt x 1736.889pt
 >
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
  input line 126.
 (pdftex.def)             Requested size: 390.0pt x 133.46788pt.
-[8]
+
 Underfull \hbox (badness 10000) in paragraph at lines 131--133
 
  []
@@ -527,56 +529,73 @@ Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
  input line 179.
 (pdftex.def)             Requested size: 390.0pt x 289.1284pt.
  [12 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>]
+<Medien/RotSchwarzBaum/EinfügenFixUpFall5.png, id=67, 3518.3445pt x 2209.65524
+pt>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall5.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png  used on
+ input line 186.
+(pdftex.def)             Requested size: 390.0pt x 244.91724pt.
+<Medien/RotSchwarzBaum/EinfügenFixUpFall6.png, id=68, 3523.1625pt x 2673.99pt>
+
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png  used on
+ input line 192.
+(pdftex.def)             Requested size: 390.0pt x 295.97589pt.
+ [13 <./Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>] [14 <./Medien/RotSchwar
+zBaum/EinfügenFixUpFall5.png>]
 \c@Lemma=\count123
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--200
+Underfull \hbox (badness 10000) in paragraph at lines 204--210
 
  []
 
-[13 <./Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
+[15 <./Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
 
-[14] (RotSchwarzBaum.bbl
+[16] [17] (RotSchwarzBaum.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [15] (RotSchwarzBaum.aux)
+) [18] (RotSchwarzBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6509 strings out of 492453
- 97623 string characters out of 3120076
- 184391 words of memory out of 3000000
- 10729 multiletter control sequences out of 15000+200000
- 20323 words of font info for 57 fonts, out of 3000000 for 9000
+ 6530 strings out of 492453
+ 98435 string characters out of 3120076
+ 185420 words of memory out of 3000000
+ 10747 multiletter control sequences out of 15000+200000
+ 21098 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,10n,42p,1406b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,10n,42p,1787b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Local\MiKTeX
-\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Us
-ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.
-pk><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmmi8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andre/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/andre/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/andre
-/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:
-/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmti8.pfb>
-Output written on RotSchwarzBaum.pdf (15 pages, 2329607 bytes).
+ecbx1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Us
+ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.
+pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecrm2074.pk><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andre/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andre/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/andre/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/U
+sers/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
+y8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmti8.pfb>
+Output written on RotSchwarzBaum.pdf (18 pages, 3293467 bytes).
 PDF statistics:
- 378 PDF objects out of 1000 (max. 8388607)
+ 422 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
