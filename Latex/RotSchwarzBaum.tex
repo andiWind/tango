@@ -40,7 +40,7 @@ Zusammenfassung
 \section{Fazit}
 
 \section{Rot-Schwarz-Baum}
-Der Rot-Schwarz-Baum gehört zur Gruppe der \textbf{balancierten BST} und erfüllt alle Eigenschaften um ihn als Hilfsstruktur im Tango-Baum zu verwenden. Genau das ist auch die Rolle des Rot-Schwarz-Baumes in dieser Ausarbeitung. Bei balancierten BST gilt für die Höhe $h = \mathit{O(n)}$, mit $n =$ Anzahl der Knoten. Jeder Knoten benötigt ein zusätzliches Attribut, um eine Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Attribut unterschiedenen Zustände als \textit{Rot} und \textit{Schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten und im folgenden wird einfach von roten bzw. schwarzen Knoten gesprochen. Innerhalb mancher Operationen wird von einem Knoten aus direkt auf dessen Vater zugegriffen, so dass man sich im Baum auch nach oben hin bewegen kann. In Implementierungen wird das so umgesetzt, dass es zusätzlich zu den beiden Zeigern auf die Kinder noch einen zum Vater gibt. Als Blätter werden schwarze Sonderknoten verwendet, deren Schlüssel auf einen Wert außerhalb des Universums, hier \textit{null}, gesetzt wird, um sie eindeutig erkennen zu können. Fehlende Kinder von Knoten mit gewöhnlichem Schlüssel werden durch solche Blätter ersetzt.  
+Der Rot-Schwarz-Baum gehört zur Gruppe der \textbf{balancierten BST} und erfüllt alle Eigenschaften um ihn als Hilfsstruktur im Tango-Baum zu verwenden. Genau das ist auch die Rolle des Rot-Schwarz-Baumes in dieser Ausarbeitung. Bei balancierten BST gilt für die Höhe $h = \mathit{O(n)}$, mit $n =$ Anzahl der Knoten. Jeder Knoten benötigt ein zusätzliches Attribut, um eine Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Attribut unterschiedenen Zustände als \textit{Rot} und \textit{Schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten und im folgenden wird einfach von roten bzw. schwarzen Knoten gesprochen. Innerhalb mancher Operationen wird von einem Knoten aus direkt auf dessen Vater zugegriffen, so dass man sich im Baum auch nach oben hin bewegen kann. In Implementierungen wird das so umgesetzt, dass es zusätzlich zu den beiden Zeigern auf die Kinder noch einen zum Vater gibt. Als Blätter werden schwarze Sonderknoten verwendet, deren Schlüssel auf einen Wert außerhalb des Universums, hier \textit{null}, gesetzt wird, um sie eindeutig erkennen zu können. $\null$ gehört per Definition nicht zur Schlüsselmenge des RBT. Fehlende Kinder von Knoten mit gewöhnlichem Schlüssel werden durch solche Blätter ersetzt.  
 
 \noindent Folgende zusätzliche Eigenschaften müssen bei einem Rot-Schwarz-Baum erfüllt sein. 
 
@@ -73,7 +73,7 @@ Sei $(v_0,v_1,...,v_n)$ ein Pfad von einem Knoten $v_0$ zu einem Blatt $v_n$. Di
 	\caption{Rot-Schwarz-Baum bei dem Eigenschaft fünf verletzt ist.  }
 	\label{fig:NIOBaumPfadlänge}
 \end{figure}
-
+\subsection{Grundoperationen}
 \paragraph{Suchen im Rot-Schwarz-Baum}
 Die Suche unterscheidet sich nur in einem Punkt von der in \ref{BST Operationen} vorgestellten. Wird nach einem Schlüssel gesucht, der im RBT nicht vorhanden ist, so wird einer der Sonderknoten erreicht. In diesem Fall wird die Suche abgebrochen und eine leere Referenz zurückzugeben. Die Operation verändert den RBT nicht. 
 
@@ -174,7 +174,7 @@ Zu Veränderungen kommt es durch die Rotation lediglich im linken Teilbaum von $
 	\label{fig:EinfügenFixUpFall3}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall4"}
 	\caption{einfügen-fixup. Dargestellt ist Fall 4  }
@@ -194,7 +194,7 @@ Zu Veränderungen kommt es durch die Rotation lediglich im linken Teilbaum von $
 	\label{fig:EinfügenFixUpFall6}
 \end{figure}   
 \paragraph{Löschen aus dem Rot-Schwarz-Baum}
-Evtl. noch machen, für tango eigentlich nicht notwendig
+Die Reparatur des RBT nach dem entfernen eines Knotens ist aufwendiger als, die nach dem einfügen. Da der RBT in der Rolle als Hilfsstruktur für den Tango-Baum keine solche Operation benötigt entfällt, die Beschreibung. In \cite{algEinf} ist eine detaillierte Beschreibung enthalten. 
 \paragraph{Laufzeit der Grundoperationen}
 Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$ Knoten $h = \mathit{O(\log {n})}$  gilt. Das wird nun gezeigt. 
 \newtheorem{Lemma}{Lemma}[section]
@@ -236,19 +236,46 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
 
 
 \subsection{Tango-Baum konformes vereinigen} \label{vereinigen}
-
-Hier wird die \textbf{vereinigen(RBT $T_1$, Schlüssel $k$, RBT $T_2)$} eingeführt wie es ein Tango-Baum von seiner Hilfsstruktur verlangt. Sei $K_1$ die Schlüsselmenge von $T_1$ und $K_2$ die von $T_2$. Die Operation gibt eine Referenz auf einen RBT mit Schlüsselmenge $K_1 \cup K_2 \cup \{k\}$ zurück, dabei werden $T_1$ und $T_2$ zerstört. An die Parameter wird die Vorbedingung $\max(K_1) < k < \min(K_2) $ gestellt.\\
- Es werden bei der Ausführung drei Fälle unterschieden, wobei wieder der erste zutreffende Fall in aufsteigender Reihenfolge ausgewählt wird. \\
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.6\textwidth]{"Medien/RotSchwarzBaum/vereinigen"}
+	\caption{Beispielhaftes vereinigen zweier RBT unterschiedlicher Schwarz-Höhe, nach Schritt 1. }
+	\label{fig:vereinigen}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.6\textwidth]{"Medien/RotSchwarzBaum/vereinigen2"}
+	\caption{Beispielhaftes vereinigen zweier RBT gleicher Schwarz-Höhe, nach Schritt 1 }
+	\label{fig:vereinigen2}
+\end{figure}
+\noindent Hier wird die \textbf{vereinigen(RBT $T_1$, Schlüssel $k$, RBT $T_2)$} eingeführt wie es ein Tango-Baum von seiner Hilfsstruktur verlangt. Sei $K_1$ die Schlüsselmenge von $T_1$ und $K_2$ die von $T_2$. Die Operation gibt eine Referenz auf die Wurzel eines vereinigten RBT $T$ mit Schlüsselmenge $K_1 \cup K_2 \cup \{k\} $ zurück, dabei werden $T_1$ und $T_2$ zerstört. An die Parameter wird die Vorbedingung $(\forall i \in \mathbb{N}: i < k ) \land (\forall j \in \mathbb{N}: k < j )$ gestellt.\\
+ Es werden im ersten Schritt der Ausführung drei Fälle unterschieden, wobei wieder der erste zutreffende Fall in aufsteigender Reihenfolge ausgewählt wird. \\
 \noindent\textbf{Fall 1: $bh(T_1) = bh(T_2) = 0$ }\\   
-In diesem Fall wird ein schwarzer Knoten $v$ mit Schwarz-Höhe 1 erzeugt. An diesem werden zwei Sonderknoten angefügt. Die Operation gibt eine Referenz auf $v$ zurück.\\
+In diesem Fall wird ein roter Knoten $v$ mit Schwarz-Höhe 1 erzeugt. An diesem werden zwei Sonderknoten angefügt. $v$ ist die Wurzel von $T$. \\
+In den restlichen Fällen ist nun zumindest ein Baum vorhanden, der wenigstens einen inneren Knoten beinhaltet und somit über eine Wurzel verfügt. Der RBT mit der geringeren Schwarz-Höhe wird dabei an den mit der höheren \enquote{seitlich angefügt}. Abbildung \ref{fig:vereinigen} zeigt dies beispielhaft. Sind die Schwarz-Höhen gleich wird wie in Abbildung \ref{fig:vereinigen2} vorgegangen. Nun werden die verbleibenden Fälle beschrieben.\\
 \noindent\textbf{Fall 2: $bh(T_2) \leq bh(T_1)$ }\\
-In diesem Fall wird $T_2$ bei $T_1$, mit Hilfe von $k$ angefügt. Zuerst wird entlang des  $T_1$ 
-
- Es muss $bh(T_1) > 0$ gelten, also existiert die Wurzel $w_1$ von $T_1$. Sei $s$ eine Variable di 
+In diesem Fall wird $T_2$ bei $T_1$, mit Hilfe von $k$, so angefügt, dass die Schwarz-Höhe jedes Knoten unverändert bleibt. Es sei $w_1$ die Wurzel von $T_1$. Es sei $p$ ein Pfad $(r_0,r_1,...,r_l)$ in $T_1$, so dass $r_0 = w_1$, $r_l$ ein Blatt ist und $\forall i \in \{1,2,...l\} \colon r_i$  ist rechtes Kind von  $r_{i-1}$. $p$ ist also der am weitesten rechts liegende Pfad von der Wurzel zu einem Blatt. Sei $x$ der schwarze Knoten in $p$, mit $\mathit{bh}(x) = \mathit{bh}(w_2)$. $x$ muss existieren denn $\mathit{bh}(w_1) \geq \mathit{bh}(w_2)$ und $\mathit{bh}(r_l) \leq  \mathit{bh}(w_2)$, außerdem sind $w_1$ und $r_l$ schwarz.\\
+ Nun wird ein neuer roter Knoten $v$ mit Schlüssel $k$ und Schwarz-Höhe $\mathit{bh}(x) + 1$ erzeugt. Als linkes Kind von $v$  wird $x$ gesetzt, als rechtes Kind $w_2$. Ist $x$ die Wurzel in $T_1$, so ist $v$ die Wurzel von $T$. Ansonsten ist $x$ rechtes Kind eines Knoten $y$ und das rechte Kind von $y$ wird auf $v$ gesetzt. Außerdem ist dann $w_1$ die Wurzel von $T$.     \\  
+\noindent\textbf{Fall 3: $bh(T_1) < bh(T_2)$ }\\ 
+Dieser Fall ist fast symmetrisch zu Fall 2, jedoch kann der neue Knoten nicht zur Wurzel von $T$ werden, da $bh(T_1) \neq bh(T_2)$.
+Es wird $T_1$ bei $T_2$, mit Hilfe von $k$ angefügt. Es sei $w_2$ die Wurzel von $T_2$. Es sei $p$ ein Pfad $(r_0,r_1,...,r_l)$ in $T_2$, so dass $r_0 = w_2$, $r_l$ ein Blatt ist und $\forall i \in \{1,2,...l\} \colon r_i$  ist linkes Kind von  $r_{i-1}$. $p$ ist also der am weitesten links liegende Pfad von der Wurzel zu einem Blatt. Sei $x$ der schwarze Knoten in $p$, mit $\mathit{bh}(x) = \mathit{bh}(w_1)$. $x$ muss existieren denn $\mathit{bh}(w_2) < \mathit{bh}(w_1)$ und $\mathit{bh}(r_l) \leq  \mathit{bh}(w_1)$, außerdem sind $w_2$ und $r_l$ schwarz.\\
+Nun wird ein neuer roter Knoten $v$ mit Schlüssel $k$ und Schwarz-Höhe $\mathit{bh}(x) + 1$ erzeugt. Als rechtes Kind von $v$  wird $x$ gesetzt, als linkes Kind $w_2$. $x$ ist linkes Kind eines Knoten $y$ und das linke Kind von $y$ wird auf $v$ gesetzt. $w_2$ ist die Wurzel von $T$. \\  
  
-
- 
-
+\paragraph{Resultat nach der Fallbehandlung}
+Dass ein Baum mit Schlüsselmenge  $K_1 \cup K_2 \cup \{k\} $ entstanden ist, erkennt man direkt an den Abbildungen \ref{fig:vereinigen} und \ref{fig:vereinigen2}. Aufgrund der Vorbedingung an die Parameter, muss $T$ auch ein BST sein. Es müssen aber wieder die fünf Eigenschaften eines RBT betrachtet werden:
+\begin{enumerate}
+	\item Es ist immer noch jeder Knoten entweder rot oder schwarz.
+	\item Gilt $bh(T_1) \neq bh(T_2)$ so wurde mit $w_1$ oder $w_2$ ein schwarzer Knoten zur Wurzel von $T$. Anderenfalls ist $v$ die rote Wurzel von $T$ und diese Eigenschaft ist verletzt.   
+	\item Aufgrund der Sonderknoten sind die Blätter immer noch schwarz.
+	\item Da $T_1$ und $T_2$ RBTs waren muss nur die Situation um $v$ betrachtet werden. $v$ hat in jedem Fall schwarze Kinder. Gilt $bh(T_1) \neq bh(T_2)$ könnte $v$ jedoch einen roten Vater $y$ haben. 
+	\item Die Schwarz-Höhe von $v$ ist korrekt gesetzt. Existiert $y$ so hat sich seine Schwarz-Höhe nicht verändert, denn $v$ ist rot. Bei keinem anderen Knoten hat sich bezüglich bzgl. der Schwarz-Höhe etwas geändert. 
+\end{enumerate} 
+ Wir sind also in der Situation dass entweder Eigenschaft zwei verletzt ist oder Eigenschaft vier. Wenn Eigenschaft vier verletzt ist dann nur an Knoten $v$. Das ist genau die Situation für die einfügenFixup entworfen wurde.\\
+ In Schritt zwei wird also einfügenFixup mit Parameter $v$ aufgerufen und die Wurzel des resultierenden RBT zurückgegeben. 
+\paragraph{Laufzeit}
+Sei $n_1$ die Anzahl der Knoten von $T_1$, sei $n_2$ die Anzahl der Knoten von $T_2$ und $n = n_1 + n_2$. Der Tango-Baum fordert von seiner Hilfsstruktur eine Laufzeit von $O(\log n)$ für die eben vorgestellte Operation.  Das ablaufen eines Pfades in $T_1$ oder $T_2$ zum Finden von $x$ liegt in $O(\log (n))$. $v$ erzeugen und in die Struktur einzubinden benötigt konstante Zeit und einfügenFixup benötigt  $O(\log (n))$ Zeit.\\
+$O(\log (n)) + O(1) +O(\log (n)) = O(\log (n))$\\
+Die Vorgabe des Tango-Baumes wird also eingehalten.
 
 \subsection{Tango-Baum konformes aufteilen}
 \newpage

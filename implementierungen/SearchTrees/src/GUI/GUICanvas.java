@@ -73,7 +73,8 @@ public class GUICanvas extends Canvas {
         g.setFont( new Font("", 1, 30));
         g.drawString(tree.getName(),width / 2 , 40 );
         g.setFont(standardFont);
-        
+        g.setColor(Color.red);
+        g.drawLine(0, 0, 1000, 1000);
         
         if (root != null && !checkParentPointer(root, root.getParentFromGui())){
             g.setFont( new Font("", 1, 30));

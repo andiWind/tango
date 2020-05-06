@@ -31,7 +31,8 @@ import javax.swing.JScrollPane;
  */
 public class GUI extends JFrame{
     private I_GUITree guiTree;
-    private volatile GUICanvas guiCanvas;
+  private volatile GUICanvas guiCanvas;
+  //  private volatile ScrollCanvas guiCanvas;
     private JMenuBar guiMenuBar; 
     private JMenu menu;
     private JMenuItem aktionOpen;
@@ -50,6 +51,7 @@ public class GUI extends JFrame{
     
     public GUI (I_GUITree guiT){
         guiTree = guiT;
+        //guiCanvas = new GUICanvas(guiTree);
         guiCanvas = new GUICanvas(guiTree);
         setTitle("Dynamische Suchbäume");
         setBackground (Color.LIGHT_GRAY);
