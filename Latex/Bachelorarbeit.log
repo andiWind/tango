@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  3 MAY 2020 20:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  7 MAY 2020 15:06
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -558,12 +558,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/Einleitung/SuchenEinfügen.png, id=62, 3874.27425pt x 1212.9315pt>
+<Medien/Einleitung/SuchenEinfügen.png, id=62, 3874.27425pt x 1300.86pt>
 File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
 <use Medien/Einleitung/SuchenEinfügen.png>
 Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
 ine 167.
-(pdftex.def)             Requested size: 467.99881pt x 146.5079pt.
+(pdftex.def)             Requested size: 467.99881pt x 157.12863pt.
 
 Overfull \hbox (77.99881pt too wide) in paragraph at lines 167--168
  [][] 
@@ -593,12 +593,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 199--202
 
  []
 
-
+[13 <./Medien/Einleitung/löschen.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
-[13 <./Medien/Einleitung/löschen.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 207--209
 
  []
@@ -656,13 +656,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--285
  []
 
 [18]
-<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=104, 5045.04825pt x 1736.889
-pt>
+<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=104, 5074.5585pt x 1736.889p
+t>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
  input line 299.
-(pdftex.def)             Requested size: 390.0pt x 134.26297pt.
+(pdftex.def)             Requested size: 390.0pt x 133.46788pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 304--306
 
@@ -683,23 +683,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 335--339
 
  []
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=113, 6919.25024pt x 1239.430
+<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=113, 3683.96326pt x 2301.799
 5pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
  input line 345.
-(pdftex.def)             Requested size: 390.0pt x 69.8426pt.
+(pdftex.def)             Requested size: 390.0pt x 243.64539pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=114, 6450.69975pt x 1444.195
-5pt>
+<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=114, 3581.58075pt x 2655.320
+25pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
  input line 352.
-(pdftex.def)             Requested size: 390.0pt x 87.30908pt.
+(pdftex.def)             Requested size: 390.0pt x 289.1284pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -762,6 +762,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 377--378
 
  []
 
+[22 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>]
 ! You can't use `\relax' after \the.
 <recently read> \c@LemmaRBTH�he 
                                 
@@ -801,8 +802,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 380--382
 
  []
 
-[22 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png> <./Medien/RotSchwarzBaum/
-EinfügenFixUpFall4.png>]
 ! You can't use `\relax' after \the.
 <recently read> \c@LemmaRBTH�he 
                                 
@@ -837,7 +836,7 @@ Displays can use special alignments (like \eqalignno)
 only if nothing but the alignment itself is between $$'s.
 So I've deleted the formulas that preceded this alignment.
 
-[23] (Bachelorarbeit.bbl
+[23 <./Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>] (Bachelorarbeit.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
@@ -873,7 +872,7 @@ ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/App
 Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Use
 rs/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb>
-Output written on Bachelorarbeit.pdf (24 pages, 4754525 bytes).
+Output written on Bachelorarbeit.pdf (24 pages, 4915881 bytes).
 PDF statistics:
  505 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
