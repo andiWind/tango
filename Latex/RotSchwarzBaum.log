@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  7 MAY 2020 16:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  7 MAY 2020 20:32
 entering extended mode
 **./RotSchwarzBaum.tex
 (RotSchwarzBaum.tex
@@ -564,33 +564,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
 
-[14] [15]
-<Medien/RotSchwarzBaum/vereinigen.png, id=83, 1730.8665pt x 1991.64075pt>
+[14] [15] [16]
+<Medien/RotSchwarzBaum/vereinigen.png, id=87, 1730.8665pt x 1991.64075pt>
 File: Medien/RotSchwarzBaum/vereinigen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen.png  used on input li
-ne 257.
+ne 266.
 (pdftex.def)             Requested size: 203.36363pt x 234.00238pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/RotSchwarzBaum/vereinigen2.png, id=84, 1805.5455pt x 1766.39925pt>
+<Medien/RotSchwarzBaum/vereinigen2.png, id=88, 1805.5455pt x 1766.39925pt>
 File: Medien/RotSchwarzBaum/vereinigen2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen2.png  used on input l
-ine 263.
+ine 272.
 (pdftex.def)             Requested size: 239.16476pt x 234.00238pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--279
+Underfull \hbox (badness 10000) in paragraph at lines 276--288
 
  []
 
-[16] [17 <./Medien/RotSchwarzBaum/vereinigen.png>] [18 <./Medien/RotSchwarzBaum
-/vereinigen2.png>] [19] (RotSchwarzBaum.bbl) [20] (RotSchwarzBaum.aux)
+[17 <./Medien/RotSchwarzBaum/vereinigen.png>] [18 <./Medien/RotSchwarzBaum/vere
+inigen2.png>] [19] [20] (RotSchwarzBaum.bbl) [21] (RotSchwarzBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -598,7 +595,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  6549 strings out of 492453
  99067 string characters out of 3120076
- 190442 words of memory out of 3000000
+ 188442 words of memory out of 3000000
  10764 multiletter control sequences out of 15000+200000
  21098 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -625,9 +622,9 @@ sfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/andre/AppData/Local/Prog
 rams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on RotSchwarzBaum.pdf (20 pages, 3716943 bytes).
+Output written on RotSchwarzBaum.pdf (21 pages, 3720216 bytes).
 PDF statistics:
- 477 PDF objects out of 1000 (max. 8388607)
+ 480 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

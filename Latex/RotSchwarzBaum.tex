@@ -245,12 +245,20 @@ Folgendes gilt für die Summe der $t_i$:
 &\sum_{i = 1}^{m} t_i =  \sum_{i = 1}^{m} \left(a_i - \Phi\left(D\right)_{i} + \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{0} - \Phi\left(D\right)_{m} + \sum_{i = 1}^{m} a_i \\
 \Rightarrow &\left( \Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0} \Rightarrow \sum_{i = 1}^{m} a_i \geq \sum_{i = 1}^{m} t_i \right)
 \end{align*}
-Ist das Potenzial nach Ausführung der Operationsfolge also nicht kleiner als zum Beginn, dann sind die amortisierten Gesamtkosten eine obere Schranke für die tatsächlichen Gesamtkosten. Die wesentliche Aufgabe ist es nun eine Potentialfunktion zu finden bei der die amortisierten Gesamtkosten möglichst niedrig sind und für die gilt $\Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0}$. Dies wird jetzt noch an einem einfachen Beispiel demonstriert, bevor einfügenFixup betrachtet wird. 
+Ist das Potenzial nach Ausführung der Operationsfolge also nicht kleiner als zum Beginn, dann sind die amortisierten Gesamtkosten eine obere Schranke für die tatsächlichen Gesamtkosten. Die wesentliche Aufgabe ist es nun eine Potentialfunktion zu finden, bei der die amortisierten Gesamtkosten möglichst niedrig sind und für die gilt $\Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0}$. Dies wird jetzt noch an einem einfachen Beispiel demonstriert, bevor einfügenFixup betrachtet wird. 
 
 \paragraph{Potentialfunktionmethode am Beispiel eines Stack} 
-Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum ablegen eines Elementes auf dem Stack und über \textit{pop} zum entfernen des oben liegenden Elementes. Zusätzlich gibt es eine Operation \textit{popAll}, die so oft \textit{pop} aufruft, bis der Stack leer ist. Sei $n$ die Anzahl der Elemente die maximal im Stack enthalten sein kann. \textit{push} und \textit{pop} können in konstanter Zeit durchgeführt werden. Für die Laufzeit von \textit{popAll} gilt $O(n)$, da \textit{pop} bis zu $n$ mal aufgerufen wird. Für die Gesamtlaufzeit einer Folge von $m$ Operationen gilt in jedem Fall $O(mn)$.   
+Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum ablegen eines Elementes auf dem Stack und über \textit{pop} zum entfernen des oben liegenden Elementes. Zusätzlich gibt es eine Operation \textit{popAll}, die so oft \textit{pop} aufruft, bis der Stack leer ist. Sei $n$ die Anzahl der Elemente die maximal im Stack enthalten sein kann. \textit{push} und \textit{pop} können in konstanter Zeit durchgeführt werden und wir berechnen jeweils eine Kosteneinheit. Für die Laufzeit von \textit{popAll} gilt $O(n)$, da \textit{pop} bis zu $n$ mal aufgerufen wird. Für die Gesamtlaufzeit einer Folge von $m$ Operationen gilt in jedem Fall $O(mn)$. Mit einer amortisierten Analyse wird nun aber $O(m)$ für \textit{popAll} gezeigt. Als $\Phi$ verwenden wir eine Funktion, welche die aktuelle Anzahl der im Stack enthaltenen Elemente zurück gibt. $\Phi_0$ setzen wir auf $0$, dass heißt wir starten mit einem leeren Stack. \textit{push} erhöht also das Potential um eins, während \textit{pop} es um eins vermindert. Nun werden die amortisierten Kosten bestimmt. 
 
-
+\begin{align*}   
+&a_{\mathit{push}} = t_{\mathit{push}} + \Phi{i} - \Phi{i-1}  &= 2\\
+&a_{\mathit{pop}} = t_{\mathit{pop}} + \Phi{i} - \Phi{i-1}  &= 0\\
+&a_{\mathit{popAll}} = n \cdot a_{\mathit{pop}} &= 0
+\end{align*}\\
+Alle drei Operationen haben konstante amortisierte Kosten. Auf jedem Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $ Damit gilt für die Ausführungszeit der Folge $O(m)$. \\
+Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem zu Beginn leerem Stack kann nur entfernt werden, was zuvor eingefügt wurde. \textit{push} zahlt für die Operation, welche das eingefügte Element eventuell wieder entfernt gleich mit, bleibt bei den Kosten aber konstant. Deshalb kann \textit{pop} amortisiert kostenlos durchgeführt werden, wodurch einer der beiden Faktoren zur Berechnung der Kosten von \textit{popAll} zu $0$ wird.  
+ 
+ 
 \subsection{Amortisierte Laufzeitanalyse bei einfügenFixup}
 \subsection{Tango-Baum konformes vereinigen} \label{vereinigen}
 \begin{figure}[h]
@@ -276,8 +284,7 @@ In diesem Fall wird $T_2$ bei $T_1$, mit Hilfe von $k$, so angefügt, dass die S
 \noindent\textbf{Fall 3: $bh(T_1) < bh(T_2)$ }\\ 
 Dieser Fall ist fast symmetrisch zu Fall 2, jedoch kann der neue Knoten nicht zur Wurzel von $T$ werden, da $bh(T_1) \neq bh(T_2)$.
 Es wird $T_1$ bei $T_2$, mit Hilfe von $k$ angefügt. Es sei $w_2$ die Wurzel von $T_2$. Es sei $p$ ein Pfad $(r_0,r_1,...,r_l)$ in $T_2$, so dass $r_0 = w_2$, $r_l$ ein Blatt ist und $\forall i \in \{1,2,...l\} \colon r_i$  ist linkes Kind von  $r_{i-1}$. $p$ ist also der am weitesten links liegende Pfad von der Wurzel zu einem Blatt. Sei $x$ der schwarze Knoten in $p$, mit $\mathit{bh}(x) = \mathit{bh}(w_1)$. $x$ muss existieren denn $\mathit{bh}(w_2) < \mathit{bh}(w_1)$ und $\mathit{bh}(r_l) \leq  \mathit{bh}(w_1)$, außerdem sind $w_2$ und $r_l$ schwarz.\\
-Nun wird ein neuer roter Knoten $v$ mit Schlüssel $k$ und Schwarz-Höhe $\mathit{bh}(x) + 1$ erzeugt. Als rechtes Kind von $v$  wird $x$ gesetzt, als linkes Kind $w_2$. $x$ ist linkes Kind eines Knoten $y$ und das linke Kind von $y$ wird auf $v$ gesetzt. $w_2$ ist die Wurzel von $T$. \\  
- 
+Nun wird ein neuer roter Knoten $v$ mit Schlüssel $k$ und Schwarz-Höhe $\mathit{bh}(x) + 1$ erzeugt. Als rechtes Kind von $v$  wird $x$ gesetzt, als linkes Kind $w_2$. $x$ ist linkes Kind eines Knoten $y$ und das linke Kind von $y$ wird auf $v$ gesetzt. $w_2$ ist die Wurzel von $T$. \\   
 \paragraph{Resultat nach der Fallbehandlung}
 Dass ein Baum mit Schlüsselmenge  $K_1 \cup K_2 \cup \{k\} $ entstanden ist, erkennt man direkt an den Abbildungen \ref{fig:vereinigen} und \ref{fig:vereinigen2}. Aufgrund der Vorbedingung an die Parameter, muss $T$ auch ein BST sein. Es müssen aber wieder die fünf Eigenschaften eines RBT betrachtet werden:
 \begin{enumerate}

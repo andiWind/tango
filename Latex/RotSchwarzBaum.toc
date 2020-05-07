@@ -9,8 +9,8 @@
 \contentsline {subsection}{\numberline {2.2}Einführung der amortisierten Laufzeitanalyse}{15}% 
 \contentsline {paragraph}{Potentialfunktionmethode}{15}% 
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{16}% 
-\contentsline {subsection}{\numberline {2.3}Amortisierte Laufzeitanalyse bei einfügenFixup}{16}% 
-\contentsline {subsection}{\numberline {2.4}Tango-Baum konformes vereinigen}{16}% 
-\contentsline {paragraph}{Resultat nach der Fallbehandlung}{18}% 
-\contentsline {paragraph}{Laufzeit}{19}% 
-\contentsline {subsection}{\numberline {2.5}Tango-Baum konformes aufteilen}{19}% 
+\contentsline {subsection}{\numberline {2.3}Amortisierte Laufzeitanalyse bei einfügenFixup}{17}% 
+\contentsline {subsection}{\numberline {2.4}Tango-Baum konformes vereinigen}{17}% 
+\contentsline {paragraph}{Resultat nach der Fallbehandlung}{19}% 
+\contentsline {paragraph}{Laufzeit}{20}% 
+\contentsline {subsection}{\numberline {2.5}Tango-Baum konformes aufteilen}{20}% 
