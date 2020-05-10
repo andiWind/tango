@@ -321,102 +321,73 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
   
     @Override //Implementiert split für TangoCut
     public Node split(TangoNode node, int key) {
-        if (node == null)
+        Node keyNode = search (node, key); 
+        if (keyNode == null)
             return null;
-        Node searchL = null; //Hilfsvariable damit merge nicht immer ab der Wurzel suchen muss 
-        Node searchR = null;
-        Node treeLroot = null; 
-        boolean treeLisExtern = false;
+        Node splitNode = keyNode;
+        Node nextSplitNode = splitNode;
+        Node treeLroot = null;
         Node treeRroot = null;
-        boolean treeRisExtern = false;
-        Node splitNode = (Node) node; 
-        Node pivotL = null; //Vorherige Splitnodes die für Merge verwendet werden können
-        Node pivotR = null; 
-        while(splitNode != null){ //Bei einem split füt TangoCut ist der Splitkey immer im Baum vorhanden und die Schleife bricht immer mit break ab
+        do {
+            splitNode = nextSplitNode;
+            nextSplitNode = splitNode.getParent();
+            detachNode(splitNode);
             Node splitL = splitNode.getLeft(); 
-            boolean splitLisExtern = false;
+            if (splitL == null )
+                splitL = splitNode.getAuxTreeLeft();
             Node splitR = splitNode.getRight();
-            boolean splitRisExtern = false;
+            if (splitR == null )
+                splitR = splitNode.getAuxTreeRight();
             if(splitL != null){
                 splitL.setParent(null);
                 splitL.setColor(RBColor.BLACK);
-            }
-            else{
-                splitL = splitNode.getAuxTreeLeft(); //Prüfen ob links ein externer Baum hängt
-                if(splitL != null)
-                    splitLisExtern = true;
             }
             if(splitR != null){
                 splitR.setParent(null);
                 splitR.setColor(RBColor.BLACK);
             }
-             else{
-                splitR = splitNode.getAuxTreeRight(); //Prüfen ob links ein exerner Baum hängt
-                if(splitR != null)
-                    splitRisExtern = true;
-            }
+            splitNode.setLeft(null);
+            splitNode.setRight(null);
+            splitNode.setParent(null);
         ////////////////////////////////////
             if(splitNode.getKey() < key){
-                treeLroot = merge(treeLroot, treeLisExtern, pivotL, splitL, splitLisExtern, searchL);
-                treeLisExtern = false;
-                if(splitLisExtern && treeLroot == splitL)
-                    treeLisExtern = true;
-                searchL = pivotL;
-                pivotL = splitNode;
-                splitNode = splitNode.getRight();
-                pivotL.setLeft(null);
-                pivotL.setRight(null);
-                pivotL.setParent(null);
+                treeLroot = merge(splitL, splitNode, treeLroot);
             }    
             else if (splitNode.getKey() > key){
-                treeRroot = merge(splitR, splitRisExtern, pivotR, treeRroot, treeRisExtern, searchR);
-                treeRisExtern = false;
-                if(splitRisExtern && treeRroot == splitR)
-                    treeRisExtern = true;
-                searchR = pivotR;
-                pivotR = splitNode;
-                splitNode = splitNode.getLeft();
-                pivotR.setLeft(null);
-                pivotR.setRight(null);
-                pivotR.setParent(null);
+                treeRroot =  merge(treeRroot, splitNode, splitR);
             }
             else{
-                treeLroot = merge(treeLroot, treeLisExtern, pivotL, splitL, splitLisExtern, searchL);
-                treeRroot = merge(splitR, splitRisExtern, pivotR, treeRroot, treeRisExtern, searchR);
-                break;
+                treeLroot = merge(splitL, null, treeLroot);
+                treeRroot = merge(treeRroot, null, splitR);
             }
-        } 
-       // Bricht die Schleife mit null ab, müssen übrig gebliebene Pivots eingefügt werden. 
-       //Wird für eine Tango Implementierung nicht benötigt
-       // if(pivotR != null)  
-       //     insert(pivotR.getKey());
-       // if(pivotL != null)
-       //     insert(pivotL.getKey());
-        splitNode.setBlackHigh(0); //Sonderwert für undefiniert, da treeLroot und treeRroot unterschiedliche Schwarz-Höhen haben können
-        attachNodeLeft(splitNode, treeLroot);
-        attachNodeRight(splitNode, treeRroot);
-        return splitNode;  
+        } while(nextSplitNode != null && splitNode != node);
+        keyNode.setBlackHigh(0); //Sonderwert für undefiniert, da treeLroot und treeRroot unterschiedliche Schwarz-Höhen haben können
+        attachNodeLeft(keyNode, treeLroot);
+        attachNodeRight(keyNode, treeRroot);
+        return keyNode;  
     }
     @Override
     public Node merge(TangoNode treeLinput, TangoNode midInput, TangoNode treeRinput) {
         Node mid = (Node) midInput;
         Node treeLroot = (Node) treeLinput;
         Node treeRroot = (Node) treeRinput;
-        boolean treeLisExtern = false;
-        boolean treeRisExtern = false;
-        if(treeLroot != null && treeLroot.isAroot()) 
-            treeLisExtern = true;
-        if(treeRroot != null && treeRroot.isAroot())
-            treeRisExtern = true;
-        return merge(treeLroot, treeLisExtern, mid, treeRroot, treeRisExtern, null); 
+        return merge(treeLroot, mid, treeRroot); 
     }
    
-    private Node merge(Node treeLroot, boolean treeLisExtern, Node mid, Node treeRroot, boolean treeRisExtern, Node search) {
+    private Node merge(Node treeLroot, Node mid, Node treeRroot) {
         //Es kann nichts verbunden werden. 
         if(mid == null){ 
             if(treeLroot != null)
                 return treeLroot;
             return treeRroot;
+        }
+        boolean treeLisExtern = false;
+        if(treeLroot != null && treeLroot.isAroot()){
+               treeLisExtern = true;
+        }
+        boolean treeRisExtern = false;
+        if(treeRroot != null && treeRroot.isAroot()){
+               treeRisExtern = true;
         }
         mid.setBlackHigh(1);
         if ((treeLroot == null || treeLisExtern) && (treeRroot == null || treeRisExtern)){ 
@@ -427,16 +398,13 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
             return mid;
         }
         Node ret;
+        Node search;
         mid.setColor(RBColor.RED);
         Node fixUpNodeRB = mid;
         Node fixUpNodeDepth = mid;
         if(treeRroot == null || treeRisExtern){ //mid rechts unten bei treeLroot einfügen
             ret = treeLroot;
-            if(search == null){
-                search = treeLroot;
-            }
-            else if (search.getBlackHigh() == 1 && search.isRed())
-                search = search.getParent();
+            search = treeLroot;
             while (!(search.isBlack() && search.getBlackHigh() == 1))
                 search = search.getRight();
             if(search.getRight() == null){ //Ganz unten anhängen, es wird praktisch eingefügt
@@ -457,11 +425,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         }
         else if (treeLroot == null  || treeLisExtern){ //mid links unten bei treeRroot einfügen
             ret = treeRroot;
-            if(search == null){
-                search = treeRroot;
-            }
-            else if (search.getBlackHigh() == 1 && search.isRed())
-                search = search.getParent();
+            search = treeRroot;
             while (!(search.isBlack() && search.getBlackHigh() == 1))
                 search = search.getLeft();
             if(search.getLeft() == null){ //Ganz unten anhängen, es wird praktisch eingefügt
@@ -482,11 +446,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         }
         else if(treeRroot.getBlackHigh() > treeLroot.getBlackHigh()){ //treeL wird links bei treeRroot angefügt
             ret = treeRroot;
-            if(search == null){
-                search = treeRroot;
-            }
-            else if (search.getBlackHigh() == 1 && search.isRed())
-                search = search.getParent();
+            search = treeRroot;
             while (!(search.isBlack() && search.getBlackHigh() == treeLroot.getBlackHigh()))
                 search = search.getLeft();
             mid.setBlackHigh(treeLroot.getBlackHigh() + 1);
@@ -501,11 +461,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         }
         else{ //treeR wird rechts bei treeLroot angefügt
             ret = treeLroot;
-            if(search == null){
-                search = treeLroot;
-            }
-            else if (search.getBlackHigh() == 1 && search.isRed())
-                search = search.getParent();
+            search = treeLroot;
             while (!(search.isBlack() && search.getBlackHigh() == treeRroot.getBlackHigh()))
                 search = search.getRight();
             mid.setBlackHigh(treeRroot.getBlackHigh() + 1);
@@ -524,7 +480,14 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         fixUpTree.insertFixup(fixUpNodeRB);
         return fixUpTree.getRoot();
     }
-
+    private void detachNode(Node node){
+        if (node == null || node.getParent() == null)
+            return;
+        if (node.getParent().getLeft() == node)
+            node.getParent().setLeft(null);
+        else
+            node.getParent().setRight(null);
+    }
     @Override
     protected void setTree(TangoNode node) {
         root = (Node)node; 

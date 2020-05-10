@@ -94,7 +94,7 @@ public class Node extends TangoNode implements I_GUINode {
     @Override
     public String getKeyStringFromGui() {
        // return Integer.toString(key);
-       return Integer.toString(getKey()) + "_" + Integer.toString(getDepth()) + "_" + Integer.toString(getMaxDepth()) + "_" + Integer.toString(getMinDepth());
+       return Integer.toString(getKey()) + "_" + Integer.toString(getDepth());
     }
 
     

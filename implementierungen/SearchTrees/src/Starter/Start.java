@@ -21,9 +21,8 @@ import java.util.logging.Logger;
  */
 public class Start {
     public static void main (String[] args){
-        new newGUI.GUI(null);
-        return;
-      /*  List<Integer> keys1 = new LinkedList();
+     
+        List<Integer> keys1 = new LinkedList();
         
         keys1.add(1);
         keys1.add(2);
@@ -108,8 +107,8 @@ public class Start {
             
             
             
-            // rbt1.merge(rbt2, 20);
-            //new GUI(rbt1);
+           
+            new GUI(t);
             
             // new GUI(rbt1);
             
@@ -117,6 +116,6 @@ public class Start {
         }
         catch (BuildAuxTreeFaildException ex) {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        } */
+        } 
     }
 }

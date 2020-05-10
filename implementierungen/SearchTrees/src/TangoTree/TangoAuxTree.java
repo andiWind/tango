@@ -219,29 +219,21 @@ public abstract class TangoAuxTree {
         newTree = merge(left, node, right);
         return newTree;
     }
-    TangoNode updatePaths( TangoNode rootMergePath){
-        if (rootMergePath == null )
-            return null;
-        TangoNode tangoRoot = getAuxRoot(rootMergePath.getParentTango());
-        if (tangoRoot == null )
+    TangoNode updatePaths( TangoNode rootMergePath, TangoNode tangoRoot){
+        if (rootMergePath == null || tangoRoot == null   )
             return null;
         //MergePath abhängen
         tangoRoot.setIsRoot(false);
         rootMergePath.setIsRoot(false);
         detachAuxtree(rootMergePath);
-        TangoNode newRoot = cut(tangoRoot, rootMergePath.getMinDepth() - 1 );
-        
-        
-        
-        
+        TangoNode newRoot = cut(tangoRoot, rootMergePath.getMinDepth() - 1 ); 
         TangoNode ret = join(newRoot, rootMergePath );
         ret.setIsRoot(true);
         return ret;   
     }
-    TangoNode updatePreferredChildToLeft(TangoNode node){
+    TangoNode updatePreferredChildToLeft(TangoNode node, TangoNode auxTreeRoot){
         if (node == null )
             return null;
-        TangoNode auxTreeRoot = getAuxRoot(node);
         auxTreeRoot.setIsRoot(false);
         TangoNode cutTree = cut(auxTreeRoot, node.getDepth());
         TangoNode ret = join(cutTree, getMarketPredecessor(node));

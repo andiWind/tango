@@ -121,11 +121,11 @@ public class TangoTree implements I_GUITree{
                 break;
             }
             if(search.isRoot()){
-                search = auxTree.updatePaths(search);
+                search = auxTree.updatePaths(search, auxTree.getRoot() );
                 auxTree.setTree(search);
             }
         }
-        auxTree.setTree(auxTree.updatePreferredChildToLeft(search));
+        auxTree.setTree(auxTree.updatePreferredChildToLeft(search,auxTree.getRoot()));
         return search;
     }   
  

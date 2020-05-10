@@ -74,7 +74,6 @@ public class GUICanvas extends Canvas {
         g.drawString(tree.getName(),width / 2 , 40 );
         g.setFont(standardFont);
         g.setColor(Color.red);
-        g.drawLine(0, 0, 1000, 1000);
         
         if (root != null && !checkParentPointer(root, root.getParentFromGui())){
             g.setFont( new Font("", 1, 30));
@@ -85,15 +84,15 @@ public class GUICanvas extends Canvas {
         
         writeNodeArrays(root, heigh);
         g.setColor(Color.black);
-        
-        //int recWidth = 50;
-        //int recHeigh = 15;
+  
         int xCord = 0;
+        //int recWidth = 20;
+        //int recHeigh = 15;
         //int widthDiff = 10;
         //int heighDiff = 85;
-        int recWidth = 20;
+        int recWidth = 10;
         int recHeigh = 15;
-        int widthDiff = 10;
+        int widthDiff = 5;
         int heighDiff = 85;
         int[] mids = null;
         g.setColor(Color.BLACK);
