@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  10 MAY 2020 19:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  10 MAY 2020 21:59
 entering extended mode
 **./RotSchwarzBaum.tex
 (RotSchwarzBaum.tex
@@ -595,13 +595,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 258--270
  []
 
 [15] [16 <./Medien/RotSchwarzBaum/vereinigen.png>] [17 <./Medien/RotSchwarzBaum
-/vereinigen2.png>]
-Overfull \hbox (2.84256pt too wide) in paragraph at lines 287--289
+/vereinigen2.png>] [18]
+Overfull \hbox (2.84256pt too wide) in paragraph at lines 289--291
 \T1/cmr/m/n/12 zel ei-nes RBT $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 mit Schlüs-
 sel-men-ge $\OML/cmm/m/it/12 K[]$\T1/cmr/m/n/12 , wo-bei gilt $[]$.
  []
 
-[18] [19] [20] [21] (RotSchwarzBaum.bbl) [22] (RotSchwarzBaum.aux)
+[19] [20] [21] [22] (RotSchwarzBaum.bbl) [23] (RotSchwarzBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -636,9 +636,9 @@ sfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/andre/AppData/Local/Prog
 rams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on RotSchwarzBaum.pdf (22 pages, 3904836 bytes).
+Output written on RotSchwarzBaum.pdf (23 pages, 3907622 bytes).
 PDF statistics:
- 486 PDF objects out of 1000 (max. 8388607)
+ 490 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
