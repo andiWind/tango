@@ -121,6 +121,12 @@ Betrachtung der Eigenschaften:
 
 \end{enumerate} 
 Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn das Problem noch nicht an der Wurzel ist, liegt es zumindest zwei Ebenen näher daran. $x$ wird auf $z'$ gesetzt. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall1"}
+	\caption{einfügen-fixup. Dargestellt ist Fall 1  }
+	\label{fig:EinfügenFixUpFall1}
+\end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall2"}
@@ -248,7 +254,7 @@ Folgendes gilt für die Summe der $t_i$:
 Ist das Potenzial nach Ausführung der Operationsfolge also nicht kleiner als zum Beginn, dann sind die amortisierten Gesamtkosten eine obere Schranke für die tatsächlichen Gesamtkosten. Die wesentliche Aufgabe ist es nun eine Potentialfunktion zu finden, bei der die amortisierten Gesamtkosten möglichst niedrig sind und für die gilt $\Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0}$. Dies wird jetzt noch an einem einfachen Beispiel demonstriert, bevor einfügenFixup betrachtet wird. 
 
 \paragraph{Potentialfunktionmethode am Beispiel eines Stack} 
-Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum ablegen eines Elementes auf dem Stack und über \textit{pop} zum entfernen des oben liegenden Elementes. Zusätzlich gibt es eine Operation \textit{popAll}, die so oft \textit{pop} aufruft, bis der Stack leer ist. Sei $n$ die Anzahl der Elemente die maximal im Stack enthalten sein kann. \textit{push} und \textit{pop} können in konstanter Zeit durchgeführt werden und wir berechnen jeweils eine Kosteneinheit. Für die Laufzeit von \textit{popAll} gilt $O(n)$, da \textit{pop} bis zu $n$ mal aufgerufen wird. Für die Gesamtlaufzeit einer Folge von $m$ Operationen gilt in jedem Fall $O(mn)$. Mit einer amortisierten Analyse wird nun aber $O(m)$ für \textit{popAll} gezeigt. Als $\Phi$ verwenden wir eine Funktion, welche die aktuelle Anzahl der im Stack enthaltenen Elemente zurück gibt. $\Phi_0$ setzen wir auf $0$, dass heißt wir starten mit einem leeren Stack. \textit{push} erhöht also das Potential um eins, während \textit{pop} es um eins vermindert. Nun werden die amortisierten Kosten bestimmt. 
+Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum ablegen eines Elementes auf dem Stack und über \textit{pop} zum entfernen des oben liegenden Elementes. Zusätzlich gibt es eine Operation \textit{popAll}, die so oft \textit{pop} aufruft, bis der Stack leer ist. Sei $n$ die Anzahl der Elemente die maximal im Stack enthalten sein kann. \textit{push} und \textit{pop} können in konstanter Zeit durchgeführt werden und wir berechnen jeweils eine Kosteneinheit. Für die Laufzeit von \textit{popAll} gilt $O(n)$, da \textit{pop} bis zu $n$ mal aufgerufen wird. Für die Gesamtlaufzeit einer Folge von $m$ Operationen kann sicher $O(mn)$ angegeben werden. Mit einer amortisierten Analyse wird nun aber $O(m)$ für \textit{popAll} gezeigt. Als $\Phi$ verwenden wir eine Funktion, welche die aktuelle Anzahl der im Stack enthaltenen Elemente zurück gibt. $\Phi_0$ setzen wir auf $0$, dass heißt wir starten mit einem leeren Stack. \textit{push} erhöht also das Potential um eins, während \textit{pop} es um eins vermindert. Nun werden die amortisierten Kosten bestimmt. 
 
 \begin{align*}   
 &a_{\mathit{push}} = t_{\mathit{push}} + \Phi{i} - \Phi{i-1}  &= 2\\
@@ -260,6 +266,30 @@ Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem z
  
  
 \subsection{Amortisierte Laufzeitanalyse bei einfügenFixup}
+Hier wird gezeigt, dass für die Kosten von einfügenFixup $O(1)$ gilt. Dieses Ergebnis wird dann in Abschnitt \ref{vereinigen} benötigt. Da die amortisierte Analyse \textit{einfügenFixup} eine einzelne Operation ist wird zunächst eine andere Sichtweise auf sie gewählt. Jeder Fall innerhalb der Schleife wird als eigenständige Operation $o_1, o_2, o_3, o_4, o_5$ oder $o_6$ betrachtet, wobei der Index der Fallnummer entspricht. Unsere Folge von $m$ Operationen bildet den Ablauf von \textit{einfügenFixup} nach. Die Folge muss mit $m - 1$ $o_2$ Operationen beginnen, da es bei $einfügenFixup()$ nur Behandlung von Fall 2 eine weitere Iteration geben kann. Die Kosten für das Auswerten der Schleifenbedingung $k_1$ sowie der Fallunterscheidung $k_2$ müssen zusätzlich beachtet werden. Beides kann in konstanter Zeit durchgeführt werden. Die tatsächlichen Kosten $t$ in den Operationen sind jeweils konstant und es wird $t + k_1 + k_2 = 1$ gesetzt.   \\
+Sei $T$ ein RBT und $V$ die Menge seiner Knoten.
+Zunächst wird die Hilfsfunktion $\mathit{rang}(\textit{Knoten } v)$ definiert und dann $\Phi$.
+\begin{align*}
+	\mathit{rang}(v)&=\begin{cases}
+	0 & \text{falls v ist rot oder v hat genau ein rotes Kind  } \\
+	1 & \text{v  ist schwarz und v hat kein rotes Kind  } \\
+	2 &\text{v  ist schwarz und v hat zwei rote Kinder} 
+	\end{cases}\\
+	\Phi & = \sum_{v \in V} \mathit{rang}(v)
+\end{align*} 
+Anstelle von $\mathit{rang}(v') - \mathit{rang}(v) $ wird im folgenden  $\Delta\mathit{rang}(v)$ geschrieben. Nun werden die amortisierten Kosten von $o_1, o_2, o_3, o_4, o_5$ und $o_6$ im worst-case gezeigt. Es wird nochmal auf die Abbildungen \ref{fig:EinfügenFixUpFall1} bis \ref{fig:EinfügenFixUpFall6} verwiesen.
+\begin{itemize}
+	\item $a_{o_1} =  1 +  \Delta\mathit{rang}(x) = 3$ 
+	\item $a_{o_2} = 1 + \Delta\mathit{rang}(z) + \Delta\mathit{rang}(y) + \Delta\mathit{rang}(yr) = 1 - 2 + 0 + 1 = 0 $\
+	
+	\item $a_{o_3} = 1$
+	\item $a_{o_4} = 1$
+	\item $a_{o_5} = 1$ 
+	\item $a_{o_6} = 1$
+\end{itemize}
+ 
+  
+
 \subsection{Tango-Baum konformes vereinigen} \label{vereinigen}
 \begin{figure}[h]
 	\centering
