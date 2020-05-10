@@ -6,11 +6,11 @@
 \contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{6}% 
 \contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{14}% 
 \contentsline {paragraph}{Laufzeit der Grundoperationen}{14}% 
-\contentsline {subsection}{\numberline {2.2}Einführung der amortisierten Laufzeitanalyse}{15}% 
-\contentsline {paragraph}{Potentialfunktionmethode}{16}% 
-\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{17}% 
-\contentsline {subsection}{\numberline {2.3}Amortisierte Laufzeitanalyse bei einfügenFixup}{17}% 
-\contentsline {subsection}{\numberline {2.4}Tango-Baum konformes vereinigen}{18}% 
-\contentsline {paragraph}{Resultat nach der Fallbehandlung}{20}% 
-\contentsline {paragraph}{Laufzeit}{21}% 
-\contentsline {subsection}{\numberline {2.5}Tango-Baum konformes aufteilen}{21}% 
+\contentsline {subsection}{\numberline {2.2}Tango-Baum konformes vereinigen}{15}% 
+\contentsline {paragraph}{Resultat nach der Fallbehandlung}{18}% 
+\contentsline {paragraph}{Laufzeit}{18}% 
+\contentsline {subsection}{\numberline {2.3}Tango-Baum konformes aufteilen}{18}% 
+\contentsline {section}{\numberline {3}dd}{19}% 
+\contentsline {subsection}{\numberline {3.1}Einführung der amortisierten Laufzeitanalyse}{19}% 
+\contentsline {paragraph}{Potentialfunktionmethode}{20}% 
+\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{21}% 

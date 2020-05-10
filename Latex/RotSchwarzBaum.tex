@@ -238,57 +238,9 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
   
    
 \end{proof}
-\noindent suchen und einfügenFixup haben daher eine Laufzeit von $\mathit{O(\log {n})}$. Einfügen hat  Kosten $\mathit{O(\log {n})}$ für suchen und  $\mathit{O(\log {n})}$ für einfügenFixup, insgesamt also  $\mathit{O(\log {n})}$.
+\noindent \textit{suchen} hat also Laufzeit $\mathit{O(\log {n})}$. \textit{einfügenFixup} mit übergebenen Knoten $v$ 
+Einfügen hat  Kosten $\mathit{O(\log {n})}$ für suchen und  $\mathit{O(\log {n})}$ für einfügenFixup, insgesamt also  $\mathit{O(\log {n})}$. 
 
-\subsection{Einführung der amortisierten Laufzeitanalyse}
-Sei $i \in \{0,..,m\}$. Bei der \textbf{amortisierten Laufzeitanalyse} wird eine Folge von $m$ Operationen betrachtet. Hierbei kann es sich $m$ mal um die gleiche Operation handeln, oder auch um verschiedene. Die \textbf{tatsächlichen Kosten}  $t_i$ stehen für die exakten Kosten zum ausführen der $i$-ten Operation. Durch aufaddieren der tatsächlichen Kosten jeder einzelnen Operation erhält man \textbf{tatsächlichen Gesamtkosten}. Stehen für die Laufzeit der Operationen jeweils nur obere Schraken zur Verfügung, kann man mit diesen genau so vorgehen, um eine obere Schranke für die Gesamtlaufzeit zu erhalten. So erzeugte obere Schranken können jedoch unnötig hoch sein. Die Idee bei einer amortisierten Analyse ist es, bereits eingesparte Zeit durch schnell ausgeführte Operationen, den noch folgenden Operationen zum Verbrauchen zur Verfügung zu stellen.  Dabei wird insbesondere der aktuelle Zustand der zugrunde liegenden Datenstruktur vor und nach einer Operation betrachtet. Hier soll die amortisierte Laufzeitanalyse verwendet werden um im folgenden Abschnitt eine niedrigere obere Schranke als $O(\log(n))$ für einfügenFixup zu finden. Es gibt drei Methoden zur amortisierten Analyse, hier wird die \textbf{Potentialfunktionmethode} verwendet.
-\paragraph{Potentialfunktionmethode} Eine Potentialfunktion $\Phi(D)$ ordnet einem Zustand einer Datenstruktur $D$ eine natürliche Zahl, \textbf{Potential} genannt, zu. Es bezeichnet $\Phi(D)_{i}$ das Potential von $D$ nach Ausführung der $i$-ten Operation. $t_i$ steht für die \textbf{tatsächlichen Kosten} zum durchführen der $i$-ten Operation. Dabei handelt es sich um die exakten Kosten die beim Die \textbf{amortisierten Kosten} $a_i$ einer Operation berücksichtigen die von der Operation verursachte Veränderung am Potential, $a_i = t_i + \Phi(D)_{i} - \Phi(D)_{i-1}$. Um die \textbf{amortisierten Gesamtkosten} $A$ zu berechnen bildet man die Summe der amortisierten Kosten aller Operationen. 
-\begin{align*}
-A = \sum_{i = 1}^{m} a_i =  \sum_{i = 1}^{m} \left(t_i + \Phi\left(D\right)_{i} - \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{m} - \Phi\left(D\right)_{0} + \sum_{i = 1}^{m} t_i 
-\end{align*}
-Folgendes gilt für die Summe der $t_i$:
-\begin{align*}
-&\sum_{i = 1}^{m} t_i =  \sum_{i = 1}^{m} \left(a_i - \Phi\left(D\right)_{i} + \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{0} - \Phi\left(D\right)_{m} + \sum_{i = 1}^{m} a_i \\
-\Rightarrow &\left( \Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0} \Rightarrow \sum_{i = 1}^{m} a_i \geq \sum_{i = 1}^{m} t_i \right)
-\end{align*}
-Ist das Potenzial nach Ausführung der Operationsfolge also nicht kleiner als zum Beginn, dann sind die amortisierten Gesamtkosten eine obere Schranke für die tatsächlichen Gesamtkosten. Die wesentliche Aufgabe ist es nun eine Potentialfunktion zu finden, bei der die amortisierten Gesamtkosten möglichst niedrig sind und für die gilt $\Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0}$. Dies wird jetzt noch an einem einfachen Beispiel demonstriert, bevor einfügenFixup betrachtet wird. 
-
-\paragraph{Potentialfunktionmethode am Beispiel eines Stack} 
-Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum ablegen eines Elementes auf dem Stack und über \textit{pop} zum entfernen des oben liegenden Elementes. Zusätzlich gibt es eine Operation \textit{popAll}, die so oft \textit{pop} aufruft, bis der Stack leer ist. Sei $n$ die Anzahl der Elemente die maximal im Stack enthalten sein kann. \textit{push} und \textit{pop} können in konstanter Zeit durchgeführt werden und wir berechnen jeweils eine Kosteneinheit. Für die Laufzeit von \textit{popAll} gilt $O(n)$, da \textit{pop} bis zu $n$ mal aufgerufen wird. Für die Gesamtlaufzeit einer Folge von $m$ Operationen kann sicher $O(mn)$ angegeben werden. Mit einer amortisierten Analyse wird nun aber $O(m)$ für \textit{popAll} gezeigt. Als $\Phi$ verwenden wir eine Funktion, welche die aktuelle Anzahl der im Stack enthaltenen Elemente zurück gibt. $\Phi_0$ setzen wir auf $0$, dass heißt wir starten mit einem leeren Stack. \textit{push} erhöht also das Potential um eins, während \textit{pop} es um eins vermindert. Nun werden die amortisierten Kosten bestimmt. 
-
-\begin{align*}   
-&a_{\mathit{push}} = t_{\mathit{push}} + \Phi{i} - \Phi{i-1}  &= 2\\
-&a_{\mathit{pop}} = t_{\mathit{pop}} + \Phi{i} - \Phi{i-1}  &= 0\\
-&a_{\mathit{popAll}} = n \cdot a_{\mathit{pop}} &= 0
-\end{align*}\\
-Alle drei Operationen haben konstante amortisierte Kosten. Auf jedem Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $ Damit gilt für die Ausführungszeit der Folge $O(m)$. \\
-Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem zu Beginn leerem Stack kann nur entfernt werden, was zuvor eingefügt wurde. \textit{push} zahlt für die Operation, welche das eingefügte Element eventuell wieder entfernt gleich mit, bleibt bei den Kosten aber konstant. Deshalb kann \textit{pop} amortisiert kostenlos durchgeführt werden, wodurch einer der beiden Faktoren zur Berechnung der Kosten von \textit{popAll} zu $0$ wird.  
- 
- 
-\subsection{Amortisierte Laufzeitanalyse bei einfügenFixup}
-Hier wird gezeigt, dass für die Kosten von einfügenFixup $O(1)$ gilt. Dieses Ergebnis wird dann in Abschnitt \ref{vereinigen} benötigt. Da die amortisierte Analyse \textit{einfügenFixup} eine einzelne Operation ist wird zunächst eine andere Sichtweise auf sie gewählt. Jeder Fall innerhalb der Schleife wird als eigenständige Operation $o_1, o_2, o_3, o_4, o_5$ oder $o_6$ betrachtet, wobei der Index der Fallnummer entspricht. Unsere Folge von $m$ Operationen bildet den Ablauf von \textit{einfügenFixup} nach. Die Folge muss mit $m - 1$ $o_2$ Operationen beginnen, da es bei $einfügenFixup()$ nur Behandlung von Fall 2 eine weitere Iteration geben kann. Die Kosten für das Auswerten der Schleifenbedingung $k_1$ sowie der Fallunterscheidung $k_2$ müssen zusätzlich beachtet werden. Beides kann in konstanter Zeit durchgeführt werden. Die tatsächlichen Kosten $t$ in den Operationen sind jeweils konstant und es wird $t + k_1 + k_2 = 1$ gesetzt.   \\
-Sei $T$ ein RBT und $V$ die Menge seiner Knoten.
-Zunächst wird die Hilfsfunktion $\mathit{rang}(\textit{Knoten } v)$ definiert und dann $\Phi$.
-\begin{align*}
-	\mathit{rang}(v)&=\begin{cases}
-	0 & \text{falls v ist rot oder v hat genau ein rotes Kind  } \\
-	1 & \text{v  ist schwarz und v hat kein rotes Kind  } \\
-	2 &\text{v  ist schwarz und v hat zwei rote Kinder} 
-	\end{cases}\\
-	\Phi & = \sum_{v \in V} \mathit{rang}(v)
-\end{align*} 
-Anstelle von $\mathit{rang}(v') - \mathit{rang}(v) $ wird im folgenden  $\Delta\mathit{rang}(v)$ geschrieben. Nun werden die amortisierten Kosten von $o_1, o_2, o_3, o_4, o_5$ und $o_6$ im worst-case gezeigt. Es wird nochmal auf die Abbildungen \ref{fig:EinfügenFixUpFall1} bis \ref{fig:EinfügenFixUpFall6} verwiesen.
-\begin{itemize}
-	\item $a_{o_1} =  1 +  \Delta\mathit{rang}(x) = 3$ 
-	\item $a_{o_2} = 1 + \Delta\mathit{rang}(z) + \Delta\mathit{rang}(y) + \Delta\mathit{rang}(yr) = 1 - 2 + 0 + 1 = 0 $\
-	
-	\item $a_{o_3} = 1$
-	\item $a_{o_4} = 1$
-	\item $a_{o_5} = 1$ 
-	\item $a_{o_6} = 1$
-\end{itemize}
- 
-  
 
 \subsection{Tango-Baum konformes vereinigen} \label{vereinigen}
 \begin{figure}[h]
@@ -303,7 +255,7 @@ Anstelle von $\mathit{rang}(v') - \mathit{rang}(v) $ wird im folgenden  $\Delta\
 	\caption{Beispielhaftes vereinigen zweier RBT gleicher Schwarz-Höhe, nach Schritt 1 }
 	\label{fig:vereinigen2}
 \end{figure}
-\noindent Hier wird die \textbf{vereinigen(RBT $T_1$, Schlüssel $k$, RBT $T_2)$} eingeführt wie es ein Tango-Baum von seiner Hilfsstruktur verlangt. Sei $K_1$ die Schlüsselmenge von $T_1$ und $K_2$ die von $T_2$. Die Operation gibt eine Referenz auf die Wurzel eines vereinigten RBT $T$ mit Schlüsselmenge $K_1 \cup K_2 \cup \{k\} $ zurück, dabei werden $T_1$ und $T_2$ zerstört. An die Parameter wird die Vorbedingung $(\forall i \in \mathbb{N}: i < k ) \land (\forall j \in \mathbb{N}: k < j )$ gestellt.\\
+\noindent Hier wird die \textit{vereinigen(RBT $T_1$, Schlüssel $k$, RBT $T_2)$} eingeführt wie es ein Tango-Baum von seiner Hilfsstruktur verlangt. Sei $K_1$ die Schlüsselmenge von $T_1$ und $K_2$ die von $T_2$. Die Operation gibt eine Referenz auf die Wurzel eines vereinigten RBT $T$ mit Schlüsselmenge $K_1 \cup K_2 \cup \{k\} $ zurück, dabei werden $T_1$ und $T_2$ zerstört. An die Parameter wird die Vorbedingung $(\forall i \in \mathbb{N}: i < k ) \land (\forall j \in \mathbb{N}: k < j )$ gestellt.\\
  Es werden im ersten Schritt der Ausführung drei Fälle unterschieden, wobei wieder der erste zutreffende Fall in aufsteigender Reihenfolge ausgewählt wird. \\
 \noindent\textbf{Fall 1: $bh(T_1) = bh(T_2) = 0$ }\\   
 In diesem Fall wird ein roter Knoten $v$ mit Schwarz-Höhe 1 erzeugt. An diesem werden zwei Sonderknoten angefügt. $v$ ist die Wurzel von $T$. \\
@@ -332,6 +284,47 @@ $O(\log (n)) + O(1) +O(\log (n)) = O(\log (n))$\\
 Die Vorgabe des Tango-Baumes wird also eingehalten.
 
 \subsection{Tango-Baum konformes aufteilen}
+Auch \textit{aufteilen (RBT $T$, Schlüssel $k$)} wird so vorgestellt, wie es als Hilfsstruktur für einen Tango-Baum benötigt wird. Vorbedingung an die Parameter ist, dass $k$ in der Schlüsselmenge $K$ von $T$ vorhanden ist. Zurückgegeben wird eine Referenz auf den Knoten $v$ mit Schlüssel $k$. Linkes Kind von $v$ ist die Wurzel eines RBT $T_L$ mit Schlüsselmenge $K_L$, wobei gilt ${K_L=\{i \mid  i\in K \land i <k\}}$. Rechtes Kind von $v$ ist die Wurzel eines RBT $T_2$ mit Schlüsselmenge $K_R$, wobei gilt ${K_R = \{i \mid i\in K \land i > k\}}$. \textit{aufteilen} gibt also in den meisten Fällen keinen RBT zurück. Die Operation setzt zunächst $T_L$ auf den linken Teilbaum von $v$ und $T_R$ auf den rechten Teilbaum von $v$. Eventuell müssen die Wurzeln schwarz gefärbt werden. Dann wird sich auf dem Pfad von $v$ zur Wurzel von $T$ Knoten für Knoten nach oben gearbeitet. Ist der Schlüssel eines Knotens kleiner als $k$, so wird dieser Schlüssel und der linke Teilbaum des Knotens zu $T_L$ hinzugefügt. Dies übernimmt unsere \textit{vereinigen} Operation. Ist der Schlüssel größer als $k$, so wird dieser Schlüssel und der rechte Teilbaum des Knotens zu $T_R$ hinzugefügt. Folgende Aufzählung beschreibt den Vorgang genauer.
+Es sei $(v_0, v_1,...,v_m) $ der Pfad von $v$ = $v_0$ zur Wurzel $v_m$.
+\begin{enumerate}
+	\item Verwende die \textit{suchen} Operation um den Knoten $v_0$ mit Schlüssel $k$ zu finden.
+	\item Setze den linken Teilbaum von $v_0$ als $T_L$, den rechten als $T_R$. Löse beide Teilbäume aus $T$ heraus.
+	\item Färbe die Wurzeln von $T_L$ und $T_R$ schwarz.
+	\item $\forall i \in \{1,2,..,m\}$. Ist der Schlüssel $k_i$ von $v_i$ kleiner als $k$ vereinige, $T_L$ mit dem aus $T$ herausgelösten linken Teilbaum von $v_i$, mit  $k_i$ als dritten Parameter. Ansonsten vereinige $T_R$ mit dem aus $T$ herausgelösten rechten Teilbaum von $v_i$, mit  $k_i$ als dritten Parameter. 
+	\item Füge $T_R$ rechts an $v$ an, $T_L$ links.
+	\item Gib $v$ zurück.
+\end{enumerate}   
+
+
+
+
+\section{dd}
+
+\subsection{Einführung der amortisierten Laufzeitanalyse}
+Sei $i \in \{0,..,m\}$. Bei der \textbf{amortisierten Laufzeitanalyse} wird eine Folge von $m$ Operationen betrachtet. Hierbei kann es sich $m$ mal um die gleiche Operation handeln, oder auch um verschiedene. Die \textbf{tatsächlichen Kosten}  $t_i$ stehen für die exakten Kosten zum ausführen der $i$-ten Operation. Durch aufaddieren der tatsächlichen Kosten jeder einzelnen Operation erhält man \textbf{tatsächlichen Gesamtkosten}. Stehen für die Laufzeit der Operationen jeweils nur obere Schraken zur Verfügung, kann man mit diesen genau so vorgehen, um eine obere Schranke für die Gesamtlaufzeit zu erhalten. So erzeugte obere Schranken können jedoch unnötig hoch sein. Die Idee bei einer amortisierten Analyse ist es, bereits eingesparte Zeit durch schnell ausgeführte Operationen, den noch folgenden Operationen zum Verbrauchen zur Verfügung zu stellen.  Dabei wird insbesondere der aktuelle Zustand der zugrunde liegenden Datenstruktur vor und nach einer Operation betrachtet. Hier soll die amortisierte Laufzeitanalyse verwendet werden um im folgenden Abschnitt eine niedrigere obere Schranke als $O(\log(n))$ für einfügenFixup zu finden. Es gibt drei Methoden zur amortisierten Analyse, hier wird die \textbf{Potentialfunktionmethode} verwendet.
+\paragraph{Potentialfunktionmethode} Eine Potentialfunktion $\Phi(D)$ ordnet einem Zustand einer Datenstruktur $D$ eine natürliche Zahl, \textbf{Potential} genannt, zu. Es bezeichnet $\Phi(D)_{i}$ das Potential von $D$ nach Ausführung der $i$-ten Operation. $t_i$ steht für die \textbf{tatsächlichen Kosten} zum durchführen der $i$-ten Operation. Dabei handelt es sich um die exakten Kosten die beim Die \textbf{amortisierten Kosten} $a_i$ einer Operation berücksichtigen die von der Operation verursachte Veränderung am Potential, $a_i = t_i + \Phi(D)_{i} - \Phi(D)_{i-1}$. Um die \textbf{amortisierten Gesamtkosten} $A$ zu berechnen bildet man die Summe der amortisierten Kosten aller Operationen. 
+\begin{align*}
+A = \sum_{i = 1}^{m} a_i =  \sum_{i = 1}^{m} \left(t_i + \Phi\left(D\right)_{i} - \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{m} - \Phi\left(D\right)_{0} + \sum_{i = 1}^{m} t_i 
+\end{align*}
+Folgendes gilt für die Summe der $t_i$:
+\begin{align*}
+&\sum_{i = 1}^{m} t_i =  \sum_{i = 1}^{m} \left(a_i - \Phi\left(D\right)_{i} + \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{0} - \Phi\left(D\right)_{m} + \sum_{i = 1}^{m} a_i \\
+\Rightarrow &\left( \Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0} \Rightarrow \sum_{i = 1}^{m} a_i \geq \sum_{i = 1}^{m} t_i \right)
+\end{align*}
+Ist das Potenzial nach Ausführung der Operationsfolge also nicht kleiner als zum Beginn, dann sind die amortisierten Gesamtkosten eine obere Schranke für die tatsächlichen Gesamtkosten. Die wesentliche Aufgabe ist es nun eine Potentialfunktion zu finden, bei der die amortisierten Gesamtkosten möglichst niedrig sind und für die gilt $\Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0}$. Dies wird jetzt noch an einem einfachen Beispiel demonstriert, bevor einfügenFixup betrachtet wird. 
+
+\paragraph{Potentialfunktionmethode am Beispiel eines Stack} 
+Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum ablegen eines Elementes auf dem Stack und über \textit{pop} zum entfernen des oben liegenden Elementes. Zusätzlich gibt es eine Operation \textit{popAll}, die so oft \textit{pop} aufruft, bis der Stack leer ist. Sei $n$ die Anzahl der Elemente die maximal im Stack enthalten sein kann. \textit{push} und \textit{pop} können in konstanter Zeit durchgeführt werden und wir berechnen jeweils eine Kosteneinheit. Für die Laufzeit von \textit{popAll} gilt $O(n)$, da \textit{pop} bis zu $n$ mal aufgerufen wird. Für die Gesamtlaufzeit einer Folge von $m$ Operationen kann sicher $O(mn)$ angegeben werden. Mit einer amortisierten Analyse wird nun aber $O(m)$ für \textit{popAll} gezeigt. Als $\Phi$ verwenden wir eine Funktion, welche die aktuelle Anzahl der im Stack enthaltenen Elemente zurück gibt. $\Phi_0$ setzen wir auf $0$, dass heißt wir starten mit einem leeren Stack. \textit{push} erhöht also das Potential um eins, während \textit{pop} es um eins vermindert. Nun werden die amortisierten Kosten bestimmt. 
+
+\begin{align*}   
+&a_{\mathit{push}} = t_{\mathit{push}} + \Phi{i} - \Phi{i-1}  &= 2\\
+&a_{\mathit{pop}} = t_{\mathit{pop}} + \Phi{i} - \Phi{i-1}  &= 0\\
+&a_{\mathit{popAll}} = n \cdot a_{\mathit{pop}} &= 0
+\end{align*}\\
+Alle drei Operationen haben konstante amortisierte Kosten. Auf jedem Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $ Damit gilt für die Ausführungszeit der Folge $O(m)$. \\
+Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem zu Beginn leerem Stack kann nur entfernt werden, was zuvor eingefügt wurde. \textit{push} zahlt für die Operation, welche das eingefügte Element eventuell wieder entfernt gleich mit, bleibt bei den Kosten aber konstant. Deshalb kann \textit{pop} amortisiert kostenlos durchgeführt werden, wodurch einer der beiden Faktoren zur Berechnung der Kosten von \textit{popAll} zu $0$ wird.  
+
+
 \newpage
 \bibliography{literaturverzeichnis}
 \bibliographystyle{unsrt}

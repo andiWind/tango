@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  9 MAY 2020 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  10 MAY 2020 19:52
 entering extended mode
 **./RotSchwarzBaum.tex
 (RotSchwarzBaum.tex
@@ -571,57 +571,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
-[15] [16]
-
-LaTeX Warning: Command \" invalid in math mode on input line 269.
-
-Missing character: There is no ü in font cmr12!
-[17]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2
-82.
- ("C:\Users\andre\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 282.
-<Medien/RotSchwarzBaum/vereinigen.png, id=92, 1730.8665pt x 1991.64075pt>
+<Medien/RotSchwarzBaum/vereinigen.png, id=82, 1730.8665pt x 1991.64075pt>
 File: Medien/RotSchwarzBaum/vereinigen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen.png  used on input li
-ne 296.
+ne 248.
 (pdftex.def)             Requested size: 203.36363pt x 234.00238pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/RotSchwarzBaum/vereinigen2.png, id=93, 1805.5455pt x 1766.39925pt>
+<Medien/RotSchwarzBaum/vereinigen2.png, id=83, 1805.5455pt x 1766.39925pt>
 File: Medien/RotSchwarzBaum/vereinigen2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen2.png  used on input l
-ine 302.
+ine 254.
 (pdftex.def)             Requested size: 239.16476pt x 234.00238pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--318
+Underfull \hbox (badness 10000) in paragraph at lines 258--270
 
  []
 
-[18] [19 <./Medien/RotSchwarzBaum/vereinigen.png>] [20 <./Medien/RotSchwarzBaum
-/vereinigen2.png>] [21] (RotSchwarzBaum.bbl) [22] (RotSchwarzBaum.aux)
+[15] [16 <./Medien/RotSchwarzBaum/vereinigen.png>] [17 <./Medien/RotSchwarzBaum
+/vereinigen2.png>]
+Overfull \hbox (2.84256pt too wide) in paragraph at lines 287--289
+\T1/cmr/m/n/12 zel ei-nes RBT $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 mit Schlüs-
+sel-men-ge $\OML/cmm/m/it/12 K[]$\T1/cmr/m/n/12 , wo-bei gilt $[]$.
+ []
+
+[18] [19] [20] [21] (RotSchwarzBaum.bbl) [22] (RotSchwarzBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6580 strings out of 492453
- 99835 string characters out of 3120076
- 190451 words of memory out of 3000000
- 10789 multiletter control sequences out of 15000+200000
- 22471 words of font info for 60 fonts, out of 3000000 for 9000
+ 6558 strings out of 492453
+ 99455 string characters out of 3120076
+ 191451 words of memory out of 3000000
+ 10772 multiletter control sequences out of 15000+200000
+ 21098 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,16n,42p,1787b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,10n,42p,1787b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecbx1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -637,17 +629,16 @@ ic/amsfonts/cm/cmex10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/Programs/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andre/AppData/Loca
 l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andre/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/U
-sers/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/andre/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on RotSchwarzBaum.pdf (22 pages, 3917038 bytes).
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/U
+sers/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
+y10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/andre/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on RotSchwarzBaum.pdf (22 pages, 3904836 bytes).
 PDF statistics:
- 492 PDF objects out of 1000 (max. 8388607)
+ 486 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
