@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  11 MAY 2020 20:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  11 MAY 2020 19:35
 entering extended mode
-**./RotSchwarzBaum.tex
-(RotSchwarzBaum.tex
+**./amort.tex
+(amort.tex
 LaTeX2e <2019-10-01> patch level 1
 ("C:\Users\andre\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2019/08/27 v1.4j Standard LaTeX document class
@@ -318,8 +318,8 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'german'.
- (RotSchwarzBaum.aux)
-\openout1 = `RotSchwarzBaum.aux'.
+ (amort.aux)
+\openout1 = `amort.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
@@ -423,222 +423,43 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/andre/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-(RotSchwarzBaum.toc)
+(amort.toc)
 \tf@toc=\write3
-\openout3 = `RotSchwarzBaum.toc'.
+\openout3 = `amort.toc'.
 
- [3]
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+ [3] [4] [5] [6] (amort.bbl
 
- []
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-[4]
-<Medien/RotSchwarzBaum/IOBaum.png, id=26, 2527.64325pt x 1209.92026pt>
-File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/IOBaum.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 6
-0.
-(pdftex.def)             Requested size: 390.0pt x 186.66798pt.
-<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=28, 2527.64325pt x 1209.92026pt>
-
-File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
-ut line 66.
-(pdftex.def)             Requested size: 390.0pt x 186.66798pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=29, 2527.64325pt x 1532.124pt>
-
-File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png  used on i
-nput line 72.
-(pdftex.def)             Requested size: 390.0pt x 236.37799pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Reference `BST Operationen' on page 5 undefined on input line 78
-.
-
-[5 <./Medien/RotSchwarzBaum/IOBaum.png>] [6 <./Medien/RotSchwarzBaum/NIOBaumZwe
-iRote.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 95--97
-
- []
-
-[7 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 107--109
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--112
-
- []
-
-[8]
-<Medien/RotSchwarzBaum/EinfügenFixUpFall1.png, id=51, 2351.78625pt x 858.8085p
-t>
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png  used on
- input line 126.
-(pdftex.def)             Requested size: 272.99881pt x 99.68475pt.
-<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=52, 5132.97675pt x 1795.9095
-pt>
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
- input line 132.
-(pdftex.def)             Requested size: 390.0pt x 136.44121pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--139
-
- []
-
-[9 <./Medien/RotSchwarzBaum/EinfügenFixUpFall1.png> <./Medien/RotSchwarzBaum/E
-infügenFixUpFall2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 153--155
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 168--172
-
- []
-
-<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=61, 3683.96326pt x 2301.7995
-pt>
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
- input line 178.
-(pdftex.def)             Requested size: 390.0pt x 243.64539pt.
-[11]
-<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=65, 3581.58075pt x 2655.3202
-5pt>
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
- input line 185.
-(pdftex.def)             Requested size: 390.0pt x 289.1284pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/RotSchwarzBaum/EinfügenFixUpFall5.png, id=66, 3518.3445pt x 2209.65524
-pt>
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall5.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png  used on
- input line 192.
-(pdftex.def)             Requested size: 390.0pt x 244.91724pt.
-<Medien/RotSchwarzBaum/EinfügenFixUpFall6.png, id=67, 3523.1625pt x 2673.99pt>
-
-File: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png  used on
- input line 198.
-(pdftex.def)             Requested size: 390.0pt x 295.97589pt.
-[12 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>]
-Overfull \vbox (5.24562pt too high) has occurred while \output is active []
-
-
-[13 <./Medien/RotSchwarzBaum/EinfügenFixUpFall4.png> <./Medien/RotSchwarzBaum/
-EinfügenFixUpFall5.png>]
-\c@Lemma=\count123
-
-Underfull \hbox (badness 10000) in paragraph at lines 210--216
-
- []
-
-[14 <./Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-<Medien/RotSchwarzBaum/vereinigen.png, id=82, 1730.8665pt x 1991.64075pt>
-File: Medien/RotSchwarzBaum/vereinigen.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/vereinigen.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen.png  used on input li
-ne 248.
-(pdftex.def)             Requested size: 203.36363pt x 234.00238pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/RotSchwarzBaum/vereinigen2.png, id=83, 1805.5455pt x 1766.39925pt>
-File: Medien/RotSchwarzBaum/vereinigen2.png Graphic file (type png)
-<use Medien/RotSchwarzBaum/vereinigen2.png>
-Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen2.png  used on input l
-ine 254.
-(pdftex.def)             Requested size: 239.16476pt x 234.00238pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--270
-
- []
-
-[15] [16 <./Medien/RotSchwarzBaum/vereinigen.png>] [17 <./Medien/RotSchwarzBaum
-/vereinigen2.png>] [18]
-Overfull \hbox (2.84256pt too wide) in paragraph at lines 290--292
-\T1/cmr/m/n/12 zel ei-nes RBT $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 mit Schl�s-
-sel-men-ge $\OML/cmm/m/it/12 K[]$\T1/cmr/m/n/12 , wo-bei gilt $[]$.
- []
-
-[19] [20] (RotSchwarzBaum.bbl) [21] (RotSchwarzBaum.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+) [7] (amort.aux) ) 
 Here is how much of TeX's memory you used:
- 6558 strings out of 492453
- 99455 string characters out of 3120076
- 191451 words of memory out of 3000000
- 10772 multiletter control sequences out of 15000+200000
- 21098 words of font info for 58 fonts, out of 3000000 for 9000
+ 6432 strings out of 492453
+ 95037 string characters out of 3120076
+ 185341 words of memory out of 3000000
+ 10664 multiletter control sequences out of 15000+200000
+ 17241 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,10n,42p,1787b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecbx1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX
-\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Us
-ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.
-pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecrm2074.pk><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmex10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andre/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andre/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/U
+ 53i,10n,42p,1300b,196s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jk
+nappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk
+/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.
+9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\AppData\Local
+\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\App
+Data\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users
+\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk>
+<C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmex10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andre/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andre/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/andre/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/U
 sers/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/andre/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on RotSchwarzBaum.pdf (21 pages, 3894553 bytes).
+y8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmti8.pfb>
+Output written on amort.pdf (7 pages, 137512 bytes).
 PDF statistics:
- 472 PDF objects out of 1000 (max. 8388607)
+ 235 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

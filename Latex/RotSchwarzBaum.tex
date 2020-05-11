@@ -280,7 +280,8 @@ Dass ein Baum mit Schlüsselmenge  $K_1 \cup K_2 \cup \{k\} $ entstanden ist, er
  In Schritt zwei wird also einfügenFixup mit Parameter $v$ aufgerufen und die Wurzel des resultierenden RBT zurückgegeben. 
 \paragraph{Laufzeit}
 Sei $n_1$ die Anzahl der Knoten von $T_1$, sei $n_2$ die Anzahl der Knoten von $T_2$ und $n = n_1 + n_2$. Der Tango-Baum fordert von seiner Hilfsstruktur eine Laufzeit von $O(\log n)$ für die eben vorgestellte Operation.  Das ablaufen eines Pfades in $T_1$ oder $T_2$ zum Finden von $x$ liegt in $O(\log (n))$. $v$ erzeugen und in die Struktur einzubinden benötigt konstante Zeit und einfügenFixup benötigt  $O(\log (n))$ Zeit.\\
-$O(\log (n)) + O(1) +O(\log (n)) = O(\log (n))$\\
+$O(\log (n)) + O(1) +O(\log (n)) = O(\log (n
+))$\\
 Die Vorgabe des Tango-Baumes wird also eingehalten.\\
 Für das nächste Kapitel wird noch eine genauere Betrachtung der Laufzeit benötigt. Es sei $d = \vert \mathit{bh}(T_1) - \mathit{bh}(T_2)  \vert $. Die Suche nach $x$ endet spätestens nach dem ein Pfad der Länge $2d + 1$ betrachtet wurde. Dabei steht die $1$ für $x$ selbst. Zu jedem schwarzen Knoten über $x$ könnte noch ein roter kommen.\\
 \textit{einfügenFixup} wird mit Parameter $v$ aufgerufen. Sei $w$ die Wurzel von $T$. $v$ ist ein roter Knoten mit $\mathit{bh}(v) = \mathit{bh}(w) - d + 1$ und liegt in Ebene $2d + 2$ oder höher. Deshalb führt \textit{einfügenFixup} maximal $d + 1$ Iterationen durch.  
@@ -296,35 +297,16 @@ Es sei $(v_0, v_1,...,v_m) $ der Pfad von $v$ = $v_0$ zur Wurzel $v_m$.
 	\item Füge $T_R$ rechts an $v$ an, $T_L$ links.
 	\item Gib $v$ zurück.
 \end{enumerate}   
-Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leichter erkannt, wenn man sich den Pfad von oben nach unten, also $(v_m,..,v_0)$, betrachtet. $v_m$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_m$ ist $v_{m-1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{m-1}$ liegen sind somit korrekt zugeordnet. Dieses vorgehen iteriert bis man auf $v$ trifft. Die Schlüssel im Teilbaum mit Wurzel $v$ werden korrekt zugeordnet.     
+Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leichter erkannt, wenn man sich den Pfad von oben nach unten, also $(v_m,..,v_0)$, betrachtet. $v_m$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_m$ ist $v_{m-1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{m-1}$ liegen sind somit korrekt zugeordnet. Dieses vorgehen iteriert bis man auf $v$ trifft. Die Schlüssel im Teilbaum mit Wurzel $v$ werden korrekt zugeordnet. 
+
 \paragraph{Laufzeit}
-Der Tango-Baum fordert eine Laufzeit von $O(\log(n))$ von seiner Hilfsstruktur für \textit{aufteilen}. Punkt 1 kostet $O(\log(n))$ Zeit. Durchführen von Punkt 2,3,5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{vereinigen} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.
-
-\section{dd}
-
-\subsection{Einführung der amortisierten Laufzeitanalyse}
-Sei $i \in \{0,..,m\}$. Bei der \textbf{amortisierten Laufzeitanalyse} wird eine Folge von $m$ Operationen betrachtet. Hierbei kann es sich $m$ mal um die gleiche Operation handeln, oder auch um verschiedene. Die \textbf{tatsächlichen Kosten}  $t_i$ stehen für die exakten Kosten zum ausführen der $i$-ten Operation. Durch aufaddieren der tatsächlichen Kosten jeder einzelnen Operation erhält man \textbf{tatsächlichen Gesamtkosten}. Stehen für die Laufzeit der Operationen jeweils nur obere Schraken zur Verfügung, kann man mit diesen genau so vorgehen, um eine obere Schranke für die Gesamtlaufzeit zu erhalten. So erzeugte obere Schranken können jedoch unnötig hoch sein. Die Idee bei einer amortisierten Analyse ist es, bereits eingesparte Zeit durch schnell ausgeführte Operationen, den noch folgenden Operationen zum Verbrauchen zur Verfügung zu stellen.  Dabei wird insbesondere der aktuelle Zustand der zugrunde liegenden Datenstruktur vor und nach einer Operation betrachtet. Hier soll die amortisierte Laufzeitanalyse verwendet werden um im folgenden Abschnitt eine niedrigere obere Schranke als $O(\log(n))$ für einfügenFixup zu finden. Es gibt drei Methoden zur amortisierten Analyse, hier wird die \textbf{Potentialfunktionmethode} verwendet.
-\paragraph{Potentialfunktionmethode} Eine Potentialfunktion $\Phi(D)$ ordnet einem Zustand einer Datenstruktur $D$ eine natürliche Zahl, \textbf{Potential} genannt, zu. Es bezeichnet $\Phi(D)_{i}$ das Potential von $D$ nach Ausführung der $i$-ten Operation. $t_i$ steht für die \textbf{tatsächlichen Kosten} zum durchführen der $i$-ten Operation. Dabei handelt es sich um die exakten Kosten die beim Die \textbf{amortisierten Kosten} $a_i$ einer Operation berücksichtigen die von der Operation verursachte Veränderung am Potential, $a_i = t_i + \Phi(D)_{i} - \Phi(D)_{i-1}$. Um die \textbf{amortisierten Gesamtkosten} $A$ zu berechnen bildet man die Summe der amortisierten Kosten aller Operationen. 
+Der Tango-Baum fordert eine Laufzeit von $O(\log(n))$ von seiner Hilfsstruktur für \textit{aufteilen}. Punkt 1 kostet $O(\log(n))$ Zeit. Durchführen von Punkt 2,3,5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{vereinigen} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{vereinigen} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{vereinigen} war. Es gilt $\mathit{bh}(t_1) \leq \mathit{bh}(t_2)$ und $\mathit{bh}(t_i) \leq \mathit{bh}(T_{li}) \leq \mathit{bh}(t_i)+ 1 \leq \mathit{bh}(t_{i+1})$ und $\mathit{bh}(T_{Ll}) =  O(\log(n))$. Nun wird die maximale Länge aller Pfade aufaddiert die für suchen betrachtet werden.
 \begin{align*}
-A = \sum_{i = 1}^{m} a_i =  \sum_{i = 1}^{m} \left(t_i + \Phi\left(D\right)_{i} - \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{m} - \Phi\left(D\right)_{0} + \sum_{i = 1}^{m} t_i 
+&\sum_{i = 1}^{l}  2 (\mathit{bh}(t_i) -\mathit{bh}(t_{i+1})) + 1 = 2 \cdot  O(\log(n) +  O(\log(n) =  O(\log(n)\\
+&\sum_{i = 1}^{l}  (\mathit{bh}(t_i) -\mathit{bh}(t_{i+1})) + 1 = O(\log(n) +  O(\log(n) =  O(\log(n)
 \end{align*}
-Folgendes gilt für die Summe der $t_i$:
-\begin{align*}
-&\sum_{i = 1}^{m} t_i =  \sum_{i = 1}^{m} \left(a_i - \Phi\left(D\right)_{i} + \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{0} - \Phi\left(D\right)_{m} + \sum_{i = 1}^{m} a_i \\
-\Rightarrow &\left( \Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0} \Rightarrow \sum_{i = 1}^{m} a_i \geq \sum_{i = 1}^{m} t_i \right)
-\end{align*}
-Ist das Potenzial nach Ausführung der Operationsfolge also nicht kleiner als zum Beginn, dann sind die amortisierten Gesamtkosten eine obere Schranke für die tatsächlichen Gesamtkosten. Die wesentliche Aufgabe ist es nun eine Potentialfunktion zu finden, bei der die amortisierten Gesamtkosten möglichst niedrig sind und für die gilt $\Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0}$. Dies wird jetzt noch an einem einfachen Beispiel demonstriert, bevor einfügenFixup betrachtet wird. 
+Damit ............
 
-\paragraph{Potentialfunktionmethode am Beispiel eines Stack} 
-Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum ablegen eines Elementes auf dem Stack und über \textit{pop} zum entfernen des oben liegenden Elementes. Zusätzlich gibt es eine Operation \textit{popAll}, die so oft \textit{pop} aufruft, bis der Stack leer ist. Sei $n$ die Anzahl der Elemente die maximal im Stack enthalten sein kann. \textit{push} und \textit{pop} können in konstanter Zeit durchgeführt werden und wir berechnen jeweils eine Kosteneinheit. Für die Laufzeit von \textit{popAll} gilt $O(n)$, da \textit{pop} bis zu $n$ mal aufgerufen wird. Für die Gesamtlaufzeit einer Folge von $m$ Operationen kann sicher $O(mn)$ angegeben werden. Mit einer amortisierten Analyse wird nun aber $O(m)$ für \textit{popAll} gezeigt. Als $\Phi$ verwenden wir eine Funktion, welche die aktuelle Anzahl der im Stack enthaltenen Elemente zurück gibt. $\Phi_0$ setzen wir auf $0$, dass heißt wir starten mit einem leeren Stack. \textit{push} erhöht also das Potential um eins, während \textit{pop} es um eins vermindert. Nun werden die amortisierten Kosten bestimmt. 
-
-\begin{align*}   
-&a_{\mathit{push}} = t_{\mathit{push}} + \Phi{i} - \Phi{i-1}  &= 2\\
-&a_{\mathit{pop}} = t_{\mathit{pop}} + \Phi{i} - \Phi{i-1}  &= 0\\
-&a_{\mathit{popAll}} = n \cdot a_{\mathit{pop}} &= 0
-\end{align*}\\
-Alle drei Operationen haben konstante amortisierte Kosten. Auf jedem Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $ Damit gilt für die Ausführungszeit der Folge $O(m)$. \\
-Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem zu Beginn leerem Stack kann nur entfernt werden, was zuvor eingefügt wurde. \textit{push} zahlt für die Operation, welche das eingefügte Element eventuell wieder entfernt gleich mit, bleibt bei den Kosten aber konstant. Deshalb kann \textit{pop} amortisiert kostenlos durchgeführt werden, wodurch einer der beiden Faktoren zur Berechnung der Kosten von \textit{popAll} zu $0$ wird.  
 
 
 \newpage
