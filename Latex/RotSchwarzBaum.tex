@@ -300,9 +300,26 @@ Es sei $(v_0, v_1,...,v_m) $ der Pfad von $v$ = $v_0$ zur Wurzel $v_m$.
 Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leichter erkannt, wenn man sich den Pfad von oben nach unten, also $(v_m,..,v_0)$, betrachtet. $v_m$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_m$ ist $v_{m-1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{m-1}$ liegen sind somit korrekt zugeordnet. Dieses vorgehen iteriert bis man auf $v$ trifft. Die Schlüssel im Teilbaum mit Wurzel $v$ werden korrekt zugeordnet. 
 
 \paragraph{Laufzeit}
-Der Tango-Baum fordert eine Laufzeit von $O(\log(n))$ von seiner Hilfsstruktur für \textit{aufteilen}. Punkt 1 kostet $O(\log(n))$ Zeit. Durchführen von Punkt 2,3,5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{vereinigen} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{vereinigen} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{vereinigen} war. Es gilt $\mathit{bh}(t_1) \leq \mathit{bh}(t_2)$ und $\mathit{bh}(t_i) \leq \mathit{bh}(T_{li}) \leq \mathit{bh}(t_i)+ 1 \leq \mathit{bh}(t_{i+1})$ und $\mathit{bh}(T_{Ll}) =  O(\log(n))$. Nun wird die maximale Länge aller Pfade aufaddiert die für suchen betrachtet werden.
+Der Tango-Baum fordert eine Laufzeit von $O(\log(n))$ von seiner Hilfsstruktur für \textit{aufteilen}. Punkt 1 kostet $O(\log(n))$ Zeit. Durchführen von Punkt 2,3,5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{vereinigen} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{vereinigen} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{vereinigen} war.  $T_{L0}$ steht für den Zustand vor dem ersten Aufruf.\\
+
+ \noindent Es gilt $\mathit{bh}(t_i) \leq \mathit{bh}(v_i)$, $\mathit{bh}(t_i) \leq \mathit{bh}(t_{i+1}) $ und $\mathit{bh}(t_i) \leq \mathit{bh}(T_{Li})$. Dass auch $\mathit{bh}(T_{Li-1}) \leq \mathit{bh}(v_{i})$ gilt wird nun durch Induktion gezeigt:\\
+ $T_{L0}$ war der linke oder rechte Teilbaum von $v_1$, der Induktionsanfang ist somit gemacht.\\
+ $\mathit{bh}(T_{Li})$ entsteht durch \textit{vereinigen($T_{Li-1}$, $k_{vi}$, $t_i$)}, mit $k_{vi}$ ist der Schlüssel von~ $v_i$.\\ 
+  Fall $v_i$ ist rot:
+  Kinder von $v_i$ müssen schwarz sein, deshalb\\
 \begin{align*}
-&\sum_{i = 1}^{l}  2 (\mathit{bh}(t_i) -\mathit{bh}(t_{i+1})) + 1 = 2 \cdot  O(\log(n) +  O(\log(n) =  O(\log(n)\\
+&\mathit{bh}(t_i) < \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
+\Rightarrow  & \mathit{bh}(T_{Li})  \leq  \mathit{bh}(v_{i}) \leq  \mathit{bh}(v_{i+1}) 
+\end{align*}
+  Fall $v_i$ ist schwarz:
+ \begin{align*}
+  &\mathit{bh}(t_i) \leq \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
+  \Rightarrow  &\mathit{bh}(T_{Li})  \leq \mathit{bh}(v_{i}) + 1 =    \mathit{bh}(v_{i+1})
+\end{align*}
+ 
+ 
+\begin{align*}
+&\sum_{i = 1}^{l}  2 (\mathit{bh}(T_{Li-1}) -\mathit{bh}(t_{i})) + 1 \leq \sum_{i = 1}^{l}  2 (\mathit{bh}(v_i) -\mathit{bh}(t_{i})) + 1 \leq  2 \cdot l + l = O(\log(n)\\
 &\sum_{i = 1}^{l}  (\mathit{bh}(t_i) -\mathit{bh}(t_{i+1})) + 1 = O(\log(n) +  O(\log(n) =  O(\log(n)
 \end{align*}
 Damit ............
