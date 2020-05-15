@@ -4,6 +4,7 @@
 \contentsline {subsection}{\numberline {2.1}Grundoperationen}{5}% 
 \contentsline {paragraph}{Suchen im Rot-Schwarz-Baum}{5}% 
 \contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{6}% 
+\contentsline {paragraph}{Laufzeit}{12}% 
 \contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{14}% 
 \contentsline {paragraph}{Laufzeit der Grundoperationen}{14}% 
 \contentsline {subsection}{\numberline {2.2}Tango-Baum konformes vereinigen}{15}% 

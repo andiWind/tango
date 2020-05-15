@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  15 MAY 2020 13:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  15 MAY 2020 17:11
 entering extended mode
 **./RotSchwarzBaum.tex
 (RotSchwarzBaum.tex
@@ -470,12 +470,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
-
+[7 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 95--97
 
  []
 
-[7 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 107--109
 
  []
@@ -486,14 +486,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--112
  []
 
 [8]
-<Medien/RotSchwarzBaum/EinfügenFixUpFall1.png, id=51, 2351.78625pt x 858.8085p
+<Medien/RotSchwarzBaum/EinfügenFixUpFall1.png, id=50, 2351.78625pt x 858.8085p
 t>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png  used on
  input line 126.
 (pdftex.def)             Requested size: 272.99881pt x 99.68475pt.
-<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=52, 5132.97675pt x 1795.9095
+<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=51, 5132.97675pt x 1795.9095
 pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
@@ -521,14 +521,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--172
 
  []
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=61, 3683.96326pt x 2301.7995
+[11]
+<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=64, 3683.96326pt x 2301.7995
 pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
  input line 178.
 (pdftex.def)             Requested size: 390.0pt x 243.64539pt.
-[11]
 <Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=65, 3581.58075pt x 2655.3202
 5pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
@@ -596,7 +596,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 258--270
 
 [15] [16 <./Medien/RotSchwarzBaum/vereinigen.png>] [17 <./Medien/RotSchwarzBaum
 /vereinigen2.png>] [18]
-Overfull \hbox (2.84256pt too wide) in paragraph at lines 290--292
+Overfull \hbox (2.84256pt too wide) in paragraph at lines 290--291
 \T1/cmr/m/n/12 zel ei-nes RBT $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 mit Schl�s-
 sel-men-ge $\OML/cmm/m/it/12 K[]$\T1/cmr/m/n/12 , wo-bei gilt $[]$.
  []
@@ -611,7 +611,7 @@ Overfull \hbox (2.91464pt too wide) detected at line 340
 []
  []
 
-<Medien/RotSchwarzBaum/aufteilen.png, id=108, 3256.968pt x 2949.21825pt>
+<Medien/RotSchwarzBaum/aufteilen.png, id=107, 3256.968pt x 2949.21825pt>
 File: Medien/RotSchwarzBaum/aufteilen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/aufteilen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/aufteilen.png  used on input lin
@@ -659,7 +659,7 @@ ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData
 /Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/a
 ndre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on RotSchwarzBaum.pdf (22 pages, 4215701 bytes).
+Output written on RotSchwarzBaum.pdf (22 pages, 4215744 bytes).
 PDF statistics:
  489 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
