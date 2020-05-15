@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  13 MAY 2020 22:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  15 MAY 2020 13:40
 entering extended mode
 **./RotSchwarzBaum.tex
 (RotSchwarzBaum.tex
@@ -606,23 +606,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 303--304
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 305--310
-
- []
-
-
-Overfull \hbox (17.28818pt too wide) detected at line 324
+[20]
+Overfull \hbox (2.91464pt too wide) detected at line 340
 []
  []
 
-<Medien/RotSchwarzBaum/aufteilen.png, id=103, 3256.968pt x 2949.21825pt>
+<Medien/RotSchwarzBaum/aufteilen.png, id=108, 3256.968pt x 2949.21825pt>
 File: Medien/RotSchwarzBaum/aufteilen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/aufteilen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/aufteilen.png  used on input lin
-e 328.
+e 357.
 (pdftex.def)             Requested size: 312.00119pt x 282.51872pt.
-[20] [21 <./Medien/RotSchwarzBaum/aufteilen.png>] (RotSchwarzBaum.bbl) [22]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[21] (RotSchwarzBaum.bbl) [22 <./Medien/RotSchwarzBaum/aufteilen.png>]
 (RotSchwarzBaum.aux)
 
 LaTeX Warning: There were undefined references.
@@ -635,7 +633,7 @@ Here is how much of TeX's memory you used:
  10789 multiletter control sequences out of 15000+200000
  24365 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,12n,42p,1787b,376s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,12n,42p,1787b,372s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecti0800.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecbx1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -661,7 +659,7 @@ ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/andre/AppData
 /Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/a
 ndre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on RotSchwarzBaum.pdf (22 pages, 4213434 bytes).
+Output written on RotSchwarzBaum.pdf (22 pages, 4215701 bytes).
 PDF statistics:
  489 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

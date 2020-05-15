@@ -300,13 +300,17 @@ Es sei $(v_0, v_1,...,v_m) $ der Pfad von $v$ = $v_0$ zur Wurzel $v_m$.
 Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leichter erkannt, wenn man sich den Pfad von oben nach unten, also $(v_m,..,v_0)$, betrachtet. $v_m$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_m$ ist $v_{m-1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{m-1}$ liegen sind somit korrekt zugeordnet. Dieses vorgehen iteriert bis man auf $v$ trifft. Die Schlüssel im Teilbaum mit Wurzel $v$ werden korrekt zugeordnet. 
 
 \paragraph{Laufzeit}
-Der Tango-Baum fordert eine Laufzeit von $O(\log(n))$ von seiner Hilfsstruktur für \textit{aufteilen}. Punkt 1 kostet $O(\log(n))$ Zeit. Durchführen von Punkt 2,3,5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{vereinigen} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{vereinigen} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{vereinigen} war.  $T_{L0}$ steht für den Zustand vor dem ersten Aufruf.\\
+Der Tango-Baum fordert eine Laufzeit von $O(\log(n))$ von seiner Hilfsstruktur für \textit{aufteilen}, mit $n$ ist die Anzahl der Knoten. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2,3,5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{vereinigen} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{vereinigen} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{vereinigen} war.  $T_{L0}$ steht für den Zustand vor dem ersten Aufruf.\\
 
- \noindent Es gilt $\mathit{bh}(t_i) \leq \mathit{bh}(v_i)$, $\mathit{bh}(t_i) \leq \mathit{bh}(t_{i+1}) $ und $\mathit{bh}(t_i) \leq \mathit{bh}(T_{Li})$. Dass auch $\mathit{bh}(T_{Li-1}) \leq \mathit{bh}(v_{i})$ gilt wird nun durch Induktion gezeigt:\\
- $T_{L0}$ war der linke oder rechte Teilbaum von $v_1$, der Induktionsanfang ist somit gemacht.\\
- $\mathit{bh}(T_{Li})$ entsteht durch \textit{vereinigen($T_{Li-1}$, $k_{vi}$, $t_i$)}, mit $k_{vi}$ ist der Schlüssel von~ $v_i$.\\ 
+  
+  \noindent Dass
+  \begin{align}
+   \mathit{bh}(T_{Li-1}) \leq \mathit{bh}(v_{i}) \leq\mathit{bh}(t_{i}) + 1  
+    \end{align}
+   gilt wird nun durch Induktion gezeigt:\\
+  $T_{L0}$ war der linke oder rechte Teilbaum von $v_1$, der Induktionsanfang ist somit gemacht.\\
+  $\mathit{bh}(T_{Li})$ entsteht durch \textit{vereinigen($T_{Li-1}$, $k_{vi}$, $t_i$)}, mit $k_{vi}$ ist der Schlüssel von~ $v_i$.\\ 
   Fall $v_i$ ist rot:
-  Kinder von $v_i$ müssen schwarz sein, deshalb\\
 \begin{align*}
 &\mathit{bh}(t_i) < \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
 \Rightarrow  & \mathit{bh}(T_{Li})  \leq  \mathit{bh}(v_{i}) \leq  \mathit{bh}(v_{i+1}) 
@@ -316,13 +320,38 @@ Der Tango-Baum fordert eine Laufzeit von $O(\log(n))$ von seiner Hilfsstruktur f
   &\mathit{bh}(t_i) \leq \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
   \Rightarrow  &\mathit{bh}(T_{Li})  \leq \mathit{bh}(v_{i}) + 1 =    \mathit{bh}(v_{i+1})
 \end{align*}
+Dadurch gilt
+\begin{align}
+  \sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) \vert =  O \left(\log \left(n \right) \right)
+\end{align}
+denn
+ \begin{align*}
+ &\sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) \vert \overset{\textit{1}}{\leq}
+ \sum_{i = 1}^{l} \left( \mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) + 2\right)\\
+ \leq &\sum_{i = 1}^{l} \left( \mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(t_{i-1} \right) + 2\right)
+ =  \mathit{bh} \left(t_{l} \right) -\mathit{bh} \left(t_{0} \right) + 2 \cdot l  = O \left(\log \left(n \right) \right)
+ \end{align*}
  
- 
+\noindent Der Gesamtaufwand für das Suchen von $v$ in allen $l$ Aufrufen berechnet sich mit: 
 \begin{align*}
-&\sum_{i = 1}^{l}  2 (\mathit{bh}(T_{Li-1}) -\mathit{bh}(t_{i})) + 1 \leq \sum_{i = 1}^{l}  2 (\mathit{bh}(v_i) -\mathit{bh}(t_{i})) + 1 \leq  2 \cdot l + l = O(\log(n)\\
-&\sum_{i = 1}^{l}  (\mathit{bh}(t_i) -\mathit{bh}(t_{i+1})) + 1 = O(\log(n) +  O(\log(n) =  O(\log(n)
+ \sum_{i = 1}^{l}  2 \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert + 1 =
+2 \left( \sum_{i = 1}^{l}   \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert \right)+ l
+= O \left(\log \left(n \right) \right)
 \end{align*}
-Damit ............
+\noindent Für die Anzahl der Iterationen von \textit{einfügenFixup} in allen $l$ Aufrufen gilt: 
+\begin{align*}
+\sum_{i = 1}^{l}   \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert +1 =
+\sum_{i = 1}^{l}  \left( \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert \right) + l 
+= O \left(\log \left(n \right) \right)
+\end{align*}
+Die Kosten innerhalb einer Iteration sind konstant, damit ist  $O \left(\log \left(n \right) \right)$ eine ober Schranke für die Gesamtkosten zum konstruieren von $T_L$. Für $T_R$ gilt analog das Gleiche. Für die Gesamtkosten von \textit{vereinigen} innerhalb \textit{aufteilen} gilt $O \left(\log \left(n \right) \right)$, denn neben den Kosten für die Suche und \textit{einfügenFixup} fallen pro Aufruf lediglich konstante Kosten an. Damit ist $O \left(\log \left(n \right) \right)$ eine obere Schranke für die Kosten von Punkt 4 und somit auch für \textit{aufteilen}. Der hier vorgestellte RBT hält also die Anforderung des Tango-Baumes bezüglich der Laufzeit von \textit{vereinigen} ein.
+
+
+
+
+
+
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{"Medien/RotSchwarzBaum/aufteilen"}
