@@ -95,7 +95,7 @@ public class Start {
          
         try {
             TangoTree t = new TangoTree(keys1, RedBlackTree.class);
-            new GUI(t);
+           
             t.search(1);
             t.search(14);
             t.search(8);
@@ -106,11 +106,11 @@ public class Start {
             t.search(1);
             
             
-            
+        new GUI(t);  
            
-            new GUI(t);
             
-            // new GUI(rbt1);
+            
+        
             
             //new GUI(rbt1.split(8));
         }
