@@ -95,18 +95,11 @@ public class Start {
          
         try {
             TangoTree t = new TangoTree(keys1, RedBlackTree.class);
-           
-            t.search(1);
-            t.search(14);
-            t.search(8);
-            t.search(5);
-            t.search(10);
-            t.search(6);
-            t.search(3);
-            t.search(1);
+          
             
             
         new GUI(t);  
+        
            
             
             

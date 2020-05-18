@@ -19,16 +19,16 @@ public class GUICanvas extends Canvas implements Scrollable{
     private I_GUINode[][] nodeArrays;
     private int scrollWidth;
     private int scrollHeigth;
-    private int scrollHeigthMax;
-    private int scrollWidthMax;
     private int exHeigth;
     private int exWidth;
     private int widthScrollOffset = 0;
-    private JScrollPane pane;
+    private JPanel pane;
  
     private void computeWidthScrollOffset(){
-        int widthDiff = scrollWidthMax - scrollWidth;
-        widthScrollOffset = -scrollWidth;
+        if (scrollWidth != 0){
+            int scrollPercent = 100 * scrollWidth /(getWidth() - exWidth);
+            widthScrollOffset = - scrollPercent * (getWidth()- 1900) / 100;
+        }
     }
     
     void setTree (I_GUITree t){
@@ -37,11 +37,11 @@ public class GUICanvas extends Canvas implements Scrollable{
     }
     public void setScrollValue(int value,int scrollBarWidth, boolean heigth){
         if (heigth){
-            scrollHeigth = value;
+            scrollHeigth = value - 5000;
             exHeigth = scrollBarWidth;
         }
         else{
-            scrollWidth = value;
+            scrollWidth = value - 5000;
             exWidth = scrollBarWidth;
         }    
     }
@@ -53,12 +53,10 @@ public class GUICanvas extends Canvas implements Scrollable{
         return hLeft > hRight ? hLeft : hRight;
     }
     
-    GUICanvas (I_GUITree t, JScrollPane p ){
+    GUICanvas (I_GUITree t, JPanel p ){
         tree = t;
         scrollWidth = 0;
         scrollHeigth = 0;
-        scrollWidthMax = this.getWidth();
-        scrollHeigthMax = this.getHeight();
         pane = p;
         exHeigth = 0;
         exWidth = 0;
@@ -102,7 +100,7 @@ public class GUICanvas extends Canvas implements Scrollable{
         
         if (root != null && !checkParentPointer(root, root.getParentFromGui())){
             g.setFont( new Font("", 1, 30));
-            g.drawString("ParentpointerFehler", 40, 40 );
+            g.drawString("ParentpointerFehler", 40  +widthScrollOffset , 40 );
             g.setFont(standardFont);
         }
             
@@ -120,15 +118,16 @@ public class GUICanvas extends Canvas implements Scrollable{
         for (int i = numOfLevels; i > 0; i--){
             int numOfNodes = (int)Math.pow (2 , i - 1);
             if (i == numOfLevels ){
-                xCord = (width  - ( numOfNodes * recWidth +  (numOfNodes - 1) * widthDiff)) / 2;
-                mids = new int[numOfNodes];
+               xCord = (width  - ( numOfNodes * recWidth +  (numOfNodes - 1) * widthDiff)) / 2;
+             //  xCord = 10; 
+               mids = new int[numOfNodes];
                 for (int j = 0; j < numOfNodes; j++){
                     int x1 = xCord + (j * recWidth + j  * widthDiff) ;
                     if (nodeArrays[numOfLevels - 1][j] != null){
                         g.setColor(nodeArrays[numOfLevels - 1][j].getColorFromGui());
-                        g.drawRect(x1 - (recWidth + widthDiff / 2), (i - 1) * heighDiff + 50, recWidth, recHeigh);
+                        g.drawRect(x1 - (recWidth + widthDiff / 2)  +widthScrollOffset, (i - 1) * heighDiff + 50, recWidth, recHeigh);
                         String key  =nodeArrays[numOfLevels - 1][j].getKeyStringFromGui();
-                        g.drawString(key, x1 - (recWidth + widthDiff / 2), (i - 1) * heighDiff + 50 + recHeigh );
+                        g.drawString(key, x1 - (recWidth + widthDiff / 2)  +widthScrollOffset, (i - 1) * heighDiff + 50 + recHeigh );
                         g.setColor(Color.BLACK);
                     }
                     mids[j] = x1; 
@@ -138,15 +137,15 @@ public class GUICanvas extends Canvas implements Scrollable{
                 for (int j = 0; j < numOfNodes; j++){
                     if (nodeArrays[i - 1][j] != null){
                         g.setColor(nodeArrays[i - 1][j].getColorFromGui());
-                        g.drawRect(mids[2*j] - recWidth / 2, (i - 1 )* heighDiff + 50, recWidth, recHeigh);    
+                        g.drawRect(mids[2*j] - recWidth / 2  +widthScrollOffset, (i - 1 )* heighDiff + 50, recWidth, recHeigh);    
                         String key  = nodeArrays[i - 1][j].getKeyStringFromGui();
-                        g.drawString(key, mids[2*j] - recWidth / 2, (i - 1 )* heighDiff + 50 + recHeigh);
+                        g.drawString(key, mids[2*j] - recWidth / 2  +widthScrollOffset, (i - 1 )* heighDiff + 50 + recHeigh);
                         g.setColor(Color.BLACK);
                         if(nodeArrays[i - 1][j].getLeftFromGui() != null)
-                            g.drawLine(mids[2*j], (i -1) * heighDiff + 50 + recHeigh, mids[2*j] - widthDiff / 2, (i) *heighDiff + 50 );
+                            g.drawLine(mids[2*j]  +widthScrollOffset, (i -1) * heighDiff + 50 + recHeigh, mids[2*j] - widthDiff / 2  +widthScrollOffset, (i) *heighDiff + 50 );
                         
                         if(nodeArrays[i - 1][j].getRightFromGui() != null)
-                            g.drawLine(mids[2*j],  (i- 1) * heighDiff + 50 + recHeigh, mids[2*j] + widthDiff / 2,  (i) *heighDiff+ 50 );
+                            g.drawLine(mids[2*j] +widthScrollOffset,  (i- 1) * heighDiff + 50 + recHeigh, mids[2*j] + widthDiff / 2  +widthScrollOffset,  (i) *heighDiff+ 50 );
                     }  
                 }
                 

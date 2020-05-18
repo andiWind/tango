@@ -40,18 +40,20 @@ public class GUI extends JFrame{
         setExtendedState(Frame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE );
         setLayout(new BorderLayout());
-        JScrollPane scrollPane = new JScrollPane();
+        JPanel scrollPane = new JPanel();
         canvas = new GUICanvas(guiTree, scrollPane);
         canvas.setVisible(true);
         canvas.setSize(10000,10000);
         add(canvas, BorderLayout.CENTER);
-        JScrollBar hScrollBar = new JScrollBar(HORIZONTAL, 0, 10, 0, 210);
-        scrollPane.setHorizontalScrollBar(hScrollBar);
-        scrollPane.setVerticalScrollBar(new JScrollBar(VERTICAL, 0, 50, 0, 250));
-        ScrollListener scrollListener = new ScrollListener(canvas, scrollPane.getHorizontalScrollBar(), scrollPane.createVerticalScrollBar());
-        scrollPane.getVerticalScrollBar().addAdjustmentListener(scrollListener);
-        scrollPane.getHorizontalScrollBar().addAdjustmentListener(scrollListener);
-        scrollPane.setViewportView(canvas);
+        JScrollBar hScrollBar = new JScrollBar(HORIZONTAL, 0, 10, 0, 10000);
+        hScrollBar.setValue(5000);
+        hScrollBar.setUnitIncrement(100);
+        JScrollBar vScrollBar = new JScrollBar(VERTICAL, 0, 10, 0, 10000);
+        ScrollListener scrollListener = new ScrollListener(canvas, hScrollBar, vScrollBar);
+        hScrollBar.addAdjustmentListener(scrollListener);
+        vScrollBar.addAdjustmentListener(scrollListener);
+        scrollPane.add(hScrollBar);
+        scrollPane.add(canvas);
         add(scrollPane);
         
         guiMenuBar = new JMenuBar();
