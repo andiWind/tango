@@ -7,6 +7,7 @@ package Starter;
 
 import GUI.GUI;
 import RedBlackTree.RedBlackTree;
+import TangoTest.Tester;
 import TangoTree.BuildAuxTreeFaildException;
 import TangoTree.TangoTree;
 import java.util.LinkedList;
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
  * @author andre
  */
 public class Start {
-    public static void main (String[] args){
+    public static void main (String[] args) throws BuildAuxTreeFaildException{
      
         List<Integer> keys1 = new LinkedList();
         
@@ -56,59 +57,13 @@ public class Start {
         keys1.add(30);
         keys1.add(31);
         keys1.add(32);
-        
-        
-        List<Integer> keys2 = new LinkedList();
-        keys2.add(23);
-        keys2.add(24);
-        keys2.add(25);
-        keys2.add(26);
-        keys2.add(27);
-        keys2.add(28);
-        keys2.add(29);
-        keys2.add(30);
-        keys2.add(31);
-        
-         RedBlackTree rbt1 = new RedBlackTree();
-         rbt1.insert(1);
-         rbt1.insert(2);
-         rbt1.insert(3);
-         rbt1.insert(4);
-         rbt1.insert(5);
-         rbt1.insert(6);
-         rbt1.insert(7);
-         rbt1.insert(8);
-         rbt1.insert(9);
-         rbt1.insert(10);
-        
-          RedBlackTree rbt2 = new RedBlackTree();
-         rbt1.insert(21);
-         rbt1.insert(22);
-         rbt1.insert(23);
-         rbt1.insert(24);
-         rbt1.insert(25);
-         rbt1.insert(26);
-         rbt1.insert(27);
-         rbt1.insert(28);
-         rbt1.insert(29);
-         rbt1.insert(30);
+
          
-        try {
-            TangoTree t = new TangoTree(keys1, RedBlackTree.class);
-          
-            
-            
-        new GUI(t);  
         
-           
-            
-            
+        TangoTree t = new TangoTree(keys1, RedBlackTree.class);
         
-            
-            //new GUI(rbt1.split(8));
-        }
-        catch (BuildAuxTreeFaildException ex) {
-            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+       
+        new GUI(t);
+        new Tester(t, 32);
     }
 }

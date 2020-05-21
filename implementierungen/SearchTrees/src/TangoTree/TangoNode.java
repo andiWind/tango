@@ -142,5 +142,52 @@ public abstract class TangoNode implements I_GUINode{
     TangoNode getParentTango(){
        return parent;
     }
+    
+    
+    
+    //wieder löschen/////////////////////////////
+    public abstract int getBlackHighh();
+    public int getDepthh(){
+        return depth;
+    }
+    public void setLeftt (TangoNode node){
+        left = node;
+    }
+    public void setRightt (TangoNode node){
+        right = node;
+    }
+    public void setParentt (TangoNode node){
+        parent = node;
+    }
+    public void setIsRoott(boolean b){
+        isRoot = b;
+    }
+    public void setMinDepthh(int m){
+        minDepth = m;
+    }
+    public void setMaxDepthh(int m){
+        maxDepth = m;
+    }  
+    public void setDepthh(int d){
+        depth = d;
+    } 
+    public int getMinDepthh(){
+        return minDepth;
+    }  
+    public int getMaxDepthh(){
+        return maxDepth;
+    }  
+      public TangoNode getLeftt(){
+        if (left == null || left.isRoot )
+            return null;
+        return left;
+    }
+    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+    public TangoNode getRightt(){
+        if (right == null || right.isRoot )
+            return null;
+        return right;
+    }
+    //////////////////////////////////////////////
    
 }

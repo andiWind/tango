@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  15 MAY 2020 17:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  20 MAY 2020 09:45
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -582,24 +582,25 @@ Overfull \hbox (77.99881pt too wide) in paragraph at lines 192--193
  [][] 
  []
 
-\c@Lemma=\count124
 [15 <./Medien/Einleitung/löschen.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 207--209
+\c@Lemma=\count124
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--219
+Underfull \hbox (badness 10000) in paragraph at lines 218--220
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 238--239
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
 
@@ -608,14 +609,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--239
 File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/IOBaum.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 2
-44.
+45.
 (pdftex.def)             Requested size: 390.0pt x 186.66798pt.
 <Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=96, 2527.64325pt x 1209.92026pt>
 
 File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
-ut line 250.
+ut line 251.
 (pdftex.def)             Requested size: 390.0pt x 186.66798pt.
 
 
@@ -626,29 +627,34 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png  used on i
-nput line 256.
+nput line 257.
 (pdftex.def)             Requested size: 390.0pt x 236.37799pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18 <./Medien/RotSchwarzBaum/IOBaum.png>] [19 <./Medien/RotSchwarzBaum/NIOBaumZ
-weiRote.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 277--278
+[18 <./Medien/RotSchwarzBaum/IOBaum.png>]
+Overfull \hbox (22.5033pt too wide) in paragraph at lines 278--279
+\T1/cmr/m/n/12 Zur Kor-rek-tur wird zum En-de von \T1/cmr/m/it/12 ein-f�-gen \T
+1/cmr/m/n/12 ei-ne zu-s�tz-li-che Ope-ra-ti-on, \T1/cmr/bx/n/12 einf�gen-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
+
+ []
+
+[19 <./Medien/RotSchwarzBaum/NIOBaumZweiRote.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 280--282
 
  []
 
 [20 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 279--281
+Underfull \hbox (badness 10000) in paragraph at lines 292--295
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 291--293
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 294--296
+Underfull \hbox (badness 10000) in paragraph at lines 296--298
 
  []
 
@@ -658,33 +664,33 @@ pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png  used on
- input line 310.
+ input line 312.
 (pdftex.def)             Requested size: 272.99881pt x 99.68475pt.
 <Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=115, 5132.97675pt x 1795.909
 5pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
- input line 316.
+ input line 318.
 (pdftex.def)             Requested size: 390.0pt x 136.44121pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 321--323
+Underfull \hbox (badness 10000) in paragraph at lines 323--325
 
  []
 
 [22 <./Medien/RotSchwarzBaum/EinfügenFixUpFall1.png> <./Medien/RotSchwarzBaum/
 EinfügenFixUpFall2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 337--339
+Underfull \hbox (badness 10000) in paragraph at lines 339--341
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
+Underfull \hbox (badness 10000) in paragraph at lines 352--353
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--356
+Underfull \hbox (badness 10000) in paragraph at lines 354--358
 
  []
 
@@ -693,7 +699,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 352--356
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
- input line 362.
+ input line 364.
 (pdftex.def)             Requested size: 390.0pt x 243.64539pt.
 [24]
 <Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=128, 3581.58075pt x 2655.320
@@ -701,7 +707,7 @@ Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
- input line 369.
+ input line 371.
 (pdftex.def)             Requested size: 390.0pt x 289.1284pt.
 
 
@@ -712,14 +718,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall5.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png  used on
- input line 376.
+ input line 378.
 (pdftex.def)             Requested size: 390.0pt x 244.91724pt.
 <Medien/RotSchwarzBaum/EinfügenFixUpFall6.png, id=130, 3523.1625pt x 2673.99pt
 >
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png  used on
- input line 382.
+ input line 384.
 (pdftex.def)             Requested size: 390.0pt x 295.97589pt.
 [25 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>]
 Overfull \vbox (5.24562pt too high) has occurred while \output is active []
@@ -729,12 +735,12 @@ Overfull \vbox (5.24562pt too high) has occurred while \output is active []
 EinfügenFixUpFall5.png>]
 \c@Lemma2=\count125
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--400
+Underfull \hbox (badness 10000) in paragraph at lines 396--402
 
  []
 
 [27 <./Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 405--406
+Underfull \hbox (badness 10000) in paragraph at lines 407--408
 
  []
 
@@ -742,7 +748,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 405--406
 File: Medien/RotSchwarzBaum/vereinigen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen.png  used on input li
-ne 432.
+ne 434.
 (pdftex.def)             Requested size: 203.36363pt x 234.00238pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -751,39 +757,39 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/RotSchwarzBaum/vereinigen2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen2.png  used on input l
-ine 438.
+ine 440.
 (pdftex.def)             Requested size: 239.16476pt x 234.00238pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 442--454
+Underfull \hbox (badness 10000) in paragraph at lines 444--455
 
  []
 
 [28] [29 <./Medien/RotSchwarzBaum/vereinigen.png>] [30 <./Medien/RotSchwarzBaum
 /vereinigen2.png>] [31]
-Overfull \hbox (2.84256pt too wide) in paragraph at lines 474--475
+Overfull \hbox (2.84256pt too wide) in paragraph at lines 475--476
 \T1/cmr/m/n/12 zel ei-nes RBT $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 mit Schl�s-
 sel-men-ge $\OML/cmm/m/it/12 K[]$\T1/cmr/m/n/12 , wo-bei gilt $[]$.
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+Underfull \hbox (badness 10000) in paragraph at lines 488--489
 
  []
 
 [33]
-Overfull \hbox (2.91464pt too wide) detected at line 524
+Overfull \hbox (2.91464pt too wide) detected at line 525
 []
  []
 
-<Medien/RotSchwarzBaum/aufteilen.png, id=169, 3256.968pt x 2949.21825pt>
+<Medien/RotSchwarzBaum/aufteilen.png, id=169, 3256.968pt x 2957.64975pt>
 File: Medien/RotSchwarzBaum/aufteilen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/aufteilen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/aufteilen.png  used on input lin
-e 541.
-(pdftex.def)             Requested size: 312.00119pt x 282.51872pt.
+e 542.
+(pdftex.def)             Requested size: 312.00119pt x 283.32642pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -796,7 +802,7 @@ Here is how much of TeX's memory you used:
  10881 multiletter control sequences out of 15000+200000
  24365 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,14n,42p,1787b,372s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,14n,42p,1789b,372s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
 /jknappen/ec/dpi600\ecti0800.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
 /pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX
@@ -822,9 +828,9 @@ AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:
 /Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 mti8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (35 pages, 6784829 bytes).
+Output written on Bachelorarbeit.pdf (35 pages, 6839790 bytes).
 PDF statistics:
- 594 PDF objects out of 1000 (max. 8388607)
+ 591 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

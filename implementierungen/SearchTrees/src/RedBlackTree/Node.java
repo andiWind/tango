@@ -20,7 +20,7 @@ public class Node extends TangoNode implements I_GUINode {
 
 
     
-    Node (int k, RBColor c, int bh){
+    public  Node (int k, RBColor c, int bh){
         super(k);
         color = c;
         blackHigh = bh;
@@ -161,4 +161,17 @@ public class Node extends TangoNode implements I_GUINode {
     boolean isAroot( ){
         return super.isRoot();
     }
+    
+    
+    /////wieder löschen///////////////////
+      public int getBlackHighh(){
+          return getBlackHigh();
+      }
+      public static RBColor rbColorRed(){
+          return RBColor.RED;
+      }
+      public static RBColor rbColorBlack(){
+          return RBColor.BLACK;
+      }
+    
 }

@@ -180,4 +180,10 @@ public class TangoTree implements I_GUITree{
        int key;
        int depth;
     }
+  
+    //wieder löschen//////////////
+    public void setTree(TangoNode r){
+        auxTree.setTree(r); 
+    }
+    //////////////////////////////
 }

@@ -7,11 +7,12 @@
 \contentsline {paragraph}{Total geordnete Menge}{10}% 
 \contentsline {paragraph}{Verändern eines BST durch Rotationen.}{11}% 
 \contentsline {paragraph}{Grundoperationen Suchen, Einfügen und Löschen}{12}% 
-\contentsline {paragraph}{Unterschiedliche Baumhöhen.}{16}% 
-\contentsline {section}{\numberline {4}Rot-Schwarz-Baum}{17}% 
+\contentsline {paragraph}{Laufzeit}{15}% 
+\contentsline {paragraph}{Unterschiedliche Baumhöhen}{16}% 
+\contentsline {section}{\numberline {4}Rot-Schwarz-Baum}{16}% 
 \contentsline {subsection}{\numberline {4.1}Grundoperationen}{18}% 
 \contentsline {paragraph}{Suchen im Rot-Schwarz-Baum}{18}% 
-\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{19}% 
+\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{18}% 
 \contentsline {paragraph}{Laufzeit}{25}% 
 \contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{27}% 
 \contentsline {paragraph}{Laufzeit der Grundoperationen}{27}% 
