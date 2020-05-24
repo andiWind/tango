@@ -44,7 +44,7 @@ public class TangoTree implements I_GUITree{
         PerfectTreeNode pBT = buildPerfectBalancedTree(new PerfectTreeNode(), numOfNodes, numOfNode, depth);
         setKeysInPBT(pBT, keyArray, 0);
         //Die Hilfstruktur wird nun nachgebaut
-        //Zum Start ist jeder Knoten ein eigener Hifsbaum
+        //Zum Start ist jeder Knoten ein eigener Hilfsbaum
          auxTree.setTree(buildStartTango(pBT));
     }   
    private int[] buildKeyArray(List <Integer> keyList){

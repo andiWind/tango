@@ -22,11 +22,11 @@ import java.util.logging.Logger;
  */
 public class Tester {
     TangoTree tangoTree;
-    
+    static int c = 0;
     int size;
     RedBlackTree rb;
     PerfectTreeNode pbt;
-    HashMap<String,Boolean> map;
+    HashMap<String,String> map;
     
     public Tester( TangoTree t, int s) throws BuildAuxTreeFaildException{
         size = s;
@@ -38,11 +38,15 @@ public class Tester {
         int depth = 1;
         pbt = buildPerfectBalancedTree(new PerfectTreeNode(), size, numOfNode, depth); 
          int[] keyArray = new int[size];
-        for(int i = 0; i < size; i++)
+        String prefString = "";
+        for(int i = 0; i < size; i++){
             keyArray[i] = i+1;
+            prefString += "n";   
+        }
         setKeysInPBT(pbt, keyArray, 0);         
         map = new HashMap();
-        map.put(buildTreeString((TangoNode)tangoTree.getRoot()), false);
+        
+        map.put(buildTreeString((TangoNode)tangoTree.getRoot()), prefString);
         test();
     }
     private String buildTreeString(TangoNode t){
@@ -58,12 +62,16 @@ public class Tester {
         String r = "f";
         if (t.getColorFromGui() == Color.GREEN )  
             r = "t";
-        return "(" + left + "(k" + t.getKey() +"_"  + c +"_"  + r +"_" + t.getBlackHighh()+ "_" +t.getDepthh() + "_" +t.getMinDepthh()+ "_" + t.getMaxDepthh()+ ")" + right + ")" ;
+     //   if (!left.isEmpty())
+      //      left = left + "(";
+      //  if (!right.isEmpty())
+      //      right = ")" + right;
+        return "(" + left + "(" + "k" + t.getKey() +"_"  + c +"_"  + r +"_" + t.getBlackHighh()+ "_" +t.getDepthh() + "_" +t.getMinDepthh()+ "_" + t.getMaxDepthh() + ")" + right + ")";
     }
     private String getNextTreeString (){
         String ret = null;
         for (String key : map.keySet()){
-            if (map.get(key) == true)
+            if (map.get(key) != null)
                 return key;
         }
         return null;
@@ -73,7 +81,7 @@ public class Tester {
         if (  treeString == null|| treeString.equals(""))
             return null;
         int count = 0;
-        int indexRootKey = -1;
+        int indexRootKey = 0;
         //Wurzel suchen
         for(int i = 0; i < treeString.length(); i++){
             String s = treeString.substring(i, i +1);
@@ -81,10 +89,13 @@ public class Tester {
                 count++;
             else if (")".equals(s))
                 count--;
-            if ("k".equals(s) && count == 1)
-                indexRootKey = i; 
+            else if ("k".equals(s) && count == 2){
+                indexRootKey = i;
+                break;
+            }
         }
-        int lastIndexLeftChild = indexRootKey - 1;
+        int lastIndexLeftChild = indexRootKey - 2;
+        indexRootKey++;
         TangoNode node;
         String key ="";
         while(!"_".equals(treeString.substring(indexRootKey,indexRootKey +1 ))  ){
@@ -130,52 +141,98 @@ public class Tester {
         node.setDepthh(Integer.parseInt(depth));
         node.setMinDepthh(Integer.parseInt(minDepth));
         node.setMaxDepthh(Integer.parseInt(maxDepth)); 
-        node.setLeftt(buildTreeFromString(treeString.substring(0, lastIndexLeftChild + 1)));
-        node.setRightt(buildTreeFromString(treeString.substring(indexRootKey)));
+        node.setLeftt(buildTreeFromString(treeString.substring(1, lastIndexLeftChild + 1)));
+        if( node.getLeftTangoo() != null)
+            node.getLeftTangoo().setParentt(node);
+        node.setRightt(buildTreeFromString(treeString.substring(indexRootKey, treeString.length()- 1)));
+        if( node.getRightTangoo() != null)
+            node.getRightTangoo().setParentt(node);
         return node;
     }
     public void test (){
-        while(true){  
+        int count = 0;
+        while(true){ 
+            count++;
             String treeString = getNextTreeString();
             String newTreeString = "";
-            if (treeString == null)
+            if (treeString == null)     
                 return;
-            for (int searchKey = 0; searchKey < size; searchKey++ ){
+            for (int searchKey = 1; searchKey <= size; searchKey++ ){
+                c++;
+                if (c == 6){
+                    c = c;
+                }
                 TangoNode root = buildTreeFromString(treeString);
+                buildPBTfromString(pbt, map.get(treeString));
                 tangoTree.setTree(root);
                 tangoTree.search(searchKey);
                 setPrefChilds(searchKey);
                 boolean io = checkKonst((TangoNode)tangoTree.getRoot()); 
                 if (!io){
-                    System.out.println(treeString + "_______" + searchKey);
+                    System.out.println(treeString + "_______" + searchKey + "_________" +  map.get(treeString) +  "_________" +c);
                 }
                 newTreeString = buildTreeString((TangoNode)tangoTree.getRoot());
                 if(!map.containsKey(newTreeString)){
-                    map.put(newTreeString, false);
-                }    
+                    map.put(newTreeString, getPrefString(pbt, ""));
+                } 
            }
-        
+            map.replace(treeString, null);
+            if(count % 5000 == 0)
+                System.out.println(size + "  " + map.size() + "___" + count);
         }
+    }
+    private String buildPBTfromString(PerfectTreeNode node, String s){
+        if (node == null)
+            return s;
+        s = buildPBTfromString(node.left, s);
+        String p = s.substring(0,1);
+        s = s.substring(1);
+        if(p.equals("l"))
+            node.prefChild = preferredChild.LEFT;
+        else if(p.equals("r"))
+            node.prefChild = preferredChild.RIGHT;
+        else
+            node.prefChild = preferredChild.NONE;
+        s = buildPBTfromString(node.right, s);
+        return s;
+    }    
+    
+    private String getPrefString(PerfectTreeNode node ,String s){
+        if (node == null)
+            return s;
+        String l = getPrefString(node.left, s);
+        String p = "";
+        switch (node.prefChild) {
+            case LEFT:
+                p += "l";
+                break;
+            case RIGHT:
+                p += "r";
+                break;
+            default:
+                p += "n";
+                break;
+        }
+        s += p;
+        return l + p + getPrefString(node.right, "");
     }
     private void setPrefChilds(int key){
         PerfectTreeNode node = pbt;
         while(node.key != key){
-            if (node.key < key)
+            if (node.key > key){
                 node.prefChild = preferredChild.LEFT;
-            else
+                node = node.left;
+            }
+            else{
                 node.prefChild = preferredChild.RIGHT;
+                node = node.right;
+            }
         }
         node.prefChild = preferredChild.LEFT;
     }
     private boolean checkKonst(TangoNode root){
-        String treeString = buildTreeString(root);
         boolean checkedList = false;
         boolean checkedLeftRight = false;
- 
-        if (! map.containsKey(treeString))
-            map.put(treeString, Boolean.FALSE);
-        else
-            return true;
         List<List<Integer>> pathLists = buildPathLists(pbt, null, null);
         List<List<Integer>> auxtreeLists;
         try {
@@ -206,22 +263,25 @@ public class Tester {
             min = node.getLeftt().getMinDepthh();
         if (node.getRightt() != null && node.getRightt().getMinDepthh() < min)
             min = node.getRightt().getMinDepthh();
-        if (node.getLeftt() != null && node.getLeftt().getMaxDepthh() < max)
-            min = node.getLeftt().getMaxDepthh();
-        if (node.getRightt() != null && node.getRightt().getMaxDepthh() < max)
-            min = node.getRightt().getMaxDepthh();
+        if (node.getLeftt() != null && node.getLeftt().getMaxDepthh() > max)
+            max = node.getLeftt().getMaxDepthh();
+        if (node.getRightt() != null && node.getRightt().getMaxDepthh() > max)
+            max = node.getRightt().getMaxDepthh();
         if(min != node.getMinDepthh() || max != node.getMaxDepthh() )
             return false;
         return checkDepthsReku(node.getLeftt()) && checkDepthsReku(node.getRightt()); 
     }
     private boolean checkDepths(TangoNode node){
-        if (node == null || ((TangoNode)node.getParentFromGui()).getColorFromGui() != Color.GREEN )
+        if (node == null || node.getColorFromGui() != Color.GREEN )
             return true;
         return checkDepthsReku(node);
        
     }
     private boolean checkRedBlack(TangoNode node){
-        return isRedBlackTreeEig4 (node) && isRedBlackTreeEig5 (node) && checkDepths(node);
+        boolean one = isRedBlackTreeEig4 (node);
+        boolean two = isRedBlackTreeEig5 (node);
+        boolean three = checkDepths (node);
+        return one && two && three;
     }
     private boolean isRedBlackTreeEig4 (TangoNode node){
         if(node == null)
@@ -258,7 +318,7 @@ public class Tester {
             return isRedBlackTreeEig5 (node.getRightt()) && isRedBlackTreeEig5 (node.getLeftt()) ;
         } 
         else if(bh == 1){
-            if(node.getRightFromGui() != null ) {
+            if(node.getRightt() != null ) {
                 if((node.getRightt()).getColorFromGui() != Color.RED  ){
                     return false;
                 }
@@ -273,45 +333,75 @@ public class Tester {
                     return false;
             }
         } 
-        return isRedBlackTreeEig5 (node.getRightt()) && isRedBlackTreeEig5 (node.getRightt()); 
+        return isRedBlackTreeEig5 (node.getLeftt()) && isRedBlackTreeEig5 (node.getRightt()); 
         
     }
                 
     
     private boolean equalLists(List<List<Integer>> aux, List<List<Integer>> path){
+        boolean found;
+        if (aux.size() != path.size())
+            return false;
         for (List<Integer> auxlist : aux){
+            found = false;
             for (List<Integer> pathlist : path){
-                if (auxlist.size() == pathlist.size() && auxlist.containsAll(pathlist))
+                if (auxlist.size() == pathlist.size() && auxlist.containsAll(pathlist)){
+                    found = true;
                     break;
+                }    
             }
+            if (found)
+                continue;
             return false;
         }
         return true;
     } 
     private List<List<Integer>> buildPathLists(PerfectTreeNode node, List<Integer> aktList, List<List<Integer>> lists ){
+        if (node == null)
+            return lists;
         if (node == pbt){
             aktList = new LinkedList();
             aktList.add(node.key);
             lists = new LinkedList();
             lists.add(aktList);
         }
-        if (node.left != null && node.prefChild == preferredChild.LEFT){
-            aktList.add(node.left.key);
-            buildPathLists(node.left, aktList, lists);
+        if (node.prefChild == preferredChild.LEFT){
+            if(node.left != null){
+                aktList.add(node.left.key);
+                lists = buildPathLists(node.left, aktList, lists);
+            }
+            if(node.right != null){
+                List<Integer> newList = new LinkedList();
+                newList.add(node.right.key);
+                lists.add(newList);
+                lists = buildPathLists(node.right, newList, lists);
+            }
         }
-        else if (node.left != null){
-            aktList = new LinkedList();
-            aktList.add(node.left.key);
-            lists.add(aktList);
+        else if (node.prefChild == preferredChild.RIGHT){
+            if(node.right != null){
+                aktList.add(node.right.key);
+                lists = buildPathLists(node.right, aktList, lists);
+            }
+            if(node.left != null){
+                List<Integer> newList = new LinkedList();
+                lists.add(newList);
+                newList.add(node.left.key);
+                lists = buildPathLists(node.left, newList, lists);
+            }
         }
-         if (node.right != null && node.prefChild == preferredChild.RIGHT){
-            aktList.add(node.right.key);
-            buildPathLists(node.right, aktList, lists);
-        }
-        else if (node.right != null){
-            aktList = new LinkedList();
-            aktList.add(node.right.key);
-            lists.add(aktList);
+        else{
+            if(node.right != null){
+                List<Integer> newList = new LinkedList();
+                newList.add(node.right.key);
+                lists.add(newList);
+                lists = buildPathLists(node.right, newList, lists);
+            }
+             if(node.left != null){
+                List<Integer>  newList = new LinkedList();
+                newList.add(node.left.key);
+                lists.add(newList);
+                lists = buildPathLists(node.left, newList, lists);
+            }
         }
         return lists;
     }

@@ -177,7 +177,7 @@ public abstract class TangoNode implements I_GUINode{
     public int getMaxDepthh(){
         return maxDepth;
     }  
-      public TangoNode getLeftt(){
+    public TangoNode getLeftt(){
         if (left == null || left.isRoot )
             return null;
         return left;
@@ -186,6 +186,13 @@ public abstract class TangoNode implements I_GUINode{
     public TangoNode getRightt(){
         if (right == null || right.isRoot )
             return null;
+        return right;
+    }
+    public TangoNode getLeftTangoo(){
+        return left;
+    }
+    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+    public TangoNode getRightTangoo(){
         return right;
     }
     //////////////////////////////////////////////

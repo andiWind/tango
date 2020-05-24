@@ -18,52 +18,27 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author andre
+ * @author andreas
  */
 public class Start {
     public static void main (String[] args) throws BuildAuxTreeFaildException{
      
-        List<Integer> keys1 = new LinkedList();
-        
-        keys1.add(1);
-        keys1.add(2);
-        keys1.add(3);
-        keys1.add(4);
-        keys1.add(5);
-        keys1.add(6);
-        keys1.add(7);
-        keys1.add(8);
-        keys1.add(9);
-        keys1.add(10);
-        keys1.add(11);
-        keys1.add(12);
-        keys1.add(13);
-        keys1.add(14);
-        keys1.add(15);
-        keys1.add(16);
-        keys1.add(17);
-        keys1.add(18);
-        keys1.add(19);
-        keys1.add(20);
-        keys1.add(21);
-        keys1.add(22);
-        keys1.add(23);
-        keys1.add(24);
-        keys1.add(25);
-        keys1.add(26);
-        keys1.add(27);
-        keys1.add(28);
-        keys1.add(29);
-        keys1.add(30);
-        keys1.add(31);
-        keys1.add(32);
-
+       List<Integer> keys1 = new LinkedList();
+       for(int i = 24; i<=100; i++){
+            for(int j = 1; j<= i; j++){
+                keys1.add(j);
+            }
+           TangoTree t = new TangoTree(keys1, RedBlackTree.class);
+       //    GUI g = new GUI(t);
+           new Tester(t, i); 
+        //   g.dispose();
+       } 
+       
          
         
-        TangoTree t = new TangoTree(keys1, RedBlackTree.class);
+        
         
        
-        new GUI(t);
-        new Tester(t, 32);
+       
     }
 }
