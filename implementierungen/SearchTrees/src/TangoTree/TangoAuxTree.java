@@ -90,7 +90,8 @@ public abstract class TangoAuxTree {
         }
         nodeRightChild.setParent(nodeParent);
         attachNodeLeft(nodeRightChild, node);
-        updateDepthsPath(node);
+        updateDepthSingleNode(node);
+        updateDepthsPath(node.getParent());
 
     }
      //Der obere Knoten der Rotation wird übergeben
@@ -107,7 +108,8 @@ public abstract class TangoAuxTree {
         }
         nodeLeftChild.setParent(nodeParent);
         attachNodeRight(nodeLeftChild, node);
-        updateDepthsPath(node);
+        updateDepthSingleNode(node);
+        updateDepthsPath(node.getParent());
     
 
     }
@@ -143,7 +145,7 @@ public abstract class TangoAuxTree {
         TangoNode left = node.getLeft() ;
         TangoNode right = node.getRight() ;
         int newValue;
-        //MaxDepth pflegen
+        //MinDepth pflegen
             int leftVal = Integer.MAX_VALUE;
             int rightVal = Integer.MAX_VALUE;
             if(left != null)
@@ -158,6 +160,15 @@ public abstract class TangoAuxTree {
             return false;
     }
     protected boolean updateDepthSingleNode(TangoNode node){
+       
+        
+        int c =0;
+        if(node.getKey() == 52){
+            c = 4; 
+        }
+        
+        
+        
         boolean noChange = true;
         if (updateMaxDepthSingleNode(node))
             noChange = false;
@@ -294,22 +305,24 @@ public abstract class TangoAuxTree {
             biggerKeyNode = getSuccessor(smallerKeyNode);
         }
         tree1.setIsRoot(false);
-        tree2.setIsRoot(false);
         TangoNode l;
         TangoNode r;
         if(biggerKeyNode == null){
             l = split(tree1, smallerKeyNode.getKey());
+            tree2.setIsRoot(false);
             attachNodeRight(l, tree2);
             return concatenate(l);
         }
         else if (smallerKeyNode == null){
             r = split(tree1, biggerKeyNode.getKey());
+            tree2.setIsRoot(false);
             attachNodeLeft(r, tree2);  
             return concatenate(r);
         }
         else{
             l = split(tree1, smallerKeyNode.getKey());
             r = split(l.getRight(), biggerKeyNode.getKey());
+            tree2.setIsRoot(false);
             attachNodeLeft(r, tree2);
             attachNodeRight(l, concatenate(r));
             return concatenate(l);

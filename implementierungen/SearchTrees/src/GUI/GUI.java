@@ -43,12 +43,12 @@ public class GUI extends JFrame{
         JPanel scrollPane = new JPanel();
         canvas = new GUICanvas(guiTree, scrollPane);
         canvas.setVisible(true);
-        canvas.setSize(10000,10000);
+        canvas.setSize(100000,10000);
         add(canvas, BorderLayout.CENTER);
-        JScrollBar hScrollBar = new JScrollBar(HORIZONTAL, 0, 10, 0, 10000);
+        JScrollBar hScrollBar = new JScrollBar(HORIZONTAL, 0, 10, 0, 100000);
         hScrollBar.setValue(5000);
         hScrollBar.setUnitIncrement(100);
-        JScrollBar vScrollBar = new JScrollBar(VERTICAL, 0, 10, 0, 10000);
+        JScrollBar vScrollBar = new JScrollBar(VERTICAL, 0, 10, 0, 100000);
         ScrollListener scrollListener = new ScrollListener(canvas, hScrollBar, vScrollBar);
         hScrollBar.addAdjustmentListener(scrollListener);
         vScrollBar.addAdjustmentListener(scrollListener);

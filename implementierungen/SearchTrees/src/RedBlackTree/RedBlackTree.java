@@ -401,7 +401,8 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         Node search;
         mid.setColor(RBColor.RED);
         Node fixUpNodeRB = mid;
-        Node fixUpNodeDepth = mid;
+        //Node fixUpNodeDepth = mid;
+
         if(treeRroot == null || treeRisExtern){ //mid rechts unten bei treeLroot einfügen
             ret = treeLroot;
             search = treeLroot;
@@ -411,8 +412,8 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                 attachNodeLeft(mid, search.getAuxTreeRight()); 
                 attachNodeRight(mid, treeRroot); 
                 attachNodeRight(search, mid); 
-                super.updateDepthSingleNode(mid);
-                fixUpNodeDepth = search;
+                
+                
                 fixUpNodeRB = search;
             }
             else{ //
@@ -432,8 +433,8 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
                 attachNodeLeft(mid, treeLroot); 
                 attachNodeRight(mid, search.getAuxTreeLeft()); 
                 attachNodeLeft(search, mid);
-                super.updateDepthSingleNode(mid);
-                fixUpNodeDepth = search;
+ 
+            
                 fixUpNodeRB = search;
             }
             else{
@@ -475,7 +476,8 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
             attachNodeRight(mid,treeRroot);
         }  
         RedBlackTree fixUpTree = new RedBlackTree(); //wird verwendet um die FixUp routinen mit der richtigen Wurzel anzustoßen
-        super.updateDepthsPath(fixUpNodeDepth);
+        super.updateDepthSingleNode(mid);
+        super.updateDepthsPath(mid.getParent());
         fixUpTree.setTree(ret);
         fixUpTree.insertFixup(fixUpNodeRB);
         return fixUpTree.getRoot();

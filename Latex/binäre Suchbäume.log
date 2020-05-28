@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  20 MAY 2020 09:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  25 MAY 2020 11:35
 entering extended mode
 **"./binäre Suchbäume.tex"
 ("binäre Suchbäume.tex"
@@ -599,11 +599,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--217
 
  []
 
-("binäre Suchbäume.bbl"
+[14] ("binäre Suchbäume.bbl"
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [14] ("binäre Suchbäume.aux") ) 
+) [15] ("binäre Suchbäume.aux") ) 
 Here is how much of TeX's memory you used:
  6552 strings out of 492453
  98669 string characters out of 3120076
@@ -635,9 +635,9 @@ cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/and
 re/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><
 C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
 mbols/msbm10.pfb>
-Output written on "binäre Suchbäume.pdf" (14 pages, 2747604 bytes).
+Output written on "binäre Suchbäume.pdf" (15 pages, 2748607 bytes).
 PDF statistics:
- 441 PDF objects out of 1000 (max. 8388607)
+ 445 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

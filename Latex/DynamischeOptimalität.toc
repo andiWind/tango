@@ -1,2 +1,3 @@
 \babel@toc {german}{}
 \contentsline {section}{\numberline {1}Dynamische Optimalität}{3}% 
+\contentsline {subsection}{\numberline {1.1}BST Zugriffsalgorithmus }{3}% 

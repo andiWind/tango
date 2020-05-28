@@ -24,12 +24,12 @@ public class Start {
     public static void main (String[] args) throws BuildAuxTreeFaildException{
      
        List<Integer> keys1 = new LinkedList();
-       for(int i = 24; i<=100; i++){
+       for(int i = 1; i<=1001; i++){
             for(int j = 1; j<= i; j++){
                 keys1.add(j);
             }
            TangoTree t = new TangoTree(keys1, RedBlackTree.class);
-       //    GUI g = new GUI(t);
+     //      GUI g = new GUI(t);
            new Tester(t, i); 
         //   g.dispose();
        } 

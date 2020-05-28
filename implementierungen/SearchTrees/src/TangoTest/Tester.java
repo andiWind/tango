@@ -5,6 +5,7 @@
  */
 package TangoTest;
 
+import GUI.GUI;
 import RedBlackTree.RedBlackTree;
 import RedBlackTree.Node;
 import TangoTree.BuildAuxTreeFaildException;
@@ -159,9 +160,11 @@ public class Tester {
                 return;
             for (int searchKey = 1; searchKey <= size; searchKey++ ){
                 c++;
-                if (c == 6){
+                if (c == 4051){
+                 //   GUI g = new GUI(tangoTree);
                     c = c;
                 }
+            //    System.out.println( c);
                 TangoNode root = buildTreeFromString(treeString);
                 buildPBTfromString(pbt, map.get(treeString));
                 tangoTree.setTree(root);
@@ -174,11 +177,12 @@ public class Tester {
                 newTreeString = buildTreeString((TangoNode)tangoTree.getRoot());
                 if(!map.containsKey(newTreeString)){
                     map.put(newTreeString, getPrefString(pbt, ""));
-                } 
+                }
+                 
            }
             map.replace(treeString, null);
             if(count % 5000 == 0)
-                System.out.println(size + "  " + map.size() + "___" + count);
+                System.out.println(size + "  " + map.size() + "___" + count );
         }
     }
     private String buildPBTfromString(PerfectTreeNode node, String s){
@@ -281,6 +285,13 @@ public class Tester {
         boolean one = isRedBlackTreeEig4 (node);
         boolean two = isRedBlackTreeEig5 (node);
         boolean three = checkDepths (node);
+        
+        
+        if(!(one && two && three)) 
+            one = one;
+        
+        
+        
         return one && two && three;
     }
     private boolean isRedBlackTreeEig4 (TangoNode node){

@@ -31,14 +31,31 @@
 \maketitle
 \newpage
 
-\newpage
 \tableofcontents
-
-
 \newpage
-
 
 \section{Dynamische Optimalität}
+
+\subsection{BST Zugriffsalgorithmus }
+Sei $T$ ein BST mit der festen Schlüsselmenge $K$. \textit{insert} und \textit{delete} bleiben also außen vor. Für \textit{access} werden als Parameter nur Schlüssel zugelassen die in $K$ enthaltenen sind. Für die Umsetzung der \textit{access(key $k$)} Operation  werden nur Algorithmen betrachtet, die sich wie folgt verhalten. 
+\begin{enumerate} 
+	\item Der Algorithmus verfügt über genau einen Zeiger $p$ in den BST. Dieser zeigt zu Beginn der Operation auf die Wurzel.  
+	\item Der Algorithmus führt eine Folge der folgenden vier Operationen aus:
+	\begin{itemize}
+		\item Setze $p$ auf das linke Kind von $p$.
+		\item Setze $p$ auf das rechte Kind von $p$.
+		\item Setze $p$ auf den Vater von $p$.
+		\item Führe eine Rotation auf $p$ aus.
+	\end{itemize}  
+	\item Nur wenn $p$ auf den Knoten $v$ mit Schlüssel $k$ zeigt, kann der Algorithmus terminieren und eine Referenz auf $v$ zurückgeben. 
+\end{enumerate}
+Solche Algorithmen bezeichnet man als \textbf{BST access algorithm}.
+Jede der vier Operationen aus dem zweiten Punkt kann in konstanter Zeit durchgeführt werden. Die Kosten der teuersten Operation werden als Einheitskosten $u$ für alle vier Operationen verwendet. Für Punkt eins und drei werden ebenfalls jeweils diese Kosten veranschlagt. Sei $l$ die Länge der Folge aus Punkt zwei. Die Gesamtkosten für eine \textit{access} Operation sind damit $u \left(l + 2 \right) = O\left( l\right)$. 
+  
+
+
+
+
 \newpage
 \bibliography{literaturverzeichnis}
 \bibliographystyle{unsrt}
