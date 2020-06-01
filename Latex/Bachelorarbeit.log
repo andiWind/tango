@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  20 MAY 2020 09:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  30 MAY 2020 16:53
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -321,18 +321,18 @@ Package csquotes Info: Redefining alias 'default' -> 'german'.
  (Bachelorarbeit.aux)
 \openout1 = `Bachelorarbeit.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
 
 ("C:\Users\andre\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
 df.mkii"
@@ -410,13 +410,13 @@ G,.JBIG2,.JB2,.eps]
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
 
 
 ("C:\Users\andre\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
 
 ("C:\Users\andre\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -428,7 +428,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout3 = `Bachelorarbeit.toc'.
 
  [3] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
@@ -436,30 +436,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--46
 File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/ioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 5
-4.
+2.
 (pdftex.def)             Requested size: 390.0pt x 162.00563pt.
 <Medien/Einleitung/nioSuchbaum.png, id=24, 2310.231pt x 1327.359pt>
 File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/nioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
-60.
+58.
 (pdftex.def)             Requested size: 390.0pt x 224.06824pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--67
+Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
 [6 <./Medien/Einleitung/ioSuchbaum.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 69--71
+Underfull \hbox (badness 10000) in paragraph at lines 67--69
 
  []
 
 \c@defi=\count123
 [7 <./Medien/Einleitung/nioSuchbaum.png>]
-Overfull \hbox (15.74591pt too wide) in paragraph at lines 83--83
+Overfull \hbox (15.74591pt too wide) in paragraph at lines 81--81
 []\T1/cmr/bx/n/14.4 Weitere Be-grif-fe und Ei-gen-schaf-ten zum bi-n�ren Such-
  []
 
@@ -467,7 +467,7 @@ Overfull \hbox (15.74591pt too wide) in paragraph at lines 83--83
 File: Medien/Einleitung/suchbaum2_2.png Graphic file (type png)
 <use Medien/Einleitung/suchbaum2_2.png>
 Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line 
-87.
+85.
 (pdftex.def)             Requested size: 390.0pt x 247.18416pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -477,10 +477,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/Einleitung/linksRechts.png Graphic file (type png)
 <use Medien/Einleitung/linksRechts.png>
 Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
-96.
+94.
 (pdftex.def)             Requested size: 390.0pt x 138.6489pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
@@ -490,23 +490,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--101
 File: Medien/Einleitung/VorgängerNachfolger.png Graphic file (type png)
 <use Medien/Einleitung/VorgängerNachfolger.png>
 Package pdftex.def Info: Medien/Einleitung/VorgängerNachfolger.png  used on in
-put line 117.
+put line 115.
 (pdftex.def)             Requested size: 390.0pt x 240.19383pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 129--134
+Underfull \hbox (badness 10000) in paragraph at lines 127--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--134
+Underfull \hbox (badness 10000) in paragraph at lines 127--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
@@ -515,10 +515,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 139--140
 File: Medien/Einleitung/Linksrotation.png Graphic file (type png)
 <use Medien/Einleitung/Linksrotation.png>
 Package pdftex.def Info: Medien/Einleitung/Linksrotation.png  used on input lin
-e 147.
+e 145.
 (pdftex.def)             Requested size: 467.99881pt x 147.27036pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 147--148
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 145--146
  [][] 
  []
 
@@ -526,10 +526,10 @@ Overfull \hbox (77.99881pt too wide) in paragraph at lines 147--148
 File: Medien/Einleitung/Rechtsrotation.png Graphic file (type png)
 <use Medien/Einleitung/Rechtsrotation.png>
 Package pdftex.def Info: Medien/Einleitung/Rechtsrotation.png  used on input li
-ne 153.
+ne 151.
 (pdftex.def)             Requested size: 467.99881pt x 142.69226pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 153--154
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 151--152
  [][] 
  []
 
@@ -537,10 +537,10 @@ Overfull \hbox (77.99881pt too wide) in paragraph at lines 153--154
 File: Medien/Einleitung/LinksRechtsRotation.png Graphic file (type png)
 <use Medien/Einleitung/LinksRechtsRotation.png>
 Package pdftex.def Info: Medien/Einleitung/LinksRechtsRotation.png  used on inp
-ut line 159.
+ut line 157.
 (pdftex.def)             Requested size: 467.99881pt x 142.20055pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 159--160
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 157--158
  [][] 
  []
 
@@ -557,10 +557,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
 <use Medien/Einleitung/SuchenEinfügen.png>
 Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
-ine 170.
+ine 168.
 (pdftex.def)             Requested size: 467.99881pt x 157.12863pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 170--171
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 168--169
  [][] 
  []
 
@@ -574,33 +574,33 @@ uchenEinfügen.png>]
 <Medien/Einleitung/löschen.png, id=83, 4020.621pt x 1205.10225pt>
 File: Medien/Einleitung/löschen.png Graphic file (type png)
 <use Medien/Einleitung/löschen.png>
-Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 192
+Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 190
 .
 (pdftex.def)             Requested size: 467.99881pt x 140.26637pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 192--193
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 190--191
  [][] 
  []
 
 [15 <./Medien/Einleitung/löschen.png>]
 \c@Lemma=\count124
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--210
+Underfull \hbox (badness 10000) in paragraph at lines 206--208
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--220
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
@@ -609,14 +609,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 239--240
 File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/IOBaum.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 2
-45.
+43.
 (pdftex.def)             Requested size: 390.0pt x 186.66798pt.
 <Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=96, 2527.64325pt x 1209.92026pt>
 
 File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
-ut line 251.
+ut line 249.
 (pdftex.def)             Requested size: 390.0pt x 186.66798pt.
 
 
@@ -627,34 +627,34 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png  used on i
-nput line 257.
+nput line 255.
 (pdftex.def)             Requested size: 390.0pt x 236.37799pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [18 <./Medien/RotSchwarzBaum/IOBaum.png>]
-Overfull \hbox (22.5033pt too wide) in paragraph at lines 278--279
+Overfull \hbox (22.5033pt too wide) in paragraph at lines 276--277
 \T1/cmr/m/n/12 Zur Kor-rek-tur wird zum En-de von \T1/cmr/m/it/12 ein-f�-gen \T
 1/cmr/m/n/12 ei-ne zu-s�tz-li-che Ope-ra-ti-on, \T1/cmr/bx/n/12 einf�gen-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
  []
 
 [19 <./Medien/RotSchwarzBaum/NIOBaumZweiRote.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 280--282
+Underfull \hbox (badness 10000) in paragraph at lines 278--280
 
  []
 
 [20 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 292--295
+Underfull \hbox (badness 10000) in paragraph at lines 290--293
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--298
+Underfull \hbox (badness 10000) in paragraph at lines 294--296
 
  []
 
@@ -664,33 +664,33 @@ pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png  used on
- input line 312.
+ input line 310.
 (pdftex.def)             Requested size: 272.99881pt x 99.68475pt.
 <Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=115, 5132.97675pt x 1795.909
 5pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
- input line 318.
+ input line 316.
 (pdftex.def)             Requested size: 390.0pt x 136.44121pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--325
+Underfull \hbox (badness 10000) in paragraph at lines 321--323
 
  []
 
 [22 <./Medien/RotSchwarzBaum/EinfügenFixUpFall1.png> <./Medien/RotSchwarzBaum/
 EinfügenFixUpFall2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 339--341
+Underfull \hbox (badness 10000) in paragraph at lines 337--339
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 350--351
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--358
+Underfull \hbox (badness 10000) in paragraph at lines 352--356
 
  []
 
@@ -699,7 +699,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 354--358
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
- input line 364.
+ input line 362.
 (pdftex.def)             Requested size: 390.0pt x 243.64539pt.
 [24]
 <Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=128, 3581.58075pt x 2655.320
@@ -707,7 +707,7 @@ Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
- input line 371.
+ input line 369.
 (pdftex.def)             Requested size: 390.0pt x 289.1284pt.
 
 
@@ -718,14 +718,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall5.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png  used on
- input line 378.
+ input line 376.
 (pdftex.def)             Requested size: 390.0pt x 244.91724pt.
 <Medien/RotSchwarzBaum/EinfügenFixUpFall6.png, id=130, 3523.1625pt x 2673.99pt
 >
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png  used on
- input line 384.
+ input line 382.
 (pdftex.def)             Requested size: 390.0pt x 295.97589pt.
 [25 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>]
 Overfull \vbox (5.24562pt too high) has occurred while \output is active []
@@ -735,12 +735,12 @@ Overfull \vbox (5.24562pt too high) has occurred while \output is active []
 EinfügenFixUpFall5.png>]
 \c@Lemma2=\count125
 
-Underfull \hbox (badness 10000) in paragraph at lines 396--402
+Underfull \hbox (badness 10000) in paragraph at lines 394--400
 
  []
 
 [27 <./Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 407--408
+Underfull \hbox (badness 10000) in paragraph at lines 405--406
 
  []
 
@@ -748,7 +748,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 407--408
 File: Medien/RotSchwarzBaum/vereinigen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen.png  used on input li
-ne 434.
+ne 432.
 (pdftex.def)             Requested size: 203.36363pt x 234.00238pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -757,30 +757,30 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Medien/RotSchwarzBaum/vereinigen2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen2.png  used on input l
-ine 440.
+ine 438.
 (pdftex.def)             Requested size: 239.16476pt x 234.00238pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--455
+Underfull \hbox (badness 10000) in paragraph at lines 442--453
 
  []
 
 [28] [29 <./Medien/RotSchwarzBaum/vereinigen.png>] [30 <./Medien/RotSchwarzBaum
 /vereinigen2.png>] [31]
-Overfull \hbox (2.84256pt too wide) in paragraph at lines 475--476
+Overfull \hbox (2.84256pt too wide) in paragraph at lines 473--474
 \T1/cmr/m/n/12 zel ei-nes RBT $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 mit Schl�s-
 sel-men-ge $\OML/cmm/m/it/12 K[]$\T1/cmr/m/n/12 , wo-bei gilt $[]$.
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 488--489
+Underfull \hbox (badness 10000) in paragraph at lines 486--487
 
  []
 
 [33]
-Overfull \hbox (2.91464pt too wide) detected at line 525
+Overfull \hbox (2.91464pt too wide) detected at line 523
 []
  []
 
@@ -788,7 +788,7 @@ Overfull \hbox (2.91464pt too wide) detected at line 525
 File: Medien/RotSchwarzBaum/aufteilen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/aufteilen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/aufteilen.png  used on input lin
-e 542.
+e 540.
 (pdftex.def)             Requested size: 312.00119pt x 283.32642pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -828,9 +828,9 @@ AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:
 /Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 mti8.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (35 pages, 6839790 bytes).
+Output written on Bachelorarbeit.pdf (35 pages, 6840205 bytes).
 PDF statistics:
- 591 PDF objects out of 1000 (max. 8388607)
+ 592 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

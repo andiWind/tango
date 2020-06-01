@@ -37,24 +37,90 @@
 \section{Dynamische Optimalität}
 
 \subsection{BST Zugriffsalgorithmus }
-Sei $T$ ein BST mit der festen Schlüsselmenge $K$. \textit{insert} und \textit{delete} bleiben also außen vor. Für \textit{access} werden als Parameter nur Schlüssel zugelassen die in $K$ enthaltenen sind. Für die Umsetzung der \textit{access(key $k$)} Operation  werden nur Algorithmen betrachtet, die sich wie folgt verhalten. 
+Sei $T$ ein BST mit der Schlüsselmenge $K$. Eine Operation, welche die gleiche Rückgabe wie \textit{search} liefert, bei der aber nur $k \in K $ als Parameter erlaubt sind wird \textit{access} genannt. In diesem Kapitel werden Folgen solcher \textit{access} Operationen betrachtet. Notiert wird eine solche Zugriffsfolge durch Angabe der Parameter. Bei der Zugriffsfolge $x_1,x_2,...x_m$ wird also zunächst \textit{access($x_1$)} ausgeführt, dann \textit{access($x_2$)} usw.  Bei BST wird bezüglich Zugriffssequenzen zwischen online und offline Varianten unterschieden. Bei offline BST ist die Zugriffsfolge zu Beginn bereits bekannt, somit kann ein Startzustand gewählt werden, der die Kosten minimiert. Beim online BST ist die Zugriffsfolge zu Beginn nicht bekannt. Bei einer worst case Laufzeit-Analyse muss somit zum Start von dem Startzustand ausgegangen werden bei dem die Kosten am höchsten sind.
+Einen BST der lediglich die \textit{access} Operation anbietet nennt man \textbf{BST access algorithm}, wenn seine Operation folgende Eigenschaften einhält. 
+
 \begin{enumerate} 
-	\item Der Algorithmus verfügt über genau einen Zeiger $p$ in den BST. Dieser zeigt zu Beginn der Operation auf die Wurzel.  
-	\item Der Algorithmus führt eine Folge der folgenden vier Operationen aus:
+	\item Der Algorithmus verfügt über genau einen Zeiger $p$ in den BST. Dieser wird zu Beginn so initialisiert, dass er auf die Wurzel zeigt. Terminiert der Algorithmus muss $p$ auf den Knoten mit Schlüssel $k$ zeigen.
+	\item Der Algorithmus führt eine Folge dieser Einzelschritte durch:
 	\begin{itemize}
 		\item Setze $p$ auf das linke Kind von $p$.
 		\item Setze $p$ auf das rechte Kind von $p$.
 		\item Setze $p$ auf den Vater von $p$.
 		\item Führe eine Rotation auf $p$ aus.
 	\end{itemize}  
-	\item Nur wenn $p$ auf den Knoten $v$ mit Schlüssel $k$ zeigt, kann der Algorithmus terminieren und eine Referenz auf $v$ zurückgeben. 
+	\item  Zur Auswahl des nächsten Einzelschrittes können in den Knoten gespeicherte Hilfsdaten verwendet werden. Es kann nur auf die Hilfsdaten des Knotens zugegriffen werden (lesend oder schreibend), auf den $p$ zeigt.    
 \end{enumerate}
-Solche Algorithmen bezeichnet man als \textbf{BST access algorithm}.
-Jede der vier Operationen aus dem zweiten Punkt kann in konstanter Zeit durchgeführt werden. Die Kosten der teuersten Operation werden als Einheitskosten $u$ für alle vier Operationen verwendet. Für Punkt eins und drei werden ebenfalls jeweils diese Kosten veranschlagt. Sei $l$ die Länge der Folge aus Punkt zwei. Die Gesamtkosten für eine \textit{access} Operation sind damit $u \left(l + 2 \right) = O\left( l\right)$. 
-  
+
+ 
+ \noindent  Da \textit{access} die Schlüsselmenge nicht verändert ist diese bei BST access algorithm statisch und es wird $n = \vert K \vert$ gesetzt. Außerdem werden hier pro Knoten nur Hilfsdaten in konstanter Größenordnung zugelassen. Zu beachten ist, dass dies eine Abhängigkeit zu $n$ nicht ausschließt.
+ 
+ \noindent Die Initialisierung sowie die Auswahl und Durchführung jedes Einzelschrittes aus Punkt 2 kann in konstanter Zeit durchgeführt werden. Es werden jeweils Einheitskosten von $1$ verwendet. Höhere angenommene Kosten würden die Gesamtkosten lediglich um einen konstanten Faktor erhöhen. Es sei $a$ die Anzahl der insgesamt durchgeführten Einzelschritte während einer Zugriffsfolge $X$ mit Länge $m$. Dann berechnen sich die Gesamtkosten $\mathit{cost(X)}$ der Zugriffsfolge mit $\mathit{cost(X)} = a + m$. Es muss zu jeder Schlüsselmenge und jeder Zugriffsfolge zumindest einen offline BST access algorithm geben, so dass die Kosten keines anderen niedriger sind. Diese Kosten werden als $\mathit{OPT}\left(X\right)$ bezeichnet.\\  In \cite{nRotations} wurde gezeigt, dass der Zustand eines BST mit maximal $2n -2$ Rotationen in jeden anderen gültigen BST Zustand mit der gleichen Schlüsselmenge überführt werden kann. Da bei der Berechnung der Kosten für  $\mathit{OPT(X)}$, $m$ ebenfalls als Summand vorkommt, können die zusätzlichen Kosten der online Varianten asymptotisch betrachtet vernachlässigt werden. \\
+ \noindent Als \textbf{dynamisch optimal } wird ein BST bezeichnet wenn er eine beliebige Zugriffssequenz $X$ in $O\left(\mathit{OPT}\left(X\right)\right)$ Zeit ausführen kann. Ein BST der jede Zugriffssequenz in $O\left(c \cdot \mathit{OPT}\left(X\right)\right)$ Zeit ausführt, nennt man \textbf{c-competitive}. Es konnte bis heute für keinen BST bewiesen werden, dass er dynamisch optimal ist. Es wurden aber mehrere untere Schranken für $\mathit{OPT}\left(X\right)$ gefunden. Eine davon wird  nun vorgestellt.
+
+
+\subsection{Erste untere Schranke von Wilber}
+Robert Wilber hat in \cite{wilberLowerBounds} zwei Methoden zur Berechnung unterer Schranken für die Laufzeit von BST access algorithm vorgestellt. Hier wird auf die Erste davon eingegangen. Im folgenden werden offline BST access algorithm betrachtet, bei denen nach einer \textit{access($k$)} Operation, der Knoten $v$ mit Schlüssel $k$ die Wurzel des BST ist. Asymptotisch betrachtet entsteht hierdurch kein Verlust der Allgemeinheit. Sei $d$ die Tiefe von $p$ zum Zeitpunkt $t$ direkt vor der Terminierung von \textit{access}. Dann sind mindestens Kosten $d + 1$ entstanden. Mit $d$ Rotationen kann $p$ zur Wurzel gemacht werden und mit $d$ weiteren Rotationen kann der Zustand zum Zeitpunkt $t$ wieder hergestellt werden. \\
+Für einen BST $T$ mit Schlüsselmenge $K_T$ und einer Zugriffsfolge $X$ notieren wir die minimalen Kosten eines wie eben vorgestellt arbeitenden BST access algorithm mit $W(X, T)$. Im folgenden wird angenommen, dass \\
+$K = \{  i \in \mathbb{N} \vert i \in \left[j,k\right] \textit{ mit } j,k \in  \mathbb{N} \} $ gilt. Dadurch entsteht kein Verlust der Allgemeinheit, denn anderenfalls könnte man die Schlüsselmenge einfach aufsteigend sortiert mit $j$ startend durchnummerieren. Eine Rotation wird innerhalb dieses Kapitels mit $\left(i, j\right)$ notiert. $i$ ist dabei der Schlüssel des Knotens auf dem die Rotation ausgeführt wird, vergleiche Kapitel \ref{noch einsetzrn}. $j$ ist der Schlüssel des Vaters von $i$, vor Ausführung der Rotation. Für eine Folge von Rotationen $r = \left(i_1,j_1 \right),\left(i_2,j_2 \right),..,\left(i_n,j_n \right)$ erhält man die Folge  $r^y_x = \left(i_{1'},j_{1'}\right),\left(i_{2'},j_{2'} \right),..,\left(i_{m'},j_{m'} \right)$  in dem man aus $r$ jede Rotation entfernt bei der $i < x  \lor j > y$ gilt. Ähnlich erhält man aus $X$ die Zugriffsfolge $X^y_x$ in dem man aus $X$ alle Schlüssel $k$ entfernt für die $k < x  \lor k > y$ gilt.
+
+\paragraph{lower bound tree}
+Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \left(k - j \right) + 1$ Knoten enthält. Seine $\vert K \vert$ Blätter enthalten die Schlüssel aus $K$. Die $\left(k - j \right)$ internen Knoten enthalten die Schlüssel aus der Menge $\{r \in R \vert \exists i,j \in K \left( i + 1 = j \land r = i + 0,5\right)\}$. $Y$ kann immer erstellt werden indem zunächst ein BST $Y_i$ mit den internen Knoten von $Y$ erzeugt wird. Die Blätter werden dann an der Position angefügt an der die Standardvariante von \textit{einfügen} angewendet auf $Y_i$ ihren Schlüssel einfügen würde. Dass hierbei für zwei Blätter mit Schlüssel $k_1, k_2$ die gleiche Position gewählt wird ist ausgeschlossen, da es einen internen Knoten mit Schlüssel $k_i$ so geben muss dass $k_1 < k_i < k_2 \lor k_1 > k_i > k_2 $ gilt. An der Konstruktionsanleitung erkennt man, dass zu den meisten BST mehrere mögliche lower bound trees existieren. Abbildung \ref{fig:lowerBoundTree} zeigt eine beispielhafte Konstellation. \\
+
+
+        
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
+	\caption{Rechts ist ein möglicher lower bound tree zum linken BST dargestellt.  }
+	\label{fig:lowerBoundTree}
+\end{figure}
+
+\noindent Nun wird die Funkion $_X(T, Y, X) $ definiert. Ihre Parameter sind ein BST $T$, ein lower bound tree $Y$ und eine Zugriffsfolge $X$. $Y$ und $X$ müssen passend für $T$ erstellt sein, ansonsten ist $_X(T, Y, X) $ undefiniert . Die Auswertung erfolgt zu einer natürlichen Zahl. Sei $U$ die Menge der Schlüssel der internen Knoten von $Y$ und $m$ die Länge von $X$. Sei $u \in U$ und $l$ der kleinste Schlüssel eines Blattes im Teilbaum mit Wurzel $u$, sowie $r$ der größte Schlüssel eines solchen Blattes. Sei $v$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus $\left[l, r\right]$  in $T$. Sei $o$ die Folge $o_0, o_1,..,o_m'$ mit $o_0 = v$ und $o = v \circ X^r_l$. $i \in \left[1,m\right]$ ist eine \textit{u-Transition} wenn gilt $\left( o_{i-1} < u \land o_i > u \right) \lor \left( o_{i-1} > u \land o_i < u \right)$.Die Funktion $_x (u) \colon U \rightarrow \mathbb{N}$ ist definiert durch $_x(u) = \vert\{i \in \mathbb{N}\ \textit{i ist eine u-Transition}\} \vert$.
+
+\begin{align*}
+_X(T, Y, X)  = m + \sum_{u \in U} {_x} (u)
+\end{align*}
 
 
 
+
+
+\subsection{Bit reversal permutation }
+
+
+
+
+
+
+
+
+
+
+\subsection{Amortisierte Laufzeitanalyse}
+Sei $i \in \{0,..,m\}$. Bei der \textbf{amortisierten Laufzeitanalyse} wird eine Folge von $m$ Operationen betrachtet. Hierbei kann es sich $m$ mal um die gleiche Operation handeln, oder auch um verschiedene. Die \textbf{tatsächlichen Kosten}  $t_i$ stehen für die exakten Kosten zum ausführen der $i$-ten Operation. Durch aufaddieren der tatsächlichen Kosten jeder einzelnen Operation erhält man \textbf{tatsächlichen Gesamtkosten}.  Stehen für die Laufzeit der Operationen jeweils nur obere Schraken zur Verfügung, kann man mit diesen genau so vorgehen, um eine obere Schranke für die Gesamtlaufzeit zu erhalten. So erzeugte obere Schranken können jedoch unnötig hoch sein. Die Idee bei einer amortisierten Analyse ist es, bereits eingesparte Zeit durch schnell ausgeführte Operationen, den noch folgenden Operationen zum Verbrauchen zur Verfügung zu stellen.  Dabei wird insbesondere der aktuelle Zustand der zugrunde liegenden Datenstruktur vor und nach einer Operation betrachtet. Hier soll die amortisierte Laufzeitanalyse verwendet werden um im folgenden Abschnitt eine niedrigere obere Schranke als $O(\log(n))$ für einfügenFixup zu finden. Es gibt drei Methoden zur amortisierten Analyse, hier wird die \textbf{Potentialfunktionmethode} verwendet.
+\paragraph{Potentialfunktionmethode} Eine Potentialfunktion $\Phi(D)$ ordnet einem Zustand einer Datenstruktur $D$ eine natürliche Zahl, \textbf{Potential} genannt, zu. Es bezeichnet $\Phi(D)_{i}$ das Potential von $D$ nach Ausführung der $i$-ten Operation. $t_i$ steht für die \textbf{tatsächlichen Kosten} zum durchführen der $i$-ten Operation. Dabei handelt es sich um die exakten Kosten die beim Die \textbf{amortisierten Kosten} $a_i$ einer Operation berücksichtigen die von der Operation verursachte Veränderung am Potential, $a_i = t_i + \Phi(D)_{i} - \Phi(D)_{i-1}$. Um die \textbf{amortisierten Gesamtkosten} $A$ zu berechnen bildet man die Summe der amortisierten Kosten aller Operationen. 
+\begin{align*}
+A = \sum_{i = 1}^{m} a_i =  \sum_{i = 1}^{m} \left(t_i + \Phi\left(D\right)_{i} - \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{m} - \Phi\left(D\right)_{0} + \sum_{i = 1}^{m} t_i 
+\end{align*}
+Folgendes gilt für die Summe der $t_i$:
+\begin{align*}
+&\sum_{i = 1}^{m} t_i =  \sum_{i = 1}^{m} \left(a_i - \Phi\left(D\right)_{i} + \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{0} - \Phi\left(D\right)_{m} + \sum_{i = 1}^{m} a_i \\
+\Rightarrow &\left( \Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0} \Rightarrow \sum_{i = 1}^{m} a_i \geq \sum_{i = 1}^{m} t_i \right)
+\end{align*}
+Ist das Potenzial nach Ausführung der Operationsfolge also nicht kleiner als zum Beginn, dann sind die amortisierten Gesamtkosten eine obere Schranke für die tatsächlichen Gesamtkosten. Die wesentliche Aufgabe ist es nun eine Potentialfunktion zu finden, bei der die amortisierten Gesamtkosten möglichst niedrig sind und für die gilt $\Phi\left(D\right)_{m} \geq \Phi\left(D\right)_{0}$. Dies wird jetzt noch an einem einfachen Beispiel demonstriert, bevor einfügenFixup betrachtet wird. 
+
+\paragraph{Potentialfunktionmethode am Beispiel eines Stack} 
+Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum Ablegen eines Elementes auf dem Stack und über \textit{pop} zum Entfernen des oben liegenden Elementes. Zusätzlich gibt es eine Operation \textit{popAll}, die so oft \textit{pop} aufruft, bis der Stack leer ist. Sei $n$ die Anzahl der Elemente die maximal im Stack enthalten sein kann. \textit{push} und \textit{pop} können in konstanter Zeit durchgeführt werden und wir berechnen jeweils eine Kosteneinheit. Für die Laufzeit von \textit{popAll} gilt $O(n)$, da \textit{pop} bis zu $n$ mal aufgerufen wird. Für die Gesamtlaufzeit einer Folge von $m$ Operationen kann sicher $O(mn)$ angegeben werden. Mit einer amortisierten Analyse wird nun aber $O(m)$ für \textit{popAll} gezeigt. Als $\Phi$ verwenden wir eine Funktion, welche die aktuelle Anzahl der im Stack enthaltenen Elemente zurück gibt. $\Phi_0$ setzen wir auf $0$, dass heißt wir starten mit einem leeren Stack. \textit{push} erhöht also das Potential um eins, während \textit{pop} es um eins vermindert. Nun werden die amortisierten Kosten bestimmt. 
+
+\begin{align*}   
+&a_{\mathit{push}} = t_{\mathit{push}} + \Phi{i} - \Phi{i-1}  &= 2\\
+&a_{\mathit{pop}} = t_{\mathit{pop}} + \Phi{i} - \Phi{i-1}  &= 0\\
+&a_{\mathit{popAll}} = n \cdot a_{\mathit{pop}} &= 0
+\end{align*}\\
+Alle drei Operationen haben konstante amortisierte Kosten. Auf jedem Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $ Damit gilt für die Ausführungszeit der Folge $O(m)$. \\
+Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem zu Beginn leerem Stack kann nur entfernt werden, was zuvor eingefügt wurde. \textit{push} zahlt für die Operation, welche das eingefügte Element eventuell wieder entfernt gleich mit, bleibt bei den Kosten aber konstant. Deshalb kann \textit{pop} amortisiert kostenlos durchgeführt werden, wodurch einer der beiden Faktoren zur Berechnung der Kosten von \textit{popAll} zu $0$ wird.  
+\subsection{Zugriffssequenzen mit besonderen Eigenschaften }
 
 \newpage
 \bibliography{literaturverzeichnis}

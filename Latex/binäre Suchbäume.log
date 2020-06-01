@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  25 MAY 2020 11:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  1 JUN 2020 11:12
 entering extended mode
 **"./binäre Suchbäume.tex"
 ("binäre Suchbäume.tex"
@@ -564,13 +564,9 @@ Overfull \hbox (77.99881pt too wide) in paragraph at lines 167--168
  [][] 
  []
 
-[10]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[11 <./Medien/Einleitung/Linksrotation.png> <./Medien/Einleitung/Rechtsrotation
-.png>] [12 <./Medien/Einleitung/LinksRechtsRotation.png> <./Medien/Einleitung/S
-uchenEinfügen.png>]
+[10] [11 <./Medien/Einleitung/Linksrotation.png> <./Medien/Einleitung/Rechtsrot
+ation.png>] [12 <./Medien/Einleitung/LinksRechtsRotation.png> <./Medien/Einleit
+ung/SuchenEinfügen.png>]
 <Medien/Einleitung/löschen.png, id=76, 4020.621pt x 1205.10225pt>
 File: Medien/Einleitung/löschen.png Graphic file (type png)
 <use Medien/Einleitung/löschen.png>
@@ -635,9 +631,9 @@ cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/and
 re/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><
 C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
 mbols/msbm10.pfb>
-Output written on "binäre Suchbäume.pdf" (15 pages, 2748607 bytes).
+Output written on "binäre Suchbäume.pdf" (15 pages, 2748626 bytes).
 PDF statistics:
- 445 PDF objects out of 1000 (max. 8388607)
+ 446 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
