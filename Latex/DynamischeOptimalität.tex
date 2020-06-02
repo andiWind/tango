@@ -82,6 +82,8 @@ Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \left(k - j \right) + 
 _X(T, Y, X)  = m + \sum_{u \in U} {_x} (u)
 \end{align*}
 
+\noindent Im eigentlichen Satz wird  $\mathit{OPT}\left(X\right) \geq {_X(T, Y, X)} $ für gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $u$ ist der längst mögliche Pfad für den dem gilt, $v_0$ ist das linke Kind von $u$ und $v_i$ ist rechtes Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $u$ ist der längst mögliche Pfad Pfad für den gilt, $v_0$ ist das rechte Kind von $u$ und $v_i$ ist linkes Kind von $v_{i-1}$. $T^y_x$ ist ein von $T$ abgeleiteter BST mit Schlüsselmenge $K^y_x = \{i \in K\vert x \leq i \leq y\}$. Sein nun $v$ ein Knoten in $T$ mit dem linken inneren Pfad $P_l$ und rechtem inneren Pfad $P_r$ und $u$ ein Konten in $T^y_x$ mit dem gleichen Schlüssel wie $v$. Sei $k_l$ der Schlüssel des Knotens $v_l$ mit dem kleinsten Index in $P_l$, so dass gilt $k_l \in K^y_x$, wenn ein solcher Knoten $v_l$ existiert. Existiert $v_l$ nicht, so hat $u$ kein linkes Kind, anderenfalls ist der Knoten mit Schlüssel $v_l$ sein linkes Kind. Das rechte Kind von $u$ wird auf die gleiche Art und Weise aus $P_r$ bestimmt. So erstellt muss $T^y_x$ ein BST sein, so dass für zwei Schlüssel $k_1, k_2 \in K^y_x$ gilt, ist der Knoten mit Schlüssel $k_2$ ein Nachfahre des Knoten mit Schlüssel  $k_1$ in $T^y_x$, dann gilt dies auch für $T$.  
+
 
 
 
