@@ -60,7 +60,7 @@ Einen BST der lediglich die \textit{access} Operation anbietet nennt man \textbf
 
 
 \subsection{Erste untere Schranke von Wilber}
-Robert Wilber hat in \cite{wilberLowerBounds} zwei Methoden zur Berechnung unterer Schranken für die Laufzeit von BST access algorithm vorgestellt. Hier wird auf die Erste davon eingegangen. Im folgenden werden offline BST access algorithm betrachtet, bei denen nach einer \textit{access($k$)} Operation, der Knoten $v$ mit Schlüssel $k$ die Wurzel des BST ist. Asymptotisch betrachtet entsteht hierdurch kein Verlust der Allgemeinheit. Sei $d$ die Tiefe von $p$ zum Zeitpunkt $t$ direkt vor der Terminierung von \textit{access}. Dann sind mindestens Kosten $d + 1$ entstanden. Mit $d$ Rotationen kann $p$ zur Wurzel gemacht werden und mit $d$ weiteren Rotationen kann der Zustand zum Zeitpunkt $t$ wieder hergestellt werden. \\
+Robert Wilber hat in \cite{wilberLowerBounds} zwei Methoden zur Berechnung unterer Schranken für die Laufzeit von BST access algorithm vorgestellt. Hier wird auf die Erste davon eingegangen. Im folgenden werden offline BST access algorithm betrachtet, bei denen nach einer \textit{access($k$)} Operation, der Knoten $v$ mit Schlüssel $k$ die Wurzel des BST ist. Asymptotisch betrachtet entsteht hierdurch kein Verlust der Allgemeinheit. Sei $d$ die Tiefe von $p$ zum Zeitpunkt $t$ direkt vor der Terminierung von \textit{access}. Dann sind mindestens Kosten $d + 1$ entstanden. Mit $d$ Rotationen kann $p$ zur Wurzel gemacht werden und mit $d$ weiteren Rotationen kann der Zustand zum Zeitpunkt $t$ wieder hergestellt werden. In diesem Kapitel wird eine Funktion $\mathit{key}(v)$ verwendet, die zu einem Knoten $v$ den Schlüssel von $v$ liefert.\\
 Für einen BST $T$ mit Schlüsselmenge $K_T$ und einer Zugriffsfolge $X$ notieren wir die minimalen Kosten eines wie eben vorgestellt arbeitenden BST access algorithm mit $W(X, T)$. Im folgenden wird angenommen, dass \\
 $K = \{  i \in \mathbb{N} \vert i \in \left[j,k\right] \textit{ mit } j,k \in  \mathbb{N} \} $ gilt. Dadurch entsteht kein Verlust der Allgemeinheit, denn anderenfalls könnte man die Schlüsselmenge einfach aufsteigend sortiert mit $j$ startend durchnummerieren. Eine Rotation wird innerhalb dieses Kapitels mit $\left(i, j\right)$ notiert. $i$ ist dabei der Schlüssel des Knotens auf dem die Rotation ausgeführt wird, vergleiche Kapitel \ref{noch einsetzrn}. $j$ ist der Schlüssel des Vaters von $i$, vor Ausführung der Rotation. Für eine Folge von Rotationen $r = \left(i_1,j_1 \right),\left(i_2,j_2 \right),..,\left(i_n,j_n \right)$ erhält man die Folge  $r^y_x = \left(i_{1'},j_{1'}\right),\left(i_{2'},j_{2'} \right),..,\left(i_{m'},j_{m'} \right)$  in dem man aus $r$ jede Rotation entfernt bei der $i < x  \lor j > y$ gilt. Ähnlich erhält man aus $X$ die Zugriffsfolge $X^y_x$ in dem man aus $X$ alle Schlüssel $k$ entfernt für die $k < x  \lor k > y$ gilt.
 
@@ -80,18 +80,34 @@ Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \left(k - j \right) + 
 
 \begin{align*}
 _X(T, Y, X)  = m + \sum_{u \in U} {_x} (u)
-\end{align*}
+\end{align*} %K^r_l = \{i \in K\vert l \leq i \leq r\}
 
-\noindent Im eigentlichen Satz wird f $\mathit{OPT}\left(X\right) \geq {_X(T, Y, X)} $ gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $u$ ist der längst mögliche Pfad für den dem gilt, $v_0$ ist das linke Kind von $u$ und $v_i$ ist rechtes Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $u$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das rechte Kind von $u$ und $v_i$ ist linkes Kind von $v_{i-1}$. $T^r_l$ ist ein von $T$ abgeleiteter BST mit Schlüsselmenge $K^r_l = \{i \in K\vert l \leq i \leq r\}$. Sein nun $v$ ein Knoten in $T$ mit dem linken inneren Pfad $P_l$ und rechtem inneren Pfad $P_r$ und $u$ ein Konten in $T^r_l$ mit dem gleichen Schlüssel wie $v$. Sei $k_l$ der Schlüssel des Knotens $v_l$ mit dem kleinsten Index in $P_l$, so dass gilt $k_l \in K^r_l$, wenn ein solcher Knoten $v_l$ existiert. Existiert $v_l$ nicht, so hat $u$ kein linkes Kind, anderenfalls ist der Knoten mit Schlüssel $v_l$ sein linkes Kind. Das rechte Kind von $u$ wird auf die gleiche Art und Weise aus $P_r$ bestimmt. \\
-So erstellt muss $T^r_l$ ein BST sein, so dass für zwei Schlüssel $k_1, k_2 \in K^r_l$ gilt, ist der Knoten mit Schlüssel $k_2$ ein Nachfahre des Knoten mit Schlüssel  $k_1$ in $T^r_l$, dann gilt dies auch für $T$. Direkt ersichtlich ist, dass kein Knoten in  $T^r_l$ mehr als zwei Kinder hat und dass die Links-Rechts-Beziehung der Schlüssel eingehalten wird. Auf drei andere Punkte wird nun noch etwas eingegangen. 
+\noindent Im eigentlichen Satz wird f $\mathit{OPT}\left(X\right) \geq {_X(T, Y, X)} $ gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $u$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das linke Kind von $u$ und für $i \in \{1,..,n\}$,$v_i$ ist rechtes Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $u$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das rechte Kind von $u$ und $v_i$ ist linkes Kind von $v_{i-1}$. $T^r_l$ ist ein mit $\left[l,r\right]$ aus $T$ abgeleiteter BST. Sei $v_r$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus  $\left[l,r\right]$ in $T$. Es muss $\mathit{key}(v_r) \in \left[l,r\right]$ gelten. Denn hat $v_r$ keine Kinder ist sein Schlüssel der Einzige aus $\left[l,r\right]$. Hat $v_r$ ein Kind $v_{rc}$ und $\mathit{key}(v_r) \notin \left[l,r\right]$, dann wäre $v_{rc}$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten. Hat $v_r$ zwei Kinder mit Schlüsseln aus $\left[l,r\right]$ dann muss aufgrund der Links-Rechts-Beziehung  $\mathit{key}(v_r)$ auch in $\left[l,r\right]$ enthalten sein. Sei $v_{rc}$ nun das linke bzw. rechte Kind zweier  Kinder von $v_r$, mit $\mathit{key}(v_{rc}) \notin \left[l,r\right]$. Gilt zusätzlich $\mathit{key}(v_r) \notin K^r_l$, dann wäre des rechte bzw. linke Kind von $v_r$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten. Ein Knoten $u_r$ mit Schlüssel $\mathit{key}(v_r)$ ist die Wurzel von $T^r_l$. Nun wird beschrieben wie Knoten zu $T^r_l$ hinzugefügt werden.
+Dazu werden zwei Mengen verwendet $U$ ist eine zu Beginn leere Menge, $W$ enthält zu Beginn $u_r$.
 \begin{enumerate}
-	\item $T^r_l$ hat eine Wurzel: \\
-	 Der Schlüssel $k_r$ des tiefstem gemeinsamen Vorfahren $v_r$ der Knoten mit Schlüsseln aus $K^r_l$ in $T$, muss selbst in $K^r_l$ liegen. Denn hat $v_r$ keine Kinder ist sein Schlüssel der Einzige aus $K^r_l$. Hat $v_r$ ein Kind $v_{rc}$ und $k_r \notin K^r_l$, dann wäre $v_{rc}$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten. Hat $v_r$ zwei Kinder mit Schlüsseln aus $K^r_l$ dann muss der von $k_r$ auch in $K^r_l$ enthalten sein. Sei $v_{rc}$ nun das linke bzw. rechte Kind zweier  Kinder von $v_r$, dessen Schlüssel nicht in $K^r_l$ liegt. Gilt zusätzlich $k_r \notin K^r_l$, dann wäre des rechte bzw. linke Kind von $v_r$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten. \\
-	$v_r$ kann auf keinem inneren Pfad eines anderen Knoten mit Schlüssel aus  $K^r_l$ liegen, damit kann der Knoten mit Schlüssel $k_r$ keinen Vater in $T^r_l$ haben.     
-	\item Für die Schlüsselmenge $K$ von  $T^r_l$ gilt  $K \subseteqq  K^r_l$:\\
-	 Sei $k \in K^r_l$ und $k < k_r$. Sei $v_k$ der Knoten mit Schlüssel $k$ in $T$. Da $v_r$ ein Vorfahre von $v_k$ ist muss $v_r$ einen Vater $v_p$ mit Schlüssel $k_p$ haben. Gilt $k_p \in K^r_l $ dann ist der Knoten mit Schlüssel $k_p$ Vater des Knotens mit Schlüssel $k$ in $T^r_l$. Ansonsten muss $k > k_p$ gelten und $v_k$ ist ein rechtes Kind. Sei $v_0,v_1,..,v_n$ ein Pfad in $T$ mit $v_0 = v_k$ und $v_i$ ist der Vater von $v_{i-1}$.  
-	 
+	\item Gilt $U = W$, beende das Verfahren.
+	\item Sei $u \in W$ ein Knoten mit $u \notin U$.  Sei $v$ der Knoten in $T$ mit $\mathit{key}(u ) = \mathit{key}(v)$. Sei $P_l$ der linke innere Pfad von $v$ und $P_r$ der rechte innere Pfad von $v$.
+	\item Ist $P_l$ der leere Pfad weiter mit $5$.
+	\item Sei $k_l$ der Schlüssel des Knoten mit der kleinsten Tiefe in $P_l$, für den gilt $k \geq l$. Erzeuge einen Knoten $u_l$ mit Schlüssel $k_l$ und füge ihn als linkes Kind an $u$ an. Füge $u_l$ zu $W$ hinzu.
+	\item Ist $P_r$ der leere Pfad weiter mit $7$.
+	\item Sei $k_r$ der Schlüssel des Knoten mit der kleinsten Tiefe in $P_r$, für den gilt  $k \leq r$. Erzeuge einen Knoten $u_r$ mit Schlüssel $k_r$ und füge ihn als rechtes Kind an $u$ an. Füge $u_r$ zu $W$ hinzu.	
+	\item Füge $u$ zu $U$ hinzu, weiter mit $1$
 \end{enumerate}
+Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So konstruiert muss $T^r_l$ ein BST sein.  Sei $K_1$ die Schlüsselmenge von $T$ und $K_2$ die von $T^r_l$. Sei ${K^r_l = K \cap \{i \in \mathbb{N}\vert i \in \left[l,r\right] \}}$. Jetzt wird noch darauf eingegangen warum $K_2 = K^r_l$ gilt \\
+
+ \noindent $K_2 \subseteqq  K^r_l$ erkennt man direkt an dem Verfahren zur Konstruktion von $T^r_l$.\\
+ 
+ \noindent $ K^r_l \subseteqq K_2$:\\
+ Sei $k \in K^r_l$ und $v_k$ der Knoten in $T$ mit $\mathit{key}(v) = k$. Es muss einen Pfad $P = v_0,..,v_n$ in $T$ geben, mit $v_0 = v_r$, $v_n = v_k$ und für $i \in \{1,..,n\}$ $v_i$ ist Kind von $v_{i-1}$. Sei $m$ die Anzahl der Knoten $w$ in $P$, mit $\mathit{key}(w) \in \left[l,r\right]$. Nun folgt Induktion über $m$.\\
+  Für $m = 1$ gilt $k = k_r$  und $k \in K_2$. \\
+  $m +1$:\\
+  Sei $v_m$ der Knoten in $P$ mit $\mathit{key}(v_m) \in  K_2 $ 
+ 
+
+
+	    
+	 
+
     
 
 
