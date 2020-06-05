@@ -93,7 +93,15 @@ Dazu werden zwei Mengen verwendet $U$ ist eine zu Beginn leere Menge, $W$ enthä
 	\item Sei $k_r$ der Schlüssel des Knoten mit der kleinsten Tiefe in $P_r$, für den gilt  $k \leq r$. Erzeuge einen Knoten $u_r$ mit Schlüssel $k_r$ und füge ihn als rechtes Kind an $u$ an. Füge $u_r$ zu $W$ hinzu.	
 	\item Füge $u$ zu $U$ hinzu, weiter mit $1$
 \end{enumerate}
-Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So konstruiert muss $T^r_l$ ein BST sein.  Sei $K_1$ die Schlüsselmenge von $T$ und $K_2$ die von $T^r_l$. Sei ${K^r_l = K \cap \{i \in \mathbb{N}\vert i \in \left[l,r\right] \}}$. Jetzt wird noch darauf eingegangen warum $K_2 = K^r_l$ gilt \\
+Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So konstruiert muss $T^r_l$ ein BST sein. Ein Beispiel stellt Abbildung \ref{fig:T_r_l} dar. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/T_r_l"}
+	\caption{Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ .  }
+	\label{fig:T_r_l}
+\end{figure}
+
+ \noindent Sei $K_1$ die Schlüsselmenge von $T$ und $K_2$ die von $T^r_l$. Sei ${K^r_l = K \cap \{i \in \mathbb{N}\vert i \in \left[l,r\right] \}}$. Jetzt wird noch darauf eingegangen warum $K_2 = K^r_l$ gilt \\
 
  \noindent $K_2 \subseteqq  K^r_l$ erkennt man direkt an dem Verfahren zur Konstruktion von $T^r_l$.\\
  
@@ -101,7 +109,9 @@ Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So 
  Sei $k \in K^r_l$ und $v_k$ der Knoten in $T$ mit $\mathit{key}(v) = k$. Es muss einen Pfad $P = v_0,..,v_n$ in $T$ geben, mit $v_0 = v_r$, $v_n = v_k$ und für $i \in \{1,..,n\}$ $v_i$ ist Kind von $v_{i-1}$. Sei $m$ die Anzahl der Knoten $w$ in $P$, mit $\mathit{key}(w) \in \left[l,r\right]$. Nun folgt Induktion über $m$.\\
   Für $m = 1$ gilt $k = k_r$  und $k \in K_2$. \\
   $m +1$:\\
-  Sei $v_m$ der Knoten in $P$ mit $\mathit{key}(v_m) \in  K_2 $ 
+  Sei $w$ der tiefste Knoten in $P$ mit $ v_0,..,v_{n-1}$, mit $\mathit{key}(w) \in  K_2$. $w$ muss existieren da $m > 1$. Nach Induktionsvoraussetzung gibt es einen Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(w)$ in $T^r_l$. Es sei $\mathit{key}(w) > \mathit{key}(v_k)$, der andere Fall ist symmetrisch. Ist $v_k$ linkes Kind von $w$, dann enthält das linke Kind von $u_k$ den Schlüssel $\mathit{key}(v_k)$. Anderenfalls gilt für alle $v_j$ mit $m < j < k$, $\mathit{key}(v_j) < l < \mathit{key}(v_k)$. Somit muss $v{m+1}$ ein linkes Kind sein und die Knoten in $P$ mit größerer Tiefe als $v{m+1}$ müssen rechte Kinder sein. Damit ist auch in diesem Fall ein Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(w)$ linkes Kind von $u_m$.  \\
+  
+
  
 
 
