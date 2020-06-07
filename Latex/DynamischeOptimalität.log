@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  5 JUN 2020 22:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.11.6)  7 JUN 2020 12:59
 entering extended mode
 **./DynamischeOptimalität.tex
 (DynamischeOptimalität.tex
@@ -481,17 +481,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 108--113
 
  []
 
-[7 <./Medien/DynOpt/T_r_l.png>] [8] [9] (DynamischeOptimalität.bbl) [10]
-(DynamischeOptimalität.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+
+ []
+
+\c@Lemma3=\count123
+[7 <./Medien/DynOpt/T_r_l.png>]
+
+LaTeX Warning: Reference `vergleiche Abbildung Kapitel 1 Rotationen' on page 8 
+undefined on input line 131.
+
+
+Overfull \hbox (1.04605pt too wide) in paragraph at lines 129--132
+\T1/cmr/m/n/12 Kno-ten aus $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 und $\OML/cmm/
+m/it/12 w[]$ \T1/cmr/m/n/12 ei-ner aus $\OML/cmm/m/it/12 T[]$\T1/cmr/m/n/12 , m
+it $[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) = [](\OML/cmm/m/it/1
+2 w[]\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 und $[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
+ w\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
+
+ []
+
+
+Overfull \hbox (44.86502pt too wide) in paragraph at lines 147--148
+\OML/cmm/m/it/12 v$\T1/cmr/m/n/12 , dann ist $\OML/cmm/m/it/12 u[]; v[]; ::; v[
+]$ \T1/cmr/m/n/12 der lin-ke in-ne-re Pfad von $\OML/cmm/m/it/12 v[]$\T1/cmr/m/
+n/12 . Es gilt $[]$.
+ []
+
+[8] [9] [10] [11] (DynamischeOptimalität.bbl) [12] (DynamischeOptimalität.aux
+)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6500 strings out of 492453
- 96593 string characters out of 3120076
- 185363 words of memory out of 3000000
- 10717 multiletter control sequences out of 15000+200000
+ 6507 strings out of 492453
+ 96685 string characters out of 3120076
+ 186363 words of memory out of 3000000
+ 10724 multiletter control sequences out of 15000+200000
  24365 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,9n,42p,1705b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -521,9 +553,9 @@ ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users
 /andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/ms
 am10.pfb><C:/Users/andre/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on DynamischeOptimalität.pdf (10 pages, 721411 bytes).
+Output written on DynamischeOptimalität.pdf (12 pages, 732479 bytes).
 PDF statistics:
- 397 PDF objects out of 1000 (max. 8388607)
+ 415 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

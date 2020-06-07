@@ -111,14 +111,89 @@ Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So 
   $m +1$:\\
   Sei $w$ der tiefste Knoten in $P$ mit $ v_0,..,v_{n-1}$, mit $\mathit{key}(w) \in  K_2$. $w$ muss existieren da $m > 1$. Nach Induktionsvoraussetzung gibt es einen Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(w)$ in $T^r_l$. Es sei $\mathit{key}(w) > \mathit{key}(v_k)$, der andere Fall ist symmetrisch. Ist $v_k$ linkes Kind von $w$, dann enthält das linke Kind von $u_k$ den Schlüssel $\mathit{key}(v_k)$. Anderenfalls gilt für alle $v_j$ mit $m < j < k$, $\mathit{key}(v_j) < l < \mathit{key}(v_k)$. Somit muss $v{m+1}$ ein linkes Kind sein und die Knoten in $P$ mit größerer Tiefe als $v{m+1}$ müssen rechte Kinder sein. Damit ist auch in diesem Fall ein Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(w)$ linkes Kind von $u_m$.  \\
   
-
+ \noindent Nun kommen wir zum Lemma:\\
+ 
  
 
 
 	    
 	 
+ \noindent Sei $v$ ein Knoten in $T$, dann wird ein Knoten in $T^r_l$ mit Schlüssel $\mathit{key}(v)$  mit $v^*$ bezeichnet.  
+\newtheorem{Lemma3}{Lemma}[section]
+\begin{Lemma3} Es sei $T$ ein BST mit Knoten $u, v$ so, dass $u$ ein Kind von $v$ ist. $T'$ ist der BST, der durch Ausführen der Rotation $\left(u,v\right)$ entsteht. Gilt $u,v \in \left[l,r\right]$, dann ist ${T'}^r_l$ der BST der aus $T^r_l$ durch Ausführen von  $\left(u,v\right)$ entsteht. Anderenfalls gilt ${T'}^r_l = T^r_l$.
+\end{Lemma3}
+\begin{proof}
+\noindent Für $u,v \notin \left[l,r\right]$ erkennt man $T'^r_l = T^r_l$ direkt.
+Nun werden die vier Fälle betrachtet bei denen entweder $u$ oder $v$ in $\left[l,r\right]$ liegen.
+\begin{enumerate}
+	\item $u$ ist das linke Kind von $v$ und $u < l$:\\
+	Die Schlüsselmenge wird durch Rotationen nicht verändert. Sei $w$ ein Knoten aus $T^r_l$ und $w'$ einer aus $T'^r_l$, mit $\mathit{key}(w) = \mathit{key}(w')$ und $\mathit{key}(w) \in \left[l,r\right]$. Es muss gezeigt werden dass, wenn $w$ ein linkes bzw. rechtes Kind mit Schlüssel $k$ hat, dann gilt dies auch für $w'$. Da $\mathit{key}(u) < l < \mathit{key}(w) $ gilt kann weder $u$ noch $v$ im rechten Teilbaum von $w$ liegen. Somit ist bezüglich der rechten Kinder nichts zu zeigen. 
+	Sei $P_l$ der linke innere Pfad von $w$. Ist $v$ nicht in $P_l$ enthalten und gilt $v \neq w$ dann gilt $P_l = P'_l$. Sei $w = v$. Dann gilt $P_l = u  \circ  P'_l$ \ref{vergleiche Abbildung Kapitel 1 Rotationen} und da $\mathit{key}(u) < l$ gilt, bleibt das linke Kind von $w$ unverändert. Nun sei $v$ in $P_l$ enthalten. Dann unterscheiden sich  $P_l$ und  $P'_l$ dadurch, dass ein Knoten mit $\mathit{key}(u)$ in $P'_l$ enthalten ist. Mit $u < l$ gilt aber, dass $w'$ und $w'$ bezüglich des Schlüssels ihres linken Kindes nicht unterscheiden.
+	\item $u$ ist das rechte Kind von $v$ und $u > r$:\\
+	Links-Rechts-Symmetrisch zu Fall 1. 
+	\item $v$ ist das linke Kind von $u$ und $u < l$:\\
+	    Von $T'$ nach Fall 1 erreicht man nach Ausführung der Rotation mit dieser Konstellation wieder $T$. Somit muss nichts weiter gezeigt werden.
+	\item $v$ ist das linke Kind von $u$ und $u > r$:\\
+	Von $T'$ nach Fall 2 erreicht man nach Ausführung der Rotation mit dieser Konstellation wieder $T$. Somit muss nichts weiter gezeigt werden.\\
+       	    
+\end{enumerate}	
+\noindent Übrig bleibt noch die Konstellation $u,v \in \left[l,r\right]$. 
+Betrachtet wird eine Rechtsrotation $(u,v)$, die Linksrotation ist wieder symmetrisch. 
+In $T^r_l$ muss es zwei Knoten $w, x$ geben, mit {$\mathit{key}(u) = \mathit{key}(w)$,  $\mathit{key}(v) = \mathit{key}(x)$} und $w$ muss linkes Kind von $x$ sein.
+Es werden die Rotationen $\left(u,v \right)$ und $\left(w,x \right)$ ausgeführt.
+Zu zeigen ist ${T'}^r_l = T{^r_l}' $.\\
+In $T$ verändern sich maximal drei innere Pfade.
+\begin{enumerate}
+	\item Sei $u_r$ das rechte Kind von $u$. Sei $u,u_r,v_1,..,v_n$ der linke innere Pfad von $v$, dann ist $u'_r,v'_1,..,v_n$ der linke innere Pfad von $v'$. Es gilt ${\mathit{key}(u), \mathit{key}(u_r) \in \left[l,r\right] }$. Damit ist $u*$ das linke Kind von $v^*$ und ${u_r}'^*$ das linke Kind von $v'^*$.
+	\item Sei $v_1,..,v_n$ der rechte innere Pfad von $u$, dann ist $v',v_1',..,v_n'$ der rechte innere Pfad von $u'$, damit ist $v'$ rechtes Kind von $u'$. Damit ist $v'^*$ das rechte Kind von $u'*$.
+	\item Ist $v$ das linke bzw. rechte Kind eines Knoten $z$ mit $\mathit{key}(z) \in \left[r,l\right]$, dann sei  $v,..,v_n$ der linke bzw. rechte innere Pfad von $z$. Dann ist  $u',v',..,v'_n$ der linke bzw. rechte innere Pfad von $z'$. Dann ist  $v'^*$ das linke bzw. rechte Kind von $z^*$ und $u'^*$ das linke bzw. rechte Kind von $z'^*$.
+\end{enumerate}
+ \noindent Nun wird auf ${T'}^r_l$ die Rotation $(u^*,v^*)$ ausgeführt. $u{^*}'$ ist linkes Kind von $v{^*}'$. $v{^*}'$ das rechte Kind von $u{^*}'$. Ist $v^*$ das linke bzw. rechte Kind eines Knoten $z^*$ mit  $\mathit{key}(z^*) \in \left[r,l\right]$, dann ist $v{^*}'$ das linke bzw. rechte Kind von $z{^*}'$ und $u{^*}'$ das linke bzw. rechte Kind von $z{^*}'$. Damit gilt ${T'}^r_l = T{^r_l}'$.\\
+ 
+ 
 
+
+
+ 
+ 
+	
+	
+
+
+
+
+	
+	
+	
+	
+	
+	
+\end{proof}
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
