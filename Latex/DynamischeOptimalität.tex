@@ -170,37 +170,14 @@ r = r^1 + r^2 + r_M \geq \sum_{u \in U^1} {_x} (u) + \sum_{u \in U^2} {_x} (u) +
 	
 \end{proof}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\noindent Der Satz handelt von standard offline BST access algorithm. Wie aber bereits erwähnt ist sie damit asymptotisch betrachtet für BST access algortihmen im Allgemeinen gültig. 
 
 
 \subsection{Bit reversal permutation }
-
-
-
+In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ für BST $T$ gibt, so dass für die Laufzeit eines BST access algorithm $\Theta\left(m \log n\right)$ gilt, mit $n$ ist die Anzahl der Knoten von $T$. Hier wird speziell die Zugriffsfolgen betrachtet, die als \textbf{bit reversal permutation} bezeichnet werden. Auf $O\left(m \log n\right)$ wird hier nicht weiter eingegangen. Jeder balancierte BST mit \textit{access} Operation garantiert jedoch diese Schranke und mit dem Rot-Schwarz-Baum wird später ein solcher noch vorgestellt.
+ $\Omega\left(m \log n\right)$  wird mit Hilfe der ersten unteren Schranke von Wilber gezeigt und ein Beweis ist ebenfalls in \cite{wilberLowerBounds} enthalten. \\
+  Nun wird zunächst der Aufbau einer solchen Zugriffsfolge eingegangen. Sei $l \in \mathbb{N}$ und $i \in \{0,1,..,l-1\}$. Eine Folge  $b_{l-1},b_{l-2},..,b_0$ mit $b_i \in \{0,1\}$, kann als Zahl zur Basis $2$ interpretiert werden. $T$ enthält alle Schlüssel die als solche Folge dargestellt werden können. Die Schlüsselmenge von $T$ ist deshalb $K = \{0,1,..,2^l -1\}$. Die Funktion $\mathit{br}_l(k)$ liefert zu $k \in K$ die Folge $b_0,b_1,..,b_{l-1}$ mit $\sum_{i = 0}^{l-1} 2^i$. $\mathit{br}_l(k)$ gibt also gerade die \enquote{umgekehrte} Binärdarstellung von $k$ zurück. Die bit reversal permutation zu $l$ ist nun die Zugriffsfolge $\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)$. Diese wird ab jetzt mit $X$ bezeichnet. Eine Eigenschaft von $X$ ist entscheidend für den Beweis dieses Kapitels.   
+  
 
 
 
