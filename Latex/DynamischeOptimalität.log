@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  9 JUN 2020 07:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  9 JUN 2020 10:42
 entering extended mode
 **./DynamischeOptimalität.tex
 (DynamischeOptimalität.tex
@@ -443,11 +443,11 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  6345 strings out of 480797
  93552 string characters out of 2905362
- 366817 words of memory out of 3000000
+ 368817 words of memory out of 3000000
  22245 multiletter control sequences out of 15000+200000
  553400 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,9n,43p,1877b,372s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,9n,43p,1885b,372s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -473,7 +473,7 @@ amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
 /Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on DynamischeOptimalität.pdf (13 pages, 758077 bytes).
+Output written on DynamischeOptimalität.pdf (13 pages, 760059 bytes).
 PDF statistics:
  441 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
