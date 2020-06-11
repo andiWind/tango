@@ -19,8 +19,7 @@
 
 \title{Bachelorarbeit}
 \author{
-
-	Andreas Windorfer\\
+Andreas Windorfer\\
 }
 \date{\today}
 
@@ -71,7 +70,7 @@ Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \left(k - j \right) + 
         
 \begin{figure}[h]
 	\centering
-	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
+	\includegraphics[width=1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
 	\caption{Rechts ist ein möglicher lower bound tree zum linken BST dargestellt.  }
 	\label{fig:lowerBoundTree}
 \end{figure}
@@ -119,7 +118,7 @@ Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So 
 	    
 	 
  \noindent Sei $v$ ein Knoten in $T$, dann wird ein Knoten in $T^r_l$ mit Schlüssel $\mathit{key}(v)$  mit $v^*$ bezeichnet.  
-\newtheorem{Lemma3}{Lemma}[section]
+\newtheorem{Lemma3}{Lemma}[section] \label{lemmaWilber1}
 \begin{Lemma3} Es sei $T$ ein BST mit Knoten $u, v$ so, dass $u$ ein Kind von $v$ ist. $T'$ ist der BST, der durch Ausführen der Rotation $\left(u,v\right)$ entsteht. Gilt $u,v \in \left[l,r\right]$, dann ist ${T'}^r_l$ der BST der aus $T^r_l$ durch Ausführen von  $\left(u,v\right)$ entsteht. Anderenfalls gilt ${T'}^r_l = T^r_l$.
 \end{Lemma3}
 \begin{proof}
@@ -152,8 +151,8 @@ In $T$ verändern sich maximal drei innere Pfade.
  	
 \end{proof}
     
-\newtheorem{Satz1}{Satz}[section]
-\begin{Satz1} Es sei $T$ ein standard offline BST access algorithm mit Schlüsselmenge ${K = \{  i \in \mathbb{N} \vert i \in \left[j,k\right] \textit{ mit } j,k \in  \mathbb{N} \}} $. Sei $Y$ ein für $T$ erstellter lower bound tree und $X$ eine zu $T$ erstellte Zugriffsfolge mit Länge $m$. Dann gilt  $\mathit{OPT}\left(X\right) \geq {_X(T_0, Y, X)} $.  
+\newtheorem{Satz1}{Satz}[section] \label{satzWilber1}
+\begin{Satz1} Es sei $T$ ein standard offline BST access algorithm mit Schlüsselmenge ${K = \{  i \in \mathbb{N} \vert i \in \left[j,k\right] \textit{ mit } j,k \in  \mathbb{N} \}} $. Sei $Y$ ein für $T$ erstellter lower bound tree und $X$ eine zu $T$ erstellte Zugriffsfolge mit Länge $m$. Dann gilt  $W\left(X, T\right) \geq {_X(T_0, Y, X)} $.  
 \end{Satz1}
 \begin{proof}
 Sei $U$ die Menge der internen Knoten von $Y$. Die Kosten zum Ausführen sind die \textit{Anzahl der Einzelschritte} $ + {m}$. Es reicht also aus zu zeigen, dass mehr als $\sum_{u \in U} {_x} (u)$ Rotationen benötigt werden. Es wird Induktion über  $n = \vert K \vert$ angewendet. Sei $n = 1$, dann gibt es keinen internen Knoten in $Y$ und $\sum_{u \in U} {_x} (u) = 0$. Der Induktionsanfang ist somit gemacht. Im folgenden sei $n \geq 2$.\\
@@ -170,18 +169,47 @@ r = r^1 + r^2 + r_M \geq \sum_{u \in U^1} {_x} (u) + \sum_{u \in U^2} {_x} (u) +
 	
 \end{proof}
 
-\noindent Der Satz handelt von standard offline BST access algorithm. Wie aber bereits erwähnt ist sie damit asymptotisch betrachtet für BST access algortihmen im Allgemeinen gültig. 
+\noindent Da $T$ beliebig gewählt ist folgt direkt $\mathit{OPT}\left(X\right) \geq {_X(T_0, Y, X)} $.  
 
 
-\subsection{Bit reversal permutation }
-In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ für BST $T$ gibt, so dass für die Laufzeit eines BST access algorithm $\Theta\left(m \log n\right)$ gilt, mit $n$ ist die Anzahl der Knoten von $T$. Hier wird speziell die Zugriffsfolgen betrachtet, die als \textbf{bit reversal permutation} bezeichnet werden. Auf $O\left(m \log n\right)$ wird hier nicht weiter eingegangen. Jeder balancierte BST mit \textit{access} Operation garantiert jedoch diese Schranke und mit dem Rot-Schwarz-Baum wird später ein solcher noch vorgestellt.
+\subsection{bit reversal permutation }
+In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ für BST $T$ gibt, so dass für die Laufzeit eines BST access algorithm $\Theta\left(m \log n\right)$ gilt, mit $n$ ist die Anzahl der Knoten von $T$. Hier werden speziell die Zugriffsfolgen betrachtet, die als \textbf{bit reversal permutation} bezeichnet werden. Auf $O\left(m \log n\right)$ wird hier nicht weiter eingegangen. Jeder balancierte BST mit \textit{access} Operation garantiert jedoch diese Schranke und mit dem Rot-Schwarz-Baum wird später ein solcher noch vorgestellt.
  $\Omega\left(m \log n\right)$  wird mit Hilfe der ersten unteren Schranke von Wilber gezeigt und ein Beweis ist ebenfalls in \cite{wilberLowerBounds} enthalten. \\
-  Nun wird zunächst der Aufbau einer solchen Zugriffsfolge eingegangen. Sei $l \in \mathbb{N}$ und $i \in \{0,1,..,l-1\}$. Eine Folge  $b_{l-1},b_{l-2},..,b_0$ mit $b_i \in \{0,1\}$, kann als Zahl zur Basis $2$ interpretiert werden. $T$ enthält alle Schlüssel die als solche Folge dargestellt werden können. Die Schlüsselmenge von $T$ ist deshalb $K = \{0,1,..,2^l -1\}$. Die Funktion $\mathit{br}_l(k)$ liefert zu $k \in K$ die Folge $b_0,b_1,..,b_{l-1}$ mit $\sum_{i = 0}^{l-1} 2^i$. $\mathit{br}_l(k)$ gibt also gerade die \enquote{umgekehrte} Binärdarstellung von $k$ zurück. Die bit reversal permutation zu $l$ ist nun die Zugriffsfolge $\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)$. Diese wird ab jetzt mit $X$ bezeichnet. Eine Eigenschaft von $X$ ist entscheidend für den Beweis dieses Kapitels.   
+  Nun wird zunächst der Aufbau einer solchen Zugriffsfolge eingegangen. Sei $l \in \mathbb{N}$ und $i \in \{0,1,..,l-1\}$. Eine Folge  $b_{l-1},b_{l-2},..,b_0$ mit $b_i \in \{0,1\}$, kann als Zahl zur Basis $2$ interpretiert werden. $T$ enthält alle Schlüssel die als solche Folge dargestellt werden können. Die Schlüsselmenge von $T$ ist deshalb $K_l = \{0,1,..,2^l -1\}$. 
+  Die Funktion $\mathit{br}_l(k)\colon K \rightarrow K$ ist wie folgt definiert. Sei {$b_{l-1},b_{l-2},..,b_{0}$} die Binärdarstellung von $k$, dann gilt 
+\begin{align*}
+\mathit{br}_l(k) = \sum_{i = 0}^{l-1} b_{\left(l-1-i\right)} \cdot 2^i
+\end{align*}
+ $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdarstellung von $k$ zurück. Die bit reversal permutation zu $l$ ist die Zugriffsfolge\\ ${\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)}$. Diese wird ab jetzt mit $X$ bezeichnet. Sei $y$ die Hälfte von $\max\left(K\right)$, also $y = 2^{l-1} - 0,5$. Da $b_0$ in den Binärdarstellungen zu $0, 1, 2^l-1$ alterniert, alterniert $b_{l-1}$ in $X$. Mit $2^{l-1} > y$ ergeben sich die Implikationen $\mathit{br}_l(k) < y \Rightarrow \mathit{br}_l(k +1) > y$ und $\mathit{br}_l(k) > y \Rightarrow \mathit{br}_l(k +1) < y$. Da $\vert K_l \vert = 2^l$ kann zu $T$ ein vollständig balancierter lower bound tree $Y$ erstellt werden. Sei $w$ die Wurzel von $Y$. Da im linken Teilbaum von $w$ genau so viele Blätter wie im rechten vorhanden sein müssen, kann nur $y$ der Schlüssel von $w$ sein. Zu einer Zugriffsfolge $X = x_0,x_1,..,x_m$ bezeichnet $X^r_l$ die Zugriffsfolge, die entsteht wenn aus $X$ alle Schlüssel $k$, mit $k < l \lor k > r$ entfernt werden. $X + i$ mit $i \in \mathbb{N}$ bezeichnet im Folgenden die Folge $x_0 + i, x_1 + i,.., x_m + i$.
   
 
 
+\newtheorem{Korollar1}{Korollar}[section]
+\begin{Korollar1} Sei $l \in \mathbb{N}$. Sei $T$ ein BST mit Schlüsselmenge\\ ${K_l = \{0,1,..,2^l -1\}}$ und $n = 2^l$. Sei $X = x_0, x_1,..,x_{n-1}$ die bit reversal permutation zu $l$ und $Y$ der vollständig balancierte lower bound tree zu $T$. Dann gilt  $W\left(X,T\right) \geq n \log_2 n + 1 $. 
+\end{Korollar1}
+\begin{proof}
+Sei $U$ die Menge der internen Knoten von $Y$. Mit Satz \ref{satzWilber1} reicht es aus 
 
+\begin{align*}
+\sum_{u \in U} {_x\left(u\right)} \geq n \log_2 n + 1 - n 
+\end{align*} 
+zu zeigen. Dies geschieht mit Induktion über $l$. Für $l = 0$ besteht $Y$ aus einem einzigen Blatt. Damit gilt $ W\left(X,T\right) = 0 = n \log_2 n + 1 $. \\
+Nun sei $l > 0$. Sei $w$ die Wurzel von $Y$, mit $k_w = \mathit{key}(w)$. $T_0^{k_w}$ enthält die Schlüsselmenge $K_0^{k_w} = \{k \in \mathbb{N}\vert k \leq 2^{l-1} - 1\}$ und $T_{k_w}^\infty$ enthält die Schlüsselmenge  $ K^\infty_{k_w} = \{k \in \mathbb{N}\vert \exists n \in K_0^{k_w}\colon  k = n + 2^{l-1}\}$. Sei $Y^1$ bzw. $Y^2$ der linke bzw. rechte Teilbaum von $w$ und $U^1$ bzw. $U^2$ die Menge der internen Knoten von $Y^1$ bzw. $Y^2$. $Y^1$ und $Y^2$ sind vollständig balancierte lower bound trees zu $T_0^{k_w}$ und $T_{k_w}^\infty$. $X^{k_w}_0$ ist die bit reversal permutation für $T_0^{k_w}$. Außerdem gilt $X_{k_w}^\infty = X^{k_w}_0 + 2^{l-1}$. Mit der Induktionsvoraussetzung gilt deshalb, für $i \in \{1,2\}$,
+\begin{align*}
+\sum_{u \in U^i} {_x\left(u\right)} \geq  \frac{n}{2} \log_2 \left(\frac{n}{2} \right) + 1 - \frac{n}{2}  
+\end{align*}
+Aus $x_j < k_w \Rightarrow x_{j-1} > k_w  \land x_j > k_w \Rightarrow x_{j-1} < k_w $ folgt $_x{w} \geq n-1$. Zusammenfassen ergibt
+\begin{align*}
+\sum_{u \in U} {_x\left(u\right)} &\geq 2 \left( \frac{n}{2}  \log_2 \left(\frac{n}{2} \right) + 1 - \frac{n}{2} \right) + n - 1\\	
+&= n (l-1) + n + 1 \\
+&= n l + 1 \\	
+&> n l + 1 -n \\
+&= n \log_2 n + 1 - n\\	
+\end{align*}
+		
+\end{proof}
 
+\noindent Die Schlüsselmenge  wurde beim Korollar auf ${K_l = \{0,1,..,2^l -1\}}$ festgelegt. Vielleicht wäre es aber mit einer anderen Schlüsselmenge $K$ möglich $X$ schneller auszuführen ? In jedem Fall müsste $K_l \subseteqq K$ gelten. Sei $R$ die Folge von Rotationen, die beim Ausführen von $X$ bei einem BST $T$ mit Schlüsselmenge $K$ entsteht. Sei $y = 2^l -1$ Mit Lemma \ref{lemmaWilber1} ist dann $R_0^y$ eine Folge von Rotationen zum ausführen von $X$ auf $T_0^y$ und die Länge von $R$ kann nicht kleiner als die von $R_0^y$ sein. Damit ist $\mathit{OPT}\left(X\right) = \Omega\left(m \log n \right)$. 
 
 
 
