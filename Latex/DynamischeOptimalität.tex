@@ -180,8 +180,52 @@ In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ für BST
 \begin{align*}
 \mathit{br}_l(k) = \sum_{i = 0}^{l-1} b_{\left(l-1-i\right)} \cdot 2^i
 \end{align*}
- $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdarstellung von $k$ zurück. Die bit reversal permutation zu $l$ ist die Zugriffsfolge\\ ${\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)}$. Diese wird ab jetzt mit $X$ bezeichnet. Sei $y$ die Hälfte von $\max\left(K\right)$, also $y = 2^{l-1} - 0,5$. Da $b_0$ in den Binärdarstellungen zu $0, 1, 2^l-1$ alterniert, alterniert $b_{l-1}$ in $X$. Mit $2^{l-1} > y$ ergeben sich die Implikationen $\mathit{br}_l(k) < y \Rightarrow \mathit{br}_l(k +1) > y$ und $\mathit{br}_l(k) > y \Rightarrow \mathit{br}_l(k +1) < y$. Da $\vert K_l \vert = 2^l$ kann zu $T$ ein vollständig balancierter lower bound tree $Y$ erstellt werden. Sei $w$ die Wurzel von $Y$. Da im linken Teilbaum von $w$ genau so viele Blätter wie im rechten vorhanden sein müssen, kann nur $y$ der Schlüssel von $w$ sein. Zu einer Zugriffsfolge $X = x_0,x_1,..,x_m$ bezeichnet $X^r_l$ die Zugriffsfolge, die entsteht wenn aus $X$ alle Schlüssel $k$, mit $k < l \lor k > r$ entfernt werden. $X + i$ mit $i \in \mathbb{N}$ bezeichnet im Folgenden die Folge $x_0 + i, x_1 + i,.., x_m + i$.
-  
+ $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdarstellung von $k$ zurück. Die bit reversal permutation zu $l$ ist die Zugriffsfolge\\ ${\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)}$. Diese wird ab jetzt mit $X$ bezeichnet. Tabelle \ref{tab:bitReversal} zeigt die bit reveral Permutation mit $l  = 4$. Sei $y$ die Hälfte von $\max\left(K\right)$, also $y = 2^{l-1} - 0,5$. Da $b_0$ in den Binärdarstellungen zu $0, 1, 2^l-1$ alterniert, alterniert $b_{l-1}$ in $X$. Mit $2^{l-1} > y$ ergeben sich die Implikationen $\mathit{br}_l(k) < y \Rightarrow \mathit{br}_l(k +1) > y$ und $\mathit{br}_l(k) > y \Rightarrow \mathit{br}_l(k +1) < y$. Da $\vert K_l \vert = 2^l$ kann zu $T$ ein vollständig balancierter lower bound tree $Y$ erstellt werden. Sei $w$ die Wurzel von $Y$. Da im linken Teilbaum von $w$ genau so viele Blätter wie im rechten vorhanden sein müssen, kann nur $y$ der Schlüssel von $w$ sein. Zu einer Zugriffsfolge $X = x_0,x_1,..,x_m$ bezeichnet $X^r_l$ die Zugriffsfolge, die entsteht wenn aus $X$ alle Schlüssel $k$, mit $k < l \lor k > r$ entfernt werden. $X + i$ mit $i \in \mathbb{N}$ bezeichnet im Folgenden die Folge $x_0 + i, x_1 + i,.., x_m + i$.\\
+ 
+  \begin{table}
+ \begin{center}
+ \begin{tabular}[c]{|l|l|l|l|}
+ 	\hline
+ 	$i$ & $\mathit{bin}\left(i\right)$ &$\mathit{bin}\left(\mathit{br}\left(i\right)\right)$  &$x_i$\\
+ 	\hline
+ 	$0$ & $0000$ &$0000$  &$0$\\
+ 	\hline
+ 	$1$ & $0001$ &$1000$  &$8$\\
+ 	\hline
+ 	$2$ & $0010$ &$0100$  &$4$\\
+ 	\hline
+ 	$3$ & $0011$ &$1100$  &$12$\\
+ 	\hline
+ 	$4$ & $0100$ &$0010$  &$2$\\
+    \hline
+ 	$5$ & $0101$ &$1010$  &$10$\\
+ 	\hline
+ 	$6$ & $0110$ &$0110$  &$6$\\
+ 	\hline
+ 	$7$ & $0111$ &$1110$  &$14$\\
+    \hline
+ 	$8$ & $1000$ &$0001$  &$1$\\
+ 	\hline
+ 	$9$ & $1001$ &$1001$  &$9$\\
+ 	\hline
+ 	$10$& $1010$ &$0101$  &$5$\\
+ 	\hline
+ 	$11$& $1011$ &$1101$  &$13$\\
+ 	\hline
+ 	$12$ &$1100$ &$0011$  &$3$\\
+ 	\hline
+ 	$13$ &$1101$ &$1011$  &$11$\\
+ 	\hline
+ 	$14$ &$1110$ &$0111$  &$7$\\
+ 	\hline
+ 	$15$ &$1111$ &$1111$  &$15$\\
+ 	\hline
+ \end{tabular}
+  	\caption{bit reveral permutation für $l=4$} 
+  	\label{tab:bitReversal}
+\end{center}
+   \end{table}
+
 
 
 \newtheorem{Korollar1}{Korollar}[section]
@@ -248,14 +292,14 @@ Ein BST erfüllt das Dynamic Finger Property, wenn für die amortisierte Zugriff
 \begin{align*}
 t_i = O\left(\vert x_i - x_{i-1} \vert \right)
 \end{align*} 
-
+Man erkennt direkt, dass ein BST mit dem Dynamic Finger Property  auch das Sequential Access Property erfüllt.
 
 \paragraph{Entropy Bound}
 Sei $k \in K$. $X$ enthalte $k_X$ mal $k$. Sei $p(k) = \frac {k_X}{m}$. Für Entropy Bound muss für die amortisierte Gesamtlaufzeit 
 \begin{align*}
 O\left(\sum_{k = 1}^{n} \log  \frac{1}{p(k)} \right) 
 \end{align*}
-gelten. Da es sich hierbei um eine untere Schranke für statische BST handelt, siehe \cite{staticOptimal}, werden BST mit der Entropy Bound auch als statisch optimal bezeichnet.  
+gelten. Da es sich hierbei um eine untere Schranke für die Ausführungszeit von $X$ bei statischen BST handelt, siehe \cite{staticOptimal}, werden BST mit der Entropy Bound auch als statisch optimal bezeichnet.  
 
 
 \paragraph{Working Set Property}
