@@ -237,10 +237,41 @@ Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum Ablege
 \end{align*}\\
 Alle drei Operationen haben konstante amortisierte Kosten. Auf jedem Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $ Damit gilt für die Ausführungszeit der Folge $O(m)$. \\
 Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem zu Beginn leerem Stack kann nur entfernt werden, was zuvor eingefügt wurde. \textit{push} zahlt für die Operation, welche das eingefügte Element eventuell wieder entfernt gleich mit, bleibt bei den Kosten aber konstant. Deshalb kann \textit{pop} amortisiert kostenlos durchgeführt werden, wodurch einer der beiden Faktoren zur Berechnung der Kosten von \textit{popAll} zu $0$ wird.  
-\subsection{Zugriffssequenzen mit besonderen Eigenschaften }
-Im letzten Abschnitt wurde gezeigt, dass für die Ausführung einer beliebigen Zugriffsfolge $X$, mit Länge $m$, für einen BST $T$ mit $n$ Knoten im worst case Kosten von  $O\left(m \log n\right)$ angenommen werden müssen. Stellt man zusätzliche Bedingungen an die Zugriffsfolgen, ist es in manchen Fällen jedoch möglich niedrigere Kosten zu verwenden. Hier werden fünf Eigenschaften zu BST vorgestellt die sich genau auf solche speziellere Zugriffssequenzen beziehen.
+\subsection{Besondere Eigenschaften in Bezug zu Zugriffssequenzen }
+Im letzten Abschnitt wurde gezeigt, dass für die Ausführung einer beliebigen Zugriffsfolge $X$, mit Länge $m$, für einen BST $T$ mit $n$ Knoten im worst case Kosten von  $O\left(m \log n\right)$ angenommen werden müssen.  Im folgendem werden fünf Eigenschaften von BST vorgestellt, die sich auf besondere Eigenschaften bei Zugriffssequenzen und obere Laufzeitschranken beziehen. Es wird wieder ohne Verlust der Allgemeinheit eine Schlüsselmenge $K = \{1,2,..,n\}$ angenommen, andere müssten aufsteigend sortiert entsprechend nummeriert werden. Wenn nicht anders angegeben wird  $X = x_1,x_2,..,x_m$ als Zugriffssequenz verwendet.
+
+\paragraph{Sequential Access Property}
+Ein BST erfüllt das Sequential Access Propery, wenn es die Zugriffssequenz $1,2,..,n$ in amortisiert $O(1)$ Zeit pro \textit{access} Operation durchführt. Insgesamt kann diese Sequenz dann in amortisiert  $O(n)$ Zeit ausgeführt werden.
+
+\paragraph{Dynamic Finger Property}
+Ein BST erfüllt das Dynamic Finger Property, wenn für die amortisierte Zugriffszeit $t_i$ von $x_i$ gilt: 
+\begin{align*}
+t_i = O\left(\vert x_i - x_{i-1} \vert \right)
+\end{align*} 
 
 
+\paragraph{Entropy Bound}
+Sei $k \in K$. $X$ enthalte $k_X$ mal $k$. Sei $p(k) = \frac {k_X}{m}$. Für Entropy Bound muss für die amortisierte Gesamtlaufzeit 
+\begin{align*}
+O\left(\sum_{k = 1}^{n} \log  \frac{1}{p(k)} \right) 
+\end{align*}
+gelten. Da es sich hierbei um eine untere Schranke für statische BST handelt, siehe \cite{staticOptimal}, werden BST mit der Entropy Bound auch als statisch optimal bezeichnet.  
+
+
+\paragraph{Working Set Property}
+Sei $x_i = x_j$ mit $i < j$ und \\ 
+$\forall x_k \colon i < k < j \Rightarrow x_k \neq x_i$. Sei  $X_{ij} = \{x_k \vert i < k < j\}$.  Für das Working Set Property muss für die amortisierte Laufzeit von \textit{ access($x_j$) }
+\begin{align*}
+O\left(\log x_j\right)
+\end{align*} 
+gelten. Sind Schlüssel vielfach in $X$ enthalten, so garantiert das Working Set Property, dass diese Zugriffe schnell ausgeführt werden können. 
+
+\paragraph{Unified Property}
+Seien $x_i, x_j$ und $X_{ij}$ wie beim Working Set Property definiert und sei $t_{ij} =\vert X_{ij}\vert$. Für das Unified Property muss für die amortisierte Laufzeit von \textit{ access($x_j$) }  
+\begin{align*}
+O \left(\log \left( \min_{i < j} \left(\vert x_i - x_j \vert + t_{ij} + 2   \right)\right)\right)
+\end{align*} 
+gelten.
 \newpage
 \bibliography{literaturverzeichnis}
 \bibliographystyle{unsrt}

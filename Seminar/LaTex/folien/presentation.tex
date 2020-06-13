@@ -1,0 +1,778 @@
+\documentclass[11pt]{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usetheme{Singapore}
+\begin{document}
+	\author{Andreas Windorfer}
+	\title{Splaybaum}
+	%\subtitle{}
+	%\logo{}
+	%\institute{}
+	\date{\today}
+	%\subject{}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{navigation symbols}{}
+	\begin{frame}{}
+		\titlepage
+
+	\end{frame}
+	
+	\section{Aufbau des Splaybaum}
+		\begin{frame} {Übersicht}
+			\tableofcontents[currentsection]   
+			
+		\end{frame}
+	
+		\begin{frame} {Binärer Suchbaum}
+			\begin{multicols}{2}
+			\begin{itemize}
+				\item links kleinere Schlüssel
+				\item rechts größere Schlüssel
+			\end{itemize}
+			\end{multicols}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/suchbaumIO"}
+			\end{figure}    
+		\end{frame}
+		
+		\begin{frame} {Binärer Suchbaum}
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item links kleinere Schlüssel
+					\item rechts größere Schlüssel
+				\end{itemize}
+			\end{multicols}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/suchbaumNIO"}
+			\end{figure}  
+		\end{frame}
+		
+		\begin{frame}{Binärer Suchbaum}
+		
+				\centering{{Suche nach Schlüssel 6}	}	
+			
+			 \begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/binSuchSuchpfad"}
+				\label{fig:SuchbaumEinfügen}
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}{Binärer Suchbaum}
+			
+			\centering{{Suche nach Schlüssel 6}	}	
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/binSuchSuchpfad2"}
+				\label{fig:SuchbaumEinfügen}
+			\end{figure}
+		\end{frame}
+
+		
+		\begin{frame}{Binärer Suchbaum}
+			
+			\centering{{Einfügen von Schlüssel 8}	}	
+	
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/SuchbaumEinfügen"}
+			\end{figure}
+		\end{frame}
+
+
+
+			\begin{frame}{Binärer Suchbaum}
+			
+			\centering{{Einfügen von Schlüssel 8}	}	
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/SuchbaumEinfügen2"}
+			\end{figure}
+		\end{frame}
+	
+			\begin{frame}{Binärer Suchbaum}
+			
+			\centering{{Einfügen von Schlüssel 8}	}	
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/SuchbaumEinfügen3"}
+			\end{figure}
+		\end{frame}
+
+
+
+
+	
+		\begin{frame}{Binärer Suchbaum}
+			\centering {Einfügereihenfolgen }
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/SuchbaumEingabefolge"}
+			\end{figure}
+		\end{frame}
+	
+		\begin{frame}{Aufbau des Splaybaum}
+			\begin{block}{Besonderheiten}
+				\pause
+			\begin{itemize}
+				\item selbstorganisierend / dynamisch
+				\pause
+				\item häufig benutzte Elemente oben
+				\pause
+				\item i.d.R. kürzere Pfadlängen
+			\end{itemize}
+			\end{block}
+	
+		
+		\end{frame}
+
+		
+	\section{Operationen}	
+	
+		\begin{frame} {Übersicht}
+			\tableofcontents[currentsection]   
+			
+		\end{frame}
+		
+		\begin{frame}{Operationen}
+		
+			\begin{itemize}
+				
+				\item splay
+				\item \color {gray} suchen
+				\item aufteilen
+				\item vereinigen
+				\item einfügen
+				\item löschen
+			\end{itemize}
+		\end{frame}	
+	
+		\begin{frame}{tree splay(key x, tree s)}
+			\begin{itemize}
+				\item normale Suche 
+				\item Rotationen
+					\begin{itemize}
+						\item zig / zag
+						\item zig-zag / zag-zig 
+						\item zig-zig /zag-zag
+					\end{itemize}
+				\pause
+				\item x neue Wurzel
+				\pause
+				\item links-rechts Anordnung 
+				\pause
+				\item halbierte Pfadlängen
+			\end{itemize}
+				
+		\end{frame}	
+	    
+		\begin{frame}{zig  Rotation}
+			\begin{block}{Anwendung}
+				\begin{itemize}
+					\item x liegt direkt unter Wurzel
+					\item x ist linker Nachfolger
+				\end{itemize}
+			\end{block}
+			\pause
+			\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\textwidth]{"bilder/zigRotation"}
+			\end{figure}
+			
+		\end{frame}	
+	
+		\begin{frame}{zag  Rotation}
+			\begin{block}{Anwendung }
+				\begin{itemize}
+					\item x liegt direkt unter Wurzel
+					\item x ist rechter Nachfolger
+					\item symmetrisch zu zig
+				\end{itemize}
+			\end{block}
+			\pause
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/zagRotation"}
+			\end{figure}
+			
+		\end{frame}	
+	
+	\begin{frame}{zig-zag  Rotation}
+		\begin{block}{Anwendung}
+			\begin{itemize}
+				\item x ist linker Nachfolger von y
+				\item y ist rechter Nachfolger
+			\end{itemize}
+		\end{block}
+		\pause
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\textwidth]{"bilder/zigzagRotation"}
+		\end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{zag-zig  Rotation}
+	\begin{block}{Anwendung}
+		\begin{itemize}
+			\item x ist rechter Nachfolger von y
+			\item y ist linker Nachfolger
+			\item symmetrisch zu zig-zag
+		\end{itemize}	
+	\end{block}
+	\pause
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.75\textwidth]{"bilder/zagzigRotation"}
+	\end{figure}
+
+	\end{frame}	
+	
+		\begin{frame}{zig-zig  Rotation}
+		\begin{block}{Anwendung}
+			\begin{itemize}
+				\item x ist linker Nachfolger von y
+				\item y ist linker Nachfolger
+			\end{itemize}
+		\end{block}
+		\pause
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\textwidth]{"bilder/zigzigRotation"}
+		\end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{zag-zag  Rotation}
+		\begin{block}{Anwendung}
+			\begin{itemize}
+				\item x ist rechter Nachfolger von y
+				\item y ist rechter Nachfolger
+				\item symmetrisch zu zig-zig
+			\end{itemize}
+		\end{block}
+		\pause
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\textwidth]{"bilder/zagzagRotation"}
+		\end{figure}
+	\end{frame}	
+
+		\begin{frame}{splay gesamt}
+			
+			\begin{itemize}
+				\item  \centering{tree splay(key 2, tree s)}
+			\end{itemize}
+		\pause
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.5\textwidth]{"bilder/splayGesamt1"}
+		\end{figure}
+		
+	\end{frame}
+
+	\begin{frame}{splay gesamt}
+		
+		\begin{itemize}
+			\item  \centering{tree splay(key 2, tree s)}
+		\end{itemize}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.5\textwidth]{"bilder/splayGesamt2"}
+		\end{figure}	
+	\end{frame}
+	
+
+
+	\begin{frame}{splay}
+		\begin{itemize}
+			\item halbierte Pfadlängen
+		\end{itemize}
+		\pause
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.50\textwidth]{"bilder/halberPfad1"}	
+		\end{figure}
+		\scriptsize  {Daniel Dominic Sleator and Robert Endre Tarjan. Self-adjusting binary search trees. J. ACM, 32(3):652–686, July 1985.}
+		
+	\end{frame}	
+		\begin{frame}{Operationen}
+		
+		\begin{itemize}
+			
+			\item \color {gray}splay
+			\item \color {black}suchen
+			\item \color {gray}aufteilen
+			\item vereinigen
+			\item einfügen
+			\item löschen
+		\end{itemize}
+	\end{frame}		
+	\begin{frame}{tree suchen(key x, tree s)}
+		\begin{block}{suchen (2, s)}
+		\begin{enumerate}
+			\item splay (2 ,  s)
+		%	\item Test der Wurzel
+	
+		\end{enumerate}
+		\pause
+		\end{block}	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.50\textwidth]{"bilder/suchen"}	
+		\end{figure}
+		
+	\end{frame}	
+
+		\begin{frame}{tree suchen(key x, tree s)}
+		\begin{block}{suchen (2, s)}
+			\begin{enumerate}
+				\item splay (2 ,  s)
+				\item Test der Wurzel	
+			\end{enumerate}
+		\end{block}	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.50\textwidth]{"bilder/suchen1"}	
+		\end{figure}
+		
+	\end{frame}	
+
+		\begin{frame}{Operationen}
+		
+		\begin{itemize}
+			
+			\item \color {gray} splay
+			\item suchen
+			\item \color {black} aufteilen
+			\item \color {gray} vereinigen
+			\item einfügen
+			\item löschen
+		\end{itemize}
+	\end{frame}		
+
+
+	\begin{frame}{tree, tree aufteilen(key x, tree s)}
+	\begin{block}{aufteilen (5, s)}
+		\begin{enumerate}
+			\item splay (5 ,  s)
+			%\item rechts abtrennen
+			
+			
+		\end{enumerate}
+	\end{block}	
+	\pause
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=0.50\textwidth]{"bilder/aufteilen"}	
+	\end{figure}
+	
+	\end{frame}	
+
+	\begin{frame}{tree, tree aufteilen(key x, tree s)}
+		\begin{block}{aufteilen (5, s)}
+			\begin{enumerate}
+				\item splay (5 ,  s)
+				\item rechts abtrennen
+			\end{enumerate}
+		\end{block}	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.50\textwidth]{"bilder/aufteilen1"}	
+		\end{figure}
+		
+	\end{frame}	
+
+	\begin{frame}{Operationen}
+		
+		\begin{itemize}
+			
+			\item \color {gray} splay
+			\item  suchen
+			\item  aufteilen
+			\item \color {black} vereinigen
+			\item \color {gray} einfügen
+			\item löschen
+		\end{itemize}
+	\end{frame}		
+	
+
+	\begin{frame}{tree vereinigen( tree t1 , tree t2)}
+		\begin{block}{vereinigen (t1, t2)}
+			\begin{block}{Bedingung}
+				$maxKey(t1) < minKey(t2)$
+				
+			\end{block}
+			\begin{enumerate}
+				\item splay (maxValue ,  t1)
+				%\item t2 rechts anhängen	
+			\end{enumerate}
+		\end{block}
+		\pause	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.40\textwidth]{"bilder/vereinigen"}	
+		\end{figure}
+		
+	\end{frame}	
+
+		\begin{frame}{tree vereinigen( tree t1 , tree t2)}
+		\begin{block}{vereinigen (t1, t2)}
+			\begin{block}{Bedingung}
+				$maxKey(t1) < minkey(t2)$
+				
+			\end{block}
+			\begin{enumerate}
+				\item splay (maxValue ,  t1)
+				\item t2 rechts anhängen	
+			\end{enumerate}
+		\end{block}	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.40\textwidth]{"bilder/vereinigen1"}	
+		\end{figure}
+		
+	\end{frame}	
+
+		\begin{frame}{Operationen}
+		
+		\begin{itemize}
+			
+			\item \color {gray} splay
+			\item  suchen
+			\item  aufteilen
+			\item vereinigen
+			\item  \color {black}  einfügen
+			\item  \color {gray} löschen
+		\end{itemize}
+	\end{frame}		
+
+	\begin{frame}{tree einfügen(key x, tree s)}
+		\begin{block}{einfügen (6, s)}
+			\begin{enumerate}
+				\item aufteilen (6 ,  s)
+				%\item t1, t2 über x zusammenfügen
+			\end{enumerate}
+		\end{block}
+		\pause	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.50\textwidth]{"bilder/einfügen"}	
+		\end{figure}	
+		
+	\end{frame}	
+
+		\begin{frame}{tree einfügen(key x, tree s)}
+		\begin{block}{einfügen (6, s)}
+			\begin{enumerate}
+				\item aufteilen (6 ,  s)
+				\item t1, t2 über x zusammenfügen
+			\end{enumerate}
+		\end{block}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.50\textwidth]{"bilder/einfügen1"}	
+		\end{figure}	
+		
+		\end{frame}	
+
+		\begin{frame}{Operationen}
+		
+		\begin{itemize}
+			
+			\item \color {gray} splay
+			\item  suchen
+			\item  aufteilen
+			\item vereinigen
+			\item    einfügen
+			\item  \color {black} löschen
+		\end{itemize}
+	\end{frame}		
+
+
+
+	\begin{frame}{tree löschen (key x, tree s)}
+		\begin{block}{löschen (5, s)}
+			\begin{enumerate}
+				\item suchen (5,  s)
+				%\item Wurzel entfernen
+				%\item vereinigen (t1, t2)
+			\end{enumerate}
+		\end{block}
+	 	\pause	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.50\textwidth]{"bilder/löschen"}	
+		\end{figure}	
+		
+	\end{frame}	
+
+
+	\begin{frame}{tree löschen (key x, tree s)}
+		\begin{block}{löschen (5, s)}
+			\begin{enumerate}
+				\item suchen (5,  s)
+				\item Wurzel entfernen
+				%\item vereinigen (t1, t2)
+			\end{enumerate}
+		\end{block}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.50\textwidth]{"bilder/löschen1"}	
+		\end{figure}	
+		
+	\end{frame}	
+
+	\begin{frame}{tree löschen (key x, tree s)}
+		\begin{block}{löschen (5, s)}
+			\begin{enumerate}
+				\item suchen (5,  s)
+				\item Wurzel entfernen
+				\item vereinigen (t1, t2)
+			\end{enumerate}
+		\end{block}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.45\textwidth]{"bilder/löschen2"}	
+		\end{figure}	
+	
+	\end{frame}	
+
+
+	\section{Laufzeitverhalten}	
+		\begin{frame} {Übersicht}
+			\tableofcontents[currentsection]   	
+		\end{frame}	
+	
+	\begin{frame}{Liste}
+		Einfügereihenfolge: 1, 2, 3, 4, 5
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=0.45\textwidth]{"bilder/suchbaumhoeen"}	
+		\end{figure}
+		
+	\end{frame}	
+	
+	\begin{frame}{Laufzeit Einzeloperationen}
+		\begin{itemize}
+			\item 	splay: n Ebenen
+		\end{itemize} 
+		\pause 
+	
+		\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{"bilder/einzelop"}	
+		\end{figure}
+	\end{frame}	
+	
+	
+	\begin{frame} {amortisierte Laufzeit}
+		\begin{itemize}
+			\item Operationsfolgen im schlechtesten Fall
+			\begin{itemize}
+				\item Bankkontomethode
+				\item Potentialfunktionmethode
+			\end{itemize}
+			\pause
+			\item Bei Splaybaum Potentialfunktionmethode
+		\end{itemize}  	
+	\end{frame}	
+	
+	\begin{frame} {Bankkontomethode}
+		
+		\begin{itemize}
+			\item günstige Operationen subventionieren teure
+			\item amortisierte Kosten sind obere Schranke
+			\pause
+			\item Beispiel Stack mit Operationen
+				\begin{itemize}
+				\item pop() mit Kosten y $= O(1)$
+				\item popAll() mit Kosten ny $= O(n)$
+				\item push() mit Kosten x $ = O(1)$
+	
+			\end{itemize}	
+				
+		\end{itemize}	
+	
+	\end{frame}	
+	
+	\begin{frame}{Bankkontomethode}
+		\begin{itemize}
+			\item Guthaben $G$
+			\item tatsächliche Kosten $c_i$
+			\item amortisierte Kosten $a_i = c_i + G_i - G_{i-1} $
+			\item  $\sum \limits_{i=1}^n (a_{i} - c_{i})  \geq 0$
+		\end{itemize}	
+		
+	\end{frame}	
+	
+
+	\begin{frame}{Bankkontomethode}
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item push() zahlt $y$ ein
+				\item pop() entnimmt $y$
+			\end{itemize}
+		\end{multicols}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.8\textwidth]{"bilder/bankkontomethode"}	
+		\end{figure}
+	\end{frame}	
+	
+	\begin{frame} {Potentialfunktionmethode}
+		  	\begin{itemize}
+		  		\item baut auf Bankkontomethode auf
+		  		\item  $\Phi_{i}$ bestimmt Guthaben
+		  		\item amortisierte Kosten $a_i = c_i + \Phi_{i} - \Phi_{i-1} $
+		  		\item amortisierte Gesamtosten $ (\sum \limits_{i=1}^n c_{i}) + \Phi_{n} + \Phi_{0}$
+		  		\pause
+		  		\item Beim Stack-Beispiel $\Phi_{i} = y$ $*$ Anzahl Elemente
+		  	\end{itemize}
+	\end{frame}	
+	
+		\begin{frame} {amortisierte splay-Kosten}
+		  \begin{itemize}
+		  	\item Gewichtsfunktion $iw(i) \geq 1$ für Schlüssel $i$
+		  	\pause
+		  	\item Gesamtgewichtsfunktion $tw(n) = \sum \limits_{i \in t_n} iw(i)$ für Knoten  $n$
+			\pause		  
+		  	\item Rang $r(n) =  \lfloor \log_2(tw(n)) \rfloor$
+		  	\pause
+		  	\item Potentialfunktion $\phi = \sum \limits_{n \in T } r(n)$
+		  	
+		  	
+		  \end{itemize}	
+	   \end{frame}	
+	
+		\begin{frame} {amortisierte splay-Kosten}
+			  
+	
+			\begin{block}{\textbf{Zugriffslemma:}}
+				\textit{Eine splay Operation mit Knoten x in einem Baum mit Wurzel v hat maximal  amortisierte Kosten $a$ von $3 (r (v) - r (x)) + 1 =  O( log(( tw(v)/tw(x))$ }
+			\end{block}
+			
+
+			\pause
+			\ \\
+			\ \\
+	   		Kosten der Rotationen:
+	   		
+	   		\begin{tabular}{ll}
+	   		
+	   		
+	   		zig bzw zag : & $3 (r ('x) -r (x)) + 1$ \\
+	   		
+	  		zigZag bzw zagZig : &  $3 (r'(x) -r (x))$ \\
+	  		
+	   		zigZig bzw zagZag : & $3 (r' (x) -r (x))$ \\
+	   	\end{tabular}
+		\end{frame}	
+	
+	
+	
+	
+		\begin{frame} {Beispiel zigZig }
+				\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/zigzigRotation"}
+			\end{figure}
+			
+				\begin{tabular}{ll}
+					& $\phi' - \phi = r'(x) + r'(y)+ r'(z) - r(x) - r(y) - r(z)$\\
+					\pause
+					$=$ &  $r'(y)+ r'(z) - r(x) - r(y)$  $\leq 2(r'(x) - r(x))$ 
+				\end{tabular}
+		\end{frame}	
+
+			\begin{frame} {Beispiel zigZig }
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"bilder/zigzigRotation"}
+			\end{figure}
+			\textbf{Fall: $r'(x) > r(x)$}
+			
+			$ 3(r'(x) - r(x)) -  2(r'(x) - r(x)) > 0$
+			
+			
+		\end{frame}	
+
+	\begin{frame} {Beispiel zigZig }
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\textwidth]{"bilder/zigzigRotation"}
+		\end{figure}
+		\textbf{Fall: $r'(x) = r(x)$}
+		
+		$\Rightarrow r'(x) = r(y) = r(z) = r(x)$
+		
+		$\Rightarrow r(z') < r(z) $ und $r'(y) \leq r(y)$
+		
+		$\Rightarrow \phi' < \phi$
+	
+	\end{frame}		
+	
+	\begin{frame} {aufaddierte Rotationen  }
+		\begin{tabular}{ll}
+	    &	$3(r'(x) - r(x) ) + 3(r''(x) - r'(x)) + 3(r'''(x) - r''(x))  + 1$ \\
+		\pause
+		$=$ & $3 r'''(x) + 3r''(x) - 3r''(x) + 3r'(x) - 3r'(x) - 3r(x)  + 1 $ \\
+		\pause
+		$=$ & $3 r'''(x) - 3r(x)  + 1 $ \\
+		\pause
+		$=$ & $3 (r(v) - 3r(x))  + 1 $
+		\end{tabular}
+	\end{frame}		
+		
+	\section{Besondere Eigenschaften}
+	
+	
+		\begin{frame} {Übersicht}
+			\tableofcontents[currentsection]   	
+		\end{frame}	
+	
+		\begin{frame} {statische Optimalität}
+			\begin{itemize}
+				\item Elemente $E_1$, $E_2$, $E_3$..$E_n$
+				\item Zugriffshäufigkeit $p(E_1)$, $p(E_2)$, $p(E_3)$...$p(E_n)$
+			\end{itemize}
+			\pause
+			$\longrightarrow$ statisch optimaler Suchbaum konstruierbar
+	    
+		\end{frame}	
+		
+		
+		\begin{frame} {statische Optimalität}
+			\begin{block}{\textbf{Satz zur statischen Optimalität:}}
+				\textit{Es sei $q(i)$ die Anzahl der Zugriffe auf den Schlüssel $i$. $n$ die Anzahl der Knoten und $m$ die Anzahl der Zugriffe insgesamt. Gilt für jeden Schlüssel $i$, $q(i) \geq 1  $. Dann gilt für die Kosten k des Gesamtzugriffes $k$ $=$ $O(m + \sum\limits_{i = 1}^n  q(i)log(\frac{m}{q(i)})$}). 
+			\end{block}
+		 		\begin{block}{\textbf{Beweis:}}
+		 		\textit{Nachvollziehbar in \\
+		 		 Daniel Dominic Sleator and Robert Endre Tarjan. Self-adjusting binary search trees. J. ACM, 32(3):652–686, July 1985.
+	 		}). 
+		 	\end{block}
+		
+		\end{frame}	
+		
+	\begin{frame} {dynamische Optimalität}
+		Sei A ein binärer Suchbaumalgorithmus mit den Eigenschaften:
+		\begin{enumerate}
+			\item Start ab Wurzel
+			\item komplette Pfade 
+			\item Knotenzugriff in konstanter Zeit
+			\item Rotation in konstanter Zeit
+			\item beliebig viele Rotationen
+		\end{enumerate}
+		\pause
+		Vermutung: Splaybaum ist dynamisch optimal.
+		
+	\end{frame}		
+\end{document}
