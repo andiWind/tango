@@ -172,7 +172,7 @@ r = r^1 + r^2 + r_M \geq \sum_{u \in U^1} {_x} (u) + \sum_{u \in U^2} {_x} (u) +
 \noindent Da $T$ beliebig gewählt ist folgt direkt $\mathit{OPT}\left(X\right) \geq {_X(T_0, Y, X)} $.  
 
 
-\subsection{bit reversal permutation }
+\subsection{bit reversal permutation } \label{abschnittBitReversal}
 In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ für BST $T$ gibt, so dass für die Laufzeit eines BST access algorithm $\Theta\left(m \log n\right)$ gilt, mit $n$ ist die Anzahl der Knoten von $T$. Hier werden speziell die Zugriffsfolgen betrachtet, die als \textbf{bit reversal permutation} bezeichnet werden. Auf $O\left(m \log n\right)$ wird hier nicht weiter eingegangen. Jeder balancierte BST mit \textit{access} Operation garantiert jedoch diese Schranke und mit dem Rot-Schwarz-Baum wird später ein solcher noch vorgestellt.
  $\Omega\left(m \log n\right)$  wird mit Hilfe der ersten unteren Schranke von Wilber gezeigt und ein Beweis ist ebenfalls in \cite{wilberLowerBounds} enthalten. \\
   Nun wird zunächst der Aufbau einer solchen Zugriffsfolge eingegangen. Sei $l \in \mathbb{N}$ und $i \in \{0,1,..,l-1\}$. Eine Folge  $b_{l-1},b_{l-2},..,b_0$ mit $b_i \in \{0,1\}$, kann als Zahl zur Basis $2$ interpretiert werden. $T$ enthält alle Schlüssel die als solche Folge dargestellt werden können. Die Schlüsselmenge von $T$ ist deshalb $K_l = \{0,1,..,2^l -1\}$. 
@@ -259,8 +259,8 @@ Aus $x_j < k_w \Rightarrow x_{j-1} > k_w  \land x_j > k_w \Rightarrow x_{j-1} < 
 
 \subsection{Amortisierte Laufzeitanalyse}
 Im nächsten Anschnitt werden die Kosten von amortisierten Laufzeitanalysen verwendet. Deshalb wird diese hier nun vorgestellt.
-Sei $i \in \{0,..,m\}$. Bei der \textbf{amortisierten Laufzeitanalyse} wird eine Folge von $m$ Operationen betrachtet. Hierbei kann es sich $m$ mal um die gleiche Operation handeln, oder auch um verschiedene. Die \textbf{tatsächlichen Kosten}  $t_i$ stehen für die exakten Kosten zum ausführen der $i$-ten Operation. Durch aufaddieren der tatsächlichen Kosten jeder einzelnen Operation erhält man \textbf{tatsächlichen Gesamtkosten}.  Stehen für die Laufzeit der Operationen jeweils nur obere Schraken zur Verfügung, kann man mit diesen genau so vorgehen, um eine obere Schranke für die Gesamtlaufzeit zu erhalten. So erzeugte obere Schranken können jedoch unnötig hoch sein. Die Idee bei einer amortisierten Analyse ist es, bereits eingesparte Zeit durch schnell ausgeführte Operationen, den noch folgenden Operationen zum Verbrauchen zur Verfügung zu stellen.  Dabei wird insbesondere der aktuelle Zustand der zugrunde liegenden Datenstruktur vor und nach einer Operation betrachtet. Es gibt drei Methoden zur amortisierten Analyse, hier wird die \textbf{Potentialfunktionmethode} verwendet.
-\paragraph{Potentialfunktionmethode} Eine Potentialfunktion $\Phi(D)$ ordnet einem Zustand einer Datenstruktur $D$ eine natürliche Zahl, \textbf{Potential} genannt, zu. Es bezeichnet $\Phi(D)_{i}$ das Potential von $D$ nach Ausführung der $i$-ten Operation. $t_i$ steht für die \textbf{tatsächlichen Kosten} zum durchführen der $i$-ten Operation. Dabei handelt es sich um die exakten Kosten die beim Die \textbf{amortisierten Kosten} $a_i$ einer Operation berücksichtigen die von der Operation verursachte Veränderung am Potential, $a_i = t_i + \Phi(D)_{i} - \Phi(D)_{i-1}$. Um die \textbf{amortisierten Gesamtkosten} $A$ zu berechnen bildet man die Summe der amortisierten Kosten aller Operationen. 
+Sei $i \in \{0,..,m\}$. Bei der \textbf{amortisierten Laufzeitanalyse} wird eine Folge von $m$ Operationen betrachtet. Hierbei kann es sich $m$ mal um die gleiche Operation handeln, oder auch um verschiedene. Die \textbf{tatsächlichen Kosten}  $t_i$ stehen für die exakten Kosten zum ausführen der $i$-ten Operation. Durch aufaddieren der tatsächlichen Kosten jeder einzelnen Operation erhält man \textbf{tatsächlichen Gesamtkosten}.  Stehen für die Laufzeit der Operationen jeweils nur obere Schraken zur Verfügung, kann man mit diesen genau so vorgehen, um eine obere Schranke für die Gesamtlaufzeit zu erhalten. So erzeugte obere Schranken können jedoch unnötig hoch sein. Die Idee bei einer amortisierten Analyse ist es, bereits eingesparte Zeit durch schnell ausgeführte Operationen, den noch folgenden Operationen zur Verfügung zu stellen.  Dabei wird insbesondere der aktuelle Zustand der zugrunde liegenden Datenstruktur vor und nach einer Operation betrachtet. Es gibt drei Methoden zur amortisierten Analyse, bei BST wird in der Regel die \textbf{Potentialfunktionmethode} verwendet.
+\paragraph{Potentialfunktionmethode} Eine Potentialfunktion $\Phi(D)$ ordnet einem Zustand einer Datenstruktur $D$ eine natürliche Zahl, \textbf{Potential} genannt, zu. Es bezeichnet $\Phi(D)_{i}$ das Potential von $D$ nach Ausführung der $i$-ten Operation. $t_i$ steht für die \textbf{tatsächlichen Kosten} zum durchführen der $i$-ten Operation. Dabei handelt es sich um die exakten Kosten. Die \textbf{amortisierten Kosten} $a_i$ einer Operation berücksichtigen die von der Operation verursachte Veränderung am Potential, $a_i = t_i + \Phi(D)_{i} - \Phi(D)_{i-1}$. Um die \textbf{amortisierten Gesamtkosten} $A$ zu berechnen bildet man die Summe der amortisierten Kosten aller Operationen. 
 \begin{align*}
 A = \sum_{i = 1}^{m} a_i =  \sum_{i = 1}^{m} \left(t_i + \Phi\left(D\right)_{i} - \Phi\left(D\right)_{i-1}\right) = \Phi\left(D\right)_{m} - \Phi\left(D\right)_{0} + \sum_{i = 1}^{m} t_i 
 \end{align*}
@@ -280,42 +280,62 @@ Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum Ablege
 &a_{\mathit{popAll}} = n \cdot a_{\mathit{pop}} &= 0
 \end{align*}\\
 Alle drei Operationen haben konstante amortisierte Kosten. Auf jedem Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $ Damit gilt für die Ausführungszeit der Folge $O(m)$. \\
-Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem zu Beginn leerem Stack kann nur entfernt werden, was zuvor eingefügt wurde. \textit{push} zahlt für die Operation, welche das eingefügte Element eventuell wieder entfernt gleich mit, bleibt bei den Kosten aber konstant. Deshalb kann \textit{pop} amortisiert kostenlos durchgeführt werden, wodurch einer der beiden Faktoren zur Berechnung der Kosten von \textit{popAll} zu $0$ wird.  
-\subsection{Besondere Eigenschaften in Bezug zu Zugriffssequenzen }
-Im letzten Abschnitt wurde gezeigt, dass für die Ausführung einer beliebigen Zugriffsfolge $X$, mit Länge $m$, für einen BST $T$ mit $n$ Knoten im worst case Kosten von  $O\left(m \log n\right)$ angenommen werden müssen.  Im folgendem werden fünf Eigenschaften von BST vorgestellt, die sich auf besondere Eigenschaften bei Zugriffssequenzen und obere Laufzeitschranken beziehen. Es wird wieder ohne Verlust der Allgemeinheit eine Schlüsselmenge $K = \{1,2,..,n\}$ angenommen, andere müssten aufsteigend sortiert entsprechend nummeriert werden. Wenn nicht anders angegeben wird  $X = x_1,x_2,..,x_m$ als Zugriffssequenz verwendet.
+Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem zu Beginn leerem Stack kann nur entfernt werden, was zuvor eingefügt wurde. \textit{push} zahlt für die Operation, welche das eingefügte Element eventuell wieder entfernt gleich mit, bleibt bei den Kosten aber konstant. Deshalb kann \textit{pop} amortisiert kostenlos durchgeführt werden, wodurch einer der beiden Faktoren zur Berechnung der Kosten von \textit{popAll} zu $0$ wird. 
 
-\paragraph{Sequential Access Property}
-Ein BST erfüllt das Sequential Access Propery, wenn es die Zugriffssequenz $1,2,..,n$ in amortisiert $O(1)$ Zeit pro \textit{access} Operation durchführt. Insgesamt kann diese Sequenz dann in amortisiert  $O(n)$ Zeit ausgeführt werden.
 
-\paragraph{Dynamic Finger Property}
-Ein BST erfüllt das Dynamic Finger Property, wenn für die amortisierte Zugriffszeit $t_i$ von $x_i$ gilt: 
+ 
+\subsection{Obere Schranken für Zugriffssequenzen }
+In Abschnitt \ref{abschnittBitReversal} wurde gezeigt, dass für die Ausführung einer beliebigen Zugriffsfolge $X$, mit Länge $m$, für einen BST $T$ mit $n$ Knoten im worst case Kosten von  $\Omega\left(m \log n\right)$ angenommen werden müssen.  Im folgendem werden obere Laufzeitschranken für Zugriffssequenzen mit speziellen Eigenschaften vorgestellt. Es wird wieder ohne Verlust der Allgemeinheit eine Schlüsselmenge $K = \{1,2,..,n\}$ angenommen. Wenn nicht anders angegeben wird  $X = x_1,x_2,..,x_m$ als Zugriffssequenz verwendet. Es wird $m \geq n$ und  $m \geq n \log_2 n$ angenommen.
+
+
+\paragraph{Balanced Property}
+Ein BST erfüllt das balanced property, wenn er $X$ in amortisiert $O(m \log n)$ Zeit ausführt. 
+\paragraph{Static Finger Property}
+Die Idee hinter dieser Eigenschaft ist, dass es einfacher ist, Zugriffssequenzen schnell auszuführen, wenn ihre Schlüssel betragsmäßig nahe beieinander liegen. 
+Sei $k_f \in K$. Ein BST erfüllt static finger wenn für die amortisierte Laufzeit von $X$ 
 \begin{align*}
-t_i = O\left(\vert x_i - x_{i-1} \vert \right)
-\end{align*} 
-Man erkennt direkt, dass ein BST mit dem Dynamic Finger Property  auch das Sequential Access Property erfüllt.
-
-\paragraph{Entropy Bound}
-Sei $k \in K$. $X$ enthalte $k_X$ mal $k$. Sei $p(k) = \frac {k_X}{m}$. Für Entropy Bound muss für die amortisierte Gesamtlaufzeit 
-\begin{align*}
-O\left(\sum_{k = 1}^{n} \log  \frac{1}{p(k)} \right) 
+O\left( \sum_{i = 1}^{m} \log \vert k_f - x_i  \vert	+ 1	\right)
 \end{align*}
-gelten. Da es sich hierbei um eine untere Schranke für die Ausführungszeit von $X$ bei statischen BST handelt, siehe \cite{staticOptimal}, werden BST mit der Entropy Bound auch als statisch optimal bezeichnet.  
+gilt.  
 
+
+\paragraph{Statisch optimal}
+Sei $k \in K$ und $q(k)$ die Anzahl des Vorkommens von $k$ in  $X$. Ein BST ist statisch optimal wenn er Zugriffssequenzen, in denen jeder seiner Schlüssel zumindest einmal enthalten ist, in amortisiert 
+\begin{align*}
+O\left(\sum_{k = 1}^{n}q(k)\log \left( \frac{m}{q(k)} \right)\right) 
+\end{align*}
+Zeit ausführt. Der Name kommt daher, dass es sich hierbei um eine untere Schranke für die Ausführungszeit von X bei statischen BST handelt, siehe \cite{staticOptimal}.
 
 \paragraph{Working Set Property}
-Sei $x_i = x_j$ mit $i < j$ und \\ 
-$\forall x_k \colon i < k < j \Rightarrow x_k \neq x_i$. Sei  $X_{ij} = \{x_k \vert i < k < j\}$.  Für das Working Set Property muss für die amortisierte Laufzeit von \textit{ access($x_j$) }
+Für $x_i$ sei $J_i = \{j \in \mathbb{N} \vert j < i \land x_j = x_i \}$ 
+Sei $t_{xi} = \max \left(J\right)$, falls $J$ nicht leer ist, ansonsten $t_{xi} = 0$. $t_{xi}$ liefert also den Index des vorherigen Zugriffes auf $x_i$, falls ein solcher existiert. Sei ${w_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$.
+Ein BST erfüllt das working set propery wenn seine amortisierte Laufzeit für $X$
 \begin{align*}
-O\left(\log x_j\right)
+O\left(\sum_{i = 1}^{m} \log w_i \right)
 \end{align*} 
-gelten. Sind Schlüssel vielfach in $X$ enthalten, so garantiert das Working Set Property, dass diese Zugriffe schnell ausgeführt werden können. 
+
+
 
 \paragraph{Unified Property}
-Seien $x_i, x_j$ und $X_{ij}$ wie beim Working Set Property definiert und sei $t_{ij} =\vert X_{ij}\vert$. Für das Unified Property muss für die amortisierte Laufzeit von \textit{ access($x_j$) }  
+Das Unified Property kombiniert die oberen Eigenschaften zu einer. Die Bezeichner werden deshalb übernommen.
+Ein BST erfüllt das Unified Property, wenn für die  wenn für die amortisierte Laufzeit von $X$: 
 \begin{align*}
-O \left(\log \left( \min_{i < j} \left(\vert x_i - x_j \vert + t_{ij} + 2   \right)\right)\right)
+O\left(     \sum_{i = 1}^{m} \log \min\{ \frac{m}{q\left(x_i\right)}, \vert k_f - x_i  \vert + 1 ,w_i  \}	 		\right)
 \end{align*} 
-gelten.
+gilt. Dass das Balanced Property enthalten ist, sieht man dem Ausdruck nicht direkt an, es gilt jedoch $\vert k_f - x_i  \vert + 1 \leq n$.
+
+
+
+
+\paragraph{Dynamic Finger Property}
+Diese Eigenschaft ist static finger sehr ähnlich, man kann jedoch durch das Unified Property nicht direkt auf dynamic finger schließen. 
+Ein BST erfüllt das Dynamic Finger Property, wenn für die amortisierte Laufzeit von $X$
+\begin{align*}
+O\left( \sum_{i = 2}^{m} \log \vert x_{i-1} - x_i  \vert	+ 1	\right)
+\end{align*} 
+gilt.\\
+
+\noindent Da mit dem später noch vorgestelltem Splaybaum ist ein BST bekannt ist, der jede der Eigenschaften erfüllt, muss ein dynamisch optimaler BST ebenfalls über jede Eigenschaft verfügen.
 \newpage
 \bibliography{literaturverzeichnis}
 \bibliographystyle{unsrt}

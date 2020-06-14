@@ -7,9 +7,10 @@
 \contentsline {subsection}{\numberline {1.4}Amortisierte Laufzeitanalyse}{13}%
 \contentsline {paragraph}{Potentialfunktionmethode}{13}%
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{14}%
-\contentsline {subsection}{\numberline {1.5}Besondere Eigenschaften in Bezug zu Zugriffssequenzen }{15}%
-\contentsline {paragraph}{Sequential Access Property}{15}%
-\contentsline {paragraph}{Dynamic Finger Property}{15}%
-\contentsline {paragraph}{Entropy Bound}{15}%
-\contentsline {paragraph}{Working Set Property}{16}%
+\contentsline {subsection}{\numberline {1.5}Obere Schranken für Zugriffssequenzen }{15}%
+\contentsline {paragraph}{Balanced Property}{15}%
+\contentsline {paragraph}{Static Finger Property}{15}%
+\contentsline {paragraph}{Statisch optimal}{15}%
+\contentsline {paragraph}{Working Set Property}{15}%
 \contentsline {paragraph}{Unified Property}{16}%
+\contentsline {paragraph}{Dynamic Finger Property}{16}%
