@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  14 JUN 2020 17:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  17 JUN 2020 14:33
 entering extended mode
 **./DynamischeOptimalität.tex
 (DynamischeOptimalität.tex
@@ -357,91 +357,91 @@ Optimalität.toc)
 LaTeX Warning: Reference `noch einsetzrn' on page 4 undefined on input line 64.
 
 
-[4]
+
 Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
-<Medien/DynOpt/lowerBoundTree.png, id=29, 4459.66125pt x 1497.1935pt>
+[4]
+<Medien/DynOpt/lowerBoundTree.png, id=30, 4459.66125pt x 1497.1935pt>
 File: Medien/DynOpt/lowerBoundTree.png Graphic file (type png)
 <use Medien/DynOpt/lowerBoundTree.png>
 Package pdftex.def Info: Medien/DynOpt/lowerBoundTree.png  used on input line 7
 3.
 (pdftex.def)             Requested size: 390.0pt x 130.92644pt.
+
+Overfull \hbox (20.28963pt too wide) in paragraph at lines 78--79
+[] []  [] [] \OML/cmm/m/it/12 U \OMS/cmsy/m/n/12 ! \U/msb/m/n/12 N$ \T1/cmr/m/n
+/12 ist de-fi-niert durch $[] [] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 jf\OML/cmm/
+m/it/12 i \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 N []\OMS/cmsy/m/n/12 gj$\T1/cmr/m/n/
+12 .
+ []
+
 [5 <./Medien/DynOpt/lowerBoundTree.png>] [6]
 <Medien/DynOpt/T_r_l.png, id=43, 3552.0705pt x 1209.92026pt>
 File: Medien/DynOpt/T_r_l.png Graphic file (type png)
 <use Medien/DynOpt/T_r_l.png>
-Package pdftex.def Info: Medien/DynOpt/T_r_l.png  used on input line 98.
+Package pdftex.def Info: Medien/DynOpt/T_r_l.png  used on input line 105.
 (pdftex.def)             Requested size: 390.0pt x 132.83318pt.
 
-Overfull \hbox (31.20027pt too wide) in paragraph at lines 103--104
+Overfull \hbox (31.20027pt too wide) in paragraph at lines 110--111
 \T1/cmr/m/n/12 Sei $\OML/cmm/m/it/12 K[]$ \T1/cmr/m/n/12 die Schl�s-sel-men-ge 
 von $\OML/cmm/m/it/12 T$ \T1/cmr/m/n/12 und $\OML/cmm/m/it/12 K[]$ \T1/cmr/m/n/
 12 die von $\OML/cmm/m/it/12 T[]$\T1/cmr/m/n/12 . Sei $[]$.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--112
+Underfull \hbox (badness 10000) in paragraph at lines 114--119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
 \c@Lemma3=\count277
 [7 <./Medien/DynOpt/T_r_l.png>]
 
-LaTeX Warning: Reference `vergleiche Abbildung Kapitel 1 Rotationen' on page 8 
-undefined on input line 130.
+LaTeX Warning: Reference `Kapitel 1 Rotationen' on page 8 undefined on input li
+ne 137.
 
 
-Overfull \hbox (1.04605pt too wide) in paragraph at lines 128--131
-\T1/cmr/m/n/12 Kno-ten aus $\OML/cmm/m/it/12 T[]$ \T1/cmr/m/n/12 und $\OML/cmm/
-m/it/12 w[]$ \T1/cmr/m/n/12 ei-ner aus $\OML/cmm/m/it/12 T[]$\T1/cmr/m/n/12 , m
-it $[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) = [](\OML/cmm/m/it/1
-2 w[]\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 und $[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
- w\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 2
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
+Underfull \hbox (badness 10000) in paragraph at lines 142--144
 
  []
 
-
-Overfull \hbox (44.86502pt too wide) in paragraph at lines 146--147
+[8]
+Overfull \hbox (44.86502pt too wide) in paragraph at lines 153--154
 \OML/cmm/m/it/12 v$\T1/cmr/m/n/12 , dann ist $\OML/cmm/m/it/12 u[]; v[]; ::; v[
 ]$ \T1/cmr/m/n/12 der lin-ke in-ne-re Pfad von $\OML/cmm/m/it/12 v[]$\T1/cmr/m/
 n/12 . Es gilt $[]$.
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
  []
 
 \c@Satz1=\count278
 [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--191
 
  []
 
 \c@Korollar1=\count279
 [11] [12] [13] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 342--344
 
  []
 
@@ -452,7 +452,7 @@ LaTeX Warning: There were undefined references.
  ) 
 Here is how much of TeX's memory you used:
  6357 strings out of 480797
- 93717 string characters out of 2905362
+ 93696 string characters out of 2905362
  368817 words of memory out of 3000000
  22257 multiletter control sequences out of 15000+200000
  553400 words of font info for 78 fonts, out of 3000000 for 9000
@@ -484,7 +484,7 @@ Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on DynamischeOptimalität.pdf (17 pages, 794240 bytes).
+Output written on DynamischeOptimalität.pdf (17 pages, 794899 bytes).
 PDF statistics:
  474 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
