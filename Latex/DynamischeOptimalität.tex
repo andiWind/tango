@@ -34,7 +34,7 @@ Andreas Windorfer\\
 \newpage
 
 \section{Dynamische Optimalität}
-
+Dieses Kapitel beschäftigt sich vor allem mit der Laufzeit von Folgen von \textit{access} Operationen, eine speziellere Form der \textit{search} Operation.  
 \subsection{BST Zugriffsalgorithmus }
 Sei $T$ ein BST mit der Schlüsselmenge $K$. Beschränkt man den Parameter von \textit{search} auf $k \in K $ bezeichnet man die Operation als \textit{access}. In diesem Kapitel werden Folgen solcher \textit{access} Operationen betrachtet. Notiert wird eine solche Zugriffsfolge durch Angabe der Parameter. Bei der Zugriffsfolge $x_1,x_2,...x_m$ wird also zunächst \textit{access($x_1$)} ausgeführt, dann \textit{access($x_2$)} usw.  Bei BST wird bezüglich Zugriffssequenzen zwischen online und offline Varianten unterschieden. Bei \textit{offline BST} ist die Zugriffsfolge zu Beginn bereits bekannt, somit kann ein Startzustand gewählt werden, der die Kosten minimiert. Beim \textit{online BST} ist die Zugriffsfolge zu Beginn nicht bekannt. Bei einer worst case Laufzeit-Analyse muss somit von dem Startzustand ausgegangen werden bei dem die Kosten am höchsten sind.
 Ein BST der lediglich die \textit{access} Operation auf einer festen Schlüsselmenge anbietet, wird als \textbf{BST access algorithm} bezeichnet, wenn seine Operation folgende Eigenschaften einhält. 
