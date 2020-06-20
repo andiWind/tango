@@ -34,10 +34,43 @@ Andreas Windorfer\\
 \newpage
 
 \section{Tango Baum}
-Der Tango Baum ist ein aus BSTs, den \textbf{auxiliary trees}, zusammengesetzter BST. Auf die Anforderungen an die auxiliary trees wird in \ref{aufbauDesTango} eingegangen und mit dem Rot-Schwarz-Baum wird eine mögliche Variante noch detailliert vorgestellt. Der Tango Baum wurde in \cite{demainDinamicOpti} beschrieben, inklusive eines Beweises über seine $\mathit{lg} \, \mathit{lg} \, n $-competitiveness. Ebenfalls in \cite{demainDinamicOpti} enthalten ist eine Variation der Interleave Bound von Wilber. Da diese für das Verständnis des Tango Baumes wesentlich ist, wird mit ihr gestartet, bevor es zur Beschreibung der Struktur selbst kommt. 
+Der Tango Baum ist ein aus BSTs, den \textbf{auxiliary trees}, bestehender BST. Auf die Anforderungen an die auxiliary trees wird in Abschnitt \ref{aufbauDesTango} eingegangen und mit dem Rot-Schwarz-Baum wird eine mögliche Variante noch detailliert vorgestellt. Der Tango Baum wurde in \cite{demainDinamicOpti} beschrieben, inklusive eines Beweises über seine $\mathit{lg} \, \mathit{lg} \, n $-competitiveness. Ebenfalls in \cite{demainDinamicOpti} enthalten ist eine als \textbf{Interleave Lower Bound} bezeichnete Variation der ersten unteren Schranke von Wilber. Da diese für das Verständnis des Tango Baumes wesentlich ist, wird mit ihr gestartet, bevor es zur Beschreibung der Struktur selbst kommt. 
 
 
-\subsection{Eine Variation der Interleave Lower Bound}
+\subsection{Interleave Lower Bound}
+  Sei $X$ eine Zugriffsfolge und sei $K = \{k \in \mathbb{N} \vert k \textit{ ist in X enthalten}\}$. Auch hier wird ein lower bound tree verwendet, dieser ist jedoch etwas anders definiert als in Abschnitt \ref{wilber bound}. Hier ist der lower bound tree $Y$ zu einer Zugriffsfolge $X$, der vollständig balancierte BST mit Schlüsselmenge $K$, bei dem die unterste Ebene von links startend nach rechts besetzt wird. Auch in der untersten Ebene gibt es also keine Möglichkeit einen Knoten links von einem bereits vorhandenen Knoten einzufügen. Anders als in Abschnitt \ref{wilber bound}  gibt es hier somit zu jeder Zugriffssequenz nur genau einen lower bound tree. Abbildung \ref{fig:demlowerBoundTree} zeigt den lower bound tree zur Zugriffsfolge $1, 2,.., 15$. Zu jedem Knoten $v$ in $Y$ werden zwei Mengen definiert. Die \textbf{linke Region} von $v$ enthält den Schlüssel von $v$, sowie die im linken Teilbaum von $v$ enthaltenen Schlüssel.  Die \textbf{rechte Region} von $v$ enthält die im rechten Teilbaum von $v$ enthaltenen Schlüssel. Sei $l$ der kleinste Schlüssel im Teilbaum mit Wurzel $v$ und $r$ der größte. Sei $X = \{x_1,x_2,.,x_m\}$ die Zugriffssequenz und $X^r_l = {x_{1'},x_{'2},..,x_{jm'}}$ wie in Abschnitt \ref{wilbr bound} definiert. $i \in \{2,3,..,m'\}$ ist ein \enquote{Interleave durch $v$} wenn $x_{\left(i -1\right)}$ in der linken Region von $v$ liegt und $x_i$ in der rechten Region von $v$, oder umgekehrt. Sei \textit{inScore($v$)} die Funktion die zu dem Knoten $v$ die Anzahl der Interleaves durch $v$ zurückgibt. Sei $U$ die Menge der Knoten von $Y$. Die Funktion \textit{IB$\left(X\right)$} ist definiert durch:
+\begin{align*}
+\mathit{IB}\left(X\right) = \sum_{u \in U} \mathit{inScore}\left(u\right)
+\end{align*}
+Sei $T_0$ der BST mit Schlüsselmenge $K$ auf $X$ ausgeführt wird. Für $i \in \{1,2,..,m\}$ sei $T_i$ der BST, der entsteht nachdem \textit{access}$\left(x_i\right)$ auf $T_{i-1}$ ausgeführt wurde. Zu $u \in U$ und  $j \in \{0,1,..,m\}$ gibt es einen \textbf{transition point} $v$ in $T_j$. $v$ ist ein Knoten mit folgenden Eigenschaften:\\
+\begin{enumerate}
+	\item Der Pfad von der Wurzel von $T_j$ zu $v$ enthält einen Knoten dessen Schlüssel in der linken Region von $u$ enthalten ist.
+	\item Der Pfad von der Wurzel von $T_j$ zu $v$ enthält einen Knoten dessen Schlüssel in der rechten Region von $u$ enthalten ist.
+	\item In $T_i$ ist kein Knoten mit Eigenschaft 1 und 2 enthalten, der eine kleinere Tiefe als $v$ hat. 
+\end{enumerate}
+ 
+Im Beweis dieses Abschnittes wird gezeigt das $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right)$ gilt. Dafür werden jedoch noch drei Lemmas zu den Eigenschaften von $Y$ benötigt. 
+\newtheorem{Lemma4}{Lemma}[section] \label{lemmaDemaine1}
+\begin{Lemma4}
+Zu jedem Knoten $u \in U$ und $j \in \{0,1,..,m\}$ gibt es genau einen transition point in $T_j$.
+	
+\end{Lemma4}
+
+
+\begin{proof}
+Sei $l$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der linken Region von $u$ in $T_j$. Sei $r$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der rechten Region von $u$ in $T_j$. $\mathit{key\left(l\right)}$ bzw. $\mathit{key\left(r\right)}$ muss selbst in der linken bzw. rechten Region von $u$ enthalten sein, vergleiche \ref{wilberBeweis Suchen}. 
+	
+\end{proof}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/lowerBoundTree"}
+	\caption{Der lower bound tree zur Zugriffsfolge $1 ,2, .., 15$  }
+	\label{fig:demlowerBoundTree}
+\end{figure}
+
+
 \subsection{Aufbau des Tango Baum} \label{aufbauDesTango}
 \subsection{Die \textit{access} Operation beim Tango Baum}
 \subsection{Laufzeitanalyse}
