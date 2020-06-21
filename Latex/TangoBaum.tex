@@ -34,7 +34,7 @@ Andreas Windorfer\\
 \newpage
 
 \section{Tango Baum}
-Der Tango Baum ist ein aus BSTs, den \textbf{auxiliary trees}, bestehender BST. Auf die Anforderungen an die auxiliary trees wird in Abschnitt \ref{aufbauDesTango} eingegangen und mit dem Rot-Schwarz-Baum wird eine mögliche Variante noch detailliert vorgestellt. Der Tango Baum wurde in \cite{demainDinamicOpti} beschrieben, inklusive eines Beweises über seine $\mathit{lg} \, \mathit{lg} \, n $-competitiveness. Ebenfalls in \cite{demainDinamicOpti} enthalten ist eine als \textbf{Interleave Lower Bound} bezeichnete Variation der ersten unteren Schranke von Wilber. Da diese für das Verständnis des Tango Baumes wesentlich ist, wird mit ihr gestartet, bevor es zur Beschreibung der Struktur selbst kommt. 
+Der Tango Baum ist ein aus BSTs, den \textbf{auxiliary trees}, bestehender BST. Auf die Anforderungen an die auxiliary trees wird in Abschnitt \ref{aufbauDesTango} eingegangen und mit dem Rot-Schwarz-Baum wird eine mögliche Variante noch detailliert vorgestellt. Der Tango Baum wurde in \cite{demainDinamicOpti},von Demaine, Harmon, Iacono und Patrascu beschrieben, inklusive eines Beweises über seine $\mathit{lg} \, \mathit{lg} \, n $-competitiveness. Ebenfalls in \cite{demainDinamicOpti} enthalten ist eine als \textbf{Interleave Lower Bound} bezeichnete Variation der ersten unteren Schranke von Wilber. Da diese für das Verständnis des Tango Baumes wesentlich ist, wird mit ihr gestartet, bevor es zur Beschreibung der Struktur selbst kommt. 
 
 
 \subsection{Interleave Lower Bound}
@@ -48,27 +48,53 @@ Sei $T_0$ der BST mit Schlüsselmenge $K$ auf $X$ ausgeführt wird. Für $i \in 
 	\item Der Pfad von der Wurzel von $T_j$ zu $v$ enthält einen Knoten dessen Schlüssel in der rechten Region von $u$ enthalten ist.
 	\item In $T_i$ ist kein Knoten mit Eigenschaft 1 und 2 enthalten, der eine kleinere Tiefe als $v$ hat. 
 \end{enumerate}
- 
-Im Beweis dieses Abschnittes wird gezeigt das $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right)$ gilt. Dafür werden jedoch noch drei Lemmas zu den Eigenschaften von $Y$ benötigt. 
-\newtheorem{Lemma4}{Lemma}[section] \label{lemmaDemaine1}
-\begin{Lemma4}
-Zu jedem Knoten $u \in U$ und $j \in \{0,1,..,m\}$ gibt es genau einen transition point in $T_j$.
-	
+ \begin{figure}[h]
+ 	\centering
+ 	\includegraphics[width=1\textwidth]{"Medien/Tango/lowerBoundTree"}
+ 	\caption{Der lower bound tree zur Zugriffsfolge $1 ,2, .., 15$  }
+ 	\label{fig:demlowerBoundTree}
+ \end{figure}
+
+\noindent Im Beweis dieses Abschnittes wird gezeigt das $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right)$ gilt. Dafür werden jedoch noch drei Lemmas zu den Eigenschaften von $Y$ benötigt. 
+\newtheorem{Lemma4}{Lemma}[section] 
+\begin{Lemma4} \label{demaineLemma1}
+Sei $X = x_1,x_2,..,x_m$ eine Zugriffssequenz und $Y$ ein zu $X$ erstellter lower bound tree mit Schlüselmenge $K$. Sei $T_0$ der BST mit Schlüsselmenge $K$ auf dem $X$ ausgeführt wird. Für $i \in \{1,2,..,m\}$ sei $T_i$ der BST der durch Ausführen von \textit{access}$\left(x_i\right)$ auf $T_{\left(i-1\right)}$ entsteht. Sei $U$ die Menge der Knoten von $Y$. Dann gibt es zu jedem Knoten $u \in U$ und $j \in \{0,1,..,m\}$ genau einen transition point in $T_j$. 	
 \end{Lemma4}
 
 
 \begin{proof}
-Sei $l$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der linken Region von $u$ in $T_j$. Sei $r$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der rechten Region von $u$ in $T_j$. $\mathit{key\left(l\right)}$ bzw. $\mathit{key\left(r\right)}$ muss selbst in der linken bzw. rechten Region von $u$ enthalten sein, vergleiche \ref{wilberBeweis Suchen}. 
+Sei $l$ der kleinste Schlüssel in der linken Region von $u$ und $r$ der Größte. Im Teilbaum mit Wurzel $u$ sind genau die Schlüssel $K^r_l = \{k \in K \vert k \in \left[l,r\right]\}$ enthalten. Sei $v_l$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der linken Region von $u$ in $T_j$, mit der kleinsten Tiefe. Sei $r$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der rechten Region von $u$ in $T_j$, mit der kleinsten Tiefe. $\mathit{key\left(l\right)}$ bzw. $\mathit{key\left(r\right)}$ muss selbst in der linken bzw. rechten Region von $u$ enthalten sein, vergleiche \ref{wilberLowerBoundTree}. Sei $w$ der gemeinsame Vorfahre aller Schlüssel aus der linken und der rechten Region von $u$ in $T^r_l$. Es muss $\mathit{key}\left(w\right) \in \left[l,r\right]$ gelten. Somit muss  $\mathit{key}\left(w\right)$ entweder in der linken oder rechten Region von $u$ enthalten sein. Da $w$ der Knoten mit der kleinsten Tiefe sein muss, für den  $\mathit{key\left(w\right)} \in \left[l,r\right]$  gilt, muss entweder $w = v_l$ oder $w = v_r$ gelten, je nachdem wessen Tiefe kleiner ist. Für den Fall $w = v_l$ ist $v_r$ der transition point in $T^r_l$ zu $u$ und für den Fall $w = v_r$ ist es $v_l$.
+Es wird der Fall $w = v_l$ betrachtet, der andere kann direkt daraus abgeleitet werden. Im Pfad $P_u = v_0,v_1,..,v_r$ von der Wurzel zu $v_r$ ist $v_l$ enthalten und da $v_r$ ein gemeinsamer Vorfahre der Schlüssel aus der rechten Region von $u$ ist muss $v_r$ der einige Knoten mit einem Schlüssel aus der rechten Region von $u$ in $P_u$ sein. In jedem Pfad $P$ in $T_l^r$ von der Wurzel zu einem Knoten mit einem Schlüssel aus der rechten Region von $u$ muss mit $v_0,v_1,..,v_r$ beginnen, somit kann es keinen weiteren transition point für $u$ in $T_j$ geben. 
+	
+\end{proof}
+\noindent Der Knoten auf den der Zeiger $p$ zum ausführen von \textit{access} gerade zeigt wird als \textbf{berührter} Knoten bezeichnet.
+ Im zweiten Lemma geht es darum das sich der transition point $v$ eines Knoten nicht verändern kann, solange $v$ nicht wenigstens einmal der berührte Knoten war. In den zwei verbleibenden Lemmas seien  $T_j$, $X$, $Y$ und $u$ wie in  Lemma \ref{demaineLemma1} definiert. 
+
+
+
+\newtheorem{Lemma5}{Lemma}[section] \label{lemmaDemaine2}
+\begin{Lemma5} \label{demaineLemma2}
+Sei $v$ der transition point zu $u$ in $T_j$.  Sei  $k \in \mathit{N}$, mit $j \leq k \leq m$. Gilt für alle $x_i$, mit $i \in \left[j,k\right]$, während der Ausführung von \textit{access}$\left(x_i\right)$,  $v$ war nicht wenigstens einmal der berührte Knoten, dann ist $v$ während der gesamten Ausführungszeit von $\textit{access}\left(x_j\right),\textit{access}\left(x_{j+1}\right),..,\textit{access}\left(x_k\right)$ der transition point zu $u$ in $T_k$. 
+\end{Lemma5}
+
+\begin{proof}
+ Sei $v_l$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der linken Region von $u$ in $T_j$, mit der kleinsten Tiefe. Sei $r$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der rechten Region von $u$ in $T_j$, mit der kleinsten Tiefe. Hier wird wieder ohne Verlust der Allgemeinheit der Fall $v = v_r$ betrachtet. Da $v_r$ nicht berührt wird, wird auch kein Knoten in der rechten Region von $u$ berührt. $v_r$ ist somit während der gesamten Ausführungszeit von $\textit{access}\left(x_j\right),\textit{access}\left(x_{j+1}\right),..,\textit{access}\left(x_k\right)$  der gemeinsame Vorfahre der Schlüssel aus der rechten Region von $u$ mit der kleinsten Tiefe. Knoten mit Schlüssel in der linken Region von $u$ könnten berührt werden. Zu einem Ausführungszeitpunkt $i$ kann deshalb ein Knoten $v_{li} \ne v_l$ mit einem Schlüssel aus der linken Region von $u$ der gemeinsame Vorfahre der Knoten mit diesen Schlüsseln mit der kleinsten Tiefe sein. Da $v_r$ nicht berührt wird kann zu keinem Zeitpunkt $v_l$ im Teilbaum mit Wurzel $v_r$ enthalten sein. Somit kann auch $v_{li}$ nicht in diesem Teilbaum enthalten sein. Somit muss die Tiefe von  $v_{li}$ kleiner sein, als die von $v_r$ und $v_r$ bleibt der transition point von $u$. 
 	
 \end{proof}
 
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{"Medien/Tango/lowerBoundTree"}
-	\caption{Der lower bound tree zur Zugriffsfolge $1 ,2, .., 15$  }
-	\label{fig:demlowerBoundTree}
-\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \subsection{Aufbau des Tango Baum} \label{aufbauDesTango}
