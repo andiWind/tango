@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  21 JUN 2020 12:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  21 JUN 2020 17:56
 entering extended mode
 **./TangoBaum.tex
 (TangoBaum.tex
@@ -295,7 +295,11 @@ File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count270
 \l__pdf_internal_box=\box52
 )
-(TangoBaum.aux)
+(TangoBaum.aux
+
+LaTeX Warning: Label `demaineLemma2' multiply defined.
+
+)
 \openout1 = `TangoBaum.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -312,8 +316,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
-
-("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count271
 \scratchdimen=\dimen171
@@ -381,20 +384,25 @@ ne 66.
 
 [4 <./Medien/Tango/lowerBoundTree.png>]
 \c@Lemma5=\count278
- [5] [6] (TangoBaum.bbl) [7]
+ [5]
+\c@Lemma6=\count279
+ [6] (TangoBaum.bbl) [7]
 (TangoBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 6339 strings out of 480797
- 93163 string characters out of 2905362
+ 6346 strings out of 480797
+ 93227 string characters out of 2905362
  361804 words of memory out of 3000000
- 22240 multiletter control sequences out of 15000+200000
+ 22247 multiletter control sequences out of 15000+200000
  553764 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,43p,1704b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,8n,43p,1812b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecbi1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -416,11 +424,11 @@ iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9
 e1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
-12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.
-pfb>
-Output written on TangoBaum.pdf (7 pages, 236381 bytes).
+12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on TangoBaum.pdf (7 pages, 248377 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
+ 385 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
