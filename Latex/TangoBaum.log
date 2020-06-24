@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 JUN 2020 11:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 JUN 2020 11:55
 entering extended mode
 **./TangoBaum.tex
 (TangoBaum.tex
@@ -383,25 +383,35 @@ ne 66.
 \c@Lemma2=\count278
  [5]
 \c@Lemma3=\count279
+<Medien/Tango/transitionPoints.png, id=42, 707.64375pt x 243.91125pt>
+File: Medien/Tango/transitionPoints.png Graphic file (type png)
+<use Medien/Tango/transitionPoints.png>
+Package pdftex.def Info: Medien/Tango/transitionPoints.png  used on input line 
+111.
+(pdftex.def)             Requested size: 390.0pt x 134.427pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 \c@Satz2=\count280
 
+LaTeX Warning: Reference `lemmaDemaine1' on page 6 undefined on input line 123.
 
-LaTeX Warning: Reference `lemmaDemaine1' on page 6 undefined on input line 100.
 
-
-[6] [7] (TangoBaum.bbl) [8] (TangoBaum.aux)
+[6] [7 <./Medien/Tango/transitionPoints.png>] (TangoBaum.bbl) [8]
+(TangoBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6354 strings out of 480797
- 93299 string characters out of 2905362
- 363804 words of memory out of 3000000
- 22255 multiletter control sequences out of 15000+200000
+ 6363 strings out of 480797
+ 93589 string characters out of 2905362
+ 365804 words of memory out of 3000000
+ 22263 multiletter control sequences out of 15000+200000
  553764 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,43p,1870b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,8n,43p,1950b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecbi1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -427,9 +437,9 @@ cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6
 Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TangoBaum.pdf (8 pages, 270401 bytes).
+Output written on TangoBaum.pdf (8 pages, 302612 bytes).
 PDF statistics:
- 399 PDF objects out of 1000 (max. 8388607)
+ 413 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
