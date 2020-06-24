@@ -38,10 +38,11 @@ Der Tango Baum ist ein aus BSTs, den \textbf{Hilfsbäumen}, bestehender BST. Auf
 
 
 \subsection{Interleave Lower Bound} \label{interBound}
-  Sei $X$ eine Zugriffsfolge und sei $K = \{k \in \mathbb{N} \vert k \textit{ ist in X enthalten}\}$. Auch hier wird ein lower bound tree verwendet, dieser ist jedoch etwas anders definiert als in Abschnitt \ref{wilber bound}. Hier ist der lower bound tree $Y$ zu einer Zugriffsfolge $X$, der komplette BST mit Schlüsselmenge $K$. Anders als in Abschnitt \ref{wilber bound}  gibt es hier somit zu jeder Zugriffssequenz nur genau einen lower bound tree. Abbildung \ref{fig:demlowerBoundTree} zeigt den lower bound tree zur Zugriffsfolge $1, 2,.., 15$. Zu jedem Knoten $v$ in $Y$ werden zwei Mengen definiert. Die \textbf{linke Region} von $v$ enthält den Schlüssel von $v$, sowie die im linken Teilbaum von $v$ enthaltenen Schlüssel.  Die \textbf{rechte Region} von $v$ enthält die im rechten Teilbaum von $v$ enthaltenen Schlüssel. Sei $l$ der kleinste Schlüssel im Teilbaum mit Wurzel $v$ und $r$ der größte. Sei $X = x_1,x_2,.,x_m$ die Zugriffssequenz und $X^r_l = {x_{1'},x_{'2},..,x_{jm'}}$ wie in Abschnitt \ref{wilbr bound} definiert. $i \in \{2,3,..,m'\}$ ist ein \enquote{Interleave durch $v$} wenn $x_{\left(i -1\right)}$ in der linken Region von $v$ liegt und $x_i$ in der rechten Region von $v$, oder umgekehrt. In $Y$ sind Knoten enthalten, bei denen die rechte Region leer ist. Durch diese kann es keinen Interleave geben. Sei $U$ die Menge der Knoten von $Y$, mit einer nicht leeren rechten Region. Sei \textit{inScore($v$)} die Funktion die zu dem Knoten $v \in U$ die Anzahl der Interleaves durch $v$ zurückgibt.  Die Funktion \textit{IB$\left(X\right)$} ist definiert durch:
+  Sei $X$ eine Zugriffsfolge und sei $K = \{k \in \mathbb{N} \vert k \textit{ ist in X enthalten}\}$. Auch hier wird ein lower bound tree verwendet, dieser ist jedoch etwas anders definiert als in Abschnitt \ref{wilber bound}. Hier ist der lower bound tree $Y$ zu einer Zugriffsfolge $X$, der komplette BST mit Schlüsselmenge $K$. Anders als in Abschnitt \ref{wilber bound}  gibt es hier somit zu jeder Zugriffssequenz nur genau einen lower bound tree. Abbildung \ref{fig:demlowerBoundTree} zeigt den lower bound tree zur Zugriffsfolge $1, 2,.., 15$. Zu jedem Knoten $v$ in $Y$ werden zwei Mengen definiert. Die \textbf{linke Region} von $v$ enthält den Schlüssel von $v$, sowie die im linken Teilbaum von $v$ enthaltenen Schlüssel.  Die \textbf{rechte Region} von $v$ enthält die im rechten Teilbaum von $v$ enthaltenen Schlüssel. Sei $l$ der kleinste Schlüssel im Teilbaum mit Wurzel $v$ und $r$ der größte. Sei $X = x_1,x_2,.,x_m$ die Zugriffssequenz und $X^r_l = {x_{1'},x_{'2},..,x_{jm'}}$ wie in Abschnitt \ref{wilbr bound} definiert. $i \in \{2,3,..,m'\}$ ist ein \enquote{\textbf{Interleave} durch $v$} wenn $x_{\left(i -1\right)}$ in der linken Region von $v$ liegt und $x_i$ in der rechten Region von $v$, oder umgekehrt. In $Y$ sind Knoten enthalten, bei denen die rechte Region leer ist. Durch diese kann es keinen Interleave geben. Sei $U$ die Menge der Knoten von $Y$, mit einer nicht leeren rechten Region. Sei \textit{inScore($v$)} die Funktion die zu dem Knoten $v \in U$ die Anzahl der Interleaves durch $v$ zurückgibt.  Die Funktion \textit{IB$\left(X\right)$} ist definiert durch:
 \begin{align*}
 \mathit{IB}\left(X\right) = \sum_{u \in U} \mathit{inScore}\left(u\right)
 \end{align*}
+
 Sei $T_0$ der BST mit Schlüsselmenge $K$ auf $X$ ausgeführt wird. Für $i \in \{1,2,..,m\}$ sei $T_i$ der BST, der entsteht nachdem \textit{access}$\left(x_i\right)$ auf $T_{i-1}$ ausgeführt wurde. Zu $u \in U$ und  $j \in \{0,1,..,m\}$ gibt es einen \textbf{transition point} $v$ in $T_j$. $v$ ist ein Knoten mit folgenden Eigenschaften:\\
 \begin{enumerate}
 	\item Der Pfad von der Wurzel von $T_j$ zu $v$ enthält einen Knoten dessen Schlüssel in der linken Region von $u$ enthalten ist.
@@ -54,8 +55,8 @@ Sei $T_0$ der BST mit Schlüsselmenge $K$ auf $X$ ausgeführt wird. Für $i \in 
  	\caption{Der lower bound tree zur Zugriffsfolge $1 ,2, .., 15$  }
  	\label{fig:demlowerBoundTree}
  \end{figure}
-Aufgrund Punkt 2 kann ein Knoten $u \in U$ keinen transition point haben wenn seine rechte Region die leere Menge ist. 
-\noindent Im Beweis dieses Abschnittes wird gezeigt das $\mathit{OPT}\left(X\right) \geq \frac{\mathit{IB}\left(X\right)}{2} - n$ gilt. Dafür werden jedoch noch drei Lemmas zu den Eigenschaften von $Y$ benötigt. 
+
+\noindent Im Beweis dieses Abschnittes wird gezeigt das $\mathit{OPT}\left(X\right) \geq \frac{\mathit{IB}\left(X\right)}{2} - n$ gilt, wobei $n$ die Anzahl der Knoten im lower bound tree ist. Dafür werden jedoch noch drei Lemmas zu den Eigenschaften von $Y$ benötigt. 
 \newtheorem{Lemma1}{Lemma}[section] 
 \begin{Lemma1} \label{demaineLemma1}
 Sei $X = x_1,x_2,..,x_m$ eine Zugriffssequenz und $Y$ ein zu $X$ erstellter lower bound tree mit Schlüselmenge $K$. Sei $T_0$ der BST mit Schlüsselmenge $K$ auf dem $X$ ausgeführt wird. Für $i \in \{1,2,..,m\}$ sei $T_i$ der BST der durch Ausführen von \textit{access}$\left(x_i\right)$ auf $T_{\left(i-1\right)}$ entsteht. Sei $U$ die Menge der Knoten von $Y$. Dann gibt es zu jedem Knoten $u \in U$ und $j \in \{0,1,..,m\}$ genau einen transition point in $T_j$. 	
@@ -68,7 +69,7 @@ Es wird der Fall $w = v_l$ betrachtet, der andere kann direkt daraus abgeleitet 
 	
 \end{proof}
 \noindent Der Knoten auf den der Zeiger $p$ zum ausführen von \textit{access} gerade zeigt wird als \textbf{berührter} Knoten bezeichnet.
- Im zweiten Lemma geht es darum, dass sich der transition point $v$ eines Knoten nicht verändern kann, solange $v$ nicht wenigstens einmal der berührte Knoten war. In den zwei verbleibenden Lemmas seien  $T_j$, $X$, $Y$, $U$ und $u$ wie in  Lemma \ref{demaineLemma1} definiert. 
+ Im zweiten Lemma geht es darum, dass sich der transition point $v$ eines Knoten nicht verändern kann, solange $v$ nicht wenigstens einmal der berührte Knoten war. In den zwei verbleibenden Lemmas und dem Satz seien  $T_j$, $X$, $Y$, $U$ und $u$ wie in  Lemma \ref{demaineLemma1} definiert. 
 
 
 
@@ -116,7 +117,7 @@ Sei $v$ der transition point zu $u$ in $T_j$.  Sei  $l \in \mathit{N}$, mit $j <
 
 \newtheorem{Satz2}{Satz}[section] \label{satzDemaine1}
 \begin{Satz2} 
-Für eine Zugriffssequenz $X = x_1, x_2,.., x_m$ gilt\\	
+Für eine Zugriffssequenz $X = x_1, x_2,.., x_m$ und $n$ die Anzahl der Knoten im zu $X$ erstellten lower bound tree. Dann gilt\\	
 $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 - n$ .
 \end{Satz2}
 \begin{proof}
@@ -126,9 +127,14 @@ Es wird die Mindestanzahl der Berührungen von transition points gezählt. Durch
 
 
 \subsection{Aufbau des Tango Baum} \label{aufbauDesTango}
-Wie bereits erwähnt besteht ein Tango Baum $T$ mit Schlüsselmenge $K$ aus Hilfsbäumen. $T$ bietet lediglich eine \textit{access} Operation an. Ist $T$ also erst einmal für $K$ erzeugt, ist seine Schlüsselmenge unveränderlich. Sei $P$ der lower bound tree aus Abschnitt \ref{interBound} mit Schlüsselmenge $K$. $P$ ist kein Hilfsbaum und muss in Implementierungen auch nicht erstellt werden. Er dient aber dazu den Aufbau von $T$ vor und nach einer \textit{access} Operation zu veranschaulichen. Jeder innere Knoten $p_i$ in $P$ kann ein \textbf{preferred child} besitzen. Wurde während der Ausführung einer Zugriffsfolge $X$ zuletzt ein Knoten in der linken Region von $p$ berührt, so ist das linke Kind von $p$, das preferred child von $p$. Wurde zuletzt ein Knoten in der rechten Region von $p$ berührt, so ist das rechte Kind von $p$, das preferred child von $p$. Wurde während der Ausführungszeit von $X$ noch kein Knoten im Teilbaum mit der Wurzel $p$ berührt, so hat $p$ kein preferred child. Wir erweitern die Knoten von $P$ mit einer weiteren Variable \textit{prefChild} welche drei Werte annehmen kann. Sie enthält \textit{none} wenn ihr Knoten kein preferred Child besitzt, \textit{left} wenn das linke Kind das preferred child ist, ansonsten entsprechen \textit{right}. Hier kann man bereits die Kopplung zur interleave lower bound erkennen. Ein Wechsel von \textit{prefChild}  von \textit{left} zu \textit{right}, oder umgekehrt, findet genau dann statt, wenn es zu einem interleave durch den Knoten der Variable kam.
+Wie bereits erwähnt besteht ein Tango Baum $T$ mit Schlüsselmenge $K$ aus Hilfsbäumen. $T$ bietet lediglich eine \textit{access} Operation an. Ist $T$ also erst einmal für $K$ erzeugt, ist seine Schlüsselmenge unveränderlich. Sei $P$ der lower bound tree aus Abschnitt \ref{interBound} mit Schlüsselmenge $K$. $P$ ist kein Hilfsbaum und muss in Implementierungen auch nicht erstellt werden. Er dient aber dazu den Aufbau von $T$ vor und nach einer \textit{access} Operation zu veranschaulichen. Jeder innere Knoten $p$ in $P$ kann ein \textbf{preferred child} haben.  Wurde während der Ausführungszeit von $X$ noch keine \textit{access} Operation mit einem im Teilbaum mit Wurzel $p$ enthalten Schlüssel als Parameter ausgeführt, so hat $p$ kein preferred child. Ansonsten sei \textit{access}$\left(k\right)$ die zuletzt ausgeführte Operation mit einem Schlüssel der im Teilbaum mit Wurzel $p$ enthalten ist. Liegt $k$ in der linken Region von $p$, dann ist das linke Kind von $p$, das preferred child von $p$. Ist $k$ in der rechten Region von $p$ enthalten, dann ist das rechte Kind von $p$, das preferred child von $p$. Wir erweitern die Knoten von $P$ mit einer weiteren Variable \textit{prefChild} welche drei Werte annehmen kann. Sie enthält \textit{none} wenn ihr Knoten kein preferred Child besitzt, \textit{left} wenn das linke Kind das preferred child ist, ansonsten entsprechend \textit{right}. Hier kann man bereits die Kopplung zur interleave lower bound erkennen. Ein Wechsel von \textit{prefChild}  von \textit{left} zu \textit{right}, oder umgekehrt, findet genau dann statt, wenn es zu einem interleave durch den Knoten der Variable kommt. Abbildung \ref{fig:prefChilds} stellt einen möglichen Zustand von $P$ zwischen zwei \textit{access} Operationen dar. Man erkennt zum Beispiel sofort, dass der Parameter der letzten \textit{access} Operation $8$, $4$, $2$ oder $1$ gewesen sein muss, da man von der Wurzel aus über preferred childs zu den Knoten mit diesen Schlüsseln gelangen kann. Die Schlüssel $10$ und $9$ können noch nie Parameter einer \textit{access} Operation gewesen sein, ansonsten müsste der Knoten mit dem Schlüssel $10$ ein preferred child haben. 
 
-
+ \begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/prefChilds"}
+	\caption{Die preferred childs werden durch die grünen Pfeile markiert. }
+	\label{fig:prefChilds}
+\end{figure}
  
 
 

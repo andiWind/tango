@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 JUN 2020 18:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 JUN 2020 21:36
 entering extended mode
 **./TangoBaum.tex
 (TangoBaum.tex
@@ -362,7 +362,7 @@ LaTeX Warning: Reference `wilber bound' on page 3 undefined on input line 41.
 LaTeX Warning: Reference `wilbr bound' on page 3 undefined on input line 41.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--46
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
 
  []
 
@@ -370,24 +370,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--46
 <Medien/Tango/lowerBoundTree.png, id=28, 737.75626pt x 237.88875pt>
 File: Medien/Tango/lowerBoundTree.png Graphic file (type png)
 <use Medien/Tango/lowerBoundTree.png>
-Package pdftex.def Info: Medien/Tango/lowerBoundTree.png  used on input line 53
+Package pdftex.def Info: Medien/Tango/lowerBoundTree.png  used on input line 54
 .
 (pdftex.def)             Requested size: 390.0pt x 125.75374pt.
 \c@Lemma1=\count277
 
 
 LaTeX Warning: Reference `wilberLowerBoundTree' on page 4 undefined on input li
-ne 66.
+ne 67.
 
 [4 <./Medien/Tango/lowerBoundTree.png>]
 \c@Lemma2=\count278
- [5]
 \c@Lemma3=\count279
+ [5]
 <Medien/Tango/transitionPoints.png, id=42, 707.64375pt x 243.91125pt>
 File: Medien/Tango/transitionPoints.png Graphic file (type png)
 <use Medien/Tango/transitionPoints.png>
 Package pdftex.def Info: Medien/Tango/transitionPoints.png  used on input line 
-111.
+112.
 (pdftex.def)             Requested size: 390.0pt x 134.427pt.
 
 
@@ -395,23 +395,28 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 \c@Satz2=\count280
 
-LaTeX Warning: Reference `lemmaDemaine1' on page 6 undefined on input line 123.
+LaTeX Warning: Reference `lemmaDemaine1' on page 6 undefined on input line 124.
 
 
-[6] [7 <./Medien/Tango/transitionPoints.png>] [8] (TangoBaum.bbl) [9]
-(TangoBaum.aux)
+[6] [7 <./Medien/Tango/transitionPoints.png>]
+<Medien/Tango/prefChilds.png, id=53, 683.55376pt x 249.93375pt>
+File: Medien/Tango/prefChilds.png Graphic file (type png)
+<use Medien/Tango/prefChilds.png>
+Package pdftex.def Info: Medien/Tango/prefChilds.png  used on input line 134.
+(pdftex.def)             Requested size: 390.0pt x 142.601pt.
+ [8 <./Medien/Tango/prefChilds.png>] (TangoBaum.bbl) [9] (TangoBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6364 strings out of 480797
- 93601 string characters out of 2905362
+ 6373 strings out of 480797
+ 93837 string characters out of 2905362
  365804 words of memory out of 3000000
- 22264 multiletter control sequences out of 15000+200000
+ 22272 multiletter control sequences out of 15000+200000
  553764 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,43p,1950b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,8n,43p,2235b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecbi1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -437,9 +442,9 @@ cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6
 Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TangoBaum.pdf (9 pages, 305433 bytes).
+Output written on TangoBaum.pdf (9 pages, 329342 bytes).
 PDF statistics:
- 418 PDF objects out of 1000 (max. 8388607)
+ 423 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
