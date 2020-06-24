@@ -34,10 +34,10 @@ Andreas Windorfer\\
 \newpage
 
 \section{Tango Baum}
-Der Tango Baum ist ein aus BSTs, den \textbf{auxiliary trees}, bestehender BST. Auf die Anforderungen an die auxiliary trees wird in Abschnitt \ref{aufbauDesTango} eingegangen und mit dem Rot-Schwarz-Baum wird eine mögliche Variante noch detailliert vorgestellt. Der Tango Baum wurde in \cite{demainDinamicOpti},von Demaine, Harmon, Iacono und Patrascu beschrieben, inklusive eines Beweises über seine $\mathit{lg} \, \mathit{lg} \, n $-competitiveness. Ebenfalls in \cite{demainDinamicOpti} enthalten ist eine als \textbf{Interleave Lower Bound} bezeichnete Variation der ersten unteren Schranke von Wilber. Da diese für das Verständnis des Tango Baumes wesentlich ist, wird mit ihr gestartet, bevor es zur Beschreibung der Struktur selbst kommt. 
+Der Tango Baum ist ein aus BSTs, den \textbf{Hilfsbäumen}, bestehender BST. Auf die Anforderungen an die Hilfsbäume wird in Abschnitt \ref{aufbauDesTango} eingegangen und mit dem Rot-Schwarz-Baum wird eine mögliche Variante noch detailliert vorgestellt. Der Tango Baum wurde in \cite{demainDinamicOpti},von Demaine, Harmon, Iacono und Patrascu beschrieben, inklusive eines Beweises über seine $\mathit{lg} \, \mathit{lg} \, n $-competitiveness. Ebenfalls in \cite{demainDinamicOpti} enthalten ist eine als \textbf{Interleave Lower Bound} bezeichnete Variation der ersten unteren Schranke von Wilber. Da diese für das Verständnis des Tango Baumes wesentlich ist, wird mit ihr gestartet, bevor es zur Beschreibung der Struktur selbst kommt. 
 
 
-\subsection{Interleave Lower Bound}
+\subsection{Interleave Lower Bound} \label{interBound}
   Sei $X$ eine Zugriffsfolge und sei $K = \{k \in \mathbb{N} \vert k \textit{ ist in X enthalten}\}$. Auch hier wird ein lower bound tree verwendet, dieser ist jedoch etwas anders definiert als in Abschnitt \ref{wilber bound}. Hier ist der lower bound tree $Y$ zu einer Zugriffsfolge $X$, der komplette BST mit Schlüsselmenge $K$. Anders als in Abschnitt \ref{wilber bound}  gibt es hier somit zu jeder Zugriffssequenz nur genau einen lower bound tree. Abbildung \ref{fig:demlowerBoundTree} zeigt den lower bound tree zur Zugriffsfolge $1, 2,.., 15$. Zu jedem Knoten $v$ in $Y$ werden zwei Mengen definiert. Die \textbf{linke Region} von $v$ enthält den Schlüssel von $v$, sowie die im linken Teilbaum von $v$ enthaltenen Schlüssel.  Die \textbf{rechte Region} von $v$ enthält die im rechten Teilbaum von $v$ enthaltenen Schlüssel. Sei $l$ der kleinste Schlüssel im Teilbaum mit Wurzel $v$ und $r$ der größte. Sei $X = x_1,x_2,.,x_m$ die Zugriffssequenz und $X^r_l = {x_{1'},x_{'2},..,x_{jm'}}$ wie in Abschnitt \ref{wilbr bound} definiert. $i \in \{2,3,..,m'\}$ ist ein \enquote{Interleave durch $v$} wenn $x_{\left(i -1\right)}$ in der linken Region von $v$ liegt und $x_i$ in der rechten Region von $v$, oder umgekehrt. In $Y$ sind Knoten enthalten, bei denen die rechte Region leer ist. Durch diese kann es keinen Interleave geben. Sei $U$ die Menge der Knoten von $Y$, mit einer nicht leeren rechten Region. Sei \textit{inScore($v$)} die Funktion die zu dem Knoten $v \in U$ die Anzahl der Interleaves durch $v$ zurückgibt.  Die Funktion \textit{IB$\left(X\right)$} ist definiert durch:
 \begin{align*}
 \mathit{IB}\left(X\right) = \sum_{u \in U} \mathit{inScore}\left(u\right)
@@ -125,20 +125,15 @@ Es wird die Mindestanzahl der Berührungen von transition points gezählt. Durch
 \end{proof}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \subsection{Aufbau des Tango Baum} \label{aufbauDesTango}
+Wie bereits erwähnt besteht ein Tango Baum $T$ mit Schlüsselmenge $K$ aus Hilfsbäumen. $T$ bietet lediglich eine \textit{access} Operation an. Ist $T$ also erst einmal für $K$ erzeugt, ist seine Schlüsselmenge unveränderlich. Sei $P$ der lower bound tree aus Abschnitt \ref{interBound} mit Schlüsselmenge $K$. $P$ ist kein Hilfsbaum und muss in Implementierungen auch nicht erstellt werden. Er dient aber dazu den Aufbau von $T$ vor und nach einer \textit{access} Operation zu veranschaulichen. Jeder innere Knoten $p_i$ in $P$ kann ein \textbf{preferred child} besitzen. Wurde während der Ausführung einer Zugriffsfolge $X$ zuletzt ein Knoten in der linken Region von $p$ berührt, so ist das linke Kind von $p$, das preferred child von $p$. Wurde zuletzt ein Knoten in der rechten Region von $p$ berührt, so ist das rechte Kind von $p$, das preferred child von $p$. Wurde während der Ausführungszeit von $X$ noch kein Knoten im Teilbaum mit der Wurzel $p$ berührt, so hat $p$ kein preferred child. Wir erweitern die Knoten von $P$ mit einer weiteren Variable \textit{prefChild} welche drei Werte annehmen kann. Sie enthält \textit{none} wenn ihr Knoten kein preferred Child besitzt, \textit{left} wenn das linke Kind das preferred child ist, ansonsten entsprechen \textit{right}. Hier kann man bereits die Kopplung zur interleave lower bound erkennen. Ein Wechsel von \textit{prefChild}  von \textit{left} zu \textit{right}, oder umgekehrt, findet genau dann statt, wenn es zu einem interleave durch den Knoten der Variable kam.
+
+
+ 
+
+
+
+
 \subsection{Die \textit{access} Operation beim Tango Baum}
 \subsection{Laufzeitanalyse}
 \newpage
