@@ -285,7 +285,10 @@ Nun wird die \textit{access} Operation des Tango Baumes betrachtet. Sei $k$ der 
 	\item Sei $H_4$ der Hilfsbaum, auf dessen Wurzel $p$ zeigt. Führe \textit{join}$\left(H_3, ~H_4\right)$ aus.
 	\item \label{ende} Gib $p$ zurück.
 \end{enumerate}
-Zu klären ist noch warum im sechsten Punkt der richtige Hilfsbaum gefunden werden muss. Sei $v_p$ der Knoten in $P$ mit Schlüssel $k$. Vor dem durchführen von Punkt sechs ist man immer in der Situation, dass \textit{maxDepth} der Wurzel von $H_3$ der Tiefe von $v_p$ entspricht. Man möchte nun $H_4$ so hinzufügen, wie es einem linken preferred child von $v_p$ entspricht. Sei $v_l$ das linke Kind von $v_p$. Es muss einen Zeiger aus $H_3$ auf den Hilfsbaum geben in dem der Schlüssel \textit{key}$\left(v_l\right)$ enthalten ist geben.
+ Sei $u_p$ der Knoten in $P$ mit Schlüssel $k$, $u_l$ das linke Kind von $u_p$ und $v_l$ der Knoten mit Schlüssel $\mathit{key}\left(u_l\right)$ in $T$.  Sei $K_3$ die Schlüsselmenge von $H_3$ und $K_4$ die von $H_4$. Zu klären ist noch warum im sechsten Punkt der Hilfsbaum $H_4$ den Schlüssel $\mathit{key}\left(u_l\right)$ enthalten muss.\\ Sei $l$ der kleinste Schlüssel in $K_4$ und $r$ der Größte. Es muss für jeden Schlüssel $k_3$ aus $K_3$ wieder entweder $k_3 < l$  oder $k_3 > r$ gelten. Somit ist $\mathit{key}\left(u_p\right)$ größer als jeder Schlüssel in $K_4$. Gilt $k_3 > r$ und $k_3 \ne \mathit{key}\left(u_p\right) $, dann muss auch $k_3 >  \mathit{key}\left(v_p\right) $ gelten. Denn in $P$ muss dann einen Knoten mit Schlüssel $k_3$ geben, in dessen linken Teilbaum sowohl der Schlüssel $v_p$ als auch $v_l$ enthalten ist. Somit muss $v$ ein Vorfahre von $v_p$ sein, denn bei jedem Vorfahren von $v$ in $H_3$, müssen $v$ und $v_p$ im gleichen Teilbaum liegen. Da in $H3$ alle Schlüssel im linken Teilbaum von $v$ kleiner als  $\mathit{key}\left(v_l\right)$ sind, muss der Hilfsbaum, der $v_l$ enthält, erreicht werden in dem immer das rechte Kind gewählt wird.
+ 
+ 
+ 
  
 
 
