@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  27 JUN 2020 02:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  27 JUN 2020 13:45
 entering extended mode
 **./TangoBaum.tex
 (TangoBaum.tex
@@ -439,24 +439,58 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [10 <./Medien/Tango/Tangobaum.png>] [11 <./Medien/Tango/prefChilds2.png> <./Med
 ien/Tango/Tangobaum2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 212--213
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
 
  []
 
 [12]
+<Medien/Tango/cut.png, id=80, 598.6365pt x 763.05075pt>
+File: Medien/Tango/cut.png Graphic file (type png)
+<use Medien/Tango/cut.png>
+Package pdftex.def Info: Medien/Tango/cut.png  used on input line 234.
+(pdftex.def)             Requested size: 390.0pt x 497.11815pt.
+<Medien/Tango/cut2.png, id=81, 564.30824pt x 464.33475pt>
+File: Medien/Tango/cut2.png Graphic file (type png)
+<use Medien/Tango/cut2.png>
+Package pdftex.def Info: Medien/Tango/cut2.png  used on input line 240.
+(pdftex.def)             Requested size: 390.0pt x 320.91562pt.
 
-LaTeX Warning: Reference `fig:cut' on page 13 undefined on input line 231.
 
-[13] (TangoBaum.bbl) [14] (TangoBaum.aux)
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13]
+<Medien/Tango/join.png, id=86, 991.90575pt x 519.74174pt>
+File: Medien/Tango/join.png Graphic file (type png)
+<use Medien/Tango/join.png>
+Package pdftex.def Info: Medien/Tango/join.png  used on input line 264.
+(pdftex.def)             Requested size: 390.0pt x 204.35596pt.
+<Medien/Tango/join2.png, id=87, 900.36375pt x 517.33275pt>
+File: Medien/Tango/join2.png Graphic file (type png)
+<use Medien/Tango/join2.png>
+Package pdftex.def Info: Medien/Tango/join2.png  used on input line 270.
+(pdftex.def)             Requested size: 390.0pt x 224.09067pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14] (TangoBaum.bbl) [15] [16 <./Medien/Tango/cut.png>] [17 <./Medien/Tango/cut
+2.png>] [18 <./Medien/Tango/join.png> <./Medien/Tango/join2.png>]
+(TangoBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6413 strings out of 480797
- 94840 string characters out of 2905362
+ 6449 strings out of 480797
+ 95564 string characters out of 2905362
  366804 words of memory out of 3000000
- 22307 multiletter control sequences out of 15000+200000
+ 22339 multiletter control sequences out of 15000+200000
  554453 words of font info for 79 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,43p,2770b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -486,9 +520,9 @@ s/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
 8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C
 :/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TangoBaum.pdf (14 pages, 441920 bytes).
+Output written on TangoBaum.pdf (18 pages, 623762 bytes).
 PDF statistics:
- 470 PDF objects out of 1000 (max. 8388607)
+ 511 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

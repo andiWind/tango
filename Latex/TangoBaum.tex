@@ -206,43 +206,73 @@ Nun werden die Anforderungen an einen Hilfsbaum $H$ aufgezählt:
 	\item Sei $n$ die Anzahl der Knoten von $H$. Für die Höhe $h$ von $H$ gilt $h = O\left(\log n\right)$.
 	\item $H$ aktualisiert seine Zeiger auf andere Hilfsbäume.
 	\item $H$ aktualisiert die Variablen  \textit{minDepth} und \textit{maxDepth}.
+	\item $H$ bietet sie gewöhnliche \textit{search}(Schlüssel $k$ ) Operation an.
 	\item $H$ bietet eine Operation \textit{vereinigen(HB $H_1$, Schlüssel $k$, HB  $H_2$)} an. HB ist eine Abkürzung für Hilfsbaum. Sei $K_1$ die Schlüsselmenge von $H_1$ und $K_2$ die von $H_2$. Die Operation kann verwenden, dass für $k_1 \in K_1$ und $k_2 \in K_2$, $k_1 < k < k_2$ gilt. Die Operation gibt die Wurzel eines Hilfsbaum  mit Schlüsselmenge $K_1 \cup K_2 \cup \{k\} $ zurück. Für die Laufzeit der Operation muss $O\left(\log \left(\vert K_1 \vert + \vert K_2 \vert\right)\right)$ gelten.
 	\item $H$ bietet eine Operation \textit{aufteilen}(Schlüssel $k$) an Die Operation kann verwenden, dass in $H$ einen Knoten mit Schlüssel $k$ existiert. Sei $K$ die Schlüsselmenge von $H$. Die Operation gibt einen Knoten $v$ mit Schlüssel $k$ zurück. Das linke Kind von $v$ muss ein Hilfsbaum mit Schlüsselmenge ${K_l=\{i\in K \mid  i <k\}}$ sein. Das rechte Kind von $v$ muss ein Hilfsbaum mit Schlüsselmenge ${K_r=\{i\in K \mid  i > k\}}$ sein. Für die Laufzeit der Operation muss $O\left(\log \vert K \vert \right)$ gelten.
 \end{enumerate} 
 Jetzt werden noch zwei Hilfsoperationen vorgestellt, die für \textit{access} benötigt werden.\\
 
-\paragraph{cut Operation}
+\paragraph{cut Operation} \label{cut}
 
-\noindent \textit{cut(Tiefe $d$)} zerteilt einen Hilfsbaum $A$ in zwei Hilfsbäume $A_1$ und $A_2$. Es dürfen nur Werte für $d$ übergeben werden zu denen es in $A$ einen Knoten mit \textit{depth} $ = d $ gibt. Wobei die Knoten in $A$ bei denen \textit{depth} $\leq d$ gilt in $A_1$ enthalten sind und die mit \textit{depth} $ > d$ in $A_2$. Zunächst werden Knoten $l$,  $l'$, $r$ und $r'$ in $H$ gesucht. $l$ ist der Knoten in $H$ mit dem kleinsten Schlüssel für den \textit{depth} $> d$ gilt. $r$ ist der Knoten in $A$ mit dem größten Schlüssel für den \textit{depth} $> d$ gilt. $l'$ ist der Vorgänger von $l$ und $r'$ der Nachfolger von $r$. $l$ und $r$ müssen in $A$ enthalten sein, $l'$ und $r'$ könnten auch fehlen. $l$ kann wie folgt gefunden werden. Man startet mit dem Zeiger $p$ an der Wurzel von $A$. Zeigt $p$ nicht auf $l$, muss es im linken Teilbaum von $p$ einen Knoten mit \textit{depth} $> d$ geben, und das ist an der \textit{maxDepth} Variable des linken Kindes von $p$ direkt abfragbar. Ist $l$ erreicht , kann $l'$ über eine Suche des Vorgängers von $l'$ zu gefunden werden. Die Suche nach $r$ und $r'$ verläuft simultan. \\
+\noindent \textit{cut(Tiefe $d$)} zerteilt einen Hilfsbaum $A$ in zwei Hilfsbäume $A_1$ und $A_2$. Es dürfen nur Werte für $d$ übergeben werden zu denen es in $A$ einen Knoten mit \textit{depth} $ = d $ gibt. Wobei die Knoten in $A$ bei denen \textit{depth} $\leq d$ gilt in $A_1$ enthalten sind und die mit \textit{depth} $ > d$ in $A_2$. Zunächst werden Knoten $l$,  $l'$, $r$ und $r'$ in $H$ gesucht. $l$ ist der kleinsten Schlüssel eines Knoten $v_l$ mit \textit{depth} $> d$  in $A$ . $r$ ist der größte Schlüssel eines Knoten $v_r$ mit \textit{depth} $> d$  in $A$  . $l'$ ist der Schlüssel des Vorgängers von $v_l$ und $r'$ der Schlüssel des Nachfolgers von $v_r$. $l$ und $r$ müssen in $A$ enthalten sein, $l'$ und $r'$ könnten auch fehlen. $v_l$ kann wie folgt gefunden werden. Man startet mit dem Zeiger $p$ an der Wurzel von $A$. Zeigt $p$ nicht auf $v_l$, muss es im linken Teilbaum von $p$ einen Knoten mit \textit{depth} $> d$ geben, und das ist an der \textit{maxDepth} Variable des linken Kindes von $p$ direkt abfragbar. Ist $v_l$ erreicht , kann $l'$ über eine Suche des Vorgängers von $v_l'$ zu gefunden werden. Die Suche nach $r$ und $r'$ verläuft simultan. \\
 $A$ besteht aus Schlüsseln aus einem preferred path. Somit muss für jeden Schlüssel $k$ eines Knotens mit \textit{depth} $\leq d$ in $A$ entweder $k > r$ oder $k < l$ gelten, denn alle Schlüssel aus $\left[l,r\right]$ liegen in $P$ entweder im linken oder im rechten Teilbaum des Knotens mit Schlüssel $k$. \\
 Es wird nun der Ablauf von \textit{cut} gezeigt. Wobei angenommen wird, dass sowohl $l'$ als auch $r'$ existieren. Die anderen Fälle können einfach abgeleitet werden.
 \begin{enumerate}
-	\item Setze die \textit{isRoot} Variable der Wurzel von $A$ auf \textit{false} 
-	\item Führe \textit{split}$\left(\mathit{key}\left(l'\right)\right)$ auf $A$ aus. Sei $l^*$ die Rückgabe von \textit{split}$\left(\mathit{key}\left(l'\right)\right)$. Sei $B$ der linke Teilbaum von $l^*$ und $C$ der Rechte. 
-	\item Führe \textit{split}$\left(\mathit{key}\left(r'\right)\right)$ auf $C$ aus. Sei $r^*$ die Rückgabe von \textit{split}$\left(\mathit{key}\left(r'\right)\right)$. Sei $D$ der linke Teilbaum von $l^*$ und $E$ der Rechte. 
-	\item Setze $r^*$ als rechtes Kind von $l^*$. 
+	\item Sei $w_a$ die Wurzel von $A$. Setze $w_a$.\textit{isRoot} auf \textit{false} 
+	\item Führe \textit{split}$\left(l'\right)$ auf $A$ aus. Sei $v_l$ die Rückgabe von \textit{split}$\left(l'\right)$. Sei $B$ der linke Teilbaum von $v_l$ und $C$ der Rechte. 
+	\item Führe \textit{split}$\left(r'\right)$ auf $C$ aus. Sei $v_r$ die Rückgabe von \textit{split}$\left(r'\right)$. Sei $D$ der linke Teilbaum von $v_r$ und $E$ der Rechte. 
+	\item Setze $v_r$ als rechtes Kind von $v_l$. 
 	\item Setze die \textit{isRoot} Variable der Wurzel von $D$ auf \textit{true}.
-	\item Führe $F = \textit{concatenate}\left(D, \mathit{ key}\left(r'\right) \mathit{, }E \right)$ aus.
-	\item Führe $G = \textit{concatenate}\left(B, \mathit{ key}\left(l'\right) \mathit{, }E \right)$ aus.
+	\item Führe $F = \textit{concatenate}\left(D, ~ r', ~ E \right)$ aus.
+	\item Führe $G = \textit{concatenate}\left(B, ~ l',~ E \right)$ aus.
 	\item Setze die \textit{isRoot} Variable der Wurzel von $G$ auf \textit{true} 
-	\item Füge $G$ an der Position in $T$ ein die zuvor $A$ belegte.
-	 
+	\item Ist $w_a$ ein linkes bzw. rechtes Kind eines Knoten $v$ ?. Wenn ja setze die Wurzel von $G$ als linkes bzw. rechtes Kind von $v$	 
 \end{enumerate}
-Abbildung \ref{fig:cut} demonstriert den Ablauf nochmals.
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/cut"}
-%	\caption{Ablauf von \textit{cut(Tiefe $d$)}. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti} }
-%	\label{fig:cut}
-%\end{figure}
-
+Abbildung \ref{fig:cut} demonstriert den Ablauf nochmals und Abbildung \ref{fig:cut2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/cut"}
+	\caption{Ablauf von \textit{cut($d$)}. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
+	\label{fig:cut}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/cut2"}
+	\caption{Ablauf von \textit{cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
+	\label{fig:cut2}
+\end{figure}
+Sei $n$ die Anzahl der Knoten von $A$. Jeder der neun Schritte kann in $O\left(\log \left(n\right)\right)$ Zeit ausgeführt werden. Somit gilt auch für die Gesamtlaufzeit $O\left(\log \left(n\right)\right)$.
 
 
 \paragraph{join Operation}
+\noindent \textit{join(HB $H_1$, HB $H_2$)} fügt die Hilfsbäume $H_1$ und $H_2$ zu einem Hilfsbaum $H$ zusammen. Auch $H$ muss einen preferred path repräsentieren. An die Parameter werden deshalb Anforderungen gestellt. Sei $v_1$ die Wurzel von $H_1$ und $v_2$ die von $H_2$. Es muss $v_1$.\textit{maxDepth} $+ 1$ =  $v_2$.\textit{minDepth} gelten. Auch hier werden Schlüssel $l$, $l'$, $r$ und $r'$ verwendet. Sei $l$ der kleinste Schlüssel in $H_2$ und $r$ der größte Schlüssel in $H_2$. 
+FÜr jeden Schlüssel $k$ in $H_1$ muss entweder $k < l$ oder $k > r$ gelten, vergleiche \ref{cut}. $r'$ ist der größte Schlüssel in $H_1$ mit $l' < l$. $l'$ ist der kleinste Schlüssel in $H_1$ mit $r' > r$. Wird in $H_1$ ein Schlüssel aus $H_2$ gesucht so muss $l'$ bzw. $r'$ zurückgegeben werden. Der andere Schlüssel kann dann mit einer Suche nach dem Nachfolger bzw. Vorgänger gefunden werden. Der Ablauf von \textit{join} ist dem von \textit{cut} recht ähnlich. Wieder wird angenommen, dass $l'$ und $r'$ existieren.
+\begin{enumerate}
+	\item Sei $w_1$ die Wurzel von $H_1$ und d $w_2$ die von $H_2$. Setze $w_1$.\textit{isRoot} und  $w_2$.\textit{isRoot} auf \textit{false} 
+	\item Führe \textit{split}$\left(l'\right)$ auf $H_1$ aus. Sei $v_l$ die Rückgabe von \textit{split}$\left(l'\right)$. Sei $B$ der linke Teilbaum von $v_l$ und $C$ der Rechte. 
+	\item Führe \textit{split}$\left(r'\right)$ auf $C$ aus. Sei $v_r$ die Rückgabe von \textit{split}$\left(r'\right)$. Sei $E$ der rechte Teilbaum von $v_r$. Der linke Teilbaum von $v_r$ muss der leere Baum sein. 
+	\item Setze $v_r$ als rechtes Kind von $v_l$. Setze die Wurzel von $H_2$ als linkes Kind von $v_r$.
+	\item Führe $F = \textit{concatenate}\left(H_2, ~ r', ~ C \right)$ aus.
+	\item Führe $H = \textit{concatenate}\left(B, ~ l',~ F \right)$ aus.
+	\item Setze die \textit{isRoot} Variable der Wurzel von $H$ auf \textit{true} 
+	\item Ist $w_1$ ein linkes bzw. rechtes Kind eines Knoten $v$ ?. Wenn ja setze die Wurzel von $H$ als linkes bzw. rechtes Kind von $v$	 
+\end{enumerate}
 
+Abbildung \ref{fig:join} demonstriert den Ablauf nochmals und Abbildung \ref{fig:join2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/join"}
+	\caption{Ablauf von \textit{join($H_1$, $H_2$)}. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
+	\label{fig:join}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/join2"}
+	\caption{Ablauf von  \textit{join($H_1$, $H_2$)} bei fehlendem $r'$. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
+	\label{fig:join2}
+\end{figure}
 
-
-
+Sei $n$ die Anzahl der Knoten von $H$. Jeder der neun Schritte kann in $O\left(\log \left(n\right)\right)$ Zeit ausgeführt werden. Somit gilt auch für die Gesamtlaufzeit $O\left(\log \left(n\right)\right)$.
 \paragraph{access Operation}
 
 
