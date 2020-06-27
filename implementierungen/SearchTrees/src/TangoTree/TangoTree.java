@@ -79,13 +79,13 @@ public class TangoTree implements I_GUITree{
    }
     
  
-    private TangoNode buildStartTango(PerfectTreeNode helpNode) {
+    private TangoNode buildStartTango(PerfectTreeNode helpNode) throws BuildAuxTreeFaildException {
         if (helpNode == null)
             return null;
         TangoAuxTree auxiTree = null;
         try {
             auxiTree = auxTreeClass.newInstance();
-        } catch (Exception ex) { }
+        } catch (Exception ex) { throw new BuildAuxTreeFaildException("Von " + auxTreeClass.getName() + " konnte keine Instanz gebildet werden"); }
         
       
         auxiTree.insert(helpNode.key);

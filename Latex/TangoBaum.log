@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  27 JUN 2020 13:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  27 JUN 2020 15:15
 entering extended mode
 **./TangoBaum.tex
 (TangoBaum.tex
@@ -479,18 +479,18 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14] (TangoBaum.bbl) [15] [16 <./Medien/Tango/cut.png>] [17 <./Medien/Tango/cut
-2.png>] [18 <./Medien/Tango/join.png> <./Medien/Tango/join2.png>]
+[14] [15] (TangoBaum.bbl) [16] [17 <./Medien/Tango/cut.png>] [18 <./Medien/Tang
+o/cut2.png>] [19 <./Medien/Tango/join.png> <./Medien/Tango/join2.png>]
 (TangoBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6449 strings out of 480797
- 95564 string characters out of 2905362
+ 6451 strings out of 480797
+ 95580 string characters out of 2905362
  366804 words of memory out of 3000000
- 22339 multiletter control sequences out of 15000+200000
+ 22341 multiletter control sequences out of 15000+200000
  554453 words of font info for 79 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,43p,2770b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -520,9 +520,9 @@ s/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
 8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C
 :/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TangoBaum.pdf (18 pages, 623762 bytes).
+Output written on TangoBaum.pdf (19 pages, 627550 bytes).
 PDF statistics:
- 511 PDF objects out of 1000 (max. 8388607)
+ 516 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

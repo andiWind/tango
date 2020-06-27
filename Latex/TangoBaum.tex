@@ -214,7 +214,7 @@ Jetzt werden noch zwei Hilfsoperationen vorgestellt, die für \textit{access} be
 
 \paragraph{cut Operation} \label{cut}
 
-\noindent \textit{cut(Tiefe $d$)} zerteilt einen Hilfsbaum $A$ in zwei Hilfsbäume $A_1$ und $A_2$. Es dürfen nur Werte für $d$ übergeben werden zu denen es in $A$ einen Knoten mit \textit{depth} $ = d $ gibt. Wobei die Knoten in $A$ bei denen \textit{depth} $\leq d$ gilt in $A_1$ enthalten sind und die mit \textit{depth} $ > d$ in $A_2$. Zunächst werden Knoten $l$,  $l'$, $r$ und $r'$ in $H$ gesucht. $l$ ist der kleinsten Schlüssel eines Knoten $v_l$ mit \textit{depth} $> d$  in $A$ . $r$ ist der größte Schlüssel eines Knoten $v_r$ mit \textit{depth} $> d$  in $A$  . $l'$ ist der Schlüssel des Vorgängers von $v_l$ und $r'$ der Schlüssel des Nachfolgers von $v_r$. $l$ und $r$ müssen in $A$ enthalten sein, $l'$ und $r'$ könnten auch fehlen. $v_l$ kann wie folgt gefunden werden. Man startet mit dem Zeiger $p$ an der Wurzel von $A$. Zeigt $p$ nicht auf $v_l$, muss es im linken Teilbaum von $p$ einen Knoten mit \textit{depth} $> d$ geben, und das ist an der \textit{maxDepth} Variable des linken Kindes von $p$ direkt abfragbar. Ist $v_l$ erreicht , kann $l'$ über eine Suche des Vorgängers von $v_l'$ zu gefunden werden. Die Suche nach $r$ und $r'$ verläuft simultan. \\
+\noindent \textit{cut(Tiefe $d$)} zerteilt einen Hilfsbaum $A$ in zwei Hilfsbäume $A_1$ und $A_2$. Es dürfen nur Werte für $d$ übergeben werden zu denen es in $A$ einen Knoten mit \textit{depth} $ = d $ gibt. Wobei die Knoten in $A$ bei denen \textit{depth} $\leq d$ gilt in $A_1$ enthalten sind und die mit \textit{depth} $ > d$ in $A_2$. Die Rückgabe ist die Wurzel eines Hilfsbaumes $H$ mit den Schlüsseln der Knoten mit \textit{depth} $\geq d$ in $A$. An $A$ ist ein Hilfsbaum mit den restlichen Schlüsseln aus $A$ angefügt. Zunächst werden Knoten $l$,  $l'$, $r$ und $r'$ in $H$ gesucht. $l$ ist der kleinsten Schlüssel eines Knoten $v_l$ mit \textit{depth} $> d$  in $A$ . $r$ ist der größte Schlüssel eines Knoten $v_r$ mit \textit{depth} $> d$  in $A$  . $l'$ ist der Schlüssel des Vorgängers von $v_l$ und $r'$ der Schlüssel des Nachfolgers von $v_r$. $l$ und $r$ müssen in $A$ enthalten sein, $l'$ und $r'$ könnten auch fehlen. $v_l$ kann wie folgt gefunden werden. Man startet mit dem Zeiger $p$ an der Wurzel von $A$. Zeigt $p$ nicht auf $v_l$, muss es im linken Teilbaum von $p$ einen Knoten mit \textit{depth} $> d$ geben, und das ist an der \textit{maxDepth} Variable des linken Kindes von $p$ direkt abfragbar. Ist $v_l$ erreicht , kann $l'$ über eine Suche des Vorgängers von $v_l'$ zu gefunden werden. Die Suche nach $r$ und $r'$ verläuft simultan. \\
 $A$ besteht aus Schlüsseln aus einem preferred path. Somit muss für jeden Schlüssel $k$ eines Knotens mit \textit{depth} $\leq d$ in $A$ entweder $k > r$ oder $k < l$ gelten, denn alle Schlüssel aus $\left[l,r\right]$ liegen in $P$ entweder im linken oder im rechten Teilbaum des Knotens mit Schlüssel $k$. \\
 Es wird nun der Ablauf von \textit{cut} gezeigt. Wobei angenommen wird, dass sowohl $l'$ als auch $r'$ existieren. Die anderen Fälle können einfach abgeleitet werden.
 \begin{enumerate}
@@ -226,7 +226,7 @@ Es wird nun der Ablauf von \textit{cut} gezeigt. Wobei angenommen wird, dass sow
 	\item Führe $F = \textit{concatenate}\left(D, ~ r', ~ E \right)$ aus.
 	\item Führe $G = \textit{concatenate}\left(B, ~ l',~ E \right)$ aus.
 	\item Setze die \textit{isRoot} Variable der Wurzel von $G$ auf \textit{true} 
-	\item Ist $w_a$ ein linkes bzw. rechtes Kind eines Knoten $v$ ?. Wenn ja setze die Wurzel von $G$ als linkes bzw. rechtes Kind von $v$	 
+	\item Setze die Wurzel von $G$ als Wurzel des Tango Baumes.	 
 \end{enumerate}
 Abbildung \ref{fig:cut} demonstriert den Ablauf nochmals und Abbildung \ref{fig:cut2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
 \begin{figure}[h]
@@ -255,7 +255,7 @@ FÜr jeden Schlüssel $k$ in $H_1$ muss entweder $k < l$ oder $k > r$ gelten, ve
 	\item Führe $F = \textit{concatenate}\left(H_2, ~ r', ~ C \right)$ aus.
 	\item Führe $H = \textit{concatenate}\left(B, ~ l',~ F \right)$ aus.
 	\item Setze die \textit{isRoot} Variable der Wurzel von $H$ auf \textit{true} 
-	\item Ist $w_1$ ein linkes bzw. rechtes Kind eines Knoten $v$ ?. Wenn ja setze die Wurzel von $H$ als linkes bzw. rechtes Kind von $v$	 
+	\item Setze die Wurzel von $H$ als Wurzel des Tango Baumes. 
 \end{enumerate}
 
 Abbildung \ref{fig:join} demonstriert den Ablauf nochmals und Abbildung \ref{fig:join2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
@@ -274,8 +274,19 @@ Abbildung \ref{fig:join} demonstriert den Ablauf nochmals und Abbildung \ref{fig
 
 Sei $n$ die Anzahl der Knoten von $H$. Jeder der neun Schritte kann in $O\left(\log \left(n\right)\right)$ Zeit ausgeführt werden. Somit gilt auch für die Gesamtlaufzeit $O\left(\log \left(n\right)\right)$.
 \paragraph{access Operation}
-
-
+Nun wird die \textit{access} Operation des Tango Baumes betrachtet. Sei $k$ der Parameter der Operation und $p$ der Zeiger der Operation in den BST. Solange sich $p$ im Hilfsbaum mit der Wurzel des Tango Baumes $T$ befindet, verhält sich die Operation wie die Standardvariante von \textit{search}. Erreicht $p$ die Wurzel eines anderen Hilfsbaumes $H_2$, muss sich ein preferred child in $P$ verändert haben. $T$ wird mit \textit{cut} und \textit{join} so angepasst, das er wieder die preferred paths in $P$ repräsentiert. Anschließend startet $p$ wieder an der Wurzel von $T$. Erreicht $p$ den Knoten mit $\mathit{key}\left(k\right)$ so wird das preferred child des Knoten mit Schlüssel $k$ in $P$ auf \textit{left} gesetzt. So dass nochmals eine Anpassung notwendig sein kann. Die Operation wird noch etwas detaillierter beschrieben. Zur Vereinfachung bezeichnet $T$ immer den aktuellen Zustand des Tango Baums und $H_1$ immer den Hilfsbaum mit der Wurzel von $T$:
+\begin{enumerate}
+	\item Setze $p$ auf die Wurzel von $H_1$
+	\item Suche nach $k$. Wird $k$ innerhalb von $H_1$ erreicht weiter bei \ref{gefunden}. Ansonsten wird die Wurzel eines Hilfsbaumes $H_2$ erreicht.
+	\item Sei $w_2$ die Wurzel von $H_2$. Führe $H_3 =$ \textit{cut}$\left(w_2.\textit{minDepth} - 1\right)$ aus.
+	\item Führe \textit{join}$\left(H_3, ~H_2\right)$ aus. Weiter bei 1.
+	\item \label{gefunden} Sei $v$ der Knoten mit \textit{key}$\left(v\right) = k$. Führe $H_3=$\textit{cut}$ \left(v.\textit{depth}\right)$ aus. 
+	\item Suche im linken Teilbaum von $v$ nach dem Vorgänger von $v$, bis die Wurzel eines Hilfsbaumes erreicht wird, oder ein rechtes Kind fehlt. Wird keine Wurzel erreicht weiter mit \ref{ende}.
+	\item Sei $H_4$ der Hilfsbaum, auf dessen Wurzel $p$ zeigt. Führe \textit{join}$\left(H_3, ~H_4\right)$ aus.
+	\item \label{ende} Gib $p$ zurück.
+\end{enumerate}
+Zu klären ist noch warum im sechsten Punkt der richtige Hilfsbaum gefunden werden muss. Sei $v_p$ der Knoten in $P$ mit Schlüssel $k$. Vor dem durchführen von Punkt sechs ist man immer in der Situation, dass \textit{maxDepth} der Wurzel von $H_3$ der Tiefe von $v_p$ entspricht. Man möchte nun $H_4$ so hinzufügen, wie es einem linken preferred child von $v_p$ entspricht. Sei $v_l$ das linke Kind von $v_p$. Es muss einen Zeiger aus $H_3$ auf den Hilfsbaum geben in dem der Schlüssel \textit{key}$\left(v_l\right)$ enthalten ist geben.
+ 
 
 
 
