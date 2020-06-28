@@ -6,4 +6,4 @@
 \contentsline {paragraph}{cut Operation}{12}%
 \contentsline {paragraph}{join Operation}{14}%
 \contentsline {paragraph}{access Operation}{14}%
-\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse}{15}%
+\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse für access}{16}%

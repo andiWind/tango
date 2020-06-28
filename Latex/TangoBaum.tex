@@ -115,11 +115,11 @@ Sei $v$ der transition point zu $u$ in $T_j$.  Sei  $l \in \mathit{N}$, mit $j <
 \end{figure}
 
 
-\newtheorem{Satz2}{Satz}[section] \label{satzDemaine1}
-\begin{Satz2} 
+\newtheorem{Satz1}{Satz}[section] \label{satzDemaine1}
+\begin{Satz1} 
 Für eine Zugriffssequenz $X = x_1, x_2,.., x_m$ und $n$ die Anzahl der Knoten im zu $X$ erstellten lower bound tree. Dann gilt\\	
 $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 - n$ .
-\end{Satz2}
+\end{Satz1}
 \begin{proof}
 Es wird die Mindestanzahl der Berührungen von transition points gezählt. Durch \ref{lemmaDemaine3} kann die Anzahl der Berührungen für jedes $y \in P$ einzeln bestimmt werden, diese müssen dann lediglich noch aufaddiert werden. Sei $l$, $r$, $v_r$ und $v_l$ wie in Lemma1 zu $y$ definiert, so dass entweder $l$ oder $r$ der transition point zu $y$ sein muss, je nachdem welcher der beiden Knoten die größere Tiefe hat ( \ref{lemmaDemaine1}). Sei $X{^r_l}' = x_{i_1},x_{i_2},..,x_{i_p}$ die Folge die entsteht, wenn aus $X^r_l$ alle $x_k$ entfernt werden, für die gilt $x_k$ ist in der gleichen Region von $y$ wie $x_{k-1}$. Nun wird angenommen, dass die $x_{j_i}$ mit $i$ ist gerade in der rechten Region von $y$ liegen, und die $x_{j_i}$ mit $i$ ist ungerade in der linken Region. Der andere Fall kann wieder direkt abgeleitet werden. Sei $q \in \mathbb{N}$ mit $1 \geq q \geq \lfloor p / 2 \rfloor$. \textit{access}$\left( x_{i_{2q-1}} \right)$ muss $v_l$ berühren und \textit{access}$\left( x_{i_{2q}} \right)$ muss $v_r$ berühren. Sei $k{i_{2q-1}}$ der Schlüssel des transition point von $y$ zu Beginn von \textit{access}$\left( x_{i_{2q-1}} \right)$ und  $k{i_{2q}}$ der Schlüssel des transition point von $y$ zu Beginn von \textit{access}$\left( x_{i_{2q}} \right)$. Gilt $k{i_{2q-1}} = k{i_{2q}}$ so muss der transition point von $y$ in \textit{access}$\left( x_{i_{2q}} \right)$ berührt worden sein.  Gilt $k{i_{2q-1}} \ne k{i_{2q}}$ so muss der transition point von $y$, nach \ref{demaineLemma2}, in \textit{access}$\left( x_{i_{2q-1}} \right)$ berührt worden sein. Aus der Konstruktion von $X{^r_l}'$ folgen daraus mindestens $\lfloor p/2 \rfloor \geq p/2 - 1$ Berührungen des transition point von $y$. Aufaddieren über alle Knoten ergibt  eine Anzahl von Berührungen von transition points von zumindest $\mathit{IB}\left(X\right) /2 - \vert U \vert \geq \mathit{IB}\left(X\right) /2 - n$.
 	
@@ -285,15 +285,42 @@ Nun wird die \textit{access} Operation des Tango Baumes betrachtet. Sei $k$ der 
 	\item Sei $H_4$ der Hilfsbaum, auf dessen Wurzel $p$ zeigt. Führe \textit{join}$\left(H_3, ~H_4\right)$ aus.
 	\item \label{ende} Gib $p$ zurück.
 \end{enumerate}
- Sei $u_p$ der Knoten in $P$ mit Schlüssel $k$, $u_l$ das linke Kind von $u_p$ und $v_l$ der Knoten mit Schlüssel $\mathit{key}\left(u_l\right)$ in $T$.  Sei $K_3$ die Schlüsselmenge von $H_3$ und $K_4$ die von $H_4$. Zu klären ist noch warum im sechsten Punkt der Hilfsbaum $H_4$ den Schlüssel $\mathit{key}\left(u_l\right)$ enthalten muss.\\ Sei $l$ der kleinste Schlüssel in $K_4$ und $r$ der Größte. Es muss für jeden Schlüssel $k_3$ aus $K_3$ wieder entweder $k_3 < l$  oder $k_3 > r$ gelten. Somit ist $\mathit{key}\left(u_p\right)$ größer als jeder Schlüssel in $K_4$. Gilt $k_3 > r$ und $k_3 \ne \mathit{key}\left(u_p\right) $, dann muss auch $k_3 >  \mathit{key}\left(v_p\right) $ gelten. Denn in $P$ muss dann einen Knoten mit Schlüssel $k_3$ geben, in dessen linken Teilbaum sowohl der Schlüssel $v_p$ als auch $v_l$ enthalten ist. Somit muss $v$ ein Vorfahre von $v_p$ sein, denn bei jedem Vorfahren von $v$ in $H_3$, müssen $v$ und $v_p$ im gleichen Teilbaum liegen. Da in $H3$ alle Schlüssel im linken Teilbaum von $v$ kleiner als  $\mathit{key}\left(v_l\right)$ sind, muss der Hilfsbaum, der $v_l$ enthält, erreicht werden in dem immer das rechte Kind gewählt wird.
+ Sei $u$ der Knoten in $P$ mit Schlüssel $k$, $u_l$ das linke Kind von $u$ und $v_l$ der Knoten mit Schlüssel $\mathit{key}\left(u_l\right)$ in $T$.  Sei $K_3$ die Schlüsselmenge von $H_3$ und $K_4$ die von $H_4$. Zu klären ist noch warum im sechsten Punkt der Hilfsbaum $H_4$ den Schlüssel $\mathit{key}\left(u_l\right)$ enthalten muss. Sei $H_4$ der Hilfsbaum der $v_l$ enthält und $P_{v_l} = v_0,v_1,...v_m$, mit $v_0 = v$ und $v_m = v_l$ der Pfad von $v$ zu $v_l$\\ 
+ Da $u_l$ ein Kind von $u$ ist muss es einen Zeiger in $H_3$ auf die Wurzel von $H_4$ geben. Somit muss es einen Pfad von der Wurzel $w_3$ von $H_3$ zu $v_l$ geben. Sei $v_v$ ein Vorfahre von $v$ in $H_3$. Ein Knoten mit $\mathit{key}\left(v_v\right)$ muss in $P$ Vorfahre von $u$ und $u_l$ sein.  $u$ und $u_l$ liegen im selben Teilbaum dieses Knotens. Somit müssen auch $v$ und $v_l$ im selben Teilbaum von $v_v$ liegen. Somit muss $v$ ein Vorfahre von $v_l$ sein.\\ 
+ \noindent Sei $l$ der kleinste Schlüssel in $K_4$ und $r$ der Größte. Es muss für jeden Schlüssel $k_3 \in K_3$ wieder entweder $k_3 < l$  oder $k_3 > r$ gelten. Somit ist $\mathit{key}\left(v\right)$ größer als jeder Schlüssel in $K_4$. Sei nun $k_3 > r$. In $P$ muss es dazu einen Vorfahren $u_v$ von $u$ geben. $u_l$ muss im linken Teilbaum von $u_3$ liegen, also liegt auch $u$ im linken Teilbaum von $u_v$ und es gilt $k_3 > k$. $k$ ist also der kleinste Schlüssel der größer als $\mathit{key}\left(v_l\right)$ in $H_3$. Somit muss $v_1$ das linke Kind von $v$ sein. Und für $i \in  \{2,3,..,m-1\}$ gilt liegt $v_i$ in $H_3$, dann ist $v_i$ das rechte Kind von $v_{i-1}$.
  
  
- 
- 
+\subsection{Laufzeitanalyse für access}
+Zunächst wird in zwei Lemmas die Einzeloperation betrachtet, bevor es dann im Satz um Zugriffssequenzen geht. Alle drei Abschnitte basieren auf \cite{demainDinamicOpti}.
+
+\newtheorem{Lemma4}{Lemma}[section] 
+\begin{Lemma4} \label{demaineLemma4}
+Sei $n$ die Anzahl der Knoten eines Tango-Baum $T{i-1}$. Sei $k$ die Anzahl der Knoten bei denen sich während der Ausführung von \textit{access}$\left(x_i\right)$ eine Änderung des preferred child ergeben hat. Für die Laufzeit \textit{access}$\left(x_i\right)$ gilt dann $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.
+\end{Lemma4}
+\begin{proof}
+Bezeichne $T_i$ den Tango-Baum nach der Ausführung von \textit{access}$\left(x_i\right)$. Zuerst werden die Kosten für das Suchen betrachtet. Der Zeiger $p$ der Operationen startet maximal $k + 1$ mal an der Wurzel des Tango-Baum. Für die Länge eines Pfades innerhalb eines Hilfsbaumes gilt $O\left(\log \left( \log  \left(n \right)\right)\right)$, denn für die Anzahl der Knoten eines preferred path gilt $O\left( \log \left(n\right)  \right)$ und ein Hilfsbaum muss ein balancierter BST sein. Die Gesamtkosten ergeben sich damit zu $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$. Da auch an einem Pfad mit Länge $\leq 2$ nicht Kosten von $0$ entstehen, wird die $1$ im zweiten Faktor benötigt.   \\
+Nun werden die Kosten zum erzeugen von $T_i$ aus $T_{i-1}$ betrachtet. Pro Veränderung eines preferred childs kommt es zu Kosten $O\left( \log\left(\log \left(n\right)\right)\right)$ aufgrund einer \textit{cut} und einer \textit{join} Operation. Für das Suchen des Hilfsbaumes im bei der letzten Transformation zu $T_i$ (Punkt 6 in der Beschreibung) entstehen auch wieder Kosten von $O\left(\log \left( \log  \left(n \right)\right)\right)$. Somit gilt auch für die Gesamtkosten $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.
+
+	
+\end{proof}
+\noindent Sei $\mathit{IB}_i\left(X\right)$ die Differenz von $\mathit{IB}\left(x_1, x_2,..,x_i\right)$ und  $\mathit{IB}\left(x_1, x_2,..,x_{i-1}\right)$. 
+\newtheorem{Lemma5}{Lemma}[section] 
+\begin{Lemma5} \label{demaineLemma5}
+	Während der Ausführung von \textit{access}$\left(x_i\right)$ kommt es an genau $\mathit{IB}_i\left(X\right)$ Knoten zu einer Änderung des preferred child.
+\end{Lemma5}
+\begin{proof}
+Sei $p \in P$. Das preferred child von $p$ wechselt während  \textit{access}$\left(x_i\right)$ von links nach rechts  wenn $x_i$ in der rechten Region von $p$ liegt und der letzte Zugriff innerhalb des Teilbaumes mit Wurzel $p$ in der linken Region von $p$ lag.  Das preferred child von $p$ wechselt während  \textit{access}$\left(x_i\right)$ von rechts nach links  wenn $x_i$ in der linken Region von $p$ liegt und der letzte Zugriff innerhalb des Teilbaumes mit Wurzel $p$ in der rechten Region von $p$ lag. Das entspricht jeweils genau einem Interleave durch $p$. Zu beachten ist noch, dass der erste Zugriff auf den Teilbaum mit Wurzel $p$ weder zu einem Interleave noch zu einem Wechsel eines preferred child von links bzw. rechts zu rechts bzw. links führt. 	
+\end{proof}
+\newtheorem{Theorem2}{Satz}[section] 
+\begin{Theorem2} \label{demaineSatz2}
+	Für die Laufzeit eines Tango-Baumes mit $n$ Knoten für eine Zugriffsfolge $X = x_1, x_2,.., x_m$ gilt $O\left(\left(\mathit{OPT}\left(X\right) + n\right)  + \left(  1 + \log\left(\log \left(n\right)\right)\right)   \right)$
+\end{Theorem2}
+\begin{proof}
+Nach Lemma \ref{demaineLemma5} gibt es nicht mehr als  $\mathit{IB}\left(X\right)$ Wechsel der preferred childs von links nach rechts oder umgekehrt. Zudem gibt es maximal $n$ zusätzliche Änderungen bei preferred childs. (Erstzugriff in den Teilbaum). Die Gesamtanzahl der Änderungen von preferred childs ist somit höchstens $\mathit{IB}\left(X\right) + n$. Mit Lemma \ref{demaineLemma4} ergeben sich Gesamtkosten von\\ $O\left(\left(\mathit{IB}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 -n $ aus Satz \ref{satzDemaine1} ergibt sich 
+$O\left(\left(\mathit{OPT}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq m$ ergibt sich dann die Behauptung.
+\end{proof}
 
 
-
-\subsection{Laufzeitanalyse}
 \newpage
 \bibliography{literaturverzeichnis}
 \bibliographystyle{unsrt}
