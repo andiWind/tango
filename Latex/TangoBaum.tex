@@ -319,7 +319,9 @@ Sei $p \in P$. Das preferred child von $p$ wechselt während  \textit{access}$\l
 Nach Lemma \ref{demaineLemma5} gibt es nicht mehr als  $\mathit{IB}\left(X\right)$ Wechsel der preferred childs von links nach rechts oder umgekehrt. Zudem gibt es maximal $n$ zusätzliche Änderungen bei preferred childs. (Erstzugriff in den Teilbaum). Die Gesamtanzahl der Änderungen von preferred childs ist somit höchstens $\mathit{IB}\left(X\right) + n$. Mit Lemma \ref{demaineLemma4} ergeben sich Gesamtkosten von\\ $O\left(\left(\mathit{IB}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 -n $ aus Satz \ref{satzDemaine1} ergibt sich 
 $O\left(\left(\mathit{OPT}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq m$ ergibt sich dann die Behauptung.
 \end{proof}
-
+\noindent Mit $m \in \Omega\left(n\right)$ gilt dann auch 
+$O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\right)\right)	 \right)$.
+Außerdem kann die angegebene obere Schranke mit Hilfe der Interleave Bound nicht weiter verbessert werden. Denn wird \textit{access} auf einen Schlüssel $k$ ausgeführt der im preferred path mit der Wurzel enthalten ist, so entstehen im Tango-Baum Kosten $O\left(\log\left(\log\left(n\right)\right)\right)$, es kann aber maximal zu einem Interleave kommen, nämlich durch den Knoten mit Schlüssel $k$. 
 
 \newpage
 \bibliography{literaturverzeichnis}
