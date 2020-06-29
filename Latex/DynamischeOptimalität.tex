@@ -290,19 +290,20 @@ Bei diesem einfachen Beispiel ist sofort klar warum es funktioniert. Aus einem z
 
 
  
-\subsection{Obere Schranken für Zugriffssequenzen }
-In Abschnitt \ref{abschnittBitReversal} wurde gezeigt, dass für die Ausführung einer beliebigen Zugriffsfolge $X$, mit Länge $m$, für einen BST $T$ mit $n$ Knoten im worst case Kosten von  $\Omega\left(m \log n\right)$ angenommen werden müssen. Im folgendem werden einige obere Laufzeitschranken für Zugriffssequenzen vorgestellt. Es ist bekannt, dass es obere Schranken sind, da mit dem Splaybaum ein BST bekannt ist der jede Schranke einhält. Der Splaybaum wird später noch vorgestellt. Es wird wieder ohne Verlust der Allgemeinheit eine Schlüsselmenge $K = \{1,2,..,n\}$ angenommen. Wenn nicht anders angegeben wird  $X = x_1,x_2,..,x_m$ als Zugriffssequenz verwendet. Es wird $m \geq n$ und  $m \geq n \log_2 n$ angenommen.
+\subsection{Eigenschaften eines dynamisch optimalen BST }
+In Abschnitt \ref{abschnittBitReversal} wurde gezeigt, dass für die Ausführung einer beliebigen Zugriffsfolge $X$, mit Länge $m$, für einen BST $T$ mit $n$ Knoten im worst case Kosten von  $\Omega\left(m \log n\right)$ angenommen werden müssen. Im folgendem werden einige obere Laufzeitschranken für Zugriffssequenzen vorgestellt. Es ist bekannt, dass es obere Schranken sind, da mit dem Splaybaum ein BST bekannt ist, der jede der Schranken einhält. Der Splaybaum wird später noch vorgestellt. Es wird wieder ohne Verlust der Allgemeinheit eine Schlüsselmenge $K = \{1,2,..,n\}$ angenommen. Wenn nicht anders angegeben wird  $X = x_1,x_2,..,x_m$ als Zugriffssequenz verwendet. Es wird $m \geq n$ und  $m \geq n \log_2 n$ angenommen.
 
 
 \paragraph{Balanced Property}
-Ein BST erfüllt das balanced property, wenn er $X$ in amortisiert $O(m \log n)$ Zeit ausführt. 
+Ein BST erfüllt das balanced property, wenn er $X$ in amortisiert $O\left((m \log \left(n \right)\right)$ Zeit ausführt. 
+
 \paragraph{Static Finger Property}
 Die Idee hinter dieser Eigenschaft ist, dass es einfacher ist, Zugriffssequenzen schnell auszuführen, wenn ihre Schlüssel betragsmäßig nahe beieinander liegen. 
 Sei $k_f \in K$. Ein BST erfüllt static finger wenn für die amortisierte Laufzeit von $X$ 
 \begin{align*}
 O\left( \sum_{i = 1}^{m} \log \vert k_f - x_i  \vert	+ 1	\right)
 \end{align*}
-gilt.  
+gilt. Ein BST mit der static finger Eigenschaft erfüllt auch die balanced Eigenschaft, denn $ \vert k_f - x_i  \vert < n$.
 
 
 \paragraph{Statisch optimal}
@@ -319,7 +320,7 @@ Ein BST erfüllt das working set propery wenn seine amortisierte Laufzeit für $
 \begin{align*}
 O\left(\sum_{i = 1}^{m} \log w_i \right)
 \end{align*} 
-
+gilt.
 
 
 \paragraph{Unified Property}
@@ -339,8 +340,16 @@ Ein BST erfüllt das Dynamic Finger Property, wenn für die amortisierte Laufzei
 \begin{align*}
 O\left( \sum_{i = 2}^{m} \log \vert x_{i-1} - x_i  \vert	+ 1	\right)
 \end{align*} 
-gilt.\\
+gilt. 
+ 
+\noindent Abbildung \ref{fig:upperBounds} zeigt Implikationen zwischen den Eigenschaften und basiert auf einer Abbildung aus \ref{fig:upperBounds}.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.6\textwidth]{"Medien/DynOpt/upperBounds"}
+	\caption{Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite{upperBounds} }
+	\label{fig:upperBounds}
+\end{figure}
 
 \newpage
 \bibliography{literaturverzeichnis}

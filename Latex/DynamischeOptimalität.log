@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  25 JUN 2020 09:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  29 JUN 2020 20:39
 entering extended mode
 **./DynamischeOptimalität.tex
 (DynamischeOptimalität.tex
@@ -438,21 +438,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 188--190
  []
 
 \c@Korollar1=\count279
-[11] [12] [13] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 341--343
+[11] [12] [13] [14] [15] [16]
+<Medien/DynOpt/upperBounds.png, id=83, 214.401pt x 293.29575pt>
+File: Medien/DynOpt/upperBounds.png Graphic file (type png)
+<use Medien/DynOpt/upperBounds.png>
+Package pdftex.def Info: Medien/DynOpt/upperBounds.png  used on input line 349.
 
- []
-
-[16] (DynamischeOptimalität.bbl) [17] (DynamischeOptimalität.aux)
+(pdftex.def)             Requested size: 234.00238pt x 320.12459pt.
+ [17 <./Medien/DynOpt/upperBounds.png>]
+(DynamischeOptimalität.bbl) [18] (DynamischeOptimalität.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6358 strings out of 480797
- 93718 string characters out of 2905362
+ 6368 strings out of 480797
+ 93983 string characters out of 2905362
  370817 words of memory out of 3000000
- 22258 multiletter control sequences out of 15000+200000
+ 22267 multiletter control sequences out of 15000+200000
  553400 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,43p,1969b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -482,9 +485,9 @@ Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on DynamischeOptimalität.pdf (17 pages, 794647 bytes).
+Output written on DynamischeOptimalität.pdf (18 pages, 805791 bytes).
 PDF statistics:
- 473 PDF objects out of 1000 (max. 8388607)
+ 487 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

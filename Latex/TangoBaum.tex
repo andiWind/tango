@@ -321,7 +321,9 @@ $O\left(\left(\mathit{OPT}\left(X\right) + n +m \right) \left( 1 + \log \left(\l
 \end{proof}
 \noindent Mit $m \in \Omega\left(n\right)$ gilt dann auch 
 $O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\right)\right)	 \right)$.
-Außerdem kann die angegebene obere Schranke mit Hilfe der Interleave Bound nicht weiter verbessert werden. Denn wird \textit{access} auf einen Schlüssel $k$ ausgeführt der im preferred path mit der Wurzel enthalten ist, so entstehen im Tango-Baum Kosten $O\left(\log\left(\log\left(n\right)\right)\right)$, es kann aber maximal zu einem Interleave kommen, nämlich durch den Knoten mit Schlüssel $k$. 
+Außerdem kann die angegebene obere Schranke nicht verbessert werden. Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred childs, muss der Hilfsbaum an der Wurzel des Tango-Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchlaufen werden. Somit hat der Tango-Baum die balanced Eigenschaft aus Abschnitt \ref{upperBounds} nicht. Somit kann er aufgrund der Implikationen auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Im nächsten Abschnitt wird ein $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, der die balanced Eigenschfaft hat.      
+
+
 
 \newpage
 \bibliography{literaturverzeichnis}

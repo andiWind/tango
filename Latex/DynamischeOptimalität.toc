@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {1.4}Amortisierte Laufzeitanalyse}{13}%
 \contentsline {paragraph}{Potentialfunktionmethode}{14}%
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{14}%
-\contentsline {subsection}{\numberline {1.5}Obere Schranken für Zugriffssequenzen }{15}%
+\contentsline {subsection}{\numberline {1.5}Eigenschaften eines dynamisch optimalen BST }{15}%
 \contentsline {paragraph}{Balanced Property}{15}%
 \contentsline {paragraph}{Static Finger Property}{15}%
 \contentsline {paragraph}{Statisch optimal}{16}%
