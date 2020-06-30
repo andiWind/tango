@@ -1,0 +1,3 @@
+\babel@toc {german}{}
+\contentsline {section}{\numberline {1}Zipper-Baum}{4}%
+\contentsline {subsection}{\numberline {1.1}Repräsentation eines preferred path}{4}%

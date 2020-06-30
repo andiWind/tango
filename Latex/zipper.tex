@@ -1,0 +1,59 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage{float}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{csquotes}
+\usepackage[font=small,labelfont=bf]{caption}
+
+%\usepackage[pages=some]{background} % Draft Wasserzeichen mit Option pages=all sonst pages=some
+
+
+
+\title{Bachelorarbeit}
+\author{
+
+	Andreas Windorfer\\
+}
+\date{\today}
+
+
+\begin {document}
+
+
+\maketitle
+\newpage
+Zusammenfassung
+\newpage
+\tableofcontents
+
+
+\newpage
+
+
+\section {Zipper-Baum}
+Der Zipper-Baum basiert auf dem Tango-Baum und nutzt auch preferred paths aus einem lower-bound-tree $P$. Aufbau und Pflege der preferred paths in $P$ unterscheiden sich nicht von Tango-Baum, wohl aber ihre Repräsentation im eigentlichen BST $T$. Der Zipper-Baum wurde in \cite{zipper} vorgestellt. Er ist ebenfalls $\log\left(\log\left(n\right)\right)$-competitive,  garantiert aber auch  $O\left(\log \left(n\right)\right)$ bei einer einzelnen \textit{access} Operation. $n$ steht wieder für de Anzahl der Knoten von $T$.
+
+\subsection{Repräsentation eines preferred path}
+Die Repräsentation eines preffered path $p_1,p_2,..,p_p$ wird in einen top path und einem bottom tree unterteilt. Enthält der preferred path nicht mehr als $O\log\left(\log\left(n\right)\right)$ Knoten, wird der preferred path allein durch den top path repräsentiert.  Ansonsten liegt die Anzahl der Knoten des top path in $\left[\log\left(\log\left(n\right)\right), 3 \log\left(\log\left(n\right)\right)  \right] $. Der bottom tree ist ein Hilfsbaum vergleichbar mit denen von Tango-Baum. Der Operationssatz unterscheidet sich jedoch etwas. Für die Höhe $h$ der hier verwendeten Hilfsbäume, muss aber auch $h = O\left(\log p\right)$ gelten, mit $p$ ist die Anzahl der im Hilfsbaum enthaltenen Knoten. Sind $l$ Knoten im top path enthalten so repräsentieren diese die Knoten aus dem Pfad $p_1, p_2,..,p_l$. Der top path wird in zig und zag Sequenzen unterteilt. zig Sequenzen entsprechen den längst möglichen Teilpfaden von Knoten mit linken Kindern. zag Sequenzen entsprechen den längst möglichen Teilpfaden von Knoten mit rechten Kindern. In Abbildung  \ref{fig:preferredPathZigZag} sind zig und zag Sequenzen dargestellt. Ist $v_z$ der letzte Knoten einer zig bzw. zag Sequenz, dann müssen in der zugehörigen preferred Path Repräsentation, die Knoten mit größeren Tiefe als $v_z$ größere bzw. kleinere Schlüssel als $\mathit{key}\left(v_z\right)$ haben. Der bottom tree aus Abbildung \ref{fig:preferredPathZigZag} kann also nur Schlüssel aus $\left(50,60\right)$ enthalten. 
+
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.7\textwidth]{"Medien/Zipper/preferredPathZigZag"}
+	\caption{zig Sequenzen sind grün dargestellt. zag Sequenzen blau }
+	\label{fig:preferredPathZigZag}
+\end{figure}
+\newpage
+\bibliography{literaturverzeichnis}
+\bibliographystyle{unsrt}
+
+\end {document}

@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: zipper.aux
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: unsrt.bst
+Database file #1: literaturverzeichnis.bib
+I was expecting a `,' or a `}'---line 102 of file literaturverzeichnis.bib
+ : 
+ : day = "10",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 2 entries,
+            1791 wiz_defined-function locations,
+            458 strings with 3954 characters,
+and the built_in function-call counts, 548 in all, are:
+= -- 47
+> -- 31
+< -- 1
++ -- 11
+- -- 9
+* -- 28
+:= -- 89
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 2
+chr.to.int$ -- 0
+cite$ -- 2
+duplicate$ -- 32
+empty$ -- 39
+format.name$ -- 9
+if$ -- 126
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 2
+pop$ -- 5
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 27
+stack$ -- 0
+substring$ -- 14
+swap$ -- 17
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 3
+width$ -- 3
+write$ -- 24
+(There was 1 error message)
