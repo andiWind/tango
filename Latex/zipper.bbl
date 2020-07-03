@@ -6,10 +6,4 @@ Prosenjit Bose, Karim Douïeb, Vida Dujmović, and Rolf Fagerberg.
   worst-case access times.
 \newblock {\em Algorithm Theory - SWAT 2010}, page 38–49, 2010.
 
-\bibitem{upperBounds}
-Parinya Chalermsook, Mayank Goswami, L{\'{a}}szl{\'{o}} Kozma, Kurt Mehlhorn,
-  and Thatchaphol Saranurak.
-\newblock The landscape of bounds for binary search trees.
-\newblock {\em CoRR}, abs/1603.04892, 2016.
-
 \end{thebibliography}
