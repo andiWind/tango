@@ -37,21 +37,54 @@ Zusammenfassung
 \newpage
 
 
-\section {Zipper-Baum}
-Der Zipper-Baum basiert auf dem Tango-Baum und nutzt auch preferred paths aus einem lower-bound-tree $P$. Aufbau und Pflege der preferred paths in $P$ unterscheiden sich nicht vom Tango-Baum, wohl aber ihre Repräsentation im eigentlichen BST $T$. Der Zipper-Baum wurde in \cite{zipper} vorgestellt. Er ist ebenfalls $\log\left(\log\left(n\right)\right)$-competitive,  garantiert aber auch  $O\left(\log \left(n\right)\right)$ bei einer einzelnen \textit{access} Operation. $n$ steht wieder für de Anzahl der Knoten von $T$.  Das Verhalten der Operationen \textit{cut} und \textit{concatenate} unterscheidet sich deutlich. 
+\section {Zipper Baum}
+Der Zipper-Baum basiert auf dem Tango-Baum und nutzt auch preferred paths aus einem lower-bound-tree $P$. Aufbau und Pflege der preferred paths in $P$ unterscheiden sich nicht vom Tango-Baum, wohl aber ihre Repräsentation im eigentlichen BST $T$. Der Zipper-Baum wurde in \cite{zipper} vorgestellt. Er ist ebenfalls $\log\left(\log\left(n\right)\right)$-competitive,  garantiert aber auch  $O\left(\log \left(n\right)\right)$ bei einer einzelnen \textit{access} Operation. $n$ steht wieder für de Anzahl der Knoten von $T$. Das Verhalten der Operationen \textit{cut} und \textit{concatenate} unterscheidet sich deutlich. Da die Operationen des Zipper Baumes recht aufwendig sind, werden sie hier wie in \cite{zipper} in zwei Schritten vorgestellt. Zunächst an einem Hybrid Baum, der kein  BST ist und dann am eigentlichen Zipper Baum. Die Knoten im Zipper und im Hybrid Baum sind genau so erweitert, wie die des Tango Baum.
 
+\subsection{Hybrid Baum}
+ Auch beim Hybrid Baum existiert $P$ mit den preferred childs.
+ Sei $v$ ein Knoten in $P$, dann ist in diesem Kapitel $v^*$ der Knoten im Hybrid Baum $T$, mit $\mathit{key}\left(v\right) = \mathit{key}\left(v^*\right)$.
 
+\subsubsection{Repräsentation eines preferred path} 
+Die Repräsentation eines preferred path  $P_p = p_1,p_2,..,p_p$ in $T$ stellt einen Hilfsbaum $H$ dar, der in zwei Teile unterteilt wird, den  \textbf{top path} und dem \textbf{bottom tree}. Der bottom tree ist ein balancierter BST der genau die Schlüssel enthält, die in $P_p$ enthalten sind jedoch nicht im top path.  Der top path enthält $n_1 \in \left[\log\left(\log\left(n\right)\right), 3 \log\left(\log\left(n\right)\right) \right]$ Knoten falls ein bottom tree existiert, ansonsten  $n_1 \in \left[1, 3 \log\left(\log\left(n\right)\right) \right]$. Der top path besteht aus den Knoten ${p_1}^*,{p_2}^*,..,{p_{n_1}}^*$ und stellt damit eine eins zu eins Repräsentation von $ p_1,p_2,..,p_{n_1}$ dar. ${p_1}^*$ ist die Wurzel von $H$. Die Wurzel des bottom tree ist ein Kind von ${p_{n_1}}^*$. Abbildung \ref{fig:pathRepresentation} zeigt eine mögliche Darstellung zu dem preferred path in Abbildung \ref{fig:preferredPath}. Jeder Knoten in $H$ kann in $O\left(\log\left(\log \left(n\right)\right)\right)$ Zeit erreicht werden. Die Repräsentationen der preferred paths werden wie beim Tango Baum zu einer Gesamtstruktur entsprechend ihrer Schlüssel zusammengefügt. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/preferredPath"}
+	\caption{Beispiel preferred path }
+	\label{fig:preferredPath}
+\end{figure} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/hybrid/pathRepresentation"}
+	\caption{Mögliche Repräsentation des preferred path aus \ref{fig:preferredPath}. Grün der top path, blau der bottom tree, }
+	\label{fig:pathRepresentation}
+\end{figure} 
+ \subsubsection{Die \textit{access} Operation beim Hybrid Baum}
+Sei $p$ der Zeiger der \textit{access} Operation in $T$. Erreicht $p$ während des Suchens in einem Hilfsbaum $H_1$ die Wurzel eines weiteren Hilfsbaum $H_2$ werden die Knoten von $H_1$, entsprechend ihrer \textit{depth} Variable  mit einer \textit{cut} Operation in zwei Bäume  aufgeteilt.    
+ 
+ 
+ 
 \subsection{Repräsentation eines preferred path}
 Ein Hilfsbaum $H$ zur Repräsentation eines preffered path $P_p = p_1,p_2,..,p_p$ wird in einen \textbf{zipper} und einem \textbf{bottom tree} unterteilt. Enthält der preferred path nicht mehr als $O\log\left(\log\left(n\right)\right)$ Knoten, besteht der Hilfsbaum allein aus dem zipper. Die Anzahl der Knoten des zipper liegt in \\$\left[\log\left(\log\left(n\right)\right) / 2, 2 \log\left(\log\left(n\right)\right)  \right] $, wenn ein bottom tree existiert, ansonsten in $\left[0, 2 \log\left(\log\left(n\right)\right)  \right] $. Der bottom tree ist ein balancierter BST, der genau die Schlüssel aus $P_p$ enthält, die im zipper fehlen. Enthält der zipper $q$ Knoten, dann entsprechen deren Schlüsseln denen aus dem Pfad $p_1, p_2,..,p_q$. Der zipper ist ein BST und die Wurzel des bottom tree ist das Kind eines Knotens aus dem zipper, so dass $H$ ein BST ist. \\
  Die Konstruktion des zipper ist so ausgelegt, dass innerhalb konstanter Zeit von der Wurzel von $H$ auf die Wurzel des bottom tree zugegriffen werden kann. Es gibt in der Regel mehrere mögliche Darstellungen eines zipper zu $P_p$. Ein zipper $z$ besteht ebenfalls wieder aus zwei Bestandteilen dem \textbf{oberen zipper} $z_1$  und dem \textbf{unterem zipper} $z_2$. Insgesamt müssen in $z$ zumindest  $\log\left(\log\left(n\right)\right) / 2$ enthalten sein. Pro Bestandteil dürfen maximal $\log\left(\log\left(n\right)\right)$ Knoten enthalten sein. Sei $a_1$ die Anzahl der Knoten in $z_1$ und $a_2$ die in $z_2$, so dass die genannten Anforderungen eingehalten werden. Konstellationen in denen das nicht möglich ist, bleiben zunächst außen vor. In $z_1$ sind die Schlüssel der Knoten des Pfades $P_1 = p_1, p_2,.., p_{a_1}$ enthalten. In $z_2$ die aus $P_2 = p_{a_1 + 1}, p_{a_1 + 2},..,p_{a_1 + a_2} $. \\
- $P_1$ wird in \textbf{zig Segmente} und \textbf{zag Segmente} unterteilt. zig Segmente entsprechen den längst möglichen Teilpfaden von Knoten mit linken Kindern in $P_p$. zag Segmente entsprechen den längst möglichen Teilpfaden von Knoten mit rechten Kindern in $P_p$. Enthält $P_2$ das Blatt aus $P_p$, wird dieses dem Segment seines Vaters zugeordnet. In Abbildung  \ref{fig:preferredPathZigZag} sind zig und zag Segmente dargestellt.
-  Sei $S_1$ die Folge der Knoten der zig Segmente, aufsteigend sortiert nach der Tiefe und $S_2$ die Folge der Knoten der zag Segmente, aufsteigend sortiert nach der Tiefe der enthaltenen Knoten. Ist $u$ der tiefste Knoten eines zig bzw. zag Segmentes, so können in den Segmenten mit Knoten größerer Tiefe nur noch größere bzw. kleinere Schlüssel enthalten sein, vergleiche Abschnitt \ref{dd} und Abbildung \ref{fig:preferredPathZigZag}. Deshalb müssen die Knoten in $S_1 \circ S_2$ aufsteigend sortiert nach Schlüssel sein. Da die Knoten in $S_1$ bzw. $S_2$ aber auch aufsteigend bzw. absteigend nach Tiefe sortiert sind, können aus $S_1 \circ S_2$ Intervalle für die Schlüsselmengen, von Pfaden in $P_p$ mit Endknoten $p_p$ abgeleitet werden, siehe Abbildung \ref{fig:preferredPathZigZag}, diese werden in den nachfolgend vorgestellten Operationen benötigt.\\
-  Sei nun $l$ der Knoten in $S_1$ mit der größten Tiefe, und $r$ der Knoten in $S_2$ mit der größten Tiefe. Der Knoten mit Schlüssel $\mathit{key}\left(l\right)$  ist die Wurzel von $H$. Der linke Teilbaum von $l$ enthält die Schlüssel der Knoten in $S_1$ mit einer Tiefe $\leq a_1$. 
+ $P_1$ und $P_2$ werden in \textbf{zig Segmente} und \textbf{zag Segmente} unterteilt. zig Segmente entsprechen den längst möglichen Teilpfaden von Knoten mit linken Kindern in $P_p$. zag Segmente entsprechen den längst möglichen Teilpfaden von Knoten mit rechten Kindern in $P_p$. Enthält $P_2$ das Blatt aus $P_p$, wird dieses dem Segment seines Vaters zugeordnet. In Abbildung  \ref{fig:preferredPathZigZag} sind zig und zag Segmente dargestellt.
+  Sei $S_{zig}$ die Folge der Knoten der zig Segmente, aufsteigend sortiert nach der Tiefe und $_{zag}$ die Folge der Knoten der zag Segmente, aufsteigend sortiert nach der Tiefe der enthaltenen Knoten. Ist $u$ der tiefste Knoten eines zig bzw. zag Segmentes, so können in den Segmenten mit Knoten größerer Tiefe nur noch größere bzw. kleinere Schlüssel enthalten sein, vergleiche Abschnitt \ref{dd} und Abbildung \ref{fig:preferredPathZigZag}. Deshalb müssen die Knoten in $S_1 \circ S_2$ aufsteigend sortiert nach Schlüssel sein. Da die Knoten in $S_{zig}$ bzw. $S_{zag}$ aber auch aufsteigend bzw. absteigend nach Tiefe sortiert sind, können aus $S_{zig} \circ S_{zag}$ Intervalle für die Schlüsselmengen, von Pfaden in $P_p$ mit Endknoten $p_p$ abgeleitet werden, siehe Abbildung \ref{fig:preferredPathZigZag}.\\
+  Eine Folge von Knoten $S{^r_l}$ entstehe aus einer Folge $S$ durch entfernen aller Knoten mit einer Tiefe außerhalb von $\left[l,r\right]$.  Sei $l_1$ der Knoten in $S{_{zig}}{^{a_1}_0}$ mit der größten Tiefe, und $r_1$ der Knoten in $S{_{zag}}{^{a_2}_{a_1}}$ mit der größten Tiefe. ${l_1}^*$  ist die Wurzel von $H$. Der linke Teilbaum von ${l_1}^*$ enthält ausschließlich die Knoten $p{_{1}}^*, p{_{2}}^*,..,p{_{a_1}}^*$, so dass für $i \in \{2, 3,.., a_1\}$ gilt, $p{_{i-1}}^*$ ist das rechte Kind von $p{_i}^*$. $r^*$ ist das rechte Kind von ${l_1}^*$ und sein rechter Teilbaum enthält ausschließlich die Knoten $p{_{a_1 + 1}}^*, p{_{a_1 + 2}}^*,..,p{_{a_1 + a_2}}^* $, so dass für $i \in \{a_1 + 2, a_1 + 3,.., a_2\}$ gilt, $p{_{i-1}}^*$ ist das linke Kind von $p{_i}*$. Abbildung \ref{fig:zipper} zeigt einen so erstellten oberen Teil eines zipper. $z_2$ wird simultan aus $S{_{zig}}$, $S{_{zag}}$ und $\left[a_1 + 1,a_2\right]$, mit Knoten $l_2$ und $r_2$   erzeugt. Die Wurzel ${l_2}^*$ von $z_2$ ist das linke Kind von ${r_1}^*$. Um die Links-Rechts-Beziehung einzuhalten muss die Wurzel eines vorhandenem bottom tree das linke Kind von ${r_2}^*$ sein. Abbildung \ref{fig:hilfsbaum} zeigt eine mögliche Darstellung von $z$. Genau wie beim Tango-Baum werden die Hilfsbäume zu den preferred path zu einem gesamten BST, den Zipper-Baum, zusammengefügt. \\ 
+  
  
+ \subsection{Die \textit{access} Operation beim Zipper Baum}
+ Wie der Tango Baum erweitert der Zipper Baum seine Knoten um eine \textit{isRoot} Variable sowie um die \textit{depth},  \textit{minDepth} und \textit{maxDepth} Variable. Sei $k$ der Parameter der Operation und $p$ der Zeiger der Operation in den BST. Diese \textit{access} Operation hat Ähnlichkeit zu der des Tango Baum. Nach der Operation muss es einen preferred path von der Wurzel von $P$ zu dem Knoten mit Schlüssel $k$ geben. Verlässt $p$ einen Hilfsbaum $H$, werden aus $H$ zwei BST $H_1$ und $H_2$ mit Schlüsselmengen analog zum Tango Baum erstellt. Sei $H_1$ der BST mit den Knoten mit kleinerer Tiefe und $H_2$ der mit den Knoten mit größerer Tiefe. $H_2$ wird sofort in einen gültigen Hilfsbaum überführt. Die Knoten aus $H_1$ sind nach der Operation in dem Hilfsbaum enthalten, der die Wurzel des Zipper Baumes enthält. Dieser wird erst erzeugt nachdem $k$ gefunden wurde. Insbesondere startet $p$ nicht mehrmals bei der Wurzel von $T$. Es werden wieder Hilfsoperationen benötigt. 
+
+\paragraph{zip Operation}
+
+
+\paragraph{access Operation}
+Nun wird die \textit{access} Operation des Tango Baumes betrachtet. Sei $k$ der Parameter der Operation und $p$ der Zeiger der Operation in den BST. Solange sich $p$ im Hilfsbaum mit der Wurzel des Tango Baumes $T$ befindet, verhält sich die Operation wie die Standardvariante von \textit{search}. Erreicht $p$ die Wurzel eines anderen Hilfsbaumes $H_2$, muss sich ein preferred child in $P$ verändert haben. $T$ wird mit \textit{cut} und \textit{join} so angepasst, das er wieder die preferred paths in $P$ repräsentiert. Anschließend startet $p$ wieder an der Wurzel von $T$. Erreicht $p$ den Knoten mit $\mathit{key}\left(k\right)$ so wird das preferred child des Knoten mit Schlüssel $k$ in $P$ auf \textit{left} gesetzt. So dass nochmals eine Anpassung notwendig sein kann. Die Operation wird noch etwas detaillierter beschrieben. 
+
+
+
  
- 
- 
- 
+  \subsection{Laufzeitanalyse für \textit{access}}
   
  
 \begin{figure}[h]
