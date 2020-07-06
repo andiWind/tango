@@ -62,7 +62,7 @@ Die Repräsentation eines preferred path  $P_p = p_1,p_2,..,p_p$ in $T$ stellt e
 
 
  \subsubsection{Die \textit{access} Operation beim Hybrid Baum}
-Sei $p$ der Zeiger der \textit{access}$\left(k\right)$ Operation in $T$. Erreicht $p$ während des Suchens in einem Hilfsbaum $H_1$ die Wurzel eines weiteren Hilfsbaum $H_2$, werden die Knoten von $H_1$, entsprechend ihrer \textit{depth} Variable, vergleichbar mit dem Tango Baum,  mit einer \textit{cut} Operation in zwei Bäume $D_1$ und $D_2$ aufgeteilt. Sei $D_2$ der Baum mit den Knoten größerer Tiefe. $D_2$ wird sofort in eine gültige Pfadrepräsentation überführt, wie genau wird in \textit{cut} beschrieben. Die Knoten in $D_1$ werden nach der Ausführung von \textit{access} im Hilfsbaum mit der Wurzel von $T$ enthalten sein. Dieser wird erst erstellt wenn $k$ gefunden ist. $D_1$ bleibt also zunächst unverändert bestehen.       
+Sei $p$ der Zeiger der \textit{access}$\left(k\right)$ Operation in $T$. Erreicht $p$ während des Suchens in einem Hilfsbaum $H_1$ die Wurzel eines weiteren Hilfsbaum $H_2$, werden die Knoten von $H_1$, entsprechend ihrer \textit{depth} Variable, vergleichbar mit dem Tango Baum,  mit einer \textit{cut} Operation in zwei Bäume $D_1$ und $D_2$ aufgeteilt. Sei $D_2$ der Baum mit den Knoten größerer Tiefe. $D_2$ wird sofort in eine gültige Pfadrepräsentation überführt, wie genau wird in \textit{cut} beschrieben. Die Knoten in $D_1$ werden nach der Ausführung von \textit{access} im Hilfsbaum mit der Wurzel von $T$ enthalten sein. Dieser wird mit \textit{concatenate} erst erstellt wenn $k$ gefunden ist. $D_1$ bleibt also zunächst unverändert bestehen.       
 
 \paragraph{\textit{cut} beim Hybrid Baum}
 Es werden zwei Fälle unterschieden. Beim ersten Fall zeigte $p$ in $H_1$ nur auf Knoten im top path $q_1,q_2,..,q_m$ im zweiten Fall erreichte $p$ den bottom tree. Es wird davon ausgegangen dass in $H_1$ ein bottom tree enthalten ist, der andere Fall ist einfacher und ergibt sich aus der Beschreibung.\\
@@ -72,6 +72,20 @@ Fall 2:\\
 Es muss eine Laufzeit von $O\log\left(\log\left(n\right)\right)$ erreicht werden.Dieser Fall ist sehr ähnlich zum Tango Baum und es werden die Operationen von ihm verwendet. Sei \textit{tangoConcatenate} die \textit{concatenate} Operation wie im Kapitel zum Tango Baum beschrieben und \textit{tangoCut} die \textit{cut} Operation von dort. Sei $v$ der Vater der Wurzel von $H_2$ in $T$. Ist in $H_1$ ein Extraktionsprozess aktiv, muss dieser beendet werden und der top path muss in einem balancierten Baum $H_3$ überführt(beides wird noch beschrieben). Nun werden $H_1$ und $H_3$ mit \textit{tangoConcatenate}  zu $H_5$ vereinigt. Dann wird \textit{tangoCut} verwendet um die Knoten mit einem Wert der \textit{depth} Variable größer $v.$ \textit{depth} aus in einen Hilfsbaum $H_6$ auszulagern. Auf $H_6$ werden zwei Extraktionsprozess ausgeführt um eine gültige Pfadrepräsentation zu erreichen.   
 
 \paragraph{\textit{concatenate} beim Hybrid Baum}
+\textit{concatenate} wird verwendet um zum Abschluss von \textit{access} den Hilfsbaum $H$ mit der Wurzel von $T$ zu erstellen. Seien $H_1,H_2,..,H_m$ die Bäume die zu $H$ vereinigt werden, so dass für $i \in \{2,3,..m\}$, in $H_{i-1}$ der Vater der Wurzel von $H_i$ enthalten ist. Abbildung \ref{fig:concatPfad} zeigt eine beispielhafte Konstellation. Zunächst werden die Bäume $H_1,H_2,..,H_m$ zu balancierten Bäumen $H_1',H_2',..,H_m'$transformiert. Diese werden dann mit einer Folge von \textit{tangoConcatenate} iterativ zu $H$ zusammengefügt. Abbildung \ref{fig:concatHybrid} zeigt den Ablauf für das Beispiel.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/hybrid/concatPfad"}
+	\caption{Mögliche Ausgangsituation vor \textit{concatenate}.}
+	\label{fig:concatPfad}
+\end{figure} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/hybrid/concatHybrid"}
+	\caption{Es werden zwei  \textit{concatenate} Operationen benötigt. Oben das Ergebnis der Ersten, unten dass der Zweiten }
+	\label{fig:concatHybrid}
+\end{figure} 
 \paragraph{\textit{extract} beim Hybrid Baum} 
 \paragraph{\textit{zip} beim Hybrid Baum} 
 \subsection{Repräsentation eines preferred path}

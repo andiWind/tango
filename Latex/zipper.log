@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  6 JUL 2020 10:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  6 JUL 2020 11:49
 entering extended mode
 **./zipper.tex
 (zipper.tex
@@ -371,64 +371,86 @@ nput line 58.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4] [5 <./Medien/Zipper/preferredPath.png>]
-
-LaTeX Warning: Reference `dd' on page 6 undefined on input line 81.
-
-
-LaTeX Warning: Reference `fig:zipper' on page 6 undefined on input line 82.
-
-
-LaTeX Warning: Reference `fig:hilfsbaum' on page 6 undefined on input line 82.
+<Medien/Zipper/hybrid/concatPfad.png, id=39, 571.53525pt x 623.32875pt>
+File: Medien/Zipper/hybrid/concatPfad.png Graphic file (type png)
+<use Medien/Zipper/hybrid/concatPfad.png>
+Package pdftex.def Info: Medien/Zipper/hybrid/concatPfad.png  used on input lin
+e 79.
+(pdftex.def)             Requested size: 178.79617pt x 195.0pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--83
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/Zipper/hybrid/concatHybrid.png, id=40, 526.96875pt x 484.81125pt>
+File: Medien/Zipper/hybrid/concatHybrid.png Graphic file (type png)
+<use Medien/Zipper/hybrid/concatHybrid.png>
+Package pdftex.def Info: Medien/Zipper/hybrid/concatHybrid.png  used on input l
+ine 85.
+(pdftex.def)             Requested size: 211.95773pt x 195.0pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6 <./Medien/Zipper/hybrid/pathRepresentation.png>]
+
+LaTeX Warning: Reference `dd' on page 7 undefined on input line 95.
+
+
+LaTeX Warning: Reference `fig:zipper' on page 7 undefined on input line 96.
+
+
+LaTeX Warning: Reference `fig:hilfsbaum' on page 7 undefined on input line 96.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--97
 
  []
 
-[6 <./Medien/Zipper/hybrid/pathRepresentation.png>] [7]
-<Medien/Zipper/preferredPathZigZag.png, id=47, 591.4095pt x 844.3545pt>
+[7 <./Medien/Zipper/hybrid/concatPfad.png>] [8 <./Medien/Zipper/hybrid/concatHy
+brid.png>]
+<Medien/Zipper/preferredPathZigZag.png, id=55, 591.4095pt x 844.3545pt>
 File: Medien/Zipper/preferredPathZigZag.png Graphic file (type png)
 <use Medien/Zipper/preferredPathZigZag.png>
 Package pdftex.def Info: Medien/Zipper/preferredPathZigZag.png  used on input l
-ine 102.
+ine 116.
 (pdftex.def)             Requested size: 191.21315pt x 272.99881pt.
- [8] [9 <./Medien/Zipper/preferredPathZigZag.png>] (zipper.bbl) [10] (zipper.au
-x)
+ [9] [10 <./Medien/Zipper/preferredPathZigZag.png>] (zipper.bbl)
+[11] (zipper.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6327 strings out of 480797
- 93434 string characters out of 2905362
- 366801 words of memory out of 3000000
- 22229 multiletter control sequences out of 15000+200000
- 549666 words of font info for 68 fonts, out of 3000000 for 9000
+ 6347 strings out of 480797
+ 94061 string characters out of 2905362
+ 365801 words of memory out of 3000000
+ 22246 multiletter control sequences out of 15000+200000
+ 550355 words of font info for 69 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,6n,43p,1408b,364s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecbi1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\Users\andre\AppData\Local\MiKTeX
-\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andre\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Us
-ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.
+ec/dpi600\ecti1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\Users\andre\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andre\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Us
+ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.
 pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
-r/jknappen/ec/dpi600\ecrm2074.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on zipper.pdf (10 pages, 349242 bytes).
+\ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
+/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
+r/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\font
+s/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on zipper.pdf (11 pages, 443773 bytes).
 PDF statistics:
- 399 PDF objects out of 1000 (max. 8388607)
+ 425 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
