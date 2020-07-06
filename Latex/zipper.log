@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  4 JUL 2020 23:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  6 JUL 2020 10:51
 entering extended mode
 **./zipper.tex
 (zipper.tex
@@ -370,31 +370,30 @@ nput line 58.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4]
+[4] [5 <./Medien/Zipper/preferredPath.png>]
 
-LaTeX Warning: Reference `dd' on page 5 undefined on input line 71.
-
-
-LaTeX Warning: Reference `fig:zipper' on page 5 undefined on input line 72.
+LaTeX Warning: Reference `dd' on page 6 undefined on input line 81.
 
 
-LaTeX Warning: Reference `fig:hilfsbaum' on page 5 undefined on input line 72.
+LaTeX Warning: Reference `fig:zipper' on page 6 undefined on input line 82.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--73
+LaTeX Warning: Reference `fig:hilfsbaum' on page 6 undefined on input line 82.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--83
 
  []
 
-[5 <./Medien/Zipper/preferredPath.png>] [6 <./Medien/Zipper/hybrid/pathRepresen
-tation.png>]
-<Medien/Zipper/preferredPathZigZag.png, id=43, 591.4095pt x 844.3545pt>
+[6 <./Medien/Zipper/hybrid/pathRepresentation.png>] [7]
+<Medien/Zipper/preferredPathZigZag.png, id=47, 591.4095pt x 844.3545pt>
 File: Medien/Zipper/preferredPathZigZag.png Graphic file (type png)
 <use Medien/Zipper/preferredPathZigZag.png>
 Package pdftex.def Info: Medien/Zipper/preferredPathZigZag.png  used on input l
-ine 92.
+ine 102.
 (pdftex.def)             Requested size: 191.21315pt x 272.99881pt.
- [7] [8 <./Medien/Zipper/preferredPathZigZag.png>] (zipper.bbl)
-[9] (zipper.aux)
+ [8] [9 <./Medien/Zipper/preferredPathZigZag.png>] (zipper.bbl) [10] (zipper.au
+x)
 
 LaTeX Warning: There were undefined references.
 
@@ -402,7 +401,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  6327 strings out of 480797
  93434 string characters out of 2905362
- 365801 words of memory out of 3000000
+ 366801 words of memory out of 3000000
  22229 multiletter control sequences out of 15000+200000
  549666 words of font info for 68 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -427,9 +426,9 @@ ts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on zipper.pdf (9 pages, 339652 bytes).
+Output written on zipper.pdf (10 pages, 349242 bytes).
 PDF statistics:
- 382 PDF objects out of 1000 (max. 8388607)
+ 399 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
