@@ -5,10 +5,10 @@
 \contentsline {subsubsection}{\numberline {1.1.2}Die \textit {access} Operation beim Hybrid Baum}{4}%
 \contentsline {paragraph}{\textit {cut} beim Hybrid Baum}{5}%
 \contentsline {paragraph}{\textit {concatenate} beim Hybrid Baum}{6}%
-\contentsline {paragraph}{\textit {extract} beim Hybrid Baum}{6}%
-\contentsline {paragraph}{\textit {zip} beim Hybrid Baum}{7}%
-\contentsline {subsection}{\numberline {1.2}Repräsentation eines preferred path}{7}%
-\contentsline {subsection}{\numberline {1.3}Die \textit {access} Operation beim Zipper Baum}{9}%
-\contentsline {paragraph}{zip Operation}{9}%
-\contentsline {paragraph}{access Operation}{9}%
-\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse für \textit {access}}{10}%
+\contentsline {paragraph}{\textit {extract} beim Hybrid Baum}{7}%
+\contentsline {subsubsection}{\numberline {1.1.3}Laufzeitanalyse beim Hybrid Baum}{10}%
+\contentsline {subsection}{\numberline {1.2}Repräsentation eines preferred path}{10}%
+\contentsline {subsection}{\numberline {1.3}Die \textit {access} Operation beim Zipper Baum}{12}%
+\contentsline {paragraph}{zip Operation}{12}%
+\contentsline {paragraph}{access Operation}{12}%
+\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse für \textit {access}}{13}%
