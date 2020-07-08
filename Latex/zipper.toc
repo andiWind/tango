@@ -7,8 +7,8 @@
 \contentsline {paragraph}{\textit {concatenate} beim Hybrid Baum}{6}%
 \contentsline {paragraph}{\textit {extract} beim Hybrid Baum}{7}%
 \contentsline {subsubsection}{\numberline {1.1.3}Laufzeitanalyse beim Hybrid Baum}{10}%
-\contentsline {subsection}{\numberline {1.2}Repräsentation eines preferred path}{10}%
-\contentsline {subsection}{\numberline {1.3}Die \textit {access} Operation beim Zipper Baum}{12}%
-\contentsline {paragraph}{zip Operation}{12}%
-\contentsline {paragraph}{access Operation}{12}%
+\contentsline {subsection}{\numberline {1.2}Repräsentation eines preferred path}{11}%
+\contentsline {subsection}{\numberline {1.3}Die \textit {access} Operation beim Zipper Baum}{13}%
+\contentsline {paragraph}{zip Operation}{13}%
+\contentsline {paragraph}{access Operation}{13}%
 \contentsline {subsection}{\numberline {1.4}Laufzeitanalyse für \textit {access}}{13}%

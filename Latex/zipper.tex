@@ -67,7 +67,7 @@ Sei $p$ der Zeiger der \textit{access}$\left(k\right)$ Operation in $T$. Erreich
 \paragraph{\textit{cut} beim Hybrid Baum}
 Es werden zwei Fälle unterschieden. Beim ersten Fall zeigte $p$ in $H_1$ nur auf Knoten im top path $q_1,q_2,..,q_m$ im zweiten Fall erreichte $p$ den bottom tree. Es wird davon ausgegangen dass in $H_1$ ein bottom tree enthalten ist, der andere Fall ist einfacher und ergibt sich aus der Beschreibung.\\
 Fall 1:\\
-Sei $q_i$ der Vater von $H_2$, dann muss eine Laufzeit von $O\left(i\right)$ erreicht werden. $q_{i+1}$ wird zur Wurzel von $H_2$. Es sichergestellt werden, dass die Anzahl der Knoten im top path von $H_2$ groß genug ist. Enthält er weniger als $2 \log\left(\log\left(n\right)\right)$ Knoten, werden, mit einem \textbf{Extraktionsprozess}, Knoten aus dem bottom tree dem top path hinzugefügt. Dazu werden \textit{extract} Operationen verwendet. Eine solche Operation fügt dem top path $\log\left(\log\left(n\right)\right)$ Knoten aus dem bottom tree hinzu. Um die Laufzeit einhalten zu können verteilt textit{extract} dies über mehrere \textit{cut} Operationen. Dazu wird der bottom tree in einen Zwischenzustand versetzt, der keinem balancierten BST entspricht. Ein Hilfsbaum bei dem kein Extraktionsprozess aktiv ist hat  $2 \log\left(\log\left(n\right)\right)$ Knoten im top path. Der Extraktionsprozess wird im Abschnitt zu \textit{extract} beschrieben.  
+Sei $q_i$ der Vater von $H_2$, dann muss eine Laufzeit von $O\left(i\right)$ erreicht werden. $q_{i+1}$ wird zur Wurzel von $H_2$. Es sichergestellt werden, dass die Anzahl der Knoten im top path von $H_2$ groß genug ist. Enthält er weniger als $2 \log\left(\log\left(n\right)\right)$ Knoten, werden, mit einem \textbf{Extraktionsprozess}, Knoten aus dem bottom tree dem top path hinzugefügt. Dazu werden \textit{extract} Operationen verwendet. Eine solche Operation fügt dem top path $\log\left(\log\left(n\right)\right)$ Knoten aus dem bottom tree hinzu. Um die Laufzeit einhalten zu können verteilt \textit{extract} dies über mehrere \textit{cut} Operationen. Dazu wird der bottom tree in einen Zwischenzustand versetzt, der keinem balancierten BST entspricht. Ein Hilfsbaum bei dem kein Extraktionsprozess aktiv ist hat  $2 \log\left(\log\left(n\right)\right)$ Knoten im top path. Der Extraktionsprozess wird im Abschnitt zu \textit{extract} beschrieben.  
 Fall 2:\\
 Es muss eine Laufzeit von $O\log\left(\log\left(n\right)\right)$ erreicht werden.Dieser Fall ist sehr ähnlich zum Tango Baum und es werden die Operationen von ihm verwendet. Sei \textit{tangoConcatenate} die \textit{concatenate} Operation wie im Kapitel zum Tango Baum beschrieben und \textit{tangoCut} die \textit{cut} Operation von dort. Sei $v$ der Vater der Wurzel von $H_2$ in $T$. Ist in $H_1$ ein Extraktionsprozess aktiv, muss dieser beendet werden und der top path muss in einen balancierten Baum $H_3$ überführt werden. Nun werden $H_1$ und $H_3$ mit \textit{tangoConcatenate}  zu $H_5$ vereinigt. Dann wird \textit{tangoCut} verwendet um die Knoten mit einem Wert der \textit{depth} Variable größer $v.$ \textit{depth} aus in einen Hilfsbaum $H_6$ auszulagern. Auf $H_6$ werden zwei Extraktionsprozess ausgeführt um eine gültige Pfadrepräsentation zu erreichen.  \\
 Im ersten Fall entstehen Kosten von $O\left(i\right)$ um $q_i$ zu erreichen, und dass auch in \textit{extract} Kosten von $O\left(i\right)$ entstehen wird weiter unten gezeigt. Im zweiten Fall entstehen Kosten von $O\left(i\right)$ sowohl um $v$ zu erreichen, als auch in \textit{extract}.
@@ -78,7 +78,7 @@ Im ersten Fall entstehen Kosten von $O\left(i\right)$ um $q_i$ zu erreichen, und
 Um $H_i$ zu $H_i'$ zu überführen werden die Knoten in seinem top path als Bäume mit einem Knoten betrachtet. Diese werden mit Folgen von  \textit{tangoConcatenate} zusammengefügt. In jeder solchen Folge wird die Anzahl der Bäume halbiert, indem zwei aufeinanderfolgende Bäume jeweils zusammengeführt werden. Nach der Ausführung dieser \textit{tangoConcatenate} Folgen existiert ein aus dem top path entstandener balancierter BST und eventuell ein bottom tree. Diese werden mit einer weiteren \textit{tangoConcatenate} Operation zusammengeführt. Nach jeder \textit{tangoConcatenate} Folge halbiert sich die Anzahl der aus dem top path entstandenen Bäume und die Anzahl ihrer Knoten verdoppelt sich. Sei $n_i$ die Anzahl der Knoten von $H_i$, dann entstehen pro Folge Kosten von $O\left(\log n_i\right)$ und es werden $O\left(\log n_i\right)$ Folgen benötigt.  Aufaddieren über alle $i$ ergibt damit  $O\left(\log \left( \log n \right)\right)$.  \\
 \textit{tangoConcatenate} hat eine Laufzeit von $O\left(\log\left( n_r\right)\right)$, mit $n_r$ ist die Anzahl der Knoten, des resultierenden Baumes. Die Anzahl der benötigten Operationen is $O\left(\log\left(n\right)\right)$. Damit ergibt sich auch für die Gesamtlaufzeit  $O\left(\log \left( \log n \right)\right)$.
  
-\begin{figure}[h]
+ \begin{figure}[h]
 	\centering
 	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/hybrid/concatPfad"}
 	\caption{Mögliche Ausgangsituation vor \textit{concatenate}.}
@@ -108,7 +108,17 @@ Werden mit einem verkürzten Ablauf $k$ bereits vorbereitete Knoten dem top path
 	\label{fig:listeHybrid}
 \end{figure}
 \subsubsection{Laufzeitanalyse beim Hybrid Baum}
-
+Zunächst wird ein Lemma benötigt.
+\newtheorem{Lemma5}{Lemma}[section] 
+\begin{Lemma5} \label{hybridBalanced}
+Sei $T$ ein Hybrid Baum mit $n$ Knoten und $Y$ ein dazu erstellter lower bound tree. Sei $v$ ein Knoten aus $T$ und $u$ der Knoten in $Y$ mit 
+$\mathit{key}\left(v\right) = \mathit{key}\left(u\right)$, dann gilt $\mathit{depth}\left(v\right) = O\left(\mathit{depth\left(u\right)}\right)$.
+\end{Lemma5}
+\begin{proof}
+Seien $P_1, P_2,.., P_m$ die preferred path die Knoten aus dem Pfad $P_u$ von der Wurzel von $Y$ zu $u$ enthalten. Jeder von ihnen wird nun als BST betrachtet. Für $i \in \{1, 2,..,m\}$ sei $H_i$ die Pfadrepräsentation zu $P_i$. Sei $p_i$ der Knoten in $P_i$ mit der größten Tiefe unter denen aus $P_u$. (Es muss $p_m = u$ gelten) Sei $h_i$ der Knoten in $H_i$ mit $\mathit{key}\left(h_i\right) = \mathit{key}\left(y_i\right)$. Die folgenden Tiefenangaben werden auf $P_i$ bzw. $H_i$ bezogen. Ist $h_i$ im top path enthalten, haben $h_i$ und $p_i$ die gleiche Tiefe. Liegt $h_i$ im bottom tree so muss $\mathit{depth}\left(p_i\right) > \log\left(\log n\right)$ gelten aufgrund der Konstruktion von $H_i$. Für die Tiefe jedes Knoten in $H_i$ gilt $O\left(\log\left(\log n\right)\right)$    
+	
+\end{proof}
+\noindent Daraus ergibt sich sofort für die Höhe eines Hybrid Baum mit $n$ Knoten sofort $O\left(\log n\right)$.
 
 
 
