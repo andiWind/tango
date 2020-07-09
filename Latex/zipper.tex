@@ -44,7 +44,7 @@ Der Zipper-Baum basiert auf dem Tango-Baum und nutzt auch preferred paths aus ei
 Znächst wird die Repräsentation eine preferred path in $T$ vorgestellt. Dann wird die \textit{access} Operationen, mit ihren Hilfsoperationen vorgestellt. Zum Schluss geht es noch um die Laufzeit. 
 
 
-\subsubsection{Repräsentation eines preferred path} 
+\subsubsection{Repräsentation eines preferred path beim Hybrid Baum} 
 Die Repräsentation eines preferred path  $P_p = {p_1}^*,{p_2}^*,..,{p_m}^*$ in $T$ stellt einen Hilfsbaum $H$ dar, der in zwei Teile unterteilt wird, den  \textbf{top path} und dem \textbf{bottom tree}. Der bottom tree ist ein balancierter BST der genau die Schlüssel enthält, die in $P_m$ enthalten sind jedoch nicht im top path.  Der top path enthält $n_1 \in \left[\log\left(\log\left(n\right)\right), 3 \log\left(\log\left(n\right)\right) \right]$ Knoten falls ein bottom tree existiert, ansonsten  $n_1 \in \left[1, 3 \log\left(\log\left(n\right)\right) \right]$. Der top path besteht aus den Knoten ${p_1},{p_2},..,{p_{n_1}}$ und stellt eine eins zu eins Repräsentation von $ {p_1},{p_2}^*,..,p_{n_1}^*$ dar. ${p_1}$ ist die Wurzel von $H$. Die Wurzel des bottom tree ist ein Kind von ${p_{n_1}}$. Abbildung \ref{fig:pathRepresentation} zeigt eine mögliche Darstellung zu dem preferred path in Abbildung \ref{fig:preferredPath}. Jeder Knoten in $H$ kann in $O\left(\log\left(\log \left(n\right)\right)\right)$ Zeit erreicht werden. Die Repräsentationen der preferred paths werden wie beim Tango Baum zu einer Gesamtstruktur entsprechend ihrer Schlüssel zusammengefügt. 
 
 \begin{figure}[h]
@@ -146,19 +146,31 @@ $z_b$ wird simultan aus $P_b$ erzeugt und seien $b_l$ und $b_r$ die Knoten in $z
   
  
  \subsection{Die \textit{access} Operation beim Zipper Baum}
- Wie der Tango Baum erweitert der Zipper Baum seine Knoten um eine \textit{isRoot} Variable sowie um die \textit{depth},  \textit{minDepth} und \textit{maxDepth} Variable. Sei $k$ der Parameter der Operation und $p$ der Zeiger der Operation in den BST. Diese \textit{access} Operation hat Ähnlichkeit zu der des Tango Baum. Nach der Operation muss es einen preferred path von der Wurzel von $P$ zu dem Knoten mit Schlüssel $k$ geben. Verlässt $p$ einen Hilfsbaum $H$, werden aus $H$ zwei BST $H_1$ und $H_2$ mit Schlüsselmengen analog zum Tango Baum erstellt. Sei $H_1$ der BST mit den Knoten mit kleinerer Tiefe und $H_2$ der mit den Knoten mit größerer Tiefe. $H_2$ wird sofort in einen gültigen Hilfsbaum überführt. Die Knoten aus $H_1$ sind nach der Operation in dem Hilfsbaum enthalten, der die Wurzel des Zipper Baumes enthält. Dieser wird erst erzeugt nachdem $k$ gefunden wurde. Insbesondere startet $p$ nicht mehrmals bei der Wurzel von $T$. Es werden wieder Hilfsoperationen benötigt. 
-
-\paragraph{zip Operation}
-
-
-\paragraph{access Operation}
-Nun wird die \textit{access} Operation des Tango Baumes betrachtet. Sei $k$ der Parameter der Operation und $p$ der Zeiger der Operation in den BST. Solange sich $p$ im Hilfsbaum mit der Wurzel des Tango Baumes $T$ befindet, verhält sich die Operation wie die Standardvariante von \textit{search}. Erreicht $p$ die Wurzel eines anderen Hilfsbaumes $H_2$, muss sich ein preferred child in $P$ verändert haben. $T$ wird mit \textit{cut} und \textit{join} so angepasst, das er wieder die preferred paths in $P$ repräsentiert. Anschließend startet $p$ wieder an der Wurzel von $T$. Erreicht $p$ den Knoten mit $\mathit{key}\left(k\right)$ so wird das preferred child des Knoten mit Schlüssel $k$ in $P$ auf \textit{left} gesetzt. So dass nochmals eine Anpassung notwendig sein kann. Die Operation wird noch etwas detaillierter beschrieben. 
+ Der Ablauf unterscheidet sich nur in den Hilfsoperationen von dem des Hybrid Baum. Auf diese wird jeweils eingegangen. 
+ Sei $k$ der Parameter der Operation und $p$ der Zeiger der Operation in den BST. 
 
 
 
- 
-  \subsection{Laufzeitanalyse für \textit{access}}
+\paragraph{cut Operation}
+Auch hier gibt es die zwei Fälle von \textit{cut} beim Hybrid Baum. Es werden zunächst die Knoten aus dem top zipper zu einem top path gewandelt, vergleichbar Abbildung \ref{fig:extractHybrid} Schritt 4, bis der gesuchte Knoten im top path enthalten ist, oder die Suche in einem anderen Hilfsbaum weitergeführt wird. Ist der top zipper vollständig in einen top path umgewandelt, wird der Vorgang beim bottom zipper fortgesetzt. Dieser hat dann die Stellung des top zipper. Außerdem wird dann ein Extraktionsprozess angestoßen, der $\log\left(\log\left(n\right)\right)$ Knoten aus dem bottom tree auslagert, um einen neuen lower zipper zu erzeugen. Die Konstante zur Anzahl der durchzuführenden Rotationen im Extraktionsprozess, muss so gewählt sein, dass der Prozess nach $\log\left(\log\left(n\right)\right) / 2$ entfernten Knoten abgeschlossen ist. Wird auch der zweite Zipper vollständig aufgebraucht, handelt es sich um einen Fall 2 cut, ansonsten um einen Fall 1 cut.\\
+Fall 1:\\
+Es muss zur oberen Beschreibung nichts weiteres durchgeführt werden. Ist in $H$ bereits zu Beginn der cut Operation ein Extraktionsprozess aktiv, kann die Wurzel $w$ des bottom tree auch ohne zusätzlichen Zeiger in konstanter Zeit erreicht werden. Zum einhalten der Laufzeit, muss jedoch jede Rotation auf Knoten ausgeführt werden, die in konstanter Zeit von $w$ aus erreichbar sind. Zusätzlich zur Beschreibung aus \ref{fig:extractHybrid} benötigt man hierzu noch eine entsprechende \textit{split} Operation. Die in \cite{zipper} vorgestellte \textit{split} Operation, erfüllt diese Eigenschaft.\\
+Fall 2:\\
+Auch hier werden die Knoten der Zipper als balancierte Bäume mit einem Knoten betrachtet und vorgegangen wie beim Hybrid Baum.\\
+Aus der Beschreibung folgt, dass diese Operation die gleich asymptotische Laufzeit, wie die \textit{cut} Operation des Hybrid Baum besitzt. 
+
+
   
+
+\paragraph{join Operation}
+Diese Operation verhält sich zunächst wie \textit{join} beim Hybrid Baum, erstellt dann jedoch anstatt eines top path den zipper. An Abbildung \ref{fig:extractHybrid} und der Beschreibung dazu ist direkt erkennbar, dass dies keinen Einfluss auf die asymptotische Laufzeit hat.   
+
+\paragraph{extract Operation}
+Hier entfällt im Vergleich zum Hybrid Baum der letzte Schritt aus Abbildung \ref{fig:extractHybrid}.\\
+
+
+\subsection{Laufzeitanalyse beim Zipper Baum}
+Aus den oberen Ausführungen folgt, dass der Zipper Baum genau wie der Hybrid Baum $log\left(\log\left(n\right)\right)$-competitive ist und die worst case Laufzeit von \textit{access} $O\left(\log\left(n\right)\right)$ ist.  
  
 \begin{figure}[h]
 	\centering

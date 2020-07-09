@@ -1,7 +1,7 @@
 \babel@toc {german}{}
 \contentsline {section}{\numberline {1}Zipper Baum}{4}%
 \contentsline {subsection}{\numberline {1.1}Hybrid Baum}{4}%
-\contentsline {subsubsection}{\numberline {1.1.1}Repräsentation eines preferred path}{4}%
+\contentsline {subsubsection}{\numberline {1.1.1}Repräsentation eines preferred path beim Hybrid Baum}{4}%
 \contentsline {subsubsection}{\numberline {1.1.2}Die \textit {access} Operation beim Hybrid Baum}{4}%
 \contentsline {paragraph}{\textit {cut} beim Hybrid Baum}{5}%
 \contentsline {paragraph}{\textit {join} beim Hybrid Baum}{6}%
@@ -9,6 +9,7 @@
 \contentsline {subsubsection}{\numberline {1.1.3}Laufzeitanalyse beim Hybrid Baum}{11}%
 \contentsline {subsection}{\numberline {1.2}Repräsentation eines preferred path beim Zipper Baum}{12}%
 \contentsline {subsection}{\numberline {1.3}Die \textit {access} Operation beim Zipper Baum}{12}%
-\contentsline {paragraph}{zip Operation}{13}%
-\contentsline {paragraph}{access Operation}{13}%
-\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse für \textit {access}}{14}%
+\contentsline {paragraph}{cut Operation}{13}%
+\contentsline {paragraph}{join Operation}{14}%
+\contentsline {paragraph}{extract Operation}{14}%
+\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse beim Zipper Baum}{14}%
