@@ -1,0 +1,120 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage{float}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{csquotes}
+\usepackage[font=small,labelfont=bf]{caption}
+
+%\usepackage[pages=some]{background} % Draft Wasserzeichen mit Option pages=all sonst pages=some
+
+
+
+\title{Bachelorarbeit}
+\author{
+
+	Andreas Windorfer\\
+}
+\date{\today}
+
+
+\begin {document}
+
+
+\maketitle
+\newpage
+
+\newpage
+\tableofcontents
+
+
+\newpage
+
+
+\section{Splaybaum}
+Der in \cite{splay} vorgestellte Splaybaum ist ein online BST der ohne zusätzliche Hilfsdaten in seinen Knoten auskommt. Nach einer \textit{access} Operation, ist der Knoten mit Schlüssel $k$ die Wurzel, des Splaybaum. Es gibt keine Invariante, welche eine bestimmte maximale Höhe garantiert. Splaybäume können sogar zu Listen entarten. Amortisiert betrachtet verfügen sie dennoch über sehr gute Laufzeiteigenschaften. 
+
+
+\subsection{\textit{access} Operation }
+Die wesentliche Arbeit leistet eine Hilfsoperation namens \textit{splay}. Nach deren Ausführung befindet sich der Knoten mit dem gesuchten Schlüssel an der Wurzel und es wird nur noch eine Referenz auf ihn zurückgegeben.
+
+\paragraph{\textit{splay} Operation}
+Sie $p$ der Zeiger der Operation in den BST. Zunächst wird eine gewöhnliche Suche ausgeführt bis $p$ auf den Knoten $v$ mit Schlüssel $k$ zeigt. Nun werden iterativ sechs Fälle unterschieden bis $v$ die Wurzel des Baumes darstellt. Zu jedem Fall gibt es einen der links-rechts-symmetrisch ist. Sei $u$ der Vater von $v$. 
+
+\begin{enumerate}
+	\item $v$ ist das linke Kind der Wurzel (zig-Fall):\\
+	Es wird eine Rechtsrotation auf $v$ ausgeführt. Nach dieser ist $v$ die Wurzel des Splaybaum und die Operation wird beendet. 
+	\item $v$ ist das linke Kind der Wurzel (zag-Fall):\\
+	Symmetrisch zu zig.
+	\item $v$ ist ein linkes Kind und $u$ ist ein rechtes Kind. (zig-zag-Fall):\\
+	Es wird eine Rechtsrotation auf $v$ ausgeführt. Im Anschluss wird eine Linksrotation auf $u$ ausgeführt.
+	\item $v$ ist ein rechtes Kind und $u$ ist ein linkes Kind. (zag-zig-Fall):\\
+	Symmetrisch zu zig-zag.
+	\item $v$ ist ein linkes Kind und $u$ ist ein linkes Kind. (zig-zig-Fall):\\
+	Dieser Fall unterscheidet den Splaybaum vom einem anderen BST (move-to-root), mit schlechteren Laufzeiteigenschaften. Es wird zuerst eine Rechtsrotation auf $u$ ausgeführt und erst danach eine Rechtsrotation auf $v$. Bei move-to-root  ist es genau anders herum. 
+	\item $v$ ist ein rechtes Kind und $u
+	$ ist ein rechtes Kind. (zag-zag-Fall):\\
+	Symmetrisch zu zig-zig.
+\end{enumerate}
+ Abbildung  \ref{fig:zigZag} zeigt drei der Fälle. Trotz der Einfachheit kann die Auswirkung einer einzelnen \textit{splay} Operation sehr groß sein. Abbildung \ref{fig:splay} aus \cite{splay} zeigt eine solche Konstellation. \\
+ Die Laufzeit von \textit{access} auf einem BST mit $n$ Knoten ist $O\left(n\right)$.
+ 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Splaybaum/zigZag"}
+	\caption{Derstellung von zig, zig-zag und zig-zig. }
+	\label{fig:zigZag}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Splaybaum/splay"}
+	\caption{Eine einzige \textit{splay } Operation.\cite{splay}}
+	\label{fig:splay}
+\end{figure}
+
+\subsection{Amortisiert Laufzeitanalyse von \textit{splay }}
+Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splaytree $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Das Gewicht eines Knotens ist unveränderlich. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte im Teilbaum mit Wurzel $v$. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2 \mathit{tw}\left(v\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
+\begin{align*}
+\Phi = \sum_{v \in V} r\left(v\right)
+\end{align*}
+verwendet.
+
+
+
+
+
+\newtheorem{Lemma1}{Access Lemma}[section] \label{lemmaSplay}
+\begin{Lemma1}Die amortisierte Laufzeit von \textit{splay} 
+\end{Lemma1}
+\begin{proof}
+	
+	
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\bibliography{literaturverzeichnis}
+\bibliographystyle{unsrt}
+
+\end {document}
+

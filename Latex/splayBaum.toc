@@ -1,0 +1,5 @@
+\babel@toc {german}{}
+\contentsline {section}{\numberline {1}Splaybaum}{3}%
+\contentsline {subsection}{\numberline {1.1}\textit {access} Operation }{3}%
+\contentsline {paragraph}{\textit {splay} Operation}{3}%
+\contentsline {subsection}{\numberline {1.2}Amortisiert Laufzeitanalyse von \textit {splay }}{4}%
