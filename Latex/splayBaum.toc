@@ -2,4 +2,7 @@
 \contentsline {section}{\numberline {1}Splaybaum}{3}%
 \contentsline {subsection}{\numberline {1.1}\textit {access} Operation }{3}%
 \contentsline {paragraph}{\textit {splay} Operation}{3}%
-\contentsline {subsection}{\numberline {1.2}Amortisiert Laufzeitanalyse von \textit {splay }}{4}%
+\contentsline {subsection}{\numberline {1.2}Amortisierte Laufzeitanalyse von \textit {splay }}{4}%
+\contentsline {paragraph}{zig}{5}%
+\contentsline {paragraph}{zig-zig}{6}%
+\contentsline {paragraph}{zig-zag}{6}%

@@ -53,23 +53,24 @@ Sie $p$ der Zeiger der Operation in den BST. Zunächst wird eine gewöhnliche Su
 	Es wird eine Rechtsrotation auf $v$ ausgeführt. Nach dieser ist $v$ die Wurzel des Splaybaum und die Operation wird beendet. 
 	\item $v$ ist das linke Kind der Wurzel (zag-Fall):\\
 	Symmetrisch zu zig.
-	\item $v$ ist ein linkes Kind und $u$ ist ein rechtes Kind. (zig-zag-Fall):\\
-	Es wird eine Rechtsrotation auf $v$ ausgeführt. Im Anschluss wird eine Linksrotation auf $u$ ausgeführt.
-	\item $v$ ist ein rechtes Kind und $u$ ist ein linkes Kind. (zag-zig-Fall):\\
-	Symmetrisch zu zig-zag.
 	\item $v$ ist ein linkes Kind und $u$ ist ein linkes Kind. (zig-zig-Fall):\\
 	Dieser Fall unterscheidet den Splaybaum vom einem anderen BST (move-to-root), mit schlechteren Laufzeiteigenschaften. Es wird zuerst eine Rechtsrotation auf $u$ ausgeführt und erst danach eine Rechtsrotation auf $v$. Bei move-to-root  ist es genau anders herum. 
 	\item $v$ ist ein rechtes Kind und $u
 	$ ist ein rechtes Kind. (zag-zag-Fall):\\
 	Symmetrisch zu zig-zig.
+	\item $v$ ist ein linkes Kind und $u$ ist ein rechtes Kind. (zig-zag-Fall):\\
+	Es wird eine Rechtsrotation auf $v$ ausgeführt. Im Anschluss wird eine Linksrotation auf $u$ ausgeführt.
+	\item $v$ ist ein rechtes Kind und $u$ ist ein linkes Kind. (zag-zig-Fall):\\
+	Symmetrisch zu zig-zag.
+
 \end{enumerate}
  Abbildung  \ref{fig:zigZag} zeigt drei der Fälle. Trotz der Einfachheit kann die Auswirkung einer einzelnen \textit{splay} Operation sehr groß sein. Abbildung \ref{fig:splay} aus \cite{splay} zeigt eine solche Konstellation. \\
  Die Laufzeit von \textit{access} auf einem BST mit $n$ Knoten ist $O\left(n\right)$.
  
 \begin{figure}[h]
 	\centering
-	\includegraphics[width= 1\textwidth]{"Medien/Splaybaum/zigZag"}
-	\caption{Derstellung von zig, zig-zag und zig-zig. }
+	\includegraphics[width= 1.2\textwidth]{"Medien/Splaybaum/zigZag"}
+	\caption{Darstellung von zig, zig-zag und zig-zig. }
 	\label{fig:zigZag}
 \end{figure}
 \begin{figure}[h]
@@ -79,7 +80,7 @@ Sie $p$ der Zeiger der Operation in den BST. Zunächst wird eine gewöhnliche Su
 	\label{fig:splay}
 \end{figure}
 
-\subsection{Amortisiert Laufzeitanalyse von \textit{splay }}
+\subsection{Amortisierte Laufzeitanalyse von \textit{splay }}
 Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splaytree $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Das Gewicht eines Knotens ist unveränderlich. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte im Teilbaum mit Wurzel $v$. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2 \mathit{tw}\left(v\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
 \begin{align*}
 \Phi = \sum_{v \in V} r\left(v\right)
@@ -91,10 +92,31 @@ verwendet.
 
 
 \newtheorem{Lemma1}{Access Lemma}[section] \label{lemmaSplay}
-\begin{Lemma1}Die amortisierte Laufzeit von \textit{splay} 
+\begin{Lemma1}Sei $T$ ein Splaybaum mit $n$ Knoten und Wurzel $w$ und einem Knoten $v$ mit Schlüssel $k$. Die amortisierte Laufzeit von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ 
 \end{Lemma1}
 \begin{proof}
-	
+Zunächst wird für \textit{zig}, \textit{zig-zag} und \textit{zig-zig} gezeigt das die amortisierten Kosten nicht größer als $3 \left(r\left(v\right)' - r\left(v\right)\right) + 1$. Für die anderen drei Fälle folgt es dann aus der Symmetrie. Im Anschluss wird die gesamte Operation  betrachtet. An Abbildung  \ref{fig:zigZag} ist zu erkennen, dass sich der Wert von $\mathit{tw}\left(\right)$ nur bei den Knoten $v$, dessen Vater $u$  und dem Vater $x$ von $u$ verändern kann.  Damit gilt
+\begin{align*}
+\Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right)
+\end{align*}
+
+
+\paragraph{zig} 
+In diesem Fall existiert $x$ nicht, damit gilt\\  {$ \Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' - r\left(u\right)- r\left(v\right)$}. Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel ist unabhängig von Zustand des Splaytree, da immer alle vorhandenen Gewichte aufsummiert werden. Deshalb muss  $\mathit{tw}\left(v\right)' =  \mathit{tw}\left(u\right)$ gelten. Daraus folgt $ \Phi' - \Phi  = r\left(u\right)'- r\left(v\right)$. Aus $r\left(v\right)' \geq r\left(u\right)'$ folgt $ \Phi' - \Phi \leq  r\left(v\right)'- r\left(v\right) \leq 3\left(r\left(v\right)'- r\left(v\right)\right) $. Addieren von $1$ aufgrund der Rotation ergibt Kosten $\leq 3\left(r\left(v\right)'- r\left(v\right)\right) + 1$.
+\paragraph{zig-zig} 
+Es müssen zwei Rotationen ausgeführt werden, deshalb entstehen amortisierte Kosten  von
+\begin{align*}
+&2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) &\textit{ mit $r\left(x\right) =  r\left(v\right)'$ }\\
+=& 2 + r\left(u\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right) &\textit{mit
+$r\left(v\right)' \geq  r\left(u\right)'$ und $r\left(u\right) \geq  r\left(v\right)$}\\
+\leq &  2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) 
+\end{align*}
+ 
+
+ Aus $r\left(v\right)' \geq  r\left(u\right)'$ und $r\left(u\right) \geq  r\left(v\right)$ folgt\\
+  $a = 2 + r\left(u\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)$. \\\\
+ 
+\paragraph{zig-zag} 
 	
 \end{proof}
 
