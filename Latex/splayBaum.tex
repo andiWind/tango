@@ -81,7 +81,7 @@ Sie $p$ der Zeiger der Operation in den BST. Zunächst wird eine gewöhnliche Su
 \end{figure}
 
 \subsection{Amortisierte Laufzeitanalyse von \textit{splay }}
-Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splaytree $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Das Gewicht eines Knotens ist unveränderlich. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte im Teilbaum mit Wurzel $v$. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2 \mathit{tw}\left(v\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
+Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splaytree $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Das Gewicht eines Knotens ist unveränderlich. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte im Teilbaum mit Wurzel $v$. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \lfloor\log_2  \mathit{tw}\left(v\right)\rfloor$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
 \begin{align*}
 \Phi = \sum_{v \in V} r\left(v\right)
 \end{align*}
@@ -92,7 +92,8 @@ verwendet.
 
 
 \newtheorem{Lemma1}{Access Lemma}[section] \label{lemmaSplay}
-\begin{Lemma1}Sei $T$ ein Splaybaum mit $n$ Knoten und Wurzel $w$ und einem Knoten $v$ mit Schlüssel $k$. Die amortisierte Laufzeit von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ 
+\begin{Lemma1}Sei $T$ ein Splaybaum mit $n$ Knoten und Wurzel $w$ und einem Knoten $v$ mit Schlüssel $k$. Die amortisierte Laufzeit von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ \\
+
 \end{Lemma1}
 \begin{proof}
 Zunächst wird für \textit{zig}, \textit{zig-zag} und \textit{zig-zig} gezeigt das die amortisierten Kosten nicht größer als $3 \left(r\left(v\right)' - r\left(v\right)\right) + 1$. Für die anderen drei Fälle folgt es dann aus der Symmetrie. Im Anschluss wird die gesamte Operation  betrachtet. An Abbildung  \ref{fig:zigZag} ist zu erkennen, dass sich der Wert von $\mathit{tw}\left(\right)$ nur bei den Knoten $v$, dessen Vater $u$  und dem Vater $x$ von $u$ verändern kann.  Damit gilt
@@ -104,20 +105,36 @@ Zunächst wird für \textit{zig}, \textit{zig-zag} und \textit{zig-zig} gezeigt 
 \paragraph{zig} 
 In diesem Fall existiert $x$ nicht, damit gilt\\  {$ \Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' - r\left(u\right)- r\left(v\right)$}. Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel ist unabhängig von Zustand des Splaytree, da immer alle vorhandenen Gewichte aufsummiert werden. Deshalb muss  $\mathit{tw}\left(v\right)' =  \mathit{tw}\left(u\right)$ gelten. Daraus folgt $ \Phi' - \Phi  = r\left(u\right)'- r\left(v\right)$. Aus $r\left(v\right)' \geq r\left(u\right)'$ folgt $ \Phi' - \Phi \leq  r\left(v\right)'- r\left(v\right) \leq 3\left(r\left(v\right)'- r\left(v\right)\right) $. Addieren von $1$ aufgrund der Rotation ergibt Kosten $\leq 3\left(r\left(v\right)'- r\left(v\right)\right) + 1$.
 \paragraph{zig-zig} 
-Es müssen zwei Rotationen ausgeführt werden, deshalb entstehen amortisierte Kosten  von
+Es müssen zwei Rotationen ausgeführt werden, deshalb entstehen amortisierte Kosten von
 \begin{align*}
 &2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) &\textit{ mit $r\left(x\right) =  r\left(v\right)'$ }\\
 =& 2 + r\left(u\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right) &\textit{mit
 $r\left(v\right)' \geq  r\left(u\right)'$ und $r\left(u\right) \geq  r\left(v\right)$}\\
 \leq &  2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) 
 \end{align*}
- 
-
- Aus $r\left(v\right)' \geq  r\left(u\right)'$ und $r\left(u\right) \geq  r\left(v\right)$ folgt\\
-  $a = 2 + r\left(u\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)$. \\\\
+Nun wird zunächst die Behauptung aufgestellt, dass diese Summe klein genug ist, dies wird dann über Äquivalenzen gezeigt.
+\begin{align*}
+& 2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) \leq  3\left(r\left(v\right)'- r\left(v\right)\right)\\
+ \Leftrightarrow &2 \leq 2\left(v\right)' -  r\left(x\right)' - r\left(v\right)\\
+ \Leftrightarrow & -2 \geq -2\left(v\right)' +  r\left(x\right)' + r\left(v\right)\\
+ \Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(v\right) / \mathit{tw}\left(v'\right)\right)
+\end{align*}
+Dass die letzte Ungleichung gilt, kann man an einer Eigenschaft des $\log_2$ ableiten. Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt $\log_2\left(a\right) + \log_2\left(a\right) \leq -2$. An Abbildung \ref{fig:zigZag} ist zu erkennen, dass sich $\mathit{tw}\left(v\right)$ vom Ausgangszustand zum Zwischenzustand hin nicht verändert. $\mathit{tw}\left(x'\right)$ ist ebenfalls unverändert zum Zwischenschritt. Es kann also bei beiden Knoten mit den Werten aus dem Zwischenschritt gearbeitet werden.  $\mathit{tw}\left(v'\right) = \mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right) + w\left(u\right) $. Daraus folgt $\left(\left(x'\right) + \left(v\right)\right) /  \mathit{tw}\left(v'\right) < 1$ und mit der Eigenschaft von $\log_2$ folgen die Ungleichungen.
  
 \paragraph{zig-zag} 
-	
+\begin{align*}
+&2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) &\textit{ mit $r\left(x\right) =  r\left(v\right)'$ }\\
+\leq& 2 + r\left(u\right)' +r\left(x\right)' - 2 r\left(v\right) &\textit{mit $r\left(v\right) \leq  r\left(u\right)$}\\
+\end{align*}
+Nun wird wie bei zig-zig vorgegangen.
+\begin{align*}
+&  2 + r\left(u\right)' +r\left(x\right)' - 2 r\left(v\right) \leq  2\left(r\left(v\right)'- r\left(v\right)\right)\\
+\Leftrightarrow &2 \leq 2\left(v\right)' -  r\left(x\right)' - r\left(u\right)'\\
+\Leftrightarrow &-2 \leq -2\left(v\right)' +  r\left(x\right)' + r\left(u\right)'\\
+\Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(u'\right) / \mathit{tw}\left(v'\right)\right)
+\end{align*}
+Mit der $\log_2$ Regal aus zig-zig und Abbildung \ref{fig:zigZag} folgt die Behauptung.
+Betrachtet man die Kosten der Gesamtoperation so bildet sich eine Teleskopsumme, die möglicherweise, wenn ein  zig bzw. zag Fall enthalten ist, mit eins addiert werden muss. Daraus folgt das Lemma.
 \end{proof}
 
 
