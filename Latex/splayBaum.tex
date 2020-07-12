@@ -81,7 +81,7 @@ Sie $p$ der Zeiger der Operation in den BST. Zunächst wird eine gewöhnliche Su
 \end{figure}
 
 \subsection{Amortisierte Laufzeitanalyse von \textit{splay }}
-Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splaytree $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Das Gewicht eines Knotens ist unveränderlich. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte im Teilbaum mit Wurzel $v$. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \lfloor\log_2  \mathit{tw}\left(v\right)\rfloor$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
+Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splaytree $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte im Teilbaum mit Wurzel $v$. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2  \mathit{tw}\left(v\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
 \begin{align*}
 \Phi = \sum_{v \in V} r\left(v\right)
 \end{align*}
@@ -92,7 +92,7 @@ verwendet.
 
 
 \newtheorem{Lemma1}{Access Lemma}[section] \label{lemmaSplay}
-\begin{Lemma1}Sei $T$ ein Splaybaum mit $n$ Knoten und Wurzel $w$ und einem Knoten $v$ mit Schlüssel $k$. Die amortisierte Laufzeit von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ \\
+\begin{Lemma1}Sei $T$ ein Splaybaum mit $n$ Knoten und Wurzel $w$ und einem Knoten $v$ mit Schlüssel $k$. Es wird werden den Knoten fest zugeordnete Gewichte angenommen. Die amortisierte Laufzeit von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ \\
 
 \end{Lemma1}
 \begin{proof}
@@ -137,9 +137,23 @@ Mit der $\log_2$ Regal aus zig-zig und Abbildung \ref{fig:zigZag} folgt die Beha
 Betrachtet man die Kosten der Gesamtoperation so bildet sich eine Teleskopsumme, die möglicherweise, wenn ein  zig bzw. zag Fall enthalten ist, mit eins addiert werden muss. Daraus folgt das Lemma.
 \end{proof}
 
+\subsection{Dynamische Optimalitäts Vermutung}
+ Der Splaybaum erfüllt  jedoch Eigenschaften aus Kapitel \ref{dynOptEigenschaften} und auch noch einige weitere. Für dynamic finger ist ein sehr aufwändiger Beweis in \cite{dynFInger} enthalten. working set wurde bereits in \cite{splay} gezeigt, dieser Beweis wird hier vorgestellt. Die anderen Eigenschaften aus Kapitel \ref{dynOptEigenschaften} folgen dann aus diesen beiden. Aufgrund dieser oberen Schranken wurde in \cite{splay} die Vermutung aufgestellt, dass der Splaybaum dynamisch optimal ist. Bewiesen ist bisher nur das er $\log \left(n\right)$-competitive ist, dies folgt aus dem access lemma. Würde für eine solche obere Schranke gezeigt werden, dass der Splaybaum diese nicht einhalten kann, jedoch ein anderer BST schon, wäre die Vermutung zur dynamischen Optimalität widerlegt. Auch das ist bis heute nicht geschehen. 
+ 
+ 
+ 
+ \newtheorem{Satz2}{working set}[section] \label{workingSetSplay}
+ \begin{Satz2} Es sei $T$ ein Splaybaum mit $n$ Knoten. Sei $X = x_1,x_2,..,x_m$ eine für $T$ erstellte Zugriffsfolge, mit $m \geq n$ und $m \geq n \log\left(n\right) $. Sei \\ ${w_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$ definiert, wie in Kapitel \ref{workingSetDynOpt}. Dann gilt für die amortisierte Laufzeit $O\left(\sum_{i = 1}^{m} \log w_i \right)$.
+ \end{Satz2}
+ \begin{proof}
+ Den Knoten werden die Gewichte $1/1, 1/4, 1/n^2$ zugeordnet. Sei $i$ der kleinste Index zu einem Knoten $v$ mit $x_i = \mathit{key\left(v\right)}$. Dann gilt für das Gewicht von $v$, $w\left(v\right) = 1 /n^i$. Gibt es Knoten auf deren Schlüssel nicht zugegriffen wird, verteilen sich die kleinsten Gewichte beliebig auf diese. $\mathit{tw}\left(v\right)$ und $\Phi$ sind definiert wie beim access lemma. Nach einem Zugriff $x_j$ werden die Gewichte neu zugeordnet. Der Knoten $v_j$ mit Schlüssel $x_j$ erhält das Gewicht $1/1$. Sei $1/k^2$ das Gewicht von $v_j$ vor dem Zugriff $x_j$. Sei $u$ ein Knoten mit $w\left(u\right) = 1 / k'$ mit  $k' \in \{1, 4,.., \left(k-1\right)^2\}$ direkt vor dem Zugriff $x_j$. Dann ist $1 /\left(k + 1\right)^2$ das Gewicht von $u$ nach dem Zugriff $x_j$. Zu beachten ist, dass nach einer solchen Neuzuordnung die Menge der im Baum enthaltenen Gewichte unverändert bleibt. \\
+ Diese Verteilung der Gewichte garantiert, dass direkt vor Zugriff $x_j$, $v_j$ ein Gewicht von ${1 /w_i}^2$ hat, somit gilt $\mathit{tw}\left(v_j\right) \geq {1 /w_i}^2$ . Der Wert von $\mathit{tw}$ für die Wurzel $r$ in $T$ direkt vor der Ausführung von $x_j$ ist $W = \sum_{i = 1}^{n} 1/ n^2 < 2 = $. Diese Werte in Access Lemma eingesetzt ergibt Kosten von $O\left(\log\left({w_i}^2 /W  \right)\right)$, mit $w_i /W = O\left(1\right)$. Durch die nachfolgende Neuzuordnung der Gewichte kann $\Phi$ nur kleinere Werte annehmen, denn nur das Gewicht der neuen Wurzel erhöht sich, $\mathit{tw}$ ist für die Wurzel aber konstant.\\
+ Über die gesamte Zugriffssequenz kann das Potential nicht um mehr als $\sum_{i = 1}^{n} \log_2\left(w\left(i\right) / W\right)$ kleiner werden. Denn $W$ ist der maximale Wert von $\mathit{tw}\left(\right)$ und  der minimale ist $1 /n^2$. Daraus folgt eine maximale Verringerung des Potentials von $=\left(n \log \left(n\right)\right)$. 
+ \end{proof}
+ 
 
 
-
+ 
 
 
 
