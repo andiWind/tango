@@ -113,10 +113,10 @@ Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So 
  \noindent $K_2 \subseteqq  K^r_l$ ergibt sich direkt aus dem Verfahren zur Konstruktion von $T^r_l$.\\
  
  \noindent $ K^r_l \subseteqq K_2$:\\
- Sei $k \in K^r_l$ und $v_k$ der Knoten in $T$ mit $\mathit{key}(v_k) = k$. Es muss einen Pfad $P = v_0,..,v_n$ in $T$ geben, mit $v_0 = v_d$, $v_n = v_k$. Sei $m$ die Anzahl der Knoten in $P$, mit einem Schlüssel in  $\left[l,r\right]$. Nun folgt Induktion über $m$.\\
-  Für $m = 1$ gilt $k = k_r$  und $k \in K_2$. \\
+ Sei $k \in K^r_l$ und $v_k$ der Knoten in $T$ mit $\mathit{key}(v_k) = k$. Es muss einen Pfad $P_T = v_0,..,v_n$ in $T$ geben, mit $v_0 = v_d$, $v_n = v_k$. Sei $m$ die Anzahl der Knoten in $P_T$, mit einem Schlüssel in  $\left[l,r\right]$. Nun folgt Induktion über $m$.\\
+  Für $m = 1$ gilt $k = \mathit{key}\left(v_d\right)$  und $k \in K_2$. \\
   Induktionsschritt:\\
-  Sei $w$ der Knoten mit der größten Tiefe in $ v_0,..,v_{n-1}$ für den mit $\mathit{key}(w) \in  K_2$. $w$ muss existieren da $m > 1$. Nach Induktionsvoraussetzung gibt es einen Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(v_w)$ in $T^r_l$. Es sei $\mathit{key}(v_w) > \mathit{key}(v_k)$, der andere Fall ist symmetrisch. Ist $v_k$ das linke Kind von $v_w$, dann enthält das linke Kind von $u_k$ den Schlüssel $\mathit{key}(v_k)$. Anderenfalls gilt für alle $v_j$ mit $m < j < k$, $\mathit{key}(v_j) < l < \mathit{key}(v_k)$. Somit muss $v_{m+1}$ ein linkes Kind sein und die Knoten in $P$ mit größerer Tiefe als der von $v_{m+1}$ müssen rechte Kinder sein. Damit ist auch in diesem Fall ein Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(w)$ linkes Kind von $u_m$.  \\
+  Sei $v_w$ der Knoten mit der größten Tiefe in $ v_0,..,v_{n-1}$ für den mit $\mathit{key}(v_w) \in~K_2$. Nach Induktionsvoraussetzung gibt es einen Knoten $u_w$ mit $\mathit{key}(u_w) = \mathit{key}(v_w)$ in $T^r_l$.  Es sei $\mathit{key}(v_w) > \mathit{key}(v_k)$, der andere Fall ist symmetrisch. Ist $v_k$ das linke Kind von $v_w$, dann enthält das linke Kind von $u_w$ den Schlüssel $\mathit{key}(v_k)$. Anderenfalls gilt für alle $v_j$ mit $w < j < k$, $\mathit{key}(v_j) < l < \mathit{key}(v_k)$. Somit muss $v_{w+1}$ ein linkes Kind sein und die Knoten in $P_T$ mit größerer Tiefe als der von $v_{w+1}$ müssen rechte Kinder sein. Damit ist auch in diesem Fall ein Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(v_k)$ linkes Kind von $u_w$.  \\
   
  \noindent Nun kommen wir zum Lemma:\\
  
