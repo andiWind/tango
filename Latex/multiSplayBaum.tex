@@ -19,7 +19,6 @@
 
 \title{Bachelorarbeit}
 \author{
-
 	Andreas Windorfer\\
 }
 \date{\today}
@@ -39,11 +38,20 @@
 
 
 \section{Multisplay Baum}
-
-
-
-
-
+Der Multisplay Baum ist eine Variation zum Tango Baum. Ein preferred path wird hier durch einen Splaybaum dargestellt. Amortisiert betrachtet, ist er $\log\left(\log\left(n\right)\right)$-competitive und garantiert $O\left(\log \left(n\right)\right)$ im worst case, bei einer einzelnen\\ {\textit{access}} Operation. $n$ steht wieder für der Anzahl der Knoten von $T$. Da der Splaybaum kein balancierter Baum ist, gibt es zusätzliche mögliche Zustände im Vergleich zu einem Tango Baum mit der gleichen Knotenzahl.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.8\textwidth]{"Medien/Multisplay/referenzTree"}
+	\caption {Refernzebaum mit grün gezeichneten preferred paths }
+	\label{fig:referenzTree}
+\end{figure} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Multisplay/pfadRepresentation"}
+	\caption {Refernzebaum mit grün gezeichneten preferred paths }
+	\label{fig:referenzTree}
+\end{figure} 
+ \subsection{Die \textit{access} Operation beim Multisplay Baum}
 
 
 
