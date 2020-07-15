@@ -52,36 +52,36 @@ In dieser Arbeit werden \textit{access} Operation betrachtet die folgende Eigens
 \end{enumerate}
 
  
- \noindent 	Zur Auswahl des nächsten Einzelschrittes können zusätzliche in $p$ gespeicherte Hilfsdaten verwendet werden. Es darf nur auf die Hilfsdaten und Zeiger des Knotens zugegriffen (lesend oder schreibend) werden, auf den $p$ zeigt. Es wird $n = \vert K \vert$ gesetzt. Außerdem werden hier pro Knoten als Hilfsdaten nur konstant viele Konstanten und Variablen zugelassen, die jeweils eine Größenordnung von $\log \left(n\right)$  haben dürfen.
+ \noindent 	Zur Auswahl des nächsten Einzelschrittes können zusätzliche in $p$ gespeicherte Hilfsdaten verwendet werden. Es darf nur auf die Daten des Knotens zugegriffen (lesend oder schreibend) werden, auf den $p$ zeigt. Es wird $n = \vert K \vert$ gesetzt. Außerdem werden hier pro Knoten als Hilfsdaten nur konstant viele Konstanten und Variablen zugelassen, die jeweils eine Größenordnung von $\log \left(n\right)$  haben dürfen.
  
- \noindent Die Initialisierung und die Ausführung jedes Einzelschrittes aus Punkt 2 kann in konstanter Zeit durchgeführt werden. Es werden jeweils Einheitskosten von $1$ verwendet. Höhere angenommene Kosten würden die Gesamtkosten lediglich um einen konstanten Faktor erhöhen. Es sei $a$ die Anzahl der insgesamt durchgeführten Einzelschritte während einer Zugriffsfolge $X$ mit Länge $m$. Dann berechnen sich die Gesamtkosten $\mathit{cost(X)}$ der Zugriffsfolge mit $\mathit{cost(X)} = a + m$. Es muss zu jeder Schlüsselmenge und jeder Zugriffsfolge zumindest einen offline BST geben, so dass die Kosten keines anderen niedriger sind. Diese Kosten werden als $\mathbf{OPT\left(X\right)}$ bezeichnet.\\  In \cite{nRotations} wurde gezeigt, dass der Zustand eines BST mit maximal $2n -2$ Rotationen in jeden anderen BST mit der gleichen Schlüsselmenge überführt werden kann. Da bei der Berechnung der Kosten für  $\mathit{OPT(X)}$, $m$ ebenfalls als Summand vorkommt, können die zusätzlichen Kosten der online Varianten, für $m > n$ asymptotisch betrachtet vernachlässigt werden. \\
+ \noindent Die Initialisierung und die Ausführung jedes Einzelschrittes aus Punkt 2 kann in konstanter Zeit durchgeführt werden. Es werden jeweils Einheitskosten von $1$ verwendet. Höhere angenommene Kosten würden die Gesamtkosten lediglich um einen konstanten Faktor erhöhen. Es sei $a$ die Anzahl der insgesamt durchgeführten Einzelschritte während einer Zugriffsfolge $X$ mit Länge $m$. Dann berechnen sich die Gesamtkosten zum Ausführen von $X$ mit $a + m$. Es muss zu jeder Schlüsselmenge und jeder Zugriffsfolge zumindest einen offline BST geben, so dass die Gesamtkosten keines anderen niedriger sind. Diese Kosten werden als $\mathbf{OPT\left(X\right)}$ bezeichnet.\\  In \cite{nRotations} wurde gezeigt, dass der Zustand eines BST mit maximal $2n -2$ Rotationen in jeden anderen BST mit der gleichen Schlüsselmenge überführt werden kann. Da bei der Berechnung der Kosten für  $\mathit{OPT(X)}$, $m$ ebenfalls als Summand vorkommt, können die zusätzlichen Kosten der online Varianten, für $m > n$ asymptotisch betrachtet vernachlässigt werden. \\
  \noindent Als \textbf{dynamisch optimal } wird ein BST bezeichnet wenn er eine beliebige Zugriffssequenz $X$ in $O\left(\mathit{OPT}\left(X\right)\right)$ Zeit ausführen kann. Ein BST der jede Zugriffssequenz in $O\left(c \cdot \mathit{OPT}\left(X\right)\right)$ Zeit ausführt, wird als \textbf{c-competitive} bezeichnet. Es konnte bis heute für keinen BST bewiesen werden, dass er dynamisch optimal ist. Es wurden aber mehrere untere Schranken für $\mathit{OPT}\left(X\right)$ gefunden. Eine davon wird  nun vorgestellt.
 
 
 \subsection{Erste untere Schranke von Wilber}
 Robert Wilber hat in \cite{wilberLowerBounds} zwei Methoden zur Berechnung unterer Schranken für die Laufzeit von Zugriffsfolgen bei BST vorgestellt. Hier wird auf die Erste davon eingegangen. Im folgenden werden offline BST betrachtet, bei denen nach einer \textit{access($k$)} Operation, der Knoten mit Schlüssel $k$ die Wurzel des BST ist. Asymptotisch betrachtet entsteht hierdurch kein Verlust der Allgemeinheit. Sei $v_p$ der Knoten auf den $p$ zum Zeitpunkt $t$ direkt vor der Terminierung von \textit{access} zeigt. Sei $d$ die Tiefe von $v_p$ . Dann sind mindestens Kosten $d + 1$ entstanden. Mit $d$ Rotationen kann $v_p$ zur Wurzel gemacht werden und mit $d$ weiteren Rotationen kann der Zustand zum Zeitpunkt $t$ wieder hergestellt werden.
 Für einen BST $T$ mit Schlüsselmenge $K_T$ und einer Zugriffsfolge $X$ notieren wir die minimalen Kosten eines wie eben vorgestellt arbeitenden BST mit $W(X, T)$. Im folgenden wird angenommen, dass \\
-$K = \{  i \in \mathbb{N} \vert i \in \left[j,k\right] \textit{ mit } j,k \in  \mathbb{N} \} $ gilt. Dadurch entsteht kein Verlust der Allgemeinheit, denn anderenfalls könnte man die Schlüsselmenge einfach aufsteigend sortiert mit $j$ startend durchnummerieren. Eine Rotation wird innerhalb dieses Kapitels mit $\left(i, j\right)$ notiert. $i$ ist dabei der Schlüssel des Knotens $v$ auf dem die Rotation ausgeführt wird. $j$~ist der Schlüssel des Vaters von $v$, vor Ausführung der Rotation. Aus einer Folge von Rotationen $r = \left(i_1,j_1 \right),\left(i_2,j_2 \right),..,\left(i_n,j_n \right)$ erhält man die Folge  $r^y_x = \left(i_{1'},j_{1'}\right),\left(i_{2'},j_{2'} \right),..,\left(i_{m'},j_{m'} \right)$  in dem man aus $r$ jede Rotation entfernt bei der $i\notin \left[l,r\right] \lor j\notin \left[l,r\right]$ gilt. Ähnlich erhält man aus $X$ die Zugriffsfolge $X^y_x$ in dem aus $X$ alle Schlüssel $k$ entfernt werden, für die $k < x  \lor k > y$ gilt.
+$K = \{  i \in \mathbb{N} \vert i \in \left[j,k\right] \textit{ mit } j,k \in  \mathbb{N} \} $ gilt. Dadurch entsteht kein Verlust der Allgemeinheit, denn anderenfalls könnte man die Schlüsselmenge einfach aufsteigend sortiert mit $j$ startend durchnummerieren. Eine Rotation wird innerhalb dieses Kapitels mit $\left(i, j\right)$ notiert. $i$ ist dabei der Schlüssel des Knotens $v$ auf dem die Rotation ausgeführt wird. $j$~ist der Schlüssel des Elternknoten von $v$, vor Ausführung der Rotation. Aus einer Folge von Rotationen $r = \left(i_1,j_1 \right),\left(i_2,j_2 \right),..,\left(i_m,j_m \right)$ erhält man die Folge  $r^y_x = \left(i_{1'},j_{1'}\right),\left(i_{2'},j_{2'} \right),..,\left(i_{m'},j_{m'} \right)$  in dem man aus $r$ jede Rotation entfernt bei der $i\notin \left[l,r\right] \lor j\notin \left[l,r\right]$ gilt. Ähnlich erhält man aus $X$ die Zugriffsfolge $X^y_x$ in dem aus $X$ alle Schlüssel $k$ entfernt werden, für die $k < x  \lor k > y$ gilt.
 
 \paragraph{lower bound tree} \label{wilberLowerBoundTree}
 Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \vert K\vert  - 1$ Knoten enthält. Seine $\vert K \vert$ Blätter enthalten die Schlüssel aus $K$. Die $\vert K \vert - 1$ internen Knoten enthalten die Schlüssel aus der Menge $\{r \in R \vert \exists i,j \in K \colon \left( i + 1 = j \land r = i + 0,5\right)\}$. $Y$ kann immer erstellt werden indem zunächst ein BST $Y_i$ mit den internen Knoten von $Y$ erzeugt wird. Ein Blatt wird dann an der Position angefügt, an der die Standardvariante von \textit{insert} angewendet auf $Y_i$ ihren Schlüssel einfügen würde. Dass hierbei für zwei Blätter mit Schlüssel $k_1, k_2$ die gleiche Position gewählt wird ist ausgeschlossen, da es einen internen Knoten mit Schlüssel $k_i$ so geben muss dass $\left(k_1 < k_i < k_2\right) \lor \left(k_1 > k_i > k_2 \right)$ gilt. An der Konstruktionsanleitung ist zu erkennen, dass zu den meisten BST mehrere mögliche lower bound trees existieren. Abbildung \ref{fig:lowerBoundTree} zeigt eine beispielhafte Konstellation. \\
 
 
         
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
-	\caption{Rechts ist ein möglicher lower bound tree zum linken BST dargestellt.  }
-	\label{fig:lowerBoundTree}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
+%	\caption{Rechts ist ein möglicher lower bound tree zum linken BST dargestellt.  }
+%	\label{fig:lowerBoundTree}
+%\end{figure}
 
-\noindent Nun wird die Funkion $_X(T, Y, X) $ vorgestellt. Ihre Parameter sind ein BST $T$, ein lower bound tree $Y$ und eine Zugriffsfolge $X$. $Y$ und $X$ müssen passend für $T$ erstellt sein, ansonsten ist $_X(T, Y, X) $ undefiniert . Die Auswertung erfolgt zu einer natürlichen Zahl. Sei $U$ die Menge internen Knoten von $Y$ und $m$ die Länge von $X$. Sei $u \in U$ und $l$ der kleinste Schlüssel eines Blattes im Teilbaum mit Wurzel $u$, sowie $r$ der größte Schlüssel eines solchen Blattes. Sei $v$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus $\left[l, r\right]$  in $T$. Sei $o$ die Folge $o_0, o_1,..,o_m =  \mathit{key}(v) \circ X^r_l$. $i \in \left[1,m\right]$ ist eine \textit{u-Transition} wenn gilt $\left( o_{i-1} < u \land o_i > u \right) \lor \left( o_{i-1} > u \land o_i < u \right)$.Die Funktion $\mathit{score}\left(u\right) \colon U \rightarrow \mathbb{N}$ ist definiert durch $\mathit{score}\left(u\right) = \vert\{i \in \mathbb{N}\ \vert \textit{i ist eine u-Transition}\} \vert$. Mit Hilfe von $\mathit{score}$ kann nun  $_X(T, Y, X) $ definiert werden.
+\noindent Nun wird die Funkion $_X(T, Y, X) $ vorgestellt. Ihre Parameter sind ein BST $T$, ein lower bound tree $Y$ und eine Zugriffsfolge $X$. $Y$ und $X$ müssen passend für $T$ erstellt sein, ansonsten ist $_X(T, Y, X) $ undefiniert . Die Auswertung erfolgt zu einer natürlichen Zahl. Sei $U$ die Menge der internen Knoten von $Y$ und $m$ die Länge von $X$. Sei $u \in U$ und $l$ der kleinste Schlüssel eines Blattes im Teilbaum mit Wurzel $u$, sowie $r$ der größte Schlüssel eines solchen Blattes. Sei $v$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus $\left[l, r\right]$  in $T$. Sei $o$ die Folge $o_0, o_1,..,o_m =  \mathit{key}(v) \circ X^r_l$. $i \in \left[1,m\right]$ ist eine \textit{u-Transition} wenn gilt $\left( o_{i-1} < u \land o_i > u \right) \lor \left( o_{i-1} > u \land o_i < u \right)$.Die Funktion $\mathit{score}\left(u\right) \colon U \rightarrow \mathbb{N}$ ist definiert durch $\mathit{score}\left(u\right) = \vert\{i \in \mathbb{N}\ \vert \textit{i ist eine u-Transition}\} \vert$. Mit Hilfe von $\mathit{score}$ kann nun  $_X(T, Y, X) $ definiert werden.
 
 \begin{align*}
 _X(T, Y, X)  = m + \sum_{u \in U} {\mathit{score}} \left(u\right)
 \end{align*} %K^r_l = \{i \in K\vert l \leq i \leq r\}
 
-\noindent Im eigentlichen Satz wird $\mathit{OPT}\left(X\right) \geq {_X(T, Y, X)} $ gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $u$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das linke Kind von $u$ und für $i \in \{1,..,n\}$,$v_i$ ist das rechte Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $u$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das rechte Kind von $u$ und $v_i$ ist das linke Kind von $v_{i-1}$.\\ $T^r_l$ ist ein mit $\left[l,r\right]$ von $T$ abgeleiteter BST, so dass er genau die Schlüssel aus $T$ enthält, die in $\left[l, r\right]$ liegen. Sei $v_d$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus  $\left[l,r\right]$ in $T$. (Existiert ein solcher nicht ist $T^r_l$ der leere Baum). Es muss $\mathit{key}(v_d) \in \left[l,r\right]$ gelten. Denn hat $v_d$ keine Kinder ist sein Schlüssel der Einzige aus $\left[l,r\right]$. Hat $v_d$ ein Kind $v_{c}$ und $\mathit{key}(v_d) \notin \left[l,r\right]$, dann wäre $v_{c}$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten. Hat $v_d$ zwei Kinder gibt es drei Fälle:
+\noindent Im eigentlichen Satz wird $\mathit{OPT}\left(X\right) \geq {_X(T, Y, X)} $ gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das linke Kind von $v$ und für $i \in \{1,..,n\}$,$v_i$ ist das rechte Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das rechte Kind von $u$ und $v_i$ ist das linke Kind von $v_{i-1}$.\\ $T^r_l$ ist ein mit $\left[l,r\right]$ von $T$ abgeleiteter BST, so dass er genau die Schlüssel aus $T$ enthält, die in $\left[l, r\right]$ liegen. Sei $v_d$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus  $\left[l,r\right]$ in $T$. (Existiert ein solcher nicht ist $T^r_l$ der leere Baum). Es muss $\mathit{key}(v_d) \in \left[l,r\right]$ gelten. Denn hat $v_d$ keine Kinder ist sein Schlüssel der Einzige aus $\left[l,r\right]$. Hat $v_d$ ein Kind $v_{c}$ und $\mathit{key}(v_d) \notin \left[l,r\right]$, dann wäre $v_{c}$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten. Hat $v_d$ zwei Kinder gibt es drei Fälle:
 \begin{itemize}
 	\item Im linken und rechten Teilbaum von $v_d$ sind Schlüssel aus $\left[l,r\right]$ enthalten. Dann muss aufgrund der Links-Rechts-Beziehung  $\mathit{key}(v_d)$ auch in $\left[l,r\right]$ enthalten sein.
 	\item In genau einem Teilbaum von $v_d$ sind Schlüssel aus $\left[l,r\right]$ enthalten. Sei $v_{c}$ die Wurzel dieses Teilbaumes. Gilt zusätzlich $\mathit{key}(v) \notin K^r_l$, dann wäre des  $v_c$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten.
@@ -100,12 +100,12 @@ Dazu werden zwei Mengen verwendet. $U$ ist eine zu Beginn leere Menge, $W$ enth�
 	\item Füge $w$ zu $U$ hinzu, weiter mit $1$
 \end{enumerate}
 Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So konstruiert muss $T^r_l$ ein BST sein. Ein Beispiel stellt Abbildung \ref{fig:T_r_l} dar. 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/T_r_l"}
-	\caption{Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ .  }
-	\label{fig:T_r_l}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/T_r_l"}
+%	\caption{Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ .  }
+%	\label{fig:T_r_l}
+%\end{figure}
 
  \noindent Sei $K_1$ die Schlüsselmenge von $T$ und $K_2$ die von $T^r_l$. Sei ${K^r_l = K_1 \cap \{i \in \mathbb{N}\vert i \in \left[l,r\right] \}}$. Jetzt wird noch darauf eingegangen warum $K_2 = K^r_l$ gilt \\
 
@@ -115,7 +115,7 @@ Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So 
  Sei $k \in K^r_l$ und $v_k$ der Knoten in $T$ mit $\mathit{key}(v_k) = k$. Es muss einen Pfad $P_T = v_0,..,v_n$ in $T$ geben, mit $v_0 = v_d$, $v_n = v_k$. Sei $m$ die Anzahl der Knoten in $P_T$, mit einem Schlüssel in  $\left[l,r\right]$. Nun folgt Induktion über $m$.\\
   Für $m = 1$ gilt $k = \mathit{key}\left(v_d\right)$  und $k \in K_2$. \\
   Induktionsschritt:\\
-  Sei $v_w$ der Knoten mit der größten Tiefe in $ v_0,..,v_{n-1}$ für den mit $\mathit{key}(v_w) \in~K_2$. Nach Induktionsvoraussetzung gibt es einen Knoten $u_w$ mit $\mathit{key}(u_w) = \mathit{key}(v_w)$ in $T^r_l$.  Es sei $\mathit{key}(v_w) > \mathit{key}(v_k)$, der andere Fall ist symmetrisch. Ist $v_k$ das linke Kind von $v_w$, dann enthält das linke Kind von $u_w$ den Schlüssel $\mathit{key}(v_k)$. Anderenfalls gilt für alle $v_j$ mit $w < j < k$, $\mathit{key}(v_j) < l < \mathit{key}(v_k)$. Somit muss $v_{w+1}$ ein linkes Kind sein und die Knoten in $P_T$ mit größerer Tiefe als der von $v_{w+1}$ müssen rechte Kinder sein. Damit ist auch in diesem Fall ein Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(v_k)$ linkes Kind von $u_w$.  \\
+  Sei $v_w$ der Knoten mit der größten Tiefe in $ v_0,..,v_{n-1}$ mit $\mathit{key}(v_w) \in~K_2$. Nach Induktionsvoraussetzung gibt es einen Knoten $u_w$ mit $\mathit{key}(u_w) = \mathit{key}(v_w)$ in $T^r_l$.  Es sei $\mathit{key}(v_w) > \mathit{key}(v_k)$, der andere Fall ist symmetrisch. Ist $v_k$ das linke Kind von $v_w$, dann enthält das linke Kind von $u_w$ den Schlüssel $\mathit{key}(v_k)$. Anderenfalls gilt für alle $v_j$ mit $w < j < k$, $\mathit{key}(v_j) < l < \mathit{key}(v_k)$. Somit muss $v_{w+1}$ ein linkes Kind sein und die Knoten in $P_T$ mit größerer Tiefe als der von $v_{w+1}$ müssen rechte Kinder sein. Damit ist auch in diesem Fall ein Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(v_k)$ linkes Kind von $u_w$.  \\
   
  \noindent Nun kommen wir zum Lemma:\\
  
@@ -130,17 +130,17 @@ Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So 
 \end{Lemma3}
 \begin{proof}
 \noindent Für $u,v \notin \left[l,r\right]$ wird bei keinem inneren Pfad ein Knoten mit Schlüssel aus $\left[l,r\right]$ entfernt oder hinzugefügt.
-Nun werden die vier Fälle betrachtet bei denen entweder $\mathit{key}\left(u\right)$ oder $\mathit{key}\left(c\right)$ in $\left[l,r\right]$ liegt.
+Nun werden die vier Fälle betrachtet bei denen entweder $\mathit{key}\left(u\right)$ oder $\mathit{key}\left(v\right)$ in $\left[l,r\right]$ liegt.
 \begin{enumerate}
 	\item $u$ ist das linke Kind von $v$ und $\mathit{key}\left(u\right) < l$:\\
 	 Sei $w$ ein Knoten aus $T^r_l$ und $w'$ einer aus $T'{^r_l}$, mit $\mathit{key}(w) = \mathit{key}(w')$ und $\mathit{key}(w) \in \left[l,r\right]$. Es muss gezeigt werden, dass wenn $w$ ein linkes bzw. rechtes Kind mit Schlüssel $k$ hat, dann gilt dies auch für $w'$. Da $\mathit{key}(u) < l \leq \mathit{key}(w) $ gilt, kann weder $u$ noch $v$ im rechten Teilbaum von $w$ liegen. Somit ist bezüglich der rechten Kinder nichts zu zeigen. 
-	Sei $P_l$ der linke innere Pfad von $w$. Ist $v$ nicht in $P_l$ enthalten und gilt $v \neq w$ dann gilt $P_l = P'_l$. Sei $w = v$. Dann gilt $P_l = u  \circ  P'_l$ ,vergleiche Abbildung \ref{Kapitel 1 Rotationen}, und da $\mathit{key}(u) < l$ gilt, bleibt das linke Kind von $w$ unverändert. Nun sei $v$ in $P_l$ enthalten. Dann unterscheiden sich  $P_l$ und  $P'_l$ dadurch, dass ein Knoten mit $\mathit{key}(u)$ in $P'_l$ enthalten ist. Mit $u < l$ gilt aber, dass $w'$ und $w'$ bezüglich des Schlüssels ihres linken Kindes nicht unterscheiden.
+	Sei $P_l$ der linke innere Pfad von $w$. Ist $v$ nicht in $P_l$ enthalten und gilt $v \neq w$ dann gilt $P_l = P{_l}'$. Sei $w = v$, dann gilt $P_l = u  \circ  {P_l}'$ ,vergleiche Abbildung \ref{Kapitel 1 Rotationen}, und da $\mathit{key}(u) < l$, bleibt das linke Kind von $w$ unverändert. Nun sei $v$ in $P_l$ enthalten. Dann unterscheiden sich  $P_l$ und  ${P_l}'$ dadurch, dass ein Knoten mit $\mathit{key}(u)$ in $P'_l$ enthalten ist. Mit $u < l$ gilt aber, dass sich $w'$ und $w'$ bezüglich des Schlüssels ihres linken Kindes nicht unterscheiden.
+	\item $u$ ist das linke Kind von $v$ und $\mathit{key}\left(v\right) > r$:\\
+		Mit vertauschten der Bezeichnungen von $v$ und $u$, erreicht man von $T'$ aus Fall 3, mit Ausführung der Rotation auf dieser Konstellation wieder $T$ aus Fall 3. Somit muss nichts weiter gezeigt werden. 
 	\item $u$ ist das rechte Kind von $v$ und $\mathit{key}\left(u\right) > r$:\\
-	Links-Rechts-Symmetrisch zu Fall 1. 
-	\item $v$ ist das linke Kind von $u$ und $\mathit{key}\left(u\right) < l$:\\
-	    Von $T'$ aus Fall 1 erreicht man nach Ausführung der Rotation mit dieser Konstellation wieder $T$ aus Fall 1. Somit muss nichts weiter gezeigt werden.
-	\item $v$ ist das linke Kind von $u$ und $\mathit{key}\left(u\right) > r$:\\
-	Von $T'$ aus Fall 2 erreicht man nach Ausführung der Rotation mit dieser Konstellation wieder $T$ aus Fall 2. Somit muss nichts weiter gezeigt werden.\\
+	    	Links-Rechts-Symmetrisch zu Fall 1. 
+	\item $u$ ist das rechte Kind von $v$ und $\mathit{key}\left(v\right) < l$:\\
+	Links-Rechts-Symmetrisch zu Fall 2. \\
        	    
 \end{enumerate}	
 \noindent Übrig bleibt noch die Konstellation $\mathit{key}\left(u\right),\mathit{key}(v) \in \left[l,r\right]$. 
@@ -345,12 +345,12 @@ gilt.
  
 \noindent Abbildung \ref{fig:upperBounds} zeigt Implikationen zwischen den Eigenschaften und basiert auf einer Abbildung aus \ref{fig:upperBounds}.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width= 0.6\textwidth]{"Medien/DynOpt/upperBounds"}
-	\caption{Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite{upperBounds} }
-	\label{fig:upperBounds}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width= 0.6\textwidth]{"Medien/DynOpt/upperBounds"}
+%	\caption{Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite{upperBounds} }
+%	\label{fig:upperBounds}
+%\end{figure}
 
 \newpage
 \bibliography{literaturverzeichnis}

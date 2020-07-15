@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  14 JUL 2020 17:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  15 JUL 2020 19:35
 entering extended mode
 **./DynamischeOptimalität.tex
 (DynamischeOptimalität.tex
@@ -352,30 +352,20 @@ Optimalität.toc)
 \openout3 = `DynamischeOptimalität.toc'.
 
 
-[2] [3]
-Overfull \hbox (17.39609pt too wide) in paragraph at lines 62--65
-[] \OML/cmm/m/it/12 ; [] ; ::; []$ \T1/cmr/m/n/12 er-h�lt man die Fol-ge $\OML/
-cmm/m/it/12 r[] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 ; [] ; ::; []$
- []
+[2] [3] [4]
+
+LaTeX Warning: Reference `fig:lowerBoundTree' on page 5 undefined on input line
+ 67.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
-[4]
-<Medien/DynOpt/lowerBoundTree.png, id=31, 4459.66125pt x 1497.1935pt>
-File: Medien/DynOpt/lowerBoundTree.png Graphic file (type png)
-<use Medien/DynOpt/lowerBoundTree.png>
-Package pdftex.def Info: Medien/DynOpt/lowerBoundTree.png  used on input line 7
-3.
-(pdftex.def)             Requested size: 390.0pt x 130.92644pt.
- [5 <./Medien/DynOpt/lowerBoundTree.png>] [6]
-<Medien/DynOpt/T_r_l.png, id=44, 3552.0705pt x 1209.92026pt>
-File: Medien/DynOpt/T_r_l.png Graphic file (type png)
-<use Medien/DynOpt/T_r_l.png>
-Package pdftex.def Info: Medien/DynOpt/T_r_l.png  used on input line 105.
-(pdftex.def)             Requested size: 390.0pt x 132.83318pt.
+[5]
+
+LaTeX Warning: Reference `fig:T_r_l' on page 6 undefined on input line 102.
+
 
 Overfull \hbox (35.08855pt too wide) in paragraph at lines 110--111
 \T1/cmr/m/n/12 Sei $\OML/cmm/m/it/12 K[]$ \T1/cmr/m/n/12 die Schl�s-sel-men-ge 
@@ -393,22 +383,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
-
-Overfull \hbox (8.35031pt too wide) in paragraph at lines 114--119
-\T1/cmr/m/n/12 Sei $\OML/cmm/m/it/12 v[]$ \T1/cmr/m/n/12 der Kno-ten mit der gr
-��-ten Tie-fe in $\OML/cmm/m/it/12 v[]; ::; v[]$ \T1/cmr/m/n/12 f�r den mit $[]
-\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 v[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 2  \OML
-/cmm/m/it/12 K[]$\T1/cmr/m/n/12 .
- []
-
-
-Overfull \hbox (4.78423pt too wide) in paragraph at lines 114--119
-\T1/cmr/m/n/12 Nach In-duk-ti-ons-vor-aus-set-zung gibt es einen Kno-ten $\OML/
-cmm/m/it/12 u[]$ \T1/cmr/m/n/12 mit $[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 u[]\OT
-1/cmr/m/n/12 ) = [](\OML/cmm/m/it/12 v[]\OT1/cmr/m/n/12 )$
- []
-
-
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 114--119
 
  []
@@ -419,17 +394,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 120--121
  []
 
 \c@Lemma3=\count277
-[7 <./Medien/DynOpt/T_r_l.png>]
 
-LaTeX Warning: Reference `Kapitel 1 Rotationen' on page 8 undefined on input li
+LaTeX Warning: Reference `Kapitel 1 Rotationen' on page 7 undefined on input li
 ne 137.
 
-
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 142--144
 
  []
 
-[8]
+
 Overfull \hbox (44.86502pt too wide) in paragraph at lines 152--153
 \OML/cmm/m/it/12 v$\T1/cmr/m/n/12 , dann ist $\OML/cmm/m/it/12 u[]; v[]; ::; v[
 ]$ \T1/cmr/m/n/12 der lin-ke in-ne-re Pfad von $\OML/cmm/m/it/12 v[]$\T1/cmr/m/
@@ -442,37 +416,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--157
  []
 
 \c@Satz1=\count278
-[9] [10]
+[8] [9]
 Underfull \hbox (badness 10000) in paragraph at lines 188--190
 
  []
 
+[10]
 \c@Korollar1=\count279
-[11] [12] [13] [14] [15]
-<Medien/DynOpt/upperBounds.png, id=81, 214.401pt x 293.29575pt>
-File: Medien/DynOpt/upperBounds.png Graphic file (type png)
-<use Medien/DynOpt/upperBounds.png>
-Package pdftex.def Info: Medien/DynOpt/upperBounds.png  used on input line 350.
+ [11] [12] [13] [14] [15]
 
-(pdftex.def)             Requested size: 234.00238pt x 320.12459pt.
+LaTeX Warning: Reference `fig:upperBounds' on page 16 undefined on input line 3
+46.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:upperBounds' on page 16 undefined on input line 3
+46.
 
-[16] (DynamischeOptimalität.bbl) [17 <./Medien/DynOpt/upperBounds.png>]
-(DynamischeOptimalität.aux)
+[16] (DynamischeOptimalität.bbl) [17] (DynamischeOptimalität.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6375 strings out of 480797
- 94050 string characters out of 2905362
- 369817 words of memory out of 3000000
- 22270 multiletter control sequences out of 15000+200000
+ 6348 strings out of 480797
+ 93333 string characters out of 2905362
+ 365817 words of memory out of 3000000
+ 22248 multiletter control sequences out of 15000+200000
  554636 words of font info for 82 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,43p,1969b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,10n,43p,1969b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -500,9 +472,9 @@ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on DynamischeOptimalität.pdf (17 pages, 815303 bytes).
+Output written on DynamischeOptimalität.pdf (17 pages, 317978 bytes).
 PDF statistics:
- 492 PDF objects out of 1000 (max. 8388607)
+ 454 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

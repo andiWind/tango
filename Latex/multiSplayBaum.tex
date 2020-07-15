@@ -38,7 +38,7 @@
 
 
 \section{Multisplay Baum}
-Der Multisplay Baum ist eine Variation zum Tango Baum. Ein preferred path wird hier durch einen Splaybaum dargestellt. Amortisiert betrachtet, ist er $\log\left(\log\left(n\right)\right)$-competitive und garantiert $O\left(\log \left(n\right)\right)$ im worst case, bei einer einzelnen\\ {\textit{access}} Operation. $n$ steht wieder für der Anzahl der Knoten von $T$. Da der Splaybaum kein balancierter Baum ist, gibt es zusätzliche mögliche Zustände im Vergleich zu einem Tango Baum mit der gleichen Knotenzahl.
+Der Multisplay Baum ist eine Variation zum Tango Baum. Ein preferred path wird hier durch einen Splaybaum dargestellt. Amortisiert betrachtet, ist er $\log\left(\log\left(n\right)\right)$-competitive und garantiert $O\left(\log \left(n\right)\right)$ im worst case, bei einer einzelnen {\textit{access}} Operation. $n$ steht wieder für der Anzahl der Knoten von $T$. Da der Splaybaum kein balancierter Baum ist, gibt es zusätzliche mögliche Zustände im Vergleich zu einem Tango Baum mit der gleichen Knotenzahl.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 0.8\textwidth]{"Medien/Multisplay/referenzTree"}
@@ -51,9 +51,17 @@ Der Multisplay Baum ist eine Variation zum Tango Baum. Ein preferred path wird h
 	\caption {Refernzebaum mit grün gezeichneten preferred paths }
 	\label{fig:referenzTree}
 \end{figure} 
+Auch der Multisplay Baum verwendet einige Hilfsdaten je Knoten. Zum einen bereits bekannte Variablen bzw. Konsanten \textit{isRoot}, \textit{depth} und \textit{minDepth}. Aber auch welche die beim Tango Baum nicht verwendet sind. Sei $v$ ein Knoten in $T$ und $v^*$ der Knoten mit $\mathit{key}\left(v\right) = \mathit{key}\left(v^*\right)$. Sei $H$ der Hilfsbaum der $v$ enthält. Die Konstante \textit{height} hat den Wert der Höhe von $v^*$. Die Variable \textit{treeSize} enthält die Anzahl der Knoten von $H$.   
  \subsection{Die \textit{access} Operation beim Multisplay Baum}
+ Zu beachten ist, dass jede BST Darstellung auch eine Splaybaum Darstellung ist. Anders als beim Tango oder Zipper Baum, muss ein neu erzeugter Hilfsbaum also nicht so angepasst werden, dass er weiter--e Invarianten einhält.  Nach einer \textit{access}$k$ Operation ist der Knoten $v_k$ mit dem Schlüssel $k$ die Wurzel von $T$. Zunächst wird eine gewöhnliche Suche in $T$ durchgeführt, bis der Zeiger $p$ der Operation auf $v_k$ zeigt. Im Anschluss werden die Pfadrepräsentationen aktualisiert. $p$ wird so oft auf den Elternknoten von $p$ gesetzt bis er auf eine Wurzel $v_r$ eines Hilfsbaumes zeigt.  \\
+ 
 
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Multisplay/split"}
+	\caption {Ablauf zum erzeugen einer neuen Pfadrepräsentation}
+	\label{fig:split}
+\end{figure} 
 
 
 
