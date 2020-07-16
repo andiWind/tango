@@ -51,15 +51,29 @@ Der Multisplay Baum ist eine Variation zum Tango Baum. Ein preferred path wird h
 	\caption {Refernzebaum mit grün gezeichneten preferred paths }
 	\label{fig:referenzTree}
 \end{figure} 
-Auch der Multisplay Baum verwendet einige Hilfsdaten je Knoten. Zum einen bereits bekannte Variablen bzw. Konsanten \textit{isRoot}, \textit{depth} und \textit{minDepth}. Aber auch welche die beim Tango Baum nicht verwendet sind. Sei $v$ ein Knoten in $T$ und $v^*$ der Knoten mit $\mathit{key}\left(v\right) = \mathit{key}\left(v^*\right)$. Sei $H$ der Hilfsbaum der $v$ enthält. Die Konstante \textit{height} hat den Wert der Höhe von $v^*$. Die Variable \textit{treeSize} enthält die Anzahl der Knoten von $H$.   
+Auch der Multisplay Baum verwendet einige Hilfsdaten je Knoten. Zum einen bereits bekannte Variablen bzw. Konsanten \textit{isRoot}, \textit{depth} und \textit{minDepth}. Aber auch welche die beim Tango Baum nicht verwendet sind. Sei $v$ ein Knoten in $T$ und $u$ der Knoten mit $\mathit{key}\left(v\right) = \mathit{key}\left(u\right)$ im Referenzbaum $P$. Sei $H$ der Hilfsbaum der $v$ enthält. Die Konstante \textit{height} hat den Wert der Höhe von $u$. Die Variable \textit{treeSize} enthält die Anzahl der Knoten von $H$.   
  \subsection{Die \textit{access} Operation beim Multisplay Baum}
- Zu beachten ist, dass jede BST Darstellung auch eine Splaybaum Darstellung ist. Anders als beim Tango oder Zipper Baum, muss ein neu erzeugter Hilfsbaum also nicht so angepasst werden, dass er weiter--e Invarianten einhält.  Nach einer \textit{access}$k$ Operation ist der Knoten $v_k$ mit dem Schlüssel $k$ die Wurzel von $T$. Zunächst wird eine gewöhnliche Suche in $T$ durchgeführt, bis der Zeiger $p$ der Operation auf $v_k$ zeigt. Im Anschluss werden die Pfadrepräsentationen aktualisiert. $p$ wird so oft auf den Elternknoten von $p$ gesetzt bis er auf eine Wurzel $v_r$ eines Hilfsbaumes zeigt.  \\
+ Zu beachten ist, dass jede BST Darstellung auch eine Splaybaum Darstellung ist. Anders als beim Tango oder Zipper Baum, muss ein neu erzeugter Hilfsbaum also nicht so angepasst werden, dass er weitere Invarianten einhält.  Nach einer \textit{access}$\left(k\right)$ Operation ist der Knoten $v_k$ mit dem Schlüssel $k$ die Wurzel von $T$. Zunächst wird eine gewöhnliche Suche in $T$ durchgeführt, bis der Zeiger $p$ der Operation auf $v_k$ zeigt. Eine Abweichung zu den preferred path des Tango Baum ist, dass das preferred child des Knoten mit Schlüssel $k$ zunächst unverändert bleibt. Ist $v_k$ gefunden werden die Pfadrepräsentationen aktualisiert. Dabei wird bottom up vorgegangen. In den Beschreibungen von \textit{cut} und \textit{join} wird von einem zugrunde liegenden preferred child Wechsel vom linken Kind zum Rechten ausgegangen. Der andere Fall ist symmetrisch.   \\ 
+
  
+\paragraph{cut Operation beim Multisplay Baum}
+ Sei $u$ ein Knoten in $P$, mit Schlüssel $k_u$ an dem das preferred child gewechselt ist, und sei $u_r$, das preferred child von $u$ nach der \textit{access} Operation. Seien $v$ bzw. $v_r$ die Knoten in $T$ mit $\mathit{key}\left(v\right) =k_u$ bzw.  $\mathit{key}\left(v_r\right) = \mathit{key}\left(u_r\right)$. Sei $B$ der Hilfsbaum der $v_r$ enthält und $A$ der Hilfsbaum der den Knoten mit  $\mathit{key}\left(u\right)$ enthält. $S$ ist die Menge der Knoten aus $A$, bei denen der Wert von \textit{depth} größer ist, als die Riefe von $u$.
+Zunächst wird die \textit{isRoot} Variable von der Wurzel von $A$ auf \textit{false} gesetzt und \textit{splay}$\left(k_u\right)$ auf $A$ ausgeführt. Dadurch entsteht ein Hilfsbaum $C$ mit Wurzel $v$, bei der \textit{isRoot} auf \textit{true} gesetzt wird. Sei $C_L$ der linke Teilbaum von $C$.\\
+ Es wird der  Vorgänger $v_{l'}$ des Knotens aus $S$ mit dem kleinsten Schlüssel benötigt. Sei $l'$ der Schlüssel von $v_{l'}$. Der Knoten in $P$ mit Schlüssel \textit{key}$\left(l'\right)$ muss eine kleinere Tiefe als $u$ haben. Deshalb kann $l'$ gefunden werden indem  wie folgt vorgegangen wird. $p$ muss auf die Wurzel von $C_L$ gesetzt werden. In einer Schleife wird $p$ so oft auf das linke Kind $p_l$ von $p$ gesetzt, bis der Wert der \textit{minDepth} Variable von $p_l$ größer als die Tiefe von $u$ ist.
+ Nun wird \textit{splay}$\left(l'\right)$ auf $C_l$ ausgeführt.
+ Bei der Wurzel des rechten Teilbaumes von $v_{l'}$ muss nun \textit{isRoot} noch auf \textit{true} gesetzt werden. Das Vorgehen ist sehr Ähnlich zu dem aus \ref{TangoCut}. Existiert  $v_{l'}$ nicht, entfällt die zweite \textit{splay} Operation und es wird \textit{isRoot} der Wurzel von $C_L$ auf \textit{true} gesetzt.  
+
+
+
+\paragraph{join Operation beim Multisplay Baum}
+Wieder wird davon ausgegangen, dass d
+Seien $A$ und $B$ die Parameter der Operation, wobei $A$ die Knoten enthält bei denen die \textit{depth} Variable kleinere Werte annimmt. $u$ ist wieder der Knoten an dem das preferred child gewechselt hat.
+ Es wird der  Nachfolger $v_{r'}$ des Knotens aus $B$ mit dem größten Schlüssel benötigt. Sei $r'$ der Schlüssel von $v_{r'}$. Der Knoten in $P$ mit Schlüssel \textit{key}$\left(r'\right)$ muss eine kleinere Tiefe als $u$ haben. Deshalb kann $r'$ gefunden werden indem  wie folgt vorgegangen wird. $p$ muss auf die Wurzel von $A$ gesetzt werden. In einer Schleife wird $p$ so oft auf das rechte Kind $p_r$ von $p$ gesetzt, bis der Wert der \textit{minDepth} Variable von $p_r$ größer als die Tiefe von $u$ ist.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/Multisplay/split"}
-	\caption {Ablauf zum erzeugen einer neuen Pfadrepräsentation}
+	\caption {Ablauf zum erzeugen einer neuen Pfadrepräsentation, nach einem preferred child Wechsel vom linken Kind zum Rechten.}
 	\label{fig:split}
 \end{figure} 
 
