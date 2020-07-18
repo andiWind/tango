@@ -81,7 +81,7 @@ Sie $p$ der Zeiger der Operation in den BST. Zunächst wird eine gewöhnliche Su
 \end{figure}
 
 \subsection{Amortisierte Laufzeitanalyse von \textit{splay }}
-Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splaytree $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte im Teilbaum mit Wurzel $v$. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2  \mathit{tw}\left(v\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
+Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splay Baum $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte im Teilbaum mit Wurzel $v$. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2  \mathit{tw}\left(v\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
 \begin{align*}
 \Phi = \sum_{v \in V} r\left(v\right)
 \end{align*}
