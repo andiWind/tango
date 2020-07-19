@@ -59,8 +59,8 @@ Auch der Multisplay Baum verwendet einige Hilfsdaten je Knoten. Zum einen bereit
 
 
  
-\paragraph{\textit{cutJoin} Operation beim Multisplay Baum}
-Beim Multisplay Baum werden \textit{cut} und \textit{join} zu einer Operation zusammengefasst. Abbildung \ref{fig:keySpace} stellt die Zusammenhänge der Schlüssel dar. Das Vorgehen ist sehr ähnlich zu dem aus \ref{TangoCut} sehr ähnlich, weshalb hier weniger detailliert darauf eingegangen wird. Es wird in der Beschreibung von einem Wechsel des preferred child von links nach rechts ausgegangen.
+\paragraph{\textit{switch} Operation beim Multisplay Baum}
+Beim Multisplay Baum werden \textit{cut} und \textit{join} zu einer Operation \textit{switch}zusammengefasst. Abbildung \ref{fig:keySpace} stellt die Zusammenhänge der Schlüssel dar. Das Vorgehen ist sehr ähnlich zu dem aus \ref{TangoCut} und  \ref{TangoJoin} sehr ähnlich, weshalb hier weniger detailliert darauf eingegangen wird. Es wird in der Beschreibung von einem Wechsel des preferred child von links nach rechts ausgegangen.
 Zunächst wird die \textit{isRoot} Variable von der Wurzel von $A$ auf \textit{false} gesetzt und \textit{splay}$\left(k\right)$ auf $A$ ausgeführt. Dadurch entsteht ein Hilfsbaum $C$ mit Wurzel $q_i$ Sei $C_L$ der linke Teilbaum von $q_i$ und $C_R$ der Rechte.\\
  Es wird der Knoten $q_{l'}$, mit dem kleinsten Schlüssel $l' > \textit{key}\left(q_i\right)$, aus $U$ benötigt. Es wird angenommen, dass dieser existiert. Auf den anderen Fall wird noch eingegangen. $q_{l'}^*$ muss eine kleinere Tiefe als  $q_i^*$ haben. Deshalb kann $q_{l'}^*$ gefunden werden indem  wie folgt vorgegangen wird. $p$ muss auf die Wurzel von $C_L$ gesetzt werden. In einer Schleife wird $p$ so oft auf das linke Kind $p_l$ von $p$ gesetzt, bis der Wert der \textit{minDepth} Variable von $p_l$ größer als die Tiefe von $q_i^*$  ist.\\
  Nun wird \textit{splay}$\left(l'\right)$ auf $C_l$ ausgeführt. Ist der rechte Teilbaum $D_R$ von $q_{l'}$ nicht leer,  muss bei seiner Wurzel \textit{isRoot} noch auf \textit{true} gesetzt werden. Abbildung \ref{fig:split} stellt es nochmals dar. Existiert  $q_{l'}$ nicht, entfällt die zweite \textit{splay} Operation und es wird \textit{isRoot} der Wurzel von $C_L$ auf \textit{true} gesetzt. Der \textit{cut}-Teil ist nun abgeschlossen und wir kommen zum \textit{join}-Teil. \\
@@ -81,13 +81,14 @@ Zunächst wird die \textit{isRoot} Variable von der Wurzel von $A$ auf \textit{f
 \noindent Ist $q_{l'}$ bzw. $q_{r'}$ nicht vorhanden, sind in $C_L$ bzw. $C_R$ keine Knoten aus $U$ enthalten und die jeweilige \textit{splay} Operation kann entfallen. Aufgrund der Laufzeit, darf aber nach diesen Knoten nur gesucht werden, wenn sie vorhanden sind. Nach Durchführung der ersten \textit{splay} Operation  kann auf die Existenz dieser Knoten geschlossen werden. Es wird die Vorgehensweise zu  $q_{l'}$ beschrieben, die zu  $q_{r'}$ ergibt sich daraus. Es muss $q_{l'}.$\textit{depth} $>$ $q_{l'}.$\textit{depth} gelten. Ist die \textit{minDepth} Variable des linken Kindes von $v_k$ kleiner als $q_{l'}.$\textit{depth} muss $q_{l'}$ existieren, ansonsten kann er nicht existieren. 
 
 \subsection{Amortisierte Laufzeitanalyse}
+Alle Lemmas und Sätze sind in \cite{multisplay} enthalten.
 Sei $v$ ein Knoten im Multisplay Baum $T$ und $H$ der Hilfsbaum der $v$ enthält. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte, der Knoten die im Teilbaum mit Wurzel $v$ und in $H$ enthalten sind. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2  \mathit{tw}\left(v\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
 \begin{align*}
 \Phi = \sum_{v \in V} r\left(v\right)
 \end{align*}
 verwendet.
 
-Beim Generalized Access Lemma verallgemeinert das Access Lemma vom Splay Baum. \textit{splay}$\left(k\right)$ stoppt normalerweise erst, wenn der Knoten $v_k$ mit Schlüssel $k$ die Wurzel bildet. Sie kann aber ganz einfach modifiziert werden, so dass sie $v_k$ zu einem Knoten mit Tiefe $d$ macht, mit $v_k.$\textit{depth} $> d $.
+\noindent Das Generalized Access Lemma verallgemeinert das Access Lemma vom Splay Baum. \textit{splay}$\left(k\right)$ stoppt normalerweise erst, wenn der Knoten $v_k$ mit Schlüssel $k$ die Wurzel bildet. Sie kann aber ganz einfach modifiziert werden, so dass sie $v_k$ zu einem Knoten mit Tiefe $d$ macht, mit $v_k.$\textit{depth} $> d $.
 
 \newtheorem{Lemma1}{Generalized Access Lemma}[section] 
 \begin{Lemma1}Sei $T$ ein Multisplay Baum. Sei $v$ ein Knoten im Hilfsbaum $H$ von $T$. $H$ enthalte $n$ Knoten Sei $u$ ein Vorfahre von $v$ in $H$. Es wird eine (modifizierte) \textit{splay} Operation verwendet, so dass $v'.$\textit{depth} $=$ $u.$\textit{depth} gilt.  Die amortisierte Kosten dafür von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(u\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(u\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ \\	
@@ -98,17 +99,40 @@ Folgt direkt aus \ref{splayAccess}. Dass $u$ die Wurzel ist wird dort nicht verw
 \end{proof}
 \newtheorem{Lemma2}{Multisplay Baum Access Lemma}[section] \label{lemmaMultiSplay}
 
-\noindent Im nächsten Lemma geht es um die Gesamtzugriffszeit einer \textit{access} Operation beim Multisplay Baum $T$ mit Referenzbaum $P$. Sei $p^*$ ein Knoten in $P$. Es werden zwei Funktionen benötigt. $\mathit{des}\left(p^*\right)$ liefert die Menge der Nachfahren von $p^*$.  $\mathit{pa}\left(p^*\right)$ liefert die Menge der Pfade von $p^*$ zu einem Blatt. An die Gewichtsfunktion werden zwei Bedingungen gestellt. Sei $f \geq 2$.
-\begin{itemize}
+\noindent Im nächsten Lemma geht es um die Gesamtzugriffszeit einer \textit{access} Operation beim Multisplay Baum $T$ mit Referenzbaum $P$. Sei $p^*$ ein Knoten in $P$. Es werden drei Funktionen benötigt. $\mathit{des}\left(p^*\right)$ liefert die Menge der Nachfahren von $p^*$.  $\mathit{pa}\left(p^*\right)$ liefert die Menge der Pfade von $p^*$ zu einem Blatt. \textit{node}$\left(k\right)$ liefert den Knoten aus $T$ der Schlüssel $k$ enthält. An die Gewichtsfunktion werden zwei Bedingungen gestellt. Sei $f \geq 2$.
+\begin{enumerate}
 	\item $w\left(p^*\right) \geq \max \{  w\left(v^*\right)\vert  v^*
 	\in\mathit{des}\left(p^*\right)  \}$
 	\item $f  w\left(p^*\right) \geq    \max \{  \sum_{v^* \in P_p }  w\left(v^*\right)\vert    P_p \in \mathit{pa}\left(p^*\right) \}  $
-\end{itemize}
+\end{enumerate}
 \begin{Lemma2}
-	
+	Sei $T$ ein Multisplay Baum mit Referenzbaum $P$. Sei $v^*$ die Wurzel von $P$. Sei $f$ eine Konstante $\geq 2$. Die amortisierte Laufzeit der Zugriffsfolge $X = x_1, x_2,..,x_m$ ist 
+\begin{align*}
+O\left(  \sum_{i = 1}^{m} \log_2\left(   \frac{w\left(v^*\right)}{w\left(\textit{node}\left(x_i\right)\right)}  \right)  
++ \left(\log_2 f\right) \left(\mathit{IB}\left(X\right) + m\right) \right)
+\end{align*}
 \end{Lemma2}
 \begin{proof}
-	
+	Der Beweis enthält drei Teile. Zuerst geht es um die Kosten einer \textit{switch} Operation, dann um die Kosten einer  \textit{access} Operation. Zum Schluss wird die Relation zur Interleave Bound hergestellt.\\
+	Es wird eine \textit{switch} Operation während \textit{access}$\left(x_i\right)$ betrachtet. Seien ${y_1}^*, {y_2}^*,..,{y_k}^*$ die Knoten in $P$ bei denen sich, während  \textit{access}$\left(x_i\right)$ der preferred child ändert. Für $i \in \{1, 2,.., k\}$ sei $t_i$ die Wurzel des Splay Baumes der $y_i$ enthält und $t_{k+1}$ die Wurzel des Splay Baumes der den Knoten $v$, mit \textit{key}$\left(v\right) = x_i$, enthält.\\
+	Es werden nun die Kosten von \textit{switch} aufgrund dem wechsel des preferred child an ${y_i}^*$ betrachtet. Und hierbei zunächst die Potentialänderung aufgrund der Änderung an den \textit{isRoot} Variablen in Schritt 3.  $r\left(\right)$ und $\mathit{tw}\left(\right)$ liefern die Werte vor Schritt 3, jedoch nach den \textit{splay} Operationen. Sei $y_l$ das linke Kind von $y$ und $y_r$ das Rechte, vor Ausführung von Schritt 3. Sei $w_1$ das rechte Kind von $y_l$ ($w_1$ ist die Wurzel eines Hilfsbaumes) und $w_2$ das linke Kind von $v_r$ Abbildung \ref{fig:split} ist zu entnehmen, dass sich die Werte von $\mathit{tw}\left(\right)$ nur an den Knoten $y_l, y_i$ und $y_r$ ändern kann.
+	 
+\begin{align}
+	\Delta \Phi &= \left( r\left({y_l}'\right) - r\left({y_l}\right)\right) + \left( r\left({y_i}'\right) - r\left({y_i}\right)\right) + \left( r\left({y_r}'\right) - r\left({y_r}\right)\right)\\
+	&< \left( r\left({y_l}'\right) - r\left({y_l}\right)\right) + \left( r\left({y_i}'\right) - r\left({y_i}\right)\right) \\
+	&= \log_2\left( \mathit{tw}\left({y_l}'\right)  / \mathit{tw}\left({y_l}\right)  \right) +
+	 \log_2\left( \mathit{tw}\left({y_i}'\right)  / \mathit{tw}\left({y_i}\right)  \right)\\
+	&< \log_2\left( \frac{\mathit{tw}\left({y_l}\right) + \mathit{tw}\left({w_1} \right)}{\mathit{tw}\left({y_l}\right)} 	  \right) + 
+	\log_2\left(\frac{\mathit{tw}\left({y_i}\right) + \mathit{tw}\left({w_1} \right)  }{\mathit{tw}\left({y_i}\right)}   \right)\\
+	&<\log_2\left( 1 + \mathit{tw}\left({w_1}  	\right) / \mathit{w}\left({y_i}\right) \right)  +
+	\log_2 \left(1 + \mathit{tw}\left({w_1}   	\right) / \mathit{w}\left({y_i}\right) \right)  \\
+	&< 2 \log_2 \left(1 + f\right)\\
+	&= O\left(\log_2 \left(f\right)\right)
+\end{align}
+Begründungen:
+\begin{enumerate}
+	\item $ r\left({y_r}'\right) < r\left({y_r}\right)$
+\end{enumerate}	
 	
 \end{proof}
 
