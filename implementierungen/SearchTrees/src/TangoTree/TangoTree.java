@@ -106,7 +106,7 @@ public class TangoTree implements I_GUITree{
         return node;
     }
     @Override
-     public TangoNode search(int key){  
+     public TangoNode access(int key){  
         TangoNode search = auxTree.getRoot();
         if(search == null )
             return null;

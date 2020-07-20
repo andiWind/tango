@@ -7,6 +7,7 @@ package Starter;
 
 import GUI.GUI;
 import RedBlackTree.RedBlackTree;
+import SplayTree.SplayTree;
 import TangoTest.Tester;
 import TangoTree.BuildAuxTreeFaildException;
 import TangoTree.TangoTree;
@@ -24,15 +25,14 @@ public class Start {
     public static void main (String[] args) throws BuildAuxTreeFaildException{
      
        List<Integer> keys1 = new LinkedList();
-       for(int i = 1; i<=1001; i++){
-            for(int j = 1; j<= i; j++){
-                keys1.add(j);
+            for(int i = 1; i<= 12; i++){
+                keys1.add(i);
             }
-           TangoTree t = new TangoTree(keys1, RedBlackTree.class);
-     //      GUI g = new GUI(t);
-           new Tester(t, i); 
+           SplayTree t = new SplayTree(keys1);
+           GUI g = new GUI(t);
+        //   new Tester(t, i); 
         //   g.dispose();
-       } 
+       
        
          
         

@@ -168,7 +168,7 @@ public class Tester {
                 TangoNode root = buildTreeFromString(treeString);
                 buildPBTfromString(pbt, map.get(treeString));
                 tangoTree.setTree(root);
-                tangoTree.search(searchKey);
+                tangoTree.access(searchKey);
                 setPrefChilds(searchKey);
                 boolean io = checkKonst((TangoNode)tangoTree.getRoot()); 
                 if (!io){

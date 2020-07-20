@@ -5,57 +5,81 @@
  */
 package SplayTree;
 
+import GUI.I_GUINode;
+import GUI.I_GUITree;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
  * @author andre
  */
-public class SplayTree {
+public class SplayTree implements I_GUITree {
     private Node root;
 
 
-
-    public SplayTree (List<Integer> keyList){
-        if ( keyList != null && ! keyList.isEmpty() ){
-            for (int key : keyList){
-                insert(key);
-            }
+      private Node buildPerfectBalancedTree (Node node, int numOfNodes, int nodeNumber ){
+        if (2 * nodeNumber <= numOfNodes){
+            node.setLeft(buildPerfectBalancedTree(new Node(), numOfNodes, 2 * nodeNumber));
+            node.getLeft().setParent(node);
         }
+        if (2 * nodeNumber + 1  <= numOfNodes){
+            node.setRight( buildPerfectBalancedTree(new Node(), numOfNodes,2 * nodeNumber + 1)); 
+             node.getRight().setParent(node);
+        }
+        return node;
     }
-    private void insert (int key){
-        splay(key);
-        if (root == null){
-            root = new Node(key);
-            return;
-        }
-       if (root.getKey() == key )
-           return;
-       Node insertNode = new Node(key);
-       if (root.getKey() < key){
-           insertNode.setLeft(root);
-           root.setParent(insertNode);
-           
-           insertNode.setRight(root.getRight());
-           root.getRight().setParent(insertNode);
-           root.setRight(null);
-           
-           root = insertNode;
-           return;
-       }
-        insertNode.setRight(root);
-        root.setParent(insertNode);
-           
-        insertNode.setLeft(root.getLeft());
-        root.getLeft().setParent(insertNode);
-        root.setLeft(null);
-           
-        root = insertNode;
+    private int setKeys(Node node ,int[] keys, int count){
+        if (node.getLeft() != null)
+            count = setKeys(node.getLeft(), keys, count);
+        node.setKey(count++);
+        if (node.getRight() != null)
+            count = setKeys(node.getRight(), keys, count );
+        return count;
+    }  
+    public SplayTree (List<Integer> keyList){
+        int[] keyArray = buildKeyArray(keyList);
+        root = buildPerfectBalancedTree(new Node(),keyArray.length,1 );
+        setKeys(root, keyArray, 1);
         
        
     }
+    private int[] buildKeyArray(List <Integer> keyList){
+       List<Integer> nullList = new LinkedList();
+       nullList.add(null);
+       keyList.removeAll(nullList);
+       int[] keyArray = new int[keyList.size()];
+       int j = 0;
+       for (Integer key : keyList)
+           keyArray[j++] = key;
+       Arrays.sort(keyArray);
+       if (keyArray.length < 2 ){
+           int[] ret = new int[1];
+           ret[0] = keyArray[0];
+           return ret;
+       }
+       //Duplikate filtern 
+       int numOfDup = 0;
+       for (int i = 1; i < keyArray.length; i++ ){
+           if (keyArray[i-1] == keyArray[i])
+               numOfDup++;
+       }
+       int[] ret = new int[keyArray.length - numOfDup];
+       ret[0] = keyArray[0];
+       int k = 1;
+        for (int i = 1; i < keyArray.length; i++ ){
+           if (keyArray[i] > keyArray[i - 1]){
+               ret[k++] = keyArray[i];
+           }       
+       }
+      return ret;
+   }
+    public void insert (int key){
+    }
     
-public Node access (int key){
+    @Override
+    public Node access (int key){
     splay(key);
     return root;
 }    
@@ -87,40 +111,42 @@ private void splay(int key){
     }
 }  
 private void zigZig (Node node){
-    rotateLeft(node.getParent());
-    rotateLeft(node);
-} 
-private void zigZag (Node node){
-    rotateLeft(node);
-    rotateRight(node);
-}  
-private void zagZig (Node node){
-    rotateRight(node);
-    rotateLeft(node);
-}  
-private void zagZag (Node node){
     rotateRight(node.getParent());
     rotateRight(node);
+} 
+private void zigZag (Node node){
+    rotateRight(node);
+    rotateLeft(node);
+}  
+private void zagZig (Node node){
+    rotateLeft(node);
+    rotateRight(node);
+}  
+private void zagZag (Node node){
+    rotateLeft(node.getParent());
+    rotateLeft(node);
 }  
 private void zig (Node node){
-    rotateLeft(node);
+    rotateRight(node);
        
 }  
 private void zag (Node node){
-    rotateRight(node);
+    rotateLeft(node);
 } 
 private void rotateRight(Node node){
     Node par = node.getParent();
     Node parPar = par.getParent();
     
-    par.setRight(node.getLeft());
-    node.getLeft().setParent(par);
+    par.setLeft(node.getRight());
+    if(par.getLeft() != null)
+        par.getLeft().setParent(par);
     
-    node.setLeft(par);
+    node.setRight(par);
     par.setParent(node);
     
     if (parPar == null){
-        root = par;
+        root = node;
+        node.setParent(null);
         return;
     }   
     else if(parPar.getRight() == par )
@@ -134,14 +160,16 @@ private void rotateLeft(Node node){
     Node par = node.getParent();
     Node parPar = par.getParent();
     
-    par.setLeft(node.getRight());
-    node.getRight().setParent(par);
+    par.setRight(node.getLeft());
+    if(par.getRight() != null)
+        par.getRight().setParent(par);
     
-    node.setRight(par);
+    node.setLeft(par);
     par.setParent(node);
     
     if (parPar == null){
-        root = par;
+        root = node;
+        node.setParent(null);
         return;
     }   
     else if(parPar.getLeft() == par )
@@ -160,13 +188,28 @@ private Node search(int key){
         search = next;
         if (next.getKey() == key)
             return next;
-        else if (next.getKey() < key)
+        else if (next.getKey() > key)
             next = next.getLeft();
         else 
-             next = next.getRight();
+            next = next.getRight();
     }
     return search;
 }
+
+    @Override
+    public I_GUINode getRoot() {
+        return root;
+    }
+
+    @Override
+    public void delete(int key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getName() {
+        return "SplayTree";
+    }
    
 
 }

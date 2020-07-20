@@ -5,27 +5,40 @@
  */
 package SplayTree;
 
+import GUI.I_GUINode;
+import java.awt.Color;
+
 /**
  *
  * @author andreas
  */
-public class Node {
+public class Node implements I_GUINode {
     private Node left;
     private Node right;
     private Node parent;
-    private final int key;
+    private int key;
+    boolean keyFinal;
     
     Node (int k, Node l, Node r, Node p ){
         left = l;
         right = r;
         parent = p;
-        key = k;   
+        key = k; 
+        keyFinal = true;
     }
-     Node (int k ){
-        key = k;   
+    Node (int k ){
+        key = k;
+        keyFinal = true;
+    }
+     Node (){  
+         keyFinal = false;
     }
     int getKey (){
         return key;
+    }
+    void setKey(int k){
+        if (!keyFinal)
+            key = k;
     }
     Node getLeft(){
         return left;
@@ -45,4 +58,29 @@ public class Node {
     void setParent(Node p){
         parent = p;
     } 
+
+    @Override
+    public Color getColorFromGui() {
+        return Color.BLUE;
+    }
+
+    @Override
+    public I_GUINode getLeftFromGui() {
+       return left;
+    }
+
+    @Override
+    public I_GUINode getRightFromGui() {
+        return right;
+    }
+
+    @Override
+    public I_GUINode getParentFromGui() {
+        return parent;
+    }
+
+    @Override
+    public String getKeyStringFromGui() {
+        return "" + key;
+    }
 }

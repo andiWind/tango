@@ -99,7 +99,7 @@ public class GUI extends JFrame{
         searchButton.addActionListener(new ActionListener(){
                
             public void actionPerformed(ActionEvent e) {
-                guiTree.search((int)searchSpinner.getValue());
+                guiTree.access((int)searchSpinner.getValue());
                 canvas.repaint();
                 } 
             }    

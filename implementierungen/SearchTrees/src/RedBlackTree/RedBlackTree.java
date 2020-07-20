@@ -56,7 +56,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
     public void insert (int key){
         int blackHigh = 1;
         Node insNode = new Node(key, Node.RBColor.RED, blackHigh);
-        Node search = search(insNode.getKey());
+        Node search = search(root,insNode.getKey());
         if (root == null){
             root = insNode;  
         }
@@ -147,7 +147,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
    
      @Override
     public void delete (int key){
-        Node delNode = search(key);
+        Node delNode = search(root, key);
         if (delNode == null || delNode.getKey() != key)
             return; 
         if (delNode.getLeft() == null){
@@ -313,7 +313,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         return searchNode;
    }
    @Override
-   public Node search (int key){
+   public Node access (int key){
       return search(root, key);
    }
  
