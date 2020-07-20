@@ -101,9 +101,9 @@ Folgt direkt aus \ref{splayAccess}. Dass $u$ die Wurzel ist wird dort nicht verw
 
 \noindent Im nächsten Lemma geht es um die Gesamtzugriffszeit einer \textit{access} Operation beim Multisplay Baum $T$ mit Referenzbaum $P$. Sei $p^*$ ein Knoten in $P$. Es werden drei Funktionen benötigt. $\mathit{des}\left(p^*\right)$ liefert die Menge der Nachfahren von $p^*$.  $\mathit{pa}\left(p^*\right)$ liefert die Menge der Pfade von $p^*$ zu einem Blatt. \textit{node}$\left(k\right)$ liefert den Knoten aus $T$ der Schlüssel $k$ enthält. An die Gewichtsfunktion werden zwei Bedingungen gestellt. Sei $f \geq 2$.
 \begin{enumerate}
-	\item $w\left(p^*\right) \geq \max \{  w\left(v^*\right)\vert  v^*
+	\item $w\left(p\right) \geq \max \{  w\left(v\right)\vert  v^*
 	\in\mathit{des}\left(p^*\right)  \}$
-	\item $f  w\left(p^*\right) \geq    \max \{  \sum_{v^* \in P_p }  w\left(v^*\right)\vert    P_p \in \mathit{pa}\left(p^*\right) \}  $
+	\item $f  w\left(p\right) \geq    \max \{  \sum_{v^* \in P_p }  w\left(v\right)\vert    P_p \in \mathit{pa}\left(p^*\right) \}  $
 \end{enumerate}
 \begin{Lemma2}
 	Sei $T$ ein Multisplay Baum mit Referenzbaum $P$. Sei $v^*$ die Wurzel von $P$. Sei $f$ eine Konstante $\geq 2$. Die amortisierte Laufzeit der Zugriffsfolge $X = x_1, x_2,..,x_m$ ist 
@@ -115,25 +115,46 @@ O\left(  \sum_{i = 1}^{m} \log_2\left(   \frac{w\left(v^*\right)}{w\left(\textit
 \begin{proof}
 	Der Beweis enthält drei Teile. Zuerst geht es um die Kosten einer \textit{switch} Operation, dann um die Kosten einer  \textit{access} Operation. Zum Schluss wird die Relation zur Interleave Bound hergestellt.\\
 	Es wird eine \textit{switch} Operation während \textit{access}$\left(x_i\right)$ betrachtet. Seien ${y_1}^*, {y_2}^*,..,{y_k}^*$ die Knoten in $P$ bei denen sich, während  \textit{access}$\left(x_i\right)$ der preferred child ändert. Für $i \in \{1, 2,.., k\}$ sei $t_i$ die Wurzel des Splay Baumes der $y_i$ enthält und $t_{k+1}$ die Wurzel des Splay Baumes der den Knoten $v$, mit \textit{key}$\left(v\right) = x_i$, enthält.\\
-	Es werden nun die Kosten von \textit{switch} aufgrund dem wechsel des preferred child an ${y_i}^*$ betrachtet. Und hierbei zunächst die Potentialänderung aufgrund der Änderung an den \textit{isRoot} Variablen in Schritt 3.  $r\left(\right)$ und $\mathit{tw}\left(\right)$ liefern die Werte vor Schritt 3, jedoch nach den \textit{splay} Operationen. Sei $y_l$ das linke Kind von $y$ und $y_r$ das Rechte, vor Ausführung von Schritt 3. Sei $w_1$ das rechte Kind von $y_l$ ($w_1$ ist die Wurzel eines Hilfsbaumes) und $w_2$ das linke Kind von $v_r$ Abbildung \ref{fig:split} ist zu entnehmen, dass sich die Werte von $\mathit{tw}\left(\right)$ nur an den Knoten $y_l, y_i$ und $y_r$ ändern kann.
+	Es werden nun die Kosten von \textit{switch} aufgrund dem Wechsel des preferred child an ${y_i}^*$ betrachtet. Und hierbei zunächst die Potentialänderung aufgrund der Änderung an den \textit{isRoot} Variablen in Schritt 3.  $r\left(\right)$ und $\mathit{tw}\left(\right)$ liefern die Werte vor Schritt 3, jedoch nach den \textit{splay} Operationen. Sei $y_l$ das linke Kind von $y$ und $y_r$ das Rechte, vor Ausführung von Schritt 3. Sei $w_1$ das rechte Kind von $y_l$ ($w_1$ ist die Wurzel eines Hilfsbaumes) und $w_2$ das linke Kind von $v_r$. Abbildung \ref{fig:split} ist zu entnehmen, dass sich die Werte von $\mathit{tw}\left(\right)$ nur an den Knoten $y_l, y_i$ und $y_r$ ändern kann.
 	 
 \begin{align}
 	\Delta \Phi &= \left( r\left({y_l}'\right) - r\left({y_l}\right)\right) + \left( r\left({y_i}'\right) - r\left({y_i}\right)\right) + \left( r\left({y_r}'\right) - r\left({y_r}\right)\right)\\
-	&< \left( r\left({y_l}'\right) - r\left({y_l}\right)\right) + \left( r\left({y_i}'\right) - r\left({y_i}\right)\right) \\
-	&= \log_2\left( \mathit{tw}\left({y_l}'\right)  / \mathit{tw}\left({y_l}\right)  \right) +
-	 \log_2\left( \mathit{tw}\left({y_i}'\right)  / \mathit{tw}\left({y_i}\right)  \right)\\
-	&< \log_2\left( \frac{\mathit{tw}\left({y_l}\right) + \mathit{tw}\left({w_1} \right)}{\mathit{tw}\left({y_l}\right)} 	  \right) + 
-	\log_2\left(\frac{\mathit{tw}\left({y_i}\right) + \mathit{tw}\left({w_1} \right)  }{\mathit{tw}\left({y_i}\right)}   \right)\\
-	&<\log_2\left( 1 + \mathit{tw}\left({w_1}  	\right) / \mathit{w}\left({y_i}\right) \right)  +
-	\log_2 \left(1 + \mathit{tw}\left({w_1}   	\right) / \mathit{w}\left({y_i}\right) \right)  \\
-	&< 2 \log_2 \left(1 + f\right)\\
+	&\leq   \left( r\left({y_i}'\right) - r\left({y_i}\right)\right) +  \left( r\left({y_r}'\right) - r\left({y_r}\right)\right)\\
+	&=\log_2\left( \mathit{tw}\left({y_i}'\right)  / \mathit{tw}\left({y_i}\right)  \right) + \log_2\left( \mathit{tw}\left({y_r}'\right)  / \mathit{tw}\left({y_r}\right)  \right) \\
+	&\leq	\log_2\left(\frac{\mathit{tw}\left({y_i}\right) + \mathit{tw}\left({w_2} \right)  }{\mathit{tw}\left({y_i}\right)}   \right) + \log_2\left( \frac{\mathit{tw}\left({y_r}\right) + \mathit{tw}\left({w_2} \right)}{\mathit{tw}\left({y_r}\right)} 	  \right) \\
+	&\leq \log_2\left( 1 + \mathit{tw}\left({w_2}  	\right) / \mathit{w}\left({y_i}\right) \right)  +
+	\log_2 \left(1 + \mathit{tw}\left({w_2}   	\right) / \mathit{w}\left({y_i}\right) \right)  \\
+	&\leq 2 \log_2 \left(1 + f\right)\\
 	&= O\left(\log_2 \left(f\right)\right)
 \end{align}
 Begründungen:
 \begin{enumerate}
-	\item $ r\left({y_r}'\right) < r\left({y_r}\right)$
+	\item -
+	\item $ r\left({y_l}'\right) \leq r\left({y_l}\right)$
+	\item -
+	\item $\mathit{tw}\left({w_1}\right) \geq 0$
+	\item Bedingung 1 an die Gewichtsfunktion und $w\left(y_i\right) \leq \mathit{tw}\left(y_i\right)$
+	\item Bedingung 2 an die Gewichtsfunktion. Die Knoten aus dem Hilfsbaum mit Wurzel $w_2$ repräsentieren einen Pfad in $P$. ${w_2}^*$ muss ein Nachfolger von ${y_i}*$ sein.
 \end{enumerate}	
-	
+Nun geht es um die Gesamtkosten \textit{cost(switch)}$\left(x_i\right)$ der \textit{switch} Operation. Dazu werden die max. drei \textit{splay} Operationen mit $\Delta \Phi$ addiert.
+\begin{align*}
+&O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_i\right)  \right) \right) +
+O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_l\right)  \right) \right) + O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_r\right)  \right) \right) +
+O\left(\log_2 \left(f\right)\right)\\
+\leq & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
+O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_l\right)  \right) \right) + O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_r\right)  \right) \right) +
+O\left(\log_2 \left(f\right)\right)\\ 
+\leq & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
+O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) + O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
+O\left(\log_2 \left(f\right)\right)\\ 
+= & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
+O\left(\log_2 \left(f\right)\right)\\ 
+\leq & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) / \left( \mathit{w}\left(t_{i+1}\right) / f  \right) \right)\right) +
+O\left(\log_2 \left(f\right)\right) \textit{      } (\textit{zweite Bedingung von $w\left(\right)$})\\ 
+= & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) / \mathit{w}\left(t_{i+1}\right) \right)\right) +
+O\left(\log_2 \left(f\right)\right)
+\end{align*}
+Für die zweite Ungleichung wird die erste Bedingung an die Gewichtsfunktion benötigt.
 \end{proof}
 
 \newpage
