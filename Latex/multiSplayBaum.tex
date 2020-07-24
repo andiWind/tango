@@ -136,7 +136,7 @@ Begründungen:
 	\item Bedingung 1 an die Gewichtsfunktion und $w\left(y_i\right) \leq \mathit{tw}\left(y_i\right)$
 	\item Bedingung 2 an die Gewichtsfunktion. Die Knoten aus dem Hilfsbaum mit Wurzel $w_2$ repräsentieren einen Pfad in $P$. ${w_2}^*$ muss ein Nachfolger von ${y_i}*$ sein.
 \end{enumerate}	
-Nun geht es um die Gesamtkosten \textit{cost(switch)}$\left(x_i\right)$ der \textit{switch} Operation. Dazu werden die max. drei \textit{splay} Operationen mit $\Delta \Phi$ addiert.
+Nun geht es um die Gesamtkosten \textit{cost(switch)}$\left(x_i\right)$ der \textit{switch} Operation. Dazu werden die Kosten der max. drei \textit{splay} Operationen mit $\Delta \Phi$ addiert.
 \begin{align*}
 &O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_i\right)  \right) \right) +
 O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_l\right)  \right) \right) + O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_r\right)  \right) \right) +
@@ -149,13 +149,26 @@ O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \
 O\left(\log_2 \left(f\right)\right)\\ 
 = & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
 O\left(\log_2 \left(f\right)\right)\\ 
-\leq & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) / \left( \mathit{w}\left(t_{i+1}\right) / f  \right) \right)\right) +
+\leq & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) / \left( \mathit{tw}\left(t_{i+1}\right) / f  \right) \right)\right) +
 O\left(\log_2 \left(f\right)\right) \textit{      } (\textit{zweite Bedingung von $w\left(\right)$})\\ 
-= & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) / \mathit{w}\left(t_{i+1}\right) \right)\right) +
+= & O\left(\log_2 \left(\mathit{tw}\left(t_i\right) / \mathit{tw}\left(t_{i+1}\right) \right)\right) +
 O\left(\log_2 \left(f\right)\right)
 \end{align*}
 Für die zweite Ungleichung wird die erste Bedingung an die Gewichtsfunktion benötigt.
 \end{proof}
+Die Kosten der $k$ \textit{switch} Operationen müssen mit den Kosten der abschließenden \textit{splay} Operation addiert werden, um auf Gesamtkosten von \textit{access} \textit{cost}$\left(\textit{access}\right)$ zu erhalten.
+\begin{align*}
+ \textit{cost}\left(\textit{access}\left(x_i\right)\right)  &=\sum_{i=1}^{k}O\left(\textit{cost}\left(\textit{switch}\left(y_i\right)\right)\right) + \textit{cost}\left(\textit{splay}\left(x_i\right)\right) \\
+ &= \sum_{i=1}^{k}O\left(\log_2 \left(\mathit{tw}\left(t_i\right) / \mathit{tw}\left(t_{i+1}\right) \right)\right) + \sum_{i =1}^{k}O\left(\log_2\left(f\right)\right) + O\left(\log_2\left(\mathit{tw}\left(t_{1}\right) / \mathit{tw}\left(v\right) \right)\right)\\
+  &= O\left(\log_2 \left(\mathit{tw}\left(t_1\right) / \mathit{tw}\left(t_{i+1}\right) \right)\right) + O\left(k \log_2\left(f\right)\right) + O\left(\log_2\left(f \mathit{w}\left(t\right) / \mathit{w}\left(v\right) \right)\right)\\
+  &= O\left(\log_2 \left(\mathit{w}\left(t\right) / \mathit{w}\left(v\right) \right)\right) + O\left(\left(k + 1\right) \log_2\left(f\right) \right) 
+\end{align*}
+Jetzt wird die Verbindung zur Interleave Bound hergestellt.Sei $U$ die Menge der in $P$ enthaltenen Knoten. Sei $X_1 = x_1, x_2,.., x_{i-1}$ und $X_2 = x_1, x_2,.., x_i$.  $k$ entspricht $\mathit{IB\left(X_2\right)} - \mathit{IB\left(X_1\right)}$, vergleiche Kapitel \ref{interleaveBound}. 
+\begin{align*}
+\textit{cost}\left(\textit{access}\left(X\right)\right) &= \sum_{i = 1}^{m} \textit{access}\left(x_i\right)\\
+\end{align*}
+
+
 
 \newpage
 \bibliography{literaturverzeichnis}

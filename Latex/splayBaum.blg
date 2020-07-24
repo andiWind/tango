@@ -10,9 +10,10 @@ I was expecting a `,' or a `}'---line 102 of file literaturverzeichnis.bib
  : day = "10",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "dynFInger"
 You've used 1 entry,
             1791 wiz_defined-function locations,
-            454 strings with 3663 characters,
+            456 strings with 3681 characters,
 and the built_in function-call counts, 262 in all, are:
 = -- 24
 > -- 8

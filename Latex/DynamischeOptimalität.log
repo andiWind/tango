@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  15 JUL 2020 19:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 JUL 2020 11:19
 entering extended mode
 **./DynamischeOptimalität.tex
 (DynamischeOptimalität.tex
@@ -378,12 +378,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
-
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
-[6]
+
 Underfull \hbox (badness 10000) in paragraph at lines 114--119
 
  []
@@ -404,47 +404,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 142--144
  []
 
 
-Overfull \hbox (44.86502pt too wide) in paragraph at lines 152--153
-\OML/cmm/m/it/12 v$\T1/cmr/m/n/12 , dann ist $\OML/cmm/m/it/12 u[]; v[]; ::; v[
-]$ \T1/cmr/m/n/12 der lin-ke in-ne-re Pfad von $\OML/cmm/m/it/12 v[]$\T1/cmr/m/
-n/12 . Es gilt $[]$.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
 \c@Satz1=\count278
 [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 188--190
+Underfull \hbox (badness 10000) in paragraph at lines 187--189
 
  []
 
 [10]
 \c@Korollar1=\count279
- [11] [12] [13] [14] [15]
+ [11] [12] [13] [14]
 
-LaTeX Warning: Reference `fig:upperBounds' on page 16 undefined on input line 3
-46.
+LaTeX Warning: Reference `fig:upperBounds' on page 15 undefined on input line 3
+33.
 
 
-LaTeX Warning: Reference `fig:upperBounds' on page 16 undefined on input line 3
-46.
+LaTeX Warning: Reference `fig:upperBounds' on page 15 undefined on input line 3
+33.
 
-[16] (DynamischeOptimalität.bbl) [17] (DynamischeOptimalität.aux)
+[15] (DynamischeOptimalität.bbl) [16] (DynamischeOptimalität.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6348 strings out of 480797
- 93333 string characters out of 2905362
- 365817 words of memory out of 3000000
- 22248 multiletter control sequences out of 15000+200000
+ 6347 strings out of 480797
+ 93320 string characters out of 2905362
+ 366817 words of memory out of 3000000
+ 22247 multiletter control sequences out of 15000+200000
  554636 words of font info for 82 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,43p,1969b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,10n,43p,2002b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -472,9 +465,9 @@ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on DynamischeOptimalität.pdf (17 pages, 317978 bytes).
+Output written on DynamischeOptimalität.pdf (16 pages, 313671 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
+ 445 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

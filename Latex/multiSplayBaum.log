@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  20 JUL 2020 11:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 JUL 2020 09:24
 entering extended mode
 **./multiSplayBaum.tex
 (multiSplayBaum.tex
@@ -412,16 +412,26 @@ Overfull \hbox (95.46832pt too wide) detected at line 156
 []
  []
 
-[8] (multiSplayBaum.bbl) [9] (multiSplayBaum.aux)
+
+Overfull \hbox (90.96814pt too wide) detected at line 165
+[]
+ []
+
+[8]
+
+LaTeX Warning: Reference `interleaveBound' on page 9 undefined on input line 16
+6.
+
+[9] (multiSplayBaum.bbl) [10] (multiSplayBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6370 strings out of 480797
- 94101 string characters out of 2905362
- 366809 words of memory out of 3000000
- 22266 multiletter control sequences out of 15000+200000
+ 6371 strings out of 480797
+ 94118 string characters out of 2905362
+ 370809 words of memory out of 3000000
+ 22267 multiletter control sequences out of 15000+200000
  555457 words of font info for 83 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,14n,43p,1075b,370s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -447,10 +457,11 @@ MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmti12.pfb>
-Output written on multiSplayBaum.pdf (9 pages, 323430 bytes).
+ts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+ti8.pfb>
+Output written on multiSplayBaum.pdf (10 pages, 333988 bytes).
 PDF statistics:
- 412 PDF objects out of 1000 (max. 8388607)
+ 420 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

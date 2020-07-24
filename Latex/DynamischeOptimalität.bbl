@@ -16,10 +16,4 @@ Norman Abramson.
 \newblock McGraw-Hill electronic sciences series. McGraw-Hill, New York, NY,
   1963.
 
-\bibitem{upperBounds}
-Parinya Chalermsook, Mayank Goswami, L{\'{a}}szl{\'{o}} Kozma, Kurt Mehlhorn,
-  and Thatchaphol Saranurak.
-\newblock The landscape of bounds for binary search trees.
-\newblock {\em CoRR}, abs/1603.04892, 2016.
-
 \end{thebibliography}
