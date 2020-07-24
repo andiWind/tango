@@ -166,7 +166,18 @@ Die Kosten der $k$ \textit{switch} Operationen müssen mit den Kosten der abschl
 Jetzt wird die Verbindung zur Interleave Bound hergestellt.Sei $U$ die Menge der in $P$ enthaltenen Knoten. Sei $X_1 = x_1, x_2,.., x_{i-1}$ und $X_2 = x_1, x_2,.., x_i$.  $k$ entspricht $\mathit{IB\left(X_2\right)} - \mathit{IB\left(X_1\right)}$, vergleiche Kapitel \ref{interleaveBound}. 
 \begin{align*}
 \textit{cost}\left(\textit{access}\left(X\right)\right) &= \sum_{i = 1}^{m} \textit{access}\left(x_i\right)\\
+&= \sum_{i = 1}^{m}O\left(\log_2 \left( \mathit{w}\left(t\right)/\left(\textit{node}\left(x_i\right)\right) \right)\right) + \sum_{i = 2}^{m}O\left(\left(	1 + \mathit{IB}\left(X_2\right)	- \mathit{IB}\left(X_1\right) \right) \log_2\left(f\right)\right)\\
+&=\sum_{i = 1}^{m}O\left(\log_2 \left( \mathit{w}\left(t\right)/\left(\textit{node}\left(x_i\right)\right) \right)\right) +  O\left(\left(\mathit{IB}\left(X\right) + m  \right)\log_2\left(f\right)\right)\\
+&=O\left(\left(\mathit{IB}\left(X\right) + m  \right)\log_2\left(f\right) +  \sum_{i = 1}^{m}\log_2 \left( \mathit{w}\left(t\right)/\left(\textit{node}\left(x_i\right) \right)\right)  \right)
 \end{align*}
+
+\newtheorem{Satz1}{Satz}[section] 
+\begin{Satz1}Sei $T$ ein Multisplay Baum. Sei $v$ ein Knoten im Hilfsbaum $H$ von $T$. $H$ enthalte $n$ Knoten Sei $u$ ein Vorfahre von $v$ in $H$. Es wird eine (modifizierte) \textit{splay} Operation verwendet, so dass $v'.$\textit{depth} $=$ $u.$\textit{depth} gilt.  Die amortisierte Kosten dafür von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(u\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(u\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ \\	
+\end{Satz1}
+\begin{proof}
+	Folgt direkt aus \ref{splayAccess}. Dass $u$ die Wurzel ist wird dort nicht verwendet. 	
+	
+\end{proof}
 
 
 
