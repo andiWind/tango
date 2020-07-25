@@ -109,7 +109,7 @@ Folgt direkt aus \ref{splayAccess}. Dass $u$ die Wurzel ist wird dort nicht verw
 	Sei $T$ ein Multisplay Baum mit Referenzbaum $P$. Sei $v^*$ die Wurzel von $P$. Sei $f$ eine Konstante $\geq 2$. Die amortisierte Laufzeit zum Ausführen der Zugriffsfolge $X = x_1, x_2,..,x_m$ ist 
 \begin{align*}
 O\left(  \sum_{i = 1}^{m} \log_2\left(   \frac{w\left(v\right)}{w\left(\textit{node}\left(x_i\right)\right)}  \right)  
-+ \left(\log_2 f\right) \left(\mathit{IB}\left(X\right) + m\right) \right)
++ \left(\log_2\left( f\right)\right) \left(\mathit{IB}\left(X\right) + m\right) \right)
 \end{align*}
 \end{Lemma2}
 \begin{proof}
@@ -169,17 +169,34 @@ Jetzt wird die Verbindung zur Interleave Bound hergestellt.Sei $U$ die Menge der
 &= \sum_{i = 1}^{m}O\left(\log_2 \left( \mathit{w}\left(t\right)/w\left(\textit{node}\left(x_i\right)\right) \right)\right) + \sum_{i = 2}^{m}O\left(\left(	1 + \mathit{IB}\left(X_2\right)	- \mathit{IB}\left(X_1\right) \right) \log_2\left(f\right)\right)\\
 &=\sum_{i = 1}^{m}O\left(\log_2 \left( \mathit{w}\left(t\right)/w\left(\textit{node}\left(x_i\right)\right) \right)\right) +  O\left(\left(\mathit{IB}\left(X\right) + m  \right)\log_2\left(f\right)\right)\\
 &=O\left(  \sum_{i = 1}^{m} \log_2\left(   \frac{w\left(v\right)}{w\left(\textit{node}\left(x_i\right)\right)}  \right)  
-+ \left(\log_2 f\right) \left(\mathit{IB}\left(X\right) + m\right) \right)
++ \left(\log_2 \left(f\right)\right) \left(\mathit{IB}\left(X\right) + m\right) \right)
 \end{align*}
 
 \newtheorem{Satz1}{Satz}[section] 
-\begin{Satz1}Sei $T$ ein Multisplay Baum. Sei $v$ ein Knoten im Hilfsbaum $H$ von $T$. $H$ enthalte $n$ Knoten Sei $u$ ein Vorfahre von $v$ in $H$. Es wird eine (modifizierte) \textit{splay} Operation verwendet, so dass $v'.$\textit{depth} $=$ $u.$\textit{depth} gilt.  Die amortisierte Kosten dafür von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(u\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(u\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ \\	
+\begin{Satz1}Ein Multisplay Baum $T$ mit $n$ Knoten ist $\log\left(\log\left(n\right)\right)$-competitive.
 \end{Satz1}
 \begin{proof}
-	Folgt direkt aus \ref{splayAccess}. Dass $u$ die Wurzel ist wird dort nicht verwendet. 	
-	
+Sei $m$ die Länge der Zugriffsfolge $X$ und $P$ der Referenzbaum zu $T$. Es wird eine Gewichtsfunktion $w\left(\right)$ gewählt mit  $w\left(v\right) = 1$ für jeden Knoten $v$ in $T$. Sei $f = 2 \log_2\left(n\right) + 2$. Die zweite Bedingung an die Gewichtsfunktion ist erfüllt, da ein Pfad in $P$ maximal eine Länge von $l = \log_2\left(n\right) +1$ haben kann und damit $f > l$ gilt. Die erste ist erfüllt, da jeder Knoten des gleiche Gewicht hat. Einsetzen in das Multisplay Baum Access Lemma ergibt:
+\begin{align*}
+&O\left(  \sum_{i = 1}^{m} \log_2\left(   \frac{1}{1}  \right)  
++ \left(\log_2\log_2\left(n\right) \right) \left(\mathit{IB}\left(X\right) + m\right) \right)\\
+=&O\left( \left(\log_2\left(\log_2\left(n\right)\right) \right) \left(\mathit{IB}\left(X\right) + m\right) \right)\\
+=&O \left(\log_2\left(\log_2\left(n\right)\right) \right) \mathit{IB}\left(X\right)
+\end{align*}	
 \end{proof}
 
+\newtheorem{Satz2}{Satz}[section] 
+\begin{Satz1}Bei einem Multisplay Baum $T$ mit $n$ Knoten hat und $X = x_1, x_2,.., x_m$ eine Zugriffsfolge. \textit{access}$\left(x_i\right)$ eine amortisierte Laufzeit von $O\left(\log\left(n\right)\right)$ 
+\end{Satz1}
+\begin{proof}
+	
+	Sei $P$ der Referenzbaum zu $T$. Sei $d$ die Tiefe des Knotens $v$ in $T$ mit $\mathit{key}\left(v\right) = x_i$. Sei $f = 2$. Sei $h\left(u\right)$ die Funktion die zu jedem Knoten in $T$ die Höhe liefert. (Ein Blatt hat Höhe $1$). Es wird eine Gewichtsfunktion $w\left(\right)$ gewählt mit  $w\left(u\right) = 2^{h\left(u\right)-1}$. Auch die zweite Bedingung an die Gewichtsfunktion ist erfüllt, da $\sum_{i = 1}^{m} 2^i < 2^{m+1}$ für alle $m \in \mathit{N}$ gilt. Einsetzen in das Multisplay Baum Access Lemma ergibt:
+	\begin{align*}
+	&O\left(  \sum_{i = 1}^{m} \log_2\left(   \frac{n}{w\left(\textit{node}\left(x_i\right)\right)}  \right)  
+	+ \left(\log_2\left( 2\right)\right) \left(\mathit{IB}\left(X\right) + m\right) \right)\\
+	=&O\left(m \left(\log_2\left(n\right) \right) \mathit{IB}\left(X\right) \right)\\
+	\end{align*}	
+\end{proof}
 
 
 
