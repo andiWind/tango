@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 JUL 2020 13:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  25 JUL 2020 13:38
 entering extended mode
 **./multiSplayBaum.tex
 (multiSplayBaum.tex
@@ -398,9 +398,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
 LaTeX Warning: Reference `splayAccess' on page 6 undefined on input line 97.
 
-[6 <./Medien/Multisplay/split.png>]
 \c@Lemma2=\count278
-
+[6 <./Medien/Multisplay/split.png>]
 Overfull \hbox (18.61833pt too wide) in paragraph at lines 116--119
 \T1/cmr/m/n/12 Es wird ei-ne \T1/cmr/m/it/12 switch \T1/cmr/m/n/12 Ope-ra-ti-on
  wäh-rend \T1/cmr/m/it/12 ac-cess$[]$ \T1/cmr/m/n/12 be-trach-tet. Sei-en $[][]
@@ -423,18 +422,18 @@ LaTeX Warning: Reference `interleaveBound' on page 9 undefined on input line 16
 6.
 
 
-Overfull \hbox (85.66484pt too wide) detected at line 172
+Overfull \hbox (94.38696pt too wide) detected at line 173
 []
  []
 
 \c@Satz1=\count279
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
 
-LaTeX Warning: Reference `splayAccess' on page 9 undefined on input line 178.
+LaTeX Warning: Reference `splayAccess' on page 9 undefined on input line 179.
 
 [9] (multiSplayBaum.bbl) [10] (multiSplayBaum.aux)
 
@@ -473,7 +472,7 @@ ype1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 ti8.pfb>
-Output written on multiSplayBaum.pdf (10 pages, 335450 bytes).
+Output written on multiSplayBaum.pdf (10 pages, 335444 bytes).
 PDF statistics:
  421 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
