@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 JUL 2020 11:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  25 JUL 2020 18:22
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -357,6 +357,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
+<Medien/Einleitung/ioSuchbaum.png, id=19, 673.3155pt x 269.808pt>
+File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
+<use Medien/Einleitung/ioSuchbaum.png>
+Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 4
+7.
+(pdftex.def)             Requested size: 390.0pt x 156.27878pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/Einleitung/nioSuchbaum.png, id=21, 476.37975pt x 274.02374pt>
+File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
+<use Medien/Einleitung/nioSuchbaum.png>
+Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
+53.
+(pdftex.def)             Requested size: 390.0pt x 224.33714pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 58--60
 
@@ -367,21 +385,41 @@ Overfull \hbox (15.74591pt too wide) in paragraph at lines 65--65
 []\T1/cmr/bx/n/14.4 Weitere Be-grif-fe und Ei-gen-schaf-ten zum bi-n�ren Such-
  []
 
+<Medien/Einleitung/suchbaum2_2.png, id=35, 484.81125pt x 307.74976pt>
+File: Medien/Einleitung/suchbaum2_2.png Graphic file (type png)
+<use Medien/Einleitung/suchbaum2_2.png>
+Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line 
+69.
+(pdftex.def)             Requested size: 390.0pt x 247.57602pt.
 
-LaTeX Warning: Reference `fig:linksRechts' on page 6 undefined on input line 74
-.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6 <./Medien/Einleitung/ioSuchbaum.png>]
+<Medien/Einleitung/linksRechts.png, id=43, 3468.96pt x 1233.408pt>
+File: Medien/Einleitung/linksRechts.png Graphic file (type png)
+<use Medien/Einleitung/linksRechts.png>
+Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
+78.
+(pdftex.def)             Requested size: 390.0pt x 138.6489pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
-[6]
-
-LaTeX Warning: Reference `fig:VorgängerNachfolger' on page 7 undefined on inpu
-t line 95.
-
-[7]
+[7 <./Medien/Einleitung/nioSuchbaum.png>] [8 <./Medien/Einleitung/suchbaum2_2.p
+ng>]
+<Medien/Einleitung/VorgängerNachfolger.png, id=53, 502.87875pt x 310.15875pt>
+File: Medien/Einleitung/VorgängerNachfolger.png Graphic file (type png)
+<use Medien/Einleitung/VorgängerNachfolger.png>
+Package pdftex.def Info: Medien/Einleitung/VorgängerNachfolger.png  used on in
+put line 99.
+(pdftex.def)             Requested size: 390.0pt x 240.53618pt.
+ [9 <./Medien/Einleitung/linksRechts.png> <./Medien/Einleitung/VorgängerNachfo
+lger.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 111--116
 
  []
@@ -396,22 +434,80 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
+<Medien/Einleitung/Linksrotation.png, id=59, 791.95876pt x 249.93375pt>
+File: Medien/Einleitung/Linksrotation.png Graphic file (type png)
+<use Medien/Einleitung/Linksrotation.png>
+Package pdftex.def Info: Medien/Einleitung/Linksrotation.png  used on input lin
+e 129.
+(pdftex.def)             Requested size: 467.99881pt x 147.69608pt.
 
-LaTeX Warning: Reference `fig:Linksrotation' on page 8 undefined on input line 
-124.
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 129--130
+ [][] 
+ []
 
+<Medien/Einleitung/Rechtsrotation.png, id=60, 837.1275pt x 255.95625pt>
+File: Medien/Einleitung/Rechtsrotation.png Graphic file (type png)
+<use Medien/Einleitung/Rechtsrotation.png>
+Package pdftex.def Info: Medien/Einleitung/Rechtsrotation.png  used on input li
+ne 135.
+(pdftex.def)             Requested size: 467.99881pt x 143.09236pt.
 
-LaTeX Warning: Reference `fig:Rechtsrotation' on page 8 undefined on input line
- 126.
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 135--136
+ [][] 
+ []
 
+<Medien/Einleitung/LinksRechtsRotation.png, id=61, 840.13875pt x 255.95625pt>
+File: Medien/Einleitung/LinksRechtsRotation.png Graphic file (type png)
+<use Medien/Einleitung/LinksRechtsRotation.png>
+Package pdftex.def Info: Medien/Einleitung/LinksRechtsRotation.png  used on inp
+ut line 141.
+(pdftex.def)             Requested size: 467.99881pt x 142.58073pt.
 
-LaTeX Warning: Reference `fig:LinksRechtsRotation' on page 8 undefined on input
- line 126.
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 141--142
+ [][] 
+ []
 
-[8] [9] [10]
+[10]
 
-LaTeX Warning: Reference `fig:kompletterBaum' on page 11 undefined on input lin
-e 185.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/Einleitung/SuchenEinfügen.png, id=65, 3874.27425pt x 1300.86pt>
+File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
+<use Medien/Einleitung/SuchenEinfügen.png>
+Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
+ine 153.
+(pdftex.def)             Requested size: 467.99881pt x 157.12863pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 153--154
+ [][] 
+ []
+
+[11 <./Medien/Einleitung/Linksrotation.png> <./Medien/Einleitung/Rechtsrotation
+.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12 <./Medien/Einleitung/LinksRechtsRotation.png>] [13 <./Medien/Einleitung/Suc
+henEinfügen.png>]
+<Medien/Einleitung/löschen.png, id=81, 828.09375pt x 249.3315pt>
+File: Medien/Einleitung/löschen.png Graphic file (type png)
+<use Medien/Einleitung/löschen.png>
+Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 175
+.
+(pdftex.def)             Requested size: 467.99881pt x 140.9144pt.
+
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 175--176
+ [][] 
+ []
+
+<Medien/Einleitung/kompletterBaum.png, id=82, 737.75626pt x 237.88875pt>
+File: Medien/Einleitung/kompletterBaum.png Graphic file (type png)
+<use Medien/Einleitung/kompletterBaum.png>
+Package pdftex.def Info: Medien/Einleitung/kompletterBaum.png  used on input li
+ne 188.
+(pdftex.def)             Requested size: 390.0pt x 125.75374pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 \c@Lemma=\count277
 
@@ -419,7 +515,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--200
 
  []
 
-
+[14 <./Medien/Einleitung/löschen.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
  []
@@ -429,29 +525,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 208--210
 
  []
 
-[11]
-
-LaTeX Warning: Citation `nRotations' on page 12 undefined on input line 240.
-
-[12]
-
-LaTeX Warning: Citation `wilberLowerBounds' on page 13 undefined on input line 
-245.
-
-[13]
-
-LaTeX Warning: Reference `fig:lowerBoundTree' on page 14 undefined on input lin
-e 250.
-
-
+[15 <./Medien/Einleitung/kompletterBaum.png>] [16] [17]
 Underfull \hbox (badness 10000) in paragraph at lines 250--251
 
  []
 
-[14]
-
-LaTeX Warning: Reference `fig:T_r_l' on page 15 undefined on input line 285.
-
+<Medien/DynOpt/lowerBoundTree.png, id=100, 4459.66125pt x 1497.1935pt>
+File: Medien/DynOpt/lowerBoundTree.png Graphic file (type png)
+<use Medien/DynOpt/lowerBoundTree.png>
+Package pdftex.def Info: Medien/DynOpt/lowerBoundTree.png  used on input line 2
+56.
+(pdftex.def)             Requested size: 390.0pt x 130.92644pt.
+[18 <./Medien/DynOpt/lowerBoundTree.png>] [19]
+<Medien/DynOpt/T_r_l.png, id=110, 3552.0705pt x 1209.92026pt>
+File: Medien/DynOpt/T_r_l.png Graphic file (type png)
+<use Medien/DynOpt/T_r_l.png>
+Package pdftex.def Info: Medien/DynOpt/T_r_l.png  used on input line 288.
+(pdftex.def)             Requested size: 390.0pt x 132.83318pt.
 
 Overfull \hbox (35.08855pt too wide) in paragraph at lines 293--294
 \T1/cmr/m/n/12 Sei $\OML/cmm/m/it/12 K[]$ \T1/cmr/m/n/12 die Schl�s-sel-men-ge 
@@ -464,7 +554,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
-[15]
+
 Underfull \hbox (badness 10000) in paragraph at lines 295--296
 
  []
@@ -474,70 +564,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 297--302
 
  []
 
-
+[20 <./Medien/DynOpt/T_r_l.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 303--304
 
  []
 
 \c@Lemma3=\count278
 
-LaTeX Warning: Reference `Kapitel 1 Rotationen' on page 16 undefined on input l
+LaTeX Warning: Reference `Kapitel 1 Rotationen' on page 21 undefined on input l
 ine 320.
 
-[16]
+
 Underfull \hbox (badness 10000) in paragraph at lines 325--327
 
  []
 
-
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 338--339
 
  []
 
 \c@Satz1=\count279
-[17] [18]
-
-LaTeX Warning: Citation `wilberLowerBounds' on page 19 undefined on input line 
-365.
-
-
+[22] [23]
 Underfull \hbox (badness 10000) in paragraph at lines 370--372
 
  []
 
-[19]
 \c@Korollar1=\count280
- [20] [21] [22] [23]
+[24] [25] [26] [27] [28]
+<Medien/DynOpt/upperBounds.png, id=145, 214.401pt x 293.29575pt>
+File: Medien/DynOpt/upperBounds.png Graphic file (type png)
+<use Medien/DynOpt/upperBounds.png>
+Package pdftex.def Info: Medien/DynOpt/upperBounds.png  used on input line 520.
 
-LaTeX Warning: Citation `staticOptimal' on page 24 undefined on input line 495.
+(pdftex.def)             Requested size: 234.00238pt x 320.12459pt.
 
 
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Warning: Reference `fig:upperBounds' on page 24 undefined on input line 5
-16.
-
-
-LaTeX Warning: Reference `fig:upperBounds' on page 24 undefined on input line 5
-16.
-
-[24] (Bachelorarbeit.bbl) [25] (Bachelorarbeit.aux)
+[29] (Bachelorarbeit.bbl) [30 <./Medien/DynOpt/upperBounds.png>]
+(Bachelorarbeit.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6363 strings out of 480797
- 93403 string characters out of 2905362
- 366809 words of memory out of 3000000
- 22262 multiletter control sequences out of 15000+200000
+ 6484 strings out of 480797
+ 97320 string characters out of 2905362
+ 368809 words of memory out of 3000000
+ 22366 multiletter control sequences out of 15000+200000
  555335 words of font info for 83 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,14n,43p,1995b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,14n,43p,1995b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\Users\andre\AppData\Local\MiKTeX
+tcrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecbi1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX
 \2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Lo
 cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andre\
 AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Us
@@ -561,9 +644,9 @@ y6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C
 m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (25 pages, 356296 bytes).
+Output written on Bachelorarbeit.pdf (30 pages, 1772888 bytes).
 PDF statistics:
- 520 PDF objects out of 1000 (max. 8388607)
+ 624 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -42,18 +42,18 @@ Bei einem \textbf{binärem Baum} kommt folgende Einschränkung hinzu:  \\
 \textit{Ein Knoten hat maximal zwei Kinder.}\\ 
 Entsprechend ihrer Zeichnung benennt man die Kinder in Binärbäumen als \textbf{linkes Kind} oder \textbf{rechtes Kind}. Sei $w$ das linke bzw. rechte Kind von $v$, dann bezeichnet man den Teilbaum mit Wurzel $w$ als \textbf{linken Teilbaum} bzw. \textbf{rechten Teilbaum}  von $v$.  
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/ioSuchbaum"}
-%	\caption{Ein binärer Suchbaum }
-%	\label{fig:ioSuchbaum}
-%\end{figure}
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/nioSuchbaum"}
-%	\caption{Kein binärer Suchbaum }
-%	\label{fig:nioSuchbaum}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/ioSuchbaum"}
+	\caption{Ein binärer Suchbaum }
+	\label{fig:ioSuchbaum}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/nioSuchbaum"}
+	\caption{Kein binärer Suchbaum }
+	\label{fig:nioSuchbaum}
+\end{figure}
 
 \noindent Bei einem \textbf{binären Suchbaum} ist jedem Knoten $v$ ein innerhalb der Baumstruktur ein eindeutiger \textbf{Schlüssel} $\mathit{key}\left(v\right)$ aus einem \textbf{Universum} zugeordnet werden, auf dem eine totale Ordnung definiert ist. Auf totale Ordnungen wird in diesen Kapitel noch eingegangen. Wenn nicht explizit anders angegeben wird hier und in den folgenden Kapiteln wird als Universum immer $\mathbb{N}$ verwendet, wobei die $0$ enthalten ist. Die in einem binärem Suchbaum enthaltenen Schlüssel bezeichnen wir als seine \textbf{Schlüsselmenge}.  Damit aus dem binären Baum ein binärer Suchbaum wird, benötigt man noch folgende Eigenschaft:\\
 \textit{Für jeden Knoten im binären Suchbaum gilt, dass alle in seinem linken Teilbaum enthaltenen Schlüssel kleiner sind als der eigene Schlüssel. Alle im rechten Teilbaum enthaltenen Schlüssel sind größer als der eigene Schlüssel.} \\
@@ -64,21 +64,21 @@ Entsprechend ihrer Zeichnung benennt man die Kinder in Binärbäumen als \textbf
 \noindent Anstatt binärer Suchbaum schreibt man häufig \textbf{BST} für Binary Search Tree. Diese Abkürzung wird hier ab jetzt auch verwendet. In Implementierungen enthält jeder Knoten für das linke und rechte Kind jeweils einen Zeiger. Anstatt von entfernten oder hinzugefügten Kanten wird im folgenden häufig von umgesetzten Zeigern gesprochen. 	
 \subsection{Weitere Begriffe und Eigenschaften zum binären Suchbaum}	
 \noindent Zwei verschiedene Knoten mit dem selben Elternknoten nennt man \textbf{Geschwister}. Den Knoten in einem BST wird auch eine \textbf{Tiefe} und eine \textbf{Höhe} zugeteilt. Für einen Knoten $v$ gilt, dass die Länge des Pfades von der Wurzel zu ihm seiner Tiefe entspricht. Sei $l$ die maximale Länge eines von $v$ aus startenden Pfades. Die Höhe $\mathit{h(v)}$ von $v$ ist dann $l+1$. Die Höhe der Wurzel entspricht der \textbf{Höhe des Baumes~ $h(T)$}, wobei ein leerer Baum Höhe $0$ hat. Einen BST $T$ mit Höhe $h_T$ unterteilt man von oben nach unten in die \textbf{Ebenen} $\mathit{1,2...,h_T}$. Die Wurzel liegt in der Ebene eins, deren Kinder in der Ebene zwei usw. Enthält eine Ebene ihre maximale Anzahl an Knoten nennt man sie \textbf{vollständig besetzt}.
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/suchbaum2_2"}
-%	\caption{Ein weiterer binärer Suchbaum }
-%	\label{fig:suchbaum2_2}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/suchbaum2_2"}
+	\caption{Ein weiterer binärer Suchbaum }
+	\label{fig:suchbaum2_2}
+\end{figure}
 
 \noindent Da im linken Teilbaum nur kleinere Schlüssel vorhanden sein dürfen und im rechten Teilbaum nur größere, kann man die Schlüsselmenge eines binären Suchbaumes, von links nach rechts, in aufsteigend sortierter Form ablesen. Denn angenommen es gibt zwei Knoten $v_l$, $v_r$ mit den Schlüsseln $k_l$ bzw. $k_r$, so dass $k_l > k_r$ gilt und $v_l$ liegt weiter links im Baum als $v_r$. Ist $v_l$ ein Vorfahre von $v_r$, so enthält der rechte Teilbaum von $v_l$ einen Schlüssel der kleiner ist als $k_l$. Ist $v_r$ Vorfahre von $v_l$, so enthält der linke Teilbaum von $v_r$ einen Schlüssel der größer ist als $k_r$. Ist keiner der Knoten Vorfahre des anderen, muss es zumindest einen gemeinsamen Vorfahren geben, denn dann kann weder $v_r$ noch $v_l$ die Wurzel des BST sein. Sei $v_v$ der gemeinsame Vorfahre mit der größten Tiefe. Der linke Teilbaum von $v_v$ enthält dann einen größeren Schlüssel, als der rechte Teilbaum dieses Knotens. In jedem Fall erhält man einen Widerspruch zu der von BSTs geforderten Eigenschaft. Aus Platzgründen passiert es bei Zeichnungen von BSTs manchmal, dass ein Knoten in einem linken Teilbaum weiter rechts steht als die Wurzel des Teilbaumes, oder umgekehrt, weshalb man bei der Betrachtung solcher Zeichnungen etwas vorsichtig sein muss. Abbildung \ref{fig:linksRechts} enthält keine solche Konstellation.  
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/linksRechts"}
-%	\caption{Schlüssel sind aufsteigend sortiert ablesbar. }
-%	\label{fig:linksRechts}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/linksRechts"}
+	\caption{Schlüssel sind aufsteigend sortiert ablesbar. }
+	\label{fig:linksRechts}
+\end{figure}
 \noindent Algorithmisch kann man sich die im BST enthaltenen Schlüssel aufsteigend sortiert durch eine \textbf{Inorder-Traversierung} ausgeben lassen. Es ist ein rekursives Verfahren, dass an der Wurzel startet und pro Aufruf drei Schritte ausführt.\\
 
 Algorithmus \textbf{$\mathit{inorder}$ (Knoten $v$)}
@@ -94,12 +94,12 @@ Ausgabe erzeugt.
 Als \textbf{Vorgänger} eines Knoten $v$, mit Schlüssel $k_v$ bezeichnet man den Knoten mit dem größten im BST enthaltenem Schlüssel $k$ für den gilt $k < k_v$. Aus der Inorder-Traversierung kann man eine Anleitung zum Finden des Vorgängers ableiten. Wenn ein linker Teilbaum vorhanden ist, wird der größte Schlüssel in diesem, also der am weitesten rechts liegende, direkt vor $k$ ausgegeben. Anderenfalls wird der Schlüssel des tiefsten Knotens, auf dem Pfad von der Wurzel zu $v$ ausgegeben, bei dem $v$ im rechten Teilbaum liegt. Als \textbf{Nachfolger} von $v$, bezeichnet man den Knoten mit dem kleinsten im BST enthaltenem Schlüssel $k$ für den gilt $k > k_v$.
 Da dieser Schlüssel bei der Inorder-Traversierung direkt nach $v$ ausgegeben wird, findet man den zugehörigen Knoten ganz links im rechten Teilbaum von $v$, falls ein solcher vorhanden ist. Ansonsten ist es der tiefste Knoten, auf dem Pfad von der Wurzel zu $v$, bei dem $v$ im linkem Teilbaum liegt. Abbildung \ref{fig:VorgängerNachfolger} zeigt Vorgänger und Nachfolger eines Knotens. Als \textbf{Vorfahre} eines Knotens $v$ bezeichnet man alle Knoten auf dem Pfad von der Wurzel zu $v$, inklusive $v$ selbst. 
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/VorgängerNachfolger"}
-%	\caption{Darstellung von Vorgänger und Nachfolger. }
-%	\label{fig:VorgängerNachfolger}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/VorgängerNachfolger"}
+	\caption{Darstellung von Vorgänger und Nachfolger. }
+	\label{fig:VorgängerNachfolger}
+\end{figure}
 \paragraph{Total geordnete Menge} 
 Eine Menge $M$ wird als \textbf{total geordnet} bezeichnet wenn auf ihr eine zweistellige Relation $\leq$ definiert ist, die folgende Eigenschaften erfüllt.\\
 Für alle $a$,$b$,$c$ $\in M$ gilt:
@@ -124,36 +124,36 @@ Wird ein BST durch eine Veränderung in einen anderen BST überführt, kann es p
 unterschieden. Hier wird zunächst auf die in Abbildung \ref{fig:Linksrotation} dargestellte Linksrotation eingegangen. 
 Sei $x$ der Knoten auf dem eine Linksrotation durchgeführt wird. Sei $z$ der Elternknoten von $x$. $z$ muss existieren, ansonsten darf auf $x$ keine Rotation durchgeführt werden. Sei $B$ der linke Teilbaum von $x$. Nach der Rotation ist $x'$ linkes bzw. rechtes Kind von dem Knoten, an dem $z$ linkes bzw. rechtes Kind war. $z'$ ist linkes Kind von $x'$. $B '$ ist rechtes Kind von $z'$. Unabhängig von der Anzahl der im BST enthaltenen Knoten und der Ausführungsstelle im BST ist eine Linksrotation also mit dem Aufwand verbunden drei Zeiger umzusetzen. Zu beachten ist, dass die Höhen von $x'$ und der Knoten in dessen, ansonsten unverändertem, rechtem Teilbaum jeweils um eins größer sind als die von $x$ und den Knoten in dessen rechtem Teilbaum. Die Höhe der Knoten im Teilbaum mit Wurzel $z'$ sind jeweils um eins kleiner als vor der Rotation.
 Abbildung \ref{fig:Rechtsrotation} zeigt die symmetrische Rechtsrotation. Man muss im obigen Beschreibung lediglich links durch rechts ersetzen und umgekehrt. Dass es durch eine Rotation zu keiner Verletzung der BST Eigenschaften kommt, sieht man den Abbildungen direkt an. In Abbildung \ref{fig:LinksRechtsRotation} erkennt man, dass sich die Wirkung einer Rotation auf $x$ durch eine gegenläufige Rotation auf $z'$ aufheben lässt.  
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/Linksrotation"}
-%	\caption{Linksrotation auf Knoten x. }
-%	\label{fig:Linksrotation}
-%\end{figure}
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/Rechtsrotation"}
-%	\caption{Rechtsrotation auf Knoten x. }
-%	\label{fig:Rechtsrotation}
-%\end{figure}
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/LinksRechtsRotation"}
-%	\caption{Gegenseitiges aufheben von Rotationen}
-%	\label{fig:LinksRechtsRotation}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/Linksrotation"}
+	\caption{Linksrotation auf Knoten x. }
+	\label{fig:Linksrotation}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/Rechtsrotation"}
+	\caption{Rechtsrotation auf Knoten x. }
+	\label{fig:Rechtsrotation}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/LinksRechtsRotation"}
+	\caption{Gegenseitiges aufheben von Rotationen}
+	\label{fig:LinksRechtsRotation}
+\end{figure}
 
 \paragraph{Grundoperationen \textit{search}, \textit{insert} und \textit{delete}} \label{BST Operationen}
 Hier geht es nur um die Standardvarianten eines BST. Später werden Varianten gezeigt die von diesem Verhalten zum Teil deutlich abweichen. Innerhalb Operationen wird häufig von einem Knoten aus direkt
 auf dessen Elternknoten zugegriffen, so dass man sich im Baum auch nach oben hin bewegen kann. In Implementierungen wird das so umgesetzt, dass es zusätzlich zu den beiden Zeigern auf die Kinder noch einen zum Elternknoten gibt.Es sei ein BST $T$ gegeben. Innerhalb eines Pfades werden hier jedoch entweder nur Zeiger auf Kinder oder nur auf Elternknoten verwendet.  \\
 Die Operation \textit{search}(Key $k$) gibt eine Referenz auf den Knoten im BST zurück, dessen Schlüssel mit $k$ übereinstimmt. Die Operation startet an der Wurzel und vergleicht den darin enthaltenen Schlüssel mit dem Gesuchten. Ist der gesuchte Schlüssel kleiner, muss er sich im linken Teilbaum des betrachtetem Knoten befinden und die Suche wird bei dessen Wurzel fortgesetzt. Ist der Schlüssel größer, muss er sich im rechten Teilbaum befinden und die Suche wird bei dessen Wurzel fortgesetzt. Dieses Verhalten iteriert solange bis der gesuchte Schlüssel gefunden ist, oder der Teilbaum bei dem die Suche fortgesetzt werden müsste, leer ist. Ist das Letztere der Fall, ist der gesuchte Schlüssel im Baum nicht vorhanden und es wird eine leere Referenz zurückgegeben. In keinem Fall kommt es zu einer Veränderung des BST.\\
 Bei \textit{insert(Key $k$)} wird zunächst wie bei  \textit{search}(Key $k$) verhalten. Wird $k$ gefunden, wird das Einfügen abgebrochen und der BST bleibt unverändert. Wird ein leerer Teilbaum $T_2$ erreicht, wird ein neu erzeugter Knoten mit Schlüssel $k$ an der Position von $T_2$ eingefügt. Durch den neuen Knoten wird keine BST Eigenschaft verletzt. Durch ersetzen eines leeren Teilbaumes, durch einen Knoten bleibt es bei einem binären Baum. Das Verhalten von  \textit{insert} stellt sicher, dass $k$ nur in linken Teilbäumen von Knoten mit Schlüssel $> k$ bzw. in rechten Teilbäumen von Knoten mit Schlüssel~ $< k$ liegt.    \\
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/SuchenEinfügen"}
-%	\caption{Links zeigt eine Suche nach dem Schlüssel 15. Rechts das Einfügen des Schlüssels 13}
-%	\label{fig:SuchenEinfügen}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/SuchenEinfügen"}
+	\caption{Links zeigt eine Suche nach dem Schlüssel 15. Rechts das Einfügen des Schlüssels 13}
+	\label{fig:SuchenEinfügen}
+\end{figure}
 \noindent Auch bei \textit{löschen(Schlüssel $k$)} wird sich zunächst wie beim  \textit{search}(Key $k$) verhalten. Ist $k$ im BST nicht vorhanden wird abgebrochen und der BST bleibt unverändert. Ansonsten werden drei Fälle unterschieden.
 Sei $v$ der Knoten mit Schlüssel $k$.
 \begin{enumerate}
@@ -170,12 +170,12 @@ Sei $v$ der Knoten mit Schlüssel $k$.
 	
 	
 \end{enumerate} 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/löschen"}
-%	\caption{Löschen des Schlüssels 10}
-%	\label{fig:löschen}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1.2\textwidth]{"Medien/Einleitung/löschen"}
+	\caption{Löschen des Schlüssels 10}
+	\label{fig:löschen}
+\end{figure}
 \paragraph{Laufzeit}
 Die worst-case-Laufzeit der drei Operationen ist jeweils $\mathit{O(h)}$, wobei $h$ die Höhe von $T$ ist. Bei \textit{search} werden maximal $h$ Knoten aus $T$ betrachtet. Beim Einfügen überlagern die Kosten der Suche, die konstanten Kosten für das Anhängen des neuen Knotens. Bei \textit{delete} wird in Fall eins und zwei nach dem Suchen ebenfalls nur noch lokal beim gesuchten Knoten gearbeitet. Bei \textit{delete} mit Fall drei muss zunächst zum Knoten $z$ erreicht werden, dafür sind maximal $h$ Schritte notwendig. Danach muss $v$ erreicht werden, wozu ebenfalls maximal $h$ Schritte notwendig sind. Die Kosten für das Entfernen und Hinzufügen von Kanten sind an beiden Stellen konstant.  
 
@@ -183,12 +183,12 @@ Die worst-case-Laufzeit der drei Operationen ist jeweils $\mathit{O(h)}$, wobei 
 
 \paragraph{Unterschiedliche Baumhöhen}
 Da die Höhe $h$ eines BST $T$ mit $n$ Knoten entscheidend für die Laufzeit der vorgestellten Operationen ist, wird hier auf diese eingegangen. Die maximale Höhe $n$ erreicht ein BST wenn es ein Blatt im BST gibt und jeder andere Knoten ein Halbblatt ist. Die Baumstruktur geht in diesem Fall über zu einer Listenstruktur über, dies wird als \textbf{entarten} bezeichnet. Minimal wird $h$ wenn $T$ \textbf{vollständig balanciert} ist. Das ist der Fall wenn alle Ebenen über der Untersten vollständig besetzt sind. Sind zusätzlich in der untersten Ebene, links von jedem Knoten, alle Knoten enthalten, wird der BST als \textbf{komplett} bezeichnet, siehe Abbildung \ref{fig:kompletterBaum}. 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/kompletterBaum"}
-%	\caption{Kompletter BST mit 12 Knoten}
-%	\label{fig:kompletterBaum}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/kompletterBaum"}
+	\caption{Kompletter BST mit 12 Knoten}
+	\label{fig:kompletterBaum}
+\end{figure}
 
 \newtheorem{Lemma}{Lemma}[section]
 \begin{Lemma} Die Höhe eines vollständig balancierten BST $T$ mit $n$ Knoten ist $ \lfloor \log_2{(n)} \rfloor + 1 $. 
@@ -251,18 +251,18 @@ Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \vert K\vert  - 1$ Kno
 
 
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
-%	\caption{Rechts ist ein möglicher lower bound tree zum linken BST dargestellt.  }
-%	\label{fig:lowerBoundTree}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
+	\caption{Rechts ist ein möglicher lower bound tree zum linken BST dargestellt.  }
+	\label{fig:lowerBoundTree}
+\end{figure}
 
 \noindent Nun wird die Funkion $_X(T, Y, X) $ vorgestellt. Ihre Parameter sind ein BST $T$, ein lower bound tree $Y$ und eine Zugriffsfolge $X$. $Y$ und $X$ müssen passend für $T$ erstellt sein, ansonsten ist $_X(T, Y, X) $ undefiniert . Die Auswertung erfolgt zu einer natürlichen Zahl. Sei $U$ die Menge der internen Knoten von $Y$ und $m$ die Länge von $X$. Sei $u \in U$ und $l$ der kleinste Schlüssel eines Blattes im Teilbaum mit Wurzel $u$, sowie $r$ der größte Schlüssel eines solchen Blattes. Sei $v$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus $\left[l, r\right]$  in $T$. Sei $o$ die Folge $o_0, o_1,..,o_m =  \mathit{key}(v) \circ X^r_l$. $i \in \left[1,m\right]$ ist eine \textit{u-Transition} wenn gilt $\left( o_{i-1} < u \land o_i > u \right) \lor \left( o_{i-1} > u \land o_i < u \right)$.Die Funktion $\mathit{score}\left(u\right) \colon U \rightarrow \mathbb{N}$ ist definiert durch $\mathit{score}\left(u\right) = \vert\{i \in \mathbb{N}\ \vert \textit{i ist eine u-Transition}\} \vert$. Mit Hilfe von $\mathit{score}$ kann nun  $_X(T, Y, X) $ definiert werden.
 
 \begin{align*}
 _X(T, Y, X)  = m + \sum_{u \in U} {\mathit{score}} \left(u\right)
-\end{align*} %K^r_l = \{i \in K\vert l \leq i \leq r\}
+\end{align*} 
 
 \noindent Im eigentlichen Satz wird $\mathit{W\left(X, T\right)} \geq {_X(T, Y, X)} $ gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das linke Kind von $v$ und für $i \in \{1,..,n\}$,$v_i$ ist das rechte Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das rechte Kind von $u$ und $v_i$ ist das linke Kind von $v_{i-1}$.\\ $T^r_l$ ist ein mit $\left[l,r\right]$ von $T$ abgeleiteter BST, so dass er genau die Schlüssel aus $T$ enthält, die in $\left[l, r\right]$ liegen. Sei $v_d$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus  $\left[l,r\right]$ in $T$. (Existiert ein solcher nicht ist $T^r_l$ der leere Baum). Es muss $\mathit{key}(v_d) \in \left[l,r\right]$ gelten. Denn hat $v_d$ keine Kinder ist sein Schlüssel der Einzige aus $\left[l,r\right]$. Hat $v_d$ ein Kind $v_{c}$ und $\mathit{key}(v_d) \notin \left[l,r\right]$, dann wäre $v_{c}$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten. Hat $v_d$ zwei Kinder gibt es drei Fälle:
 \begin{itemize}
@@ -283,12 +283,12 @@ Dazu werden zwei Mengen verwendet. $U$ ist eine zu Beginn leere Menge, $W$ enth�
 	\item Füge $w$ zu $U$ hinzu, weiter mit $1$
 \end{enumerate}
 Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So konstruiert muss $T^r_l$ ein BST sein. Ein Beispiel stellt Abbildung \ref{fig:T_r_l} dar. 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/T_r_l"}
-%	\caption{Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ .  }
-%	\label{fig:T_r_l}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/T_r_l"}
+	\caption{Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ .  }
+	\label{fig:T_r_l}
+\end{figure}
 
 \noindent Sei $K_1$ die Schlüsselmenge von $T$ und $K_2$ die von $T^r_l$. Sei ${K^r_l = K_1 \cap \{i \in \mathbb{N}\vert i \in \left[l,r\right] \}}$. Jetzt wird noch darauf eingegangen warum $K_2 = K^r_l$ gilt \\
 
@@ -515,12 +515,12 @@ gilt.
 
 \noindent Abbildung \ref{fig:upperBounds} zeigt Implikationen zwischen den Eigenschaften und basiert auf einer Abbildung aus \ref{fig:upperBounds}.
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 0.6\textwidth]{"Medien/DynOpt/upperBounds"}
-%	\caption{Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite{upperBounds} }
-%	\label{fig:upperBounds}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.6\textwidth]{"Medien/DynOpt/upperBounds"}
+	\caption{Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite{upperBounds} }
+	\label{fig:upperBounds}
+\end{figure}
 
 
 \newpage

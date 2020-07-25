@@ -1,9 +1,54 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: Bachelorarbeit.aux
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Bachelorarbeit.aux
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: unsrt.bst
 Database file #1: literaturverzeichnis.bib
-I was expecting a `,' or a `}'---line 80 of file literaturverzeichnis.bib
+I was expecting a `,' or a `}'---line 102 of file literaturverzeichnis.bib
  : 
  : day = "10",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+You've used 4 entries,
+            1791 wiz_defined-function locations,
+            474 strings with 4106 characters,
+and the built_in function-call counts, 796 in all, are:
+= -- 69
+> -- 33
+< -- 0
++ -- 13
+- -- 9
+* -- 52
+:= -- 140
+add.period$ -- 13
+call.type$ -- 4
+change.case$ -- 3
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 36
+empty$ -- 80
+format.name$ -- 9
+if$ -- 176
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 5
+newline$ -- 23
+num.names$ -- 4
+pop$ -- 7
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 13
+stack$ -- 0
+substring$ -- 36
+swap$ -- 4
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 6
+width$ -- 5
+write$ -- 47
 (There was 1 error message)

@@ -97,9 +97,15 @@ verwendet.
 Folgt direkt aus \ref{splayAccess}. Dass $u$ die Wurzel ist wird dort nicht verwendet. 	
 	
 \end{proof}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.7\textwidth]{"Medien/Multisplay/lemma"}
+	\caption {$l$ ist der Schlüssel von $y_l$ und $r$ der von $y_r$. Ein gestrichelter Pfeil bedeutet, dass ein Pfad zwischen den beiden Knoten existiert.}
+	\label{fig:lemma}
+\end{figure} 
 \newtheorem{Lemma2}{Multisplay Baum Access Lemma}[section] \label{lemmaMultiSplay}
 
-\noindent Im nächsten Lemma geht es um die Gesamtlaufzeit einer \textit{access} Operation beim Multisplay Baum $T$ mit Referenzbaum $P$. Sei $p^*$ ein Knoten in $P$. Es werden drei Funktionen benötigt. $\mathit{des}\left(p^*\right)$ liefert die Menge der Nachfahren von $p^*$.  $\mathit{pa}\left(p^*\right)$ liefert die Menge der Pfade von $p^*$ zu einem Blatt. \textit{node}$\left(k\right)$ liefert den Knoten aus $T$ der Schlüssel $k$ enthält. An die Gewichtsfunktion werden zwei Bedingungen gestellt. Sei $f \geq 2$.
+\noindent Im nächsten Lemma geht es um die Gesamtlaufzeit einer \textit{access} Operation beim Multisplay Baum $T$ mit Referenzbaum $P$ (Abbildung \ref{fig:lemma} stellt die Zusammenhänge in $P$ dar). Sei $p^*$ ein Knoten in $P$. Es werden drei Funktionen benötigt. $\mathit{des}\left(p^*\right)$ liefert die Menge der Nachfahren von $p^*$.  $\mathit{pa}\left(p^*\right)$ liefert die Menge der Pfade von $p^*$ zu einem Blatt. \textit{node}$\left(k\right)$ liefert den Knoten aus $T$ der Schlüssel $k$ enthält. An die Gewichtsfunktion werden zwei Bedingungen gestellt. Sei $f \geq 2$.
 \begin{enumerate}
 	\item $w\left(p\right) \geq \max \{  w\left(v\right)\vert  v^*
 	\in\mathit{des}\left(p^*\right)  \}$

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  25 JUL 2020 14:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  25 JUL 2020 18:19
 entering extended mode
 **./multiSplayBaum.tex
 (multiSplayBaum.tex
@@ -398,54 +398,62 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
 LaTeX Warning: Reference `splayAccess' on page 6 undefined on input line 97.
 
+<Medien/Multisplay/lemma.png, id=45, 268.00125pt x 322.20375pt>
+File: Medien/Multisplay/lemma.png Graphic file (type png)
+<use Medien/Multisplay/lemma.png>
+Package pdftex.def Info: Medien/Multisplay/lemma.png  used on input line 102.
+(pdftex.def)             Requested size: 227.0824pt x 272.99881pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 \c@Lemma2=\count278
 [6 <./Medien/Multisplay/split.png>]
-Overfull \hbox (18.61833pt too wide) in paragraph at lines 116--119
+Overfull \hbox (18.61833pt too wide) in paragraph at lines 122--125
 \T1/cmr/m/n/12 Es wird ei-ne \T1/cmr/m/it/12 switch \T1/cmr/m/n/12 Ope-ra-ti-on
  wäh-rend \T1/cmr/m/it/12 ac-cess$[]$ \T1/cmr/m/n/12 be-trach-tet. Sei-en $[][]
 \OML/cmm/m/it/12 ; [][]; ::; [][]$
  []
 
-[7]
-Overfull \hbox (95.46832pt too wide) detected at line 156
+[7 <./Medien/Multisplay/lemma.png>] [8]
+Overfull \hbox (95.46832pt too wide) detected at line 162
 []
  []
 
 
-Overfull \hbox (90.96814pt too wide) detected at line 165
+Overfull \hbox (90.96814pt too wide) detected at line 171
 []
  []
 
-[8]
 
-LaTeX Warning: Reference `interleaveBound' on page 9 undefined on input line 16
-6.
+LaTeX Warning: Reference `interleaveBound' on page 9 undefined on input line 17
+2.
 
 
-Overfull \hbox (94.38696pt too wide) detected at line 173
+Overfull \hbox (94.38696pt too wide) detected at line 179
 []
  []
 
 \c@Satz1=\count279
+[9]
 \c@Satz2=\count280
 
-Overfull \hbox (15.4079pt too wide) in paragraph at lines 189--190
+Overfull \hbox (15.4079pt too wide) in paragraph at lines 195--196
 \T1/cmr/bx/n/12 Satz 1.2. \T1/cmr/m/it/12 Bei ei-nem Mul-tis-play Baum $\OML/cm
 m/m/it/12 T$ \T1/cmr/m/it/12 mit $\OML/cmm/m/it/12 n$ \T1/cmr/m/it/12 Kno-ten h
 at und $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x[]; x[]; ::; x[]
 $
  []
 
-[9] [10] (multiSplayBaum.bbl) [11] (multiSplayBaum.aux)
+[10] (multiSplayBaum.bbl) [11] (multiSplayBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6383 strings out of 480797
- 94204 string characters out of 2905362
- 371809 words of memory out of 3000000
- 22279 multiletter control sequences out of 15000+200000
+ 6392 strings out of 480797
+ 94430 string characters out of 2905362
+ 369809 words of memory out of 3000000
+ 22287 multiletter control sequences out of 15000+200000
  555457 words of font info for 83 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,14n,43p,1075b,370s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -473,9 +481,9 @@ ype1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 ti8.pfb>
-Output written on multiSplayBaum.pdf (11 pages, 339808 bytes).
+Output written on multiSplayBaum.pdf (11 pages, 353527 bytes).
 PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
+ 432 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

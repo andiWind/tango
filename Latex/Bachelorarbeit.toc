@@ -4,22 +4,22 @@
 \contentsline {section}{\numberline {3}Binäre Suchbäume}{5}%
 \contentsline {subsection}{\numberline {3.1}Definition binärer Suchbaum}{5}%
 \contentsline {subsection}{\numberline {3.2}Weitere Begriffe und Eigenschaften zum binären Suchbaum}{6}%
-\contentsline {paragraph}{Total geordnete Menge}{7}%
-\contentsline {paragraph}{Verändern eines BST durch Rotationen.}{8}%
-\contentsline {paragraph}{Grundoperationen \textit {search}, \textit {insert} und \textit {delete}}{9}%
-\contentsline {paragraph}{Laufzeit}{10}%
-\contentsline {paragraph}{Unterschiedliche Baumhöhen}{11}%
-\contentsline {section}{\numberline {4}Dynamische Optimalität}{12}%
-\contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{12}%
-\contentsline {subsection}{\numberline {4.2}Erste untere Schranke von Wilber}{13}%
-\contentsline {paragraph}{lower bound tree}{14}%
-\contentsline {subsection}{\numberline {4.3}bit reversal permutation }{19}%
-\contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{21}%
-\contentsline {paragraph}{Potentialfunktionmethode}{22}%
-\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{22}%
-\contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST }{23}%
-\contentsline {paragraph}{Balanced Property}{23}%
-\contentsline {paragraph}{Static Finger Property}{23}%
-\contentsline {paragraph}{Statisch optimal}{24}%
-\contentsline {paragraph}{Working Set Property}{24}%
-\contentsline {paragraph}{Dynamic Finger Property}{24}%
+\contentsline {paragraph}{Total geordnete Menge}{9}%
+\contentsline {paragraph}{Verändern eines BST durch Rotationen.}{10}%
+\contentsline {paragraph}{Grundoperationen \textit {search}, \textit {insert} und \textit {delete}}{11}%
+\contentsline {paragraph}{Laufzeit}{14}%
+\contentsline {paragraph}{Unterschiedliche Baumhöhen}{14}%
+\contentsline {section}{\numberline {4}Dynamische Optimalität}{16}%
+\contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{16}%
+\contentsline {subsection}{\numberline {4.2}Erste untere Schranke von Wilber}{17}%
+\contentsline {paragraph}{lower bound tree}{18}%
+\contentsline {subsection}{\numberline {4.3}bit reversal permutation }{23}%
+\contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{26}%
+\contentsline {paragraph}{Potentialfunktionmethode}{26}%
+\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{27}%
+\contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST }{28}%
+\contentsline {paragraph}{Balanced Property}{28}%
+\contentsline {paragraph}{Static Finger Property}{28}%
+\contentsline {paragraph}{Statisch optimal}{28}%
+\contentsline {paragraph}{Working Set Property}{29}%
+\contentsline {paragraph}{Dynamic Finger Property}{29}%
