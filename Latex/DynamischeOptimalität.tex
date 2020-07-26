@@ -329,15 +329,18 @@ Ein BST erfüllt das Dynamic Finger Property, wenn für die amortisierte Laufzei
 O\left( m + \sum_{i = 2}^{m} \log \left(\vert x_{i-1} - x_i  \vert	+ 1	\right)\right)
 \end{align*} 
 gilt. 
+
+\paragraph{Sequential Access Property}
+Ein BST erfüllt das Sequential Access Property, wenn er die Zugriffsfolge  $1, 2,.., n$ in amortisiert  von $O\left(n\right)$ Zeit ausführen kann.\\
  
 \noindent Abbildung \ref{fig:upperBounds} zeigt Implikationen zwischen den Eigenschaften und basiert auf einer Abbildung aus \ref{fig:upperBounds}.
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 0.6\textwidth]{"Medien/DynOpt/upperBounds"}
-%	\caption{Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite{upperBounds} }
-%	\label{fig:upperBounds}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.6\textwidth]{"Medien/DynOpt/upperBounds"}
+	\caption{Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite{upperBounds} }
+	\label{fig:upperBounds}
+\end{figure}
 
 \newpage
 \bibliography{literaturverzeichnis}

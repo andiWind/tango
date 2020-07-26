@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author andre
+ * @author andreas
  */
 public class SplayTree implements I_GUITree {
     private Node root;

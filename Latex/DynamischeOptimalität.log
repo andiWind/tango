@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 JUL 2020 11:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  26 JUL 2020 08:59
 entering extended mode
 **./DynamischeOptimalität.tex
 (DynamischeOptimalität.tex
@@ -417,24 +417,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 187--189
 [10]
 \c@Korollar1=\count279
  [11] [12] [13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
 
-LaTeX Warning: Reference `fig:upperBounds' on page 15 undefined on input line 3
-33.
+ []
 
+[15]
+<Medien/DynOpt/upperBounds.png, id=76, 214.401pt x 293.29575pt>
+File: Medien/DynOpt/upperBounds.png Graphic file (type png)
+<use Medien/DynOpt/upperBounds.png>
+Package pdftex.def Info: Medien/DynOpt/upperBounds.png  used on input line 340.
 
-LaTeX Warning: Reference `fig:upperBounds' on page 15 undefined on input line 3
-33.
-
-[15] (DynamischeOptimalität.bbl) [16] (DynamischeOptimalität.aux)
+(pdftex.def)             Requested size: 234.00238pt x 320.12459pt.
+ [16 <./Medien/DynOpt/upperBounds.png>] (DynamischeOptimalität.bbl)
+[17] (DynamischeOptimalität.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6347 strings out of 480797
- 93320 string characters out of 2905362
+ 6359 strings out of 480797
+ 93604 string characters out of 2905362
  366817 words of memory out of 3000000
- 22247 multiletter control sequences out of 15000+200000
+ 22256 multiletter control sequences out of 15000+200000
  554636 words of font info for 82 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,43p,2002b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -465,9 +469,9 @@ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on DynamischeOptimalität.pdf (16 pages, 313671 bytes).
+Output written on DynamischeOptimalität.pdf (17 pages, 332659 bytes).
 PDF statistics:
- 445 PDF objects out of 1000 (max. 8388607)
+ 478 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -23,13 +23,18 @@ import java.util.logging.Logger;
  */
 public class Start {
     public static void main (String[] args) throws BuildAuxTreeFaildException{
-     
+      RuntimeTest.Tester t = new RuntimeTest.Tester();
+      t.bitReversalPermutation(14);
+        
+        
+        
+        
        List<Integer> keys1 = new LinkedList();
             for(int i = 1; i<= 12; i++){
                 keys1.add(i);
             }
-           SplayTree t = new SplayTree(keys1);
-           GUI g = new GUI(t);
+           SplayTree tt = new SplayTree(keys1);
+           GUI g = new GUI(tt);
         //   new Tester(t, i); 
         //   g.dispose();
        
