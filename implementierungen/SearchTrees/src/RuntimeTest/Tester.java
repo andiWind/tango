@@ -22,7 +22,34 @@ public class Tester {
     public Tester(){
        
     }
-
+     public long[] randomAccess (int numOfNodes, int lengthOfSeq) throws BuildAuxTreeFaildException{
+        long[] ret = new long[2];
+        List<Integer> accessSequenz = new LinkedList();
+        for (int i = 1; i < lengthOfSeq +1; i++){
+            Double random = Math.random() * numOfNodes - 1;
+            int value = (int) Math.round(random) + 1;
+            int g;
+            if (value == 0)
+                g = 5;
+            accessSequenz.add(value);
+        }
+        TangoTree tangoTree = new TangoTree(accessSequenz, RedBlackTree.class);
+        SplayTree splayTree = new SplayTree(accessSequenz);
+        long startTime = System.nanoTime();
+        for(Integer i: accessSequenz ){
+            tangoTree.access(i);
+        }
+        ret[0] = (System.nanoTime()- startTime) / 1000 ;
+        startTime = System.nanoTime();
+        for(Integer i: accessSequenz ){
+            splayTree.access(i);
+        }
+        ret[1] = (System.nanoTime()- startTime) / 1000 ;
+        
+        return ret;
+    }
+    
+    
     public long[] sequentialAccess (int numOfNodes) throws BuildAuxTreeFaildException{
         long[] ret = new long[2];
         List<Integer> accessSequenz = new LinkedList();

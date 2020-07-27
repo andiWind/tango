@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class Start {
     public static void main (String[] args) throws BuildAuxTreeFaildException{
       RuntimeTest.Tester t = new RuntimeTest.Tester();
-      t.bitReversalPermutation(14);
+      t.randomAccess(10, 100);
         
         
         

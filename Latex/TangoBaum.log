@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  14 JUL 2020 20:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  27 JUL 2020 22:29
 entering extended mode
 **./TangoBaum.tex
 (TangoBaum.tex
@@ -352,191 +352,133 @@ toc)
 \openout3 = `TangoBaum.toc'.
 
  [2]
-
-LaTeX Warning: Reference `wilber bound' on page 3 undefined on input line 41.
-
-
-LaTeX Warning: Reference `wilber bound' on page 3 undefined on input line 41.
+\c@Lemma=\count277
+\c@Satz=\count278
 
 
-LaTeX Warning: Reference `wilbr bound' on page 3 undefined on input line 41.
+LaTeX Warning: Reference `wilber bound' on page 3 undefined on input line 42.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+LaTeX Warning: Reference `wilber bound' on page 3 undefined on input line 42.
+
+
+LaTeX Warning: Reference `fig:demlowerBoundTree' on page 3 undefined on input l
+ine 42.
+
+
+LaTeX Warning: Reference `wilbr bound' on page 3 undefined on input line 42.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
 [3]
-<Medien/Tango/lowerBoundTree.png, id=28, 737.75626pt x 237.88875pt>
-File: Medien/Tango/lowerBoundTree.png Graphic file (type png)
-<use Medien/Tango/lowerBoundTree.png>
-Package pdftex.def Info: Medien/Tango/lowerBoundTree.png  used on input line 54
-.
-(pdftex.def)             Requested size: 390.0pt x 125.75374pt.
-\c@Lemma1=\count277
-
 
 LaTeX Warning: Reference `wilberLowerBoundTree' on page 4 undefined on input li
 ne 67.
 
-[4 <./Medien/Tango/lowerBoundTree.png>]
-\c@Lemma2=\count278
-\c@Lemma3=\count279
- [5]
-<Medien/Tango/transitionPoints.png, id=42, 707.64375pt x 243.91125pt>
-File: Medien/Tango/transitionPoints.png Graphic file (type png)
-<use Medien/Tango/transitionPoints.png>
-Package pdftex.def Info: Medien/Tango/transitionPoints.png  used on input line 
-112.
-(pdftex.def)             Requested size: 390.0pt x 134.427pt.
+[4] [5] [6]
+
+LaTeX Warning: Reference `fig:prefChilds' on page 7 undefined on input line 129
+.
+
+[7]
+
+LaTeX Warning: Reference `fig:prefChilds' on page 8 undefined on input line 138
+.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-\c@Satz1=\count280
-
-LaTeX Warning: Reference `lemmaDemaine1' on page 6 undefined on input line 124.
+LaTeX Warning: Reference `fig:Hilfsbäume' on page 8 undefined on input line 15
+0.
 
 
-[6] [7 <./Medien/Tango/transitionPoints.png>]
-<Medien/Tango/prefChilds.png, id=53, 683.55376pt x 249.93375pt>
-File: Medien/Tango/prefChilds.png Graphic file (type png)
-<use Medien/Tango/prefChilds.png>
-Package pdftex.def Info: Medien/Tango/prefChilds.png  used on input line 134.
-(pdftex.def)             Requested size: 390.0pt x 142.601pt.
- [8 <./Medien/Tango/prefChilds.png>]
-<Medien/Tango/Hilfsbäume.png, id=58, 683.55376pt x 213.79875pt>
-File: Medien/Tango/Hilfsbäume.png Graphic file (type png)
-<use Medien/Tango/Hilfsbäume.png>
-Package pdftex.def Info: Medien/Tango/Hilfsbäume.png  used on input line 156.
-(pdftex.def)             Requested size: 390.0pt x 121.98398pt.
- [9 <./Medien/Tango/Hilfsbäume.png>]
-<Medien/Tango/Tangobaum.png, id=63, 845.559pt x 350.5095pt>
-File: Medien/Tango/Tangobaum.png Graphic file (type png)
-<use Medien/Tango/Tangobaum.png>
-Package pdftex.def Info: Medien/Tango/Tangobaum.png  used on input line 179.
-(pdftex.def)             Requested size: 390.0pt x 161.66954pt.
-<Medien/Tango/prefChilds2.png, id=64, 683.55376pt x 249.93375pt>
-File: Medien/Tango/prefChilds2.png Graphic file (type png)
-<use Medien/Tango/prefChilds2.png>
-Package pdftex.def Info: Medien/Tango/prefChilds2.png  used on input line 187.
-(pdftex.def)             Requested size: 390.0pt x 142.601pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Reference `fig:TangoTree2' on page 10 undefined on input line 19
-2.
-
-<Medien/Tango/Tangobaum2.png, id=65, 845.559pt x 422.7795pt>
-File: Medien/Tango/Tangobaum2.png Graphic file (type png)
-<use Medien/Tango/Tangobaum2.png>
-Package pdftex.def Info: Medien/Tango/Tangobaum2.png  used on input line 195.
-(pdftex.def)             Requested size: 390.0pt x 195.00346pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10 <./Medien/Tango/Tangobaum.png>] [11 <./Medien/Tango/prefChilds2.png> <./Med
-ien/Tango/Tangobaum2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
+Underfull \hbox (badness 10000) in paragraph at lines 169--171
 
  []
 
-[12]
-<Medien/Tango/cut.png, id=80, 598.6365pt x 763.05075pt>
-File: Medien/Tango/cut.png Graphic file (type png)
-<use Medien/Tango/cut.png>
-Package pdftex.def Info: Medien/Tango/cut.png  used on input line 234.
-(pdftex.def)             Requested size: 390.0pt x 497.11815pt.
-<Medien/Tango/cut2.png, id=81, 564.30824pt x 464.33475pt>
-File: Medien/Tango/cut2.png Graphic file (type png)
-<use Medien/Tango/cut2.png>
-Package pdftex.def Info: Medien/Tango/cut2.png  used on input line 240.
-(pdftex.def)             Requested size: 390.0pt x 320.91562pt.
+[8]
+
+LaTeX Warning: Reference `fig:Tangobaum' on page 9 undefined on input line 175.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Warning: Reference `fig:prefChilds2' on page 9 undefined on input line 18
+3.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:TangoTree2' on page 9 undefined on input line 192
+.
 
-[13]
-<Medien/Tango/join.png, id=86, 991.90575pt x 519.74174pt>
-File: Medien/Tango/join.png Graphic file (type png)
-<use Medien/Tango/join.png>
-Package pdftex.def Info: Medien/Tango/join.png  used on input line 264.
-(pdftex.def)             Requested size: 390.0pt x 204.35596pt.
-<Medien/Tango/join2.png, id=87, 900.36375pt x 517.33275pt>
-File: Medien/Tango/join2.png Graphic file (type png)
-<use Medien/Tango/join2.png>
-Package pdftex.def Info: Medien/Tango/join2.png  used on input line 270.
-(pdftex.def)             Requested size: 390.0pt x 224.09067pt.
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
+
+ []
+
+[10]
+
+LaTeX Warning: Reference `fig:cut' on page 11 undefined on input line 239.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:cut2' on page 11 undefined on input line 239.
+
+[11]
+
+LaTeX Warning: Reference `fig:join' on page 12 undefined on input line 269.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:join2' on page 12 undefined on input line 269.
 
-[14] [15]
-\c@Lemma4=\count281
-\c@Lemma5=\count282
- [16]
-\c@Theorem2=\count283
-
-Overfull \hbox (11.29567pt too wide) in paragraph at lines 319--321
+[12] [13]
+\c@Lemma4=\count279
+\c@Lemma5=\count280
+\c@Theorem2=\count281
+ [14]
+Overfull \hbox (11.29567pt too wide) in paragraph at lines 327--329
 \T1/cmr/m/n/12 Satz 1.1[] er-gibt sich $\OML/cmm/m/it/12 O []$\T1/cmr/m/n/12 . 
 Mit $[] [] \OMS/cmsy/m/n/12 
  []
 
 
-LaTeX Warning: Reference `upperBounds' on page 17 undefined on input line 324.
+LaTeX Warning: Reference `upperBounds' on page 15 undefined on input line 332.
 
-[17] (TangoBaum.bbl) [18] [19 <./Medien/Tango/cut.png>] [20 <./Medien/Tango/cut
-2.png>] [21 <./Medien/Tango/join.png> <./Medien/Tango/join2.png>]
-(TangoBaum.aux)
+[15] (TangoBaum.bbl) [16] (TangoBaum.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6473 strings out of 480797
- 95796 string characters out of 2905362
- 366804 words of memory out of 3000000
- 22363 multiletter control sequences out of 15000+200000
- 554453 words of font info for 79 fonts, out of 3000000 for 9000
+ 6354 strings out of 480797
+ 93056 string characters out of 2905362
+ 363804 words of memory out of 3000000
+ 22259 multiletter control sequences out of 15000+200000
+ 550963 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,43p,2770b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,9n,43p,2813b,267s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecbi1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecti1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX
-\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andre\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Us
-ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.
-pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
-r/jknappen/ec/dpi600\ecrm2074.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-mi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on TangoBaum.pdf (21 pages, 638617 bytes).
+ec/dpi600\ecbx1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Us
+ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.
+pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on TangoBaum.pdf (16 pages, 265190 bytes).
 PDF statistics:
- 531 PDF objects out of 1000 (max. 8388607)
+ 395 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
