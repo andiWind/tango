@@ -32,7 +32,7 @@ public class Tester {
             for (int j = 1; j < probs.length; j++){
                 probs[j] = 1 / numOfNodes;
             } 
-            accessSequenz.add(randomNumber(numOfNodes, probs));
+            accessSequenz.add(randomNumber(probs));
         }
         return runtimeTest(keyList, accessSequenz);
     }
@@ -66,7 +66,7 @@ public class Tester {
                 probs[j] = nodeArray[j][1] / lengthOfSeq;
         } 
         while(nodeArray != null){
-            int value = randomNumber(nodeArray.length - 1, probs); 
+            int value = randomNumber(probs); 
             accessSequenz.add(nodeArray[value][1]);
             nodeArray[value][0]--;
             if (nodeArray[value][0] < 1){
@@ -92,8 +92,12 @@ public class Tester {
                     }
                 }    
             }
-        }        
-        return runtimeTest(accessSequenz);
+        }  
+        List<Integer> keyList = new LinkedList();
+        for(int i = 1; i <= numOfNodes; i++){
+            keyList.add(i);
+        }
+        return runtimeTest(keyList, accessSequenz);
     } 
   
     
@@ -138,13 +142,14 @@ public class Tester {
         
         return ret;
     }
-    private int randomNumber (int max, double[] probs){
-        
-        
-        Double random = Math.random() * max;  
-        int value = (int) Math.round(random); 
-        if (value <= random) //immer aufrunden x.0 -> x + 1, da 1, der min Wert ist  
-            value++;
-        return value;
+    private int randomNumber (double[] probs){
+        Double random = Math.random();  
+        int index = 1;
+        double sumProb = 0;
+        while(sumProb <= random){
+            sumProb += probs[index];
+            index++;
+        }
+        return index;
     }
 }
