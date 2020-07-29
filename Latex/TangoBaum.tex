@@ -49,12 +49,12 @@ Sei $T_0$ der BST mit Schlüsselmenge $K$ auf $X$ ausgeführt wird. Für $i \in 
 	\item Der Pfad von der Wurzel von $T_j$ zu $v$ enthält einen Knoten dessen Schlüssel in der rechten Region von $u$ enthalten ist.
 	\item In $T_i$ ist kein Knoten mit Eigenschaft 1 und 2 enthalten, der eine kleinere Tiefe als $v$ hat. 
 \end{enumerate}
-%\begin{figure}[h]
- %	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/lowerBoundTree"}
- %	\caption{Der lower bound tree zur Zugriffsfolge $1 ,2, .., 15$  }
-%	\label{fig:demlowerBoundTree}
- %\end{figure}
+\begin{figure}[h]
+ 	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/lowerBoundTree"}
+ 	\caption{Der lower bound tree zur Zugriffsfolge $1 ,2, .., 15$  }
+	\label{fig:demlowerBoundTree}
+ \end{figure}
 
 \noindent Im Beweis dieses Abschnittes wird gezeigt das $\mathit{OPT}\left(X\right) \geq \frac{\mathit{IB}\left(X\right)}{2} - n$ gilt, wobei $n$ die Anzahl der Knoten im lower bound tree ist. Dafür werden jedoch noch drei Lemmas zu den Eigenschaften von $Y$ benötigt. 
 
@@ -106,12 +106,12 @@ Sei $v$ der transition point zu $u$ in $T_j$.  Sei  $l \in \mathit{N}$, mit $j <
 
 \end{proof}
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/transitionPoints"}
-%	\caption{Transition point Zuordnung. Links ein lower bound tree, rechts ein möglicher $T_j$.   }
-%	\label{fig:transitionPoints}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/transitionPoints"}
+	\caption{Transition point Zuordnung. Links ein lower bound tree, rechts ein möglicher $T_j$.   }
+	\label{fig:transitionPoints}
+\end{figure}
 
 
 
@@ -128,12 +128,12 @@ Es wird die Mindestanzahl der Berührungen von transition points gezählt. Durch
 \subsection{Aufbau des Tango Baum} \label{aufbauDesTango}
 Wie bereits erwähnt besteht ein Tango Baum $T$ mit Schlüsselmenge $K$ aus Hilfsbäumen. Eine Anforderung an einen Hilfsbaum mit $n$ Knoten ist, dass für seine Höhe $h = O\left(\log n\right)$ gilt. $T$ bietet lediglich eine \textit{access} Operation an. Ist $T$ also erst einmal für $K$ erzeugt, ist seine Schlüsselmenge unveränderlich. Sei $P$ der lower bound tree aus Abschnitt \ref{interBound} mit Schlüsselmenge $K$. $P$ wird als \textbf{Referenzbaum} für $T$ bezeichnet. $P$ ist kein Hilfsbaum und muss in Implementierungen auch nicht erstellt werden. Er dient aber dazu den Aufbau von $T$ vor und nach einer \textit{access} Operation zu veranschaulichen. Jeder innere Knoten $p$ in $P$ kann ein \textbf{preferred child} haben.  Wurde während der Ausführungszeit von $X$ noch keine \textit{access} Operation mit einem im Teilbaum mit Wurzel $p$ enthalten Schlüssel als Parameter ausgeführt, so hat $p$ kein preferred child. Ansonsten sei \textit{access}$\left(k\right)$ die zuletzt ausgeführte Operation mit einem Schlüssel der im Teilbaum mit Wurzel $p$ enthalten ist. Liegt $k$ in der linken Region von $p$, dann ist das linke Kind von $p$, das preferred child von $p$. Ist $k$ in der rechten Region von $p$ enthalten, dann ist das rechte Kind von $p$, das preferred child von $p$. Wir erweitern die Knoten von $P$ mit einer weiteren Variable \textit{prefChild} welche drei Werte annehmen kann. Sie enthält \textit{none} wenn ihr Knoten kein preferred Child besitzt, \textit{left} wenn das linke Kind das preferred child ist, ansonsten entsprechend \textit{right}. Hier kann man bereits die Kopplung zur interleave lower bound erkennen. Ein Wechsel von \textit{prefChild}  von \textit{left} zu \textit{right}, oder umgekehrt, findet genau dann statt, wenn es zu einem interleave durch den Knoten kommt. Abbildung \ref{fig:prefChilds} stellt einen möglichen Zustand von $P$ zwischen zwei \textit{access} Operationen dar. Dieser Zustand wird in diesem Abschnitt nun als durchgängiges Beispiel dienen. Man erkennt sofort, dass der Parameter der letzten \textit{access} Operation $8$, $4$, $2$ oder $1$ gewesen sein muss, da man von der Wurzel aus über preferred childs zu den Knoten mit diesen Schlüsseln gelangen kann. Die Schlüssel $10$ und $9$ können noch nie Parameter einer \textit{access} Operation gewesen sein, ansonsten müsste der Knoten mit dem Schlüssel $10$ ein preferred child haben. Mit Hilfe der preferred childs lassen sich die \textbf{preferred path} erstellen. Sei $v$ ein Knoten in $P$, der nicht preferred child eines anderen Knoten aus $P$ ist. Dann ist der preferred path zu $v$, der längst mögliche Pfad $v_0, v_1,..,v_l$, mit $v_0 = v$ und $\forall i \in \{1,2,..,l\} \colon v_i \textit{ ist preferred child von }v_{i-1   }$.  
 
- %\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/prefChilds"}
-%	\caption{Die preferred childs werden durch die grünen Pfeile markiert. }
-%	\label{fig:prefChilds}
-%\end{figure}
+ \begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/prefChilds"}
+	\caption{Die preferred childs werden durch die grünen Pfeile markiert. }
+	\label{fig:prefChilds}
+\end{figure}
 
  \noindent Nun werden die preferred path des BST aus Abbildung \ref{fig:prefChilds} angegeben, wobei der Schlüssel jeweils als Bezeichner für den ihn enthaltenden Knoten verwendet wird.
  \begin{align*}
@@ -150,12 +150,12 @@ Wie bereits erwähnt besteht ein Tango Baum $T$ mit Schlüsselmenge $K$ aus Hilf
 Zu jedem preferred path gibt es einen Hilfsbaum der genau die Schlüssel enthält, die in den Knoten des Pfades enthalten sind. Da der Tango Baum den inneren Aufbau der Hilfsbäume nicht exakt vorschreibt, zeigt Abbildung \ref{fig:Hilfsbäume} nur eine mögliche Konstellation.
  
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/Hilfsbäume"}
-%	\caption{Hilfsbäume zu den preferred path aus dem Beispiel. }
-%	\label{fig:Hilfsbäume}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/Hilfsbäume"}
+	\caption{Hilfsbäume zu den preferred path aus dem Beispiel. }
+	\label{fig:Hilfsbäume}
+\end{figure}
 Sei $H$ die Menge der erstellten Hilfbäume aus $P$. Mit dem folgenden Verfahren können Hilfsbäume zu einem Tango Baum zusammengefügt werden:
 \begin{enumerate}
 	\item Gilt $\vert H \vert = 1$, dann ist das in $H$ enthaltene Element der Tango Baum und es wird abgebrochen.
@@ -174,28 +174,28 @@ In $P$ sind alle in $h_1$ enthaltenen Schlüssel im Teilbaum mit Wurzel $u$ enth
 
 \noindent Abbildung \ref{fig:Tangobaum} zeigt unseren Tango Baum zum Beispiel. Die Wurzeln von Hilfsbäumen sind grün dargestellt.
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/Tangobaum"}
-%	\caption{Tango Baum zu dem Beispiel. }
-%	\label{fig:Tangobaum}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/Tangobaum"}
+	\caption{Tango Baum zu dem Beispiel. }
+	\label{fig:Tangobaum}
+\end{figure}
 Nehmen wir an auf $T$ wird \textit{access}$\left(9\right)$ ausgeführt wird. Abbildung \ref{fig:prefChilds2} zeigt den Zustand von $P'$.
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/prefChilds2"}
-%	\caption{Preferred childs nach  \textit{access}$\left(9\right)$. }
-%	\label{fig:prefChilds2}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/prefChilds2"}
+	\caption{Preferred childs nach  \textit{access}$\left(9\right)$. }
+	\label{fig:prefChilds2}
+\end{figure}
 
 Abbildung \ref{fig:TangoTree2} zeigt einen möglichen Zustand von $T'$.
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/Tangobaum2"}
-%	\caption{Tango Baum nach  \textit{access}$\left(9\right)$. }
-%	\label{fig:Tangobaum2}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/Tangobaum2"}
+	\caption{Tango Baum nach  \textit{access}$\left(9\right)$. }
+	\label{fig:Tangobaum2}
+\end{figure}
 Im nächsten Abschnitt wird es vor allem darum gehen, wie eine Transformation, wie die von $T$ zu $T'$, effizient durchgeführt werden kann.
 
 \subsection{Die \textit{access} Operation beim Tango Baum}
@@ -237,18 +237,18 @@ Es wird nun der Ablauf von \textit{cut} gezeigt. Wobei angenommen wird, dass sow
 	\item Setze die Wurzel von $G$ als Wurzel des Tango Baumes.	 
 \end{enumerate}
 Abbildung \ref{fig:cut} demonstriert den Ablauf nochmals und Abbildung \ref{fig:cut2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/cut"}
-%	\caption{Ablauf von \textit{cut($d$)}. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
-%	\label{fig:cut}
-%\end{figure}
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/cut2"}
-%	\caption{Ablauf von \textit{cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
-%	\label{fig:cut2}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/cut"}
+	\caption{Ablauf von \textit{cut($d$)}. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
+	\label{fig:cut}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/cut2"}
+	\caption{Ablauf von \textit{cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
+	\label{fig:cut2}
+\end{figure}
 Sei $n$ die Anzahl der Knoten von $A$. Jeder der neun Schritte kann in $O\left(\log \left(n\right)\right)$ Zeit ausgeführt werden. Somit gilt auch für die Gesamtlaufzeit $O\left(\log \left(n\right)\right)$.
 
 
@@ -267,18 +267,18 @@ Für jeden Schlüssel $k$ in $H_1$ muss entweder $k < l$ oder $k > r$ gelten, ve
 \end{enumerate}
 
 Abbildung \ref{fig:join} demonstriert den Ablauf nochmals und Abbildung \ref{fig:join2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/join"}
-%	\caption{Ablauf von \textit{join($H_1$, $H_2$)}. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
-%	\label{fig:join}
-%\end{figure}
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/Tango/join2"}
-%	\caption{Ablauf von  \textit{join($H_1$, $H_2$)} bei fehlendem $r'$. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
-%	\label{fig:join2}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/join"}
+	\caption{Ablauf von \textit{join($H_1$, $H_2$)}. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
+	\label{fig:join}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/Tango/join2"}
+	\caption{Ablauf von  \textit{join($H_1$, $H_2$)} bei fehlendem $r'$. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
+	\label{fig:join2}
+\end{figure}
 
 Sei $n$ die Anzahl der Knoten von $H$. Jeder der neun Schritte kann in $O\left(\log \left(n\right)\right)$ Zeit ausgeführt werden. Somit gilt auch für die Gesamtlaufzeit $O\left(\log \left(n\right)\right)$.
 \paragraph{access Operation}

@@ -160,15 +160,6 @@ public abstract class TangoAuxTree {
             return false;
     }
     protected boolean updateDepthSingleNode(TangoNode node){
-       
-        
-        int c =0;
-        if(node.getKey() == 52){
-            c = 4; 
-        }
-        
-        
-        
         boolean noChange = true;
         if (updateMaxDepthSingleNode(node))
             noChange = false;

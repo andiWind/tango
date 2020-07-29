@@ -299,7 +299,7 @@ Ein BST erfüllt das balanced property, wenn er $X$ in amortisiert $O\left((m \l
 Die Idee hinter dieser Eigenschaft ist, dass es einfacher ist, Zugriffssequenzen schnell auszuführen, wenn ihre Schlüssel betragsmäßig nahe beieinander liegen. 
 Sei $k_f \in K$. Ein BST erfüllt static finger wenn für die amortisierte Laufzeit von $X$ 
 \begin{align*}
-O\left(n \log_2 n + \sum_{i = 1}^{m} \log \vert k_f - x_i  \vert	+ 1	\right)
+O\left(n \log_2 n + \sum_{i = 1}^{m} \log\left( \vert k_f - x_i  \vert	+ 1\right)	\right)
 \end{align*}
 gilt. Ein BST mit der static finger Eigenschaft erfüllt auch die balanced Eigenschaft, denn $ \vert k_f - x_i  \vert < n$.
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  25 JUL 2020 18:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  29 JUL 2020 13:00
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -357,7 +357,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
-<Medien/Einleitung/ioSuchbaum.png, id=19, 673.3155pt x 269.808pt>
+<Medien/Einleitung/ioSuchbaum.png, id=20, 673.3155pt x 269.808pt>
 File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/ioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 4
@@ -366,7 +366,7 @@ Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 4
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/Einleitung/nioSuchbaum.png, id=21, 476.37975pt x 274.02374pt>
+<Medien/Einleitung/nioSuchbaum.png, id=22, 476.37975pt x 274.02374pt>
 File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/nioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
@@ -602,51 +602,387 @@ Package pdftex.def Info: Medien/DynOpt/upperBounds.png  used on input line 520.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[29] (Bachelorarbeit.bbl) [30 <./Medien/DynOpt/upperBounds.png>]
-(Bachelorarbeit.aux)
+\c@Satz=\count281
+
+LaTeX Warning: Reference `wilber bound' on page 29 undefined on input line 531.
+
+
+
+LaTeX Warning: Reference `wilber bound' on page 29 undefined on input line 531.
+
+
+
+LaTeX Warning: Reference `wilbr bound' on page 29 undefined on input line 531.
+
+[29] [30 <./Medien/DynOpt/upperBounds.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 534--536
+
+ []
+
+<Medien/Tango/lowerBoundTree.png, id=153, 737.75626pt x 237.88875pt>
+File: Medien/Tango/lowerBoundTree.png Graphic file (type png)
+<use Medien/Tango/lowerBoundTree.png>
+Package pdftex.def Info: Medien/Tango/lowerBoundTree.png  used on input line 54
+3.
+(pdftex.def)             Requested size: 390.0pt x 125.75374pt.
+[31 <./Medien/Tango/lowerBoundTree.png>] [32] [33]
+<Medien/Tango/transitionPoints.png, id=165, 707.64375pt x 243.91125pt>
+File: Medien/Tango/transitionPoints.png Graphic file (type png)
+<use Medien/Tango/transitionPoints.png>
+Package pdftex.def Info: Medien/Tango/transitionPoints.png  used on input line 
+600.
+(pdftex.def)             Requested size: 390.0pt x 134.427pt.
+ [34 <./Medien/Tango/transitionPoints.png>] [35]
+<Medien/Tango/prefChilds.png, id=173, 683.55376pt x 249.93375pt>
+File: Medien/Tango/prefChilds.png Graphic file (type png)
+<use Medien/Tango/prefChilds.png>
+Package pdftex.def Info: Medien/Tango/prefChilds.png  used on input line 622.
+(pdftex.def)             Requested size: 390.0pt x 142.601pt.
+<Medien/Tango/Hilfsbäume.png, id=174, 683.55376pt x 213.79875pt>
+File: Medien/Tango/Hilfsbäume.png Graphic file (type png)
+<use Medien/Tango/Hilfsbäume.png>
+Package pdftex.def Info: Medien/Tango/Hilfsbäume.png  used on input line 644.
+(pdftex.def)             Requested size: 390.0pt x 121.98398pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[36 <./Medien/Tango/prefChilds.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 658--660
+
+ []
+
+<Medien/Tango/Tangobaum.png, id=179, 845.559pt x 350.5095pt>
+File: Medien/Tango/Tangobaum.png Graphic file (type png)
+<use Medien/Tango/Tangobaum.png>
+Package pdftex.def Info: Medien/Tango/Tangobaum.png  used on input line 668.
+(pdftex.def)             Requested size: 390.0pt x 161.66954pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/Tango/prefChilds2.png, id=180, 683.55376pt x 249.93375pt>
+File: Medien/Tango/prefChilds2.png Graphic file (type png)
+<use Medien/Tango/prefChilds2.png>
+Package pdftex.def Info: Medien/Tango/prefChilds2.png  used on input line 676.
+(pdftex.def)             Requested size: 390.0pt x 142.601pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `fig:TangoTree2' on page 37 undefined on input line 68
+1.
+
+<Medien/Tango/Tangobaum2.png, id=181, 845.559pt x 422.7795pt>
+File: Medien/Tango/Tangobaum2.png Graphic file (type png)
+<use Medien/Tango/Tangobaum2.png>
+Package pdftex.def Info: Medien/Tango/Tangobaum2.png  used on input line 684.
+(pdftex.def)             Requested size: 390.0pt x 195.00346pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[37 <./Medien/Tango/Hilfsbäume.png>] [38 <./Medien/Tango/Tangobaum.png> <./Med
+ien/Tango/prefChilds2.png>] [39 <./Medien/Tango/Tangobaum2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 710--711
+
+ []
+
+[40]
+<Medien/Tango/cut.png, id=201, 598.6365pt x 763.05075pt>
+File: Medien/Tango/cut.png Graphic file (type png)
+<use Medien/Tango/cut.png>
+Package pdftex.def Info: Medien/Tango/cut.png  used on input line 731.
+(pdftex.def)             Requested size: 390.0pt x 497.11815pt.
+<Medien/Tango/cut2.png, id=202, 564.30824pt x 464.33475pt>
+File: Medien/Tango/cut2.png Graphic file (type png)
+<use Medien/Tango/cut2.png>
+Package pdftex.def Info: Medien/Tango/cut2.png  used on input line 737.
+(pdftex.def)             Requested size: 390.0pt x 320.91562pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[41]
+<Medien/Tango/join.png, id=206, 991.90575pt x 519.74174pt>
+File: Medien/Tango/join.png Graphic file (type png)
+<use Medien/Tango/join.png>
+Package pdftex.def Info: Medien/Tango/join.png  used on input line 761.
+(pdftex.def)             Requested size: 390.0pt x 204.35596pt.
+<Medien/Tango/join2.png, id=207, 900.36375pt x 517.33275pt>
+File: Medien/Tango/join2.png Graphic file (type png)
+<use Medien/Tango/join2.png>
+Package pdftex.def Info: Medien/Tango/join2.png  used on input line 767.
+(pdftex.def)             Requested size: 390.0pt x 224.09067pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[42]
+\c@Lemma4=\count282
+ [43]
+\c@Lemma5=\count283
+\c@Theorem2=\count284
+
+Overfull \hbox (11.29567pt too wide) in paragraph at lines 816--818
+\T1/cmr/m/n/12 Satz 5.1[] er-gibt sich $\OML/cmm/m/it/12 O []$\T1/cmr/m/n/12 . 
+Mit $[] [] \OMS/cmsy/m/n/12 
+ []
+
+
+LaTeX Warning: Reference `upperBounds' on page 44 undefined on input line 821.
+
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 835--836
+
+ []
+
+[45]
+<Medien/RotSchwarzBaum/IOBaum.png, id=221, 2527.64325pt x 1209.92026pt>
+File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/IOBaum.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 8
+41.
+(pdftex.def)             Requested size: 390.0pt x 186.66798pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=222, 2527.64325pt x 1209.92026pt
+>
+File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
+ut line 847.
+(pdftex.def)             Requested size: 390.0pt x 186.66798pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=223, 2527.64325pt x 1532.124pt
+>
+File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png  used on i
+nput line 853.
+(pdftex.def)             Requested size: 390.0pt x 236.37799pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 875--876
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 877--879
+
+ []
+
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 889--892
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 893--895
+
+ []
+
+[48]
+<Medien/RotSchwarzBaum/EinfügenFixUpFall1.png, id=233, 2351.78625pt x 858.8085
+pt>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png  used on
+ input line 909.
+(pdftex.def)             Requested size: 272.99881pt x 99.68475pt.
+<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=234, 5132.97675pt x 1795.909
+5pt>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png  used on
+ input line 915.
+(pdftex.def)             Requested size: 390.0pt x 136.44121pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 920--922
+
+ []
+
+[49 <./Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 936--938
+
+ []
+
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 949--950
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 951--955
+
+ []
+
+<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=243, 3683.96326pt x 2301.799
+5pt>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
+ input line 961.
+(pdftex.def)             Requested size: 390.0pt x 243.64539pt.
+[51]
+<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=247, 3581.58075pt x 2655.320
+25pt>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
+ input line 968.
+(pdftex.def)             Requested size: 390.0pt x 289.1284pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/RotSchwarzBaum/EinfügenFixUpFall5.png, id=248, 3518.3445pt x 2209.6552
+4pt>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall5.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png  used on
+ input line 975.
+(pdftex.def)             Requested size: 390.0pt x 244.91724pt.
+<Medien/RotSchwarzBaum/EinfügenFixUpFall6.png, id=249, 3523.1625pt x 2673.99pt
+>
+File: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png  used on
+ input line 981.
+(pdftex.def)             Requested size: 390.0pt x 295.97589pt.
+[52 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png> <./Medien/RotSchwarzBaum/
+EinfügenFixUpFall5.png>]
+\c@Lemma2=\count285
+
+Underfull \hbox (badness 10000) in paragraph at lines 993--999
+
+ []
+
+[53 <./Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1003
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1005--1007
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1010--1012
+
+ []
+
+<Medien/RotSchwarzBaum/vereinigen.png, id=259, 1730.8665pt x 1991.64075pt>
+File: Medien/RotSchwarzBaum/vereinigen.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/vereinigen.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen.png  used on input li
+ne 1037.
+(pdftex.def)             Requested size: 203.36363pt x 234.00238pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Medien/RotSchwarzBaum/vereinigen2.png, id=260, 1805.5455pt x 1766.39925pt>
+File: Medien/RotSchwarzBaum/vereinigen2.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/vereinigen2.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen2.png  used on input l
+ine 1043.
+(pdftex.def)             Requested size: 239.16476pt x 234.00238pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1047--1058
+
+ []
+
+[54] [55] [56] [57]
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1092
+
+ []
+
+[58]
+Overfull \hbox (2.91464pt too wide) detected at line 1128
+[]
+ []
+
+<Medien/RotSchwarzBaum/aufteilen.png, id=278, 3256.968pt x 2957.64975pt>
+File: Medien/RotSchwarzBaum/aufteilen.png Graphic file (type png)
+<use Medien/RotSchwarzBaum/aufteilen.png>
+Package pdftex.def Info: Medien/RotSchwarzBaum/aufteilen.png  used on input lin
+e 1145.
+(pdftex.def)             Requested size: 312.00119pt x 283.32642pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[59] (Bachelorarbeit.bbl) [60] [61 <./Medien/Tango/cut.png>] [62 <./Medien/Tang
+o/cut2.png>] [63 <./Medien/Tango/join.png> <./Medien/Tango/join2.png>] [64 <./M
+edien/RotSchwarzBaum/IOBaum.png> <./Medien/RotSchwarzBaum/NIOBaumZweiRote.png>]
+[65 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png> <./Medien/RotSchwarzBaum/Ei
+nfügenFixUpFall2.png>] [66 <./Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>]
+[67 <./Medien/RotSchwarzBaum/vereinigen.png> <./Medien/RotSchwarzBaum/vereinige
+n2.png>] [68 <./Medien/RotSchwarzBaum/aufteilen.png>] (Bachelorarbeit.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6484 strings out of 480797
- 97320 string characters out of 2905362
- 368809 words of memory out of 3000000
- 22366 multiletter control sequences out of 15000+200000
- 555335 words of font info for 83 fonts, out of 3000000 for 9000
+ 6755 strings out of 480797
+ 104616 string characters out of 2905362
+ 371809 words of memory out of 3000000
+ 22608 multiletter control sequences out of 15000+200000
+ 558028 words of font info for 90 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,14n,43p,1995b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,14n,43p,2818b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
-tcrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecbi1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData\Local\MiKTeX
-\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andre\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Us
-ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.
+ecti0800.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecbi1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\Users\andre\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Us
+ers\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.
 pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
-r/jknappen/ec/dpi600\ecrm2074.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
-y6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (30 pages, 1772888 bytes).
+\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
+/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
+r/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\font
+s/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTe
+X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\L
+ocal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msa
+m10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb>
+Output written on Bachelorarbeit.pdf (68 pages, 6236717 bytes).
 PDF statistics:
- 624 PDF objects out of 1000 (max. 8388607)
+ 855 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 

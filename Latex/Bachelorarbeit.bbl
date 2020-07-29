@@ -22,4 +22,14 @@ Parinya Chalermsook, Mayank Goswami, L{\'{a}}szl{\'{o}} Kozma, Kurt Mehlhorn,
 \newblock The landscape of bounds for binary search trees.
 \newblock {\em CoRR}, abs/1603.04892, 2016.
 
+\bibitem{demainDinamicOpti}
+Erik~D. Demaine, Dion. Harmon, John. Iacono, and Mihai. Patrascu.
+\newblock Dynamic optimality—almost.
+\newblock {\em SIAM Journal on Computing}, 37(1):240--251, 2007.
+
+\bibitem{algEinf}
+Thomas~H. Cormen, Charles~E. Leiserson, Ronald~L. Rivest, and Clifford Stein.
+\newblock {\em Introduction to Algorithms, Third Edition}.
+\newblock The MIT Press, 3rd edition, 2009.
+
 \end{thebibliography}

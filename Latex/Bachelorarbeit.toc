@@ -23,3 +23,23 @@
 \contentsline {paragraph}{Statisch optimal}{28}%
 \contentsline {paragraph}{Working Set Property}{29}%
 \contentsline {paragraph}{Dynamic Finger Property}{29}%
+\contentsline {section}{\numberline {5}Tango Baum}{29}%
+\contentsline {subsection}{\numberline {5.1}Interleave Lower Bound}{30}%
+\contentsline {subsection}{\numberline {5.2}Aufbau des Tango Baum}{35}%
+\contentsline {subsection}{\numberline {5.3}Die \textit {access} Operation beim Tango Baum}{38}%
+\contentsline {paragraph}{cut Operation}{40}%
+\contentsline {paragraph}{join Operation}{41}%
+\contentsline {paragraph}{access Operation}{42}%
+\contentsline {subsection}{\numberline {5.4}Laufzeitanalyse für access}{43}%
+\contentsline {section}{\numberline {6}Rot-Schwarz-Baum}{45}%
+\contentsline {subsection}{\numberline {6.1}Grundoperationen}{46}%
+\contentsline {paragraph}{Suchen im Rot-Schwarz-Baum}{46}%
+\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{46}%
+\contentsline {paragraph}{Laufzeit}{51}%
+\contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{53}%
+\contentsline {paragraph}{Laufzeit der Grundoperationen}{53}%
+\contentsline {subsection}{\numberline {6.2}Tango-Baum konformes vereinigen}{55}%
+\contentsline {paragraph}{Resultat nach der Fallbehandlung}{56}%
+\contentsline {paragraph}{Laufzeit}{56}%
+\contentsline {subsection}{\numberline {6.3}Tango-Baum konformes aufteilen}{57}%
+\contentsline {paragraph}{Laufzeit}{58}%
