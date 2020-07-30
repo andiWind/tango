@@ -21,6 +21,21 @@ public class Tester {
     public Tester(){
         
     }
+     public long[] workingSet (int numOfNodes, int lengthOfSeq, List<Integer> set) throws BuildAuxTreeFaildException{
+        List<Integer> accessSequenz = new LinkedList();
+        List<Integer> keyList = new LinkedList();
+        for (int i = 1; i <= numOfNodes ; i++){
+            keyList.add(i);
+        }
+        while(accessSequenz.size() < lengthOfSeq){
+            for(Integer i : set){
+                accessSequenz.add(i);
+                if (accessSequenz.size() >= lengthOfSeq)
+                    break;
+            }
+        }
+        return runtimeTest(keyList, accessSequenz);
+    }
     public long[] randomAccess (int numOfNodes, int lengthOfSeq) throws BuildAuxTreeFaildException{
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
@@ -28,11 +43,22 @@ public class Tester {
             keyList.add(i);
         }
         for (int i = 1; i < lengthOfSeq +1; i++){
-            double[] probs = new double[numOfNodes +1];
-            for (int j = 1; j < probs.length; j++){
-                probs[j] = 1 / numOfNodes;
-            } 
-            accessSequenz.add(randomNumber(probs));
+            accessSequenz.add(randomNumber(numOfNodes));
+        }
+        return runtimeTest(keyList, accessSequenz);
+    }
+    public long[] dynamicFinger (int numOfNodes, int lengthOfSeq, int keyDistanz) throws BuildAuxTreeFaildException{
+        List<Integer> accessSequenz = new LinkedList();
+        List<Integer> keyList = new LinkedList();
+        for (int i = 1; i <= numOfNodes ; i++){
+            keyList.add(i);
+        }
+        int value = 1;
+        for (int i = 1; i < lengthOfSeq +1; i++){
+            accessSequenz.add(value);
+            value += keyDistanz;
+            if (value > numOfNodes)
+                value -= numOfNodes;
         }
         return runtimeTest(keyList, accessSequenz);
     }
@@ -61,9 +87,9 @@ public class Tester {
         for (int i = 1; i < nodeArray.length; i++)
             sumAccess += nodeArray[i][0];
         nodeArray[midKey][0] += lengthOfSeq - sumAccess;
-        double[] probs = new double[numOfNodes +1];
+        double[] probs = new double[nOn +1];
         for (int j = 1; j < probs.length; j++){
-                probs[j] = nodeArray[j][1] / lengthOfSeq;
+                probs[j] = nodeArray[j][0] / ((double)lengthOfSeq);
         } 
         while(nodeArray != null){
             int value = randomNumber(probs); 
@@ -84,12 +110,13 @@ public class Tester {
                             nodeArrayIndex++;
                             lOs += temp[i][0];
                         }  
+                    }
                     probs = new double[nodeArray.length];
                     for (int j = 1; j < probs.length; j++){
-                        probs[j] = nodeArray[j][1] / lOs;
+                        probs[j] = nodeArray[j][0] / ((double)lOs);
                     }     
                        
-                    }
+                    
                 }    
             }
         }  
@@ -144,12 +171,19 @@ public class Tester {
     }
     private int randomNumber (double[] probs){
         Double random = Math.random();  
-        int index = 1;
+        int index = 0;
         double sumProb = 0;
         while(sumProb <= random){
-            sumProb += probs[index];
             index++;
+            sumProb += probs[index];
         }
         return index;
+    }
+     private int randomNumber (int max){
+        Double random = Math.random() * max;  
+        int value = (int) Math.round(random); 
+        if (value <= random) //immer aufrunden x.0 -> x + 1, da 1, der min Wert ist  
+            value++;
+        return value;
     }
 }

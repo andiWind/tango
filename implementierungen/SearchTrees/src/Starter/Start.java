@@ -24,7 +24,12 @@ import java.util.logging.Logger;
 public class Start {
     public static void main (String[] args) throws BuildAuxTreeFaildException{
       RuntimeTest.Tester t = new RuntimeTest.Tester();
-      t.staticFinger(10, 1600);
+      List<Integer> workingSet = new LinkedList();
+      workingSet.add(3);
+      workingSet.add(7);
+      workingSet.add(1);
+      workingSet.add(5);
+      t.bitReversalPermutation(8);
         
         
         
