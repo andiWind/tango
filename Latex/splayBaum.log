@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  31 JUL 2020 23:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  1 AUG 2020 15:42
 entering extended mode
 **./splayBaum.tex
 (splayBaum.tex
@@ -298,20 +298,20 @@ File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
 (splayBaum.aux)
 \openout1 = `splayBaum.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 
 ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -333,13 +333,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
@@ -352,7 +352,7 @@ toc)
 \openout3 = `splayBaum.toc'.
 
  [2]
-Overfull \hbox (7.0851pt too wide) in paragraph at lines 56--58
+Overfull \hbox (7.0851pt too wide) in paragraph at lines 55--57
 \T1/cmr/m/n/12 Dieser Fall un-ter-schei-det den Splay-baum vom ei-nem an-de-ren
  BST (move-
  []
@@ -361,63 +361,63 @@ Overfull \hbox (7.0851pt too wide) in paragraph at lines 56--58
 <Medien/Splaybaum/zigZag.png, id=22, 1487.5575pt x 736.55174pt>
 File: Medien/Splaybaum/zigZag.png Graphic file (type png)
 <use Medien/Splaybaum/zigZag.png>
-Package pdftex.def Info: Medien/Splaybaum/zigZag.png  used on input line 72.
+Package pdftex.def Info: Medien/Splaybaum/zigZag.png  used on input line 71.
 (pdftex.def)             Requested size: 467.99881pt x 231.72281pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 72--73
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 71--72
  [][] 
  []
 
 <Medien/Splaybaum/splay.png, id=24, 673.91776pt x 417.9615pt>
 File: Medien/Splaybaum/splay.png Graphic file (type png)
 <use Medien/Splaybaum/splay.png>
-Package pdftex.def Info: Medien/Splaybaum/splay.png  used on input line 78.
+Package pdftex.def Info: Medien/Splaybaum/splay.png  used on input line 77.
 (pdftex.def)             Requested size: 390.0pt x 241.87575pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: Reference `potentialfunktionsmethode' on page 4 undefined on inp
-ut line 84.
+ut line 83.
 
 \c@Lemma1=\count277
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 [4 <./Medien/Splaybaum/zigZag.png>]
-Overfull \hbox (49.39034pt too wide) detected at line 114
+Overfull \hbox (49.39034pt too wide) detected at line 113
 []
  []
 
 [5 <./Medien/Splaybaum/splay.png>]
-Overfull \hbox (50.5788pt too wide) detected at line 128
+Overfull \hbox (50.5788pt too wide) detected at line 127
 []
  []
 
 
 LaTeX Warning: Reference `dynOptEigenschaften' on page 6 undefined on input lin
-e 141.
+e 140.
 
 
-LaTeX Warning: Citation `dynFInger' on page 6 undefined on input line 141.
+LaTeX Warning: Citation `dynFInger' on page 6 undefined on input line 140.
 
 
 LaTeX Warning: Reference `dynOptEigenschaften' on page 6 undefined on input lin
-e 141.
+e 140.
 
 [6]
 \c@Satz2=\count278
 
 
 LaTeX Warning: Reference `workingSetDynOpt' on page 7 undefined on input line 1
-46.
+45.
 
 
-Overfull \hbox (3.32077pt too wide) in paragraph at lines 146--148
+Overfull \hbox (9.7803pt too wide) in paragraph at lines 145--147
 \T1/cmr/bx/n/12 working set 1.1. \T1/cmr/m/it/12 Es sei $\OML/cmm/m/it/12 T$ \T
-1/cmr/m/it/12 ein Splay-baum mit $\OML/cmm/m/it/12 n$ \T1/cmr/m/it/12 Kno-ten. 
+1/cmr/m/it/12 ein Splay Baum mit $\OML/cmm/m/it/12 n$ \T1/cmr/m/it/12 Kno-ten. 
 Sei $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x[]; x[]; ::; x[]$
  []
 
@@ -455,9 +455,9 @@ mr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on splayBaum.pdf (9 pages, 313604 bytes).
+Output written on splayBaum.pdf (9 pages, 313433 bytes).
 PDF statistics:
- 393 PDF objects out of 1000 (max. 8388607)
+ 391 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

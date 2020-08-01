@@ -1,45 +1,71 @@
 \babel@toc {german}{}
-\contentsline {section}{\numberline {1}Fazit}{3}%
-\contentsline {section}{\numberline {2}Einleitung}{4}%
-\contentsline {section}{\numberline {3}Binäre Suchbäume}{5}%
-\contentsline {subsection}{\numberline {3.1}Definition binärer Suchbaum}{5}%
-\contentsline {subsection}{\numberline {3.2}Weitere Begriffe und Eigenschaften zum binären Suchbaum}{6}%
-\contentsline {paragraph}{Total geordnete Menge}{9}%
-\contentsline {paragraph}{Verändern eines BST durch Rotationen.}{10}%
-\contentsline {paragraph}{Grundoperationen \textit {search}, \textit {insert} und \textit {delete}}{11}%
-\contentsline {paragraph}{Laufzeit}{14}%
-\contentsline {paragraph}{Unterschiedliche Baumhöhen}{14}%
-\contentsline {section}{\numberline {4}Dynamische Optimalität}{16}%
-\contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{16}%
-\contentsline {subsection}{\numberline {4.2}Erste untere Schranke von Wilber}{17}%
-\contentsline {paragraph}{lower bound tree}{18}%
-\contentsline {subsection}{\numberline {4.3}bit reversal permutation }{23}%
-\contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{26}%
-\contentsline {paragraph}{Potentialfunktionmethode}{26}%
-\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{27}%
-\contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST }{28}%
-\contentsline {paragraph}{Balanced Property}{28}%
-\contentsline {paragraph}{Static Finger Property}{28}%
-\contentsline {paragraph}{Statisch optimal}{28}%
-\contentsline {paragraph}{Working Set Property}{29}%
-\contentsline {paragraph}{Dynamic Finger Property}{29}%
-\contentsline {section}{\numberline {5}Tango Baum}{29}%
-\contentsline {subsection}{\numberline {5.1}Interleave Lower Bound}{30}%
-\contentsline {subsection}{\numberline {5.2}Aufbau des Tango Baum}{35}%
-\contentsline {subsection}{\numberline {5.3}Die \textit {access} Operation beim Tango Baum}{38}%
-\contentsline {paragraph}{cut Operation}{40}%
-\contentsline {paragraph}{join Operation}{41}%
-\contentsline {paragraph}{access Operation}{42}%
-\contentsline {subsection}{\numberline {5.4}Laufzeitanalyse für access}{43}%
-\contentsline {section}{\numberline {6}Rot-Schwarz-Baum}{45}%
-\contentsline {subsection}{\numberline {6.1}Grundoperationen}{46}%
-\contentsline {paragraph}{Suchen im Rot-Schwarz-Baum}{46}%
-\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{46}%
-\contentsline {paragraph}{Laufzeit}{51}%
-\contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{53}%
-\contentsline {paragraph}{Laufzeit der Grundoperationen}{53}%
-\contentsline {subsection}{\numberline {6.2}Tango-Baum konformes vereinigen}{55}%
-\contentsline {paragraph}{Resultat nach der Fallbehandlung}{56}%
-\contentsline {paragraph}{Laufzeit}{56}%
-\contentsline {subsection}{\numberline {6.3}Tango-Baum konformes aufteilen}{57}%
+\contentsline {section}{\numberline {1}Fazit}{5}%
+\contentsline {section}{\numberline {2}Einleitung}{6}%
+\contentsline {section}{\numberline {3}Binäre Suchbäume}{7}%
+\contentsline {subsection}{\numberline {3.1}Definition binärer Suchbaum}{7}%
+\contentsline {subsection}{\numberline {3.2}Weitere Begriffe und Eigenschaften zum binären Suchbaum}{8}%
+\contentsline {paragraph}{Total geordnete Menge}{11}%
+\contentsline {paragraph}{Verändern eines BST durch Rotationen.}{12}%
+\contentsline {paragraph}{Grundoperationen \textit {search}, \textit {insert} und \textit {delete}}{13}%
+\contentsline {paragraph}{Laufzeit}{16}%
+\contentsline {paragraph}{Unterschiedliche Baumhöhen}{16}%
+\contentsline {section}{\numberline {4}Dynamische Optimalität}{18}%
+\contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{18}%
+\contentsline {subsection}{\numberline {4.2}Erste untere Schranke von Wilber}{19}%
+\contentsline {paragraph}{lower bound tree}{20}%
+\contentsline {subsection}{\numberline {4.3}bit reversal permutation }{25}%
+\contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{28}%
+\contentsline {paragraph}{Potentialfunktionmethode}{28}%
+\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{29}%
+\contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST }{30}%
+\contentsline {paragraph}{Balanced Property}{30}%
+\contentsline {paragraph}{Static Finger Property}{30}%
+\contentsline {paragraph}{Statisch optimal}{30}%
+\contentsline {paragraph}{Working Set Property}{31}%
+\contentsline {paragraph}{Dynamic Finger Property}{31}%
+\contentsline {section}{\numberline {5}Tango Baum}{31}%
+\contentsline {subsection}{\numberline {5.1}Interleave Lower Bound}{32}%
+\contentsline {subsection}{\numberline {5.2}Aufbau des Tango Baum}{37}%
+\contentsline {subsection}{\numberline {5.3}Die \textit {access} Operation beim Tango Baum}{40}%
+\contentsline {paragraph}{cut Operation}{42}%
+\contentsline {paragraph}{join Operation}{43}%
+\contentsline {paragraph}{access Operation}{44}%
+\contentsline {subsection}{\numberline {5.4}Laufzeitanalyse für access}{45}%
+\contentsline {section}{\numberline {6}Rot-Schwarz-Baum}{47}%
+\contentsline {subsection}{\numberline {6.1}Grundoperationen}{48}%
+\contentsline {paragraph}{Suchen im Rot-Schwarz-Baum}{48}%
+\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{48}%
+\contentsline {paragraph}{Laufzeit}{53}%
+\contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{55}%
+\contentsline {paragraph}{Laufzeit der Grundoperationen}{55}%
+\contentsline {subsection}{\numberline {6.2}Tango-Baum konformes vereinigen}{57}%
+\contentsline {paragraph}{Resultat nach der Fallbehandlung}{58}%
 \contentsline {paragraph}{Laufzeit}{58}%
+\contentsline {subsection}{\numberline {6.3}Tango-Baum konformes aufteilen}{59}%
+\contentsline {paragraph}{Laufzeit}{60}%
+\contentsline {section}{\numberline {7}Zipper Baum}{61}%
+\contentsline {subsection}{\numberline {7.1}Hybrid Baum}{62}%
+\contentsline {subsubsection}{\numberline {7.1.1}Repräsentation eines preferred path beim Hybrid Baum}{62}%
+\contentsline {subsubsection}{\numberline {7.1.2}Die \textit {access} Operation beim Hybrid Baum}{62}%
+\contentsline {paragraph}{\textit {cut} beim Hybrid Baum}{63}%
+\contentsline {paragraph}{\textit {join} beim Hybrid Baum}{63}%
+\contentsline {paragraph}{\textit {extract} beim Hybrid Baum}{64}%
+\contentsline {subsubsection}{\numberline {7.1.3}Laufzeitanalyse beim Hybrid Baum}{66}%
+\contentsline {subsection}{\numberline {7.2}Repräsentation eines preferred path beim Zipper Baum}{67}%
+\contentsline {subsection}{\numberline {7.3}Die \textit {access} Operation beim Zipper Baum}{68}%
+\contentsline {paragraph}{cut Operation}{68}%
+\contentsline {paragraph}{join Operation}{69}%
+\contentsline {paragraph}{extract Operation}{69}%
+\contentsline {subsection}{\numberline {7.4}Laufzeitanalyse beim Zipper Baum}{69}%
+\contentsline {section}{\numberline {8}Splay Baum}{69}%
+\contentsline {subsection}{\numberline {8.1}\textit {access} Operation }{69}%
+\contentsline {paragraph}{\textit {splay} Operation}{69}%
+\contentsline {subsection}{\numberline {8.2}Amortisierte Laufzeitanalyse von \textit {splay }}{70}%
+\contentsline {paragraph}{zig}{71}%
+\contentsline {paragraph}{zig-zig}{71}%
+\contentsline {paragraph}{zig-zag}{72}%
+\contentsline {subsection}{\numberline {8.3}Dynamische Optimalitäts Vermutung}{72}%
+\contentsline {section}{\numberline {9}Multisplay Baum}{73}%
+\contentsline {subsection}{\numberline {9.1}Die \textit {access} Operation beim Multisplay Baum}{74}%
+\contentsline {paragraph}{\textit {switch} Operation beim Multisplay Baum}{74}%
+\contentsline {subsection}{\numberline {9.2}Amortisierte Laufzeitanalyse}{75}%

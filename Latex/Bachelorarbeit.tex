@@ -23,13 +23,15 @@
 }
 \date{\today}
 \begin {document}
-
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Satz}{Satz}[section]
 
 \maketitle
 \newpage
 Zusammenfassung
 \newpage
 \tableofcontents
+\newpage
 \section{Fazit}
 \newpage
 \section{Einleitung}
@@ -190,7 +192,7 @@ Da die Höhe $h$ eines BST $T$ mit $n$ Knoten entscheidend für die Laufzeit der
 	\label{fig:kompletterBaum}
 \end{figure}
 
-\newtheorem{Lemma}{Lemma}[section]
+
 \begin{Lemma} Die Höhe eines vollständig balancierten BST $T$ mit $n$ Knoten ist $ \lfloor \log_2{(n)} \rfloor + 1 $. 
 \end{Lemma}
 \begin{proof}
@@ -522,7 +524,7 @@ gilt.
 	\label{fig:upperBounds}
 \end{figure}
 
-\newtheorem{Satz}{Satz}[section] 
+
 \section{Tango Baum}
 Der Tango Baum ist ein aus BSTs, den \textbf{Hilfsbäumen}, bestehender BST. Auf die Anforderungen an die Hilfsbäume wird in Abschnitt \ref{aufbauDesTango} eingegangen und mit dem Rot-Schwarz-Baum wird eine mögliche Variante noch detailliert vorgestellt. Der Tango Baum wurde in \cite{demainDinamicOpti},von Demaine, Harmon, Iacono und Patrascu beschrieben, inklusive eines Beweises über seine $\log\left(\log\left(n\right)\right)$-competitiveness. Ebenfalls in \cite{demainDinamicOpti} enthalten ist eine als \textbf{Interleave Lower Bound} bezeichnete Variation der ersten unteren Schranke von Wilber. Da diese für das Verständnis des Tango Baumes wesentlich ist, wird mit ihr gestartet, bevor es zur Beschreibung der Struktur selbst kommt. 
 
@@ -790,10 +792,10 @@ Es gibt also in jedem Fall einen Pfad von $v$ zu $w_2$. $w_2$ kann bezogen auf $
 \subsection{Laufzeitanalyse für access}
 Zunächst wird in zwei Lemmas die Einzeloperation betrachtet, bevor es dann im Satz um Zugriffsfolgen geht. Alle drei Abschnitte basieren auf \cite{demainDinamicOpti}.
 
-\newtheorem{Lemma4}{Lemma}[section] 
-\begin{Lemma4} \label{demaineLemma4}
+ 
+\begin{Lemma} \label{demaineLemma4}
 	Sei $n$ die Anzahl der Knoten eines Tango-Baum $T_{i-1}$. Sei $k$ die Anzahl der Knoten bei denen sich während der Ausführung von \textit{access}$\left(x_i\right)$ eine Änderung des preferred child ergeben hat. Für die Laufzeit \textit{access}$\left(x_i\right)$ gilt dann $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.
-\end{Lemma4}
+\end{Lemma}
 \begin{proof}
 	Bezeichne $T_i$ den Tango-Baum nach der Ausführung von \textit{access}$\left(x_i\right)$. Zuerst werden die Kosten für das Suchen betrachtet. Der Zeiger $p$ der Operationen startet maximal $k + 1$ mal an der Wurzel des Tango-Baum. Für die Länge eines Pfades innerhalb eines Hilfsbaumes gilt $O\left(\log \left( \log  \left(n \right)\right)\right)$, denn für die Anzahl der Knoten eines preferred path gilt $O\left( \log \left(n\right)  \right)$ und ein Hilfsbaum muss ein balancierter BST sein. Die Gesamtkosten ergeben sich damit zu $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.\\
 	Nun werden die Kosten zum erzeugen von $T_i$ aus $T_{i-1}$ betrachtet. Pro Veränderung eines preferred childs kommt es zu Kosten $O\left( \log_2\left(\log_2 \left(n\right)\right)\right)$ aufgrund einer \textit{cut} und einer \textit{join} Operation. Für das Suchen des Hilfsbaumes im bei der letzten Transformation zu $T_i$ (Punkt 6 in der Beschreibung) entstehen auch wieder Kosten von $O\left(\log \left( \log  \left(n \right)\right)\right)$. Somit gilt auch für die Gesamtkosten $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.
@@ -801,17 +803,17 @@ Zunächst wird in zwei Lemmas die Einzeloperation betrachtet, bevor es dann im S
 	
 \end{proof}
 \noindent Sei $\mathit{IB}_i\left(X\right)$ die Differenz von $\mathit{IB}\left(x_1, x_2,..,x_i\right)$ und  $\mathit{IB}\left(x_1, x_2,..,x_{i-1}\right)$. 
-\newtheorem{Lemma5}{Lemma}[section] 
-\begin{Lemma5} \label{demaineLemma5}
+
+\begin{Lemma} \label{demaineLemma5}
 	Während der Ausführung von \textit{access}$\left(x_i\right)$ kommt es an genau $\mathit{IB}_i\left(X\right)$ Knoten zu einer Änderung des preferred child.
-\end{Lemma5}
+\end{Lemma}
 \begin{proof}
 	Sei $p \in P$. Das preferred child von $p$ wechselt während  \textit{access}$\left(x_i\right)$ von links nach rechts  wenn $x_i$ in der rechten Region von $p$ liegt und der letzte Zugriff innerhalb des Teilbaumes mit Wurzel $p$ in der linken Region von $p$ lag.  Das preferred child von $p$ wechselt während  \textit{access}$\left(x_i\right)$ von rechts nach links  wenn $x_i$ in der linken Region von $p$ liegt und der Schlüssel des vorherigen Zugriffs innerhalb des Teilbaumes mit Wurzel $p$ in der rechten Region von $p$ lag. Das entspricht jeweils genau einem Interleave durch $p$. Zu beachten ist noch, dass der erste Zugriff auf den Teilbaum mit Wurzel $p$ weder zu einem Interleave noch zu einem Wechsel eines preferred child von links bzw. rechts zu rechts bzw. links führt. 	
 \end{proof}
-\newtheorem{Theorem2}{Satz}[section] 
-\begin{Theorem2} \label{demaineSatz2}
+
+\begin{Satz} \label{demaineSatz2}
 	Für die Laufzeit eines Tango Baum mit $n$ Knoten für eine Zugriffsfolge $X = x_1, x_2,.., x_m$ gilt $O\left(\left(\mathit{OPT}\left(X\right) + n\right)  + \left(  1 + \log\left(\log \left(n\right)\right)\right)   \right)$
-\end{Theorem2}
+\end{Satz}
 \begin{proof}
 	Nach Lemma \ref{demaineLemma5} gibt es nicht mehr als  $\mathit{IB}\left(X\right)$ Wechsel der preferred childs von links nach rechts oder umgekehrt. Zudem gibt es maximal $n$ zusätzliche Änderungen bei preferred childs. (Erstzugriff in den Teilbaum). Die Gesamtanzahl der Änderungen von preferred childs ist somit höchstens $\mathit{IB}\left(X\right) + n$. Mit Lemma \ref{demaineLemma4} ergeben sich Gesamtkosten von\\ $O\left(\left(\mathit{IB}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 -n $ aus Satz \ref{satzDemaine1} ergibt sich 
 	$O\left(\left(\mathit{OPT}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq m$ ergibt sich dann die Behauptung.
@@ -986,9 +988,9 @@ Abbildung \ref{fig:EinfügenFixUpFall6} zeigt den zu Fall 4 Links/Rechts-Symmetr
 Die Reparatur des RBT nach dem entfernen eines Knotens ist aufwendiger, als die nach dem einfügen. Da der RBT in der Rolle als Hilfsstruktur für den Tango-Baum keine solche Operation benötigt, entfällt die Beschreibung. In \cite{algEinf} ist eine detaillierte Beschreibung enthalten. 
 \paragraph{Laufzeit der Grundoperationen}
 Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$ Knoten $h = \mathit{O(\log {n})}$  gilt. Das wird nun gezeigt. 
-\newtheorem{Lemma2}{Lemma}[section]
-\begin{Lemma2} Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten gilt $h = \mathit{O(\log {n})}$ . 
-\end{Lemma2}
+
+\begin{Lemma} Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten gilt $h = \mathit{O(\log {n})}$ . 
+\end{Lemma}
 \begin{proof}
 	Sei $w$ die Wurzel von $T$ und $m$ die Anzahl der inneren Knoten von $T$. 
 	Zunächst wird gezeigt, dass T mindestens $2^\mathit{bh(w)} - 1$ innere Knoten enthält.
@@ -1146,8 +1148,439 @@ Die Kosten innerhalb einer Iteration sind konstant, damit ist  $O \left(\log \le
 	\caption{Beispielhaftes aufteilen eines RBT mit Parameter $v$ }
 	\label{fig:aufteilen}
 \end{figure}
+
+\section {Zipper Baum}
+Der Zipper Baum basiert auf dem Tango Baum und nutzt auch preferred paths aus einem Referenzbaum $P$. Aufbau und Pflege der preferred paths in $P$ unterscheiden sich nicht vom Tango Baum, wohl aber ihre Repräsentation im eigentlichen BST $T$. Der Zipper Baum wurde in \cite{zipper} vorgestellt. Er ist ebenfalls $\log\left(\log\left(n\right)\right)$-competitive,  garantiert aber auch  $O\left(\log \left(n\right)\right)$ im worst case, bei einer einzelnen \textit{access} Operation. $n$ steht wieder für de Anzahl der Knoten von $T$. Das Verhalten der Operationen \textit{cut} und \textit{join} unterscheidet sich deutlich. Da die Operationen des Zipper Baumes recht aufwendig sind, werden sie hier wie in \cite{zipper} in zwei Schritten vorgestellt. Zunächst an einem Hybrid Baum, der kein  BST ist und dann am eigentlichen Zipper Baum. Die Knoten im Zipper Baum sind wie beim Tango Baum erweitert. Beim Hybrid Baum kommt ein zusätzlicher Zeiger auf einen Knoten hinzu.  Sei $v$ ein Knoten in $T$, dann ist in diesem Kapitel $v^*$ der Knoten in $P$, mit $\mathit{key}\left(v\right) = \mathit{key}\left(v^*\right)$.
+
+\subsection{Hybrid Baum}
+Znächst wird die Repräsentation eines preferred path in $T$ vorgestellt. Dann wird die \textit{access} Operationen, mit ihren Hilfsoperationen vorgestellt. Zum Schluss geht es noch um die Laufzeit. 
+
+
+\subsubsection{Repräsentation eines preferred path beim Hybrid Baum} 
+Die Repräsentation eines preferred path  $P_p = {p_1}^*,{p_2}^*,..,{p_m}^*$ in $T$ stellt einen Hilfsbaum $H$ dar, der in zwei Teile unterteilt wird, den  \textbf{top path} und den \textbf{bottom tree}. Der bottom tree ist ein balancierter BST der genau die Schlüssel enthält, die in $P_p$ enthalten sind jedoch nicht im top path.  Der top path enthält $n_1 \in \left[\log\left(\log\left(n\right)\right), 3 \log\left(\log\left(n\right)\right) \right]$ Knoten falls ein bottom tree existiert, ansonsten  $n_1 \in \left[1, 3 \log\left(\log\left(n\right)\right) \right]$. Der top path besteht aus den Knoten ${p_1},{p_2},..,{p_{n_1}}$ und stellt eine eins zu eins Repräsentation von $ {p_1}^*,{p_2}^*,..,p_{n_1}^*$ dar. ${p_1}$ ist die Wurzel von $H$. Die Wurzel des bottom tree ist ein Kind von ${p_{n_1}}$. Abbildung \ref{fig:pathRepresentation} zeigt eine mögliche Darstellung zu dem preferred path in Abbildung \ref{fig:preferredPath}. Jeder Knoten in $H$ kann in $O\left(\log\left(\log \left(n\right)\right)\right)$ Zeit erreicht werden. Die Repräsentationen der preferred paths werden wie beim Tango Baum zu einer Gesamtstruktur entsprechend ihrer Schlüssel zusammengefügt. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/preferredPath"}
+	\caption{Beispiel preferred path }
+	\label{fig:preferredPath}
+\end{figure} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/hybrid/pathRepresentation"}
+	\caption{Mögliche Repräsentation des preferred path aus \ref{fig:preferredPath}. Grün der top path, blau der bottom tree. }
+	\label{fig:pathRepresentation}
+\end{figure} 
+
+
+\subsubsection{Die \textit{access} Operation beim Hybrid Baum}
+Sei $p$ der Zeiger der \textit{access}$\left(k\right)$ Operation in $T$. Erreicht $p$ während des Suchens in einem Hilfsbaum $H_1$ die Wurzel eines weiteren Hilfsbaum $H_2$, werden die Knoten von $H_1$, entsprechend ihrer \textit{depth} Variable, vergleichbar mit dem Tango Baum,  mit einer \textit{cut} Operation in zwei Bäume $D_1$ und $D_2$ aufgeteilt. Sei $D_2$ der Baum, bei dem die Werte der \textit{depth} Variablen die größeren Werte annehmen. $D_2$ wird sofort in eine gültige Pfadrepräsentation überführt, wie genau wird in \textit{cut} beschrieben. Die Knoten in $D_1$ werden nach der Ausführung von \textit{access} im Hilfsbaum mit der Wurzel von $T$ enthalten sein. Dieser wird mit \textit{join} erst erstellt, wenn der Knoten mit Schlüssel $k$ gefunden ist. $D_1$ bleibt also zunächst unverändert bestehen.       
+
+\paragraph{\textit{cut} beim Hybrid Baum}
+Es werden zwei Fälle unterschieden. Beim ersten Fall zeigte $p$ in $H_1$ nur auf Knoten im top path $p_1,p_2,..,p_m$ im zweiten Fall erreichte $p$ den bottom tree. Es wird davon ausgegangen dass in $H_1$ ein bottom tree enthalten ist, der andere Fall ist einfacher und ergibt sich aus der Beschreibung.\\
+Fall 1:\\
+Sei $q_i$ der Elternknoten der Wurzel von $H_2$, dann muss eine Laufzeit von $O\left(i\right)$ erreicht werden.  $q_{i+1}$ wird zur Wurzel von $H_1$. Es muss sichergestellt werden, dass die Anzahl der Knoten im top path von $H_1$ noch groß genug ist. Enthält er weniger als $2 \log\left(\log\left(n\right)\right)$ Knoten werden mit einem \textbf{Extraktionsprozess} Knoten aus dem bottom tree dem top path hinzugefügt. Dazu wird eine \textit{extract} Operation verwendet. Eine solche Operation fügt dem top path $\log\left(\log\left(n\right)\right)$ Knoten aus dem bottom tree hinzu. Um die Laufzeit einhalten zu können verteilt {\textit{extract}} dies über mehrere \textit{cut} Operationen. Dazu wird der bottom tree in einen Zwischenzustand versetzt, der keinem balancierten BST entspricht. Ein Hilfsbaum bei dem kein Extraktionsprozess aktiv ist hat  $2 \log\left(\log\left(n\right)\right)$ Knoten im top path. Der Extraktionsprozess wird im Abschnitt zu \textit{extract} beschrieben.  \\
+Fall 2:\\
+Es muss eine Laufzeit von $O\log\left(\log\left(n\right)\right)$ erreicht werden.Dieser Fall ist sehr ähnlich zum Tango Baum und es werden die Operationen von ihm verwendet. Sei \textit{tangoJoin} die \textit{join} Operation wie im Kapitel zum Tango Baum beschrieben und \textit{tangoCut} die \textit{cut} Operation von dort. Sei $v$ der Vater der Wurzel von $H_2$. Ist in $H_1$ ein Extraktionsprozess aktiv, muss dieser beendet werden und der top path muss in einen balancierten Baum $H_3$ überführt werden. Nun werden $H_3$ und der bottom tree mit \textit{tangoJoin}  zu $H_4$ vereinigt. Dann wird \textit{tangoCut} verwendet um die Knoten mit einem Wert der \textit{depth} Variable größer $v.$\textit{depth} aus in einen Hilfsbaum $H_5$ auszulagern. Auf $H_5$ werden zwei Extraktionsprozess ausgeführt um eine gültige Pfadrepräsentation zu erreichen.  \\
+Im ersten Fall entstehen Kosten von $O\left(i\right)$ um $q_i$ zu erreichen, und dass auch in \textit{extract} Kosten von $O\left(i\right)$ entstehen wird weiter unten gezeigt. Im zweiten Fall entstehen Kosten von $O\left(\log\left(\log\left(n\right)\right)\right)$ sowohl um $v$ zu erreichen, um $H_4$ zu erzeugen (siehe \textit{join}) als auch in \textit{extract}.
+
+
+\paragraph{\textit{join} beim Hybrid Baum}
+\textit{join} wird verwendet um zum Abschluss von \textit{access} den Hilfsbaum $H$ mit der Wurzel von $T$ zu erstellen. Seien $H_1,H_2,..,H_m$ die Bäume die zu $H$ vereinigt werden, so dass für $i \in \{1,2,..m\}$ und $i > 1$, in $H_{i-1}$ ist der Vater der Wurzel von $H_i$ enthalten gilt. Abbildung \ref{fig:concatPfad} zeigt eine beispielhafte Konstellation. Zunächst werden die Bäume $H_1,H_2,..,H_m$ zu balancierten Bäumen $H_1',H_2',..,H_m'$ transformiert. Diese werden dann mit einer Folge von $m-1$ \textit{tangoJoin} Operationen zu $H$ zusammengefügt. Als erstes werden $H_1'$ und $H_2'$ zusammengefügt. Zu dem neu entstandenen Hilfsbaum wird dann $H_3'$ hinzugefügt usw.  Um $H$ zu erstellen werden dann noch $2\log\left(\log\left(n\right)\right)$ Knoten zu einem top path extrahiert. Abbildung \ref{fig:concatHybrid} zeigt den Ablauf für das Beispiel.\\
+Um $H_i$ zu $H_i'$ zu überführen werden die Knoten in seinem top path als Bäume mit einem Knoten betrachtet. Diese werden mit Folgen von  \textit{tangoJoin} zusammengefügt. In jeder solchen Folge wird die Anzahl der Bäume halbiert, indem zwei aufeinanderfolgende Bäume jeweils zusammengeführt werden. Nach jeder \textit{tangoJoin} Folge halbiert sich die Anzahl der aus dem top path entstandenen Bäume und die Anzahl ihrer Knoten verdoppelt sich. Sei $n_i$ die Anzahl der Knoten im top path von $H_i$, dann summieren sich die Kosten über alle Folgen zu $O\left(\sum_{j = 1}^{\log n_i} j n_i / 2^j\right) = O\left(n_i\right)$. Diese Kosten sind bereits während des Suchens in $H_i$ entstanden und können deshalb vernachlässigt werden. Nach der Ausführung dieser \textit{tangoJoin} Folgen existiert ein aus dem top path entstandener balancierter BST und eventuell ein bottom tree. Diese werden mit einer weiteren \textit{tangoJoin} Operation zusammengeführt. Die Kosten für diese Operation betragen $O\left(\log\left(\log\left(n\right)\right)\right)$ und sind bereits beim Suchen im bottom tree von $H_i$ angefallen. Die Gesamtkosten zum erstellen von $H_i$ können also asymptotisch betrachtet vernachlässigt werden. \\
+Die Kosten um $H$ aus  $H_1',H_2',..,H_m'$ zu bilden, sind analog zum Tango Baum. Für den Extraktionsprozess entstehen nochmals Kosten von $O\left(\log\left(\log\left(n\right)\right)\right)$.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/hybrid/concatPfad"}
+	\caption{Mögliche Ausgangsituation vor \textit{concatenate}.}
+	\label{fig:concatPfad}
+\end{figure} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.5\textwidth]{"Medien/Zipper/hybrid/concatHybrid"}
+	\caption{Es werden zwei  \textit{concatenate} Operationen benötigt. Oben das Ergebnis der Ersten, unten dass der Zweiten }
+	\label{fig:concatHybrid}
+\end{figure} 
+\paragraph{\textit{extract} beim Hybrid Baum} \label{hybridExtract}
+Wie bereits erwähnt wird diese Operation benötigt um einen Extraktionsprozess durchzuführen. Ein Extraktionsprozess fügt dem top path $\log\left(\log n\right)$ Knoten hinzu. Er wird gestartet wenn der top path aufgrund einer \textit{cut} Operation, weniger als $2\log\left(\log n\right)$ enthält, oder zum Ende der \textit{join} Operation. Damit die Laufzeit von \textit{cut} eingehalten werden kann, erstreckt sich ein Extraktionsprozess über mehrere \textit{cut} Operationen, mit Fall 1. Ein Extraktionsprozess wird mit einer Folge von $O\left(\log\left(\log n\right)\right)$ Rotationen ausgeführt. Um die Invariante bezüglich der top path Länge einzuhalten, darf ein Extraktionsprozess auf so viele \textit{cut} Operationen verteilt werden, bis mehr als $\log\left(\log n\right)$ Knoten vom top path entfernt wurden. Der Hybrid Baum macht, mit einer Konstante,  die Anzahl der durchgeführten Rotationen nach einem \textit{cut} 1. Fall, von der Anzahl der abgespaltenen Knoten abhängig. So dass der  Extraktionsprozess spätestens dann abgeschlossen wird, wenn $\log\left(\log n\right)$ Knoten durch \textit{cut} entfernt wurden. Kommt es zu einer \textit{cut} Operationen, mit Fall 2 wird ein aktiver Extraktionsprozess abgebrochen. 
+Von den Hilfsbäumen wird eine \textit{split} Operation wie vom Hilfsbaum des Tango Baumes verlangt. Diese darf jedoch nur Rotationen verwenden. Für den Rot Schwarz Baum ist eine solche Variante in \cite{zipper} dargestellt. 
+Sei $H$ eine Repräsentation des preferred path $P_p = {v_1}^*,{v_2}^*,..,{v_m}^*$ und $i \in \{1, 2,..,m\}$. Sei $n_1 = \log_2\left(\log_2\left(n\right)\right)$. Sei $v_i$ der Elternknoten der Wurzel des bottom tree, mit $d = v_i.$\textit{depth}. Es müssen der Reihe nach die Knoten mit \textit{depth} Wert $d+1, d+2,..,d + n_1$ extrahiert werden, damit ein valider top path entsteht. 
+$P_p$ wird in \textbf{zig Segmente} und \textbf{zag Segmente} unterteilt.  zig Segmente entsprechen den längst möglichen Pfaden von Knoten mit rechten Kindern in $P_p$. zag Segmente entsprechen den längst möglichen Pfaden von Knoten mit linken Kindern in $P_p$. Das Blatt in $P_p$ wird dem Segment seines Vaters zugeordnet. In Abbildung  \ref{fig:preferredPathZigZag} sind zig und zag Segmente dargestellt.  Sei $S_{zig}$ die Folge der in zig Segmenten enthalten Knoten, aufsteigend sortiert nach der Tiefe und $S_{zag}$ die Folge der in zag Segmenten enthalten Knoten, aufsteigend sortiert nach der Tiefe der enthaltenen Knoten. Ist $u^*$ der tiefste Knoten eines zig bzw. zag Segmentes, so können in den Segmenten mit Knoten größerer Tiefe nur noch größere bzw. kleinere Schlüssel enthalten sein, vergleiche Abschnitt \ref{dd} und Abbildung \ref{fig:preferredPathZigZag}. Deshalb müssen die Knoten in $S_1 \circ S_2$ aufsteigend sortiert nach Schlüssel sein. Da die Knoten in $S_{zig}$ bzw. $S_{zag}$ aber auch aufsteigend bzw. absteigend nach Tiefe sortiert sind, können aus $S_{zig} \circ S_{zag}$ Intervalle $\left[l, r\right]$ für die Schlüsselmengen, von Pfaden in $P_p$ mit Endknoten ${p_m}^*$ abgeleitet werden, siehe Abbildung \ref{fig:preferredPathZigZag}, wobei $l$ in $S_{zig}$ enthalten sein muss und $r$ in $S_{zag}$.  Sei $\left[l,r\right]$ ein so erstelltes Intervall zu dem Pfad von ${v_{i + {n_1} + 1}}^*$ zu ${p_m}^*$. Es müssen genau die Knoten im bottom tree zum extrahieren vorbereitet werden, deren Schlüssel nicht in $\left[l, r\right]$ liegt. Der Knoten mit Schlüssel $l$ sowie dessen Vorgänger $v_l$ sowie der Knoten mit Schlüssel $r$ und dessen Nachfolger $v_r$ werden gefunden wie in Abschnitt \ref{TangoAbschnitt} gezeigt. Sei $l'$ der Schlüssel von $v_l$ und $r'$ der Schlüssel von $v_r$. Mit zwei \textit{split} Operationen werden die Knoten $v_l$ und $v_r$ herausgelöst. Das linke Kind von $v_l$ ist ein balancierter BST $B$, der alle Schlüssel aus $H$ enthält die kleiner als $l$ sind. Das rechte Kind von $v_l$ ist $v_r$. Das linke Kind von $v_r$ ist ein balancierter BST $D$, der alle Schlüssel aus $H$ enthält die in $\left[l, r\right]$ enthalten sind.  Das rechte  Kind von $v_r$ ist ein balancierter BST $E$, der alle Schlüssel aus $H$ enthält die größer als $r$ sind. Es werden also genau die Knoten aus $B$ und $E$ vorbereitet. Schritt zwei in Abbildung \ref{fig:extractHybrid} ist damit bereits vollzogen. In Schritt drei werden $B$ und $E$ nun zu BST in Listendarstellung gewandelt. Sei $B'$ bzw. $E'$ der Baum der dadurch von $B$ bzw. $E$ entsteht. Es wird $B'$ betrachtet, $E'$ ist dazu symmetrisch.  Die Wurzel von $B'$ enthält den größten Schlüssel in $B'$, somit sind alle anderen Knoten in $B'$ linke Kinder. Die Umwandlung geschieht wie folgt:\\
+Es werden so oft Linksrotationen auf das rechte Kind der Wurzel ausgeführt, bis der rechte Teilbaum der Wurzel leer ist. In Schritt zwei wird der rechte Teilbaum des linken Kindes der Wurzel auf die gleiche Art und Weise geleert und dann wird eine Rechtsrotation auf das linke Kind der Wurzel ausgeführt. Schritt zwei wird so oft wiederholt bis $B'$ erzeugt ist. Abbildung \ref{fig:listeHybrid} stellt diesen Vorgang dar. Da $l$ der Schlüssel eines Knoten in $S_{zig}$ ist, müssen alle Schlüssel aus $B'$ auch als Schlüssel von Knoten in $S_{zig}$ enthalten sein. $S_{zig}$ ist aufsteigend nach den Schlüsseln als auch nach den Tiefen sortiert, somit müssen dies auch die Knoten in $B'$ sein. Das bedeutet für einen Knoten $v$ aus $B'$, dass alle Knoten in seinem rechten Teilbaum einen größeren Wert bei der \textit{depth} Variable haben als $v.$\textit{depth}. Für  $v$ aus $E'$ gilt für den linken Teilbaum das gleiche. Aus den gleichen Gründen muss $v_l.$\textit{depth} bzw. $v_r.$\textit{depth} einen größeren Wert haben, als die \textit{depth} Variablen aller Knoten in $B'$ bzw. $E'$. $v_l$, $v_r$ sowie die Knoten aus $B'$ und $E'$ sind nun zum extrahieren vorbereitet. Sei $u$ die Wurzel von $B'$ oder $E'$, je nachdem bei welchem Knoten die \textit{depth} Variable einen kleineren Wert hat. Dann kann $u$ mit maximal zwei Rotationen den top path hinzugefügt werden. Sind $B'$ und  $E'$ erschöpft und auch $v_r$ und $v_l$ dem top path hinzugefügt, ist der Vorgang beendet.\\
+Muss ein Extraktionsprozess aufgrund \textit{cut} Fall 2 vorzeitig abgebrochen werden, werden aus $B'$ und $E'$ wieder balancierte BST erzeugt, simultan zu der Beschreibung in \textit{join}. Im Anschluss wird mit zwei \textit{tangoJoin} Operationen wieder ein bottom tree erstellt.\\
+Um die Laufzeit von \textit{cut} einhalten zu können, werden die Knoten im Hybrid Tree um einen weiteren Zeiger erweitert. Ist in einem Hilfsbaum $H$ mit Wurzel $w$ ein Extraktionsprozess aktiv, zeigt der zusätzliche Zeiger in $w$, auf den Knoten, auf dem die nächste Rotation ausgeführt wird. Da $p$ nach dem extrahieren von Knoten, nochmals auf $w$ zeigen muss, bevor er auf einen Knoten außerhalb von $H$ zeigt, kann dieser Knoten einfach gepflegt werden. Aufgrund dieses Zeigers ist der Hybrid Baum jedoch kein BST.\\
+Bei Schritt eins und zwei entstehen Kosten von $O\left(\log \left(\log n\right)\right)$, vergleichbar mit Kapitel \ref{tango}. Beim erstellen von $B'$ aus $B$ ist jeder Knoten an maximal drei Rotationen beteiligt, vergleiche Abbildung \ref{fig:listeHybrid}. Da maximal  $\log\left(\log n\right)$ Knoten vorbereitet werden, entstehen Kosten von  $O\left(\log\left(\log n\right)\right)$. Bei Schritt vier kommen noch einmal Kosten von $O\left(\log\left(\log n\right)\right)$ hinzu.
+Werden mit einem verkürzten Ablauf $k$ bereits vorbereitete Knoten dem top path hinzugefügt, entstehen mit Hilfe des zusätzlichen Zeigers Kosten von $O\left(k\right)$.   
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.8\textwidth]{"Medien/Zipper/hybrid/extractHybrid"}
+	\caption{Es wird ein Extraktionsprozess dargestellt. Die Abbildung basiert auf einer in \cite{zipper} }
+	\label{fig:extractHybrid}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.8\textwidth]{"Medien/Zipper/hybrid/listeHybrid"}
+	\caption{Beispielhaftes überführen von $B$ zu $B'$. }
+	\label{fig:listeHybrid}
+\end{figure}
+\subsubsection{Laufzeitanalyse beim Hybrid Baum}
+Zunächst wird ein Lemma benötigt.
+\begin{Lemma} \label{hybridBalanced}
+	Sei $T$ ein Hybrid Baum mit $n$ Knoten und $P$ ein dazu erstellter Referenzbaum. Sei $v$ ein Knoten aus $T$ , dann gilt $\mathit{depth}\left(v\right) = O\left(\mathit{depth\left(v^*\right)}\right)$.
+\end{Lemma}
+\begin{proof}
+	Seien $P_1, P_2,.., P_m$ die preferred path, die Knoten aus dem Pfad $P_{v^*}$ von der Wurzel von $P$ zu $v^*$ enthalten. Jeder von ihnen wird nun als BST betrachtet. Für $i \in \{1, 2,..,m\}$ sei $H_i$ die Pfadrepräsentation zu $P_i$. Sei ${p_i}^*$ der Knoten in $P_i$ mit der größten Tiefe unter den in $P_{v^*}$  enthaltenen. Sei $H_i$ der Hilfsbaum der $P_i$ repräsentiert. Die folgenden Tiefenangaben werden auf $P_i$ bzw. $H_i$ bezogen. Ist $p_i$ im top path enthalten, haben $p_i$ und ${p_i}^*$ die gleiche Tiefe. Liegt $p_i$ im bottom tree so muss $\mathit{depth}\left({p_i}^*\right) > \log\left(\log n\right)$ gelten, aufgrund der Konstruktion von $H_i$. Für die Tiefe jedes Knoten in $H_i$ gilt $O\left(\log\left(\log n\right)\right)$    
+	
+\end{proof}
+\noindent Daraus ergibt sich sofort für die Höhe eines Hybrid Baum mit $n$ Knoten sofort $O\left(\log n\right)$. \\
+In \textit{access} entstehen, pro preferred path mit $k$ involvierten Knoten, Kosten von $O\left(k\right)$ wenn $k < \log_2\left(\log_2\left(n\right)\right)$ gilt und Kosten von $O\left(\log_2\left(\log_2 n\right)\right)$  wenn $k \geq \log\left(\log\left(n\right)\right)$ gilt. Mit dem Lemma gilt deshalb für die Kosten von \textit{access} $O\left(\log\left(n\right)\right)$. Da pro \textit{cut} Operation maximal Kosten von $O\left(\log\left(\log\left(n\right)\right)\right)$ entstehen, muss mit den Ausführungen zu \textit{join}, der Hybrid Baum genau wie der Tango Baum $\log \left(\log\left(n\right)\right)$-competitive sein.
+
+
+\subsection{Repräsentation eines preferred path beim Zipper Baum}
+Ziel der Repräsentation eins preferred path $P_p = {p_1}^*,{p_2}^*,..,{p_m}^*$ ist es ohne den zusätzlichen Zeiger in den Knoten auszukommen, ohne Einschränkung bei asymptotischen Laufzeiten. Dies wird dadurch erreicht, dass der Knoten auf den in einem Extraktionsprozess die nächste Rotation ausgeführt werden muss, immer in konstanter Zeit von der Wurzel seines Hilfsbaumes $H$ aus zugegriffen werden kann.\\
+$H$ enthält auch einen bottom tree. Die Knoten im top path werden jedoch zu einem \textbf{zipper} angeordnet. Dieser besteht aus zwei Teilen, dem \textbf{top zipper} $z_t$ und de, \textbf{bottom zipper} $z_b$. $z_t$ und $z_b$ dürfen jeweils maximal $\log_2\left(\log_2\left(n\right)\right)$ Knoten enthalten, gemeinsam müssen sie zumindest $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten enthalten. Es wird wieder angenommen, dass ein bottom tree existiert. Sei $n_t$ bzw. $n_b$ die Anzahl der Knoten von $z_t$ bzw. $z_b$. $z_t$ repräsentiert Knoten  $P_t = {p_1}^*,{p_2}^*,..,{p_{n_t}}^*$ und $z_b$ die Knoten  $P_b = {p_{n_t + 1}}^*,{p_{n_t + 2}}^*,..,{p_{n_t + n_b}}^*$. \\
+$z_t$ ist wie folgt aufgebaut:\\
+Sei $S_{zig}$ und $S_{zag}$ zu $P_t$ definiert wie in Abschnitt \ref{hybridExtract}.
+Sei $t_l$ bzw. $t_r$ der Knoten in $S_{zig}$ bzw. $S_{zag}$ mit der kleinsten Tiefe. $t_l$ ist die Wurzel von $H$. $t_r$ ist das rechte Kind von $t_l$. Der linke Teilbaum von $t_l$  hat Listenform und  wird von den restlichen Knoten in $S_{zig}$ gebildet, so dass kein Knoten in diesem Teilbaum ein linkes Kind hat. Der rechte Teilbaum von $t_r$  hat Listenform und  wird von den restlichen Knoten in $S_{zag}$ gebildet, so dass kein Knoten in diesem Teilbaum ein rechtes Kind hat. \\
+$z_b$ wird simultan aus $P_b$ erzeugt und seien $b_l$ und $b_r$ die Knoten in $z_b$ entsprechend zu $t_l$ und $t_r$ in $z_t$. $b_l$ ist das linke Kind von $t_r$. Die Wurzel des bottom Tree ist das linke Kind von $t_r$. Das die Links-Rechts-Beziehung eingehalten wird ergibt aus den Aufbau der zig und zag Segmente und die Wurzel des bottom tree ist in konstanter Zeit erreichbar. Abbildung \ref{zipperPathRep} zeigt eine beispielhafte Darstellung. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.8\textwidth]{"Medien/Zipper/zipperPathRep"}
+	\caption{Pfadrepräsentation beim Zipper Baum, basiert auf einer Abbildung aus \cite{zipper}. }
+	\label{fig:zipperPathRep}
+\end{figure}
+
+
+
+
+
+
+\subsection{Die \textit{access} Operation beim Zipper Baum}
+Der Ablauf unterscheidet sich nur in den Hilfsoperationen von dem des Hybrid Baum. Auf diese wird jeweils eingegangen. 
+Sei $k$ der Parameter der Operation und $p$ der Zeiger der Operation in den BST. 
+
+
+
+\paragraph{cut Operation}
+Auch hier gibt es die zwei Fälle von \textit{cut} beim Hybrid Baum. Es werden zunächst die Knoten aus dem top zipper zu einem top path gewandelt, vergleichbar Abbildung \ref{fig:extractHybrid} Schritt 4, bis der gesuchte Knoten im top path enthalten ist, oder die Suche in einem anderen Hilfsbaum weitergeführt wird. Ist der top zipper vollständig in einen top path umgewandelt, wird der Vorgang beim bottom zipper fortgesetzt. Dieser hat dann die Stellung des top zipper. Außerdem wird dann ein Extraktionsprozess angestoßen, der $\log\left(\log\left(n\right)\right)$ Knoten aus dem bottom tree auslagert, um einen neuen bottom zipper zu erzeugen. Die Konstante zur Anzahl der durchzuführenden Rotationen im Extraktionsprozess, muss so gewählt sein, dass der Prozess nach $\log_2\left(\log_2\left(n\right)\right) / 2$ entfernten Knoten abgeschlossen ist. Wird auch der zweite Zipper vollständig aufgebraucht, handelt es sich um einen Fall 2 cut, ansonsten um einen Fall 1 cut.\\
+Fall 1:\\
+Es muss zur oberen Beschreibung nichts weiteres durchgeführt werden. Ist in $H$ bereits zu Beginn der cut Operation ein Extraktionsprozess aktiv, kann die Wurzel $w$ des bottom tree auch ohne zusätzlichen Zeiger in konstanter Zeit erreicht werden. Zum einhalten der Laufzeit, muss jedoch jede Rotation auf Knoten ausgeführt werden, die in konstanter Zeit von $w$ aus erreichbar sind. Zusätzlich zur Beschreibung aus \ref{fig:extractHybrid} benötigt man hierzu noch eine entsprechende \textit{split} Operation. Eine in \cite{zipper} vorgestellte \textit{split} Operation, erfüllt diese Eigenschaft.\\
+Fall 2:\\
+Auch hier werden die Knoten der Zipper als balancierte Bäume mit einem Knoten betrachtet und vorgegangen wie beim Hybrid Baum.\\
+Aus der Beschreibung folgt, dass diese Operation die gleich asymptotische Laufzeit, wie die \textit{cut} Operation des Hybrid Baum besitzt. 
+
+
+
+
+\paragraph{join Operation}
+Diese Operation verhält sich zunächst wie \textit{join} beim Hybrid Baum, erstellt dann jedoch anstatt eines top path den zipper. An Abbildung \ref{fig:extractHybrid} und der Beschreibung dazu ist direkt erkennbar, dass dies keinen Einfluss auf die asymptotische Laufzeit hat.   
+
+\paragraph{extract Operation}
+Hier entfällt im Vergleich zum Hybrid Baum der letzte Schritt aus Abbildung \ref{fig:extractHybrid}.\\
+
+
+\subsection{Laufzeitanalyse beim Zipper Baum}
+Aus den oberen Ausführungen folgt, dass der Zipper Baum genau wie der Hybrid Baum $log\left(\log\left(n\right)\right)$-competitive ist und die worst case Laufzeit von \textit{access} $O\left(\log\left(n\right)\right)$ ist.  
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.7\textwidth]{"Medien/Zipper/preferredPathZigZag"}
+	\caption{zig Segmente sind grün dargestellt. zag Segmente blau }
+	\label{fig:preferredPathZigZag}
+\end{figure}
+
+\section{Splay Baum}
+Der in \cite{splay} vorgestellte Splay Baum ist ein online BST der ohne zusätzliche Hilfsdaten in seinen Knoten auskommt. Nach einer \textit{access}$\left(k\right)$ Operation, ist der Knoten mit Schlüssel $k$ die Wurzel, des Splaybaum. Es gibt keine Invariante, welche eine bestimmte maximale Höhe garantiert. Splay Bäume können sogar zu Listen entarten. Amortisiert betrachtet verfügen sie dennoch über sehr gute Laufzeiteigenschaften. 
+
+
+\subsection{\textit{access} Operation }
+Die wesentliche Arbeit leistet eine Hilfsoperation namens \textit{splay}. Nach deren Ausführung befindet sich der Knoten mit dem gesuchten Schlüssel $k$ an der Wurzel und es wird nur noch eine Referenz auf ihn zurückgegeben.
+
+\paragraph{\textit{splay} Operation}
+Sie $p$ der Zeiger der Operation in den BST. Zunächst wird eine gewöhnliche Suche ausgeführt bis $p$ auf den Knoten $v$ mit Schlüssel $k$ zeigt. Nun werden iterativ sechs Fälle unterschieden bis $v$ die Wurzel des Baumes darstellt. Zu jedem Fall gibt es einen der Links-Rechts-Symmetrisch ist. Sei $u$ der Elternknoten von $v$. 
+
+\begin{enumerate}
+	\item $v$ ist das linke Kind der Wurzel (zig-Fall):\\
+	Es wird eine Rechtsrotation auf $v$ ausgeführt. Nach dieser ist $v$ die Wurzel des Splaybaum und die Operation wird beendet. 
+	\item $v$ ist das rechte Kind der Wurzel (zag-Fall):\\
+	Symmetrisch zu zig.
+	\item $v$ ist ein linkes Kind und $u$ ist ein linkes Kind. (zig-zig-Fall):\\
+	Dieser Fall unterscheidet den Splaybaum vom einem anderen BST (move-to-root), mit schlechteren Laufzeiteigenschaften. Es wird zuerst eine Rechtsrotation auf $u$ ausgeführt und erst danach eine Rechtsrotation auf $v$. Bei move-to-root  ist es genau anders herum. 
+	\item $v$ ist ein rechtes Kind und $u
+	$ ist ein rechtes Kind. (zag-zag-Fall):\\
+	Symmetrisch zu zig-zig.
+	\item $v$ ist ein linkes Kind und $u$ ist ein rechtes Kind. (zig-zag-Fall):\\
+	Es wird eine Rechtsrotation auf $v$ ausgeführt. Im Anschluss wird eine Linksrotation auf $u$ ausgeführt.
+	\item $v$ ist ein rechtes Kind und $u$ ist ein linkes Kind. (zag-zig-Fall):\\
+	Symmetrisch zu zig-zag.
+	
+\end{enumerate}
+Abbildung  \ref{fig:zigZag} zeigt drei der Fälle. Trotz der Einfachheit kann die Auswirkung einer einzelnen \textit{splay} Operation sehr groß sein. Abbildung \ref{fig:splay} aus \cite{splay} zeigt eine solche Konstellation. \\
+Die Laufzeit von \textit{access} auf einem BST mit $n$ Knoten ist $O\left(n\right)$.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1.2\textwidth]{"Medien/Splaybaum/zigZag"}
+	\caption{Darstellung von zig, zig-zag und zig-zig. }
+	\label{fig:zigZag}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Splaybaum/splay"}
+	\caption{Eine einzige \textit{splay } Operation.\cite{splay}}
+	\label{fig:splay}
+\end{figure}
+
+\subsection{Amortisierte Laufzeitanalyse von \textit{splay }}
+Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splay Baum $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe der Gewichte aller im Teilbaum mit Wurzel $v$ enthaltenen Knoten. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2 \left( \mathit{tw}\left(v\right)\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
+\begin{align*}
+\Phi = \sum_{v \in V} r\left(v\right)
+\end{align*}
+verwendet.
+
+
+
+
+
+\newtheorem{Lemma1}{Access Lemma}[section] \label{lemmaSplay}
+\begin{Lemma1}Sei $T$ ein Splay Baum mit $n$ Knoten und Wurzel $w$ und einem Knoten $v$ mit Schlüssel $k$. Es werden den Knoten fest zugeordnete Gewichte angenommen. Die amortisierte Laufzeit von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ \\
+	
+\end{Lemma1}
+\begin{proof}
+	Zunächst wird für \textit{zig}, \textit{zig-zag} und \textit{zig-zig} gezeigt, dass die amortisierten Kosten nicht größer als $3 \left(r\left(v\right)' - r\left(v\right)\right) + 1$ sind. Für die anderen drei Fälle folgt es dann aus der Symmetrie. Im Anschluss wird die gesamte Operation  betrachtet. An Abbildung  \ref{fig:zigZag} ist zu erkennen, dass sich der Wert von $\mathit{tw}\left(\right)$ nur an den Knoten $v$, dessen Elternknoten $u$  und dem Elternknoten $x$ von $u$ verändern kann.  Damit gilt
+	\begin{align*}
+	\Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right)
+	\end{align*}
+	
+	
+	\paragraph{zig} 
+	In diesem Fall existiert $x$ nicht, damit gilt\\  {$ \Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' - r\left(u\right)- r\left(v\right)$}. Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel ist unabhängig von Zustand des Splay Baum, da an ihr alle im Baum vorhandenen Gewichte aufsummiert werden. Deshalb muss  $\mathit{tw}\left(v\right)' =  \mathit{tw}\left(u\right)$ gelten. Daraus folgt $ \Phi' - \Phi  = r\left(u\right)'- r\left(v\right)$. Aus $r\left(v\right)' \geq r\left(u\right)'$ und $r\left(v\right)' \geq r\left(v\right)'$ folgt $ \Phi' - \Phi \leq  r\left(v\right)'- r\left(v\right) \leq 3\left(r\left(v\right)'- r\left(v\right)\right) $. Addieren von $1$ aufgrund der Rotation ergibt Kosten $\leq 3\left(r\left(v\right)'- r\left(v\right)\right) + 1$.
+	\paragraph{zig-zig} 
+	Es müssen zwei Rotationen ausgeführt werden, deshalb entstehen amortisierte Kosten von
+	\begin{align*}
+	&2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) &\textit{ mit $r\left(x\right) =  r\left(v\right)'$ }\\
+	=& 2 + r\left(u\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right) &\textit{mit
+		$r\left(v\right)' \geq  r\left(u\right)'$ und $r\left(u\right) \geq  r\left(v\right)$}\\
+	\leq &  2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) 
+	\end{align*}
+	Nun wird zunächst die Behauptung aufgestellt, dass dieser Ausdruck klein genug ist, dies wird dann über Äquivalenzen gezeigt.
+	\begin{align*}
+	& 2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) \leq  3\left(r\left(v\right)'- r\left(v\right)\right)\\
+	\Leftrightarrow &2 \leq 2r\left(v\right)' -  r\left(x\right)' - r\left(v\right)\\
+	\Leftrightarrow & -2 \geq -2r\left(v\right)' +  r\left(x\right)' + r\left(v\right)\\
+	\Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(v\right) / \mathit{tw}\left(v'\right)\right)
+	\end{align*}
+	Dass die letzte Ungleichung gilt, kann man an einer Eigenschaft des $\log_2$ ableiten. Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt $\log_2\left(a\right) + \log_2\left(a\right) \leq -2$. An Abbildung \ref{fig:zigZag} ist zu erkennen, dass sich $\mathit{tw}\left(v\right)$ vom Ausgangszustand zum Zwischenzustand hin nicht verändert. $\mathit{tw}\left(x'\right)$ ist ebenfalls unverändert zum Zwischenschritt. Es kann also bei beiden Knoten mit den Werten aus dem Zwischenschritt gearbeitet werden.  $\mathit{tw}\left(v'\right) = \mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right) + w\left(u\right) $. Daraus folgt $\left(\left(x'\right) + \left(v\right)\right) /  \mathit{tw}\left(v'\right) < 1$ und mit der Eigenschaft von $\log_2$ folgen die Ungleichungen.
+	
+	\paragraph{zig-zag} 
+	\begin{align*}
+	&2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) &\textit{ mit $r\left(x\right) =  r\left(v\right)'$ und $r\left(v\right) \leq  r\left(u\right)$} \\
+	\leq& 2 + r\left(u\right)' +r\left(x\right)' - 2 r\left(v\right)
+	\end{align*}
+	Nun wird wie bei zig-zig vorgegangen.
+	\begin{align*}
+	&  2 + r\left(u\right)' +r\left(x\right)' - 2 r\left(v\right) \leq  2\left(r\left(v\right)'- r\left(v\right)\right)\\
+	\Leftrightarrow &2 \leq 2r\left(v\right)' -  r\left(x\right)' - r\left(u\right)'\\
+	\Leftrightarrow &-2 \leq -2\left(v\right)' +  r\left(x\right)' + r\left(u\right)'\\
+	\Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(u'\right) / \mathit{tw}\left(v'\right)\right)
+	\end{align*}
+	Mit der $\log_2$ Regal aus zig-zig und Abbildung \ref{fig:zigZag} folgt die Behauptung.
+	Betrachtet man die Kosten der Gesamtoperation so bildet sich eine Teleskopsumme, die möglicherweise, wenn ein  zig bzw. zag Fall enthalten ist, mit eins addiert werden muss. Daraus folgt das Lemma.
+\end{proof}
+
+\subsection{Dynamische Optimalitäts Vermutung}
+Der Splay Baum erfüllt working set und dynamig finger aus Kapitel \ref{dynOptEigenschaften} und auch noch einige weitere in dieser Arbeit nicht aufgeführte Eigenschaften. Für dynamic finger ist ein sehr aufwändiger Beweis in \cite{dynFInger} enthalten. working set wurde bereits in \cite{splay} gezeigt. Dieser Beweis wird hier vorgestellt. Die anderen Eigenschaften (außer dynamisch optimal) aus Kapitel \ref{dynOptEigenschaften} folgen dann aus diesen beiden. Aufgrund dieser oberen Schranken wurde in \cite{splay} die Vermutung aufgestellt, dass der Splay Baum dynamisch optimal ist. Bewiesen ist bisher nur, dass er $\log \left(n\right)$-competitive ist, dies folgt aus dem access lemma. Würde für eine solche obere Schranke gezeigt werden, dass der Splay Baum diese nicht einhalten kann, jedoch ein anderer BST schon, wäre die Vermutung zur dynamischen Optimalität widerlegt. Auch das ist bis heute nicht geschehen. 
+
+
+
+\newtheorem{Satz2}{working set}[section] \label{workingSetSplay}
+\begin{Satz2} Es sei $T$ ein Splay Baum mit $n$ Knoten. Sei $X = x_1,x_2,..,x_m$ eine für $T$ erstellte Zugriffsfolge, mit $m \geq n$. Sei ${w_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$ definiert, wie in Kapitel \ref{workingSetDynOpt}. Dann gilt für die amortisierte Laufzeit \\
+	$O\left( n \log\left(n\right) + \sum_{i = 1}^{m} \log\left( w_i\right) \right)$.
+\end{Satz2}
+\begin{proof}
+	Den Knoten werden die Gewichte $1, 1/2^2,1/2^3 .., 1/2^n$ zugeordnet. Diesmal ist die Zuordnung nicht fest. Nach jeder \textit{access} Operation können sich Gewichte ändern. Sei $i$ der kleinste Index mit $x_i = \mathit{key}\left(v\right)$ für einen Knoten $v$. Sei $a = \vert\{x_l \vert l < i\}\vert$, dann wird $v$ zum Start das Gewicht $1 / 2^{a+1}$ zugeordnet. Auf Knoten auf deren Schlüssel nicht zugegriffen wird, verteilen sich die kleinsten Gewichte beliebig. $\mathit{tw}\left(v\right)$ und $\Phi$ sind definiert wie beim access lemma.\\
+	Nach einer \textit{access} $\left(x_j\right)$ Operation, werden die Gewichte neu zugeordnet. Der Knoten $v_j$ mit Schlüssel $x_j$ erhält das Gewicht $1/1$. Sei $1/k^2$ das Gewicht von $v_j$ vor \textit{access} $\left(x_j\right)$. Sei $u$ ein Knoten mit $w\left(u\right) = 1 / k^*$ mit  $k^* \in \{1, 4,.., \left(k-1\right)^2\}$ direkt vor dem Zugriff $x_j$. Dann ist $1 /\left(k^* + 1\right)^2$ das Gewicht von $u$ nach dem Zugriff $x_j$. Die Gewichte der restlichen Knoten bleiben unverändert. Zu beachten ist, dass nach einer solchen Neuzuordnung die Menge der im Baum enthaltenen Gewichte unverändert bleibt. \\
+	Diese Verteilung der Gewichte garantiert, dass direkt vor  \textit{access} $\left(x_j\right)$, $v_j$ ein Gewicht von ${1 /w_i}^2$ hat, somit gilt $\mathit{tw}\left(v_j\right) \geq {1 /w_i}^2$ . Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel vom $T$ ist $W = \sum_{i = 1}^{n} 1/ n^2 < 2 = O\left(1\right) $. Diese Werte in das Access Lemma eingesetzt, ergibt Kosten von $O\left(\log\left({w_i}^2  / W\right)\right) = O\left(\log\left({w_i}^2 /W  \right)\right)$. Mit $w_i /W = O\left(1\right)$ ergibt sich $O\left(log\left(w_i\right)\right)$. Durch die nachfolgende Neuzuordnung der Gewichte kann $\Phi$ nur kleinere Werte annehmen, denn nur das Gewicht der neuen Wurzel erhöht sich, $\mathit{tw}\left(\right)$ ist für die Wurzel aber konstant.\\
+	Über die gesamte Zugriffssequenz kann das Potential nicht um mehr als $\sum_{i = 1}^{n} \log_2\left(w\left(i\right) / W\right)$ kleiner werden. Denn $W$ ist der maximale Wert von $\mathit{tw}\left(\right)$ und  der minimale ist $1 /n^2$. Daraus folgt eine maximale Verringerung des Potentials von $O\left(n \log \left(n\right)\right)$. 
+\end{proof}
+
+\section{Multisplay Baum}
+Ein Multisplay Baum \cite{multisplay} $T$ ist eine Variation zum Tango Baum. Ein preferred path wird hier durch einen Splay Baum dargestellt. Amortisiert betrachtet, ist er $\log\left(\log\left(n\right)\right)$-competitive und garantiert eine Laufzeit von $O\left(\log \left(n\right)\right)$ bei einer einzelnen {\textit{access}} Operation. $n$ steht wieder für der Anzahl der Knoten von $T$. Da der Splay Baum kein balancierter Baum ist, gibt es zusätzliche mögliche Zustände im Vergleich zu einem Tango Baum mit der gleichen Knotenzahl.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.8\textwidth]{"Medien/Multisplay/referenzTree"}
+	\caption {Refernzebaum mit grün gezeichneten preferred paths }
+	\label{fig:referenzTree}
+\end{figure} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Multisplay/pfadRepresentation"}
+	\caption {Beispielhafter Multisplay Baum zu Abbildung \ref{fig:referenzTree}.}
+	\label{fig:pfadRepresentation}
+\end{figure} 
+Auch der Multisplay Baum verwendet einige Hilfsdaten je Knoten. Zum einen bereits bekannten Variablen bzw. Konstanten \textit{isRoot}, \textit{depth} und \textit{minDepth}. Aber auch welche, die beim Tango Baum nicht verwendet werden. Sei $v$ ein Knoten in $T$, dann wird mit $v^*$  wieder der Knoten im Referenzbaum $P$ ,  mit $\mathit{key}\left(v\right) = \mathit{key}\left(v^*\right)$ bezeichnet. Jeder Knoten $v$ in $T$ enthält eine \textit{prefChild} Variable, mit der gespeichert welches Kind von $v^*$, das preferred child ist. 
+\subsection{Die \textit{access} Operation beim Multisplay Baum}
+Zu beachten ist, dass jede BST Darstellung auch eine Splay Baum Darstellung ist. Anders als beim Tango oder Zipper Baum, muss ein neu erzeugter Hilfsbaum also nicht so angepasst werden, dass er weitere Invarianten einhält.  Nach einer \textit{access}$\left(k\right)$ Operation ist der Knoten $v_k$ mit dem Schlüssel $k$ die Wurzel von $T$. Zunächst wird eine gewöhnliche Suche in $T$ durchgeführt, bis der Zeiger $p$ der Operation auf $v_k$ zeigt. Ist $v_k$ gefunden, werden die Pfadrepräsentationen aktualisiert. Seien ${p_1}^*,{p_2}^*,..,{p_l}^*.$ die Knoten an denen sich das preferred child geändert hat, so dass \textit{depth}$\left({p_i}^*\right) > $ \textit{depth}$\left({p_{i+1}}^*\right)$, für $i \in \{1, 2,..,l-1\}$ gilt. Dann wird beim aktualisieren zunächst ${p_1}^*$ betrachtet, dann ${p_2}^*$ usw. Nach dem aktualisieren der Pfadrepräsentationen muss noch \textit{splay}$\left(k\right)$ ausgeführt werden, um $v_k$ zur Wurzel von $T$ zu machen. In den Beschreibungen von \textit{cut} und \textit{join} wird von einem zugrunde liegenden preferred child Wechsel vom linken Kind zum Rechten ausgegangen. Der andere Fall ist symmetrisch.\\ 
+\noindent Sei $P_p = {q_1}^*, {q_2}^*,.., {q_m}^*$ ein preferred path und ${q_i}^*$, mit $i \in \{1, 2,..,m\}$, der Knoten  an dem das preferred child wechselt. Sei $k$ der Schlüssel von ${q_i}^*$. Sei $A$ der Hilfsbaum der $P_p$ repräsentiert. Sei $U~=~\{q_1, q_2,.., q_i\}$  und $L= \{q_{i+1}, q_{i+2},..,q_m\}$.  Sei ${q_r}^*$ das rechte Kind von ${q_i}^*$ und $B$ der Hilfsbaum in dem $q_r$ enthalten ist. Sei $P_r = {q_r}^*, {p_1}^*,{p_2}^*.., {q_l}^*$ der preferred path in dem ${q_r}^*$ enthalten ist und  $R= \{ {q_r}, {p_1},{p_2}.., {p_l}\}$.
+
+
+
+
+\paragraph{\textit{switch} Operation beim Multisplay Baum}
+Beim Multisplay Baum werden \textit{cut} und \textit{join} zu einer Operation \textit{switch} zusammengefasst. Abbildung \ref{fig:keySpace} stellt die Zusammenhänge der Schlüssel dar. Das Vorgehen ist sehr ähnlich zu dem aus \ref{TangoCut} und  \ref{TangoJoin} sehr ähnlich, weshalb hier weniger detailliert darauf eingegangen wird.
+Zunächst wird \textit{splay}$\left(k\right)$ auf $A$ ausgeführt. Dadurch entsteht ein Hilfsbaum $C$ mit Wurzel $q_i$. Sei $C_L$ der linke Teilbaum von $q_i$ und $C_R$ der Rechte.\\
+Es wird der Knoten $q_{l'}$, mit dem kleinsten Schlüssel $l' > \textit{key}\left(q_i\right)$, aus $U$ benötigt. Auf den anderen Fall wird noch eingegangen. ${q_{l'}}^*$ muss eine kleinere Tiefe als  $q_i^*$ haben. Deshalb kann $q_{l'}^*$ gefunden werden indem  wie folgt vorgegangen wird. $p$ muss auf die Wurzel von $C_L$ gesetzt werden. In einer Schleife wird $p$ so oft auf das linke Kind $p_l$ von $p$ gesetzt, bis der Wert der \textit{minDepth} Variable von $p_l$ größer als die Tiefe von $q_i^*$  ist.\\
+Nun wird \textit{splay}$\left(l'\right)$ auf $C_l$ ausgeführt. Ist der rechte Teilbaum $D_R$ von $q_{l'}$ nicht leer,  muss bei seiner Wurzel \textit{isRoot} noch auf \textit{true} gesetzt werden. Abbildung \ref{fig:split} stellt es nochmals dar. Der \textit{cut}-Teil ist nun abgeschlossen und wir kommen zum \textit{join}-Teil. \\
+Es wird der Knoten $q_{r'}$, mit dem kleinsten Schlüssel $r' > \textit{key}\left(q_i\right)$, aus $U$ benötigt. ${q_{r'}}^*$ muss eine kleinere Tiefe als  ${q_i}^*$ haben. Deshalb kann ${q_{r'}}^*$ gefunden werden indem  wie folgt vorgegangen wird. $p$ muss auf die Wurzel von $C_R$ gesetzt werden. In einer Schleife wird $p$ so oft auf das rechte Kind $p_r$ von $p$ gesetzt, bis der Wert der \textit{minDepth} Variable von $p_r$ größer als die Tiefe von ${q_i}^*$  ist.\\
+Es wird \textit{splay}$\left(r'\right)$ auf $C_R$ ausgeführt. Nun wird der linke Teilbaum $D_L$ von $q_{r'}$ betrachtet. Jeder Knoten aus $B$ muss in $D_L$ enthalten sein, denn für $v_R \in R$ gilt $k < \mathit{key}\left(v_R\right) < r'$. Kein Knoten aus $L \cup U$ kann in $D_L$ enthalten sein, da für $v_L \in  L$,  $ \mathit{key}\left(v_L\right) < k$ und für  für $v_U \in  U$,  $ \mathit{key}\left(v_U\right) > r'$ gilt. Somit muss das linke Kind von $q_{r'}$ die Wurzel von $B$ sein. Die \textit{isRoot} Variable dieses Knotens wird auf \textit{false} gesetzt.\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 0.8\textwidth]{"Medien/Multisplay/keySpace"}
+	\caption {Beispielhafte Zusammenhänge der Schlüsselgrößen. $U$ ist blau dargestellt, $L$ lila, $R$ rot und $q_i$ gelb. }
+	\label{fig:keySpace}
+\end{figure} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/Multisplay/split"}
+	\caption {Ablauf zum erzeugen einer neuen Pfadrepräsentation, nach einem preferred child Wechsel vom linken Kind zum Rechten.}
+	\label{fig:split}
+\end{figure} 
+
+
+\subsection{Amortisierte Laufzeitanalyse}
+Alle Lemmas und Sätze sind in \cite{multisplay} enthalten.
+Sei $v$ ein Knoten im Multisplay Baum $T$ und $H$ der Hilfsbaum der $v$ enthält. Die Gewichtsfunktion $w\left(v\right)$ liefert eine reelle Zahl $>0$.  $\mathit{tw}\left(v\right)$ bestimmt die Summe aller Gewichte, der Knoten die im Teilbaum mit Wurzel $v$ und in $H$ (nicht $T$) enthalten sind. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2  \mathit{tw}\left(v\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
+\begin{align*}
+\Phi = \sum_{v \in V} r\left(v\right)
+\end{align*}
+verwendet.
+
+\noindent Das Generalized Access Lemma verallgemeinert das Access Lemma vom Splay Baum. \textit{splay}$\left(k\right)$ stoppt normalerweise erst, wenn der Knoten $v_k$ mit Schlüssel $k$ die Wurzel bildet. Sie kann aber ganz einfach modifiziert werden, so dass sie $v_k$ zu einem Knoten mit Tiefe $d$ macht, mit $v_k.$\textit{depth} $> d $.
+
+\newtheorem{Generalized Access Lemma}{Generalized Access Lemma}[section] 
+\begin{Generalized Access Lemma}Sei $T$ ein Multisplay Baum. Sei $v$ ein Knoten im Hilfsbaum $H$ von $T$. $H$ enthalte $n$ Knoten. Sei $u$ ein Vorfahre von $v$ in $H$. Es wird eine (modifizierte) \textit{splay} Operation verwendet, so dass $v'.$\textit{depth} $=$ $u.$\textit{depth} gilt.  Die amortisierten Kosten von \textit{splay}$\left(k\right)$ sind maximal $3 \left(r\left(u\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(u\right)\right)  / \mathit{tw}\left(v\right) \right) = O\left(\log\left(n\right)\right)$ \\	
+\end{Generalized Access Lemma}
+\begin{proof}
+	Folgt direkt aus \ref{splayAccess}. Dass $u$ die Wurzel ist wird dort nicht verwendet. 	
+	
+\end{proof}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.7\textwidth]{"Medien/Multisplay/lemma"}
+	\caption {$l$ ist der Schlüssel von $y_l$ und $r$ der von $y_r$. Ein gestrichelter Pfeil bedeutet, dass ein Pfad zwischen den beiden Knoten existiert.}
+	\label{fig:lemma}
+\end{figure} 
+\newtheorem{Lemma2}{Multisplay Baum Access Lemma}[section] \label{lemmaMultiSplay}
+
+\noindent Im nächsten Lemma geht es um die Gesamtlaufzeit einer \textit{access} Operation beim Multisplay Baum $T$ mit Referenzbaum $P$ (Abbildung \ref{fig:lemma} stellt die Zusammenhänge in $P$ dar). Sei $p^*$ ein Knoten in $P$. Es werden drei Funktionen benötigt. $\mathit{des}\left(p^*\right)$ liefert die Menge der Nachfahren von $p^*$.  $\mathit{pa}\left(p^*\right)$ liefert die Menge der Pfade von $p^*$ zu einem Blatt. \textit{node}$\left(k\right)$ liefert den Knoten aus $T$ der Schlüssel $k$ enthält. An die Gewichtsfunktion werden zwei Bedingungen gestellt. Sei $f \geq 2$.
+\begin{enumerate}
+	\item $w\left(p\right) \geq \max \{  w\left(v\right)\vert  v^*
+	\in\mathit{des}\left(p^*\right)  \}$
+	\item $f  w\left(p\right) \geq    \max \{  \sum_{v^* \in P_p }  w\left(v\right)\vert    P_p \in \mathit{pa}\left(p^*\right) \}  $
+\end{enumerate}
+\begin{Lemma2}
+	Sei $T$ ein Multisplay Baum mit Referenzbaum $P$. Sei $v^*$ die Wurzel von $P$. Sei $f$ eine Konstante $\geq 2$. Die amortisierte Laufzeit zum Ausführen der Zugriffsfolge $X = x_1, x_2,..,x_m$ ist 
+	\begin{align*}
+	O\left(  \sum_{i = 1}^{m} \log_2\left(   \frac{w\left(v\right)}{w\left(\textit{node}\left(x_i\right)\right)}  \right)  
+	+ \left(\log_2\left( f\right)\right) \left(\mathit{IB}\left(X\right) + m\right) \right)
+	\end{align*}
+\end{Lemma2}
+\begin{proof}
+	Der Beweis enthält drei Teile. Zuerst geht es um die Kosten einer \textit{switch} Operation, dann um die Kosten einer  \textit{access} Operation. Zum Schluss wird die Relation zur Interleave Bound hergestellt.\\
+	Es wird eine \textit{switch} Operation während \textit{access}$\left(x_i\right)$ betrachtet. Seien ${y_1}^*, {y_2}^*,..,{y_k}^*$ die Knoten in $P$ bei denen sich, während  \textit{access}$\left(x_i\right)$ das preferred child ändert.  Für $i \in \{1, 2,.., k\}$ sei $t_i$ die Wurzel des Splay Baumes der $y_i$ enthält und $t_{k+1}$ die Wurzel des Splay Baumes der den Knoten $v$, mit \textit{key}$\left(v\right) = x_i$, enthält.\\
+	Es werden nun die Kosten von \textit{switch} aufgrund dem Wechsel des preferred child an ${y_i}^*$ betrachtet. Hierbei wird von einem Wechsel vom linken zum rechten Kind ausgegangen, der andere Fall ist symmetrisch. Und hierbei zunächst die Potentialänderung aufgrund der Änderung an den \textit{isRoot} Variablen in Schritt 3 (Abbildung \ref{fig:split}). Variablen ohne Hochstrich beziehen sich auf den Zustand vor Schritt 3, jedoch nach den \textit{splay} Operationen. Sei $y_l$ das linke Kind von $y_i$ und $y_r$ das Rechte, vor Ausführung von Schritt 3. Sei $w_1$ das rechte Kind von $y_l$ und $w_2$ das linke Kind von $y_r$  ($w_2$ ist die Wurzel eines Hilfsbaumes) . Abbildung \ref{fig:split} ist zu entnehmen, dass sich die Werte von $\mathit{tw}\left(\right)$ nur an den Knoten $y_l, y_i$ und $y_r$ ändern können.
+	
+	\begin{align}
+	\Phi' - \Phi &= \left( r\left({y_l}'\right) - r\left({y_l}\right)\right) + \left( r\left({y_i}'\right) - r\left({y_i}\right)\right) + \left( r\left({y_r}'\right) - r\left({y_r}\right)\right)\\
+	&\leq   \left( r\left({y_i}'\right) - r\left({y_i}\right)\right) +  \left( r\left({y_r}'\right) - r\left({y_r}\right)\right)\\
+	&=\log_2\left( \mathit{tw}\left({y_i}'\right)  / \mathit{tw}\left({y_i}\right)  \right) + \log_2\left( \mathit{tw}\left({y_r}'\right)  / \mathit{tw}\left({y_r}\right)  \right) \\
+	&\leq	\log_2\left(\frac{\mathit{tw}\left({y_i}\right) + \mathit{tw}\left({w_2} \right)  }{\mathit{tw}\left({y_i}\right)}   \right) + \log_2\left( \frac{\mathit{tw}\left({y_r}\right) + \mathit{tw}\left({w_2} \right)}{\mathit{tw}\left({y_r}\right)} 	  \right) \\
+	&\leq \log_2\left( 1 + \mathit{tw}\left({w_2}  	\right) / \mathit{w}\left({y_i}\right) \right)  +
+	\log_2 \left(1 + \mathit{tw}\left({w_2}   	\right) / \mathit{w}\left({y_i}\right) \right)  \\
+	&\leq 2 \log_2 \left(1 + f\right)\\
+	&= O\left(\log \left(f\right)\right)
+	\end{align}
+	Begründungen:
+	\begin{enumerate}
+		\item -
+		\item $ r\left({y_l}'\right) \leq r\left({y_l}\right)$
+		\item -
+		\item $\mathit{tw}\left({w_1}\right) \geq 0$
+		\item Bedingung 1 an die Gewichtsfunktion und $w\left(y_i\right) \leq \mathit{tw}\left(y_i\right)$
+		\item Bedingung 2 an die Gewichtsfunktion. Die Knoten aus dem Hilfsbaum mit Wurzel $w_2$ repräsentieren einen Pfad in $P$. ${w_2}^*$ muss ein Nachfolger von ${y_i}*$ sein.
+	\end{enumerate}	
+	Nun geht es um die Gesamtkosten \textit{cost(switch)}$\left(y_i\right)$ der \textit{switch} Operation. Dazu werden die Kosten der max. drei \textit{splay} Operationen mit $\Phi' - \Phi$ addiert. $\mathit{tw}\left(t_i\right)$ kann bei jeder \textit{splay} Operation eingesetzt werden, da sich das Gesamtgewicht an der Wurzel, durch \textit{splay} nicht verändert.
+	\begin{align*}
+	&O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_i\right)  \right) \right) +
+	O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_l\right)  \right) \right) + O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{tw}\left(y_r\right)  \right) \right) +
+	O\left(\log \left(f\right)\right)\\
+	\leq & O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
+	O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_l\right)  \right) \right) + O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_r\right)  \right) \right) +
+	O\left(\log \left(f\right)\right)\\ 
+	\leq & O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
+	O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) + O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
+	O\left(\log \left(f\right)\right)\\ 
+	= & O\left(\log \left(\mathit{tw}\left(t_i\right) /  \mathit{w}\left(y_i\right)  \right) \right) +
+	O\left(\log \left(f\right)\right)\\ 
+	\leq & O\left(\log \left(\mathit{tw}\left(t_i\right) / \left( \mathit{tw}\left(t_{i+1}\right) / f  \right) \right)\right) +
+	O\left(\log \left(f\right)\right) \textit{      } (\textit{zweite Bedingung von $w\left(\right)$})\\ 
+	= & O\left(\log \left(\mathit{tw}\left(t_i\right) / \mathit{tw}\left(t_{i+1}\right) \right)\right) +
+	O\left(\log \left(f\right)\right)
+	\end{align*}
+	Für die zweite Ungleichung wird die erste Bedingung an die Gewichtsfunktion benötigt.
+\end{proof}
+Die Kosten der $k$ \textit{switch} Operationen müssen mit den Kosten der abschließenden \textit{splay} Operation addiert werden, um auf Gesamtkosten \textit{cost}$\left(\textit{access}\left(x_i\right)\right)$ zu erhalten.
+\begin{align*}
+\textit{cost}\left(\textit{access}\left(x_i\right)\right)  &=\sum_{i=1}^{k}O\left(\textit{cost}\left(\textit{switch}\left(y_i\right)\right)\right) + O\left(\textit{cost}\left(\textit{splay}\left(x_i\right)\right)\right) \\
+&= \sum_{i=1}^{k}O\left(\log \left(\mathit{tw}\left(t_i\right) / \mathit{tw}\left(t_{i+1}\right) \right)\right) + O\left(k \log\left(f\right)\right) + O\left(\log\left(\mathit{tw}\left(t_{1}\right) / \mathit{tw}\left(\textit{node}\left(x_i\right)\right) \right)\right)\\
+&= O\left(\log \left(\mathit{tw}\left(t_1\right) / \mathit{tw}\left(t_{i+1}\right) \right)\right) + O\left(k \log\left(f\right)\right) + O\left(\log\left(f \mathit{w}\left(v\right) / \mathit{w}\left(\textit{node}\left(x_i\right)\right) \right)\right)\\
+&= O\left(\log \left(\mathit{w}\left(v\right) / \mathit{w}\left(\textit{node}\left(x_i\right)\right) \right)\right) + O\left(\left(k + 1\right) \log\left(f\right) \right) 
+\end{align*}
+Jetzt wird die Verbindung zur Interleave Bound hergestellt. Sei $U$ die Menge der in $P$ enthaltenen Knoten. Sei $X_1 = x_1, x_2,.., x_{i-1}$ und $X_2 = x_1, x_2,.., x_i$.  $k$ entspricht $\mathit{IB\left(X_2\right)} - \mathit{IB\left(X_1\right)}$, vergleiche Kapitel \ref{interleaveBound}. 
+\begin{align*}
+\textit{cost}\left(\textit{access}\left(X\right)\right) &= \sum_{i = 1}^{m} \textit{access}\left(x_i\right)\\
+&= \sum_{i = 1}^{m}O\left(\log \left( \mathit{w}\left(v\right)/w\left(\textit{node}\left(x_i\right)\right) \right)\right) + \sum_{i = 2}^{m}O\left(\left(	1 + \mathit{IB}\left(X_2\right)	- \mathit{IB}\left(X_1\right) \right) \log\left(f\right)\right)\\
+&=\sum_{i = 1}^{m}O\left(\log \left( \mathit{w}\left(v\right)/w\left(\textit{node}\left(x_i\right)\right) \right)\right) +  O\left(\left(\mathit{IB}\left(X\right) + m  \right)\log\left(f\right)\right)\\
+&=O\left(  \sum_{i = 1}^{m} \log\left(   \frac{w\left(v\right)}{w\left(\textit{node}\left(x_i\right)\right)}  \right)  
++ \left(\log \left(f\right)\right) \left(\mathit{IB}\left(X\right) + m\right) \right)
+\end{align*}
+
+
+\begin{Satz}Ein Multisplay Baum $T$ mit $n$ Knoten ist $\log\left(\log\left(n\right)\right)$-competitive.
+\end{Satz}
+\begin{proof}
+	Sei $m$ die Länge der Zugriffsfolge $X$ und $P$ der Referenzbaum zu $T$. Es wird eine Gewichtsfunktion $w\left(\right)$ gewählt mit  $w\left(v\right) = 1$ für jeden Knoten $v$ in $T$. Sei $f = 2 \log_2\left(n\right) + 2$. Die zweite Bedingung an die Gewichtsfunktion ist erfüllt, da ein Pfad in $P$ maximal eine Länge von $l = \log_2\left(n\right) +1$ haben kann und damit $f > l$ gilt. Die erste ist erfüllt, da jeder Knoten des gleiche Gewicht hat. Einsetzen in das Multisplay Baum Access Lemma ergibt:
+	\begin{align*}
+	&O\left(  \sum_{i = 1}^{m} \log\left(   \frac{1}{1}  \right)  
+	+ \left(\log\log\left(n\right) \right) \left(\mathit{IB}\left(X\right) + m\right) \right)\\
+	=&O\left( \left(\log\left(\log\left(n\right)\right) \right) \left(\mathit{IB}\left(X\right) + m\right) \right)\\
+	=&O \left(\log\left(\log\left(n\right)\right) \right) \mathit{IB}\left(X\right)
+	\end{align*}	
+\end{proof}
+
+
+\begin{Satz}Bei einem Multisplay Baum $T$ mit $n$ Knoten hat und $X = x_1, x_2,.., x_m$ eine Zugriffsfolge. \textit{access}$\left(x_i\right)$ eine amortisierte Laufzeit von $O\left(\log\left(n\right)\right)$ 
+\end{Satz}
+\begin{proof}
+	
+	Sei $P$ der Referenzbaum zu $T$. Sei $d$ die Tiefe des Knotens $v$ in $T$ mit $\mathit{key}\left(v\right) = x_i$. Sei $f = 2$. Sei $h\left(u\right)$ die Funktion die zu jedem Knoten in $T$ die Höhe liefert. (Ein Blatt hat Höhe $1$). Es wird eine Gewichtsfunktion $w\left(\right)$ gewählt mit  $w\left(u\right) = 2^{h\left(u\right)-1}$. Auch die zweite Bedingung an die Gewichtsfunktion ist erfüllt, da $\sum_{i = 1}^{m} 2^i < 2^{m+1}$ für alle $m \in \mathit{N}$ gilt. Einsetzen in das Multisplay Baum Access Lemma ergibt:
+	\begin{align*}
+	&O\left(  \sum_{i = 1}^{m} \log_2\left(   \frac{n}{w\left(\textit{node}\left(x_i\right)\right)}  \right)  
+	+ \left(\log\left( 2\right)\right) \left(\mathit{IB}\left(X\right) + m\right) \right)\\
+	=&O\left(m \left(\log\left(n\right) \right)+ \mathit{IB}\left(X\right) \right)\\
+	=& O\left(m \left(\log\left(n\right)\right)\right)
+	\end{align*}	
+\end{proof}
 \newpage
 \bibliography{literaturverzeichnis}
 \bibliographystyle{unsrt}
+
+
+
+
+
+
 
 \end {document}

@@ -5,11 +5,11 @@
 \contentsline {subsubsection}{\numberline {1.1.2}Die \textit {access} Operation beim Hybrid Baum}{4}%
 \contentsline {paragraph}{\textit {cut} beim Hybrid Baum}{5}%
 \contentsline {paragraph}{\textit {join} beim Hybrid Baum}{6}%
-\contentsline {paragraph}{\textit {extract} beim Hybrid Baum}{6}%
-\contentsline {subsubsection}{\numberline {1.1.3}Laufzeitanalyse beim Hybrid Baum}{9}%
-\contentsline {subsection}{\numberline {1.2}Repräsentation eines preferred path beim Zipper Baum}{9}%
-\contentsline {subsection}{\numberline {1.3}Die \textit {access} Operation beim Zipper Baum}{10}%
-\contentsline {paragraph}{cut Operation}{10}%
-\contentsline {paragraph}{join Operation}{11}%
-\contentsline {paragraph}{extract Operation}{11}%
-\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse beim Zipper Baum}{11}%
+\contentsline {paragraph}{\textit {extract} beim Hybrid Baum}{7}%
+\contentsline {subsubsection}{\numberline {1.1.3}Laufzeitanalyse beim Hybrid Baum}{10}%
+\contentsline {subsection}{\numberline {1.2}Repräsentation eines preferred path beim Zipper Baum}{11}%
+\contentsline {subsection}{\numberline {1.3}Die \textit {access} Operation beim Zipper Baum}{12}%
+\contentsline {paragraph}{cut Operation}{13}%
+\contentsline {paragraph}{join Operation}{14}%
+\contentsline {paragraph}{extract Operation}{14}%
+\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse beim Zipper Baum}{14}%

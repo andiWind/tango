@@ -10,45 +10,47 @@ I was expecting a `,' or a `}'---line 102 of file literaturverzeichnis.bib
  : day = "10",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You've used 6 entries,
+Warning--I didn't find a database entry for "dynFInger"
+Warning--empty institution in multisplay
+You've used 9 entries,
             1791 wiz_defined-function locations,
-            488 strings with 4413 characters,
-and the built_in function-call counts, 1250 in all, are:
-= -- 105
-> -- 61
-< -- 0
-+ -- 23
-- -- 17
-* -- 87
-:= -- 215
-add.period$ -- 19
-call.type$ -- 6
-change.case$ -- 5
+            510 strings with 4886 characters,
+and the built_in function-call counts, 1970 in all, are:
+= -- 175
+> -- 91
+< -- 1
++ -- 34
+- -- 25
+* -- 127
+:= -- 322
+add.period$ -- 28
+call.type$ -- 9
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 55
-empty$ -- 123
-format.name$ -- 17
-if$ -- 277
+cite$ -- 10
+duplicate$ -- 94
+empty$ -- 183
+format.name$ -- 25
+if$ -- 444
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 8
-newline$ -- 33
-num.names$ -- 6
-pop$ -- 14
+int.to.str$ -- 9
+missing$ -- 10
+newline$ -- 48
+num.names$ -- 9
+pop$ -- 22
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 18
+skip$ -- 47
 stack$ -- 0
-substring$ -- 57
-swap$ -- 6
-text.length$ -- 0
+substring$ -- 96
+swap$ -- 23
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 9
-width$ -- 7
-write$ -- 69
+warning$ -- 1
+while$ -- 15
+width$ -- 10
+write$ -- 101
 (There was 1 error message)
