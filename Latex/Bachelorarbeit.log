@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  1 AUG 2020 18:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  2 AUG 2020 18:17
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -359,21 +359,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
-<Medien/Einleitung/ioSuchbaum.png, id=26, 673.3155pt x 269.808pt>
+<Medien/Einleitung/ioSuchbaum.png, id=26, 563.10374pt x 269.808pt>
 File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/ioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 4
 9.
-(pdftex.def)             Requested size: 390.0pt x 156.27878pt.
+(pdftex.def)             Requested size: 390.0pt x 186.8676pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/Einleitung/nioSuchbaum.png, id=28, 476.37975pt x 274.02374pt>
+<Medien/Einleitung/nioSuchbaum.png, id=28, 530.58224pt x 274.02374pt>
 File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/nioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
 55.
-(pdftex.def)             Requested size: 390.0pt x 224.33714pt.
+(pdftex.def)             Requested size: 390.0pt x 201.42384pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -397,12 +397,12 @@ Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [8 <./Medien/Einleitung/ioSuchbaum.png>]
-<Medien/Einleitung/linksRechts.png, id=50, 3468.96pt x 1233.408pt>
+<Medien/Einleitung/linksRechts.png, id=50, 714.87074pt x 254.75175pt>
 File: Medien/Einleitung/linksRechts.png Graphic file (type png)
 <use Medien/Einleitung/linksRechts.png>
 Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
 80.
-(pdftex.def)             Requested size: 390.0pt x 138.6489pt.
+(pdftex.def)             Requested size: 390.0pt x 138.98271pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -414,12 +414,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
 [9 <./Medien/Einleitung/nioSuchbaum.png>] [10 <./Medien/Einleitung/suchbaum2_2.
 png>]
-<Medien/Einleitung/VorgängerNachfolger.png, id=59, 502.87875pt x 310.15875pt>
+<Medien/Einleitung/VorgängerNachfolger.png, id=59, 548.0475pt x 310.15875pt>
 File: Medien/Einleitung/VorgängerNachfolger.png Graphic file (type png)
 <use Medien/Einleitung/VorgängerNachfolger.png>
 Package pdftex.def Info: Medien/Einleitung/VorgängerNachfolger.png  used on in
 put line 101.
-(pdftex.def)             Requested size: 390.0pt x 240.53618pt.
+(pdftex.def)             Requested size: 390.0pt x 220.71591pt.
  [11 <./Medien/Einleitung/linksRechts.png> <./Medien/Einleitung/VorgängerNachf
 olger.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 113--118
@@ -473,12 +473,12 @@ Overfull \hbox (77.99881pt too wide) in paragraph at lines 143--144
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/Einleitung/SuchenEinfügen.png, id=71, 3874.27425pt x 1300.86pt>
+<Medien/Einleitung/SuchenEinfügen.png, id=71, 797.98125pt x 268.6035pt>
 File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
 <use Medien/Einleitung/SuchenEinfügen.png>
 Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
 ine 155.
-(pdftex.def)             Requested size: 467.99881pt x 157.12863pt.
+(pdftex.def)             Requested size: 467.99881pt x 157.53201pt.
 
 Overfull \hbox (77.99881pt too wide) in paragraph at lines 155--156
  [][] 
@@ -531,18 +531,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
-<Medien/DynOpt/lowerBoundTree.png, id=107, 4459.66125pt x 1497.1935pt>
+<Medien/DynOpt/lowerBoundTree.png, id=107, 918.43124pt x 308.95425pt>
 File: Medien/DynOpt/lowerBoundTree.png Graphic file (type png)
 <use Medien/DynOpt/lowerBoundTree.png>
 Package pdftex.def Info: Medien/DynOpt/lowerBoundTree.png  used on input line 2
 58.
-(pdftex.def)             Requested size: 390.0pt x 130.92644pt.
+(pdftex.def)             Requested size: 390.0pt x 131.19302pt.
 [20 <./Medien/DynOpt/lowerBoundTree.png>] [21]
-<Medien/DynOpt/T_r_l.png, id=116, 3552.0705pt x 1209.92026pt>
+<Medien/DynOpt/T_r_l.png, id=116, 731.73375pt x 249.93375pt>
 File: Medien/DynOpt/T_r_l.png Graphic file (type png)
 <use Medien/DynOpt/T_r_l.png>
 Package pdftex.def Info: Medien/DynOpt/T_r_l.png  used on input line 290.
-(pdftex.def)             Requested size: 390.0pt x 132.83318pt.
+(pdftex.def)             Requested size: 390.0pt x 133.21173pt.
 
 Overfull \hbox (35.08855pt too wide) in paragraph at lines 295--296
 \T1/cmr/m/n/12 Sei $\OML/cmm/m/it/12 K[]$ \T1/cmr/m/n/12 die Schl�s-sel-men-ge 
@@ -697,20 +697,13 @@ File: Medien/Tango/cut2.png Graphic file (type png)
 <use Medien/Tango/cut2.png>
 Package pdftex.def Info: Medien/Tango/cut2.png  used on input line 739.
 (pdftex.def)             Requested size: 390.0pt x 320.91562pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[43]
-<Medien/Tango/join.png, id=213, 991.90575pt x 519.74174pt>
+ [43] [44 <./Medien/Tango/cut.png>] [45 <./Medien/Tango/cut2.png>]
+<Medien/Tango/join.png, id=221, 991.90575pt x 519.74174pt>
 File: Medien/Tango/join.png Graphic file (type png)
 <use Medien/Tango/join.png>
 Package pdftex.def Info: Medien/Tango/join.png  used on input line 763.
 (pdftex.def)             Requested size: 390.0pt x 204.35596pt.
-<Medien/Tango/join2.png, id=214, 900.36375pt x 517.33275pt>
+<Medien/Tango/join2.png, id=222, 900.36375pt x 517.33275pt>
 File: Medien/Tango/join2.png Graphic file (type png)
 <use Medien/Tango/join2.png>
 Package pdftex.def Info: Medien/Tango/join2.png  used on input line 769.
@@ -719,35 +712,28 @@ Package pdftex.def Info: Medien/Tango/join2.png  used on input line 769.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[44] [45]
+[46 <./Medien/Tango/join.png>] [47 <./Medien/Tango/join2.png>] [48]
 Overfull \hbox (11.29567pt too wide) in paragraph at lines 818--820
 \T1/cmr/m/n/12 Satz 5.1[] er-gibt sich $\OML/cmm/m/it/12 O []$\T1/cmr/m/n/12 . 
 Mit $[] [] \OMS/cmsy/m/n/12 
  []
 
 
-LaTeX Warning: Reference `upperBounds' on page 46 undefined on input line 823.
+LaTeX Warning: Reference `upperBounds' on page 49 undefined on input line 823.
 
-[46]
+[49]
 Underfull \hbox (badness 10000) in paragraph at lines 837--838
 
  []
 
-[47]
-<Medien/RotSchwarzBaum/IOBaum.png, id=227, 2527.64325pt x 1209.92026pt>
+[50]
+<Medien/RotSchwarzBaum/IOBaum.png, id=241, 2527.64325pt x 1209.92026pt>
 File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/IOBaum.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 8
 43.
 (pdftex.def)             Requested size: 390.0pt x 186.66798pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=228, 2527.64325pt x 1209.92026pt
+<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=242, 2527.64325pt x 1209.92026pt
 >
 File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
@@ -755,9 +741,10 @@ Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
 ut line 849.
 (pdftex.def)             Requested size: 390.0pt x 186.66798pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=229, 2527.64325pt x 1532.124pt
+<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=243, 2527.64325pt x 1532.124pt
 >
 File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
@@ -767,17 +754,18 @@ nput line 855.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[48]
+[51 <./Medien/RotSchwarzBaum/IOBaum.png>] [52 <./Medien/RotSchwarzBaum/NIOBaumZ
+weiRote.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 877--878
 
  []
 
-
+[53 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 879--881
 
  []
 
-[49]
+
 Underfull \hbox (badness 10000) in paragraph at lines 891--894
 
  []
@@ -787,15 +775,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 895--897
 
  []
 
-[50]
-<Medien/RotSchwarzBaum/EinfügenFixUpFall1.png, id=240, 2351.78625pt x 858.8085
+[54]
+<Medien/RotSchwarzBaum/EinfügenFixUpFall1.png, id=259, 2351.78625pt x 858.8085
 pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall1.png  used on
  input line 911.
 (pdftex.def)             Requested size: 272.99881pt x 99.68475pt.
-<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=241, 5132.97675pt x 1795.909
+<Medien/RotSchwarzBaum/EinfügenFixUpFall2.png, id=260, 5132.97675pt x 1795.909
 5pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall2.png>
@@ -811,30 +799,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 922--924
 
  []
 
-[51 <./Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>]
+[55 <./Medien/RotSchwarzBaum/EinfügenFixUpFall1.png>] [56 <./Medien/RotSchwarz
+Baum/EinfügenFixUpFall2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 938--940
 
  []
 
-[52]
+
 Underfull \hbox (badness 10000) in paragraph at lines 951--952
 
  []
 
-
+[57]
 Underfull \hbox (badness 10000) in paragraph at lines 953--957
 
  []
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=249, 3683.96326pt x 2301.799
+<Medien/RotSchwarzBaum/EinfügenFixUpFall3.png, id=273, 3683.96326pt x 2301.799
 5pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall3.png  used on
  input line 963.
 (pdftex.def)             Requested size: 390.0pt x 243.64539pt.
-[53]
-<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=253, 3581.58075pt x 2655.320
+<Medien/RotSchwarzBaum/EinfügenFixUpFall4.png, id=274, 3581.58075pt x 2655.320
 25pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall4.png>
@@ -842,30 +830,33 @@ Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall4.png  used on
  input line 970.
 (pdftex.def)             Requested size: 390.0pt x 289.1284pt.
 
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/RotSchwarzBaum/EinfügenFixUpFall5.png, id=254, 3518.3445pt x 2209.6552
+<Medien/RotSchwarzBaum/EinfügenFixUpFall5.png, id=275, 3518.3445pt x 2209.6552
 4pt>
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall5.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall5.png  used on
  input line 977.
 (pdftex.def)             Requested size: 390.0pt x 244.91724pt.
-<Medien/RotSchwarzBaum/EinfügenFixUpFall6.png, id=255, 3523.1625pt x 2673.99pt
+<Medien/RotSchwarzBaum/EinfügenFixUpFall6.png, id=276, 3523.1625pt x 2673.99pt
 >
 File: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/EinfügenFixUpFall6.png  used on
  input line 983.
 (pdftex.def)             Requested size: 390.0pt x 295.97589pt.
-[54 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png> <./Medien/RotSchwarzBaum/
+[58 <./Medien/RotSchwarzBaum/EinfügenFixUpFall3.png>]
+Overfull \vbox (5.24562pt too high) has occurred while \output is active []
+
+
+[59 <./Medien/RotSchwarzBaum/EinfügenFixUpFall4.png> <./Medien/RotSchwarzBaum/
 EinfügenFixUpFall5.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 995--1001
 
  []
 
-[55 <./Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>]
+[60 <./Medien/RotSchwarzBaum/EinfügenFixUpFall6.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1003--1005
 
  []
@@ -880,7 +871,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1012--1014
 
  []
 
-<Medien/RotSchwarzBaum/vereinigen.png, id=266, 1730.8665pt x 1991.64075pt>
+<Medien/RotSchwarzBaum/vereinigen.png, id=290, 1730.8665pt x 1991.64075pt>
 File: Medien/RotSchwarzBaum/vereinigen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen.png  used on input li
@@ -889,7 +880,7 @@ ne 1039.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/RotSchwarzBaum/vereinigen2.png, id=267, 1805.5455pt x 1766.39925pt>
+<Medien/RotSchwarzBaum/vereinigen2.png, id=291, 1805.5455pt x 1766.39925pt>
 File: Medien/RotSchwarzBaum/vereinigen2.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/vereinigen2.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen2.png  used on input l
@@ -903,17 +894,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 1049--1060
 
  []
 
-[56] [57] [58] [59]
+[61] [62 <./Medien/RotSchwarzBaum/vereinigen.png>] [63 <./Medien/RotSchwarzBaum
+/vereinigen2.png>] [64] [65]
 Underfull \hbox (badness 10000) in paragraph at lines 1093--1094
 
  []
 
-[60]
+[66]
 Overfull \hbox (2.91464pt too wide) detected at line 1130
 []
  []
 
-<Medien/RotSchwarzBaum/aufteilen.png, id=284, 3256.968pt x 2957.64975pt>
+<Medien/RotSchwarzBaum/aufteilen.png, id=314, 3256.968pt x 2957.64975pt>
 File: Medien/RotSchwarzBaum/aufteilen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/aufteilen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/aufteilen.png  used on input lin
@@ -922,18 +914,14 @@ e 1147.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[61]
-<Medien/Zipper/preferredPath.png, id=289, 496.85625pt x 711.25725pt>
+[67] [68 <./Medien/RotSchwarzBaum/aufteilen.png>]
+<Medien/Zipper/preferredPath.png, id=323, 496.85625pt x 711.25725pt>
 File: Medien/Zipper/preferredPath.png Graphic file (type png)
 <use Medien/Zipper/preferredPath.png>
 Package pdftex.def Info: Medien/Zipper/preferredPath.png  used on input line 11
 64.
 (pdftex.def)             Requested size: 136.21512pt x 195.0pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Medien/Zipper/hybrid/pathRepresentation.png, id=290, 501.67426pt x 620.3175pt>
+<Medien/Zipper/hybrid/pathRepresentation.png, id=324, 501.67426pt x 620.3175pt>
 
 File: Medien/Zipper/hybrid/pathRepresentation.png Graphic file (type png)
 <use Medien/Zipper/hybrid/pathRepresentation.png>
@@ -941,10 +929,12 @@ Package pdftex.def Info: Medien/Zipper/hybrid/pathRepresentation.png  used on i
 nput line 1170.
 (pdftex.def)             Requested size: 157.69905pt x 195.0pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[62] [63]
-<Medien/Zipper/hybrid/concatPfad.png, id=297, 571.53525pt x 623.32875pt>
+[69 <./Medien/Zipper/preferredPath.png>] [70 <./Medien/Zipper/hybrid/pathRepres
+entation.png>]
+<Medien/Zipper/hybrid/concatPfad.png, id=333, 571.53525pt x 623.32875pt>
 File: Medien/Zipper/hybrid/concatPfad.png Graphic file (type png)
 <use Medien/Zipper/hybrid/concatPfad.png>
 Package pdftex.def Info: Medien/Zipper/hybrid/concatPfad.png  used on input lin
@@ -954,7 +944,7 @@ e 1195.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/Zipper/hybrid/concatHybrid.png, id=298, 526.96875pt x 484.81125pt>
+<Medien/Zipper/hybrid/concatHybrid.png, id=334, 526.96875pt x 484.81125pt>
 File: Medien/Zipper/hybrid/concatHybrid.png Graphic file (type png)
 <use Medien/Zipper/hybrid/concatHybrid.png>
 Package pdftex.def Info: Medien/Zipper/hybrid/concatHybrid.png  used on input l
@@ -964,56 +954,47 @@ ine 1201.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Reference `dd' on page 64 undefined on input line 1209.
+LaTeX Warning: Reference `dd' on page 71 undefined on input line 1209.
 
 
-LaTeX Warning: Reference `TangoAbschnitt' on page 64 undefined on input line 12
+LaTeX Warning: Reference `TangoAbschnitt' on page 71 undefined on input line 12
 09.
 
 
-LaTeX Warning: Reference `tango' on page 64 undefined on input line 1213.
+LaTeX Warning: Reference `tango' on page 71 undefined on input line 1213.
 
-<Medien/Zipper/hybrid/extractHybrid.png, id=299, 1159.33125pt x 472.76625pt>
+<Medien/Zipper/hybrid/extractHybrid.png, id=335, 1159.33125pt x 472.76625pt>
 File: Medien/Zipper/hybrid/extractHybrid.png Graphic file (type png)
 <use Medien/Zipper/hybrid/extractHybrid.png>
 Package pdftex.def Info: Medien/Zipper/hybrid/extractHybrid.png  used on input 
 line 1217.
 (pdftex.def)             Requested size: 312.00119pt x 127.23018pt.
-<Medien/Zipper/hybrid/listeHybrid.png, id=300, 1066.58475pt x 707.64375pt>
+<Medien/Zipper/hybrid/listeHybrid.png, id=336, 1066.58475pt x 707.64375pt>
 File: Medien/Zipper/hybrid/listeHybrid.png Graphic file (type png)
 <use Medien/Zipper/hybrid/listeHybrid.png>
 Package pdftex.def Info: Medien/Zipper/hybrid/listeHybrid.png  used on input li
 ne 1223.
 (pdftex.def)             Requested size: 312.00119pt x 207.00386pt.
-[64] [65]
+[71] [72 <./Medien/Zipper/hybrid/concatPfad.png>] [73 <./Medien/Zipper/hybrid/c
+oncatHybrid.png>] [74] [75 <./Medien/Zipper/hybrid/extractHybrid.png> <./Medien
+/Zipper/hybrid/listeHybrid.png>]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[66]
-
-LaTeX Warning: Reference `zipperPathRep' on page 67 undefined on input line 124
+LaTeX Warning: Reference `zipperPathRep' on page 76 undefined on input line 124
 6.
 
-[67]
-<Medien/Zipper/zipperPathRep.png, id=314, 440.847pt x 306.54526pt>
+[76]
+<Medien/Zipper/zipperPathRep.png, id=360, 440.847pt x 306.54526pt>
 File: Medien/Zipper/zipperPathRep.png Graphic file (type png)
 <use Medien/Zipper/zipperPathRep.png>
 Package pdftex.def Info: Medien/Zipper/zipperPathRep.png  used on input line 12
 50.
 (pdftex.def)             Requested size: 312.00119pt x 216.95169pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[68]
+ [77 <./Medien/Zipper/zipperPathRep.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1281--1282
 
  []
 
-<Medien/Zipper/preferredPathZigZag.png, id=318, 591.4095pt x 844.3545pt>
+<Medien/Zipper/preferredPathZigZag.png, id=365, 591.4095pt x 844.3545pt>
 File: Medien/Zipper/preferredPathZigZag.png Graphic file (type png)
 <use Medien/Zipper/preferredPathZigZag.png>
 Package pdftex.def Info: Medien/Zipper/preferredPathZigZag.png  used on input l
@@ -1022,13 +1003,13 @@ ine 1289.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[69]
+[78] [79 <./Medien/Zipper/preferredPathZigZag.png>]
 Overfull \hbox (7.0851pt too wide) in paragraph at lines 1309--1311
 \T1/cmr/m/n/12 Dieser Fall un-ter-schei-det den Splay-baum vom ei-nem an-de-ren
  BST (move-
  []
 
-<Medien/Splaybaum/zigZag.png, id=322, 1487.5575pt x 736.55174pt>
+<Medien/Splaybaum/zigZag.png, id=374, 1487.5575pt x 736.55174pt>
 File: Medien/Splaybaum/zigZag.png Graphic file (type png)
 <use Medien/Splaybaum/zigZag.png>
 Package pdftex.def Info: Medien/Splaybaum/zigZag.png  used on input line 1325.
@@ -1041,7 +1022,7 @@ Overfull \hbox (77.99881pt too wide) in paragraph at lines 1325--1326
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/Splaybaum/splay.png, id=323, 673.91776pt x 417.9615pt>
+<Medien/Splaybaum/splay.png, id=375, 673.91776pt x 417.9615pt>
 File: Medien/Splaybaum/splay.png Graphic file (type png)
 <use Medien/Splaybaum/splay.png>
 Package pdftex.def Info: Medien/Splaybaum/splay.png  used on input line 1331.
@@ -1050,7 +1031,7 @@ Package pdftex.def Info: Medien/Splaybaum/splay.png  used on input line 1331.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Reference `potentialfunktionsmethode' on page 70 undefined on in
+LaTeX Warning: Reference `potentialfunktionsmethode' on page 80 undefined on in
 put line 1337.
 
 \c@Lemma1=\count282
@@ -1059,30 +1040,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 1348--1349
 
  []
 
-[70]
+[80]
 Overfull \hbox (49.39034pt too wide) detected at line 1367
 []
  []
 
-[71]
+[81 <./Medien/Splaybaum/zigZag.png>] [82 <./Medien/Splaybaum/splay.png>]
 Overfull \hbox (50.5788pt too wide) detected at line 1381
 []
  []
 
 
-LaTeX Warning: Reference `dynOptEigenschaften' on page 72 undefined on input li
+LaTeX Warning: Reference `dynOptEigenschaften' on page 83 undefined on input li
 ne 1394.
 
 
-LaTeX Warning: Citation `dynFInger' on page 72 undefined on input line 1394.
+LaTeX Warning: Citation `dynFInger' on page 83 undefined on input line 1394.
 
 
-LaTeX Warning: Reference `dynOptEigenschaften' on page 72 undefined on input li
+LaTeX Warning: Reference `dynOptEigenschaften' on page 83 undefined on input li
 ne 1394.
 
 \c@Satz2=\count283
 
-LaTeX Warning: Reference `workingSetDynOpt' on page 72 undefined on input line 
+LaTeX Warning: Reference `workingSetDynOpt' on page 83 undefined on input line 
 1399.
 
 
@@ -1092,14 +1073,14 @@ Overfull \hbox (9.7803pt too wide) in paragraph at lines 1399--1401
 Sei $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x[]; x[]; ::; x[]$
  []
 
-[72]
-<Medien/Multisplay/referenzTree.png, id=333, 469.15276pt x 242.1045pt>
+[83]
+<Medien/Multisplay/referenzTree.png, id=390, 469.15276pt x 242.1045pt>
 File: Medien/Multisplay/referenzTree.png Graphic file (type png)
 <use Medien/Multisplay/referenzTree.png>
 Package pdftex.def Info: Medien/Multisplay/referenzTree.png  used on input line
  1413.
 (pdftex.def)             Requested size: 312.00119pt x 161.01595pt.
-<Medien/Multisplay/pfadRepresentation.png, id=334, 980.463pt x 416.757pt>
+<Medien/Multisplay/pfadRepresentation.png, id=391, 980.463pt x 416.757pt>
 File: Medien/Multisplay/pfadRepresentation.png Graphic file (type png)
 <use Medien/Multisplay/pfadRepresentation.png>
 Package pdftex.def Info: Medien/Multisplay/pfadRepresentation.png  used on inpu
@@ -1112,58 +1093,57 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[73]
+[84] [85 <./Medien/Multisplay/referenzTree.png> <./Medien/Multisplay/pfadRepres
+entation.png>]
 
-LaTeX Warning: Reference `TangoCut' on page 74 undefined on input line 1432.
+LaTeX Warning: Reference `TangoCut' on page 86 undefined on input line 1432.
 
 
-LaTeX Warning: Reference `TangoJoin' on page 74 undefined on input line 1432.
+LaTeX Warning: Reference `TangoJoin' on page 86 undefined on input line 1432.
 
-<Medien/Multisplay/keySpace.png, id=339, 376.40625pt x 334.24875pt>
+<Medien/Multisplay/keySpace.png, id=401, 376.40625pt x 334.24875pt>
 File: Medien/Multisplay/keySpace.png Graphic file (type png)
 <use Medien/Multisplay/keySpace.png>
 Package pdftex.def Info: Medien/Multisplay/keySpace.png  used on input line 144
 0.
 (pdftex.def)             Requested size: 312.00119pt x 277.07446pt.
-<Medien/Multisplay/split.png, id=340, 719.68875pt x 123.46124pt>
+<Medien/Multisplay/split.png, id=402, 719.68875pt x 123.46124pt>
 File: Medien/Multisplay/split.png Graphic file (type png)
 <use Medien/Multisplay/split.png>
 Package pdftex.def Info: Medien/Multisplay/split.png  used on input line 1446.
 (pdftex.def)             Requested size: 390.0pt x 66.90543pt.
-[74]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[86]
 \c@Generalized Access Lemma=\count284
 
 Underfull \hbox (badness 10000) in paragraph at lines 1463--1464
 
  []
 
+[87 <./Medien/Multisplay/keySpace.png>]
 
-LaTeX Warning: Reference `splayAccess' on page 75 undefined on input line 1466.
+LaTeX Warning: Reference `splayAccess' on page 88 undefined on input line 1466.
 
 
-<Medien/Multisplay/lemma.png, id=344, 268.00125pt x 322.20375pt>
+<Medien/Multisplay/lemma.png, id=410, 268.00125pt x 322.20375pt>
 File: Medien/Multisplay/lemma.png Graphic file (type png)
 <use Medien/Multisplay/lemma.png>
 Package pdftex.def Info: Medien/Multisplay/lemma.png  used on input line 1471.
 (pdftex.def)             Requested size: 227.0824pt x 272.99881pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 \c@Lemma2=\count285
-[75]
+[88 <./Medien/Multisplay/split.png> <./Medien/Multisplay/lemma.png>]
 Overfull \hbox (18.61833pt too wide) in paragraph at lines 1491--1494
 \T1/cmr/m/n/12 Es wird ei-ne \T1/cmr/m/it/12 switch \T1/cmr/m/n/12 Ope-ra-ti-on
  w�h-rend \T1/cmr/m/it/12 ac-cess$[]$ \T1/cmr/m/n/12 be-trach-tet. Sei-en $[][]
 \OML/cmm/m/it/12 ; [][]; ::; [][]$
  []
 
-[76]
+[89]
 Overfull \hbox (76.46808pt too wide) detected at line 1531
 []
  []
@@ -1173,9 +1153,9 @@ Overfull \hbox (104.39142pt too wide) detected at line 1540
 []
  []
 
-[77]
+[90]
 
-LaTeX Warning: Reference `interleaveBound' on page 78 undefined on input line 1
+LaTeX Warning: Reference `interleaveBound' on page 91 undefined on input line 1
 541.
 
 
@@ -1191,21 +1171,7 @@ at und $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x[]; x[]; ::; x[]
 $
  []
 
-[78] [79] (Bachelorarbeit.bbl) [80] [81 <./Medien/Tango/cut.png>] [82 <./Medien
-/Tango/cut2.png>] [83 <./Medien/Tango/join.png> <./Medien/Tango/join2.png>]
-[84 <./Medien/RotSchwarzBaum/IOBaum.png> <./Medien/RotSchwarzBaum/NIOBaumZweiRo
-te.png>] [85 <./Medien/RotSchwarzBaum/NIOBaumPfadlänge.png> <./Medien/RotSchwa
-rzBaum/EinfügenFixUpFall2.png>] [86 <./Medien/RotSchwarzBaum/EinfügenFixUpFal
-l4.png>] [87 <./Medien/RotSchwarzBaum/vereinigen.png> <./Medien/RotSchwarzBaum/
-vereinigen2.png>] [88 <./Medien/RotSchwarzBaum/aufteilen.png> <./Medien/Zipper/
-preferredPath.png>] [89 <./Medien/Zipper/hybrid/pathRepresentation.png> <./Medi
-en/Zipper/hybrid/concatPfad.png>] [90 <./Medien/Zipper/hybrid/concatHybrid.png>
- <./Medien/Zipper/hybrid/extractHybrid.png>] [91 <./Medien/Zipper/hybrid/listeH
-ybrid.png> <./Medien/Zipper/zipperPathRep.png>] [92 <./Medien/Zipper/preferredP
-athZigZag.png> <./Medien/Splaybaum/zigZag.png>] [93 <./Medien/Splaybaum/splay.p
-ng> <./Medien/Multisplay/referenzTree.png>] [94 <./Medien/Multisplay/pfadRepres
-entation.png> <./Medien/Multisplay/keySpace.png>] [95 <./Medien/Multisplay/spli
-t.png> <./Medien/Multisplay/lemma.png>] (Bachelorarbeit.aux)
+[91] [92] (Bachelorarbeit.bbl) [93] (Bachelorarbeit.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1213,7 +1179,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  6913 strings out of 480797
  109279 string characters out of 2905362
- 383809 words of memory out of 3000000
+ 380809 words of memory out of 3000000
  22748 multiletter control sequences out of 15000+200000
  558028 words of font info for 90 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1250,9 +1216,9 @@ fonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msa
 m10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb>
-Output written on Bachelorarbeit.pdf (95 pages, 6973461 bytes).
+Output written on Bachelorarbeit.pdf (93 pages, 6164502 bytes).
 PDF statistics:
- 1013 PDF objects out of 1200 (max. 8388607)
+ 1007 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  261 words of extra memory for PDF output out of 10000 (max. 10000000)
 

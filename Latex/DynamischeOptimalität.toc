@@ -4,13 +4,12 @@
 \contentsline {subsection}{\numberline {1.2}Erste untere Schranke von Wilber}{4}%
 \contentsline {paragraph}{lower bound tree}{5}%
 \contentsline {subsection}{\numberline {1.3}bit reversal permutation }{10}%
-\contentsline {subsection}{\numberline {1.4}Amortisierte Laufzeitanalyse}{12}%
+\contentsline {subsection}{\numberline {1.4}Amortisierte Laufzeitanalyse}{13}%
 \contentsline {paragraph}{Potentialfunktionmethode}{13}%
-\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{13}%
-\contentsline {subsection}{\numberline {1.5}Eigenschaften eines dynamisch optimalen BST }{14}%
-\contentsline {paragraph}{Balanced Property}{14}%
-\contentsline {paragraph}{Static Finger Property}{14}%
+\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{14}%
+\contentsline {subsection}{\numberline {1.5}Eigenschaften eines dynamisch optimalen BST }{15}%
+\contentsline {paragraph}{Balanced Property}{15}%
+\contentsline {paragraph}{Static Finger Property}{15}%
 \contentsline {paragraph}{Statisch optimal}{15}%
-\contentsline {paragraph}{Working Set Property}{15}%
-\contentsline {paragraph}{Dynamic Finger Property}{15}%
-\contentsline {paragraph}{Sequential Access Property}{16}%
+\contentsline {paragraph}{Working Set Property}{16}%
+\contentsline {paragraph}{Dynamic Finger Property}{16}%

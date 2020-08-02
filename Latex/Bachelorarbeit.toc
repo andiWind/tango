@@ -28,44 +28,44 @@
 \contentsline {subsection}{\numberline {5.2}Aufbau des Tango Baum}{37}%
 \contentsline {subsection}{\numberline {5.3}Die \textit {access} Operation beim Tango Baum}{40}%
 \contentsline {paragraph}{cut Operation}{42}%
-\contentsline {paragraph}{join Operation}{43}%
-\contentsline {paragraph}{access Operation}{44}%
-\contentsline {subsection}{\numberline {5.4}Laufzeitanalyse für access}{45}%
-\contentsline {section}{\numberline {6}Rot-Schwarz-Baum}{47}%
-\contentsline {subsection}{\numberline {6.1}Grundoperationen}{48}%
-\contentsline {paragraph}{Suchen im Rot-Schwarz-Baum}{48}%
-\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{48}%
-\contentsline {paragraph}{Laufzeit}{53}%
-\contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{55}%
-\contentsline {paragraph}{Laufzeit der Grundoperationen}{55}%
-\contentsline {subsection}{\numberline {6.2}Tango-Baum konformes vereinigen}{57}%
-\contentsline {paragraph}{Resultat nach der Fallbehandlung}{58}%
+\contentsline {paragraph}{join Operation}{45}%
+\contentsline {paragraph}{access Operation}{47}%
+\contentsline {subsection}{\numberline {5.4}Laufzeitanalyse für access}{48}%
+\contentsline {section}{\numberline {6}Rot-Schwarz-Baum}{50}%
+\contentsline {subsection}{\numberline {6.1}Grundoperationen}{51}%
+\contentsline {paragraph}{Suchen im Rot-Schwarz-Baum}{51}%
+\contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum}{52}%
 \contentsline {paragraph}{Laufzeit}{58}%
-\contentsline {subsection}{\numberline {6.3}Tango-Baum konformes aufteilen}{59}%
-\contentsline {paragraph}{Laufzeit}{60}%
-\contentsline {section}{\numberline {7}Zipper Baum}{61}%
-\contentsline {subsection}{\numberline {7.1}Hybrid Baum}{62}%
-\contentsline {subsubsection}{\numberline {7.1.1}Repräsentation eines preferred path beim Hybrid Baum}{62}%
-\contentsline {subsubsection}{\numberline {7.1.2}Die \textit {access} Operation beim Hybrid Baum}{62}%
-\contentsline {paragraph}{\textit {cut} beim Hybrid Baum}{63}%
-\contentsline {paragraph}{\textit {join} beim Hybrid Baum}{63}%
-\contentsline {paragraph}{\textit {extract} beim Hybrid Baum}{64}%
-\contentsline {subsubsection}{\numberline {7.1.3}Laufzeitanalyse beim Hybrid Baum}{66}%
-\contentsline {subsection}{\numberline {7.2}Repräsentation eines preferred path beim Zipper Baum}{67}%
-\contentsline {subsection}{\numberline {7.3}Die \textit {access} Operation beim Zipper Baum}{68}%
-\contentsline {paragraph}{cut Operation}{68}%
-\contentsline {paragraph}{join Operation}{69}%
-\contentsline {paragraph}{extract Operation}{69}%
-\contentsline {subsection}{\numberline {7.4}Laufzeitanalyse beim Zipper Baum}{69}%
-\contentsline {section}{\numberline {8}Splay Baum}{69}%
-\contentsline {subsection}{\numberline {8.1}\textit {access} Operation }{69}%
-\contentsline {paragraph}{\textit {splay} Operation}{69}%
-\contentsline {subsection}{\numberline {8.2}Amortisierte Laufzeitanalyse von \textit {splay }}{70}%
-\contentsline {paragraph}{zig}{71}%
-\contentsline {paragraph}{zig-zig}{71}%
-\contentsline {paragraph}{zig-zag}{72}%
-\contentsline {subsection}{\numberline {8.3}Dynamische Optimalitäts Vermutung}{72}%
-\contentsline {section}{\numberline {9}Multisplay Baum}{73}%
-\contentsline {subsection}{\numberline {9.1}Die \textit {access} Operation beim Multisplay Baum}{74}%
-\contentsline {paragraph}{\textit {switch} Operation beim Multisplay Baum}{74}%
-\contentsline {subsection}{\numberline {9.2}Amortisierte Laufzeitanalyse}{75}%
+\contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum}{60}%
+\contentsline {paragraph}{Laufzeit der Grundoperationen}{60}%
+\contentsline {subsection}{\numberline {6.2}Tango-Baum konformes vereinigen}{62}%
+\contentsline {paragraph}{Resultat nach der Fallbehandlung}{64}%
+\contentsline {paragraph}{Laufzeit}{64}%
+\contentsline {subsection}{\numberline {6.3}Tango-Baum konformes aufteilen}{65}%
+\contentsline {paragraph}{Laufzeit}{66}%
+\contentsline {section}{\numberline {7}Zipper Baum}{67}%
+\contentsline {subsection}{\numberline {7.1}Hybrid Baum}{68}%
+\contentsline {subsubsection}{\numberline {7.1.1}Repräsentation eines preferred path beim Hybrid Baum}{68}%
+\contentsline {subsubsection}{\numberline {7.1.2}Die \textit {access} Operation beim Hybrid Baum}{69}%
+\contentsline {paragraph}{\textit {cut} beim Hybrid Baum}{70}%
+\contentsline {paragraph}{\textit {join} beim Hybrid Baum}{71}%
+\contentsline {paragraph}{\textit {extract} beim Hybrid Baum}{72}%
+\contentsline {subsubsection}{\numberline {7.1.3}Laufzeitanalyse beim Hybrid Baum}{75}%
+\contentsline {subsection}{\numberline {7.2}Repräsentation eines preferred path beim Zipper Baum}{76}%
+\contentsline {subsection}{\numberline {7.3}Die \textit {access} Operation beim Zipper Baum}{77}%
+\contentsline {paragraph}{cut Operation}{77}%
+\contentsline {paragraph}{join Operation}{78}%
+\contentsline {paragraph}{extract Operation}{78}%
+\contentsline {subsection}{\numberline {7.4}Laufzeitanalyse beim Zipper Baum}{78}%
+\contentsline {section}{\numberline {8}Splay Baum}{79}%
+\contentsline {subsection}{\numberline {8.1}\textit {access} Operation }{79}%
+\contentsline {paragraph}{\textit {splay} Operation}{79}%
+\contentsline {subsection}{\numberline {8.2}Amortisierte Laufzeitanalyse von \textit {splay }}{80}%
+\contentsline {paragraph}{zig}{81}%
+\contentsline {paragraph}{zig-zig}{82}%
+\contentsline {paragraph}{zig-zag}{83}%
+\contentsline {subsection}{\numberline {8.3}Dynamische Optimalitäts Vermutung}{83}%
+\contentsline {section}{\numberline {9}Multisplay Baum}{84}%
+\contentsline {subsection}{\numberline {9.1}Die \textit {access} Operation beim Multisplay Baum}{85}%
+\contentsline {paragraph}{\textit {switch} Operation beim Multisplay Baum}{86}%
+\contentsline {subsection}{\numberline {9.2}Amortisierte Laufzeitanalyse}{87}%

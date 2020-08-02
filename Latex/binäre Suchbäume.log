@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  13 JUL 2020 17:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  2 AUG 2020 16:40
 entering extended mode
 **"./binäre Suchbäume.tex"
 ("binäre Suchbäume.tex"
@@ -333,13 +333,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
@@ -352,35 +352,35 @@ re Suchbäume.toc")
 \openout3 = `"binäre Suchbäume.toc"'.
 
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 41--42
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
-<Medien/Einleitung/ioSuchbaum.png, id=16, 673.3155pt x 269.808pt>
+<Medien/Einleitung/ioSuchbaum.png, id=16, 563.10374pt x 269.808pt>
 File: Medien/Einleitung/ioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/ioSuchbaum.png>
-Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 5
-0.
-(pdftex.def)             Requested size: 390.0pt x 156.27878pt.
+Package pdftex.def Info: Medien/Einleitung/ioSuchbaum.png  used on input line 4
+9.
+(pdftex.def)             Requested size: 390.0pt x 186.8676pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/Einleitung/nioSuchbaum.png, id=18, 476.37975pt x 274.02374pt>
+<Medien/Einleitung/nioSuchbaum.png, id=18, 530.58224pt x 274.02374pt>
 File: Medien/Einleitung/nioSuchbaum.png Graphic file (type png)
 <use Medien/Einleitung/nioSuchbaum.png>
 Package pdftex.def Info: Medien/Einleitung/nioSuchbaum.png  used on input line 
-56.
-(pdftex.def)             Requested size: 390.0pt x 224.33714pt.
+55.
+(pdftex.def)             Requested size: 390.0pt x 201.42384pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--63
+Underfull \hbox (badness 10000) in paragraph at lines 60--62
 
  []
 
 [4]
-Overfull \hbox (15.74591pt too wide) in paragraph at lines 68--68
+Overfull \hbox (15.74591pt too wide) in paragraph at lines 67--67
 []\T1/cmr/bx/n/14.4 Weitere Be-grif-fe und Ei-gen-schaf-ten zum bi-n�ren Such-
  []
 
@@ -388,48 +388,48 @@ Overfull \hbox (15.74591pt too wide) in paragraph at lines 68--68
 File: Medien/Einleitung/suchbaum2_2.png Graphic file (type png)
 <use Medien/Einleitung/suchbaum2_2.png>
 Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line 
-72.
+71.
 (pdftex.def)             Requested size: 390.0pt x 247.57602pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5 <./Medien/Einleitung/ioSuchbaum.png>]
-<Medien/Einleitung/linksRechts.png, id=40, 3468.96pt x 1233.408pt>
+<Medien/Einleitung/linksRechts.png, id=40, 714.87074pt x 254.75175pt>
 File: Medien/Einleitung/linksRechts.png Graphic file (type png)
 <use Medien/Einleitung/linksRechts.png>
 Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
-81.
-(pdftex.def)             Requested size: 390.0pt x 138.6489pt.
+80.
+(pdftex.def)             Requested size: 390.0pt x 138.98271pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
 [6 <./Medien/Einleitung/nioSuchbaum.png>] [7 <./Medien/Einleitung/suchbaum2_2.p
 ng>]
-<Medien/Einleitung/VorgängerNachfolger.png, id=50, 502.87875pt x 310.15875pt>
+<Medien/Einleitung/VorgängerNachfolger.png, id=50, 548.0475pt x 310.15875pt>
 File: Medien/Einleitung/VorgängerNachfolger.png Graphic file (type png)
 <use Medien/Einleitung/VorgängerNachfolger.png>
 Package pdftex.def Info: Medien/Einleitung/VorgängerNachfolger.png  used on in
-put line 102.
-(pdftex.def)             Requested size: 390.0pt x 240.53618pt.
+put line 101.
+(pdftex.def)             Requested size: 390.0pt x 220.71591pt.
  [8 <./Medien/Einleitung/linksRechts.png> <./Medien/Einleitung/VorgängerNachfo
 lger.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 114--119
+Underfull \hbox (badness 10000) in paragraph at lines 113--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--119
+Underfull \hbox (badness 10000) in paragraph at lines 113--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
@@ -437,47 +437,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 124--125
 File: Medien/Einleitung/Linksrotation.png Graphic file (type png)
 <use Medien/Einleitung/Linksrotation.png>
 Package pdftex.def Info: Medien/Einleitung/Linksrotation.png  used on input lin
-e 132.
-(pdftex.def)             Requested size: 467.99881pt x 147.69608pt.
-
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 132--133
- [][] 
- []
-
+e 131.
+(pdftex.def)             Requested size: 390.0pt x 123.08261pt.
 <Medien/Einleitung/Rechtsrotation.png, id=57, 837.1275pt x 255.95625pt>
 File: Medien/Einleitung/Rechtsrotation.png Graphic file (type png)
 <use Medien/Einleitung/Rechtsrotation.png>
 Package pdftex.def Info: Medien/Einleitung/Rechtsrotation.png  used on input li
-ne 138.
-(pdftex.def)             Requested size: 467.99881pt x 143.09236pt.
-
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 138--139
- [][] 
- []
-
+ne 137.
+(pdftex.def)             Requested size: 390.0pt x 119.24103pt.
 <Medien/Einleitung/LinksRechtsRotation.png, id=58, 840.13875pt x 255.95625pt>
 File: Medien/Einleitung/LinksRechtsRotation.png Graphic file (type png)
 <use Medien/Einleitung/LinksRechtsRotation.png>
 Package pdftex.def Info: Medien/Einleitung/LinksRechtsRotation.png  used on inp
-ut line 144.
-(pdftex.def)             Requested size: 467.99881pt x 142.58073pt.
-
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 144--145
- [][] 
- []
-
+ut line 143.
+(pdftex.def)             Requested size: 390.0pt x 118.81532pt.
 [9]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Medien/Einleitung/SuchenEinfügen.png, id=62, 3874.27425pt x 1300.86pt>
+<Medien/Einleitung/SuchenEinfügen.png, id=62, 797.98125pt x 268.6035pt>
 File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
 <use Medien/Einleitung/SuchenEinfügen.png>
 Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
-ine 156.
-(pdftex.def)             Requested size: 467.99881pt x 157.12863pt.
+ine 155.
+(pdftex.def)             Requested size: 467.99881pt x 157.53201pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 156--157
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 155--156
  [][] 
  []
 
@@ -488,39 +473,39 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [11 <./Medien/Einleitung/LinksRechtsRotation.png>] [12 <./Medien/Einleitung/Suc
 henEinfügen.png>]
-<Medien/Einleitung/löschen.png, id=76, 828.09375pt x 249.3315pt>
+<Medien/Einleitung/löschen.png, id=77, 828.09375pt x 249.3315pt>
 File: Medien/Einleitung/löschen.png Graphic file (type png)
 <use Medien/Einleitung/löschen.png>
-Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 178
+Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 177
 .
 (pdftex.def)             Requested size: 467.99881pt x 140.9144pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 178--179
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 177--178
  [][] 
  []
 
-<Medien/Einleitung/kompletterBaum.png, id=77, 737.75626pt x 237.88875pt>
+<Medien/Einleitung/kompletterBaum.png, id=78, 737.75626pt x 237.88875pt>
 File: Medien/Einleitung/kompletterBaum.png Graphic file (type png)
 <use Medien/Einleitung/kompletterBaum.png>
 Package pdftex.def Info: Medien/Einleitung/kompletterBaum.png  used on input li
-ne 191.
+ne 190.
 (pdftex.def)             Requested size: 390.0pt x 125.75374pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 \c@Lemma=\count277
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--202
+
+ []
+
 [13 <./Medien/Einleitung/löschen.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 201--203
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 211--213
+Underfull \hbox (badness 10000) in paragraph at lines 210--212
 
  []
 
@@ -530,36 +515,37 @@ LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 ) [15] ("binäre Suchbäume.aux") ) 
 Here is how much of TeX's memory you used:
- 6401 strings out of 480797
- 95991 string characters out of 2905362
- 364815 words of memory out of 3000000
- 22296 multiletter control sequences out of 15000+200000
- 549796 words of font info for 68 fonts, out of 3000000 for 9000
+ 6403 strings out of 480797
+ 96014 string characters out of 2905362
+ 363815 words of memory out of 3000000
+ 22297 multiletter control sequences out of 15000+200000
+ 550495 words of font info for 69 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,14n,43p,1417b,365s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fo
-nts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData\Local\MiK
-TeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andre\AppData
-\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\and
-re\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:
-\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx12
-00.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi
-600\ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/lj
-four/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\f
-onts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "binäre Suchbäume.pdf" (15 pages, 1131696 bytes).
+nts/pk/ljfour/jknappen/ec/dpi600\ecbi1200.pk> <C:\Users\andre\AppData\Local\MiK
+TeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andre\AppData
+\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\and
+re\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:
+\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx14
+40.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi
+600\ecbx1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/lj
+four/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\f
+onts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\Mi
+KTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "binäre Suchbäume.pdf" (15 pages, 605043 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
+ 467 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

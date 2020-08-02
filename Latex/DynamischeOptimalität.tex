@@ -68,18 +68,18 @@ Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \vert K\vert  - 1$ Kno
 
 
         
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
-%	\caption{Rechts ist ein möglicher lower bound tree zum linken BST dargestellt.  }
-%	\label{fig:lowerBoundTree}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/DynOpt/lowerBoundTree"}
+	\caption{Rechts ist ein möglicher lower bound tree zum linken BST dargestellt.  }
+	\label{fig:lowerBoundTree}
+\end{figure}
 
 \noindent Nun wird die Funkion $_X(T, Y, X) $ vorgestellt. Ihre Parameter sind ein BST $T$, ein lower bound tree $Y$ und eine Zugriffsfolge $X$. $Y$ und $X$ müssen passend für $T$ erstellt sein, ansonsten ist $_X(T, Y, X) $ undefiniert . Die Auswertung erfolgt zu einer natürlichen Zahl. Sei $U$ die Menge der internen Knoten von $Y$ und $m$ die Länge von $X$. Sei $u \in U$ und $l$ der kleinste Schlüssel eines Blattes im Teilbaum mit Wurzel $u$, sowie $r$ der größte Schlüssel eines solchen Blattes. Sei $v$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus $\left[l, r\right]$  in $T$. Sei $o$ die Folge $o_0, o_1,..,o_m =  \mathit{key}(v) \circ X^r_l$. $i \in \left[1,m\right]$ ist eine \textit{u-Transition} wenn gilt $\left( o_{i-1} < u \land o_i > u \right) \lor \left( o_{i-1} > u \land o_i < u \right)$.Die Funktion $\mathit{score}\left(u\right) \colon U \rightarrow \mathbb{N}$ ist definiert durch $\mathit{score}\left(u\right) = \vert\{i \in \mathbb{N}\ \vert \textit{i ist eine u-Transition}\} \vert$. Mit Hilfe von $\mathit{score}$ kann nun  $_X(T, Y, X) $ definiert werden.
 
 \begin{align*}
 _X(T, Y, X)  = m + \sum_{u \in U} {\mathit{score}} \left(u\right)
-\end{align*} %K^r_l = \{i \in K\vert l \leq i \leq r\}
+\end{align*} 
 
 \noindent Im eigentlichen Satz wird $\mathit{W\left(X, T\right)} \geq {_X(T, Y, X)} $ gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das linke Kind von $v$ und für $i \in \{1,..,n\}$,$v_i$ ist das rechte Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt, $v_0$ ist das rechte Kind von $u$ und $v_i$ ist das linke Kind von $v_{i-1}$.\\ $T^r_l$ ist ein mit $\left[l,r\right]$ von $T$ abgeleiteter BST, so dass er genau die Schlüssel aus $T$ enthält, die in $\left[l, r\right]$ liegen. Sei $v_d$ der tiefste gemeinsame Vorfahre der Knoten mit Schlüssel aus  $\left[l,r\right]$ in $T$. (Existiert ein solcher nicht ist $T^r_l$ der leere Baum). Es muss $\mathit{key}(v_d) \in \left[l,r\right]$ gelten. Denn hat $v_d$ keine Kinder ist sein Schlüssel der Einzige aus $\left[l,r\right]$. Hat $v_d$ ein Kind $v_{c}$ und $\mathit{key}(v_d) \notin \left[l,r\right]$, dann wäre $v_{c}$ ein tieferer gemeinsamer Vorgänger der entsprechenden Knoten. Hat $v_d$ zwei Kinder gibt es drei Fälle:
 \begin{itemize}
@@ -100,12 +100,12 @@ Dazu werden zwei Mengen verwendet. $U$ ist eine zu Beginn leere Menge, $W$ enth�
 	\item Füge $w$ zu $U$ hinzu, weiter mit $1$
 \end{enumerate}
 Das Verfahren muss terminieren da die Anzahl der Knoten von $T$ endlich ist. So konstruiert muss $T^r_l$ ein BST sein. Ein Beispiel stellt Abbildung \ref{fig:T_r_l} dar. 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/T_r_l"}
-%	\caption{Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ .  }
-%	\label{fig:T_r_l}
-%\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/DynOpt/T_r_l"}
+	\caption{Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ .  }
+	\label{fig:T_r_l}
+\end{figure}
 
  \noindent Sei $K_1$ die Schlüsselmenge von $T$ und $K_2$ die von $T^r_l$. Sei ${K^r_l = K_1 \cap \{i \in \mathbb{N}\vert i \in \left[l,r\right] \}}$. Jetzt wird noch darauf eingegangen warum $K_2 = K^r_l$ gilt \\
 
@@ -330,10 +330,7 @@ O\left( m + \sum_{i = 2}^{m} \log \left(\vert x_{i-1} - x_i  \vert	+ 1	\right)\r
 \end{align*} 
 gilt. 
 
-\paragraph{Sequential Access Property}
-Ein BST erfüllt das Sequential Access Property, wenn er die Zugriffsfolge  $1, 2,.., n$ in amortisiert  von $O\left(n\right)$ Zeit ausführen kann.\\
- 
-\noindent Abbildung \ref{fig:upperBounds} zeigt Implikationen zwischen den Eigenschaften und basiert auf einer Abbildung aus \ref{fig:upperBounds}.
+
 
 \begin{figure}[h]
 	\centering
