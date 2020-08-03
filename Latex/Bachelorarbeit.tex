@@ -842,19 +842,19 @@ Sei $(v_0,v_1,...,v_n)$ ein Pfad von einem Knoten $v_0$ zu einem Blatt $v_n$. Di
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/IOBaum"}
-	\caption{Rot-Schwarz-Baum ohne Verletzung von Eigenschaften. }
+	\caption{Rot Schwarz Baum ohne Verletzung von Eigenschaften. }
 	\label{fig:IOBaum}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/NIOBaumZweiRote"}
-	\caption{Rot-Schwarz-Baum bei dem Eigenschaft vier und fünf verletzt sind. }
+	\caption{Rot Schwarz Baum bei dem Eigenschaft vier und fünf verletzt sind. }
 	\label{fig:NIOBaumZweiRote}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/NIOBaumPfadlänge"}
-	\caption{Rot-Schwarz-Baum bei dem Eigenschaft fünf verletzt ist.  }
+	\caption{Rot Schwarz Baum bei dem Eigenschaft fünf verletzt ist.  }
 	\label{fig:NIOBaumPfadlänge}
 \end{figure}
 \subsection{Grundoperationen}
@@ -910,13 +910,13 @@ Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall1"}
-	\caption{einfügen-fixup. Dargestellt ist Fall 1  }
+	\caption{\textit{insertFixup}. Dargestellt ist Fall 1  }
 	\label{fig:EinfügenFixUpFall1}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall2"}
-	\caption{einfügen-fixup. Dargestellt ist Fall 2  }
+	\caption{\textit{insertFixup}. Dargestellt ist Fall 2  }
 	\label{fig:EinfügenFixUpFall2}
 \end{figure}
 
@@ -962,27 +962,27 @@ Abbildung \ref{fig:EinfügenFixUpFall6} zeigt den zu Fall 4 Links/Rechts-Symmetr
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall3"}
-	\caption{einfügen-fixup. Dargestellt ist Fall 3  }
+	\caption{\textit{insertFixup}. Dargestellt ist Fall 3  }
 	\label{fig:EinfügenFixUpFall3}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall4"}
-	\caption{einfügen-fixup. Dargestellt ist Fall 4  }
+	\caption{\textit{insertFixup}. Dargestellt ist Fall 4  }
 	\label{fig:EinfügenFixUpFall4}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall5"}
-	\caption{einfügen-fixup. Dargestellt ist Fall 5  }
+	\caption{\textit{insertFixup}. Dargestellt ist Fall 5  }
 	\label{fig:EinfügenFixUpFall5}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall6"}
-	\caption{einfügen-fixup. Dargestellt ist Fall 6  }
+	\caption{\textit{insertFixup}. Dargestellt ist Fall 6  }
 	\label{fig:EinfügenFixUpFall6}
 \end{figure}   
 \paragraph{Löschen aus dem Rot-Schwarz-Baum}
@@ -1038,13 +1038,13 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
 \begin{figure}[h]
 	\centering
 	\includegraphics[height= 0.6\textwidth]{"Medien/RotSchwarzBaum/vereinigen"}
-	\caption{Beispielhaftes vereinigen zweier RBT unterschiedlicher Schwarz-Höhe, nach Schritt 1. }
+	\caption{Beispielhaftes \textit{concatenate} zweier RBT unterschiedlicher Schwarz-Höhe, nach Schritt 1. }
 	\label{fig:vereinigen}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height= 0.6\textwidth]{"Medien/RotSchwarzBaum/vereinigen2"}
-	\caption{Beispielhaftes vereinigen zweier RBT gleicher Schwarz-Höhe, nach Schritt 1 }
+	\caption{Beispielhaftes \textit{concatenate} zweier RBT gleicher Schwarz-Höhe, nach Schritt 1 }
 	\label{fig:vereinigen2}
 \end{figure}
 \noindent Hier wird die \textit{concatenate(RBT $T_1$, key $k$, RBT $T_2)$} Operation eingeführt, wie es ein Tango-Baum von seiner Hilfsstruktur verlangt. Sei $K_1$ die Schlüsselmenge von $T_1$ und $K_2$ die von $T_2$. Die Operation gibt eine Referenz auf die Wurzel eines vereinigten RBT $T$ mit Schlüsselmenge $K_1 \cup K_2 \cup \{k\} $ zurück, dabei werden $T_1$ und $T_2$ zerstört. An die Parameter wird die Vorbedingung $(\forall i \in K_1: i < k ) \land (\forall j \in K_2: k < j )$ gestellt.\\
@@ -1146,7 +1146,7 @@ Die Kosten innerhalb einer Iteration sind konstant, damit ist  $O \left(\log \le
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{"Medien/RotSchwarzBaum/aufteilen"}
-	\caption{Beispielhaftes aufteilen eines RBT mit Parameter $v$ }
+	\caption{Beispielhaftes \textit{split} eines RBT mit Parameter $v$ }
 	\label{fig:aufteilen}
 \end{figure}
 
