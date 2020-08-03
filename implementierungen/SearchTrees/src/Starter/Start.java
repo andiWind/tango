@@ -6,6 +6,7 @@
 package Starter;
 
 import GUI.GUI;
+import GUI.MainGUI;
 import RedBlackTree.RedBlackTree;
 import SplayTree.SplayTree;
 import TangoTest.Tester;
@@ -23,7 +24,10 @@ import java.util.logging.Logger;
  */
 public class Start {
     public static void main (String[] args) throws BuildAuxTreeFaildException{
-      RuntimeTest.Tester t = new RuntimeTest.Tester();
+        
+      MainGUI g = new MainGUI();  
+      return;  
+      /*RuntimeTest.Tester t = new RuntimeTest.Tester();
       List<Integer> workingSet = new LinkedList();
       workingSet.add(3);
       workingSet.add(7);
@@ -39,7 +43,7 @@ public class Start {
                 keys1.add(i);
             }
            SplayTree tt = new SplayTree(keys1);
-           GUI g = new GUI(tt);
+           
         //   new Tester(t, i); 
         //   g.dispose();
        
@@ -48,7 +52,7 @@ public class Start {
         
         
         
-       
+     */  
        
     }
 }
