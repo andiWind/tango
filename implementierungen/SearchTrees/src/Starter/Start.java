@@ -23,6 +23,9 @@ import java.util.logging.Logger;
  * @author andreas
  */
 public class Start {
+    private boolean testStart;
+    private String test;
+    
     public static void main (String[] args) throws BuildAuxTreeFaildException{
         
       MainGUI g = new MainGUI();  

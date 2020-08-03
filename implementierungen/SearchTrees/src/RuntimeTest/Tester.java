@@ -11,17 +11,51 @@ import RedBlackTree.RedBlackTree;
 import TangoTree.BuildAuxTreeFaildException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author andreas
  */
-public class Tester {
+public class Tester extends Thread {
+   private String test;
+   private int numOfNodes;
+   private int lengthOfSeq;
+   private long[] result;
+  
    
-    public Tester(){
+   
+   @Override
+    public void run (){
+        ResultFrame frame = new ResultFrame();
+        if(test.equals("randomAccess")){
+            try {
+                result = randomAccess(numOfNodes, lengthOfSeq);
+            } catch (BuildAuxTreeFaildException ex) {
+                
+            }
+            
+        }
+        frame.setTime(result[0], result[1]);
+        
         
     }
-     public long[] workingSet (int numOfNodes, int lengthOfSeq, List<Integer> set) throws BuildAuxTreeFaildException{
+    
+    public long[] getResult(){
+        return result;
+    }
+    public Tester(int lengthOfBRP){
+        
+        result = null;
+    }
+     public Tester(String t, int n, int l ){
+        test = t;
+        numOfNodes = n;
+        lengthOfSeq = l;
+        result = null;
+    }
+     private long[] workingSet (int numOfNodes, int lengthOfSeq, List<Integer> set) throws BuildAuxTreeFaildException{
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
         for (int i = 1; i <= numOfNodes ; i++){
@@ -36,7 +70,7 @@ public class Tester {
         }
         return runtimeTest(keyList, accessSequenz);
     }
-    public long[] randomAccess (int numOfNodes, int lengthOfSeq) throws BuildAuxTreeFaildException{
+    private long[] randomAccess (int numOfNodes, int lengthOfSeq) throws BuildAuxTreeFaildException{
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
         for (int i = 1; i <= numOfNodes ; i++){
@@ -47,7 +81,7 @@ public class Tester {
         }
         return runtimeTest(keyList, accessSequenz);
     }
-    public long[] dynamicFinger (int numOfNodes, int lengthOfSeq, int keyDistanz) throws BuildAuxTreeFaildException{
+    private long[] dynamicFinger (int numOfNodes, int lengthOfSeq, int keyDistanz) throws BuildAuxTreeFaildException{
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
         for (int i = 1; i <= numOfNodes ; i++){
@@ -62,7 +96,7 @@ public class Tester {
         }
         return runtimeTest(keyList, accessSequenz);
     }
-    public long[] staticFinger (int numOfNodes, int lengthOfSeq) throws BuildAuxTreeFaildException{
+    private long[] staticFinger (int numOfNodes, int lengthOfSeq) throws BuildAuxTreeFaildException{
         List<Integer> accessSequenz = new LinkedList();
         int nOn = numOfNodes;
         if (nOn % 2== 0)
@@ -128,7 +162,7 @@ public class Tester {
     } 
   
     
-    public long[] bitReversalPermutation (int numOfBits) throws BuildAuxTreeFaildException{
+    private long[] bitReversalPermutation (int numOfBits) throws BuildAuxTreeFaildException{
         List<Integer> keyList = new LinkedList();
         for (int i = 0; i < Math.pow(2, numOfBits); i++){
             keyList.add(i);
@@ -160,12 +194,12 @@ public class Tester {
         for(Integer i: accessSequenz ){
             tangoTree.access(i);
         }
-        ret[0] = (System.nanoTime()- startTime) / 1000 ;
+        ret[0] = (System.nanoTime()- startTime) / 1000000 ;
         startTime = System.nanoTime();
         for(Integer i: accessSequenz ){
             splayTree.access(i);
         }
-        ret[1] = (System.nanoTime()- startTime) / 1000 ;
+        ret[1] = (System.nanoTime()- startTime) / 1000000 ;
         
         return ret;
     }

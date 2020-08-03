@@ -44,7 +44,7 @@ public class MainGUI extends JFrame{
                 @Override
                  public void mousePressed(MouseEvent e) {
                     runtimeFrame.setVisible(true);
-                    runtimeFrame.setSize( getWidth() /2 , getHeight()/ 2);
+                    runtimeFrame.setSize( getWidth() /3 , getHeight()/ 3);
               
                 }  
                 @Override
@@ -59,6 +59,7 @@ public class MainGUI extends JFrame{
         
         
         initFrame();
+        
     }
     private void initFrame(){
         setTitle("TangoGUI");
@@ -71,5 +72,7 @@ public class MainGUI extends JFrame{
        // add(randomPanel, BorderLayout.CENTER);
         setVisible(true);
     }
+    
+    
     
 }
