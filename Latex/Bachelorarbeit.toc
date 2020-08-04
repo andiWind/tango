@@ -57,8 +57,8 @@
 \contentsline {paragraph}{join Operation}{78}%
 \contentsline {paragraph}{extract Operation}{78}%
 \contentsline {subsection}{\numberline {7.4}Laufzeitanalyse beim Zipper Baum}{78}%
-\contentsline {section}{\numberline {8}Splay Baum}{79}%
-\contentsline {subsection}{\numberline {8.1}\textit {access} Operation }{79}%
+\contentsline {section}{\numberline {8}Splay Baum}{78}%
+\contentsline {subsection}{\numberline {8.1}Die \textit {access} Operation beim Splay Baum }{79}%
 \contentsline {paragraph}{\textit {splay} Operation}{79}%
 \contentsline {subsection}{\numberline {8.2}Amortisierte Laufzeitanalyse von \textit {splay }}{80}%
 \contentsline {paragraph}{zig}{81}%

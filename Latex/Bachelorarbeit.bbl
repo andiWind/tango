@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{nRotations}
 Karel Culik and Derick Wood.
@@ -42,6 +42,12 @@ Prosenjit Bose, Karim Douïeb, Vida Dujmović, and Rolf Fagerberg.
 Daniel~Dominic Sleator and Robert~Endre Tarjan.
 \newblock Self-adjusting binary search trees.
 \newblock {\em J. ACM}, 32(3):652--686, July 1985.
+
+\bibitem{dynFinger}
+Richard Cole, Bud Mishra, Jeanette Schmidt, and Alan Siegel.
+\newblock On the dynamic finger conjecture for splay trees. part i: Splay
+  sorting log n-block sequences.
+\newblock {\em SIAM Journal on Computing}, 30(1):1--43, 2000.
 
 \bibitem{multisplay}
 Daniel~Dominic Sleator and Chengwen~Chris Wang.
