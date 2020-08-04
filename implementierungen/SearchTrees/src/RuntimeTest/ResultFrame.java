@@ -24,16 +24,16 @@ public class ResultFrame extends JFrame {
         splay.setText("ZeitSplay " + timeSplay / 1000 + " s");
      
     }
-    ResultFrame(){ 
+    ResultFrame(String testName){ 
       
        tango = new JLabel ("Zeit Tango " + "____"+ " s");
        splay = new JLabel ("Zeit Splay " + "____"+ " s");
-       initFrame();
+       initFrame(testName);
        
     }
    
-    private void initFrame(){
-        setTitle("Ergebnis");
+    private void initFrame(String testName){
+        setTitle("Ergebnis " + testName);
         setBackground (Color.LIGHT_GRAY);
         setDefaultCloseOperation(HIDE_ON_CLOSE );
         setSize(400,400);

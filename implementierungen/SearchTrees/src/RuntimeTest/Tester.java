@@ -21,16 +21,17 @@ public class Tester extends Thread {
    private int par1;
    private int par2;
    private int par3;
+   private List<Integer> workingSet;
    private long[] result;
   
    
    
    @Override
     public void run (){
-        ResultFrame frame = new ResultFrame();
-        
+        ResultFrame frame = null;
         switch(test){
                      case ("randomAccess"):
+                        frame = new ResultFrame("randomAccess"); 
                         try {
                              result = randomAccess(par1, par2);
                             }
@@ -38,13 +39,15 @@ public class Tester extends Thread {
                         }
                          break;
                     case ("staticFinger"):
+                        frame = new ResultFrame("staticFinger"); 
                         try {
-                             result = randomAccess(par1, par2);
+                             result = staticFinger(par1, par2);
                             }
                          catch (BuildAuxTreeFaildException ex) {
                         }
                          break;
                     case ("dynamicFinger"):
+                        frame = new ResultFrame("dynamicFinger"); 
                         try {
                              result = dynamicFinger(par1, par2, par3);
                             }
@@ -52,13 +55,15 @@ public class Tester extends Thread {
                         }
                          break;
                     case ("workingSet"):
+                        frame = new ResultFrame("workingSet"); 
                         try {
-                             result = randomAccess(par1, par2);
+                             result = workingSet(par1, par2, workingSet);
                             }
                          catch (BuildAuxTreeFaildException ex) {
                         }
                          break;
                     case ("bitReversalPermutation"):
+                        frame = new ResultFrame("bitReversalPermutation");
                         try {
                              result = bitReversalPermutation(par1);
                             }
@@ -73,7 +78,8 @@ public class Tester extends Thread {
             
             
         }
-        frame.setTime(result[0], result[1]);
+        if (frame != null)
+            frame.setTime(result[0], result[1]);
         
         
     }
@@ -82,14 +88,15 @@ public class Tester extends Thread {
         return result;
     }
    
-     public Tester(String t, int p1, int p2, int p3 ){
+    public Tester(String t, int p1, int p2, int p3, List<Integer> workSet ){
         test = t;
         par1 = p1;
         par2 = p2;
         par3 = p3;
+        workingSet = workSet;
         result = null;
     }
-     private long[] workingSet (int numOfNodes, int lengthOfSeq, List<Integer> set) throws BuildAuxTreeFaildException{
+    private long[] workingSet (int numOfNodes, int lengthOfSeq, List<Integer> set) throws BuildAuxTreeFaildException{
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
         for (int i = 1; i <= numOfNodes ; i++){
@@ -222,7 +229,7 @@ public class Tester extends Thread {
     
     private long[] runtimeTest (List<Integer> keyList, List<Integer> accessSequenz) throws BuildAuxTreeFaildException{
         long[] ret = new long[2];
-         TangoTree tangoTree = new TangoTree(keyList, RedBlackTree.class);
+        TangoTree tangoTree = new TangoTree(keyList, RedBlackTree.class);
         SplayTree splayTree = new SplayTree(keyList);
         long startTime = System.nanoTime();
         for(Integer i: accessSequenz ){

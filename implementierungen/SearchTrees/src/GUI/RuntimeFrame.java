@@ -19,6 +19,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -33,10 +35,13 @@ import javax.swing.JTextField;
  * @author andreas
  */
 public class RuntimeFrame  extends JFrame{
+    private List<Integer> workingSet;
+    private List<String> workingSetStrings;
     private int numOfNodes;
     private int lenOfSeq;
     private int lenOfBRP;
     private int dynFinger;
+    private JLabel workingSetLabel;
     private String activePanel ;
     private final JPanel  northPanel;
     private JPanel  randomPanel;
@@ -50,8 +55,11 @@ public class RuntimeFrame  extends JFrame{
     private final JTextField lenOfBRPText;
     private final JSlider lenOfSeqSli;
     private final JTextField lenOfSeqText;
+    private final JTextField workingSetText;
     private final JButton startButton;
+    private final JButton workingSetButton;
     private final JComboBox<String> comboBox ;
+    
     private Tester tester;
     RuntimeFrame(){ 
         numOfNodes = 1000;
@@ -67,24 +75,38 @@ public class RuntimeFrame  extends JFrame{
               if ((tester == null || tester.getResult() != null) ){
                   switch(activePanel){
                      case ("randomAccess"):
-                         tester = new Tester("randomAccess", numOfNodes, lenOfSeq, -1);
+                         tester = new Tester("randomAccess", numOfNodes, lenOfSeq, -1, null);
                          break;
                     case ("staticFinger"):
-                         add(staticFingerPanel, BorderLayout.CENTER);
+                         tester = new Tester("staticFinger", numOfNodes, lenOfSeq, -1, null);
                          break;
                     case ("dynamicFinger"):
-                         tester = new Tester("dynamicFinger", numOfNodes, lenOfSeq, dynFinger);
+                         tester = new Tester("dynamicFinger", numOfNodes, lenOfSeq, dynFinger, null);
                          break;
                     case ("workingSet"):
-                         add(workingSetPanel, BorderLayout.CENTER);
+                        buildWorkingSet();
+                        if(!workingSet.isEmpty()){
+                            tester = new Tester("workingSet", numOfNodes, lenOfSeq, -1, workingSet);
+                            workingSet = new LinkedList();
+                            workingSetStrings = new LinkedList();
+                        }    
                          break;
                     case ("bitReversalPermutation"):
-                         tester = new Tester("bitReversalPermutation", lenOfBRP, -1, -1);
+                         tester = new Tester("bitReversalPermutation", lenOfBRP, -1, -1, null);
                          break;
                  }
 
                   tester.start();
                 }
+            }
+        });
+        workingSetButton = new JButton();
+        workingSetButton.setText("Hinzufügen");
+        workingSetButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                workingSetStrings.add(workingSetText.getText());  
+                workingSetLabel.setText("workingSet besteht aus " +workingSetStrings.size() + " Bereichen." );
             }
         });
         lenOfSeqSli = new JSlider();
@@ -258,6 +280,13 @@ public class RuntimeFrame  extends JFrame{
                 }
             }
         });
+        workingSetText = new JTextField();
+        workingSetText.setColumns(43);
+        workingSetText.setText("x - y");
+        workingSetLabel = new JLabel();
+        workingSetLabel.setText("workingSet besteht aus 0 Bereichen.");
+        workingSet = new LinkedList();
+        workingSetStrings = new LinkedList();
         
         northPanel = new JPanel();
         northPanel.setLayout(new FlowLayout());
@@ -310,15 +339,9 @@ public class RuntimeFrame  extends JFrame{
             }
         });
         northPanel.add(comboBox);
-        
-        
-       
-        
-       
-        
         initFrame();
     }
-     private void initFrame(){
+    private void initFrame(){
         setTitle("Runtime Test");
         setBackground (Color.LIGHT_GRAY);
         setDefaultCloseOperation(HIDE_ON_CLOSE );
@@ -352,7 +375,14 @@ public class RuntimeFrame  extends JFrame{
         bitReversalPermutationPanel.add(new JLabel("Anzahl der Bits"));
     }
     private void buildStaticFingerPanel(){
-         staticFingerPanel = new JPanel();
+        staticFingerPanel = new JPanel();
+        staticFingerPanel.setLayout(new GridLayout(2, 3));
+        staticFingerPanel.add(numOfNodesSli);
+        staticFingerPanel.add(numOfNodesText);
+        staticFingerPanel.add(new JLabel("Anzahl der Knoten"));
+        staticFingerPanel.add(lenOfSeqSli);
+        staticFingerPanel.add(lenOfSeqText);
+        staticFingerPanel.add(new JLabel("Länge der Zugriffsfolge"));
     }
     private void buildDinamicFingerPanel(){
         dynamicFingerPanel = new JPanel();
@@ -366,9 +396,56 @@ public class RuntimeFrame  extends JFrame{
         dynamicFingerPanel.add(dymFingerText);
         dynamicFingerPanel.add(new JLabel("Abstand der Schlüssel"));
     }
-     private void buildWorkingSetPanel(){
-           workingSetPanel = new JPanel();
+    private void buildWorkingSetPanel(){
+        workingSetPanel = new JPanel();
+        workingSetPanel.setLayout(new GridLayout(3, 3));
+        workingSetPanel.add(numOfNodesSli);
+        workingSetPanel.add(numOfNodesText);
+        workingSetPanel.add(new JLabel("Anzahl der Knoten"));
+        workingSetPanel.add(lenOfSeqSli);
+        workingSetPanel.add(lenOfSeqText);
+        workingSetPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        workingSetPanel.add(workingSetText);
+        workingSetPanel.add(workingSetButton);        
+        workingSetPanel.add(workingSetLabel);
        
+    }
+    private void buildWorkingSet(){
+        boolean[] workingSetBool = new boolean[numOfNodes + 1];
+        int first = 0;
+        int second = 0;
+        for(String text : workingSetStrings){
+            text = text.trim();
+            if(text.lastIndexOf("-") < 0){
+                try{
+                    int value = Integer.parseInt(text);
+                    if(value > 0 && value < numOfNodes && !workingSetBool[value]){
+                        workingSet.add(value);
+                        workingSetBool[value] = true;
+                    }    
+                }
+                catch(Exception e){} 
+            }
+            else{
+               boolean error = false; 
+               
+               try{   
+                   first  = Integer.parseInt(text.substring(0, text.lastIndexOf("-")).trim());
+                   second = Integer.parseInt(text.substring(text.lastIndexOf("-") +1 ).trim());
+                }
+                catch(Exception e){ error = true;}  
+                if(!error ){
+                    while (!(first > second) && (first <= numOfNodes)){
+                        if(first > 0  && !workingSetBool[first]){
+                            workingSet.add(first);
+                            workingSetBool[first] = true;
+                        }  
+                    first++;
+                    }
+                }
+            }
+            
+        }
     }
     
 }
