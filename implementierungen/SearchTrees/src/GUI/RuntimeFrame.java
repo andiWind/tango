@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
@@ -31,29 +33,55 @@ import javax.swing.JTextField;
  * @author andreas
  */
 public class RuntimeFrame  extends JFrame{
-    private boolean  start;
     private int numOfNodes;
     private int lenOfSeq;
+    private int lenOfBRP;
+    private String activePanel ;
     private final JPanel  northPanel;
     private final JPanel  randomPanel;
+    private final JPanel  staticFingerPanel;
+    private final JPanel  dynamicFingerPanel;
+    private final JPanel  workingSetPanel;
+    private final JPanel  bitReversalPermutationPanel;
     private final JSlider numOfNodesSli;
     private final JTextField numOfNodesText;
+    private final JTextField lenOfBRPText;
     private final JSlider lenOfSeqSli;
     private final JTextField lenOfSeqText;
     private final JButton startButton;
     private final JComboBox<String> comboBox ;
     private Tester tester;
     RuntimeFrame(){ 
-        start = false;
         numOfNodes = 1000;
         lenOfSeq = 1000;
+        lenOfBRP = 1;
+        activePanel = "randomAccess";
         startButton = new JButton();
         startButton.setText("Start");
         startButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
               if ((tester == null || tester.getResult() != null) ){
-                  tester = new Tester("randomAccess", numOfNodes, lenOfSeq);
+                  switch(activePanel){
+                     case ("randomAccess"):
+                         tester = new Tester("randomAccess", numOfNodes, lenOfSeq);
+                         break;
+                    case ("staticFinger"):
+                         add(staticFingerPanel, BorderLayout.CENTER);
+                         break;
+                    case ("dynamicFinger"):
+                         add(dynamicFingerPanel, BorderLayout.CENTER);
+                         break;
+                    case ("workingSet"):
+                         add(workingSetPanel, BorderLayout.CENTER);
+                         break;
+                    case ("bitReversalPermutation"):
+                         tester = new Tester("bitReversalPermutation", lenOfBRP, -1);
+                         break;
+                 }
+                  
+                  
+                  
                   tester.start();
                 }
             }
@@ -162,7 +190,42 @@ public class RuntimeFrame  extends JFrame{
                 }
             }
         });
- 
+        lenOfBRPText = new JTextField();
+        lenOfBRPText.setColumns(20);
+        lenOfBRPText.setText("" + lenOfBRP);
+        lenOfBRPText.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                   lenOfBRP = Integer.parseInt(lenOfBRPText.getText());
+                }    
+                catch(Exception ex){
+                    lenOfBRPText.setText("" + lenOfBRP);
+                    
+                }
+            }
+        });
+        lenOfBRPText.addFocusListener(new FocusListener() { 
+    
+            @Override
+            public void focusGained(FocusEvent e) {
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try{
+                   numOfNodes = Integer.parseInt(numOfNodesText.getText());
+                   numOfNodesSli.setValue(numOfNodes);
+                }    
+                catch(Exception ex){
+                    numOfNodesText.setText("" + numOfNodes);
+                    
+                }
+            }
+        });
+        
+        
         northPanel = new JPanel();
         northPanel.setLayout(new FlowLayout());
         northPanel.add(new JLabel("Grundauswahl der Zugriffsfolge für den Laufzeittest:"));
@@ -172,8 +235,52 @@ public class RuntimeFrame  extends JFrame{
         comboBox.addItem("dynamicFinger");
         comboBox.addItem("workingSet");
         comboBox.addItem("bitReversalPermutation");
+        comboBox.addItemListener(new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                 String item = (String) e.getItem();
+                 setVisible(false);
+                 remove(randomPanel);
+                 remove(staticFingerPanel);
+                 remove(dynamicFingerPanel);
+                 remove(workingSetPanel);
+                 remove(bitReversalPermutationPanel);
+                 switch(item){
+                     case ("randomAccess"):
+                         add(randomPanel, BorderLayout.CENTER);
+                         activePanel = "randomAccess";
+                         break;
+                    case ("staticFinger"):
+                         add(staticFingerPanel, BorderLayout.CENTER);
+                         activePanel = "staticFinger";
+                         break;
+                    case ("dynamicFinger"):
+                         add(dynamicFingerPanel, BorderLayout.CENTER);
+                         activePanel = "dynamicFinger";
+                         break;
+                    case ("workingSet"):
+                         add(workingSetPanel, BorderLayout.CENTER);
+                         activePanel = "workingSet";
+                         break;
+                    case ("bitReversalPermutation"):
+                         add(bitReversalPermutationPanel, BorderLayout.CENTER);
+                         activePanel = "bitReversalPermutation";
+                         break;
+                 }
+                 setVisible(true);
+                 
+            }
+        });
         northPanel.add(comboBox);
         randomPanel = new JPanel();
+        staticFingerPanel = new JPanel();
+        dynamicFingerPanel = new JPanel();
+        workingSetPanel = new JPanel();
+        bitReversalPermutationPanel = new JPanel();
+        bitReversalPermutationPanel.setLayout(new GridLayout(1, 2));
+        bitReversalPermutationPanel.add(lenOfBRPText);
+        bitReversalPermutationPanel.add(new JLabel("Anzahl der Bits"));
+        
         randomPanel.setLayout(new GridLayout(2, 3));
         randomPanel.add(numOfNodesSli);
         randomPanel.add(numOfNodesText);

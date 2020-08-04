@@ -20,8 +20,8 @@ import java.util.logging.Logger;
  */
 public class Tester extends Thread {
    private String test;
-   private int numOfNodes;
-   private int lengthOfSeq;
+   private int par1;
+   private int par2;
    private long[] result;
   
    
@@ -29,12 +29,49 @@ public class Tester extends Thread {
    @Override
     public void run (){
         ResultFrame frame = new ResultFrame();
+        
+        switch(test){
+                     case ("randomAccess"):
+                        try {
+                             result = randomAccess(par1, par2);
+                            }
+                         catch (BuildAuxTreeFaildException ex) {
+                        }
+                         break;
+                    case ("staticFinger"):
+                        try {
+                             result = randomAccess(par1, par2);
+                            }
+                         catch (BuildAuxTreeFaildException ex) {
+                        }
+                         break;
+                    case ("dynamicFinger"):
+                        try {
+                             result = randomAccess(par1, par2);
+                            }
+                         catch (BuildAuxTreeFaildException ex) {
+                        }
+                         break;
+                    case ("workingSet"):
+                        try {
+                             result = randomAccess(par1, par2);
+                            }
+                         catch (BuildAuxTreeFaildException ex) {
+                        }
+                         break;
+                    case ("bitReversalPermutation"):
+                        try {
+                             result = bitReversalPermutation(par1);
+                            }
+                         catch (BuildAuxTreeFaildException ex) {
+                        }
+                         break;
+                 }
+        
+        
+        
         if(test.equals("randomAccess")){
-            try {
-                result = randomAccess(numOfNodes, lengthOfSeq);
-            } catch (BuildAuxTreeFaildException ex) {
-                
-            }
+            
             
         }
         frame.setTime(result[0], result[1]);
@@ -49,10 +86,10 @@ public class Tester extends Thread {
         
         result = null;
     }
-     public Tester(String t, int n, int l ){
+     public Tester(String t, int p1, int p2 ){
         test = t;
-        numOfNodes = n;
-        lengthOfSeq = l;
+        par1 = p1;
+        par2 = p2;
         result = null;
     }
      private long[] workingSet (int numOfNodes, int lengthOfSeq, List<Integer> set) throws BuildAuxTreeFaildException{
