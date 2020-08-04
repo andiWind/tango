@@ -36,15 +36,17 @@ public class RuntimeFrame  extends JFrame{
     private int numOfNodes;
     private int lenOfSeq;
     private int lenOfBRP;
+    private int dynFinger;
     private String activePanel ;
     private final JPanel  northPanel;
-    private final JPanel  randomPanel;
-    private final JPanel  staticFingerPanel;
-    private final JPanel  dynamicFingerPanel;
-    private final JPanel  workingSetPanel;
-    private final JPanel  bitReversalPermutationPanel;
+    private JPanel  randomPanel;
+    private JPanel  staticFingerPanel;
+    private JPanel  dynamicFingerPanel;
+    private JPanel  workingSetPanel;
+    private JPanel  bitReversalPermutationPanel;
     private final JSlider numOfNodesSli;
     private final JTextField numOfNodesText;
+    private final JTextField dymFingerText;
     private final JTextField lenOfBRPText;
     private final JSlider lenOfSeqSli;
     private final JTextField lenOfSeqText;
@@ -56,6 +58,7 @@ public class RuntimeFrame  extends JFrame{
         lenOfSeq = 1000;
         lenOfBRP = 1;
         activePanel = "randomAccess";
+        dynFinger = 1;
         startButton = new JButton();
         startButton.setText("Start");
         startButton.addActionListener(new ActionListener(){
@@ -64,24 +67,22 @@ public class RuntimeFrame  extends JFrame{
               if ((tester == null || tester.getResult() != null) ){
                   switch(activePanel){
                      case ("randomAccess"):
-                         tester = new Tester("randomAccess", numOfNodes, lenOfSeq);
+                         tester = new Tester("randomAccess", numOfNodes, lenOfSeq, -1);
                          break;
                     case ("staticFinger"):
                          add(staticFingerPanel, BorderLayout.CENTER);
                          break;
                     case ("dynamicFinger"):
-                         add(dynamicFingerPanel, BorderLayout.CENTER);
+                         tester = new Tester("dynamicFinger", numOfNodes, lenOfSeq, dynFinger);
                          break;
                     case ("workingSet"):
                          add(workingSetPanel, BorderLayout.CENTER);
                          break;
                     case ("bitReversalPermutation"):
-                         tester = new Tester("bitReversalPermutation", lenOfBRP, -1);
+                         tester = new Tester("bitReversalPermutation", lenOfBRP, -1, -1);
                          break;
                  }
-                  
-                  
-                  
+
                   tester.start();
                 }
             }
@@ -224,7 +225,39 @@ public class RuntimeFrame  extends JFrame{
                 }
             }
         });
-        
+        dymFingerText = new JTextField();
+        dymFingerText.setColumns(20);
+        dymFingerText.setText("" + dynFinger);
+        dymFingerText.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                   dynFinger = Integer.parseInt(dymFingerText.getText());
+                }    
+                catch(Exception ex){
+                    dymFingerText.setText("" + dynFinger);
+                    
+                }
+            }
+        });
+        dymFingerText.addFocusListener(new FocusListener() { 
+    
+            @Override
+            public void focusGained(FocusEvent e) {
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try{
+                   dynFinger = Integer.parseInt(dymFingerText.getText());
+                }    
+                catch(Exception ex){
+                    dymFingerText.setText("" + dynFinger);
+                    
+                }
+            }
+        });
         
         northPanel = new JPanel();
         northPanel.setLayout(new FlowLayout());
@@ -247,22 +280,27 @@ public class RuntimeFrame  extends JFrame{
                  remove(bitReversalPermutationPanel);
                  switch(item){
                      case ("randomAccess"):
+                         buildRandomPanel();
                          add(randomPanel, BorderLayout.CENTER);
                          activePanel = "randomAccess";
                          break;
                     case ("staticFinger"):
+                         buildStaticFingerPanel();
                          add(staticFingerPanel, BorderLayout.CENTER);
                          activePanel = "staticFinger";
                          break;
                     case ("dynamicFinger"):
+                         buildDinamicFingerPanel();
                          add(dynamicFingerPanel, BorderLayout.CENTER);
                          activePanel = "dynamicFinger";
                          break;
                     case ("workingSet"):
+                         buildWorkingSetPanel();
                          add(workingSetPanel, BorderLayout.CENTER);
                          activePanel = "workingSet";
                          break;
                     case ("bitReversalPermutation"):
+                         buildBRPPanel();
                          add(bitReversalPermutationPanel, BorderLayout.CENTER);
                          activePanel = "bitReversalPermutation";
                          break;
@@ -272,22 +310,11 @@ public class RuntimeFrame  extends JFrame{
             }
         });
         northPanel.add(comboBox);
-        randomPanel = new JPanel();
-        staticFingerPanel = new JPanel();
-        dynamicFingerPanel = new JPanel();
-        workingSetPanel = new JPanel();
-        bitReversalPermutationPanel = new JPanel();
-        bitReversalPermutationPanel.setLayout(new GridLayout(1, 2));
-        bitReversalPermutationPanel.add(lenOfBRPText);
-        bitReversalPermutationPanel.add(new JLabel("Anzahl der Bits"));
         
-        randomPanel.setLayout(new GridLayout(2, 3));
-        randomPanel.add(numOfNodesSli);
-        randomPanel.add(numOfNodesText);
-        randomPanel.add(new JLabel("Anzahl der Knoten"));
-        randomPanel.add(lenOfSeqSli);
-        randomPanel.add(lenOfSeqText);
-        randomPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        
+       
+        
+       
         
         initFrame();
     }
@@ -298,9 +325,50 @@ public class RuntimeFrame  extends JFrame{
         setExtendedState(Frame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
         add(northPanel, BorderLayout.NORTH);
+        buildBRPPanel();
+        buildWorkingSetPanel();
+        buildDinamicFingerPanel();
+        buildWorkingSetPanel();
+        buildStaticFingerPanel();
+        buildRandomPanel();
         add(randomPanel, BorderLayout.CENTER);
         add(startButton, BorderLayout.SOUTH);
         
+    }
+    private void buildRandomPanel(){
+        randomPanel = new JPanel();
+        randomPanel.setLayout(new GridLayout(2, 3));
+        randomPanel.add(numOfNodesSli);
+        randomPanel.add(numOfNodesText);
+        randomPanel.add(new JLabel("Anzahl der Knoten"));
+        randomPanel.add(lenOfSeqSli);
+        randomPanel.add(lenOfSeqText);
+        randomPanel.add(new JLabel("Länge der Zugriffsfolge"));
+    }
+    private void buildBRPPanel(){
+        bitReversalPermutationPanel = new JPanel();
+        bitReversalPermutationPanel.setLayout(new GridLayout(1, 2));
+        bitReversalPermutationPanel.add(lenOfBRPText);
+        bitReversalPermutationPanel.add(new JLabel("Anzahl der Bits"));
+    }
+    private void buildStaticFingerPanel(){
+         staticFingerPanel = new JPanel();
+    }
+    private void buildDinamicFingerPanel(){
+        dynamicFingerPanel = new JPanel();
+        dynamicFingerPanel.setLayout(new GridLayout(3, 3));
+        dynamicFingerPanel.add(numOfNodesSli);
+        dynamicFingerPanel.add(numOfNodesText);
+        dynamicFingerPanel.add(new JLabel("Anzahl der Knoten"));
+        dynamicFingerPanel.add(lenOfSeqSli);
+        dynamicFingerPanel.add(lenOfSeqText);
+        dynamicFingerPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        dynamicFingerPanel.add(dymFingerText);
+        dynamicFingerPanel.add(new JLabel("Abstand der Schlüssel"));
+    }
+     private void buildWorkingSetPanel(){
+           workingSetPanel = new JPanel();
+       
     }
     
 }

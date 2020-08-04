@@ -11,8 +11,6 @@ import RedBlackTree.RedBlackTree;
 import TangoTree.BuildAuxTreeFaildException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,6 +20,7 @@ public class Tester extends Thread {
    private String test;
    private int par1;
    private int par2;
+   private int par3;
    private long[] result;
   
    
@@ -47,7 +46,7 @@ public class Tester extends Thread {
                          break;
                     case ("dynamicFinger"):
                         try {
-                             result = randomAccess(par1, par2);
+                             result = dynamicFinger(par1, par2, par3);
                             }
                          catch (BuildAuxTreeFaildException ex) {
                         }
@@ -82,14 +81,12 @@ public class Tester extends Thread {
     public long[] getResult(){
         return result;
     }
-    public Tester(int lengthOfBRP){
-        
-        result = null;
-    }
-     public Tester(String t, int p1, int p2 ){
+   
+     public Tester(String t, int p1, int p2, int p3 ){
         test = t;
         par1 = p1;
         par2 = p2;
+        par3 = p3;
         result = null;
     }
      private long[] workingSet (int numOfNodes, int lengthOfSeq, List<Integer> set) throws BuildAuxTreeFaildException{
@@ -230,11 +227,13 @@ public class Tester extends Thread {
         long startTime = System.nanoTime();
         for(Integer i: accessSequenz ){
             tangoTree.access(i);
+           
         }
         ret[0] = (System.nanoTime()- startTime) / 1000000 ;
         startTime = System.nanoTime();
         for(Integer i: accessSequenz ){
             splayTree.access(i);
+           
         }
         ret[1] = (System.nanoTime()- startTime) / 1000000 ;
         
