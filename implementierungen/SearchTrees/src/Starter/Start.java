@@ -9,7 +9,7 @@ import GUI.GUI;
 import GUI.MainGUI;
 import RedBlackTree.RedBlackTree;
 import SplayTree.SplayTree;
-import TangoTest.Tester;
+
 import TangoTree.BuildAuxTreeFaildException;
 import TangoTree.TangoTree;
 import java.util.LinkedList;
@@ -27,9 +27,9 @@ public class Start {
     private String test;
     
     public static void main (String[] args) throws BuildAuxTreeFaildException{
-        
+       // new GUI();
       MainGUI g = new MainGUI();  
-      return;  
+     // return;  
       /*RuntimeTest.Tester t = new RuntimeTest.Tester();
       List<Integer> workingSet = new LinkedList();
       workingSet.add(3);

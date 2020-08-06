@@ -18,8 +18,7 @@ import static javax.swing.SwingConstants.HORIZONTAL;
  */
 public class GUI extends JFrame{
     private I_GUITree guiTree;
-    private GUICanvas canvas;
-    private GUICanvas guiCanvas;
+    private TangoCanvas canvas;
     private JMenuBar guiMenuBar; 
     private JMenu menu;
     private JMenuItem aktionOpen;
@@ -33,28 +32,18 @@ public class GUI extends JFrame{
     }
    
     
-    public GUI (I_GUITree guiT){
-        guiTree = guiT;
+    public GUI (){
         setTitle("Dynamische Suchbäume");
         setBackground (Color.LIGHT_GRAY);
         setExtendedState(Frame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE );
         setLayout(new BorderLayout());
-        JPanel scrollPane = new JPanel();
-        canvas = new GUICanvas(guiTree, scrollPane);
-        canvas.setVisible(true);
+       // canvas = new GUICanvas(guiTree, new JPanel());
+        canvas = new TangoCanvas();
         canvas.setSize(100000,10000);
+        canvas.setVisible(true);
         add(canvas, BorderLayout.CENTER);
-        JScrollBar hScrollBar = new JScrollBar(HORIZONTAL, 0, 10, 0, 100000);
-        hScrollBar.setValue(5000);
-        hScrollBar.setUnitIncrement(100);
-        JScrollBar vScrollBar = new JScrollBar(VERTICAL, 0, 10, 0, 100000);
-        ScrollListener scrollListener = new ScrollListener(canvas, hScrollBar, vScrollBar);
-        hScrollBar.addAdjustmentListener(scrollListener);
-        vScrollBar.addAdjustmentListener(scrollListener);
-        scrollPane.add(hScrollBar);
-        scrollPane.add(canvas);
-        add(scrollPane);
+       
         
         guiMenuBar = new JMenuBar();
         menu = new JMenu("Menü");
@@ -93,18 +82,18 @@ public class GUI extends JFrame{
         aktion.setSize(400, 200);
         
         aktion.add(new JLabel("Suchen:"));
-        JSpinner searchSpinner = new JSpinner(new SpinnerNumberModel(0, Integer.MIN_VALUE, Integer.MAX_VALUE, 1));
-        aktion.add(searchSpinner);
-        JButton searchButton = new JButton("OK");
-        searchButton.addActionListener(new ActionListener(){
+        JSpinner accessSpinner = new JSpinner(new SpinnerNumberModel(0, Integer.MIN_VALUE, Integer.MAX_VALUE, 1));
+        aktion.add(accessSpinner);
+        JButton accessButton = new JButton("OK");
+        accessButton.addActionListener(new ActionListener(){
                
             public void actionPerformed(ActionEvent e) {
-                guiTree.access((int)searchSpinner.getValue());
+                guiTree.access((int)accessSpinner.getValue());
                 canvas.repaint();
                 } 
             }    
         );
-        aktion.add(searchButton);
+        aktion.add(accessButton);
         
         aktion.add(new JLabel("Einfügen:"));
         JSpinner insertSpinner = new JSpinner(new SpinnerNumberModel(0, Integer.MIN_VALUE, Integer.MAX_VALUE, 1));

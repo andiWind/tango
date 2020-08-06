@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author andreas
  */
-public class SplayTree implements I_GUITree {
+public class SplayTree  {
     private Node root;
 
 
@@ -78,7 +78,7 @@ public class SplayTree implements I_GUITree {
     public void insert (int key){
     }
     
-    @Override
+  
     public Node access (int key){
     splay(key);
     return root;
@@ -195,21 +195,5 @@ private Node search(int key){
     }
     return search;
 }
-
-    @Override
-    public I_GUINode getRoot() {
-        return root;
-    }
-
-    @Override
-    public void delete(int key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getName() {
-        return "SplayTree";
-    }
-   
 
 }

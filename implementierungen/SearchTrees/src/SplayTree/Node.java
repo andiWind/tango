@@ -5,14 +5,12 @@
  */
 package SplayTree;
 
-import GUI.I_GUINode;
-import java.awt.Color;
 
 /**
  *
  * @author andreas
  */
-public class Node implements I_GUINode {
+public class Node  {
     private Node left;
     private Node right;
     private Node parent;
@@ -59,28 +57,5 @@ public class Node implements I_GUINode {
         parent = p;
     } 
 
-    @Override
-    public Color getColorFromGui() {
-        return Color.BLUE;
-    }
 
-    @Override
-    public I_GUINode getLeftFromGui() {
-       return left;
-    }
-
-    @Override
-    public I_GUINode getRightFromGui() {
-        return right;
-    }
-
-    @Override
-    public I_GUINode getParentFromGui() {
-        return parent;
-    }
-
-    @Override
-    public String getKeyStringFromGui() {
-        return "" + key;
-    }
 }

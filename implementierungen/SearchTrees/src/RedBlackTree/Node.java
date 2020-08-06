@@ -12,7 +12,7 @@ import java.awt.Color;
  *
  * @author andreas
  */
-public class Node extends TangoNode implements I_GUINode {
+public class Node extends TangoNode  {
 
 
     private RBColor color;
@@ -69,33 +69,9 @@ public class Node extends TangoNode implements I_GUINode {
          return color == RBColor.BLACK;
     }
     
-    @Override
-    public I_GUINode getLeftFromGui() {
-      
-        if (getLeft() == null)
-            return super.getLeftFromGui();
-        return getLeft();
-    }
+  
 
-    @Override
-    public I_GUINode getRightFromGui() {
-        if (getRight() ==  null)
-            return super.getRightFromGui();
-        return getRight();
-    }
-
-    @Override
-    public I_GUINode getParentFromGui() {
-        if (getParent() == null)
-            return super.getParentFromGui();
-        return getParent();
-    }
-
-    @Override
-    public String getKeyStringFromGui() {
-       // return Integer.toString(key);
-       return Integer.toString(getKey()) + "_" + Integer.toString(getDepth());
-    }
+   
 
     
     
@@ -163,15 +139,6 @@ public class Node extends TangoNode implements I_GUINode {
     }
     
     
-    /////wieder löschen///////////////////
-      public int getBlackHighh(){
-          return getBlackHigh();
-      }
-      public static RBColor rbColorRed(){
-          return RBColor.RED;
-      }
-      public static RBColor rbColorBlack(){
-          return RBColor.BLACK;
-      }
+    
     
 }

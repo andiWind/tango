@@ -139,7 +139,7 @@ public class TangoTree implements I_GUITree{
         return  tempWritedNumbers;    
     }
     private PerfectTreeNode buildPerfectBalancedTree (PerfectTreeNode node, int numOfNodes, int nodeNumber, int depth ){
-         node.depth = depth;
+        node.depth = depth;
         if (2 * nodeNumber <= numOfNodes){
             node.left = buildPerfectBalancedTree(new PerfectTreeNode(), numOfNodes, 2 * nodeNumber, depth + 1);
         }

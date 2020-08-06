@@ -89,9 +89,9 @@ public class GUICanvas extends Canvas implements Scrollable{
     public void paint(Graphics g){
         computeWidthScrollOffset();
         super.paint(g);
-        I_GUINode root = tree.getRoot();
-        int numOfLevels = numberOfLevels(root, 0);
         int width = this.getWidth();
+          I_GUINode root = tree.getRoot();
+        int numOfLevels = numberOfLevels(root, 0);
         Font standardFont = g.getFont();
         g.setFont( new Font("", 1, 30));
         g.drawString(tree.getName(),width / 2 , 40 );

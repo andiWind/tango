@@ -5,8 +5,7 @@
  */
 package RedBlackTree;
 
-import GUI.GUICanvas;
-import GUI.I_GUITree;
+
 import RedBlackTree.Node.RBColor;
 import TangoTree.TangoAuxTree;
 import TangoTree.TangoNode;
@@ -20,29 +19,10 @@ import TangoTree.TangoNode;
  *
  * @author andreas
  */
-public class RedBlackTree extends TangoAuxTree implements I_GUITree {
+public class RedBlackTree extends TangoAuxTree {
     private Node root;
-    
-    
-    //wieder entfernen 
-    GUICanvas guiCanvas;
-    public void setCanvas(GUICanvas c){
-        guiCanvas = c;
-    }
-    private void randomTest(){
-        for (int i = 0; i < 2000; i++){
-            int k = (int) (Math.random() * 1000);
-            if (i % 11 == 0)
-               insert(k);
-            else
-               delete(k);   
-        }
-    }
+
    
-    @Override
-    public String getName(){
-        return "RED-BLACK";
-    }
     public RedBlackTree (){
       
     }
@@ -145,7 +125,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
      
     }
    
-     @Override
+  
     public void delete (int key){
         Node delNode = search(root, key);
         if (delNode == null || delNode.getKey() != key)
@@ -312,7 +292,7 @@ public class RedBlackTree extends TangoAuxTree implements I_GUITree {
         }
         return searchNode;
    }
-   @Override
+
    public Node access (int key){
       return search(root, key);
    }
