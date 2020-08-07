@@ -146,13 +146,5 @@ public abstract class TangoNode implements I_GUINode{
        return parent;
     }
 
-    public TangoNode getLeftTangoo(){
-        return left;
-    }
-    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
-    public TangoNode getRightTangoo(){
-        return right;
-    }
-    //////////////////////////////////////////////
-   
+    
 }

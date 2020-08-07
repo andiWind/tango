@@ -11,8 +11,6 @@ package GUI;
  */
 public interface I_GUITree {
     I_GUINode getRoot ();
-    void insert(int key);
-    void delete(int key);
     I_GUINode access (int key);
     String getName();
     

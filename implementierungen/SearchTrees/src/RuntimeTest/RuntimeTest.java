@@ -233,8 +233,6 @@ public class RuntimeTest extends Thread {
         }
         return runtimeTest(keyList, accessSequenz, repeat);
     } 
-  
-    
     private long[] bitReversalPermutation (int numOfBits) throws BuildAuxTreeFaildException{
         List<Integer> keyList = new LinkedList();
         for (int i = 0; i < Math.pow(2, numOfBits); i++){

@@ -151,16 +151,7 @@ public class TangoTree implements I_GUITree{
          return auxTree.getRoot();
     }
 
-    @Override
-    public void insert(int key) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete(int key) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
    
 
     @Override
@@ -176,10 +167,5 @@ public class TangoTree implements I_GUITree{
        int key;
        int depth;
     }
-  
-    //wieder löschen//////////////
-    public void setTree(TangoNode r){
-        auxTree.setTree(r); 
-    }
-    //////////////////////////////
+ 
 }

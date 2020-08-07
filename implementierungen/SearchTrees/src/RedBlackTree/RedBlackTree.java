@@ -51,7 +51,7 @@ public class RedBlackTree extends TangoAuxTree {
                 attachNodeRight(search, insNode);  
         }
         insertFixup(insNode);
-    }
+    } 
    
     private void insertFixup (RBTNode node){
         if(node == null)
@@ -293,10 +293,7 @@ public class RedBlackTree extends TangoAuxTree {
         return searchNode;
    }
 
-   public RBTNode access (int key){
-      return search(root, key);
-   }
- 
+  
    
   
     @Override //Implementiert split für TangoCut

@@ -15,7 +15,7 @@ public class SplayNode  {
     private SplayNode right;
     private SplayNode parent;
     private int key;
-    boolean keyFinal;
+    private boolean keyFinal;
     
     SplayNode (int k, SplayNode l, SplayNode r, SplayNode p ){
         left = l;
@@ -41,7 +41,7 @@ public class SplayNode  {
     SplayNode getLeft(){
         return left;
     }
-     SplayNode getRight(){
+    SplayNode getRight(){
         return right;
     }
     SplayNode getParent(){

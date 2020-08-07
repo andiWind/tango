@@ -18,7 +18,7 @@ public class SplayTree  {
     private SplayNode root;
 
 
-      private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int nodeNumber ){
+    private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int nodeNumber ){
         if (2 * nodeNumber <= numOfNodes){
             node.setLeft(buildPerfectBalancedTree(new SplayNode(), numOfNodes, 2 * nodeNumber));
             node.getLeft().setParent(node);
@@ -74,8 +74,6 @@ public class SplayTree  {
        }
       return ret;
    }
-    public void insert (int key){
-    }
     
   
     public SplayNode access (int key){
