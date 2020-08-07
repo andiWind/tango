@@ -31,7 +31,7 @@
 \section{Implementierung und Laufzeittests}
 In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben und dann werden noch die Laufzeittests dargestellt. 
 \subsection{Implementierung}
-Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsstruktur für den Tango Baum. Außerdem wurde die \textit{access} Operation des Splay Baum implementiert, um Laufzeittest zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm, über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet.
+Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsstruktur für den Tango Baum. Außerdem wurde die \textit{access} Operation des Splay Baum implementiert, um Laufzeittest zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm, über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet. Abbildung \ref{fig:klassen} stellt ein Klassendiagramm dar.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/laufzeittest/MainGUI"}
@@ -78,7 +78,7 @@ Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfss
 \subsubsection{Beschreibung der Klassen }
 
 \paragraph{SplayTree und SplayNode}
-Der Splay Baum startet genau wir der Tango Baum perfekt balanciert, auch wenn es sich bei längeren Zugriffsfolgen nur minimal auswirken sollte. Ansonsten gibt es keine Besonderheiten. \textit{access} Verhält sich genau wie im Kapitel zum Splay Baum beschrieben.
+Der Splay Baum startet genau wie der Tango Baum perfekt balanciert, auch wenn sich dies bei längeren Zugriffsfolgen praktisch nicht auswirken sollte. Ansonsten gibt es keine Besonderheiten. \textit{access} verhält sich genau wie im Kapitel zum Splay Baum beschrieben.
 
 \paragraph{TangoNode}
 Der TangoNode enthält bereits alle zwingend notwendigen Attribute eines Knoten im Tango Baum. 
@@ -87,10 +87,10 @@ Der TangoNode enthält bereits alle zwingend notwendigen Attribute eines Knoten 
 Klassen die als Hilfsstruktur im Tangobaum eingesetzt werden sollen, müssen diese Klasse erweitern. \textit{setTree} wird benötigt, da die Klasse TangoTree die BST Struktur nur über das Attribut \enquote{auxTree} erreicht. Gibt es eine Veränderung an der Wurzel des Tango Baum, wird die BST Struktur von \enquote{auxTree} neu gesetzt. \textit{updateDepthsPath} pflegt die Attribute \enquote{minDepth} und \enquote{minDepth} der TangoNode.
 
 \paragraph{TangoTree}
-\enquote{auxTree} macht die Wurzel des Tango Baum erreichbar. Außerdem können über diesen Attribut die \textit{split} und \textit{join} Operationen aufgerufen werden.
+\enquote{auxTree} macht die Wurzel des Tango Baum erreichbar. Außerdem können über diesen Attribut die \textit{split} und \textit{join} Operationen aufgerufen werden. \enquote{auxTreeClass} entspricht der Klasse der eingesetzten Hilfsbäumen. Diese wird dem Constructor übergeben. Somit kann der RBT einfach durch eine andere geeignete Struktur ersetzt werden.
 
 \paragraph{RedBlackTree und RBTNode}
-Erweitern die abstrakten Klassen.
+Erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu RBT beschrieben.
 
 \paragraph{RuntimeTest}
 Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt, führt genau einen Laufzeittest durch, die restlichen Attribute dienen dessen Parametrierung. Die Methoden führ die Test geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baum, der zweite der des Splay Baum.
