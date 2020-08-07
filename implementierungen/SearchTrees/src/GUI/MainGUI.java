@@ -29,7 +29,7 @@ public class MainGUI extends JFrame{
         accessDialog = new JDialog(this);
         accessDialog.setLayout(new GridLayout(2,2));
         accessDialog.setDefaultCloseOperation(HIDE_ON_CLOSE );
-        accessDialog.setSize(400, 200);
+        accessDialog.setSize(200, 100);
         JSpinner accessSpinner = new JSpinner(new SpinnerNumberModel(0, Integer.MIN_VALUE, Integer.MAX_VALUE, 1));
         accessDialog.add(accessSpinner);
         JButton accessButton = new JButton("access");
@@ -111,7 +111,7 @@ public class MainGUI extends JFrame{
         
         
         
-        
+        accessDialog.setLocation(300, 0);
         initFrame();
         
     }

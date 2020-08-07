@@ -5,8 +5,7 @@
  */
 package SplayTree;
 
-import GUI.I_GUINode;
-import GUI.I_GUITree;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,21 +15,21 @@ import java.util.List;
  * @author andreas
  */
 public class SplayTree  {
-    private Node root;
+    private SplayNode root;
 
 
-      private Node buildPerfectBalancedTree (Node node, int numOfNodes, int nodeNumber ){
+      private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int nodeNumber ){
         if (2 * nodeNumber <= numOfNodes){
-            node.setLeft(buildPerfectBalancedTree(new Node(), numOfNodes, 2 * nodeNumber));
+            node.setLeft(buildPerfectBalancedTree(new SplayNode(), numOfNodes, 2 * nodeNumber));
             node.getLeft().setParent(node);
         }
         if (2 * nodeNumber + 1  <= numOfNodes){
-            node.setRight( buildPerfectBalancedTree(new Node(), numOfNodes,2 * nodeNumber + 1)); 
+            node.setRight(buildPerfectBalancedTree(new SplayNode(), numOfNodes,2 * nodeNumber + 1)); 
              node.getRight().setParent(node);
         }
         return node;
     }
-    private int setKeys(Node node ,int[] keys, int count){
+    private int setKeys(SplayNode node ,int[] keys, int count){
         if (node.getLeft() != null)
             count = setKeys(node.getLeft(), keys, count);
         node.setKey(count++);
@@ -40,7 +39,7 @@ public class SplayTree  {
     }  
     public SplayTree (List<Integer> keyList){
         int[] keyArray = buildKeyArray(keyList);
-        root = buildPerfectBalancedTree(new Node(),keyArray.length,1 );
+        root = buildPerfectBalancedTree(new SplayNode(),keyArray.length,1 );
         setKeys(root, keyArray, 1);
         
        
@@ -79,18 +78,18 @@ public class SplayTree  {
     }
     
   
-    public Node access (int key){
+    public SplayNode access (int key){
     splay(key);
     return root;
 }    
     
 private void splay(int key){
-    Node splayNode = search(key);
+    SplayNode splayNode = search(key);
     if (splayNode == null)
         return;
     while(root != splayNode){
-        Node sP = splayNode.getParent();
-        Node sPP = sP .getParent();
+        SplayNode sP = splayNode.getParent();
+        SplayNode sPP = sP .getParent();
         if (sPP == null){
             if (sP.getLeft() == splayNode)
                 zig(splayNode);
@@ -110,32 +109,32 @@ private void splay(int key){
         }
     }
 }  
-private void zigZig (Node node){
+private void zigZig (SplayNode node){
     rotateRight(node.getParent());
     rotateRight(node);
 } 
-private void zigZag (Node node){
+private void zigZag (SplayNode node){
     rotateRight(node);
     rotateLeft(node);
 }  
-private void zagZig (Node node){
+private void zagZig (SplayNode node){
     rotateLeft(node);
     rotateRight(node);
 }  
-private void zagZag (Node node){
+private void zagZag (SplayNode node){
     rotateLeft(node.getParent());
     rotateLeft(node);
 }  
-private void zig (Node node){
+private void zig (SplayNode node){
     rotateRight(node);
        
 }  
-private void zag (Node node){
+private void zag (SplayNode node){
     rotateLeft(node);
 } 
-private void rotateRight(Node node){
-    Node par = node.getParent();
-    Node parPar = par.getParent();
+private void rotateRight(SplayNode node){
+    SplayNode par = node.getParent();
+    SplayNode parPar = par.getParent();
     
     par.setLeft(node.getRight());
     if(par.getLeft() != null)
@@ -156,9 +155,9 @@ private void rotateRight(Node node){
     node.setParent(parPar);
     
 }
-private void rotateLeft(Node node){
-    Node par = node.getParent();
-    Node parPar = par.getParent();
+private void rotateLeft(SplayNode node){
+    SplayNode par = node.getParent();
+    SplayNode parPar = par.getParent();
     
     par.setRight(node.getLeft());
     if(par.getRight() != null)
@@ -181,9 +180,9 @@ private void rotateLeft(Node node){
 }
 
 
-private Node search(int key){
-    Node search = root;
-    Node next = root;
+private SplayNode search(int key){
+    SplayNode search = root;
+    SplayNode next = root;
     while (next != null){
         search = next;
         if (next.getKey() == key)

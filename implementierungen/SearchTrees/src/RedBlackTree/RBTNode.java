@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package RedBlackTree;
-import GUI.I_GUINode;
 import TangoTree.TangoNode;
 import java.awt.Color;
 
@@ -12,7 +11,7 @@ import java.awt.Color;
  *
  * @author andreas
  */
-public class Node extends TangoNode  {
+public class RBTNode extends TangoNode  {
 
 
     private RBColor color;
@@ -20,23 +19,23 @@ public class Node extends TangoNode  {
 
 
     
-    public  Node (int k, RBColor c, int bh){
+    public  RBTNode (int k, RBColor c, int bh){
         super(k);
         color = c;
         blackHigh = bh;
     }
     
     @Override
-    protected Node getAuxTreeLeft(){
-        return (Node) super.getAuxTreeLeft();
+    protected RBTNode getAuxTreeLeft(){
+        return (RBTNode) super.getAuxTreeLeft();
     }
     @Override
-    protected Node getAuxTreeRight(){
-        return (Node) super.getAuxTreeRight();
+    protected RBTNode getAuxTreeRight(){
+        return (RBTNode) super.getAuxTreeRight();
     }
     @Override
-    protected Node getAuxTreeParent(){
-        return (Node) super.getAuxTreeParent();
+    protected RBTNode getAuxTreeParent(){
+        return (RBTNode) super.getAuxTreeParent();
     }
     @Override
     public int getKey(){
@@ -76,17 +75,17 @@ public class Node extends TangoNode  {
     
     
     @Override
-    protected Node getLeft() {
-        return (Node) super.getLeft();
+    protected RBTNode getLeft() {
+        return (RBTNode) super.getLeft();
     }
     
     @Override
-    protected Node getRight() {
-        return (Node) super.getRight();
+    protected RBTNode getRight() {
+        return (RBTNode) super.getRight();
     }
     @Override
-   protected Node getParent(){
-       return (Node) super.getParent();
+   protected RBTNode getParent(){
+       return (RBTNode) super.getParent();
    }
     boolean IsLeftChildBlack(){
         if (getLeft() == null)

@@ -5,7 +5,7 @@
  */
 package TangoTree;
 
-import GUI.GUICanvas;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,11 +21,7 @@ public class TangoTree implements I_GUITree{
 
     private final Class<? extends TangoAuxTree > auxTreeClass;
     private TangoAuxTree auxTree;
-    GUICanvas guiCanvas;
-     
-    public void setCanvas(GUICanvas c){
-        guiCanvas = c;
-    }
+   
     public  TangoTree(List<Integer> keyList, Class<? extends TangoAuxTree > auxTreeClass) throws BuildAuxTreeFaildException{
         //Test AuxTree Class
         try {

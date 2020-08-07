@@ -6,7 +6,7 @@
 package RedBlackTree;
 
 
-import RedBlackTree.Node.RBColor;
+import RedBlackTree.RBTNode.RBColor;
 import TangoTree.TangoAuxTree;
 import TangoTree.TangoNode;
 
@@ -20,14 +20,14 @@ import TangoTree.TangoNode;
  * @author andreas
  */
 public class RedBlackTree extends TangoAuxTree {
-    private Node root;
+    private RBTNode root;
 
    
     public RedBlackTree (){
       
     }
     @Override
-    public Node getRoot (){
+    public RBTNode getRoot (){
         return root;
     }
      
@@ -35,8 +35,8 @@ public class RedBlackTree extends TangoAuxTree {
     @Override
     public void insert (int key){
         int blackHigh = 1;
-        Node insNode = new Node(key, Node.RBColor.RED, blackHigh);
-        Node search = search(root,insNode.getKey());
+        RBTNode insNode = new RBTNode(key, RBTNode.RBColor.RED, blackHigh);
+        RBTNode search = search(root,insNode.getKey());
         if (root == null){
             root = insNode;  
         }
@@ -53,10 +53,10 @@ public class RedBlackTree extends TangoAuxTree {
         insertFixup(insNode);
     }
    
-    private void insertFixup (Node node){
+    private void insertFixup (RBTNode node){
         if(node == null)
             return;
-        Node tempNode = node;
+        RBTNode tempNode = node;
         while (tempNode != root && tempNode.getParent() != null && tempNode.getParent().isRed()){
             if (tempNode.getParent() == tempNode.getParent().getParent().getLeft() ){ //Der obere der zwei roten Knoten hängt links
                tempNode =  insertFixupLeftCase(tempNode);
@@ -65,17 +65,17 @@ public class RedBlackTree extends TangoAuxTree {
                tempNode =  insertFixupRightCase(tempNode); 
             }
         }
-        root.setColor(Node.RBColor.BLACK);
+        root.setColor(RBTNode.RBColor.BLACK);
     }
     
-    private Node insertFixupLeftCase (Node node){
-        Node lowerRedNode = node;
-        Node higherRedNode = node.getParent(); 
-        Node higherRedNodePar = higherRedNode.getParent();//Wurzel ist schwarz, also liegt higherRedNode tiefer
+    private RBTNode insertFixupLeftCase (RBTNode node){
+        RBTNode lowerRedNode = node;
+        RBTNode higherRedNode = node.getParent(); 
+        RBTNode higherRedNodePar = higherRedNode.getParent();//Wurzel ist schwarz, also liegt higherRedNode tiefer
         if (higherRedNodePar.IsRightChildRed()){
-            higherRedNodePar.getRight().setColor(Node.RBColor.BLACK);
-            higherRedNode.setColor(Node.RBColor.BLACK);
-            higherRedNodePar.setColor(Node.RBColor.RED);
+            higherRedNodePar.getRight().setColor(RBTNode.RBColor.BLACK);
+            higherRedNode.setColor(RBTNode.RBColor.BLACK);
+            higherRedNodePar.setColor(RBTNode.RBColor.RED);
             higherRedNodePar.incBlackHigh();
             return higherRedNodePar;
         }
@@ -84,19 +84,19 @@ public class RedBlackTree extends TangoAuxTree {
             higherRedNode = lowerRedNode;
             higherRedNodePar = higherRedNode.getParent();
         }
-        higherRedNode.setColor(Node.RBColor.BLACK);
-        higherRedNodePar.setColor(Node.RBColor.RED);
+        higherRedNode.setColor(RBTNode.RBColor.BLACK);
+        higherRedNodePar.setColor(RBTNode.RBColor.RED);
         rotateRight(higherRedNodePar);
         return root;
     }
-    private Node insertFixupRightCase (Node node){
-        Node lowerRedNode = node;
-        Node higherRedNode = node.getParent(); 
-        Node higherRedNodePar = higherRedNode.getParent();//Wurzel ist schwarz, also liegt higherRedNode tiefer
+    private RBTNode insertFixupRightCase (RBTNode node){
+        RBTNode lowerRedNode = node;
+        RBTNode higherRedNode = node.getParent(); 
+        RBTNode higherRedNodePar = higherRedNode.getParent();//Wurzel ist schwarz, also liegt higherRedNode tiefer
         if (higherRedNodePar.IsLeftChildRed() ){
-            higherRedNodePar.getLeft().setColor(Node.RBColor.BLACK);
-            higherRedNode.setColor(Node.RBColor.BLACK);
-            higherRedNodePar.setColor(Node.RBColor.RED);
+            higherRedNodePar.getLeft().setColor(RBTNode.RBColor.BLACK);
+            higherRedNode.setColor(RBTNode.RBColor.BLACK);
+            higherRedNodePar.setColor(RBTNode.RBColor.RED);
             higherRedNodePar.incBlackHigh();
             return higherRedNodePar;
         }
@@ -105,20 +105,20 @@ public class RedBlackTree extends TangoAuxTree {
             higherRedNode = lowerRedNode;
             higherRedNodePar = higherRedNode.getParent();
         }
-        higherRedNode.setColor(Node.RBColor.BLACK);
-        higherRedNodePar.setColor(Node.RBColor.RED);
+        higherRedNode.setColor(RBTNode.RBColor.BLACK);
+        higherRedNodePar.setColor(RBTNode.RBColor.RED);
         rotateLeft(higherRedNodePar);
         return root;
     }
      //Der obere Knoten der Rotation wird übergeben
-    private void rotateLeft (Node node){ 
+    private void rotateLeft (RBTNode node){ 
         if(root == node)
             root = node.getRight();
          super.rotateLeft(node);
       
     }
     //Der obere Knoten der Rotation wird übergeben
-    private void rotateRight (Node node){ 
+    private void rotateRight (RBTNode node){ 
         if(root == node)
             root = node.getLeft();
         super.rotateRight(node);
@@ -127,7 +127,7 @@ public class RedBlackTree extends TangoAuxTree {
    
   
     public void delete (int key){
-        Node delNode = search(root, key);
+        RBTNode delNode = search(root, key);
         if (delNode == null || delNode.getKey() != key)
             return; 
         if (delNode.getLeft() == null){
@@ -150,7 +150,7 @@ public class RedBlackTree extends TangoAuxTree {
         }
         
         else{ //Beide Subtrees vorhanden. Das kleinste Element des rechten Baumes verwenden um DelNode zu ersetzen
-            Node rightMin = getPredecessor(delNode);
+            RBTNode rightMin = getPredecessor(delNode);
             // rightMin entfernen
            if(rightMin.isBlack()){
                  if(rightMin.IsRightChildRed())
@@ -169,7 +169,7 @@ public class RedBlackTree extends TangoAuxTree {
             rightMin.setBlackHigh(delNode.getBlackHigh());
         }
     }
-    private void deleteFixup (Node node){
+    private void deleteFixup (RBTNode node){
         if(node == null)
             return;
         while (node != root && node.isBlack()){
@@ -179,63 +179,63 @@ public class RedBlackTree extends TangoAuxTree {
             else
                 node = deleteFixupRightCase(node);
         }
-        node.setColor(Node.RBColor.BLACK);
+        node.setColor(RBTNode.RBColor.BLACK);
     }
-    private Node deleteFixupLeftCase (Node inputNode){
-        Node inputNodeBro = inputNode.getParent().getRight(); 
+    private RBTNode deleteFixupLeftCase (RBTNode inputNode){
+        RBTNode inputNodeBro = inputNode.getParent().getRight(); 
         if (inputNodeBro.isRed()){ //Fall 1
-            inputNodeBro.setColor(Node.RBColor.BLACK);
-            inputNodeBro.getParent().setColor(Node.RBColor.RED);
+            inputNodeBro.setColor(RBTNode.RBColor.BLACK);
+            inputNodeBro.getParent().setColor(RBTNode.RBColor.RED);
             rotateLeft(inputNode.getParent());
             inputNodeBro = inputNode.getParent().getRight();   
         }
         if ( inputNodeBro.IsLeftChildBlack() && inputNodeBro.IsRightChildBlack()){ //Fall 2
-            inputNodeBro.setColor(Node.RBColor.RED);
+            inputNodeBro.setColor(RBTNode.RBColor.RED);
             inputNode.getParent().decBlackHigh();
             return inputNode.getParent();
         }
         else{ 
             if (inputNodeBro.IsRightChildBlack()){
-                inputNodeBro.getLeft().setColor(Node.RBColor.BLACK);
-                inputNodeBro.setColor(Node.RBColor.RED);
+                inputNodeBro.getLeft().setColor(RBTNode.RBColor.BLACK);
+                inputNodeBro.setColor(RBTNode.RBColor.RED);
                 rotateRight(inputNodeBro);
                 inputNodeBro = inputNode.getParent().getRight();
             }
             inputNodeBro.setColor(inputNode.getParent().getColor());
-            inputNode.getParent().setColor(Node.RBColor.BLACK);
-            inputNodeBro.getRight().setColor(Node.RBColor.BLACK);
+            inputNode.getParent().setColor(RBTNode.RBColor.BLACK);
+            inputNodeBro.getRight().setColor(RBTNode.RBColor.BLACK);
             inputNode.getParent().decBlackHigh();
             inputNodeBro.incBlackHigh();
             rotateLeft(inputNode.getParent());
             return root;
         }
     }  
-    private Node deleteFixupRightCase (Node inputNode){
+    private RBTNode deleteFixupRightCase (RBTNode inputNode){
         //Null Prüfungen entfallen. Die Objekte müssen existieren, da ansonsten der Baum vor dem löschen bereits eine Eigenschaft verletzt hätte
 
-        Node inputNodeBro = inputNode.getParent().getLeft();  //Kann nicht null sein, ansonsten wäre vor dem Löschen die Schwarz-Höhe verletzt gewesen
+        RBTNode inputNodeBro = inputNode.getParent().getLeft();  //Kann nicht null sein, ansonsten wäre vor dem Löschen die Schwarz-Höhe verletzt gewesen
         if (inputNodeBro.isRed()){ //Fall 1
-            inputNodeBro.setColor(Node.RBColor.BLACK);
-            inputNodeBro.getParent().setColor(Node.RBColor.RED);
+            inputNodeBro.setColor(RBTNode.RBColor.BLACK);
+            inputNodeBro.getParent().setColor(RBTNode.RBColor.RED);
             rotateRight(inputNode.getParent());
             inputNodeBro = inputNode.getParent().getLeft();
         }
         if (inputNodeBro.IsLeftChildBlack() && inputNodeBro.IsRightChildBlack()){ //Fall 2
-            inputNodeBro.setColor(Node.RBColor.RED);
+            inputNodeBro.setColor(RBTNode.RBColor.RED);
             inputNode.getParent().decBlackHigh();
             return inputNode.getParent();
         }
         else{ 
             if (inputNodeBro.IsLeftChildBlack()){
-                inputNodeBro.getRight().setColor(Node.RBColor.BLACK);
-                inputNodeBro.setColor(Node.RBColor.RED);
+                inputNodeBro.getRight().setColor(RBTNode.RBColor.BLACK);
+                inputNodeBro.setColor(RBTNode.RBColor.RED);
                 rotateLeft(inputNodeBro);
                 inputNodeBro = inputNode.getParent().getLeft();
                 
             }
             inputNodeBro.setColor(inputNode.getParent().getColor());
-            inputNode.getParent().setColor(Node.RBColor.BLACK);
-            inputNodeBro.getLeft().setColor(Node.RBColor.BLACK);
+            inputNode.getParent().setColor(RBTNode.RBColor.BLACK);
+            inputNodeBro.getLeft().setColor(RBTNode.RBColor.BLACK);
             inputNode.getParent().decBlackHigh();
             inputNodeBro.incBlackHigh();
             rotateRight(inputNode.getParent());
@@ -244,8 +244,8 @@ public class RedBlackTree extends TangoAuxTree {
         
     }  
    
-    private Node getPredecessor(Node node){
-        Node temp = node.getRight();
+    private RBTNode getPredecessor(RBTNode node){
+        RBTNode temp = node.getRight();
         if (temp == null)
             return null;
         while (temp.getLeft() !=  null)
@@ -258,14 +258,14 @@ public class RedBlackTree extends TangoAuxTree {
      * @param tree  
      * 
      */
-    private void transplant (Node place, Node tree){
+    private void transplant (RBTNode place, RBTNode tree){
         if (place.getParent() == null ){
             root = tree; 
             if(tree != null)
                 tree.setParent(null);
             return;
         }
-        Node placeParent = place.getParent();
+        RBTNode placeParent = place.getParent();
         if (place == placeParent.getLeft())
             placeParent.setLeft(tree);
         else
@@ -274,10 +274,10 @@ public class RedBlackTree extends TangoAuxTree {
             tree.setParent(placeParent); 
     }
     @Override
-   public Node search (TangoNode startNode, int key){
-        Node searchNode = (Node) startNode;
+   public RBTNode search (TangoNode startNode, int key){
+        RBTNode searchNode = (RBTNode) startNode;
         if (searchNode == null ) return null;
-            Node helpNode = searchNode;
+            RBTNode helpNode = searchNode;
         while(helpNode != null){
             searchNode = helpNode;
             if (searchNode.getKey() == key){
@@ -293,29 +293,29 @@ public class RedBlackTree extends TangoAuxTree {
         return searchNode;
    }
 
-   public Node access (int key){
+   public RBTNode access (int key){
       return search(root, key);
    }
  
    
   
     @Override //Implementiert split für TangoCut
-    public Node split(TangoNode node, int key) {
-        Node keyNode = search (node, key); 
+    public RBTNode split(TangoNode node, int key) {
+        RBTNode keyNode = search (node, key); 
         if (keyNode == null)
             return null;
-        Node splitNode = keyNode;
-        Node nextSplitNode = splitNode;
-        Node treeLroot = null;
-        Node treeRroot = null;
+        RBTNode splitNode = keyNode;
+        RBTNode nextSplitNode = splitNode;
+        RBTNode treeLroot = null;
+        RBTNode treeRroot = null;
         do {
             splitNode = nextSplitNode;
             nextSplitNode = splitNode.getParent();
             detachNode(splitNode);
-            Node splitL = splitNode.getLeft(); 
+            RBTNode splitL = splitNode.getLeft(); 
             if (splitL == null )
                 splitL = splitNode.getAuxTreeLeft();
-            Node splitR = splitNode.getRight();
+            RBTNode splitR = splitNode.getRight();
             if (splitR == null )
                 splitR = splitNode.getAuxTreeRight();
             if(splitL != null){
@@ -347,14 +347,14 @@ public class RedBlackTree extends TangoAuxTree {
         return keyNode;  
     }
     @Override
-    public Node merge(TangoNode treeLinput, TangoNode midInput, TangoNode treeRinput) {
-        Node mid = (Node) midInput;
-        Node treeLroot = (Node) treeLinput;
-        Node treeRroot = (Node) treeRinput;
+    public RBTNode merge(TangoNode treeLinput, TangoNode midInput, TangoNode treeRinput) {
+        RBTNode mid = (RBTNode) midInput;
+        RBTNode treeLroot = (RBTNode) treeLinput;
+        RBTNode treeRroot = (RBTNode) treeRinput;
         return merge(treeLroot, mid, treeRroot); 
     }
    
-    private Node merge(Node treeLroot, Node mid, Node treeRroot) {
+    private RBTNode merge(RBTNode treeLroot, RBTNode mid, RBTNode treeRroot) {
         //Es kann nichts verbunden werden. 
         if(mid == null){ 
             if(treeLroot != null)
@@ -377,10 +377,10 @@ public class RedBlackTree extends TangoAuxTree {
             super.updateDepthSingleNode(mid);
             return mid;
         }
-        Node ret;
-        Node search;
+        RBTNode ret;
+        RBTNode search;
         mid.setColor(RBColor.RED);
-        Node fixUpNodeRB = mid;
+        RBTNode fixUpNodeRB = mid;
         //Node fixUpNodeDepth = mid;
 
         if(treeRroot == null || treeRisExtern){ //mid rechts unten bei treeLroot einfügen
@@ -462,7 +462,7 @@ public class RedBlackTree extends TangoAuxTree {
         fixUpTree.insertFixup(fixUpNodeRB);
         return fixUpTree.getRoot();
     }
-    private void detachNode(Node node){
+    private void detachNode(RBTNode node){
         if (node == null || node.getParent() == null)
             return;
         if (node.getParent().getLeft() == node)
@@ -472,7 +472,7 @@ public class RedBlackTree extends TangoAuxTree {
     }
     @Override
     protected void setTree(TangoNode node) {
-        root = (Node)node; 
+        root = (RBTNode)node; 
     }
 
    

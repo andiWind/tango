@@ -26,6 +26,47 @@
 
 
 \begin {document}
+\section{Implementierung und Laufzeittests}
+In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben und dann werden noch die Laufzeittests dargestellt. 
+\subsection{Implementierung}
+Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsstruktur für den Tango Baum. Außerdem wurde die \textit{access} Operation des Splay Baum implementiert, um Laufzeittest zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm, über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/laufzeittest/MainGUI"}
+	\caption{Oberfläche zum Tango Baum}
+	\label{fig:TangoBaumGui}
+\end{figure}
+
+\noindent Abbildung \ref{fig:TangoBaumGui} zeigt das Hauptfenster. Oben ist ein Referenzbaum zu einem Tango Baum mit  $15$ Knoten dargestellt, unten der Tango Baum. Preferred Childs und die Wurzeln von Hilfsbäumen sind grün dargestellt.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.3\textwidth]{"Medien/laufzeittest/accessGUI"}
+	\caption{\textit{access} Operationen anstoßen.}
+	\label{fig:accessGui}
+\end{figure}
+\noindent Mit dem Menüpunkt \enquote{access} wird das Fenster aus Abbildung \ref{fig:accessGui} geöffnet. Mit diesem werden \textit{access} Operationen angestoßen. Außerdem können die Bäume damit zurückgesetzt werden.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/laufzeittest/RuntimeGui"}
+	\caption{Laufzeittest anstoßen.}
+	\label{fig:RuntimeGui}
+\end{figure}
+
+\noindent Mit dem Menüpunkt \enquote{RuntimeTest} wird das Fenster aus Abbildung \ref{fig:RuntimeGui} geöffnet. Mit diesem werden Laufzeittests zwischen dem Tango Baum und dem Splay Baum  angestoßen. Auf die Parameter und den Aufbau der Zugriffsfolgen der Tests wird im Abschnitt zu den Laufzeittests eingegangen.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{"Medien/laufzeittest/ResultGUI"}
+	\caption{Ergebnisanzeige eines Laufzeittests.}
+	\label{fig:ResultGUI}
+\end{figure}
+    
+\subsection{Laufzeittest}
+
 
 
 \maketitle

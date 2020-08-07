@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RuntimeTest;
+package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,7 +19,7 @@ public class ResultFrame extends JFrame {
     private JLabel splay;
     void setTime (long timeTango, long timeSplay){
         tango.setText("Zeit Tango " + timeTango / 1000 + " s");
-        splay.setText("ZeitSplay " + timeSplay / 1000 + " s");
+        splay.setText("Zeit Splay " + timeSplay / 1000 + " s");
      
     }
     ResultFrame(String testName){ 
@@ -36,7 +34,7 @@ public class ResultFrame extends JFrame {
         setTitle("Ergebnis " + testName);
         setBackground (Color.LIGHT_GRAY);
         setDefaultCloseOperation(HIDE_ON_CLOSE );
-        setSize(400,400);
+        setSize(400,200);
         setLayout(new GridLayout(2,1));
         add(tango);
         add(splay);

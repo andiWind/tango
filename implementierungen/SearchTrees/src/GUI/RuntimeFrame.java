@@ -5,10 +5,11 @@
  */
 package GUI;
 
-import RuntimeTest.Tester;
+import RuntimeTest.RuntimeTest;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -53,53 +54,60 @@ public class RuntimeFrame  extends JFrame{
     private final JTextField numOfNodesText;
     private final JTextField dymFingerText;
     private final JTextField lenOfBRPText;
-    private final JSlider lenOfSeqSli;
     private final JTextField lenOfSeqText;
     private final JTextField workingSetText;
     private final JButton startButton;
     private final JButton workingSetButton;
     private final JComboBox<String> comboBox ;
     
-    private Tester tester;
+    private RuntimeTest tester;
     RuntimeFrame(){ 
         numOfNodes = 1000;
-        lenOfSeq = 1000;
+        lenOfSeq = 1;
         lenOfBRP = 1;
         activePanel = "randomAccess";
         dynFinger = 1;
         startButton = new JButton();
         startButton.setText("Start");
+        RuntimeFrame thisFrame = this;
         startButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-              if ((tester == null || tester.getResult() != null) ){
-                  switch(activePanel){
-                     case ("randomAccess"):
-                         tester = new Tester("randomAccess", numOfNodes, lenOfSeq, -1, null);
-                         break;
-                    case ("staticFinger"):
-                         tester = new Tester("staticFinger", numOfNodes, lenOfSeq, -1, null);
-                         break;
-                    case ("dynamicFinger"):
-                         tester = new Tester("dynamicFinger", numOfNodes, lenOfSeq, dynFinger, null);
-                         break;
-                    case ("workingSet"):
-                        buildWorkingSet();
-                        if(!workingSet.isEmpty()){
-                            tester = new Tester("workingSet", numOfNodes, lenOfSeq, -1, workingSet);
-                            workingSet = new LinkedList();
-                            workingSetStrings = new LinkedList();
-                        }    
-                         break;
-                    case ("bitReversalPermutation"):
-                         tester = new Tester("bitReversalPermutation", lenOfBRP, -1, -1, null);
-                         break;
-                 }
-
-                  tester.start();
+              if (startButton.getText().equals("Abbruch")){
+                  tester.setExit();
+                  startButton.setText("Start");
+                  tester = null;
+              }    
+              else if ((tester == null || tester.getResult() != null) ){
+                     
+                    switch(activePanel){
+                        case ("randomAccess"):
+                            tester = new RuntimeTest("randomAccess", numOfNodes,  -1, null, thisFrame, lenOfSeq );
+                            break;
+                        case ("staticFinger"):
+                          tester = new RuntimeTest("staticFinger", numOfNodes,  -1, null, thisFrame, lenOfSeq );
+                          break;
+                        case ("dynamicFinger"):
+                         tester = new RuntimeTest("dynamicFinger", numOfNodes, dynFinger, null, thisFrame, lenOfSeq );
+                           break;
+                        case ("workingSet"):
+                            buildWorkingSet();
+                            if(!workingSet.isEmpty()){
+                               tester = new RuntimeTest("workingSet", numOfNodes, -1, workingSet, thisFrame, lenOfSeq );
+                               workingSet = new LinkedList();
+                               workingSetStrings = new LinkedList();
+                            }    
+                            break;
+                        case ("bitReversalPermutation"):
+                             tester = new RuntimeTest("bitReversalPermutation", lenOfBRP, -1,  null, thisFrame, -1 );
+                             break;
+                    }
+                    tester.start();
+                    startButton.setText("Abbruch");
                 }
             }
         });
+       
         workingSetButton = new JButton();
         workingSetButton.setText("Hinzufügen");
         workingSetButton.addActionListener(new ActionListener(){
@@ -107,22 +115,6 @@ public class RuntimeFrame  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 workingSetStrings.add(workingSetText.getText());  
                 workingSetLabel.setText("workingSet besteht aus " +workingSetStrings.size() + " Bereichen." );
-            }
-        });
-        lenOfSeqSli = new JSlider();
-        lenOfSeqSli.setMinimum(1);
-        lenOfSeqSli.setMaximum(Integer.MAX_VALUE);
-        lenOfSeqSli.setValue(numOfNodes);
-        lenOfSeqSli.addMouseMotionListener(new MouseMotionListener(){
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                lenOfSeq = lenOfSeqSli.getValue();
-                lenOfSeqText.setText("" + lenOfSeq);
-            }
-
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                
             }
         });
        
@@ -134,7 +126,7 @@ public class RuntimeFrame  extends JFrame{
             @Override
             public void mouseDragged(MouseEvent e) {
                 numOfNodes = numOfNodesSli.getValue();
-                numOfNodesText.setText("" + numOfNodes);
+                numOfNodesText.setText("" + setPointsInNumOfNodes(String.valueOf(numOfNodes)));
             }
 
             @Override
@@ -145,20 +137,30 @@ public class RuntimeFrame  extends JFrame{
         
         numOfNodesText = new JTextField();
         numOfNodesText.setColumns(20);
-        numOfNodesText.setText("" + lenOfSeq);
+        numOfNodesText.setText("" + setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+        numOfNodesText.setFont(new Font("", 1, 20));
+       
         numOfNodesText.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                   lenOfSeq = Integer.parseInt(numOfNodesText.getText());
-                   numOfNodesSli.setValue(lenOfSeq);
+                   int  value = Integer.parseInt(numOfNodesText.getText().replaceAll("\\.", ""));
+                   if (value > -1){
+                        numOfNodes = value;
+                        numOfNodesSli.setValue(numOfNodes);
+                        numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                   }
+                   else{
+                        numOfNodesText.setText( setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                   }
                 }    
                 catch(Exception ex){
-                    numOfNodesText.setText("" + lenOfSeq);
+                    numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
                     
                 }
             }
         });
+        
         numOfNodesText.addFocusListener(new FocusListener() { 
     
             @Override
@@ -168,25 +170,38 @@ public class RuntimeFrame  extends JFrame{
 
             @Override
             public void focusLost(FocusEvent e) {
-                try{
-                   numOfNodes = Integer.parseInt(numOfNodesText.getText());
-                   numOfNodesSli.setValue(numOfNodes);
+                 try{
+                   int  value = Integer.parseInt(numOfNodesText.getText().replaceAll("\\.", ""));
+                   if (value > -1){
+                        numOfNodes = value;
+                        numOfNodesSli.setValue(numOfNodes);
+                        numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                   }
+                   else{
+                        numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                   }
                 }    
                 catch(Exception ex){
-                    numOfNodesText.setText("" + numOfNodes);
+                    numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
                     
                 }
             }
         });
         lenOfSeqText = new JTextField();
+        lenOfSeqText.setFont(new Font("", 1, 20));
         lenOfSeqText.setColumns(20);
-        lenOfSeqText.setText("" + numOfNodes);
+        lenOfSeqText.setText("" + lenOfSeq);
         lenOfSeqText.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                   lenOfSeq = Integer.parseInt(lenOfSeqText.getText());
-                   lenOfSeqSli.setValue(lenOfSeq);
+                   int value = Integer.parseInt(lenOfSeqText.getText());
+                   if(value > -1){
+                       lenOfSeq = Integer.parseInt(lenOfSeqText.getText());
+                   }
+                   else
+                    lenOfSeqText.setText("" + lenOfSeq);   
+                   
                 }    
                 catch(Exception ex){
                     lenOfSeqText.setText("" + lenOfSeq);
@@ -203,9 +218,14 @@ public class RuntimeFrame  extends JFrame{
 
             @Override
             public void focusLost(FocusEvent e) {
-                try{
-                   lenOfSeq = Integer.parseInt(lenOfSeqText.getText());
-                   lenOfSeqSli.setValue(lenOfSeq);
+                 try{
+                   int value = Integer.parseInt(lenOfSeqText.getText());
+                   if(value > -1){
+                       lenOfSeq = Integer.parseInt(lenOfSeqText.getText());
+                   }
+                   else
+                    lenOfSeqText.setText("" + lenOfSeq);   
+                   
                 }    
                 catch(Exception ex){
                     lenOfSeqText.setText("" + lenOfSeq);
@@ -214,13 +234,18 @@ public class RuntimeFrame  extends JFrame{
             }
         });
         lenOfBRPText = new JTextField();
+        lenOfBRPText.setFont(new Font("", 1, 20));
         lenOfBRPText.setColumns(20);
         lenOfBRPText.setText("" + lenOfBRP);
         lenOfBRPText.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                   lenOfBRP = Integer.parseInt(lenOfBRPText.getText());
+                   int value = Integer.parseInt(lenOfBRPText.getText());
+                   if (value > -1)
+                        lenOfBRP = Integer.parseInt(lenOfBRPText.getText());
+                   else
+                       lenOfBRPText.setText("" + lenOfBRP);
                 }    
                 catch(Exception ex){
                     lenOfBRPText.setText("" + lenOfBRP);
@@ -237,24 +262,32 @@ public class RuntimeFrame  extends JFrame{
 
             @Override
             public void focusLost(FocusEvent e) {
-                try{
-                   numOfNodes = Integer.parseInt(numOfNodesText.getText());
-                   numOfNodesSli.setValue(numOfNodes);
+               try{
+                   int value = Integer.parseInt(lenOfBRPText.getText());
+                   if (value > -1)
+                        lenOfBRP = Integer.parseInt(lenOfBRPText.getText());
+                   else
+                       lenOfBRPText.setText("" + lenOfBRP);
                 }    
                 catch(Exception ex){
-                    numOfNodesText.setText("" + numOfNodes);
+                    lenOfBRPText.setText("" + lenOfBRP);
                     
                 }
             }
         });
         dymFingerText = new JTextField();
+        dymFingerText.setFont(new Font("", 1, 20));
         dymFingerText.setColumns(20);
         dymFingerText.setText("" + dynFinger);
         dymFingerText.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                   dynFinger = Integer.parseInt(dymFingerText.getText());
+                    int value = Integer.parseInt(dymFingerText.getText());
+                   if (value > -1) 
+                        dynFinger = Integer.parseInt(dymFingerText.getText());
+                   else
+                       dymFingerText.setText("" + dynFinger);
                 }    
                 catch(Exception ex){
                     dymFingerText.setText("" + dynFinger);
@@ -272,7 +305,11 @@ public class RuntimeFrame  extends JFrame{
             @Override
             public void focusLost(FocusEvent e) {
                 try{
-                   dynFinger = Integer.parseInt(dymFingerText.getText());
+                    int value = Integer.parseInt(dymFingerText.getText());
+                   if (value > -1) 
+                        dynFinger = Integer.parseInt(dymFingerText.getText());
+                   else
+                       dymFingerText.setText("" + dynFinger);
                 }    
                 catch(Exception ex){
                     dymFingerText.setText("" + dynFinger);
@@ -281,6 +318,7 @@ public class RuntimeFrame  extends JFrame{
             }
         });
         workingSetText = new JTextField();
+        workingSetText.setFont(new Font("", 1, 20));
         workingSetText.setColumns(43);
         workingSetText.setText("x - y");
         workingSetLabel = new JLabel();
@@ -364,9 +402,9 @@ public class RuntimeFrame  extends JFrame{
         randomPanel.add(numOfNodesSli);
         randomPanel.add(numOfNodesText);
         randomPanel.add(new JLabel("Anzahl der Knoten"));
-        randomPanel.add(lenOfSeqSli);
-        randomPanel.add(lenOfSeqText);
         randomPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        randomPanel.add(lenOfSeqText);
+        randomPanel.add(new JLabel("(In Millionen)"));
     }
     private void buildBRPPanel(){
         bitReversalPermutationPanel = new JPanel();
@@ -374,15 +412,20 @@ public class RuntimeFrame  extends JFrame{
         bitReversalPermutationPanel.add(lenOfBRPText);
         bitReversalPermutationPanel.add(new JLabel("Anzahl der Bits"));
     }
+    public void setResult(long[] result, String testName){
+          startButton.setText("Start");
+          ResultFrame resultFrame = new ResultFrame(testName);
+          resultFrame.setTime(result[0], result[1]);
+    }
     private void buildStaticFingerPanel(){
         staticFingerPanel = new JPanel();
         staticFingerPanel.setLayout(new GridLayout(2, 3));
         staticFingerPanel.add(numOfNodesSli);
         staticFingerPanel.add(numOfNodesText);
         staticFingerPanel.add(new JLabel("Anzahl der Knoten"));
-        staticFingerPanel.add(lenOfSeqSli);
-        staticFingerPanel.add(lenOfSeqText);
         staticFingerPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        staticFingerPanel.add(lenOfSeqText);
+        staticFingerPanel.add(new JLabel("(In Millionen)"));
     }
     private void buildDinamicFingerPanel(){
         dynamicFingerPanel = new JPanel();
@@ -390,9 +433,9 @@ public class RuntimeFrame  extends JFrame{
         dynamicFingerPanel.add(numOfNodesSli);
         dynamicFingerPanel.add(numOfNodesText);
         dynamicFingerPanel.add(new JLabel("Anzahl der Knoten"));
-        dynamicFingerPanel.add(lenOfSeqSli);
-        dynamicFingerPanel.add(lenOfSeqText);
         dynamicFingerPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        dynamicFingerPanel.add(lenOfSeqText);
+        dynamicFingerPanel.add(new JLabel("(In Millionen)"));
         dynamicFingerPanel.add(dymFingerText);
         dynamicFingerPanel.add(new JLabel("Abstand der Schlüssel"));
     }
@@ -402,9 +445,9 @@ public class RuntimeFrame  extends JFrame{
         workingSetPanel.add(numOfNodesSli);
         workingSetPanel.add(numOfNodesText);
         workingSetPanel.add(new JLabel("Anzahl der Knoten"));
-        workingSetPanel.add(lenOfSeqSli);
+        workingSetPanel.add(new JLabel("Länge der Zugriffsfolge"));       
         workingSetPanel.add(lenOfSeqText);
-        workingSetPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        workingSetPanel.add(new JLabel("(In Millionen)"));
         workingSetPanel.add(workingSetText);
         workingSetPanel.add(workingSetButton);        
         workingSetPanel.add(workingSetLabel);
@@ -445,7 +488,17 @@ public class RuntimeFrame  extends JFrame{
                 }
             }
             
+            
         }
+    }
+    private String setPointsInNumOfNodes(String nON){
+        String ret = "";
+        for (int i = 1; i <= nON.length(); i++){
+            ret = nON.substring(nON.length() - i , nON.length() - i + 1 ) + ret;
+            if (i  % 3 == 0 && i < nON.length())
+                ret = "." + ret;
+        }
+        return ret;
     }
     
 }

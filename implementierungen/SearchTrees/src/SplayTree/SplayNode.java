@@ -10,25 +10,25 @@ package SplayTree;
  *
  * @author andreas
  */
-public class Node  {
-    private Node left;
-    private Node right;
-    private Node parent;
+public class SplayNode  {
+    private SplayNode left;
+    private SplayNode right;
+    private SplayNode parent;
     private int key;
     boolean keyFinal;
     
-    Node (int k, Node l, Node r, Node p ){
+    SplayNode (int k, SplayNode l, SplayNode r, SplayNode p ){
         left = l;
         right = r;
         parent = p;
         key = k; 
         keyFinal = true;
     }
-    Node (int k ){
+    SplayNode (int k ){
         key = k;
         keyFinal = true;
     }
-     Node (){  
+     SplayNode (){  
          keyFinal = false;
     }
     int getKey (){
@@ -38,22 +38,22 @@ public class Node  {
         if (!keyFinal)
             key = k;
     }
-    Node getLeft(){
+    SplayNode getLeft(){
         return left;
     }
-     Node getRight(){
+     SplayNode getRight(){
         return right;
     }
-    Node getParent(){
+    SplayNode getParent(){
         return parent;
     } 
-    void setLeft(Node l){
+    void setLeft(SplayNode l){
         left =l;
     }
-    void setRight(Node r){
+    void setRight(SplayNode r){
         right = r;
     }
-    void setParent(Node p){
+    void setParent(SplayNode p){
         parent = p;
     } 
 

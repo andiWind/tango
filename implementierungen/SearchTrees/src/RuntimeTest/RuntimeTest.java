@@ -5,6 +5,7 @@
  */
 
 package RuntimeTest;
+import GUI.RuntimeFrame;
 import SplayTree.SplayTree;
 import TangoTree.TangoTree;
 import RedBlackTree.RedBlackTree;
@@ -16,54 +17,50 @@ import java.util.List;
  *
  * @author andreas
  */
-public class Tester extends Thread {
+public class RuntimeTest extends Thread {
    private String test;
    private int par1;
    private int par2;
-   private int par3;
+   private int repeat;
+   private boolean exit;
    private List<Integer> workingSet;
    private long[] result;
+   private RuntimeFrame runtimeFrame;
   
    
    
    @Override
     public void run (){
-        ResultFrame frame = null;
         switch(test){
                      case ("randomAccess"):
-                        frame = new ResultFrame("randomAccess"); 
                         try {
-                             result = randomAccess(par1, par2);
+                             result = randomAccess(par1, repeat);
                             }
                          catch (BuildAuxTreeFaildException ex) {
                         }
                          break;
-                    case ("staticFinger"):
-                        frame = new ResultFrame("staticFinger"); 
-                        try {
-                             result = staticFinger(par1, par2);
+                        case ("staticFinger"):
+                         try {
+                             result = staticFinger(par1, repeat);
                             }
                          catch (BuildAuxTreeFaildException ex) {
                         }
                          break;
-                    case ("dynamicFinger"):
-                        frame = new ResultFrame("dynamicFinger"); 
+                        case ("dynamicFinger"):
                         try {
-                             result = dynamicFinger(par1, par2, par3);
+                             result = dynamicFinger(par1, par2, repeat);
                             }
                          catch (BuildAuxTreeFaildException ex) {
                         }
                          break;
-                    case ("workingSet"):
-                        frame = new ResultFrame("workingSet"); 
+                    case ("workingSet"): 
                         try {
-                             result = workingSet(par1, par2, workingSet);
+                             result = workingSet(par1, workingSet, repeat);
                             }
                          catch (BuildAuxTreeFaildException ex) {
                         }
                          break;
                     case ("bitReversalPermutation"):
-                        frame = new ResultFrame("bitReversalPermutation");
                         try {
                              result = bitReversalPermutation(par1);
                             }
@@ -71,73 +68,91 @@ public class Tester extends Thread {
                         }
                          break;
                  }
-        
-        
-        
-        if(test.equals("randomAccess")){
-            
-            
-        }
-        if (frame != null)
-            frame.setTime(result[0], result[1]);
-        
-        
+        if(!exit)
+            runtimeFrame.setResult(result, test);
+   
     }
     
     public long[] getResult(){
         return result;
     }
    
-    public Tester(String t, int p1, int p2, int p3, List<Integer> workSet ){
+    public RuntimeTest(String t, int p1, int p2,  List<Integer> workSet, RuntimeFrame rf, int r ){
         test = t;
         par1 = p1;
         par2 = p2;
-        par3 = p3;
+        repeat = r;
         workingSet = workSet;
         result = null;
+        exit = false;
+        runtimeFrame = rf;
     }
-    private long[] workingSet (int numOfNodes, int lengthOfSeq, List<Integer> set) throws BuildAuxTreeFaildException{
+    private long[] workingSet (int numOfNodes,  List<Integer> set, int repeat) throws BuildAuxTreeFaildException{
+        int lengthOfSeq = 1000000;
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
         for (int i = 1; i <= numOfNodes ; i++){
             keyList.add(i);
         }
-        while(accessSequenz.size() < lengthOfSeq){
+        while(accessSequenz.size() < lengthOfSeq ){
+            if ( exit)
+                return null;
             for(Integer i : set){
                 accessSequenz.add(i);
                 if (accessSequenz.size() >= lengthOfSeq)
                     break;
             }
         }
-        return runtimeTest(keyList, accessSequenz);
+        
+        return runtimeTest(keyList, accessSequenz, repeat);
+     
     }
-    private long[] randomAccess (int numOfNodes, int lengthOfSeq) throws BuildAuxTreeFaildException{
+    private long[] randomAccess (int numOfNodes, int repeat) throws BuildAuxTreeFaildException{
+        int lengthOfSeq = 1000000;
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
         for (int i = 1; i <= numOfNodes ; i++){
+            if ( exit)
+                return null;
             keyList.add(i);
+           
         }
         for (int i = 1; i < lengthOfSeq +1; i++){
+            if ( exit)
+                return null;
             accessSequenz.add(randomNumber(numOfNodes));
+           
         }
-        return runtimeTest(keyList, accessSequenz);
+        return runtimeTest(keyList, accessSequenz, repeat);
+
     }
-    private long[] dynamicFinger (int numOfNodes, int lengthOfSeq, int keyDistanz) throws BuildAuxTreeFaildException{
+    private long[] dynamicFinger (int numOfNodes, int keyDistanz, int repeat) throws BuildAuxTreeFaildException{
+        int lengthOfSeq = 1000000;
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
         for (int i = 1; i <= numOfNodes ; i++){
+            if ( exit)
+                return null;
             keyList.add(i);
+            
         }
+       
         int value = 1;
         for (int i = 1; i < lengthOfSeq +1; i++){
+            if ( exit)
+                return null;
             accessSequenz.add(value);
             value += keyDistanz;
             if (value > numOfNodes)
                 value -= numOfNodes;
+            
         }
-        return runtimeTest(keyList, accessSequenz);
+        
+        return runtimeTest(keyList, accessSequenz, repeat);
+    
     }
-    private long[] staticFinger (int numOfNodes, int lengthOfSeq) throws BuildAuxTreeFaildException{
+    private long[] staticFinger (int numOfNodes,  int repeat) throws BuildAuxTreeFaildException{
+        int lengthOfSeq = 1000000;
         List<Integer> accessSequenz = new LinkedList();
         int nOn = numOfNodes;
         if (nOn % 2== 0)
@@ -146,27 +161,42 @@ public class Tester extends Thread {
         
         int[][] nodeArray = new int[nOn + 1][2];
         for(int i = 1; i < nodeArray.length; i++){
+            if ( exit)
+                return null;
             nodeArray[i][1] = i;
+            
         }
+        
         int midKey = nOn / 2 + 1; 
         nodeArray[midKey][0] = lOs / 2;
         lOs -= nodeArray[midKey][0];
         for (int i = 1; i < midKey; i++){
-            int numOfAccess = lOs / 2;
+            if(exit)
+                return null;
+            int numOfAccess = lOs / 50;
              nodeArray[midKey - i][0] = numOfAccess / 2;
              nodeArray[midKey + i][0] = numOfAccess / 2;
              lOs -= nodeArray[midKey - i][0];
              lOs -= nodeArray[midKey + i][0];
+             
         }
         int sumAccess = 0;
-        for (int i = 1; i < nodeArray.length; i++)
+        for (int i = 1; i < nodeArray.length; i++){
+            if ( exit){
+                return null;
+            }
             sumAccess += nodeArray[i][0];
+        }     
         nodeArray[midKey][0] += lengthOfSeq - sumAccess;
         double[] probs = new double[nOn +1];
         for (int j = 1; j < probs.length; j++){
+                if ( exit)
+                    return null;
                 probs[j] = nodeArray[j][0] / ((double)lengthOfSeq);
         } 
-        while(nodeArray != null){
+        while(nodeArray != null ){
+            if ( exit)
+                return null;
             int value = randomNumber(probs); 
             accessSequenz.add(nodeArray[value][1]);
             nodeArray[value][0]--;
@@ -197,19 +227,25 @@ public class Tester extends Thread {
         }  
         List<Integer> keyList = new LinkedList();
         for(int i = 1; i <= numOfNodes; i++){
+            if ( exit)
+                return null;
             keyList.add(i);
         }
-        return runtimeTest(keyList, accessSequenz);
+        return runtimeTest(keyList, accessSequenz, repeat);
     } 
   
     
     private long[] bitReversalPermutation (int numOfBits) throws BuildAuxTreeFaildException{
         List<Integer> keyList = new LinkedList();
         for (int i = 0; i < Math.pow(2, numOfBits); i++){
+            if ( exit)
+                return null;
             keyList.add(i);
         }
         List<Integer> accessSequenz = new LinkedList();
         for(int i = 0; i < Math.pow(2, numOfBits); i++  ){
+           if ( exit)
+                return null;
             String bitString = Integer.toBinaryString(i);
             if (bitString.length() > numOfBits){
                 bitString = bitString.substring(bitString.length() - numOfBits);
@@ -224,24 +260,31 @@ public class Tester extends Thread {
             }
             accessSequenz.add(value);
         }    
-        return runtimeTest(keyList,accessSequenz);
+        return runtimeTest(keyList,accessSequenz, 1);
     }
     
-    private long[] runtimeTest (List<Integer> keyList, List<Integer> accessSequenz) throws BuildAuxTreeFaildException{
+    private long[] runtimeTest (List<Integer> keyList, List<Integer> accessSequenz, int repeat) throws BuildAuxTreeFaildException{
         long[] ret = new long[2];
         TangoTree tangoTree = new TangoTree(keyList, RedBlackTree.class);
-        SplayTree splayTree = new SplayTree(keyList);
         long startTime = System.nanoTime();
-        for(Integer i: accessSequenz ){
-            tangoTree.access(i);
+        for (int j = 1; j <= repeat; j++){
+            for(Integer i: accessSequenz ){
+                if ( exit)
+                    return null;
+                tangoTree.access(i);
            
+            }
         }
         ret[0] = (System.nanoTime()- startTime) / 1000000 ;
+        tangoTree = null; //speicher freigeben
+        SplayTree splayTree = new SplayTree(keyList);
         startTime = System.nanoTime();
-        for(Integer i: accessSequenz ){
-            splayTree.access(i);
+            for(Integer i: accessSequenz ){
+                if ( exit)
+                    return null;
+                splayTree.access(i);
            
-        }
+            }
         ret[1] = (System.nanoTime()- startTime) / 1000000 ;
         
         return ret;
@@ -256,6 +299,7 @@ public class Tester extends Thread {
         }
         return index;
     }
+    
      private int randomNumber (int max){
         Double random = Math.random() * max;  
         int value = (int) Math.round(random); 
@@ -263,4 +307,8 @@ public class Tester extends Thread {
             value++;
         return value;
     }
+    public void setExit(){
+        exit = true;
+        
+    } 
 }
