@@ -15,7 +15,7 @@ public class SplayNode  {
     private SplayNode right;
     private SplayNode parent;
     private int key;
-    private boolean keyFinal;
+    private final boolean  keyFinal;
     
     SplayNode (int k, SplayNode l, SplayNode r, SplayNode p ){
         left = l;
@@ -56,6 +56,5 @@ public class SplayNode  {
     void setParent(SplayNode p){
         parent = p;
     } 
-
-
+    
 }

@@ -18,14 +18,14 @@ import java.util.List;
  * @author andreas
  */
 public class RuntimeTest extends Thread {
-   private String test;
-   private int par1;
-   private int par2;
-   private int repeat;
+   private final String test;
+   private final int par1;
+   private final int par2;
+   private final int repeat;
    private boolean exit;
-   private List<Integer> workingSet;
+   private final List<Integer> workingSet;
    private long[] result;
-   private RuntimeFrame runtimeFrame;
+   private final RuntimeFrame runtimeFrame;
   
    
    

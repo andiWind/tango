@@ -88,34 +88,42 @@ public abstract class TangoNode implements I_GUINode{
         return parent;
     } 
 
-    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+    //Diese Methoden werden den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
     protected TangoNode getParent(){
         if (parent == null || isRoot )
             return null;
         return parent;
     }
-    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+   
     protected TangoNode getLeft(){
         if (left == null || left.isRoot )
             return null;
         return left;
     }
-    //Diese Methode wird den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+
     protected TangoNode getRight(){
         if (right == null || right.isRoot )
             return null;
         return right;
     }
-     //Diese Methode kann von den ableitenden Klassen verwendet werden um bei Veränderungen an der Baumstruktur 
-    //die Zeiger nach ausen mitzupflegen
+     
+
+//Diese Methoden können von den Auxtrees verwendet werden, um bei Veränderungen an der Baumstruktur 
+  //die Zeiger nach außen mitzupflegen
+    /**
+     * 
+     * @return Das linke Kind, wenn dieses die Wurzel eines "Auxtree" ist. 
+     */
     protected TangoNode getAuxTreeLeft(){
         if(getLeftTango() != null && getLeftTango().isRoot()){
             return  getLeftTango();
         }
         return null;
     }
-     //Diese Methode kann von den ableitenden Klassen verwendet werden um bei Veränderungen an der Baumstruktur 
-    //die Zeiger nach ausen mitzupflegen
+    /**
+     * 
+     * @return Das rechte Kind, wenn dieses die Wurzel eines "Auxtree" ist. 
+     */
     protected TangoNode getAuxTreeRight(){
         if(getRightTango() != null && getRightTango().isRoot()){
             return  getRightTango();
@@ -135,13 +143,24 @@ public abstract class TangoNode implements I_GUINode{
     public int getKey(){
         return key;
     }
-  
+    /**
+     * 
+     * @return Das linke Kind, unabhängig davon in welchem "Auxtree" es sich befindet 
+     */
     TangoNode getLeftTango(){
         return left;
     }
+     /**
+     * 
+     * @return Das rechte Kind, unabhängig davon in welchem "Auxtree" es sich befindet 
+     */
     TangoNode getRightTango(){
         return right; 
     }
+     /**
+     * 
+     * @return Den Elternknoten, unabhängig davon in welchem "Auxtree" er sich befindet 
+     */
     TangoNode getParentTango(){
        return parent;
     }

@@ -12,7 +12,7 @@ package GUI;
 public interface I_GUITree {
     I_GUINode getRoot ();
     I_GUINode access (int key);
-    String getName();
+
     
 
 }

@@ -8,19 +8,24 @@ package Starter;
 
 import GUI.MainGUI;
 
-import TangoTree.BuildAuxTreeFaildException;
+
 
 
 
 /**
- *
+ *Enthält den Haupteinsprung.
  * @author andreas
  */
 public class Start {
-   
-    public static void main (String[] args) throws BuildAuxTreeFaildException{
+    /**
+     * Haupteinsprung
+     *
+     * @param args Keine Parametrierung notwendig.
+     */
+    public static void main (String[] args) {
       
         new MainGUI();  
  
     }
 }
+

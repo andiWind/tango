@@ -12,11 +12,9 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -95,7 +93,7 @@ public class TangoCanvas extends Canvas {
             drawRefTree(g,  node.right, posWidth + (canWidth - 10) /(int)Math.pow(2, level + 1), posHeigth + 70, level + 1);
         }
     }
-    void reset (){
+    final void reset (){
         List<Integer> keys = new LinkedList();
         for(int i = 1;i < 16; i++)
             keys.add(i);
@@ -124,6 +122,7 @@ public class TangoCanvas extends Canvas {
             drawTango(g, posWidth + (canWidth - 10) /(int)Math.pow(2, level + 1), posHeigth + 70, node.getRightFromGui(), level + 1);
         }
     }
+    @Override
     public void paint(Graphics g){
         canWidth = this.getWidth();
         int canHeigth = this.getHeight();

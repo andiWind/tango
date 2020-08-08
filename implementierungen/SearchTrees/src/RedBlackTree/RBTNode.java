@@ -19,7 +19,7 @@ public class RBTNode extends TangoNode  {
 
 
     
-    public  RBTNode (int k, RBColor c, int bh){
+    RBTNode (int k, RBColor c, int bh){
         super(k);
         color = c;
         blackHigh = bh;

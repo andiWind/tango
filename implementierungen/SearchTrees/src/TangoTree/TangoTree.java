@@ -16,12 +16,18 @@ import GUI.I_GUINode;
 /**
  *
  * @author andreas
+ * Klasse zum erstellen eines Tango Baum
  */
 public class TangoTree implements I_GUITree{
 
     private final Class<? extends TangoAuxTree > auxTreeClass;
     private TangoAuxTree auxTree;
-   
+ /**
+ *
+ * @param keyList Der erzeugte Tango Baum enthält alle in der Liste enthaltenen Schlüssel.   
+ * @param auxTreeClass Mit diesem Paramter wird die verwendete Hilfsstruktur festgelegt.  
+ * @throws BuildAuxTreeFaildException Beim erstellen einer Instanz von "auxTreeClass" ist ein Fehler aufgetreten. 
+ */
     public  TangoTree(List<Integer> keyList, Class<? extends TangoAuxTree > auxTreeClass) throws BuildAuxTreeFaildException{
         //Test AuxTree Class
         try {
@@ -37,13 +43,15 @@ public class TangoTree implements I_GUITree{
             throw new IllegalArgumentException();
         int numOfNode = 1;
         int depth = 1;
+        //Der Tango Baum wird nicht direkt erstellt. Zunächst wird ein Abbild von ihm mit den PerfectTreeNode erstellt.
         PerfectTreeNode pBT = buildPerfectBalancedTree(new PerfectTreeNode(), numOfNodes, numOfNode, depth);
         setKeysInPBT(pBT, keyArray, 0);
         //Die Hilfstruktur wird nun nachgebaut
         //Zum Start ist jeder Knoten ein eigener Hilfsbaum
          auxTree.setTree(buildStartTango(pBT));
     }   
-   private int[] buildKeyArray(List <Integer> keyList){
+    //Die keyList wird in ein duplikatfreies, sortiertes Array überführt.
+    private int[] buildKeyArray(List <Integer> keyList){
        List<Integer> nullList = new LinkedList();
        nullList.add(null);
        keyList.removeAll(nullList);
@@ -74,7 +82,7 @@ public class TangoTree implements I_GUITree{
       return ret;
    }
     
- 
+    //rekusive Methode. Erstellt den TangoBaum als Abbild des BST mit Wurzel "helpNode"
     private TangoNode buildStartTango(PerfectTreeNode helpNode) throws BuildAuxTreeFaildException {
         if (helpNode == null)
             return null;
@@ -102,7 +110,12 @@ public class TangoTree implements I_GUITree{
         return node;
     }
     @Override
-     public TangoNode access(int key){  
+    /**
+ *  
+ * @param key Es dürfen nur Werte verwendet werten die als Schlüssel im Tango Baum vorhanden sind.   
+ * @return Der Knoten mit dem Schlüsselm "key".  
+ */
+    public TangoNode access(int key){  
         TangoNode search = auxTree.getRoot();
         if(search == null )
             return null;
@@ -121,10 +134,11 @@ public class TangoTree implements I_GUITree{
                 auxTree.setTree(search);
             }
         }
+        //Das prefchild des Knoten mit Schlüssel "key" auf links setzen.
         auxTree.setTree(auxTree.updatePreferredChildToLeft(search,auxTree.getRoot()));
         return search;
     }   
- 
+    //Hilfsmethode zum erzeugen der Abbildstruktur. Einziger Aufruf im Konstruktor
     private int setKeysInPBT(PerfectTreeNode node, int[] sortedKeys, int writedNumbers){
         int tempWritedNumbers = writedNumbers;
         if (node.left != null)
@@ -134,6 +148,7 @@ public class TangoTree implements I_GUITree{
             tempWritedNumbers = setKeysInPBT(node.right, sortedKeys, tempWritedNumbers);
         return  tempWritedNumbers;    
     }
+    //Erzeugt die Abbildstruktur. Einziger Aufruf im Konstruktor
     private PerfectTreeNode buildPerfectBalancedTree (PerfectTreeNode node, int numOfNodes, int nodeNumber, int depth ){
         node.depth = depth;
         if (2 * nodeNumber <= numOfNodes){
@@ -147,19 +162,14 @@ public class TangoTree implements I_GUITree{
     }
     
     @Override
+    /**
+     * 
+     * @return Die Wurzel des Tango Baum
+     * 
+     */
     public I_GUINode getRoot() {
          return auxTree.getRoot();
     }
-
-   
-   
-
-    @Override
-    public String getName() {
-        return "Tango-Tree";
-    }
-
-    
    
     private class PerfectTreeNode{
        PerfectTreeNode left;

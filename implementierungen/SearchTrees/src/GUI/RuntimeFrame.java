@@ -58,8 +58,7 @@ public class RuntimeFrame  extends JFrame{
     private final JTextField workingSetText;
     private final JButton startButton;
     private final JButton workingSetButton;
-    private final JComboBox<String> comboBox ;
-    
+    private final JComboBox<String> comboBox ;   
     private RuntimeTest tester;
     RuntimeFrame(){ 
         numOfNodes = 1000;

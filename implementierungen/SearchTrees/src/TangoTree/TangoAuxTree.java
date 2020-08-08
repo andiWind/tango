@@ -60,6 +60,11 @@ public abstract class TangoAuxTree {
         //Node ist der Kleinste Knoten im Baum
         return null;
     }
+    /**
+     *  Fügt "left" als linkes Kind an "parent" an, unabhängig davon, ob "parent" bereits ein linkes Kind hat.
+     * @param parent 
+     * @param left 
+     */
     protected void attachNodeLeft (TangoNode parent, TangoNode left ){
         if (parent == null)
             return;
@@ -69,6 +74,11 @@ public abstract class TangoAuxTree {
         }
       
     }
+    /**
+     *  Fügt "right" als rechtes Kind an "parent" an, unabhängig davon, ob "parent" bereits ein rechtes Kind hat.
+     * @param parent 
+     * @param right 
+     */
     protected void attachNodeRight (TangoNode parent, TangoNode right  ){
         if (parent == null)
             return;
@@ -77,6 +87,10 @@ public abstract class TangoAuxTree {
             right.setParent(parent);
         }
     }
+    /**
+     * Fürht eine Linksrotation durch.
+     * @param node Der höherliegende der beiden an der Rotation beteiligten Knoten.
+     */
      //Der obere Knoten der Rotation wird übergeben
     protected void rotateLeft (TangoNode node){ 
         TangoNode nodeParent = node.getParent();
@@ -94,7 +108,10 @@ public abstract class TangoAuxTree {
         updateDepthsPath(node.getParent());
 
     }
-     //Der obere Knoten der Rotation wird übergeben
+     /**
+     * Fürht eine Rechtsrotation durch und pflegt dabei die 
+     * @param node Der höherliegende der beiden an der Rotation beteiligten Knoten.
+     */
     protected void rotateRight (TangoNode node){ 
       
         TangoNode nodeParent = node.getParent();
@@ -123,6 +140,7 @@ public abstract class TangoAuxTree {
             return i1;
         return i2 < i3 ? i2 : i3;
     }
+    //Diese Methoden werden verwendet um die "minDepth" und "maxDepth" Attribute der im TangoAuxTree enthaltenen Knoten zu pflegen.
     private boolean updateMaxDepthSingleNode(TangoNode node){
         TangoNode left = node.getLeft() ;
         TangoNode right = node.getRight() ;
@@ -141,7 +159,7 @@ public abstract class TangoAuxTree {
             }
             return false;
     }
-     private boolean updateMinDepthSingleNode(TangoNode node){
+    private boolean updateMinDepthSingleNode(TangoNode node){
         TangoNode left = node.getLeft() ;
         TangoNode right = node.getRight() ;
         int newValue;
@@ -159,6 +177,11 @@ public abstract class TangoAuxTree {
             }
             return false;
     }
+    /**
+     * Überprüft und pflegt "minDepth" und "maxDepth" von "node". Dabei werden nur Informationen der Kinder von "node" berücksichtigt.
+     * @param node
+     * @return "true" wenn eine Veränderung festgestellt wurde.
+     */
     protected boolean updateDepthSingleNode(TangoNode node){
         boolean noChange = true;
         if (updateMaxDepthSingleNode(node))
@@ -168,6 +191,11 @@ public abstract class TangoAuxTree {
         return noChange;    
         
     }
+    /**
+     * Überprüft und pflegt "minDepth" und "maxDepth" der Knoten die im Pfad von der Wurzel zu "node" enthalten sind.
+     * @param node
+     * @return "true" wenn eine Veränderung festgestellt wurde.
+     */
     protected void updateDepthsPath(TangoNode node){
         boolean noChange = false;
         while(node != null && !noChange){
@@ -175,6 +203,9 @@ public abstract class TangoAuxTree {
             node = node.getParent();
         }      
     } 
+    
+    
+    
     private TangoNode getSplitterLeft(TangoNode node ,int depth){
         while(node != null){
             if(node.getLeft() != null && node.getLeft().getMaxDepth() > depth){
@@ -207,9 +238,7 @@ public abstract class TangoAuxTree {
         // benötigt wird aber der Nachfolger
         return getSuccessor(node);
     }
-    /*Läuft von einem Übergebenen Auxtree Blatt nach oben und aktualisiert die Min. bzw. Maxtiefe so
-     dass der übergebene Knoten entfernt werden kann
-    */
+    
   
     TangoNode concatenate (TangoNode node){
        

@@ -6,9 +6,10 @@
 package TangoTree;
 
 /**
- *
- * @author andre
+ *Wird verwendet wenn beim erzeugen einer Auxtree Instanz ein Fehler auftritt.
+ * @author andreas
  */
+
 public class BuildAuxTreeFaildException extends Exception{
     
     BuildAuxTreeFaildException(String message){

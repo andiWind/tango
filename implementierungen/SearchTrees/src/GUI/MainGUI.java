@@ -35,6 +35,7 @@ public class MainGUI extends JFrame{
         JButton accessButton = new JButton("access");
         accessButton.addActionListener(new ActionListener(){
                
+            @Override
             public void actionPerformed(ActionEvent e) {
                 canvas.access((int)accessSpinner.getValue());
                 canvas.repaint();
@@ -46,6 +47,7 @@ public class MainGUI extends JFrame{
         JButton resetButton = new JButton("reset");
         resetButton.addActionListener(new ActionListener(){
                
+            @Override
             public void actionPerformed(ActionEvent e) {
                 canvas.reset();
                 canvas.repaint();
@@ -122,7 +124,6 @@ public class MainGUI extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE );
         setExtendedState(Frame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
-       // add(northPanel, BorderLayout.NORTH);
         add(canvas, BorderLayout.CENTER);
         accessDialog.setVisible(true);
         setVisible(true);

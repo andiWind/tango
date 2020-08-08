@@ -18,7 +18,7 @@ public class SplayTree  {
     private SplayNode root;
 
 
-    private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int nodeNumber ){
+private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int nodeNumber ){
         if (2 * nodeNumber <= numOfNodes){
             node.setLeft(buildPerfectBalancedTree(new SplayNode(), numOfNodes, 2 * nodeNumber));
             node.getLeft().setParent(node);
@@ -29,7 +29,7 @@ public class SplayTree  {
         }
         return node;
     }
-    private int setKeys(SplayNode node ,int[] keys, int count){
+ private int setKeys(SplayNode node ,int[] keys, int count){
         if (node.getLeft() != null)
             count = setKeys(node.getLeft(), keys, count);
         node.setKey(count++);
@@ -37,14 +37,14 @@ public class SplayTree  {
             count = setKeys(node.getRight(), keys, count );
         return count;
     }  
-    public SplayTree (List<Integer> keyList){
+ public SplayTree (List<Integer> keyList){
         int[] keyArray = buildKeyArray(keyList);
         root = buildPerfectBalancedTree(new SplayNode(),keyArray.length,1 );
         setKeys(root, keyArray, 1);
         
        
     }
-    private int[] buildKeyArray(List <Integer> keyList){
+ private int[] buildKeyArray(List <Integer> keyList){
        List<Integer> nullList = new LinkedList();
        nullList.add(null);
        keyList.removeAll(nullList);
@@ -75,8 +75,7 @@ public class SplayTree  {
       return ret;
    }
     
-  
-    public SplayNode access (int key){
+public SplayNode access (int key){
     splay(key);
     return root;
 }    
