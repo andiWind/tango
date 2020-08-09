@@ -12,39 +12,15 @@ import java.util.List;
 
 /**
  *
+ * 
  * @author andreas
+ *  Klasse zum erstellen eines Splay Baum
  */
 public class SplayTree  {
     private SplayNode root;
 
-
-private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int nodeNumber ){
-        if (2 * nodeNumber <= numOfNodes){
-            node.setLeft(buildPerfectBalancedTree(new SplayNode(), numOfNodes, 2 * nodeNumber));
-            node.getLeft().setParent(node);
-        }
-        if (2 * nodeNumber + 1  <= numOfNodes){
-            node.setRight(buildPerfectBalancedTree(new SplayNode(), numOfNodes,2 * nodeNumber + 1)); 
-             node.getRight().setParent(node);
-        }
-        return node;
-    }
- private int setKeys(SplayNode node ,int[] keys, int count){
-        if (node.getLeft() != null)
-            count = setKeys(node.getLeft(), keys, count);
-        node.setKey(count++);
-        if (node.getRight() != null)
-            count = setKeys(node.getRight(), keys, count );
-        return count;
-    }  
- public SplayTree (List<Integer> keyList){
-        int[] keyArray = buildKeyArray(keyList);
-        root = buildPerfectBalancedTree(new SplayNode(),keyArray.length,1 );
-        setKeys(root, keyArray, 1);
-        
-       
-    }
- private int[] buildKeyArray(List <Integer> keyList){
+//Gleiches Vorgehen wie beim TangoBaum
+private int[] buildKeyArray(List <Integer> keyList){
        List<Integer> nullList = new LinkedList();
        nullList.add(null);
        keyList.removeAll(nullList);
@@ -74,7 +50,43 @@ private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int 
        }
       return ret;
    }
-    
+private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int nodeNumber ){
+        if (2 * nodeNumber <= numOfNodes){
+            node.setLeft(buildPerfectBalancedTree(new SplayNode(), numOfNodes, 2 * nodeNumber));
+            node.getLeft().setParent(node);
+        }
+        if (2 * nodeNumber + 1  <= numOfNodes){
+            node.setRight(buildPerfectBalancedTree(new SplayNode(), numOfNodes,2 * nodeNumber + 1)); 
+             node.getRight().setParent(node);
+        }
+        return node;
+    }
+ private int setKeys(SplayNode node ,int[] keys, int count){
+        if (node.getLeft() != null)
+            count = setKeys(node.getLeft(), keys, count);
+        node.setKey(count++);
+        if (node.getRight() != null)
+            count = setKeys(node.getRight(), keys, count );
+        return count;
+    }  
+ /**
+ *
+ * @param keyList Der erzeugte Splay Baum enthält alle in der Liste enthaltenen Schlüssel.   
+ * 
+ */
+ public SplayTree (List<Integer> keyList){
+        int[] keyArray = buildKeyArray(keyList);
+        root = buildPerfectBalancedTree(new SplayNode(),keyArray.length,1 );
+        setKeys(root, keyArray, 1);
+        
+       
+    }
+
+     /**
+ *  
+ * @param key Es dürfen nur Werte verwendet werten die als Schlüssel im Tango Baum vorhanden sind.   
+ * @return Der Knoten mit dem Schlüssel "key".  
+ */ 
 public SplayNode access (int key){
     splay(key);
     return root;

@@ -11,6 +11,7 @@ package TangoTree;
 /**
  *
  * @author andreas
+ * Hilfsbaum im TangoTree
  */
 public abstract class TangoAuxTree {
 
@@ -88,7 +89,7 @@ public abstract class TangoAuxTree {
         }
     }
     /**
-     * Fürht eine Linksrotation durch.
+     * Führt eine Linksrotation durch.
      * @param node Der höherliegende der beiden an der Rotation beteiligten Knoten.
      */
      //Der obere Knoten der Rotation wird übergeben
@@ -109,7 +110,7 @@ public abstract class TangoAuxTree {
 
     }
      /**
-     * Fürht eine Rechtsrotation durch und pflegt dabei die 
+     * Führt eine Rechtsrotation durch und pflegt dabei die 
      * @param node Der höherliegende der beiden an der Rotation beteiligten Knoten.
      */
     protected void rotateRight (TangoNode node){ 
@@ -194,7 +195,7 @@ public abstract class TangoAuxTree {
     /**
      * Überprüft und pflegt "minDepth" und "maxDepth" der Knoten die im Pfad von der Wurzel zu "node" enthalten sind.
      * @param node
-     * @return "true" wenn eine Veränderung festgestellt wurde.
+     * 
      */
     protected void updateDepthsPath(TangoNode node){
         boolean noChange = false;
@@ -239,7 +240,11 @@ public abstract class TangoAuxTree {
         return getSuccessor(node);
     }
     
-  
+    /**
+     * Bildet einen einzigen TangoAuxTree aus "node" und den TangoAuxTrees die an "node" angefügt sind. 
+     * @param node Die Kinder von "node" müssen Wurzeln von TangoAuxTrees sein. Auch der leere Baum ist ein TangoAuxTree.
+     * @return Wurzel des erstellten TangoAuxTree
+     */
     TangoNode concatenate (TangoNode node){
        
         TangoNode left = node.getLeftTango(); 
@@ -250,6 +255,12 @@ public abstract class TangoAuxTree {
         newTree = merge(left, node, right);
         return newTree;
     }
+    /**
+     * Wird verwendetet um einen TangoTree bei einer Veränderung eines preferred child zu aktualisieren. 
+     * @param rootMergePath Wurzel des TangoAuxTree, dessen Knoten im TangoAuxTree mit der Wurzel des TangoTree enthalten sein sollen.
+     * @param tangoRoot Wurzel des TangoTree
+     * @return Wurzel des aktualisierten TangoTree
+     */
     TangoNode updatePaths( TangoNode rootMergePath, TangoNode tangoRoot){
         if (rootMergePath == null || tangoRoot == null   )
             return null;
@@ -262,6 +273,12 @@ public abstract class TangoAuxTree {
         ret.setIsRoot(true);
         return ret;   
     }
+    /**
+     * Erreicht access beim TangoTree den gesuchten Knoten, wird das entsprechende preferred child auf "links" gesetzt, dies übernimmt diese Methode 
+     * @param rootMergePath Wurzel des TangoAuxTree, dessen Knoten im TangoAuxTree mit der Wurzel des TangoTree enthalten sein sollen.
+     * @param tangoRoot Wurzel des TangoTree
+     * @return Wurzel des aktualisierten TangoTree
+     */
     TangoNode updatePreferredChildToLeft(TangoNode node, TangoNode auxTreeRoot){
         if (node == null )
             return null;
@@ -271,6 +288,7 @@ public abstract class TangoAuxTree {
         ret.setIsRoot(true);
         return ret;
     }
+    //Liefert die Wurzel des TangoAuxtree für das am Schluss auf links gesetzte preferred Child
     private TangoNode getMarketPredecessor(TangoNode node){
         if(node == null)
             return null;
@@ -301,6 +319,14 @@ public abstract class TangoAuxTree {
             rootParent.setRight(null);
         root.setParent(null);
     }
+    
+    /**
+     * Vereinigt die TangoAuxTree mit Wurzel "tree1" und "tree2" zu einem TangoAuxTree. Die Schlüssel der über die
+     * beiden Parameter erreichbaren Bäume müssen denen eines Pfades im Refernzbum entsprechen.
+     * @param tree1 Die Wurzel von "tree1"
+     * @param tree2 Die Wurzel von "tree2"
+     * @return Die Wurzel des vereingten TangoAuxTree
+     */
     TangoNode join (TangoNode tree1, TangoNode tree2){
         if(tree1 == null )
             return tree2;
@@ -348,6 +374,14 @@ public abstract class TangoAuxTree {
             return concatenate(l);
         }
     }
+    /**
+     * node ist die Wurzel eines TangoAuxTree "T" . Ein solcher repräsentiert einen preferred path im Referenzbaum "P". Diese Methode spaltet die 
+     * Knoten aus "T" ab, deren Tiefe in "P" größer "depth" ist. Aus diesen Knoten wird ein TangoAuxTree gebildet.  
+     * @param node 
+     * @param depth
+     * @return Die Wurzel auf den TangoAuxTree der die übrigen Knoten aus "T" enthält. An diesen TangoAuxTree ist ein TangoAuxTree mit den 
+     * abgespaltenen Knoten angefügt.
+     */
     TangoNode cut (TangoNode node, int depth){
        
         TangoNode l;
@@ -379,11 +413,43 @@ public abstract class TangoAuxTree {
   
     }
    
+    /**
+     * Spaltet den TangoAuxTree mit Wurzel "tree" in zwei TangoAuxTree "T1" und "T2" auf. Der eine enthält die Schlüssel kleiner "key", der andere die Schlüssel 
+     * größer "key"
+     * @param Tree
+     * @param key Der Wert von "key" muss als Schlüssel im TangoAuxTree mit Wurzel "Tree" enthalten sein. 
+     * @return Den Knoten mit Schlüssel "key". Die Wurzel von "T1" ist dessen linkes Kind, die Wurzel von "T2" das rechte. 
+     */
     protected abstract TangoNode split( TangoNode Tree, int key);
+    /**
+     * "treel" bzw. "treeR" sind Wurzeln von TangoAuxTree "TR" bzw "TL". Es werden die Knoten von "TR" "TL".und "mid" zu einem TangAuxTree
+     * vereinigt.
+     * @param treeL Jeder Schlüssel in "TL" muss kleiner als der Schlüssel von "mid" sein.
+     * @param mid Der Schlüssel von "mid" muss größer als alle Schlüssel aus "TL" und kleiner als alle Schlüssel aus "TR" sein.
+     * @param treeR treeL Jeder Schlüssel in "TR" muss größer als der Schlüssel von "mid" sein.
+     * @return Die Wurzel einen TangoAuxTree der aus den Knoten von "TL", "TR" und "mid" besteht.
+     */
     protected abstract TangoNode merge(TangoNode treeL, TangoNode mid, TangoNode treeR);
+    /**
+     * Der Schlüssel "key" wird in den TangoAuxTree eingefügt.
+     * @param key 
+     */
     protected abstract void insert (int key);
+    /**
+     * 
+     * @param key Der Schlüssel des gesuchten Knoten
+     * @return Der Knoten mit Schlüssel "key"
+     */
     protected abstract TangoNode search (TangoNode startNode, int key);
+    /**
+     * 
+     * @return Die Wurzel des TangoAuxTree.
+     */
     protected abstract TangoNode getRoot ();
+    /**
+     * Setzt den TangoAuxTree mit Wurzel "node", als neue BST Struktur dieser Instanz. Die bisherige wird verworfen.
+     * @param node Muss die Wurzel eines TangoAuxTree sein
+     */
     protected abstract void setTree (TangoNode node);
     
     

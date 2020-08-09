@@ -9,6 +9,7 @@ package SplayTree;
 /**
  *
  * @author andreas
+ * Knoten eines SplayTree
  */
 public class SplayNode  {
     private SplayNode left;
@@ -16,7 +17,13 @@ public class SplayNode  {
     private SplayNode parent;
     private int key;
     private final boolean  keyFinal;
-    
+    /**
+     * Erzeugt einen SplayNode mit Schlüssel "k". "l" wird das linke Kind, "r" das rechte. "p" wird als Elternknoten gesetzt.
+     * @param k 
+     * @param l Der Schlüssel von "l" muss kleiner "k" sein.
+     * @param r Der Schlüssel von "r" muss größer "k" sein.
+     * @param p 
+     */
     SplayNode (int k, SplayNode l, SplayNode r, SplayNode p ){
         left = l;
         right = r;
@@ -24,11 +31,17 @@ public class SplayNode  {
         key = k; 
         keyFinal = true;
     }
+      /**
+     * Erzeugt einen SplayNode mit Schlüssel "k". 
+     */
     SplayNode (int k ){
         key = k;
         keyFinal = true;
     }
-     SplayNode (){  
+    /**
+     * Erzeugt einen SplayNode. Der Schlüssel kann nachträglich einmalig gesetzt werden. 
+     */
+    SplayNode (){  
          keyFinal = false;
     }
     int getKey (){

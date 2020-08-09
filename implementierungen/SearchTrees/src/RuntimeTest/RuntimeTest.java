@@ -16,6 +16,8 @@ import java.util.List;
 /**
  *
  * @author andreas
+ * Eine Instanz führt einen Laufzeit Test zwischen einem TangoTree und einem SplayTree durch. Der Laufzeittest wird von einem eigenen Thread 
+ * ausgeführt.
  */
 public class RuntimeTest extends Thread {
    private final String test;
@@ -73,10 +75,22 @@ public class RuntimeTest extends Thread {
    
     }
     
+    /**
+     * 
+     * @return Das Ergebnis des Laufzeittest
+     */
     public long[] getResult(){
         return result;
     }
-   
+    /**
+     * 
+     * @param t Name des auszuführenden Test.
+     * @param p1 Erster Parameter der an die Methode zur Testausführung übergeben werden soll.
+     * @param p2 Zweiter Parameter der an die Methode zur Testausführung übergeben werden soll.
+     * @param workSet "set" Parameter der Methode "workingSet" 
+     * @param rf Objekt mit dem das Ergebnis dargestellt werden soll.
+     * @param r  Länge der Zugriffsfolge in Millionen Schritten.
+     */
     public RuntimeTest(String t, int p1, int p2,  List<Integer> workSet, RuntimeFrame rf, int r ){
         test = t;
         par1 = p1;
@@ -87,6 +101,14 @@ public class RuntimeTest extends Thread {
         exit = false;
         runtimeFrame = rf;
     }
+    /**
+     * Führt einen Laufzeittest mit einer auf die workingSet Eigenschaft zugeschnittenen Zugriffsfolge aus.
+     * @param numOfNodes Anzahl der Knoten.
+     * @param set Schlüssel der Knoten, die zum WorkingSet gehören.
+     * @param repeat Länge der Zugriffsfolge in Millionen.
+     * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
+     * @throws BuildAuxTreeFaildException 
+     */
     private long[] workingSet (int numOfNodes,  List<Integer> set, int repeat) throws BuildAuxTreeFaildException{
         int lengthOfSeq = 1000000;
         List<Integer> accessSequenz = new LinkedList();
@@ -107,15 +129,21 @@ public class RuntimeTest extends Thread {
         return runtimeTest(keyList, accessSequenz, repeat);
      
     }
+     /**
+     * Führt einen Laufzeittest mit einer zufällig erzeugten Zugriffsfolge aus.
+     * @param numOfNodes Anzahl der Knoten.
+     * @param repeat Länge der Zugriffsfolge in Millionen.
+     * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
+     * @throws BuildAuxTreeFaildException 
+     */
     private long[] randomAccess (int numOfNodes, int repeat) throws BuildAuxTreeFaildException{
-        int lengthOfSeq = 1000000;
+        int lengthOfSeq = 1000000 * repeat;
         List<Integer> accessSequenz = new LinkedList();
         List<Integer> keyList = new LinkedList();
         for (int i = 1; i <= numOfNodes ; i++){
             if ( exit)
                 return null;
             keyList.add(i);
-           
         }
         for (int i = 1; i < lengthOfSeq +1; i++){
             if ( exit)
@@ -123,9 +151,17 @@ public class RuntimeTest extends Thread {
             accessSequenz.add(randomNumber(numOfNodes));
            
         }
-        return runtimeTest(keyList, accessSequenz, repeat);
+        return runtimeTest(keyList, accessSequenz, 1);
 
     }
+     /**
+     *  Führt einen Laufzeittest mit einer auf die dynamicFinger Eigenschaft zugeschnittenen Zugriffsfolge aus.
+     * @param numOfNodes Anzahl der Knoten.
+     * @param repeat Länge der Zugriffsfolge in Millionen.
+     * @param keyDistanz Abstand der Schlüssel zwischen zwei aufeinanderfolgnder access() Operationen.
+     * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
+     * @throws BuildAuxTreeFaildException 
+     */
     private long[] dynamicFinger (int numOfNodes, int keyDistanz, int repeat) throws BuildAuxTreeFaildException{
         int lengthOfSeq = 1000000;
         List<Integer> accessSequenz = new LinkedList();
@@ -151,7 +187,16 @@ public class RuntimeTest extends Thread {
         return runtimeTest(keyList, accessSequenz, repeat);
     
     }
+    /**
+     *  Führt einen Laufzeittest mit einer auf die staticFinger Eigenschaft zugeschnittenen Zugriffsfolge aus.
+     * @param numOfNodes Anzahl der Knoten.
+     * @param repeat Länge der Zugriffsfolge in Millionen.
+     * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
+     * @throws BuildAuxTreeFaildException 
+     */
     private long[] staticFinger (int numOfNodes,  int repeat) throws BuildAuxTreeFaildException{
+        //Es wird eine Zugriffsfolge erzeugt bei der 2% der Zugriffe auf den mittleren Schlüssel entfallen. Dann 2% auf die beiden Schlüssel mit Abstand 1 
+        //zum mittleren Schlüssel usw.. Die Reihenfolge der Zugriffe ist denn Zufall.
         int lengthOfSeq = 1000000;
         List<Integer> accessSequenz = new LinkedList();
         int nOn = numOfNodes;
@@ -159,14 +204,15 @@ public class RuntimeTest extends Thread {
             nOn--;
         int lOs = lengthOfSeq;
         
+        //Hauptdatenstruktur der Methode
         int[][] nodeArray = new int[nOn + 1][2];
         for(int i = 1; i < nodeArray.length; i++){
             if ( exit)
                 return null;
-            nodeArray[i][1] = i;
-            
+            nodeArray[i][1] = i;  
         }
         
+        //Anzahl der Zugriffe den Schlüsseln zuordnen 
         int midKey = nOn / 2 + 1; 
         nodeArray[midKey][0] = lOs / 2;
         lOs -= nodeArray[midKey][0];
@@ -187,6 +233,7 @@ public class RuntimeTest extends Thread {
             }
             sumAccess += nodeArray[i][0];
         }     
+        //Den Schlüsseln die Zugriffswahrscheinlichkeit zuordnen
         nodeArray[midKey][0] += lengthOfSeq - sumAccess;
         double[] probs = new double[nOn +1];
         for (int j = 1; j < probs.length; j++){
@@ -194,6 +241,7 @@ public class RuntimeTest extends Thread {
                     return null;
                 probs[j] = nodeArray[j][0] / ((double)lengthOfSeq);
         } 
+        //Zugriffsfolge erstellen
         while(nodeArray != null ){
             if ( exit)
                 return null;
@@ -233,6 +281,12 @@ public class RuntimeTest extends Thread {
         }
         return runtimeTest(keyList, accessSequenz, repeat);
     } 
+    /**
+     *  Führt einen Laufzeittest mit einer bitReversalPermutation aus..
+     * @param numOfBits Anzahl der Bitstellen zu denen die bitReversalPermutation generiert wird.
+     * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
+     * @throws BuildAuxTreeFaildException 
+     */
     private long[] bitReversalPermutation (int numOfBits) throws BuildAuxTreeFaildException{
         List<Integer> keyList = new LinkedList();
         for (int i = 0; i < Math.pow(2, numOfBits); i++){
@@ -305,6 +359,9 @@ public class RuntimeTest extends Thread {
             value++;
         return value;
     }
+     /**
+      * Gestarteten Laufzeittest abbrechen
+      */
     public void setExit(){
         exit = true;
         

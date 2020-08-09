@@ -19,6 +19,7 @@ import java.util.List;
 /**
  *
  * @author andreas
+ * Zeichnet einen Referenzbaum und den zugehörigen TangoBaum 
  */
 public class TangoCanvas extends Canvas {
     private RefTreeNode refRoot;
@@ -50,6 +51,7 @@ public class TangoCanvas extends Canvas {
             buildRefTree(node.right);
         }
     }
+    //Refenzbam wird selbst gepflegt, dann aufruf in TangoTree
     void access(int key){
         if(key < 1 || key > 15)
             return;
@@ -93,6 +95,9 @@ public class TangoCanvas extends Canvas {
             drawRefTree(g,  node.right, posWidth + (canWidth - 10) /(int)Math.pow(2, level + 1), posHeigth + 70, level + 1);
         }
     }
+    /**
+     * Zurücksetzen der Zeichnung
+     */
     final void reset (){
         List<Integer> keys = new LinkedList();
         for(int i = 1;i < 16; i++)

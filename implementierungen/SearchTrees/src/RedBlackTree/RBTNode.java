@@ -10,6 +10,8 @@ import java.awt.Color;
 /**
  *
  * @author andreas
+ * Knoten eines RedBlackTree
+ * 
  */
 public class RBTNode extends TangoNode  {
 
@@ -18,7 +20,12 @@ public class RBTNode extends TangoNode  {
     private int blackHigh;
 
 
-    
+    /**
+     * 
+     * @param k Schlüssel des erzeugten Knoten.
+     * @param c Farbe des erzeugten Knoten 
+     * @param bh SchwarzHöhe des neu erzeugten Knoten
+     */
     RBTNode (int k, RBColor c, int bh){
         super(k);
         color = c;
@@ -87,22 +94,22 @@ public class RBTNode extends TangoNode  {
    protected RBTNode getParent(){
        return (RBTNode) super.getParent();
    }
-    boolean IsLeftChildBlack(){
+    boolean isLeftChildBlack(){
         if (getLeft() == null)
             return true;
         return getLeft().isBlack();
     }
-    boolean IsRightChildBlack(){
+    boolean isRightChildBlack(){
         if (getRight() == null)
             return true;
         return getRight().isBlack();
     }
-    boolean IsLeftChildRed(){
+    boolean isLeftChildRed(){
         if (getLeft() == null)
             return false;
         return getLeft().isRed();
     }
-    boolean IsRightChildRed(){
+    boolean isRightChildRed(){
         if (getRight() == null)
             return false;
         return getRight().isRed();

@@ -113,7 +113,7 @@ public class TangoTree implements I_GUITree{
     /**
  *  
  * @param key Es dürfen nur Werte verwendet werten die als Schlüssel im Tango Baum vorhanden sind.   
- * @return Der Knoten mit dem Schlüsselm "key".  
+ * @return Der Knoten mit dem Schlüssel "key".  
  */
     public TangoNode access(int key){  
         TangoNode search = auxTree.getRoot();

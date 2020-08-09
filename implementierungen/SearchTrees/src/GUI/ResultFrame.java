@@ -13,6 +13,7 @@ import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 
 /** *
  * @author andreas
+ * Fenster zur Darstelung des Ergebnis, eines Laufzeittests
  */
 public class ResultFrame extends JFrame {
     private JLabel tango;

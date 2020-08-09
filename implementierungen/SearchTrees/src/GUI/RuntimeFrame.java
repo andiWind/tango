@@ -34,6 +34,7 @@ import javax.swing.JTextField;
 /**
  *
  * @author andreas
+ * Erstellt und verwaltet das Fenster zum anstarten eines Laufzeittests.
  */
 public class RuntimeFrame  extends JFrame{
     private List<Integer> workingSet;
@@ -416,6 +417,7 @@ public class RuntimeFrame  extends JFrame{
           ResultFrame resultFrame = new ResultFrame(testName);
           resultFrame.setTime(result[0], result[1]);
     }
+    //Zu jedem Test gibt es ein Panel
     private void buildStaticFingerPanel(){
         staticFingerPanel = new JPanel();
         staticFingerPanel.setLayout(new GridLayout(2, 3));
@@ -490,6 +492,8 @@ public class RuntimeFrame  extends JFrame{
             
         }
     }
+    
+    
     private String setPointsInNumOfNodes(String nON){
         String ret = "";
         for (int i = 1; i <= nON.length(); i++){

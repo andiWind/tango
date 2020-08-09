@@ -10,6 +10,7 @@ import java.awt.Color;
 /**
  *
  * @author andreas
+ * Getter für die GUI. ZU kann sich nochmal speziell entschieden werdn, was in der GUI dargestellt wird.
  */
 public interface I_GUINode {
    
