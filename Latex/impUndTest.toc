@@ -1,12 +1,16 @@
 \babel@toc {german}{}
 \contentsline {section}{\numberline {1}Implementierung und Laufzeittests}{1}%
 \contentsline {subsection}{\numberline {1.1}Implementierung}{1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Beschreibung der Klassen }{2}%
-\contentsline {paragraph}{SplayTree und SplayNode}{2}%
-\contentsline {paragraph}{TangoNode}{3}%
-\contentsline {paragraph}{TangoAuxTree}{3}%
-\contentsline {paragraph}{TangoTree}{3}%
+\contentsline {subsubsection}{\numberline {1.1.1}Beschreibung der Klassen }{1}%
+\contentsline {paragraph}{SplayTree und SplayNode}{1}%
+\contentsline {paragraph}{TangoNode}{2}%
+\contentsline {paragraph}{TangoAuxTree}{2}%
+\contentsline {paragraph}{TangoTree}{2}%
 \contentsline {paragraph}{RedBlackTree und RBTNode}{3}%
 \contentsline {paragraph}{RuntimeTest}{3}%
-\contentsline {subsection}{\numberline {1.2}Laufzeittest}{3}%
-\contentsline {section}{\numberline {2}Laufzeittests}{4}%
+\contentsline {subsection}{\numberline {1.2}Laufzeittests zwischen Tango Baum und Splay Baum}{4}%
+\contentsline {subsubsection}{\numberline {1.2.1}Zufällige Zugriffsfolge}{4}%
+\contentsline {subsubsection}{\numberline {1.2.2}Bit reversal permutation}{5}%
+\contentsline {subsubsection}{\numberline {1.2.3}Static Finger}{5}%
+\contentsline {subsubsection}{\numberline {1.2.4}Dynamic Finger}{5}%
+\contentsline {subsubsection}{\numberline {1.2.5}Working Set}{5}%

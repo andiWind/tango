@@ -363,7 +363,7 @@ Sei $v_w$ der Knoten mit der größten Tiefe in $ v_0,..,v_{n-1}$ mit $\mathit{k
 \noindent Daraus folgt direkt $\mathit{OPT}\left(X\right) \geq {_X(T, Y, X)} $ für beliebige BST $T$.  
 
 
-\subsection{bit reversal permutation } \label{abschnittBitReversal}
+\subsection{Bit reversal permutation } \label{abschnittBitReversal}
 In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ für BST $T$ gibt, so dass für die Laufzeit  $\Theta\left(m \log n\right)$ gilt, mit $n$ ist die Anzahl der Knoten von $T$. Hier werden speziell die Zugriffsfolgen betrachtet, die als \textbf{bit reversal permutation} bezeichnet werden. Auf $O\left(m \log n\right)$ wird hier nicht weiter eingegangen. Die balancierten BST garantieren jedoch diese Schranke und mit dem Rot-Schwarz-Baum wird später ein solcher noch vorgestellt.
 $\Omega\left(m \log n\right)$  wird mit Hilfe der ersten unteren Schranke von Wilber gezeigt und ein Beweis ist ebenfalls in \cite{wilberLowerBounds} enthalten. \\
 Nun wird zunächst der Aufbau einer solchen Zugriffsfolge eingegangen. Sei $l \in \mathbb{N}$ und $i \in \{0,1,..,l-1\}$. Eine Folge  $b_{l-1},b_{l-2},..,b_0$ mit $b_i \in \{0,1\}$, kann als Zahl zur Basis $2$ interpretiert werden. $T$ enthält alle Schlüssel die als solche Folge dargestellt werden können. Die Schlüsselmenge von $T$ ist deshalb $K_l = \{0,1,..,2^l -1\}$. 

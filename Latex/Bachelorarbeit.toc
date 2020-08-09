@@ -13,7 +13,7 @@
 \contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{18}%
 \contentsline {subsection}{\numberline {4.2}Erste untere Schranke von Wilber}{19}%
 \contentsline {paragraph}{lower bound tree}{20}%
-\contentsline {subsection}{\numberline {4.3}bit reversal permutation }{25}%
+\contentsline {subsection}{\numberline {4.3}Bit reversal permutation }{25}%
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{28}%
 \contentsline {paragraph}{Potentialfunktionmethode}{28}%
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{29}%

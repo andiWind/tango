@@ -78,7 +78,7 @@ Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfss
 \subsubsection{Beschreibung der Klassen }
 
 \paragraph{SplayTree und SplayNode}
-Der Splay Baum startet genau wie der Tango Baum perfekt balanciert, auch wenn sich dies bei längeren Zugriffsfolgen praktisch nicht auswirken sollte. Ansonsten gibt es keine Besonderheiten. \textit{access} verhält sich genau wie im Kapitel zum Splay Baum beschrieben.
+Der Splay Baum startet genau wie der Tango Baum perfekt balanciert, auch wenn sich dies bei längeren Zugriffsfolgen praktisch nicht auswirken sollte. Ansonsten gibt es keine Besonderheiten. \textit{access} verhält sich genau wie im Kapitel zum Splay Baum beschrieben. 
 
 \paragraph{TangoNode}
 Der TangoNode enthält bereits alle zwingend notwendigen Attribute eines Knoten im Tango Baum. 
@@ -93,18 +93,37 @@ Klassen die als Hilfsstruktur im Tangobaum eingesetzt werden sollen, müssen die
 Erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu RBT beschrieben.
 
 \paragraph{RuntimeTest}
-Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt, führt genau einen Laufzeittest durch, die restlichen Attribute dienen dessen Parametrierung. Die Methoden führ die Test geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baum, der zweite der des Splay Baum.
-\subsection{Laufzeittest}
+Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt, führt genau einen Laufzeittest durch, die restlichen Attribute dienen dessen Parametrierung. Die Methoden führ die Test geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baum, der zweite der des Splay Baum. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften, die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}. Ein Datenblatt zu dem verwendeten System ist dem Kapitel angefügt.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/laufzeittest/optionSpeicher"}
+	\caption{Zur Ausführung verwendbaren Speicher erweitert.}
+	\label{fig:optionSpeicher}
+\end{figure}
+\subsection {Laufzeittests zwischen Tango Baum und Splay Baum}
 
 
-\newpage
-
-
-\section {Laufzeittests}
 
 
 
 
+Es werden Tests zu fünf Arten von Zugriffsfolgen durchgeführt. Zunächst wird immer der Aufbau der Zugriffsfolge beschrieben und dann die Ergebnisse präsentiert. $n$ entspricht der Anzahl der Knoten, $m$ der Länge der Zugriffsfolge. Die Schlüsselmengen haben immer die Form $\{1,2,..,n\}$. 
+
+\subsubsection{Zufällige Zugriffsfolge}
+Die Zugriffsfolge wird von einem Pseudozufallsgenerator erzeugt.
+
+\subsubsection{Bit reversal permutation}
+
+
+\subsubsection{Static Finger}
+Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \textit{access} Operationen. Auf $a+1$ und $a-1$ entfallen dann $1$ Prozent (gemeinsam $2$ Prozent) der restlichen \textit{access} Operationen. Dieses vorgehen iteriert bis ein Prozent der Anzahl der verbleibenden \textit{access} Operationen, weniger als $1$ ergibt. Die Anordnung der Schlüssel in der Zugriffsfolge geschieht wieder über einen Pseudozufallsgenerator. 
+
+\subsubsection{Dynamic Finger}
+Es wird die Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwendet.
+
+\subsubsection{Working Set}
+Das Working Set enthält $10$ Prozent der in den Bäumen enthaltenen Schlüssel. Diese sind gleichmäßig über $1, 2, .., n$ verteilt. Eine beispielhaftes Working Set wäre $\{1, 4, 7,.., n\}$, die verwendete Zugriffsfolge ist dann  $1, 4, 7,..,n, 1, 4, 7, .., n,...$  
 
 \newpage
 \bibliography{literaturverzeichnis}

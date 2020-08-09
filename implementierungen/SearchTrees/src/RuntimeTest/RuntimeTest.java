@@ -195,8 +195,8 @@ public class RuntimeTest extends Thread {
      * @throws BuildAuxTreeFaildException 
      */
     private long[] staticFinger (int numOfNodes,  int repeat) throws BuildAuxTreeFaildException{
-        //Es wird eine Zugriffsfolge erzeugt bei der 2% der Zugriffe auf den mittleren Schlüssel entfallen. Dann 2% auf die beiden Schlüssel mit Abstand 1 
-        //zum mittleren Schlüssel usw.. Die Reihenfolge der Zugriffe ist denn Zufall.
+        //Es wird eine Zugriffsfolge erzeugt bei der 2% der Zugriffe auf den mittleren Schlüssel entfallen. Dann 2% der restlichen Zugriffe auf die beiden Schlüssel mit Abstand 1 
+        //zum mittleren Schlüssel usw.. Die Reihenfolge der Zugriffe ist dann Zufall.
         int lengthOfSeq = 1000000;
         List<Integer> accessSequenz = new LinkedList();
         int nOn = numOfNodes;
@@ -267,9 +267,7 @@ public class RuntimeTest extends Thread {
                     probs = new double[nodeArray.length];
                     for (int j = 1; j < probs.length; j++){
                         probs[j] = nodeArray[j][0] / ((double)lOs);
-                    }     
-                       
-                    
+                    }      
                 }    
             }
         }  
@@ -331,12 +329,14 @@ public class RuntimeTest extends Thread {
         tangoTree = null; //speicher freigeben
         SplayTree splayTree = new SplayTree(keyList);
         startTime = System.nanoTime();
-            for(Integer i: accessSequenz ){
-                if ( exit)
-                    return null;
-                splayTree.access(i);
+            for (int j = 1; j <= repeat; j++){
+                for(Integer i: accessSequenz ){
+                    if ( exit)
+                        return null;
+                    splayTree.access(i);
            
-            }
+                }
+            }    
         ret[1] = (System.nanoTime()- startTime) / 1000000 ;
         
         return ret;
