@@ -32,7 +32,13 @@ Zusammenfassung
 \newpage
 \tableofcontents
 \newpage
-\section{Fazit}
+\begin{center}
+\textbf{Zusammenfassung}
+\end{center}
+Binäre Suchbäume werden vielfältig eingesetzt. Bei ihnen wird sich besonders für die Ausführungszeit interessiert. Hier wird es speziell um die Ausführungszeit von Folgen von \textit{access} Operationen gehen, im Bezug zur Anzahl $n$ der Knoten des binären Suchbaumes. Beim 1985, in \cite{splay} vorgestellten Splay Baum, wird vermutet, dass dieser jede Folge von  \textit{access} Operationen asymptotisch betrachtet, mindestens genau so schnell ausführt, wie jeder andere BST. Dies wurde als dynamische Optimalitäts Vermutung bekannt. Bis heute ist offen ob der Splay Baum dies Eigenschaft besitzt.  2007 wurde dann in \citeonline{demainDinamicOpti} der Tango Baum vorgestellt. Bei ihm ist bekannt, dass er jede solche Folge, asymptotisch betrachtet, nur um einen Faktor $\log_2\left(\log_2\left(n\right)\right)$ langsamer Ausführt, als der jeweils schnellte BST. Bis dahin war kein BST bekannt der einen solchen Faktor kleiner als $\log_2\left(n\right)$ hat, und dieser wird von den balancierten binären Suchbäumen trivial erreicht. Der Tango Baum wird im Detail vorgestellt und zusätzlich noch einige Variationen zu ihm.\\
+Zum Ende werden noch Laufzeittest zwischen dem Tango Baum und dem Splay Baum durchgeführt. 
+
+
 \newpage
 \section{Einleitung}
 \newpage
