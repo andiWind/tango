@@ -13,20 +13,57 @@
 \usepackage{csquotes}
 \usepackage[font=small,labelfont=bf]{caption}
 
+
 %\usepackage[pages=some]{background} % Draft Wasserzeichen mit Option pages=all sonst pages=some
 
-
-
-\title{Bachelorarbeit}
-\author{
-	Andreas Windorfer\\
-}
-\date{\today}
-\begin {document}
 \newtheorem{Lemma}{Lemma}[section]
 \newtheorem{Satz}{Satz}[section]
 
-\maketitle
+
+\begin {document}
+\begin{center}
+\includegraphics[width= 0.4\textwidth]{"Medien/kleinkram/UniLogo"}
+\end{center}
+\bigskip
+
+
+ \begin{center}
+ 	\LARGE{Bachelorarbeit zum Thema\\
+ 	Tango Baum}\\
+ \bigskip
+ \bigskip
+ \bigskip
+ \bigskip
+\bigskip
+\bigskip 
+\bigskip
+\bigskip
+ \large{
+ Andreas Windorfer\\
+ q8633657}
+ \end{center}
+ \bigskip
+ \bigskip
+ \bigskip
+ \bigskip 
+ \bigskip
+ \bigskip
+ \bigskip 
+  \bigskip 
+ \bigskip
+ \bigskip
+ \bigskip 
+  \begin{center}
+ ausgeführt am\\
+ Lehrgebiet Theoretische Informatik\\
+ Leitung Prof. Dr. André Schulz\\
+\end{center}
+
+\author{Andreas Windorfer}
+
+
+
+
 
 \newpage
 \begin{center}
@@ -228,7 +265,7 @@ Da die Höhe $h$ eines BST $T$ mit $n$ Knoten entscheidend für die Laufzeit der
 	
 \end{proof}
 \section{Rot-Schwarz-Baum}
-Der Rot-Schwarz-Baum gehört zur Gruppe der \textbf{balancierten BST} und erfüllt alle Eigenschaften um ihn als Hilfsstruktur im Tango Baum zu verwenden. Genau das ist auch die Rolle des Rot-Schwarz-Baumes in dieser Ausarbeitung. Bei balancierten BST gilt für die Höhe $h = \mathit{O(\log n)}$, mit $n =$ Anzahl der Knoten. Damit die Beschreibungen nicht zu kleinteilig werden, wird darauf verzichtet, die Pflege der \textit{depth} Variablen und der Zeiger auf andere Hilfsbäume zu beschreiben. Jeder Knoten benötigt ein zusätzliches Attribut, um eine Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Attribut unterschiedenen Zustände als \textit{rot} und \textit{schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten und im folgenden wird einfach von roten bzw. schwarzen Knoten gesprochen. Als Blätter werden schwarze Sonderknoten verwendet, deren Schlüssel auf einen Wert außerhalb des Universums, hier \textit{null}, gesetzt wird, um sie eindeutig erkennen zu können. $\mathit{null}$ gehört nicht zur Schlüsselmenge des RBT. Fehlende Kinder von Knoten mit gewöhnlichem Schlüssel werden durch solche Blätter ersetzt.  
+Der Tango Baum verwendet intern eine Hilfsdatenstruktur. Der Rot-Schwarz-Baum gehört zur Gruppe der \textbf{balancierten BST} und erfüllt alle Eigenschaften um ihn als Hilfsstruktur im Tango Baum zu verwenden. Genau das ist auch die Rolle des Rot-Schwarz-Baumes in dieser Ausarbeitung. Bei balancierten BST gilt für die Höhe $h = \mathit{O(\log n)}$, mit $n =$ Anzahl der Knoten. Damit die Beschreibungen nicht zu kleinteilig werden, wird darauf verzichtet, die Pflege der \textit{depth} Variablen und der Zeiger auf andere Hilfsbäume zu beschreiben. Jeder Knoten benötigt ein zusätzliches Attribut, um eine Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Attribut unterschiedenen Zustände als \textit{rot} und \textit{schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten und im folgenden wird einfach von roten bzw. schwarzen Knoten gesprochen. Als Blätter werden schwarze Sonderknoten verwendet, deren Schlüssel auf einen Wert außerhalb des Universums, hier \textit{null}, gesetzt wird, um sie eindeutig erkennen zu können. $\mathit{null}$ gehört nicht zur Schlüsselmenge des RBT. Fehlende Kinder von Knoten mit gewöhnlichem Schlüssel werden durch solche Blätter ersetzt.  
 
 \noindent Folgende zusätzliche Eigenschaften müssen bei einem Rot-Schwarz-Baum erfüllt sein. 
 
@@ -706,7 +743,7 @@ Sei $k \in K$ und $q(k)$ die Anzahl des Vorkommens von $k$ in  $X$. Ein BST ist 
 \begin{align*}
 O\left(\sum_{k = 1}^{n}q(k)\log \left( \frac{m}{q(k)} \right)\right) 
 \end{align*}
-Zeit ausführt. Der Name kommt daher, dass es sich hierbei um eine untere Schranke für die Ausführungszeit von X bei statischen BST handelt, siehe \cite{staticOptimal}. Solche ändern ihren Struktur während \textit{access} nicht.
+Zeit ausführt. Der Name kommt daher, dass es sich hierbei um eine untere Schranke für die Ausführungszeit von X bei statischen BST handelt, siehe \cite{staticOptimal}. Solche ändern ihre Struktur während \textit{access} nicht.
 
 \paragraph{Working Set Property}
 Ein BST mit dem working set property führt Zugriffsfolgen schnell aus, bei denen auf die gleichen Schlüssel in kurzen Abständen zugegriffen wird.
@@ -767,7 +804,7 @@ Sei $T_0$ der BST mit Schlüsselmenge $K$ auf der $X$ ausgeführt wird. Für $i 
 
 
 \begin{proof}
-	Sei $l$ der kleinste Schlüssel in der linken Region von $u$ und $r$ der Größte Schlüssel in der rechten Region. Im Teilbaum mit Wurzel $u$ sind genau die Schlüssel $K^r_l = \{k \in K \vert k \in \left[l,r\right]\}$ enthalten. Sei $v_l$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der linken Region von $u$ in $T_j$, mit der größten Tiefe. Sei $v_r$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der rechten Region von $u$ in $T_j$, mit der größten Tiefe. $\mathit{key\left(l\right)}$ bzw. $\mathit{key\left(r\right)}$ muss selbst in der linken bzw. rechten Region von $u$ enthalten sein, vergleiche \ref{wilberLowerBoundTree}. Sei $w$ der gemeinsame Vorfahre aller Schlüssel aus der linken und der rechten Region von $u$ in $T^r_l$ mit der größten Tiefe. Es muss $\mathit{key}\left(w\right) \in \left[l,r\right]$ gelten. Somit muss  $\mathit{key}\left(w\right)$ entweder in der linken oder rechten Region von $u$ enthalten sein. Da $w$ der Knoten mit der größten Tiefe sein muss, für den  $\mathit{key\left(w\right)} \in \left[l,r\right]$  gilt, muss entweder $w = v_l$ oder $w = v_r$ gelten, je nachdem wessen Tiefe kleiner ist. Für den Fall $w = v_l$ ist $v_r$ der transition point in $T_j$ zu $u$ und für den Fall $w = v_r$ ist es $v_l$.
+	Sei $l$ der kleinste Schlüssel in der linken Region von $u$ und $r$ der größte Schlüssel in der rechten Region. Im Teilbaum mit Wurzel $u$ sind genau die Schlüssel $K^r_l = \{k \in K \vert k \in \left[l,r\right]\}$ enthalten. Sei $v_l$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der linken Region von $u$ in $T_j$, mit der größten Tiefe. Sei $v_r$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der rechten Region von $u$ in $T_j$, mit der größten Tiefe. $\mathit{key\left(l\right)}$ bzw. $\mathit{key\left(r\right)}$ muss selbst in der linken bzw. rechten Region von $u$ enthalten sein, vergleiche \ref{wilberLowerBoundTree}. Sei $w$ der gemeinsame Vorfahre aller Schlüssel aus der linken und der rechten Region von $u$ in $T^r_l$ mit der größten Tiefe. Es muss $\mathit{key}\left(w\right) \in \left[l,r\right]$ gelten. Somit muss  $\mathit{key}\left(w\right)$ entweder in der linken oder rechten Region von $u$ enthalten sein. Da $w$ der Knoten mit der größten Tiefe sein muss, für den  $\mathit{key\left(w\right)} \in \left[l,r\right]$  gilt, muss entweder $w = v_l$ oder $w = v_r$ gelten, je nachdem wessen Tiefe kleiner ist. Für den Fall $w = v_l$ ist $v_r$ der transition point in $T_j$ zu $u$ und für den Fall $w = v_r$ ist es $v_l$.
 	Es wird der Fall $w = v_l$ betrachtet, der andere kann direkt daraus abgeleitet werden. Im Pfad $P_u = v_0,v_1,..,v_r$ von der Wurzel $v_0$ zu $v_r$ ist $v_l$ enthalten und da $v_r$ ein gemeinsamer Vorfahre der Schlüssel aus der rechten Region von $u$ ist muss $v_r$ der einzige Knoten mit einem Schlüssel aus der rechten Region von $u$ in $P_u$ sein. Jeder Pfad $P$ in $T_j$ von der Wurzel zu einem Knoten mit einem Schlüssel aus der rechten Region von $u$ muss mit $v_0,v_1,..,v_r$ beginnen, somit kann es keinen weiteren transition point für $u$ in $T_j$ geben. 
 	
 \end{proof}
@@ -788,13 +825,13 @@ Im zweiten Lemma geht es darum, dass sich der transition point $v$ eines Knoten 
 
 
 \begin{Lemma}\label{lemmaDemaine3}
-	Sei $u_1, u_2 \in U$, mit $u_1 \ne u_2$.  Sei $v$ der transition point zu $u_1$ und $w$ der zu $u_2$ in $T_j$. Dann muss $v_1 \neq v_2$ gelten.
+	Sei $u_1, u_2 \in U$, mit $u_1 \ne u_2$.  Sei $v_1$ der transition point zu $u_1$ und $v_2$ der zu $u_2$ in $T_j$. Dann muss $v_1 \neq v_2$ gelten.
 \end{Lemma}
 
 \begin{proof}
 	Sei $v_l$ bzw. $v_r$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der linken bzw. rechten Region von $u_1$ in $T_j$, mit der größten Tiefe.  Sei $w_l$ bzw. $w_r$ der gemeinsame Vorfahre aller Knoten mit einem Schlüssel aus der linken bzw. rechten Region von $u_2$ in $T_j$, mit der größten Tiefe. Ist weder $u_1$ ein Vorfahre von $u_2$ noch $u_2$ einer von $u_1$, dann muss auch $w_l \ne v_l \land w_l \ne v_r$ sowie $w_r \ne v_l \land w_r \ne v_r$ gelten, da die Teilbäume mit Wurzel $u_1$ und $u_2$ dann über disjunkte Schlüsselmengen verfügen. Somit müssen die transition points von $u_1$ und $u_2$ unterschiedlich sein. Sei $u_1$ ein Vorfahre von $u_2$. Es werden drei Fälle unterschieden:
 	\begin{enumerate}
-		\item Ist $\mathit{key}\left(v_1\right)$ ist nicht im Teilbaum mit Wurzel $u_2$ enthalten, so kann $v_1$ nicht der transition point von $u_2$ sein.
+		\item Ist $\mathit{key}\left(v_1\right)$ nicht im Teilbaum mit Wurzel $u_2$ enthalten, so kann $v_1$ nicht der transition point von $u_2$ sein.
 		\item $\mathit{key}\left(v_1\right)$ ist im Teilbaum mit Wurzel $u_2$ enthalten und $\mathit{key}\left(v_1\right)$ ist  in der linken Region von $u_1$ enthalten:\\
 		Da $u_1$ Vorfahre von $u_2$ ist, müssen alle Schlüssel im Teilbaum mit Wurzel $u_2$ in der linken Region von $u_1$ enthalten sein. Da der Schlüssel von $v_1$ in der linken Region von $u_1$ liegt, muss $v_r$ ein Vorfahre von $v_l$ in $T_j$ sein. $\mathit{key}\left(v\right)$ muss somit der Schlüssel von $w_l$ bzw. $w_r$ sein, je nachdem wessen Tiefe kleiner ist. Denn andererseits könnte man einen Pfad von der Wurzel von $T_j$ zu $v$ angeben der zwei Knoten aus der linken Region von $u_1$ enthält, dass ist jedoch ein Widerspruch dazu, dass  $\mathit{key}\left(v_1\right)$ in der linken Region von $u_1$ enthalten ist und $v_1$ zudem der transition point für $u_1$ ist.\\
 		$w$ ist entweder der Knoten $w_l$ oder $w_r$ je nachdem wessen Tiefe größer ist, somit gilt $v \ne w$.
@@ -819,11 +856,11 @@ Im zweiten Lemma geht es darum, dass sich der transition point $v$ eines Knoten 
 
 
 \begin{Satz} \label{satzDemaine1}
-	Sei $X = x_0, x_1,.., x_m$  eine Zugriffsfolge und $n$ die Anzahl der Knoten im zu $X$ erstellten lower bound tree. Dann gilt\\	
+	Sei $X = x_0, x_1,.., x_m$  eine Zugriffsfolge und $n$ die Anzahl der Knoten im zu $X$ erstellten lower bound tree Y. Dann gilt\\	
 	$\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 - n$ .
 \end{Satz}
 \begin{proof}
-	Es wird die Mindestanzahl der Berührungen von transition points gezählt. Durch Lemma \ref{lemmaDemaine3} kann die Anzahl der Berührungen für jedes $y \in P$ einzeln bestimmt werden, diese müssen dann lediglich noch aufaddiert werden. Sei $l$, $r$, $v_r$ und $v_l$ wie in Lemma \ref{demaineLemma1} zu $y$ definiert, so dass entweder $v_l$ oder $v_r$ der transition point zu $y$ sein muss, je nachdem welcher der beiden Knoten die größere Tiefe hat. Sei $X{^r_l}' = x_{i_0},x_{i_1},..,x_{i_p}$ die Folge die entsteht, wenn aus $X^r_l$ alle $x_k$ entfernt werden, für die gilt $x_k$ ist in der gleichen Region von $y$ wie $x_{k-1}$. Damit gilt $\mathit{inScore}\left(y\right) = p$. Nun wird angenommen, dass die $x_{i_j}$ mit $j$ ist gerade in der rechten Region von $y$ liegen, und die $x_{i_j}$ mit $j$ ist ungerade in der linken Region. Der andere Fall kann wieder direkt abgeleitet werden. Sei $q \in \mathbb{N}$ mit $1 \leq q \leq \lfloor p / 2 \rfloor$. \textit{access}$\left( x_{i_{2q-1}} \right)$ muss $v_l$ berühren und \textit{access}$\left( x_{i_{2q}} \right)$ muss $v_r$ berühren. Sei $k_{1}$ der Schlüssel des transition point von $y$ zu Beginn von \textit{access}$\left( x_{i_{2q-1}} \right)$ und  $k_{2}$ der Schlüssel des transition point von $y$ zu Beginn von \textit{access}$\left( x_{i_{2q}} \right)$. Gilt $k_{1} = k_{2}$ so muss der transition point von $y$ in \textit{access}$\left( x_{i_{2q}} \right)$ berührt worden sein.  Gilt $k_{1} \ne k_{2}$ so muss der transition point von $y$, nach Lemma \ref{demaineLemma2}, in \textit{access}$\left( x_{i_{2q-1}} \right)$ berührt worden sein. Aus der Konstruktion von $X{^r_l}'$ folgen daraus mindestens $\lfloor p/2 \rfloor \geq p/2 - 1$ Berührungen des transition point von $y$. Sei $U$ wie in Lemma  \ref{demaineLemma1} definiert. Aufaddieren über alle $u \in U$ ergibt bei den Werten der $\mathit{inScore}$ Funktion die Interleave Bound und bei den Berührungen von transition points zumindest  $\mathit{IB}\left(X\right) /2 - \vert U \vert \geq \mathit{IB}\left(X\right) /2 - n$.
+	Es wird die Mindestanzahl der Berührungen von transition points gezählt. Durch Lemma \ref{lemmaDemaine3} kann die Anzahl der Berührungen für jedes $y \in Y$ einzeln bestimmt werden, diese müssen dann lediglich noch aufaddiert werden. Sei $l$, $r$, $v_r$ und $v_l$ wie in Lemma \ref{demaineLemma1} zu $y$ definiert, so dass entweder $v_l$ oder $v_r$ der transition point zu $y$ sein muss, je nachdem welcher der beiden Knoten die größere Tiefe hat. Sei $X{^r_l}' = x_{i_0},x_{i_1},..,x_{i_p}$ die Folge die entsteht, wenn aus $X^r_l$ alle $x_k$ entfernt werden, für die gilt $x_k$ ist in der gleichen Region von $y$ wie $x_{k-1}$. Damit gilt $\mathit{inScore}\left(y\right) = p$. Nun wird angenommen, dass die $x_{i_j}$ mit $j$ ist gerade in der rechten Region von $y$ liegen, und die $x_{i_j}$ mit $j$ ist ungerade in der linken Region. Der andere Fall kann wieder direkt abgeleitet werden. Sei $q \in \mathbb{N}$ mit $1 \leq q \leq \lfloor p / 2 \rfloor$. \textit{access}$\left( x_{i_{2q-1}} \right)$ muss $v_l$ berühren und \textit{access}$\left( x_{i_{2q}} \right)$ muss $v_r$ berühren. Sei $k_{1}$ der Schlüssel des transition point von $y$ zu Beginn von \textit{access}$\left( x_{i_{2q-1}} \right)$ und  $k_{2}$ der Schlüssel des transition point von $y$ zu Beginn von \textit{access}$\left( x_{i_{2q}} \right)$. Gilt $k_{1} = k_{2}$ so muss der transition point von $y$ in \textit{access}$\left( x_{i_{2q}} \right)$ berührt worden sein.  Gilt $k_{1} \ne k_{2}$ so muss der transition point von $y$, nach Lemma \ref{demaineLemma2}, in \textit{access}$\left( x_{i_{2q-1}} \right)$ berührt worden sein. Aus der Konstruktion von $X{^r_l}'$ folgen daraus mindestens $\lfloor p/2 \rfloor \geq p/2 - 1$ Berührungen des transition point von $y$. Sei $U$ wie in Lemma  \ref{demaineLemma1} definiert. Aufaddieren über alle $u \in U$ ergibt bei den Werten der $\mathit{inScore}$ Funktion die Interleave Bound und bei den Berührungen von transition points zumindest  $\mathit{IB}\left(X\right) /2 - \vert U \vert \geq \mathit{IB}\left(X\right) /2 - n$.
 	
 \end{proof}
 
@@ -869,7 +906,7 @@ Sei $H$ die Menge der erstellten Hilfsbäume aus $P$. Mit dem folgenden Verfahre
 	\item Füge $h_3$ zu $H$ hinzu, weiter mit $1$.
 \end{enumerate}
 
-\noindent Bei Punkt $4$ ist sofort ersichtlich, dass es durch $\mathit{key}\left(w_1\right)$ zu keiner Verletzung der Links-Rechts-Beziehung kommt. Wie sieht es aber mit bei den anderen Schlüsseln aus $h_1$ aus ? 
+\noindent Bei Punkt $4$ ist sofort ersichtlich, dass es durch $\mathit{key}\left(w_1\right)$ zu keiner Verletzung der Links-Rechts-Beziehung kommt. Wie sieht es aber mit den anderen Schlüsseln aus $h_1$ aus ? 
 In $P$ sind alle in $h_1$ enthaltenen Schlüssel im Teilbaum mit Wurzel $u$ enthalten. Sei $l$ der kleinste Schlüssel in diesem Teilbaum und $r$ der Größte. In $P$ kann es außerhalb des Teilbaumes mit Wurzel $u$ keinen Schlüssel $k$ mit $l \leq k \leq r$ geben. $h_2$ kann nur Schlüssel enthalten die in $P$ aber nicht im Teilbaum mit Wurzel $u$ enthalten sind. Ein Vorgänger von $a$ in $h_2$ muss einen Schlüssel haben der kleiner als $l$ ist. Ein Nachfolger von $a$ in $h_2$ muss einen Schlüssel haben, der größer als $r$ ist. Im Tango Baum kann es also keine Verletzung der Links-Rechts-Beziehung geben.\\
 
 
@@ -892,7 +929,7 @@ In $P$ sind alle in $h_1$ enthaltenen Schlüssel im Teilbaum mit Wurzel $u$ enth
 	\label{fig:prefChilds2}
 \end{figure}
 
-Abbildung \ref{fig:TangoTree2} zeigt einen möglichen Zustand von $T'$.
+\noindent Abbildung \ref{fig:Tangobaum2} zeigt einen möglichen Zustand von $T'$.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{"Medien/Tango/Tangobaum2"}
@@ -925,7 +962,7 @@ Jetzt werden noch zwei Hilfsoperationen vorgestellt, die für \textit{access} be
 
 \paragraph{cut Operation} \label{cut}
 
-\noindent \textit{cut(depth $d$)} zerteilt einen Hilfsbaum $A$ in zwei Hilfsbäume $A_1$ und $A_2$. Es dürfen nur Werte für $d$ übergeben werden zu denen es in $A$ einen Knoten $v$ mit $v$\textit{depth} $ = d $ gibt. Wobei die Knoten in $A$ bei denen \textit{depth} $\leq d$ gilt in $A_1$ enthalten sind und die mit \textit{depth} $ > d$ in $A_2$. Die Rückgabe ist die Wurzel eines Hilfsbaumes $H$ mit den Schlüsseln der Knoten mit \textit{depth} $\leq d$ in $A$. An $H$ ist ein Hilfsbaum mit den restlichen Schlüsseln aus $A$ angefügt. Zunächst werden Knoten $l$,  $l'$, $r$ und $r'$ in $H$ gesucht. $l$ ist der kleinste Schlüssel eines Knoten $v_l$ mit $v_l$.\textit{depth} $> d$  in $A$ . $r$ ist der größte Schlüssel eines Knoten $v_r$ mit $v_r$.\textit{depth} $> d$  in $A$  . $l'$ ist der Schlüssel des Vorgängers von $v_l$ und $r'$ der Schlüssel des Nachfolgers von $v_r$. $l$ und $r$ müssen in $A$ enthalten sein, $l'$ und $r'$ könnten auch fehlen. $v_l$ kann wie folgt gefunden werden. Man startet mit dem Zeiger $p$ an der Wurzel von $A$. Zeigt $p$ nicht auf $v_l$, muss es im linken Teilbaum von $p$ einen Knoten $v$ mit $v$.\textit{depth} $> d$ geben, und das ist an der \textit{maxDepth} Variable des linken Kindes von $p$ direkt abfragbar. Ist $v_l$ erreicht , kann $l'$ über eine Suche des Vorgängers von $v_l'$ zu gefunden werden. Die Suche nach $r$ und $r'$ verläuft analog. \\
+\noindent \textit{cut(depth $d$)} zerteilt einen Hilfsbaum $A$ in zwei Hilfsbäume $A_1$ und $A_2$. Es dürfen nur Werte für $d$ übergeben werden zu denen es in $A$ einen Knoten $v$ mit $v.$\textit{depth} $ = d $ gibt. Wobei die Knoten in $A$ bei denen \textit{depth} $\leq d$ gilt in $A_1$ enthalten sind und die mit \textit{depth} $ > d$ in $A_2$. Die Rückgabe ist die Wurzel eines Hilfsbaumes $G$ mit den Schlüsseln der Knoten mit \textit{depth} $\leq d$ in $A$. An $G$ ist ein Hilfsbaum mit den restlichen Schlüsseln aus $A$ angefügt. Zunächst werden Knoten $l$,  $l'$, $r$ und $r'$ in $A$ gesucht. $l$ ist der kleinste Schlüssel eines Knoten $v_l$ mit $v_l$.\textit{depth} $> d$  in $A$ . $r$ ist der größte Schlüssel eines Knoten $v_r$ mit $v_r$.\textit{depth} $> d$  in $A$  . $l'$ ist der Schlüssel des Vorgängers von $v_l$ und $r'$ der Schlüssel des Nachfolgers von $v_r$. $l$ und $r$ müssen in $A$ enthalten sein, $l'$ und $r'$ könnten auch fehlen. $v_l$ kann wie folgt gefunden werden. Man startet mit dem Zeiger $p$ an der Wurzel von $A$. Zeigt $p$ nicht auf $v_l$, muss es im linken Teilbaum von $p$ einen Knoten $v$ mit $v$.\textit{depth} $> d$ geben, und das ist an der \textit{maxDepth} Variable des linken Kindes von $p$ direkt abfragbar. Ist $v_l$ erreicht , kann $l'$ über eine Suche des Vorgängers von $v_l'$ zu gefunden werden. Die Suche nach $r$ und $r'$ verläuft analog. \\
 $A$ besteht aus Schlüsseln aus einem preferred path. Somit muss für jeden Schlüssel $k$ eines Knotens $v$ mit $v$.\textit{depth} $\leq d$ in $A$ entweder $k > r$ oder $k < l$ gelten, denn alle Schlüssel aus $\left[l,r\right]$ liegen in $P$ entweder im linken oder im rechten Teilbaum des Knotens mit Schlüssel $k$. \\
 Es wird nun der Ablauf von \textit{cut} gezeigt. Wobei angenommen wird, dass sowohl $l'$ als auch $r'$ existieren. Die anderen Fälle können einfach abgeleitet werden.
 \begin{enumerate}
@@ -937,9 +974,8 @@ Es wird nun der Ablauf von \textit{cut} gezeigt. Wobei angenommen wird, dass sow
 	\item Führe $F = \textit{concatenate}\left(D, ~ r', ~ E \right)$ aus.
 	\item Führe $G = \textit{concatenate}\left(B, ~ l',~ F \right)$ aus.
 	\item Setze die \textit{isRoot} Variable der Wurzel von $G$ auf \textit{true} 
-	\item Setze die Wurzel von $G$ als Wurzel des Tango Baumes.	 
 \end{enumerate}
-Abbildung \ref{fig:cut} demonstriert den Ablauf nochmals und Abbildung \ref{fig:cut2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
+Nach der Operation ist die Wurzel von $G$ auch immer die Wurzel des Tango Baum. Abbildung \ref{fig:cut} demonstriert den Ablauf nochmals und Abbildung \ref{fig:cut2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{"Medien/Tango/cut"}
@@ -952,24 +988,22 @@ Abbildung \ref{fig:cut} demonstriert den Ablauf nochmals und Abbildung \ref{fig:
 	\caption{Ablauf von \textit{cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite{demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert }
 	\label{fig:cut2}
 \end{figure}
-\noindent Sei $n$ die Anzahl der Knoten von $A$. Jeder der neun Schritte kann in $O\left(\log \left(n\right)\right)$ Zeit ausgeführt werden. Somit gilt auch für die Gesamtlaufzeit $O\left(\log \left(n\right)\right)$.
+\noindent Sei $n$ die Anzahl der Knoten von $A$. Jeder der acht Schritte kann in $O\left(\log \left(n\right)\right)$ Zeit ausgeführt werden. Somit gilt auch für die Gesamtlaufzeit $O\left(\log \left(n\right)\right)$.
 
 
 \paragraph{join Operation}
-\noindent \textit{join(HB $H_1$, HB $H_2$)} fügt die Hilfsbäume $H_1$ und $H_2$ zu einem Hilfsbaum $H$ zusammen. Auch $H$ muss einen preferred path repräsentieren. An die Parameter werden deshalb Anforderungen gestellt. Sei $v_1$ die Wurzel von $H_1$ und $v_2$ die von $H_2$. Es muss $v_1$.\textit{maxDepth} $+ 1$ =  $v_2$.\textit{minDepth} gelten. Auch hier werden Schlüssel $l$, $l'$, $r$ und $r'$ verwendet. Sei $l$ der kleinste Schlüssel in $H_2$ und $r$ der größte Schlüssel in $H_2$. 
-Für jeden Schlüssel $k$ in $H_1$ muss entweder $k < l$ oder $k > r$ gelten, vergleiche Abschnitt \ref{cut}. $l'$ ist der größte Schlüssel in $H_1$ mit $l' < l$. $r'$ ist der kleinste Schlüssel in $H_1$ mit $r' > r$. Wird in $H_1$ ein Schlüssel aus $H_2$ gesucht so muss $l'$ bzw. $r'$ zurückgegeben werden. Der andere Schlüssel kann dann mit einer Suche nach dem Nachfolger bzw. Vorgänger gefunden werden. Der Ablauf von \textit{join} ist dem von \textit{cut} recht ähnlich. Wieder wird angenommen, dass $l'$ und $r'$ existieren.
+\noindent \textit{join(HB $H_1$, HB $H_2$)} fügt die Hilfsbäume $H_1$ und $H_2$ zu einem Hilfsbaum $H$ zusammen. Auch $H$ muss einem preferred path repräsentieren. An die Parameter werden deshalb Anforderungen gestellt. Sei $v_1$ die Wurzel von $H_1$ und $v_2$ die von $H_2$. Es muss $v_1$.\textit{maxDepth} $+ 1$ =  $v_2$.\textit{minDepth} gelten. Auch hier werden Schlüssel $l$, $l'$, $r$ und $r'$ verwendet. Sei $l$ der kleinste Schlüssel in $H_2$ und $r$ der größte Schlüssel in $H_2$. 
+Für jeden Schlüssel $k$ in $H_1$ muss entweder $k < l$ oder $k > r$ gelten. $l'$ ist der größte Schlüssel in $H_1$ mit $l' < l$. $r'$ ist der kleinste Schlüssel in $H_1$ mit $r' > r$. Wird in $H_1$ ein Schlüssel aus $H_2$ gesucht so muss $l'$ bzw. $r'$ zurückgegeben werden. Der andere Schlüssel kann dann mit einer Suche nach dem Nachfolger bzw. Vorgänger gefunden werden. Der Ablauf von \textit{join} ist dem von \textit{cut} recht ähnlich. Wieder wird angenommen, dass $l'$ und $r'$ existieren.
 \begin{enumerate}
 	\item Sei $w_1$ die Wurzel von $H_1$ und d $w_2$ die von $H_2$. Setze $w_1$.\textit{isRoot} und  $w_2$.\textit{isRoot} auf \textit{false} 
 	\item Führe \textit{split}$\left(l'\right)$ auf $H_1$ aus. Sei $v_l$ die Rückgabe von \textit{split}$\left(l'\right)$. Sei $B$ der linke Teilbaum von $v_l$ und $C$ der Rechte. 
 	\item Führe \textit{split}$\left(r'\right)$ auf $C$ aus. Sei $v_r$ die Rückgabe von \textit{split}$\left(r'\right)$. Sei $E$ der rechte Teilbaum von $v_r$. Der linke Teilbaum von $v_r$ muss der leere Baum sein. 
 	\item Setze $v_r$ als rechtes Kind von $v_l$. Setze die Wurzel von $H_2$ als linkes Kind von $v_r$.
-	\item Führe $F = \textit{concatenate}\left(H_2, ~ r', ~ C \right)$ aus.
+	\item Führe $F = \textit{concatenate}\left(H_2, ~ r', ~ E \right)$ aus.
 	\item Führe $H = \textit{concatenate}\left(B, ~ l',~ F \right)$ aus.
 	\item Setze die \textit{isRoot} Variable der Wurzel von $H$ auf \textit{true} 
-	\item Setze die Wurzel von $H$ als Wurzel des Tango Baumes. 
 \end{enumerate}
-
-Abbildung \ref{fig:join} demonstriert den Ablauf nochmals und Abbildung \ref{fig:join2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
+Nach der Operation ist die Wurzel von $H$ auch immer die Wurzel des Tango Baum. Abbildung \ref{fig:join} demonstriert den Ablauf nochmals und Abbildung \ref{fig:join2} zeigt einen verkürzten Ablauf bei fehlendem $r'$
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{"Medien/Tango/join"}
@@ -996,7 +1030,7 @@ Nun wird die \textit{access} Operation des Tango Baumes betrachtet. Sei $k$ der 
 	\item Sei $H_4$ der Hilfsbaum, auf dessen Wurzel $p$ zeigt. Führe \textit{join}$\left(H_3, ~H_4\right)$ aus.
 	\item \label{ende} Gib $p$ zurück.
 \end{enumerate}
-Zu klären ist noch, warum im sechsten Punkt, der die Wurzel des richtigen Hilfsbaums gefunden werden muss. Seien $u$ und $u_l$ Knoten in $P$, so dass $u_c$ das linke Kind von $u$, aber nicht das preferred child von $u$ ist. Sei $v$ bzw. $v_c$ der Knoten in $T$ mit $\mathit{key}\left(v\right) = \mathit{key}\left(u\right)$ bzw. $\mathit{key}\left(v_c\right) = \mathit{key}\left(u_c\right)$. Sei $H_1$, mit Wurzel $w_1$, der Hilfsbaum der $v$ enthält und $H_2$, mit Wurzel $w_2$, der Hilfsbaum der $v_c$ enthält. Es muss einen Pfad $P = \left(v_0, v_1,.., v_m \right)$ geben, mit $v_0 = w_1$, $v_m = w_2$ und $v_{m-1}$ ist in $H_1$ enthalten. Aufgrund der Links-Rechts-Beziehung in $H_1$, muss $v_m$ entweder das linke Kind von $v$ sein, oder das rechte Kind des Vorgängers $v_v$ von $v$ in $H_1$. \\
+Zu klären ist noch, warum im sechsten Punkt, die Wurzel des richtigen Hilfsbaums gefunden werden muss. Seien $u$ und $u_l$ Knoten in $P$, so dass $u_c$ das linke Kind von $u$, aber nicht das preferred child von $u$ ist. Sei $v$ bzw. $v_c$ der Knoten in $T$ mit $\mathit{key}\left(v\right) = \mathit{key}\left(u\right)$ bzw. $\mathit{key}\left(v_c\right) = \mathit{key}\left(u_c\right)$. Sei $H_1$, mit Wurzel $w_1$, der Hilfsbaum der $v$ enthält und $H_2$, mit Wurzel $w_2$, der Hilfsbaum der $v_c$ enthält. Es muss einen Pfad $P = \left(v_0, v_1,.., v_m \right)$ geben, mit $v_0 = w_1$, $v_m = w_2$ und $v_{m-1}$ ist in $H_1$ enthalten. Aufgrund der Links-Rechts-Beziehung in $H_1$, muss $v_m$ entweder das linke Kind von $v$ sein, oder das rechte Kind des Vorgängers $v_v$ von $v$ in $H_1$. \\
 Sei $v_m$ das rechte Kind von $v_v$. Dann kann $v$ nicht im rechten Teilbaum von $v_v$ liegen (im linken natürlich auch nicht). Angenommen $v$ ist kein Vorfahre von $v_v$, dann muss es einen Knoten $w$ geben, mit $v_v$ liegt im linken Teilbaum von $w$ und $v_v$ im rechten. Ein Widerspruch dazu, dass $v_v$ der Vorgänger von $v$ ist.\\
 Es gibt also in jedem Fall einen Pfad von $v$ zu $w_2$. $w_2$ kann bezogen auf $T$ nur im linken Teilbaum von $v$ enthalten und für alle in $H_1$ enthaltenen Schlüssel $k_1$ gilt entweder $k_1 > \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) $ oder  $ \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) > k_1 $.
 
@@ -1321,6 +1355,25 @@ Zu beachten ist, dass jede BST Darstellung auch eine Splay Baum Darstellung ist.
 	\caption {Beispielhafte Zusammenhänge der Schlüsselgrößen. $U$ ist blau dargestellt, $L$ lila, $R$ rot und $q_i$ gelb. }
 	\label{fig:keySpace}
 \end{figure} 
+
+\newpage
+\Large
+\noindent Erklärung\bigskip\\
+
+\normalsize
+\noindent Name : Andreas Windorfer\\
+Martikelnummer: q8633657\\
+Thema: Tango Baum \bigskip\\
+
+
+\noindent Ich erkläre, dass ich die Bachelorarbeit selbstständig und ohne unzulässige Inanspruchnahme Dritter verfasst habe. Ich habe dabei nur die angegebenen Quellen und Hilfsmittel verwendet und die aus diesen wörtlich oder sinngemäß entnommenen Stellen als solche kenntlich gemacht. Die Versicherung selbstständiger Arbeit gilt auch für enthaltene Zeichnungen, Skizzen oder graphische Darstellungen. Die Bachelorarbeit wurde bisher in gleicher oder ähnlicher Form weder derselben noch einer anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht. Mit der Abgabe der elektronischen Fassung der endgültigen Version der Bachelorarbeit nehme ich zur Kenntnis, dass diese mit Hilfe eines Plagiatserkennungsdienstes auf enthaltene Plagiate geprüft werden kann und ausschließlich für Prüfungszwecke gespeichert wird.\\
+
+\vspace{50pt}
+\noindent\rule{5cm}{.4pt}\hfill\rule{5cm}{.4pt}\par
+\noindent Datum, Ort \hfill Unterschrift
+                       
+
+
 
 \newpage
 \bibliography{literaturverzeichnis}

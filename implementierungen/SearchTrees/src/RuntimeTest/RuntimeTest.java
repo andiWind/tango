@@ -194,7 +194,7 @@ public class RuntimeTest extends Thread {
      * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
      * @throws BuildAuxTreeFaildException 
      */
-    private long[] staticFinger (int numOfNodes,  int repeat) throws BuildAuxTreeFaildException{
+   private long[] staticFinger (int numOfNodes,  int repeat) throws BuildAuxTreeFaildException{
         //Es wird eine Zugriffsfolge erzeugt bei der 2% der Zugriffe auf den mittleren Schlüssel entfallen. Dann 2% der restlichen Zugriffe auf die beiden Schlüssel mit Abstand 1 
         //zum mittleren Schlüssel usw.. Die Reihenfolge der Zugriffe ist dann Zufall.
         int lengthOfSeq = 1000000;
@@ -214,7 +214,7 @@ public class RuntimeTest extends Thread {
         
         //Anzahl der Zugriffe den Schlüsseln zuordnen 
         int midKey = nOn / 2 + 1; 
-        nodeArray[midKey][0] = lOs / 2;
+        nodeArray[midKey][0] = lOs / 50;
         lOs -= nodeArray[midKey][0];
         for (int i = 1; i < midKey; i++){
             if(exit)
