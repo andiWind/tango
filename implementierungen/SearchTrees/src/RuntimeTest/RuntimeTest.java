@@ -194,18 +194,24 @@ public class RuntimeTest extends Thread {
      * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
      * @throws BuildAuxTreeFaildException 
      */
-   private long[] staticFinger (int numOfNodes,  int repeat) throws BuildAuxTreeFaildException{
+   /**
+     *  Führt einen Laufzeittest mit einer auf die staticFinger Eigenschaft zugeschnittenen Zugriffsfolge aus.
+     * @param numOfNodes Anzahl der Knoten.
+     * @param repeat Länge der Zugriffsfolge in Millionen.
+     * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
+     * @throws BuildAuxTreeFaildException 
+     */
+    private long[] staticFinger (int numOfNodes,  int repeat) throws BuildAuxTreeFaildException{
         //Es wird eine Zugriffsfolge erzeugt bei der 2% der Zugriffe auf den mittleren Schlüssel entfallen. Dann 2% der restlichen Zugriffe auf die beiden Schlüssel mit Abstand 1 
         //zum mittleren Schlüssel usw.. Die Reihenfolge der Zugriffe ist dann Zufall.
         int lengthOfSeq = 1000000;
-        List<Integer> accessSequenz = new LinkedList();
-        int nOn = numOfNodes;
-        if (nOn % 2== 0)
-            nOn--;
         int lOs = lengthOfSeq;
-        
+        if(numOfNodes % 2 == 0)
+            numOfNodes--;
+        List<Integer> accessSequenz = new LinkedList();
         //Hauptdatenstruktur der Methode
-        int[][] nodeArray = new int[nOn + 1][2];
+        int[][] nodeArray = new int[numOfNodes + 1][2];
+        //Keys eintragen
         for(int i = 1; i < nodeArray.length; i++){
             if ( exit)
                 return null;
@@ -213,18 +219,31 @@ public class RuntimeTest extends Thread {
         }
         
         //Anzahl der Zugriffe den Schlüsseln zuordnen 
-        int midKey = nOn / 2 + 1; 
+        int midKey = numOfNodes / 2 + 1; 
         nodeArray[midKey][0] = lOs / 50;
+        if(nodeArray[midKey][0] < 1)
+            nodeArray[midKey][0]++;
         lOs -= nodeArray[midKey][0];
+        int indexMin = midKey; //Index des kleinsten Schlüssel auf den zugegriffen wird.
+        int indexMax = midKey;
         for (int i = 1; i < midKey; i++){
             if(exit)
                 return null;
-            int numOfAccess = lOs / 50;
+             int numOfAccess = lOs / 50;
              nodeArray[midKey - i][0] = numOfAccess / 2;
              nodeArray[midKey + i][0] = numOfAccess / 2;
              lOs -= nodeArray[midKey - i][0];
              lOs -= nodeArray[midKey + i][0];
-             
+             if (nodeArray[midKey - i][0] > 0){
+                 indexMin = midKey - i;
+                 indexMax = midKey +i;
+            }
+        }
+        int[][] temp = nodeArray;
+        nodeArray = new int[indexMax - indexMin + 2][2];
+        for(int i = indexMin; i <= indexMax; i++){
+            nodeArray[i - indexMin + 1][0] = temp[i][0];
+            nodeArray[i - indexMin + 1][1] = temp[i][1];
         }
         int sumAccess = 0;
         for (int i = 1; i < nodeArray.length; i++){
@@ -232,15 +251,17 @@ public class RuntimeTest extends Thread {
                 return null;
             }
             sumAccess += nodeArray[i][0];
-        }     
+        }          
+        nodeArray[midKey - indexMin +1][0] += (lengthOfSeq - sumAccess ); 
+        
         //Den Schlüsseln die Zugriffswahrscheinlichkeit zuordnen
-        nodeArray[midKey][0] += lengthOfSeq - sumAccess;
-        double[] probs = new double[nOn +1];
+        double[] probs = new double[nodeArray.length];
         for (int j = 1; j < probs.length; j++){
                 if ( exit)
                     return null;
                 probs[j] = nodeArray[j][0] / ((double)lengthOfSeq);
         } 
+
         //Zugriffsfolge erstellen
         while(nodeArray != null ){
             if ( exit)
@@ -252,22 +273,22 @@ public class RuntimeTest extends Thread {
                 if (nodeArray.length == 2)
                     nodeArray =  null;
                 else{
-                    int[][] temp = nodeArray;
+                    temp = nodeArray;
                     nodeArray = new int[nodeArray.length - 1][2];
                     int nodeArrayIndex = 1;
-                    lOs = 0;
                     for (int i = 1; i < temp.length; i++ ){
                         if (temp[i][0] > 0){
                             nodeArray[nodeArrayIndex][0] = temp[i][0];
                             nodeArray[nodeArrayIndex][1] = temp[i][1];
                             nodeArrayIndex++;
-                            lOs += temp[i][0];
                         }  
                     }
                     probs = new double[nodeArray.length];
+
                     for (int j = 1; j < probs.length; j++){
-                        probs[j] = nodeArray[j][0] / ((double)lOs);
-                    }      
+                        probs[j] = nodeArray[j][0] /(double) (lengthOfSeq - accessSequenz.size());
+                    } 
+                   
                 }    
             }
         }  
