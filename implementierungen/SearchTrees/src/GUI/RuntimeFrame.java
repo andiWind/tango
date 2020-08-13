@@ -27,6 +27,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
@@ -46,6 +47,8 @@ public class RuntimeFrame  extends JFrame{
     private JLabel workingSetLabel;
     private String activePanel ;
     private final JPanel  northPanel;
+    private JPanel  sortedPanel;
+    private final JComboBox<String> sortedCombo ;
     private JPanel  randomPanel;
     private JPanel  staticFingerPanel;
     private JPanel  dynamicFingerPanel;
@@ -59,7 +62,7 @@ public class RuntimeFrame  extends JFrame{
     private final JTextField workingSetText;
     private final JButton startButton;
     private final JButton workingSetButton;
-    private final JComboBox<String> comboBox ;   
+    private final JComboBox<String> mainCombo ;   
     private RuntimeTest tester;
     RuntimeFrame(){ 
         numOfNodes = 1000;
@@ -101,6 +104,19 @@ public class RuntimeFrame  extends JFrame{
                         case ("bitReversalPermutation"):
                              tester = new RuntimeTest("bitReversalPermutation", lenOfBRP, -1,  null, thisFrame, -1 );
                              break;
+                        case ("sorted"):
+
+                            if (sortedCombo.getSelectedItem().equals("1,2,..,n")){
+                                tester = new RuntimeTest("sorted", numOfNodes, 1,  null, thisFrame, -1 ); 
+                            }  
+                            else if (sortedCombo.getSelectedItem().equals("n, n -1,..,1"))   {
+                                tester = new RuntimeTest("sorted", numOfNodes, 2,  null, thisFrame, -1 ); 
+                            } 
+                            else{
+                                tester = new RuntimeTest("sorted", numOfNodes, 3,  null, thisFrame, -1 ); 
+                            }
+
+                            break;
                     }
                     tester.start();
                     startButton.setText("Abbruch");
@@ -117,7 +133,10 @@ public class RuntimeFrame  extends JFrame{
                 workingSetLabel.setText("workingSet besteht aus " +workingSetStrings.size() + " Bereichen." );
             }
         });
-       
+        sortedCombo = new JComboBox<>();
+        sortedCombo.addItem("1,2,..,n");
+        sortedCombo.addItem("n, n -1,..,1");
+        sortedCombo.addItem("1, n, 2, n_1,..., n, 1");
         numOfNodesSli = new JSlider();
         numOfNodesSli.setMinimum(1);
         numOfNodesSli.setMaximum(Integer.MAX_VALUE);
@@ -324,18 +343,19 @@ public class RuntimeFrame  extends JFrame{
         workingSetLabel = new JLabel();
         workingSetLabel.setText("workingSet besteht aus 0 Bereichen.");
         workingSet = new LinkedList<Integer>();
-        workingSetStrings = new LinkedList<String>();
+        workingSetStrings = new LinkedList<>();
         
         northPanel = new JPanel();
         northPanel.setLayout(new FlowLayout());
         northPanel.add(new JLabel("Grundauswahl der Zugriffsfolge für den Laufzeittest:"));
-        comboBox = new JComboBox<String>();
-        comboBox.addItem("randomAccess");
-        comboBox.addItem("staticFinger");
-        comboBox.addItem("dynamicFinger");
-        comboBox.addItem("workingSet");
-        comboBox.addItem("bitReversalPermutation");
-        comboBox.addItemListener(new ItemListener(){
+        mainCombo = new JComboBox<>();
+        mainCombo.addItem("randomAccess");
+        mainCombo.addItem("staticFinger");
+        mainCombo.addItem("dynamicFinger");
+        mainCombo.addItem("workingSet");
+        mainCombo.addItem("bitReversalPermutation");
+        mainCombo.addItem("sorted");
+        mainCombo.addItemListener(new ItemListener(){
             @Override
             public void itemStateChanged(ItemEvent e) {
                  String item = (String) e.getItem();
@@ -345,6 +365,7 @@ public class RuntimeFrame  extends JFrame{
                  remove(dynamicFingerPanel);
                  remove(workingSetPanel);
                  remove(bitReversalPermutationPanel);
+                 remove(sortedPanel);
                  switch(item){
                      case ("randomAccess"):
                          buildRandomPanel();
@@ -371,12 +392,17 @@ public class RuntimeFrame  extends JFrame{
                          add(bitReversalPermutationPanel, BorderLayout.CENTER);
                          activePanel = "bitReversalPermutation";
                          break;
+                    case ("sorted"):
+                        buildSortedPanel();
+                        add(sortedPanel, BorderLayout.CENTER);
+                         activePanel = "sorted";
+                        break;
                  }
                  setVisible(true);
                  
             }
         });
-        northPanel.add(comboBox);
+        northPanel.add(mainCombo);
         initFrame();
     }
     private void initFrame(){
@@ -392,10 +418,29 @@ public class RuntimeFrame  extends JFrame{
         buildWorkingSetPanel();
         buildStaticFingerPanel();
         buildRandomPanel();
+        buildSortedPanel();
         add(randomPanel, BorderLayout.CENTER);
         add(startButton, BorderLayout.SOUTH);
         
     }
+    private void buildSortedPanel(){
+        sortedPanel = new JPanel();
+        sortedPanel.setLayout(new BorderLayout());
+        JPanel panelOne = new JPanel();
+        panelOne.setLayout(new GridLayout(1,3));
+        panelOne.add(numOfNodesSli);
+        panelOne.add(numOfNodesText);
+        panelOne.add(new JLabel("Anzahl der Knoten"));
+        sortedPanel.add(panelOne, BorderLayout.NORTH);
+        JPanel panelTwo = new JPanel();
+        panelTwo.setLayout(new GridLayout(1,2));
+        panelTwo.add(new JLabel("Untertyp der Folge:"));
+        panelTwo.add(sortedCombo);
+        sortedPanel.add(panelTwo, BorderLayout.CENTER);
+        
+        
+    }
+    
     private void buildRandomPanel(){
         randomPanel = new JPanel();
         randomPanel.setLayout(new GridLayout(2, 3));

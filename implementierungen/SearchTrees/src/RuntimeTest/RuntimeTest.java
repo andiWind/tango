@@ -69,6 +69,13 @@ public class RuntimeTest extends Thread {
                          catch (BuildAuxTreeFaildException ex) {
                         }
                          break;
+                    case ("sorted"):
+                        try {
+                             result = sorted(par1, par2);
+                            }
+                         catch (BuildAuxTreeFaildException ex) {
+                        }
+                         break;     
                  }
         if(!exit)
             runtimeFrame.setResult(result, test);
@@ -104,15 +111,16 @@ public class RuntimeTest extends Thread {
     /**
      * Führt einen Laufzeittest mit einer auf die workingSet Eigenschaft zugeschnittenen Zugriffsfolge aus.
      * @param numOfNodes Anzahl der Knoten.
-     * @param set Schlüssel der Knoten, die zum WorkingSet gehören.
+     * @param set Schlüssel der Knoten, die zum WorkingSet gehören. Diese werden der Reihe nach der Zugriffsfolge hinzugefügt. Dies Iteriert so oft bis
+     * die Zugriffsfolge lang genug ist.
      * @param repeat Länge der Zugriffsfolge in Millionen.
      * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
      * @throws BuildAuxTreeFaildException 
      */
     private long[] workingSet (int numOfNodes,  List<Integer> set, int repeat) throws BuildAuxTreeFaildException{
         int lengthOfSeq = 1000000;
-        List<Integer> accessSequenz = new LinkedList<Integer>();
-        List<Integer> keyList = new LinkedList<Integer>();
+        List<Integer> accessSequenz = new LinkedList<>();
+        List<Integer> keyList = new LinkedList<>();
         for (int i = 1; i <= numOfNodes ; i++){
             keyList.add(i);
         }
@@ -126,6 +134,47 @@ public class RuntimeTest extends Thread {
             }
         }
         
+        return runtimeTest(keyList, accessSequenz, repeat);
+     
+    }
+    
+    /**
+     * Führt einen Laufzeittest mit sortierten Zugriffsfolgen aus.
+     * @param numOfNodes Anzahl der Knoten.
+     * @param typ 1 -> aufsteigend, 2 -> absteigend, 3 -> geschachtelt in Einerschritten
+     * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
+     * @throws BuildAuxTreeFaildException 
+     */
+    private long[] sorted (int numOfNodes, int typ) throws BuildAuxTreeFaildException{
+        List<Integer> accessSequenz = new LinkedList<>();
+        List<Integer> keyList = new LinkedList<>();
+        for (int i = 1; i <= numOfNodes ; i++){
+            keyList.add(i);
+        }
+        if (typ == 1){
+             
+            for (int i = 1; i <= numOfNodes; i++){
+                if ( exit)
+                    return null;
+                accessSequenz.add(i);
+            } 
+        }
+        else if(typ== 2)
+            
+             for (int i = numOfNodes; i > 0; i--){
+                if ( exit)
+                    return null;
+                accessSequenz.add(i);
+            } 
+        else{
+             for (int i = 1; i <= numOfNodes; i++){
+                if ( exit)
+                    return null;
+                accessSequenz.add(i);
+                accessSequenz.add(numOfNodes - i + 1 );
+            }    
+        }    
+
         return runtimeTest(keyList, accessSequenz, repeat);
      
     }
