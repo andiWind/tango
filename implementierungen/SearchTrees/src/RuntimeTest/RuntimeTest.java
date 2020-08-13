@@ -111,8 +111,8 @@ public class RuntimeTest extends Thread {
      */
     private long[] workingSet (int numOfNodes,  List<Integer> set, int repeat) throws BuildAuxTreeFaildException{
         int lengthOfSeq = 1000000;
-        List<Integer> accessSequenz = new LinkedList();
-        List<Integer> keyList = new LinkedList();
+        List<Integer> accessSequenz = new LinkedList<Integer>();
+        List<Integer> keyList = new LinkedList<Integer>();
         for (int i = 1; i <= numOfNodes ; i++){
             keyList.add(i);
         }
@@ -138,8 +138,8 @@ public class RuntimeTest extends Thread {
      */
     private long[] randomAccess (int numOfNodes, int repeat) throws BuildAuxTreeFaildException{
         int lengthOfSeq = 1000000 * repeat;
-        List<Integer> accessSequenz = new LinkedList();
-        List<Integer> keyList = new LinkedList();
+        List<Integer> accessSequenz = new LinkedList<Integer>();
+        List<Integer> keyList = new LinkedList<Integer>();
         for (int i = 1; i <= numOfNodes ; i++){
             if ( exit)
                 return null;
@@ -164,8 +164,8 @@ public class RuntimeTest extends Thread {
      */
     private long[] dynamicFinger (int numOfNodes, int keyDistanz, int repeat) throws BuildAuxTreeFaildException{
         int lengthOfSeq = 1000000;
-        List<Integer> accessSequenz = new LinkedList();
-        List<Integer> keyList = new LinkedList();
+        List<Integer> accessSequenz = new LinkedList<Integer>();
+        List<Integer> keyList = new LinkedList<Integer>();
         for (int i = 1; i <= numOfNodes ; i++){
             if ( exit)
                 return null;
@@ -208,7 +208,7 @@ public class RuntimeTest extends Thread {
         int lOs = lengthOfSeq;
         if(numOfNodes % 2 == 0)
             numOfNodes--;
-        List<Integer> accessSequenz = new LinkedList();
+        List<Integer> accessSequenz = new LinkedList<Integer>();
         //Hauptdatenstruktur der Methode
         int[][] nodeArray = new int[numOfNodes + 1][2];
         //Keys eintragen
@@ -292,7 +292,7 @@ public class RuntimeTest extends Thread {
                 }    
             }
         }  
-        List<Integer> keyList = new LinkedList();
+        List<Integer> keyList = new LinkedList<Integer>();
         for(int i = 1; i <= numOfNodes; i++){
             if ( exit)
                 return null;
@@ -307,13 +307,13 @@ public class RuntimeTest extends Thread {
      * @throws BuildAuxTreeFaildException 
      */
     private long[] bitReversalPermutation (int numOfBits) throws BuildAuxTreeFaildException{
-        List<Integer> keyList = new LinkedList();
+        List<Integer> keyList = new LinkedList<Integer>();
         for (int i = 0; i < Math.pow(2, numOfBits); i++){
             if ( exit)
                 return null;
             keyList.add(i);
         }
-        List<Integer> accessSequenz = new LinkedList();
+        List<Integer> accessSequenz = new LinkedList<Integer>();
         for(int i = 0; i < Math.pow(2, numOfBits); i++  ){
            if ( exit)
                 return null;

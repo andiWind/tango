@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  9 AUG 2020 14:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  13 AUG 2020 19:57
 entering extended mode
 **./impUndTest.tex
 (impUndTest.tex
@@ -367,12 +367,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write3
 \openout3 = `impUndTest.toc'.
 
-<Medien/laufzeittest/MainGUI.png, id=1, 1156.32pt x 620.3175pt>
+<Medien/laufzeittest/MainGUI.png, id=1, 1156.32pt x 620.91975pt>
 File: Medien/laufzeittest/MainGUI.png Graphic file (type png)
 <use Medien/laufzeittest/MainGUI.png>
 Package pdftex.def Info: Medien/laufzeittest/MainGUI.png  used on input line 37
 .
-(pdftex.def)             Requested size: 390.0pt x 209.21088pt.
+(pdftex.def)             Requested size: 390.0pt x 209.41399pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -469,7 +469,7 @@ en/ec/dpi600\ecbx1728.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 r12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 
-Output written on impUndTest.pdf (7 pages, 218856 bytes).
+Output written on impUndTest.pdf (7 pages, 220686 bytes).
 PDF statistics:
  324 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

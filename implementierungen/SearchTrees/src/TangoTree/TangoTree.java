@@ -52,7 +52,7 @@ public class TangoTree implements I_GUITree{
     }   
     //Die keyList wird in ein duplikatfreies, sortiertes Array überführt.
     private int[] buildKeyArray(List <Integer> keyList){
-       List<Integer> nullList = new LinkedList();
+       List<Integer> nullList = new LinkedList<Integer>();
        nullList.add(null);
        keyList.removeAll(nullList);
        int[] keyArray = new int[keyList.size()];

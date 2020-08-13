@@ -21,7 +21,7 @@ public class SplayTree  {
 
 //Gleiches Vorgehen wie beim TangoBaum
 private int[] buildKeyArray(List <Integer> keyList){
-       List<Integer> nullList = new LinkedList();
+       List<Integer> nullList = new LinkedList<Integer>();
        nullList.add(null);
        keyList.removeAll(nullList);
        int[] keyArray = new int[keyList.size()];

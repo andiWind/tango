@@ -99,7 +99,7 @@ public class TangoCanvas extends Canvas {
      * Zurücksetzen der Zeichnung
      */
     final void reset (){
-        List<Integer> keys = new LinkedList();
+        List<Integer> keys = new LinkedList<Integer>();
         for(int i = 1;i < 16; i++)
             keys.add(i);
         try {
@@ -118,12 +118,15 @@ public class TangoCanvas extends Canvas {
         drawNode(g, posWidth, posHeigth, node.getKeyStringFromGui(), node.getColorFromGui());
         if (node.getLeftFromGui() != null){
             g.setColor(Color.BLACK);
-            g.drawLine(posWidth, posHeigth, posWidth - (canWidth - 10)  /(int)Math.pow(2, level + 1), posHeigth + 40 );
+            g.drawRect( posWidth - (canWidth - 10)  /(int)Math.pow(2, level + 1), posHeigth, (canWidth - 10)  /(int)Math.pow(2, level + 1), 0  ); 
+            g.drawRect( posWidth - (canWidth - 10)  /(int)Math.pow(2, level + 1), posHeigth, 0, 40  );   
+            
             drawTango(g, posWidth - (canWidth - 10)  /(int)Math.pow(2, level + 1) , posHeigth + 70, node.getLeftFromGui(), level + 1);
         }
         if (node.getRightFromGui() != null){
             g.setColor(Color.BLACK);
-            g.drawLine(posWidth, posHeigth,  posWidth + (canWidth - 10) /(int)Math.pow(2, level + 1) , posHeigth + 40);
+            g.drawRect( posWidth  , posHeigth, (canWidth - 10)  /(int)Math.pow(2, level + 1), 0  ); 
+            g.drawRect( posWidth + (canWidth - 10)  /(int)Math.pow(2, level + 1), posHeigth, 0, 40  ); 
             drawTango(g, posWidth + (canWidth - 10) /(int)Math.pow(2, level + 1), posHeigth + 70, node.getRightFromGui(), level + 1);
         }
     }
@@ -131,6 +134,12 @@ public class TangoCanvas extends Canvas {
     public void paint(Graphics g){
         canWidth = this.getWidth();
         int canHeigth = this.getHeight();
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, canWidth, canHeigth / 3);
+        g.setColor(Color.GREEN);
+        g.setFont(new Font("", 1, 26));
+        g.drawString("preferred child", 10, 50);
+        g.drawString("Wurzel", 10, canHeigth / 3 + 50);
         drawRefTree(g, refRoot, canWidth / 2,   20, 1 );
         drawTango(g, canWidth / 2, canHeigth / 3 + 20, tangoTree.getRoot(), 1);
  

@@ -94,8 +94,8 @@ public class RuntimeFrame  extends JFrame{
                             buildWorkingSet();
                             if(!workingSet.isEmpty()){
                                tester = new RuntimeTest("workingSet", numOfNodes, -1, workingSet, thisFrame, lenOfSeq );
-                               workingSet = new LinkedList();
-                               workingSetStrings = new LinkedList();
+                               workingSet = new LinkedList<Integer>();
+                               workingSetStrings = new LinkedList<String>();
                             }    
                             break;
                         case ("bitReversalPermutation"):
@@ -323,13 +323,13 @@ public class RuntimeFrame  extends JFrame{
         workingSetText.setText("x - y");
         workingSetLabel = new JLabel();
         workingSetLabel.setText("workingSet besteht aus 0 Bereichen.");
-        workingSet = new LinkedList();
-        workingSetStrings = new LinkedList();
+        workingSet = new LinkedList<Integer>();
+        workingSetStrings = new LinkedList<String>();
         
         northPanel = new JPanel();
         northPanel.setLayout(new FlowLayout());
         northPanel.add(new JLabel("Grundauswahl der Zugriffsfolge für den Laufzeittest:"));
-        comboBox = new JComboBox();
+        comboBox = new JComboBox<String>();
         comboBox.addItem("randomAccess");
         comboBox.addItem("staticFinger");
         comboBox.addItem("dynamicFinger");
