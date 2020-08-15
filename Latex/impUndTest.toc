@@ -10,7 +10,12 @@
 \contentsline {paragraph}{RuntimeTest}{5}%
 \contentsline {subsection}{\numberline {1.2}Laufzeittests zwischen Tango Baum und Splay Baum}{6}%
 \contentsline {subsubsection}{\numberline {1.2.1}Zufällige Zugriffsfolge}{6}%
-\contentsline {subsubsection}{\numberline {1.2.2}Bit reversal permutation}{6}%
-\contentsline {subsubsection}{\numberline {1.2.3}Static Finger}{7}%
-\contentsline {subsubsection}{\numberline {1.2.4}Dynamic Finger}{7}%
-\contentsline {subsubsection}{\numberline {1.2.5}Working Set}{7}%
+\contentsline {subsubsection}{\numberline {1.2.2}Bit reversal permutation}{7}%
+\contentsline {subsubsection}{\numberline {1.2.3}Static Finger}{8}%
+\contentsline {subsubsection}{\numberline {1.2.4}Dynamic Finger}{9}%
+\contentsline {subsubsection}{\numberline {1.2.5}Working Set}{10}%
+\contentsline {subsubsection}{\numberline {1.2.6}Weitere Laufzeittests}{12}%
+\contentsline {paragraph}{Alternierend die Schlüssel $1$ und $n$}{12}%
+\contentsline {paragraph}{Aufsteigend sortiert, mit insgesamt $n$ Zugriffen}{13}%
+\contentsline {paragraph}{Absteigend sortiert, mit insgesamt $n$ Zugriffen}{14}%
+\contentsline {paragraph}{Aufsteigend und absteigend sortiert, geschachtelt.}{14}%
