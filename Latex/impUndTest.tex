@@ -32,7 +32,7 @@
 In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben und dann werden noch die Laufzeittests dargestellt. 
 \subsection{Implementierung}
 Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsstruktur für den Tango Baum. Außerdem wurde die \textit{access} Operation des Splay Baum implementiert, um Laufzeittest zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm, über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet. Abbildung \ref{fig:klassen} stellt ein Klassendiagramm dar.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/laufzeittest/MainGUI"}
 	\caption{Oberfläche zum Tango Baum}
@@ -42,7 +42,7 @@ Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfss
 \noindent Abbildung \ref{fig:TangoBaumGui} zeigt das Hauptfenster. Oben ist ein Referenzbaum zu einem Tango Baum mit  $15$ Knoten dargestellt, unten der Tango Baum. Preferred Childs und die Wurzeln von Hilfsbäumen sind grün dargestellt.
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{"Medien/laufzeittest/accessGUI"}
 	\caption{\textit{access} Operationen anstoßen.}
@@ -50,7 +50,7 @@ Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfss
 \end{figure}
 \noindent Mit dem Menüpunkt \enquote{access} wird das Fenster aus Abbildung \ref{fig:accessGui} geöffnet. Mit diesem werden \textit{access} Operationen angestoßen. Außerdem können die Bäume damit zurückgesetzt werden.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{"Medien/laufzeittest/RuntimeGui"}
 	\caption{Laufzeittest anstoßen.}
@@ -60,7 +60,7 @@ Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfss
 \noindent Mit dem Menüpunkt \enquote{RuntimeTest} wird das Fenster aus Abbildung \ref{fig:RuntimeGui} geöffnet. Mit diesem werden Laufzeittests zwischen dem Tango Baum und dem Splay Baum  angestoßen. Auf die Parameter und den Aufbau der Zugriffsfolgen, wird im Abschnitt zu den Laufzeittests eingegangen.
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{"Medien/laufzeittest/ResultGUI"}
 	\caption{Ergebnisanzeige eines Laufzeittests.}
@@ -68,7 +68,7 @@ Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfss
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{"Medien/laufzeittest/klassen"}
 \caption{Wesentliche Klassen der Implementierung. Methoden zum direkten lesen bzw. schreiben von Attributen sind nicht dargestellt. }
@@ -95,7 +95,7 @@ Erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu R
 \paragraph{RuntimeTest}
 Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt, führt genau einen Laufzeittest durch, die restlichen Attribute dienen dessen Parametrierung. Die Methoden führ die Test geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baum, der zweite der des Splay Baum. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften, die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}. Ein Datenblatt zu dem verwendeten System ist dem Kapitel angefügt.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{"Medien/laufzeittest/optionSpeicher"}
 	\caption{Zur Ausführung verwendbaren Speicher erweitert.}
@@ -111,9 +111,16 @@ Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann 
 Es werden Tests zu fünf Arten von Zugriffsfolgen durchgeführt. Zunächst wird immer der Aufbau der Zugriffsfolge beschrieben und dann die Ergebnisse präsentiert. $n$ entspricht der Anzahl der Knoten, $m$ der Länge der Zugriffsfolge. Die Schlüsselmengen haben immer die Form $\{1,2,..,n\}$. 
 
 \subsubsection{Zufällige Zugriffsfolge}
-Die Zugriffsfolge wird von einem Pseudozufallsgenerator erzeugt.
+Die Zugriffsfolgen werden von einem Pseudozufallsgenerator erzeugt.
 
 \subsubsection{Bit reversal permutation}
+Auf der X-Achse wird die Länge der einzelnen Binärdarstellungen $l$ dargestellt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/brp"}
+	\caption{Laufzeittest bit reversal permutation.}
+	\label{fig:ResultGUI}
+\end{figure}
 
 
 \subsubsection{Static Finger}
@@ -124,6 +131,8 @@ Es wird die Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwendet.
 
 \subsubsection{Working Set}
 Das Working Set enthält $10$ Prozent der in den Bäumen enthaltenen Schlüssel. Diese sind gleichmäßig über $1, 2, .., n$ verteilt. Eine beispielhaftes Working Set wäre $\{1, 4, 7,.., n\}$, die verwendete Zugriffsfolge ist dann  $1, 4, 7,..,n, 1, 4, 7, .., n,...$  
+
+
 
 \newpage
 \bibliography{literaturverzeichnis}
