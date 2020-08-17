@@ -270,7 +270,7 @@ Beim ersten Test wird Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwe
 	\end{center}
 \end{table}
 \subsubsection{Working Set}
-Das working set enthält $10$ Prozent der Schlüssel des BST. Diese wurden zufällig ausgewählt. Die Zugriffsfolge besteht nur aus Schlüsseln des working set. Die Auswahl daraus geschieht dann für jede \textit{access} Operation wieder zufällig.
+Das working set enthält $5$ Prozent der Schlüssel des BST. Diese wurden gleichmäßig über die enthaltenen Schlüssel verteilt. Wird z.B. jeder dritte Schlüssel benötigt wird das working set also mit $1, 4, 7$ usw. aufgebaut.  Die Zugriffsfolge besteht nur aus Schlüsseln des working set. Die Auswahl daraus geschieht dann für jede \textit{access} Operation wieder zufällig.
  \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/workingset"}
@@ -282,23 +282,21 @@ Das working set enthält $10$ Prozent der Schlüssel des BST. Diese wurden zufä
 			\hline
 			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
 			\hline
-			$10^3$ & $101$ &$5$ \\
+			$10^3$ & $97$ &$3$ \\
 			\hline
-			$10^4$  & $115$ &$5$  \\
+			$10^4$  & $172$ &$5$  \\
 			\hline
-			$10^5$  & $124$ &$5$  \\
+			$10^5$  & $276$ &$11$  \\
 			\hline
-			$10^6$  & $140$ &$5$  \\
+			$10^6$  & $416$ &$29$  \\
 			\hline
-			$10^7$  & $137$ &$5$  \\
-			\hline
-			$1,6 *10^7$  & $155$ &$5$  \\
+			$10^7$  & $640$ &$62$  \\
 			\hline
 		\end{tabular}
 		\caption{Laufzeittest working set} 
 	\end{center}
 \end{table}
-\noindent Hier ist nun wieder $n = 10.000.000$ fest und der Prozentwert für die Anzahl der Schlüssel im working set veränderlich.
+\noindent Hier ist $n = 10.000.000$ fest und der Prozentwert für die Anzahl der Schlüssel im working set veränderlich.
 \subsubsection{Weitere Laufzeittests}
 
 \noindent Alternierend die Schlüssel $1$ und $n$:

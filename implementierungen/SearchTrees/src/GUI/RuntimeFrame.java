@@ -27,7 +27,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
@@ -38,12 +37,13 @@ import javax.swing.JTextField;
  * Erstellt und verwaltet das Fenster zum anstarten eines Laufzeittests.
  */
 public class RuntimeFrame  extends JFrame{
-    private List<Integer> workingSet;
-    private List<String> workingSetStrings;
+   // private List<Integer> workingSet;
+   // private List<String> workingSetStrings;
     private int numOfNodes;
     private int lenOfSeq;
     private int lenOfBRP;
     private int dynFinger;
+    private float workSetPer;
     private JLabel workingSetLabel;
     private String activePanel ;
     private final JPanel  northPanel;
@@ -61,13 +61,13 @@ public class RuntimeFrame  extends JFrame{
     private final JTextField lenOfSeqText;
     private final JTextField workingSetText;
     private final JButton startButton;
-    private final JButton workingSetButton;
     private final JComboBox<String> mainCombo ;   
     private RuntimeTest tester;
     RuntimeFrame(){ 
         numOfNodes = 1000;
         lenOfSeq = 1;
         lenOfBRP = 1;
+        workSetPer = 1;
         activePanel = "randomAccess";
         dynFinger = 1;
         startButton = new JButton();
@@ -94,12 +94,7 @@ public class RuntimeFrame  extends JFrame{
                          tester = new RuntimeTest("dynamicFinger", numOfNodes, dynFinger, null, thisFrame, lenOfSeq );
                            break;
                         case ("workingSet"):
-                            buildWorkingSet();
-                            if(!workingSet.isEmpty()){
-                               tester = new RuntimeTest("workingSet", numOfNodes, -1, workingSet, thisFrame, lenOfSeq );
-                               workingSet = new LinkedList<Integer>();
-                               workingSetStrings = new LinkedList<String>();
-                            }    
+                            tester = new RuntimeTest("workingSet", numOfNodes, -1, buildWorkingSet(), thisFrame, lenOfSeq ); 
                             break;
                         case ("bitReversalPermutation"):
                              tester = new RuntimeTest("bitReversalPermutation", lenOfBRP, -1,  null, thisFrame, -1 );
@@ -124,15 +119,6 @@ public class RuntimeFrame  extends JFrame{
             }
         });
        
-        workingSetButton = new JButton();
-        workingSetButton.setText("Hinzufügen");
-        workingSetButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                workingSetStrings.add(workingSetText.getText());  
-                workingSetLabel.setText("workingSet besteht aus " +workingSetStrings.size() + " Bereichen." );
-            }
-        });
         sortedCombo = new JComboBox<>();
         sortedCombo.addItem("1,2,..,n");
         sortedCombo.addItem("n, n -1,..,1");
@@ -339,11 +325,46 @@ public class RuntimeFrame  extends JFrame{
         workingSetText = new JTextField();
         workingSetText.setFont(new Font("", 1, 20));
         workingSetText.setColumns(43);
-        workingSetText.setText("x - y");
-        workingSetLabel = new JLabel();
-        workingSetLabel.setText("workingSet besteht aus 0 Bereichen.");
-        workingSet = new LinkedList<Integer>();
-        workingSetStrings = new LinkedList<>();
+        workingSetText.setText("1");
+        workingSetText.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                   float value = Float.parseFloat(workingSetText.getText());
+                   if (value > 0 && value <= 100) 
+                        workSetPer = value;
+                   else
+                       workingSetText.setText("" + workSetPer);
+                }    
+                catch(Exception ex){
+                    workingSetText.setText("" + workSetPer);
+                    
+                }
+            }
+        });
+        workingSetText.addFocusListener(new FocusListener() { 
+    
+            @Override
+            public void focusGained(FocusEvent e) {
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                try{
+                   float value = Float.parseFloat(workingSetText.getText());
+                   if (value > 0 && value <= 100) 
+                        workSetPer = value;
+                   else
+                       workingSetText.setText("" + workSetPer);
+                }    
+                catch(Exception ex){
+                    workingSetText.setText("" + workSetPer);
+                    
+                }
+            }
+        });
+        
         
         northPanel = new JPanel();
         northPanel.setLayout(new FlowLayout());
@@ -487,55 +508,42 @@ public class RuntimeFrame  extends JFrame{
     }
     private void buildWorkingSetPanel(){
         workingSetPanel = new JPanel();
-        workingSetPanel.setLayout(new GridLayout(3, 3));
-        workingSetPanel.add(numOfNodesSli);
-        workingSetPanel.add(numOfNodesText);
-        workingSetPanel.add(new JLabel("Anzahl der Knoten"));
-        workingSetPanel.add(new JLabel("Länge der Zugriffsfolge"));       
-        workingSetPanel.add(lenOfSeqText);
-        workingSetPanel.add(new JLabel("(In Millionen)"));
-        workingSetPanel.add(workingSetText);
-        workingSetPanel.add(workingSetButton);        
-        workingSetPanel.add(workingSetLabel);
+        workingSetPanel.setLayout(new GridLayout(3,1));
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new GridLayout(1, 3));
+        topPanel.add(numOfNodesSli);
+        topPanel.add(numOfNodesText);
+        topPanel.add(new JLabel("Anzahl der Knoten"));
+        workingSetPanel.add(topPanel);
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new GridLayout(1, 3));
+        centerPanel.add(new JLabel("Länge der Zugriffsfolge"));       
+        centerPanel.add(lenOfSeqText);
+        centerPanel.add(new JLabel("(In Millionen)"));
+        workingSetPanel.add(centerPanel);
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new GridLayout(1, 2));
+        bottomPanel.add(new JLabel("Größe des working set in %"));   
+        bottomPanel.add(workingSetText);      
+        workingSetPanel.add(bottomPanel);
        
     }
-    private void buildWorkingSet(){
-        boolean[] workingSetBool = new boolean[numOfNodes + 1];
-        int first = 0;
-        int second = 0;
-        for(String text : workingSetStrings){
-            text = text.trim();
-            if(text.lastIndexOf("-") < 0){
-                try{
-                    int value = Integer.parseInt(text);
-                    if(value > 0 && value < numOfNodes && !workingSetBool[value]){
-                        workingSet.add(value);
-                        workingSetBool[value] = true;
-                    }    
-                }
-                catch(Exception e){} 
+    private List<Integer> buildWorkingSet(){
+        int wF;
+        List<Integer> workingSet;
+        workingSet = new LinkedList<>();
+        int workSetSize = (int)workSetPer * numOfNodes / 100;
+        int dist = numOfNodes / (workSetSize);
+        for(int i = 1; i <= numOfNodes; i++){
+            if(i % dist == 1){
+                workingSet.add(i);
             }
-            else{
-               boolean error = false; 
-               
-               try{   
-                   first  = Integer.parseInt(text.substring(0, text.lastIndexOf("-")).trim());
-                   second = Integer.parseInt(text.substring(text.lastIndexOf("-") +1 ).trim());
-                }
-                catch(Exception e){ error = true;}  
-                if(!error ){
-                    while (!(first > second) && (first <= numOfNodes)){
-                        if(first > 0  && !workingSetBool[first]){
-                            workingSet.add(first);
-                            workingSetBool[first] = true;
-                        }  
-                    first++;
-                    }
-                }
-            }
-            
-            
         }
+  
+      return workingSet;
+            
+            
+        
     }
     
     
