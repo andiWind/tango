@@ -1,5 +1,5 @@
 \babel@toc {german}{}
-\contentsline {section}{\numberline {1}Einleitung}{4}%
+\contentsline {section}{\numberline {1}Einleitung}{5}%
 \contentsline {section}{\numberline {2}Binäre Suchbäume}{6}%
 \contentsline {subsection}{\numberline {2.1}Definition binärer Suchbaum}{6}%
 \contentsline {subsection}{\numberline {2.2}Weitere Begriffe und Eigenschaften zum binären Suchbaum}{8}%
@@ -55,3 +55,20 @@
 \contentsline {paragraph}{Besonderheiten bei \textit {access}}{77}%
 \contentsline {subsection}{\numberline {7.2}Multisplay Baum}{78}%
 \contentsline {paragraph}{Die \textit {access} Operation beim Multisplay Baum}{79}%
+\contentsline {section}{\numberline {8}Implementierung und Laufzeittests}{79}%
+\contentsline {subsection}{\numberline {8.1}Implementierung}{79}%
+\contentsline {subsubsection}{\numberline {8.1.1}Beschreibung der Klassen }{82}%
+\contentsline {paragraph}{SplayTree und SplayNode}{82}%
+\contentsline {paragraph}{TangoNode}{83}%
+\contentsline {paragraph}{TangoAuxTree}{83}%
+\contentsline {paragraph}{TangoTree}{83}%
+\contentsline {paragraph}{RedBlackTree und RBTNode}{83}%
+\contentsline {paragraph}{RuntimeTest}{83}%
+\contentsline {subsection}{\numberline {8.2}Laufzeittests zwischen Tango Baum und Splay Baum}{84}%
+\contentsline {subsubsection}{\numberline {8.2.1}Zufällige Zugriffsfolge}{84}%
+\contentsline {subsubsection}{\numberline {8.2.2}Bit reversal permutation}{85}%
+\contentsline {subsubsection}{\numberline {8.2.3}Static Finger}{86}%
+\contentsline {subsubsection}{\numberline {8.2.4}Dynamic Finger}{87}%
+\contentsline {subsubsection}{\numberline {8.2.5}Working Set}{89}%
+\contentsline {subsubsection}{\numberline {8.2.6}Weitere Laufzeittests}{91}%
+\contentsline {section}{\numberline {9}Fazit und Ausblick}{98}%

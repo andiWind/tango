@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \usepackage{cite}
 \usepackage{csquotes}
+\usepackage {pdfpages}
 \usepackage[font=small,labelfont=bf]{caption}
 
 
@@ -69,7 +70,7 @@
 \begin{center}
 \textbf{Zusammenfassung}
 \end{center}
-Binäre Suchbäume werden vielfältig eingesetzt. Bei ihnen wird sich besonders für die Ausführungszeit interessiert. Hier wird es speziell um die Ausführungszeit von Folgen von \textit{access} Operationen gehen, im Bezug zur Anzahl $n$ der Knoten des binären Suchbaumes. Beim 1985, in \cite{splay} vorgestellten Splay Baum, wird vermutet, dass dieser jede Folge von  \textit{access} Operationen asymptotisch betrachtet, mindestens genau so schnell ausführt, wie jeder andere BST. Dies wurde als dynamische Optimalitäts Vermutung bekannt. Bis heute ist offen ob der Splay Baum dies Eigenschaft besitzt.  2007 wurde dann in \cite{demainDinamicOpti} der Tango Baum vorgestellt. Bei ihm ist bekannt, dass er jede solche Folge, asymptotisch betrachtet, nur um einen Faktor $\log_2\left(\log_2\left(n\right)\right)$ langsamer Ausführt, als der jeweils schnellte BST. Bis dahin war kein BST bekannt der einen solchen Faktor kleiner als $\log_2\left(n\right)$ hat, und dieser wird von den balancierten binären Suchbäumen trivial erreicht. Der Tango Baum wird im Detail vorgestellt und zusätzlich noch einige Variationen zu ihm.\\
+ Bei binären Suchbäumen wird sich besonders für die Ausführungszeit interessiert. Hier wird es speziell um die Ausführungszeit von Folgen von \textit{access} Operationen gehen, im Bezug zur Anzahl der Knoten des binären Suchbaumes $n$. Beim 1985, in \cite{splay} vorgestellten Splay Baum, wird vermutet, dass dieser jede Folge von  \textit{access} Operationen asymptotisch betrachtet, mindestens genau so schnell ausführt, wie jeder andere BST. Dies wurde als dynamische Optimalitäts Vermutung bekannt. Bis heute ist offen ob der Splay Baum dies Eigenschaft besitzt.  2007 wurde dann in \cite{demainDinamicOpti} der Tango Baum vorgestellt. Bei ihm ist bekannt, dass er jede solche Folge, asymptotisch betrachtet, nur um einen Faktor $\log\left(\log\left(n\right)\right)$ langsamer Ausführt, als der jeweils schnellte BST. Um dies zu beweisen wurde die \enquote{Interleave Bound}, eine untere Schranke für die Ausführungszeit solcher Folgen verwendet.  Bis dahin war für keinen BST ein Faktor kleiner als $\log_2\left(n\right)$ bewiesen, und dieser wird von den balancierten binären Suchbäumen trivial erreicht. Der Tango Baum wird im Detail vorgestellt und zusätzlich noch einige Variationen zu ihm.\\
 Zum Ende werden noch Laufzeittest zwischen dem Tango Baum und dem Splay Baum durchgeführt. 
 \newpage
 \tableofcontents
@@ -79,10 +80,13 @@ Zum Ende werden noch Laufzeittest zwischen dem Tango Baum und dem Splay Baum dur
 
 \newpage
 \section{Einleitung}
-Binäre Suchbäume werden vielfältig eingesetzt. Unter anderem zur Lösung des "Wörterbuchproblems". Hierbei existiert eine Menge von Schlüsseln, denen Daten zugeordnet sind. Im Telefonbuch wäre ein Name beispielsweise ein Schlüssel, dem als Daten eine Telefonnummer zugeordnet ist. Da solche Mengen von Schlüsseln in der Praxis extrem groß werden können, ist es wichtig, diese möglichst effizient zu verwalten. Auf einen einmal eingefügten Schlüssel, kann beliebig oft zugegriffen werden, deshalb müssen vor allem diese Zugriffe effizient sein. Hierzu ist eine Möglichkeit das binäre Suchen. Die Schlüssel müssen dazu auf irgendeine Art sortiert vorliegen. Beim Telefonbuch wäre das die alphabetische Sortierung. Somit kann man mit der Suche eines Namens in etwa der Mitte des Telefonbuches starten und nach einem Vergleich zumindest die Schlüssel einer Hälfte des Buches ausschließen. Dieses Verhalten iteriert bis der gesuchte Name gefunden ist. Obwohl es viele Arten von binären Suchbäumen, mit zum Teil aufwändigem Verhalten gibt, ahmen sie im Grunde, das binäre Suchen nach.\\
-Binäres Suchen könnte jedoch auch mit einem einfachen Array umgesetzt werden. Hierbei ergibt sich bei Änderungen an der Schlüsselmenge jedoch das Problem, das Array effizient anzupassen. Wird z.B. ein Schlüssel entfernt, müssen alle Nachfolgenden um ein Feld verschoben werden. Beim einfügen eines Schlüssels, könnte sogar ein Umzug in ein größeres Array notwendig werden. Bei binären Suchbäumen können solch Änderungen effizienter durchgeführt werden.\\ 
-Das Auffinden eines Schlüssels passiert beim binären Suchbaum  mit einer \textit{access} Operation. Um theoretische Vergleiche der Effizienz von binären Suchbäumen machen zu können, wird ein Berechnungsmodell benötigt. Hier wird ein sehr einfaches verwendet werden. Außerdem ist es hilfreich untere Schranken für die Ausführung solcher Folgen von \textit{access} Operationen zu kennen. Die Wilber 1 Schranke und die Interleave Bound werden vorgestellt. \\
-1985 wurde in \cite{splay} die Vermutung aufgestellt, dass der Splay Baum jede Folge von \textit{access} Operationen, asymptotisch betrachtet genauso schnell ausführt, wie der für diese Folge schnellste binäre Suchbaum.  Also auch insbesondere einer, der speziell für diese Folge entworfen wurde. Dies wird als dynamische Optimalitäts Vermutung bezeichnet. Sie ist bis heute weder widerlegt, noch bewiesen. Sei $n$ die Anzahl der verwalteten Schlüssel. Bewiesen war bis 2007 lediglich, dass es binärer Suchbäume gibt, die jede Folge asymptotisch betrachtet, höchstens um den Faktor $O\left(\log_2\left(n\right)\right)$ langsamer ausführen, als der schnellste. Dies ist jedoch trivial, da die balancierten binären Suchbäume, jede \textit{access} Operation in $O\left(\log\left(n\right)\right)$ Zeit ausführen. 2007 wurde dann in \cite{demainAdDaStru} der Tango Baum vorgestellt, der einen Faktor von $\log_2\left(\log_2\left(n\right)\right)$ erreicht. Dies war der erste wesentliche Fortschritt bezüglich der dynamischen Optimalitäts Vermutung seit 1985.
+Binäre Suchbäume werden vielfältig eingesetzt. Unter anderem zur Lösung des Wörterbuchproblems. Hierbei existiert eine Menge von Schlüsseln, denen Daten zugeordnet sind. Im Telefonbuch wäre ein Name beispielsweise ein Schlüssel, dem als Datum eine Telefonnummer zugeordnet ist. Da solche Mengen von Schlüsseln in der Praxis extrem groß werden können, ist es wichtig diese möglichst effizient zu verwalten. Auf einen einmal eingefügten Schlüssel, kann beliebig oft zugegriffen werden, deshalb müssen vor allem diese Zugriffe effizient sein. Hierzu ist eine Möglichkeit das binäre Suchen. Die Schlüssel müssen dazu auf irgendeine Art sortiert vorliegen. Beim Telefonbuch wäre das die alphabetische Sortierung. Somit kann man mit der Suche eines Namens in etwa der Mitte des Telefonbuches starten und nach einem Vergleich zumindest die Schlüssel einer Hälfte des Buches ausschließen. Dieses Verhalten iteriert bis der gesuchte Name gefunden ist. Obwohl es viele Varianten von binären Suchbäumen, mit zum Teil aufwändigem Verhalten gibt, ahmen sie im Grunde, das binäre Suchen nach.\\
+Binäres Suchen könnte jedoch auch mit einem einfachen Array umgesetzt werden. Hierbei ergibt sich bei Änderungen an der Schlüsselmenge jedoch das Problem, das Array effizient anzupassen. Wird z.B. ein Schlüssel entfernt, müssen alle Nachfolgenden um ein Feld verschoben werden. Beim einfügen eines Schlüssels, könnte sogar ein Umzug in ein größeres Array notwendig werden. Bei binären Suchbäumen können solche Änderungen effizienter durchgeführt werden.\\ 
+Das Auffinden eines Schlüssels passiert beim binären Suchbaum  mit einer \textit{access} Operation.  Eine Eigenschaft des binären Suchbaum ist, dass weiter an der Wurzel liegende Elemente schneller erreicht werden können als andere. Ist bekannt, wie häufig auf welchen Schlüssel zugegriffen wird, kann diese Eigenschaft ausgenutzt werden. Ein Element wird dann umso weiter oben platziert, je häufiger auf es zugegriffen wird. \\
+Eine weiterer Versuch gute Laufzeiten zu erreichen, sind die dynamischen binären Suchbäume. Im Gegensatz zu statischen binären Suchbäumen ändern diese ihre Struktur auch bei \textit{access} Operationen. Dies macht sie unabhängiger von den oft unbekannten Zugriffshäufigkeiten. Der Tango Baum ist ein solcher Vertreter, ebenso wie der Splay Baum, der hier als Vergleichspartner dienen wird.. 
+
+
+
 \newpage
 \section {Binäre Suchbäume}
 Es gibt viele Varianten von binären Suchbäumen mit unterschiedlichen Eigenschaften und Leistungsdaten. In diesem Kapitel werden binäre Suchbäume im Allgemeinem beschrieben. Außerdem werden Begriffe definiert, die in den nachfolgenden Kapiteln verwendet werden. \\
@@ -1349,8 +1353,427 @@ Ein preferred path wird hier durch einen Splay Baum dargestellt, um dessen Laufz
 \paragraph{Die \textit{access} Operation beim Multisplay Baum}
 Zu beachten ist, dass jede BST Darstellung auch eine Splay Baum Darstellung ist. Anders als beim Tango oder Zipper Baum, muss ein neu erzeugter Hilfsbaum also nicht so angepasst werden, dass er weitere Invarianten einhält.  Nach einer \textit{access}$\left(k\right)$ Operation ist der Knoten $v_k$ mit dem Schlüssel $k$ die Wurzel von $T$. Zunächst wird eine gewöhnliche Suche in $T$ durchgeführt, bis der Zeiger $p$ der Operation auf $v_k$ zeigt. Ist $v_k$ gefunden, werden die Pfadrepräsentationen aktualisiert. Hierzu muss der Hilfsbaum, der die Wurzel von $T$ enthält neu erzeugt werden. \\
 
+\section{Implementierung und Laufzeittests}
+In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben und dann werden noch die Laufzeittests dargestellt. 
+\subsection{Implementierung}
+Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsstruktur für den Tango Baum. Außerdem wurde die \textit{access} Operation des Splay Baum implementiert, um Laufzeittest zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm, über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet. Abbildung \ref{fig:klassen} stellt ein Klassendiagramm dar.
+\begin{figure}[H]
+	\centering
+	\includegraphics[height= 1.7\textwidth]{"Medien/laufzeittest/MainGUI"}
+	\caption{Oberfläche zum Tango Baum}
+	\label{fig:TangoBaumGui}
+\end{figure}
+
+\noindent Abbildung \ref{fig:TangoBaumGui} zeigt das Hauptfenster. Oben ist ein Referenzbaum zu einem Tango Baum mit  $15$ Knoten dargestellt, unten der Tango Baum. Preferred Childs und die Wurzeln von Hilfsbäumen sind grün dargestellt.
 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{"Medien/laufzeittest/accessGUI"}
+	\caption{\textit{access} Operationen anstoßen.}
+	\label{fig:accessGui}
+\end{figure}
+\noindent Mit dem Menüpunkt \enquote{access} wird das Fenster aus Abbildung \ref{fig:accessGui} geöffnet. Mit diesem werden \textit{access} Operationen angestoßen. Außerdem können die Bäume damit zurückgesetzt werden.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/laufzeittest/RuntimeGui"}
+	\caption{Laufzeittest anstoßen.}
+	\label{fig:RuntimeGui}
+\end{figure}
+
+\noindent Mit dem Menüpunkt \enquote{RuntimeTest} wird das Fenster aus Abbildung \ref{fig:RuntimeGui} geöffnet. Mit diesem werden Laufzeittests zwischen dem Tango Baum und dem Splay Baum  angestoßen. Auf die Parameter und den Aufbau der Zugriffsfolgen, wird im Abschnitt zu den Laufzeittests eingegangen.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{"Medien/laufzeittest/ResultGUI"}
+	\caption{Ergebnisanzeige eines Laufzeittests.}
+	\label{fig:ResultGUI}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/laufzeittest/klassen"}
+	\caption{Wesentliche Klassen der Implementierung. Methoden zum direkten lesen bzw. schreiben von Attributen sind nicht dargestellt. }
+	\label{fig:klassen}
+\end{figure}
+
+\subsubsection{Beschreibung der Klassen }
+
+\paragraph{SplayTree und SplayNode}
+Der Splay Baum startet genau wie der Tango Baum perfekt balanciert, auch wenn sich dies bei längeren Zugriffsfolgen praktisch nicht auswirken sollte. Ansonsten gibt es keine Besonderheiten. \textit{access} verhält sich genau wie im Kapitel zum Splay Baum beschrieben. 
+
+\paragraph{TangoNode}
+Der TangoNode enthält bereits alle zwingend notwendigen Attribute eines Knoten im Tango Baum. 
+
+\paragraph{TangoAuxTree}
+Klassen die als Hilfsstruktur im Tangobaum eingesetzt werden sollen, müssen diese Klasse erweitern. \textit{setTree} wird benötigt, da die Klasse TangoTree die BST Struktur nur über das Attribut \enquote{auxTree} erreicht. Gibt es eine Veränderung an der Wurzel des Tango Baum, wird die BST Struktur von \enquote{auxTree} neu gesetzt. \textit{updateDepthsPath} pflegt die Attribute \enquote{minDepth} und \enquote{minDepth} der TangoNode.
+
+\paragraph{TangoTree}
+\enquote{auxTree} macht die Wurzel des Tango Baum erreichbar. Außerdem können über diesen Attribut die \textit{split} und \textit{join} Operationen aufgerufen werden. \enquote{auxTreeClass} entspricht der Klasse der eingesetzten Hilfsbäumen. Diese wird dem Constructor übergeben. Somit kann der RBT einfach durch eine andere geeignete Struktur ersetzt werden.
+
+\paragraph{RedBlackTree und RBTNode}
+Erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu RBT beschrieben.
+
+\paragraph{RuntimeTest}
+Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt, führt genau einen Laufzeittest durch, die restlichen Attribute dienen dessen Parametrierung. Die Methoden für die Test geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baum, der zweite der des Splay Baum. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften, die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}. Ein Datenblatt zu dem verwendeten System ist dem Kapitel angefügt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{"Medien/laufzeittest/optionSpeicher"}
+	\caption{Zur Ausführung verwendbaren Speicher erweitert.}
+	\label{fig:optionSpeicher}
+\end{figure}
+\subsection {Laufzeittests zwischen Tango Baum und Splay Baum}
+
+
+
+
+
+
+Es werden Tests zu fünf Arten von Zugriffsfolgen durchgeführt. Zunächst wird immer der Aufbau der Zugriffsfolge beschrieben und dann die Ergebnisse präsentiert. $n$ entspricht der Anzahl der Knoten, $m$ der Länge der Zugriffsfolge. Die Schlüsselmengen haben immer die Form $\{1,2,..,n\}$. Bei jeder Testart wurde zu jeder Knotenzahl, beim Tango Baum und Splay Baum immer exakt die gleiche Zugriffsfolge verwendet.  $m$ ist die Länge der Zugrissfolge. Gibt es keine Abhängigkeit von $m$ zu $n$, so wurde für $m$ immer $40$ Millionen verwendet. Der Splay Baum wird durchweg die kürzeren Zeiten liefern. Eine mögliche Erklärung für die vergleichsweise oft hohen Zeiten des Tango Baum ist, dass dieser erst bei noch größeren Instanzen einen Vorteil, aus der Unterteilung in Hilfsbäume ziehen kann.  
+
+\subsubsection{Zufällige Zugriffsfolge}
+Die Zugriffsfolgen werden von einem Pseudozufallsgenerator erzeugt. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/randomaccess"}
+	\caption{Laufzeittest mit zufälliger Zugriffsfolge.}
+	
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $138$ &$6$ \\
+			\hline
+			$10^4$  & $342$ &$16$  \\
+			\hline
+			$10^5$  & $353$ &$16$  \\
+			\hline
+			$10^6$  & $469$ &$32$  \\
+			\hline
+			$10^7$  & $1557$ &$53$  \\
+			\hline
+			$1,6 *10^7$  & $3181$ &$67$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest mit zufälliger Zugriffsfolge} 
+	\end{center}
+\end{table}
+
+\subsubsection{Bit reversal permutation}
+Auf der X-Achse wird die Länge der einzelnen Binärdarstellungen $l$ dargestellt. In der Spalte $2^l$ kann die Länge der Zugriffsfolge abgelesen werden. Die Ergebnisse bestätigen, dass es sich um eine aufwändige Zugriffsfolge für BST handelt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/brp"}
+	\caption{Laufzeittest bit reversal permutation.}
+	\label{fig:ResultGUI}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|c|}
+			\hline
+			$l$ & $2^l$ &Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$17$ &	$131.072 $ &$2$ &$1$ \\
+			\hline
+			$18$  &$262.144 $ &$3$ &$1$  \\
+			\hline
+			$19$  &$524.288 $ &$8$ &$1$  \\
+			\hline
+			$20$  &$1.048.576 $ &$21$ &$2$  \\
+			\hline
+			$21$  &$2.097.152 $ &$45$ &$6$  \\
+			\hline
+			$22$  &$4.194.304 $ &$140$ &$12$  \\
+			\hline
+			$23$  &$8.388.608 $ &$258$ &$20$  \\
+			\hline
+			$24$  &$16.777.216$ &$457$ &$35$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest bit reversal permutation} 
+	\end{center}
+\end{table}
+
+\subsubsection{Static Finger}
+Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \textit{access} Operationen. Auf $a+1$ und $a-1$ entfallen dann $1$ Prozent (gemeinsam $2$ Prozent) der restlichen \textit{access} Operationen. Dieses vorgehen iteriert bis ein Prozent der Anzahl der verbleibenden \textit{access} Operationen, weniger als $1$ ergibt. Es wird dann nochmals die Anzahl von Zugriffen auf $a$ hinzugefügt, um die gewünschte Länge der Zugriffsfolge zu erreichen.  Die Anordnung der Schlüssel in der Zugriffsfolge geschieht wieder über einen Pseudozufallsgenerator. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/staticfinger"}
+	\caption{Laufzeittest static finger.}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $101$ &$5$ \\
+			\hline
+			$10^4$  & $115$ &$5$  \\
+			\hline
+			$10^5$  & $124$ &$5$  \\
+			\hline
+			$10^6$  & $140$ &$5$  \\
+			\hline
+			$10^7$  & $137$ &$5$  \\
+			\hline
+			$1,6 *10^7$  & $155$ &$5$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest static finger} 
+	\end{center}
+\end{table}
+
+
+
+
+
+\subsubsection{Dynamic Finger}
+Beim ersten Test wird Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwendet. Der Abstand $a$ zwischen zwei aufeinanderfolgenden Schlüssel ist also $2$.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/dynamicfinger"}
+	\caption{Laufzeittest dynamic finger.}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $55$ &$1$ \\
+			\hline
+			$10^4$  & $56$ &$1$  \\
+			\hline
+			$10^5$  & $65$ &$2$  \\
+			\hline
+			$10^6$  & $71$ &$4$  \\
+			\hline
+			$10^7$  & $79$ &$5$  \\
+			\hline
+			$1,6 *10^7$  & $83$ &$5$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest dynamic finger} 
+	\end{center}
+\end{table}
+\noindent Nun ist $n = 10.000.000$ fest, und es werden unterschiedliche Werte für $a$ verwendet.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/dynamicfingerNfest"}
+	\caption{Laufzeittest dynamic finger, mit unterschiedlichen $a$.}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$a$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$4$ & $109$ &$9$ \\
+			\hline
+			$8$  & $69$ &$14$  \\
+			\hline
+			$16$  & $63$ &$17$  \\
+			\hline
+			$32$  & $62$ &$17$  \\
+			\hline
+			$64$  & $64$ &$17$  \\
+			\hline
+			$128$  & $64$ &$17$  \\
+			\hline
+			$256$  & $88$ &$20$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest dynamic finger, mit unterschiedlichen $a$} 
+	\end{center}
+\end{table}
+\subsubsection{Working Set}
+Das working set enthält $5$ Prozent der Schlüssel des BST. Diese wurden gleichmäßig über die enthaltenen Schlüssel verteilt. Wird z.B. jeder dritte Schlüssel benötigt wird das working set also mit $1, 4, 7$ usw. aufgebaut.  Die Zugriffsfolge besteht nur aus Schlüsseln des working set. Die Auswahl daraus geschieht dann für jede \textit{access} Operation wieder zufällig.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/workingset"}
+	\caption{Laufzeittest working set.}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $97$ &$3$ \\
+			\hline
+			$10^4$  & $172$ &$5$  \\
+			\hline
+			$10^5$  & $276$ &$11$  \\
+			\hline
+			$10^6$  & $416$ &$29$  \\
+			\hline
+			$10^7$  & $640$ &$62$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest working set} 
+	\end{center}
+\end{table}
+\noindent Hier ist $n = 1.000.000$ fest und der Prozentwert $p$ für die Anzahl der Schlüssel im working set veränderlich.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/workingset2"}
+	\caption{Laufzeittest working set, mit unterschiedlichem $p$ .}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$p$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10$ & $468$ &$28$ \\
+			\hline
+			$20$  & $454$ &$29$  \\
+			\hline
+			$30$  & $463$ &$30$  \\
+			\hline
+			$40$  & $519$ &$33$  \\
+			\hline
+			$50$  & $488$ &$36$  \\
+			\hline
+		    $60$  & $488$ &$36$  \\
+			\hline
+			$70$  & $468$ &$38$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest working set} 
+	\end{center}
+\end{table}
+
+\subsubsection{Weitere Laufzeittests}
+
+\noindent Alternierend die Schlüssel $1$ und $n$:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/kleinGros"}
+	\caption{Laufzeittest alternierend.}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $13$ &$1$ \\
+			\hline
+			$10^4$  & $14$ &$1$  \\
+			\hline
+			$10^5$  & $16$ &$1$  \\
+			\hline
+			$10^6$  & $16$ &$1$  \\
+			\hline
+			$10^7$  & $16$ &$1$  \\
+			\hline
+			$1,6 *10^7$  & $16$ &$1$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest alternierend} 
+	\end{center}
+\end{table}
+\noindent Aufsteigend sortiert, mit insgesamt $n$ Zugriffen:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/sorted1"}
+	\caption{Laufzeittest aufsteigend sortiert.}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $1$ &$1$ \\
+			\hline
+			$10^4$  & $1$ &$1$  \\
+			\hline
+			$10^5$  & $4$ &$1$  \\
+			\hline
+			$10^6$  & $46$ &$3$  \\
+			\hline
+			$10^7$  & $483$ &$43$  \\
+			\hline
+			$1,6 *10^7$  & $761$ &$73$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest aufsteigend sortiert} 
+	\end{center}
+\end{table}
+Absteigend sortiert, mit insgesamt $n$ Zugriffen:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/sorted2"}
+	\caption{Laufzeittest absteigend sortiert.}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $1$ &$1$ \\
+			\hline
+			$10^4$  & $1$ &$1$  \\
+			\hline
+			$10^5$  & $3$ &$1$  \\
+			\hline
+			$10^6$  & $48$ &$5$  \\
+			\hline
+			$10^7$  & $319$ &$47$  \\
+			\hline
+			$1,6 *10^7$  & $686$ &$90$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest absteigend sortiert} 
+	\end{center}
+\end{table}
+\noindent Aufsteigend und absteigend sortiert, geschachtelt. Die Zugriffsfolge ist $1, n, 2, n- 1,...., n - 2, 2, n -1, 1$
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/sorted3"}
+	\caption{Laufzeittest auf- bzw. absteigend geschachtelt.}
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $1$ &$1$ \\
+			\hline
+			$10^4$  & $1$ &$1$  \\
+			\hline
+			$10^5$  & $9$ &$1$  \\
+			\hline
+			$10^6$  & $147$ &$4$  \\
+			\hline
+			$10^7$  & $754$ &$21$  \\
+			\hline
+			$1,6 *10^7$  & $4611$ &$36$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest auf- bzw. absteigend geschachtelt.} 
+	\end{center}
+\end{table}
+
+\includepdf[pages = -]{anhang}
+\section{Fazit und Ausblick}
+Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Bei ihm wurde die Idee mit den preferred child jedoch als Erstes umgesetzt, und hier könnten noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften, folgen. \\
+Mittlerweile hat sich zum Thema \enquote{dynamische Optimalität} viel Literatur angesammelt. Hier wurde nur auf einen sehr kleinen Ausschnitt eingegangen. Zum Beispiel gibt es  weitere untere Schranken für die Ausführungszeit von BST. Außerdem gibt es eine interessante geometrische Sicht auf BST, von der Aussagen über BST und andere Verfahren abgeleitet werden konnten. Mit 
+Es gibt auch deutlich mehr obere Laufzeitschranken, für Zugriffsfolgen mit speziellen Eigenschaften, als sie hier vorgestellt wurden. \\
+Ob es irgendwann gelingen wird die dynamische Optimalität, des Splay Baum oder irgendeiner anderen Variante eines BST zu beweisen, ist offen. Für den Einsatz bei gewöhnlich großen Schlüsselmengen, müssen dann aber auch die Summanden und Faktoren berücksichtigt werden, die in der $O$ Notation vernachlässigt werden.
 
 
 \newpage

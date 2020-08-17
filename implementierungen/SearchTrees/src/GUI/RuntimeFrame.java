@@ -44,7 +44,6 @@ public class RuntimeFrame  extends JFrame{
     private int lenOfBRP;
     private int dynFinger;
     private float workSetPer;
-    private JLabel workingSetLabel;
     private String activePanel ;
     private final JPanel  northPanel;
     private JPanel  sortedPanel;
@@ -125,7 +124,7 @@ public class RuntimeFrame  extends JFrame{
         sortedCombo.addItem("1, n, 2, n_1,..., n, 1");
         numOfNodesSli = new JSlider();
         numOfNodesSli.setMinimum(1);
-        numOfNodesSli.setMaximum(Integer.MAX_VALUE);
+        numOfNodesSli.setMaximum(100000000);
         numOfNodesSli.setValue(numOfNodes);
         numOfNodesSli.addMouseMotionListener(new MouseMotionListener(){
             @Override
@@ -325,7 +324,7 @@ public class RuntimeFrame  extends JFrame{
         workingSetText = new JTextField();
         workingSetText.setFont(new Font("", 1, 20));
         workingSetText.setColumns(43);
-        workingSetText.setText("1");
+        workingSetText.setText("1.0");
         workingSetText.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -528,21 +527,15 @@ public class RuntimeFrame  extends JFrame{
         workingSetPanel.add(bottomPanel);
        
     }
-    private List<Integer> buildWorkingSet(){
-        int wF;
+    private List<Integer> buildWorkingSet(){       
         List<Integer> workingSet;
         workingSet = new LinkedList<>();
-        int workSetSize = (int)workSetPer * numOfNodes / 100;
-        int dist = numOfNodes / (workSetSize);
         for(int i = 1; i <= numOfNodes; i++){
-            if(i % dist == 1){
+            if(workingSet.size() <  (workSetPer * i / 100)){
                 workingSet.add(i);
             }
         }
-  
-      return workingSet;
-            
-            
+      return workingSet;  
         
     }
     
