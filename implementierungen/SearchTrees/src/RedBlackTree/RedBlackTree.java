@@ -29,7 +29,11 @@ public class RedBlackTree extends TangoAuxTree {
     }
      
    
-    @Override
+  
+    /**
+     * @param key Fügt einen Knoten mit Schlüssel "key" in den RBT ein.
+     */
+     @Override
     public void insert (int key){
         int blackHigh = 1;
         RBTNode insNode = new RBTNode(key, RBTNode.RBColor.RED, blackHigh);
@@ -49,7 +53,7 @@ public class RedBlackTree extends TangoAuxTree {
         }
         insertFixup(insNode);
     } 
-   
+   //Erstellt aus einem RBT mit zwei roten Knoten in Eltern- Kind-Beziehung wieder eine gültige Darstellung 
     private void insertFixup (RBTNode node){
         if(node == null)
             return;
@@ -121,18 +125,7 @@ public class RedBlackTree extends TangoAuxTree {
         super.rotateRight(node);
      
     }
-   
-  
-   
-    private RBTNode getPredecessor(RBTNode node){
-        RBTNode temp = node.getRight();
-        if (temp == null)
-            return null;
-        while (temp.getLeft() !=  null)
-            temp = temp.getLeft();
-        return temp;
-    }
- 
+
     //  Entfert einen Teilbaum aus dem RedBlackTree und fügt ihn an anderer Stelle wieder ein
      // @param place Darf nicht "null" sein. Einfügestelle
     //  @param tree  Der verwendete Teilbaum
@@ -152,6 +145,11 @@ public class RedBlackTree extends TangoAuxTree {
         if (tree != null)
             tree.setParent(placeParent); 
     }
+     /**
+     * @param startNode Es muss die Wurzel eines RBT übergeben werden.
+     * @param key Der Schlüssel des gesuchten Knoten
+     * @return Der Knoten mit Schlüssel "key"
+     */
     @Override
    public RBTNode search (TangoNode startNode, int key){
         RBTNode searchNode = (RBTNode) startNode;
@@ -174,10 +172,16 @@ public class RedBlackTree extends TangoAuxTree {
 
   
    
-  
-    @Override //Implementiert split für TangoCut
-    //Es werden bottom up Teilbäume abgespalten, die dann  mit "merge" zu RBT zusammengefügt werden.
+   /**
+     * Spaltet den TangoAuxTree mit Wurzel "tree" in zwei TangoAuxTree "T1" und "T2" auf. Der eine enthält die Schlüssel kleiner "key", der andere die Schlüssel 
+     * größer "key"
+     * @param node Wurzel eines RBT
+     * @param key Der Wert von "key" muss als Schlüssel im RBT mit Wurzel "node"  enthalten sein. 
+     * @return Den Knoten mit Schlüssel "key". Die Wurzel von "T1" ist dessen linkes Kind, die Wurzel von "T2" das rechte. 
+     */
+    @Override 
     public RBTNode split(TangoNode node, int key) {
+         //Es werden bottom up Teilbäume abgespalten, die dann  mit "merge" zu RBT zusammengefügt werden.
         RBTNode keyNode = search (node, key); 
         if (keyNode == null)
             return null;
@@ -224,9 +228,18 @@ public class RedBlackTree extends TangoAuxTree {
         attachNodeRight(keyNode, treeRroot);
         return keyNode;  
     }
+
+    /**
+     * "treeLinput" bzw. "treeRinput" sind Wurzeln von RBT "TR" bzw "TL". Es werden die Knoten von "TR" "TL".und "mid" zu einem RBT
+     * vereinigt.
+     * @param treeLinput Jeder Schlüssel in "TL" muss kleiner als der Schlüssel von "mid" sein.
+     * @param midInput Der Schlüssel von "mid" muss größer als alle Schlüssel aus "TL" und kleiner als alle Schlüssel aus "TR" sein.
+     * @param treeRinput treeL Jeder Schlüssel in "TR" muss größer als der Schlüssel von "mid" sein.
+     * @return Die Wurzel eines RBT der aus den Knoten von "TL", "TR" und "mid" besteht.
+     */
     @Override 
-    //Fügt treeLinput an treeRInput seitlich an, oder umgekehrt< je nachdem weiche Schwarz-Höhe größer ist
     public RBTNode merge(TangoNode treeLinput, TangoNode midInput, TangoNode treeRinput) {
+        //Fügt treeLinput an treeRInput seitlich an, oder umgekehrt< je nachdem weiche Schwarz-Höhe größer ist
         RBTNode mid = (RBTNode) midInput;
         RBTNode treeLroot = (RBTNode) treeLinput;
         RBTNode treeRroot = (RBTNode) treeRinput;
@@ -351,6 +364,9 @@ public class RedBlackTree extends TangoAuxTree {
             node.getParent().setRight(null);
     }
     @Override
+    /**Hiermit kann der Zeiger auf die Wurzel gesetzt werden. 
+     * @param node Die Wurzel einer RBT Struktur
+     */
     protected void setTree(TangoNode node) {
         root = (RBTNode)node; 
     }

@@ -63,8 +63,8 @@ public abstract class TangoAuxTree {
     }
     /**
      *  Fügt "left" als linkes Kind an "parent" an, unabhängig davon, ob "parent" bereits ein linkes Kind hat.
-     * @param parent 
-     * @param left 
+     * @param parent -
+     * @param left -
      */
     protected void attachNodeLeft (TangoNode parent, TangoNode left ){
         if (parent == null)
@@ -77,8 +77,8 @@ public abstract class TangoAuxTree {
     }
     /**
      *  Fügt "right" als rechtes Kind an "parent" an, unabhängig davon, ob "parent" bereits ein rechtes Kind hat.
-     * @param parent 
-     * @param right 
+     * @param parent -
+     * @param right  -
      */
     protected void attachNodeRight (TangoNode parent, TangoNode right  ){
         if (parent == null)
@@ -180,7 +180,7 @@ public abstract class TangoAuxTree {
     }
     /**
      * Überprüft und pflegt "minDepth" und "maxDepth" von "node". Dabei werden nur Informationen der Kinder von "node" berücksichtigt.
-     * @param node
+     * @param node Der zu überprüfende Knoten
      * @return "true" wenn eine Veränderung festgestellt wurde.
      */
     protected boolean updateDepthSingleNode(TangoNode node){
@@ -194,7 +194,7 @@ public abstract class TangoAuxTree {
     }
     /**
      * Überprüft und pflegt "minDepth" und "maxDepth" der Knoten die im Pfad von der Wurzel zu "node" enthalten sind.
-     * @param node
+     * @param node Der zu überprüfende Knoten
      * 
      */
     protected void updateDepthsPath(TangoNode node){
@@ -416,7 +416,7 @@ public abstract class TangoAuxTree {
     /**
      * Spaltet den TangoAuxTree mit Wurzel "tree" in zwei TangoAuxTree "T1" und "T2" auf. Der eine enthält die Schlüssel kleiner "key", der andere die Schlüssel 
      * größer "key"
-     * @param Tree
+     * @param Tree Wurzel des TangoAuxTree der aufgeteilt werden soll
      * @param key Der Wert von "key" muss als Schlüssel im TangoAuxTree mit Wurzel "Tree" enthalten sein. 
      * @return Den Knoten mit Schlüssel "key". Die Wurzel von "T1" ist dessen linkes Kind, die Wurzel von "T2" das rechte. 
      */
@@ -427,16 +427,16 @@ public abstract class TangoAuxTree {
      * @param treeL Jeder Schlüssel in "TL" muss kleiner als der Schlüssel von "mid" sein.
      * @param mid Der Schlüssel von "mid" muss größer als alle Schlüssel aus "TL" und kleiner als alle Schlüssel aus "TR" sein.
      * @param treeR treeL Jeder Schlüssel in "TR" muss größer als der Schlüssel von "mid" sein.
-     * @return Die Wurzel einen TangoAuxTree der aus den Knoten von "TL", "TR" und "mid" besteht.
+     * @return Die Wurzel eines TangoAuxTree der aus den Knoten von "TL", "TR" und "mid" besteht.
      */
     protected abstract TangoNode merge(TangoNode treeL, TangoNode mid, TangoNode treeR);
     /**
      * Der Schlüssel "key" wird in den TangoAuxTree eingefügt.
-     * @param key 
+     * @param key Der einzufügende Schlüssel
      */
     protected abstract void insert (int key);
     /**
-     * 
+     * @param startNode Es muss die Wurzel eines TangoAuxTree übergeben werden.
      * @param key Der Schlüssel des gesuchten Knoten
      * @return Der Knoten mit Schlüssel "key"
      */

@@ -143,7 +143,6 @@ public class RuntimeFrame  extends JFrame{
         numOfNodesText.setColumns(20);
         numOfNodesText.setText("" + setPointsInNumOfNodes(String.valueOf(numOfNodes)));
         numOfNodesText.setFont(new Font("", 1, 20));
-       
         numOfNodesText.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -164,7 +163,6 @@ public class RuntimeFrame  extends JFrame{
                 }
             }
         });
-        
         numOfNodesText.addFocusListener(new FocusListener() { 
     
             @Override

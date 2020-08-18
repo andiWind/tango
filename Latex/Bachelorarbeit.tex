@@ -1457,9 +1457,7 @@ Die Zugriffsfolgen werden von einem Pseudozufallsgenerator erzeugt.
 			\hline
 			$10^6$  & $469$ &$32$  \\
 			\hline
-			$10^7$  & $1557$ &$53$  \\
-			\hline
-			$1,6 *10^7$  & $3181$ &$67$  \\
+			$10^7$  & $736$ &$58$  \\
 			\hline
 		\end{tabular}
 		\caption{Laufzeittest mit zufälliger Zugriffsfolge} 
@@ -1467,7 +1465,7 @@ Die Zugriffsfolgen werden von einem Pseudozufallsgenerator erzeugt.
 \end{table}
 
 \subsubsection{Bit reversal permutation}
-Auf der X-Achse wird die Länge der einzelnen Binärdarstellungen $l$ dargestellt. In der Spalte $2^l$ kann die Länge der Zugriffsfolge abgelesen werden. Die Ergebnisse bestätigen, dass es sich um eine aufwändige Zugriffsfolge für BST handelt.
+Auf der X-Achse wird die Länge der einzelnen Binärdarstellungen $l$ dargestellt. In der Spalte $2^l$ kann die Länge der Zugriffsfolge und die Anzahl der Knoten abgelesen werden. Die Ergebnisse bestätigen, dass es sich um eine aufwändige Zugriffsfolge für BST handelt.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/brp"}
@@ -1502,7 +1500,7 @@ Auf der X-Achse wird die Länge der einzelnen Binärdarstellungen $l$ dargestell
 \end{table}
 
 \subsubsection{Static Finger}
-Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \textit{access} Operationen. Auf $a+1$ und $a-1$ entfallen dann $1$ Prozent (gemeinsam $2$ Prozent) der restlichen \textit{access} Operationen. Dieses vorgehen iteriert bis ein Prozent der Anzahl der verbleibenden \textit{access} Operationen, weniger als $1$ ergibt. Es wird dann nochmals die Anzahl von Zugriffen auf $a$ hinzugefügt, um die gewünschte Länge der Zugriffsfolge zu erreichen.  Die Anordnung der Schlüssel in der Zugriffsfolge geschieht wieder über einen Pseudozufallsgenerator. 
+Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \textit{access} Operationen. Auf $a+1$ und $a-1$ entfallen dann $1$ Prozent (gemeinsam $2$ Prozent) der restlichen \textit{access} Operationen. Dieses vorgehen iteriert bis ein Prozent der Anzahl der verbleibenden \textit{access} Operationen, weniger als $1$ ergibt. Es wird dann nochmals die Anzahl von Zugriffen auf $a$ hinzugefügt, die benötigt wird um die gewünschte Länge der Zugriffsfolge zu erreichen.  Die Anordnung der Schlüssel in der Zugriffsfolge geschieht wieder über einen Pseudozufallsgenerator. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/staticfinger"}
@@ -1651,7 +1649,7 @@ Das working set enthält $5$ Prozent der Schlüssel des BST. Diese wurden gleich
 		\caption{Laufzeittest working set} 
 	\end{center}
 \end{table}
-
+\newpage
 \subsubsection{Weitere Laufzeittests}
 
 \noindent Alternierend die Schlüssel $1$ und $n$:
@@ -1711,7 +1709,8 @@ Das working set enthält $5$ Prozent der Schlüssel des BST. Diese wurden gleich
 		\caption{Laufzeittest aufsteigend sortiert} 
 	\end{center}
 \end{table}
-Absteigend sortiert, mit insgesamt $n$ Zugriffen:
+\newpage
+\noindent Absteigend sortiert, mit insgesamt $n$ Zugriffen:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/sorted2"}
@@ -1739,6 +1738,7 @@ Absteigend sortiert, mit insgesamt $n$ Zugriffen:
 		\caption{Laufzeittest absteigend sortiert} 
 	\end{center}
 \end{table}
+\newpage
 \noindent Aufsteigend und absteigend sortiert, geschachtelt. Die Zugriffsfolge ist $1, n, 2, n- 1,...., n - 2, 2, n -1, 1$
 \begin{figure}[H]
 	\centering
@@ -1771,8 +1771,7 @@ Absteigend sortiert, mit insgesamt $n$ Zugriffen:
 \includepdf[pages = -]{anhang}
 \section{Fazit und Ausblick}
 Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Bei ihm wurde die Idee mit den preferred child jedoch als Erstes umgesetzt, und hier könnten noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften, folgen. \\
-Mittlerweile hat sich zum Thema \enquote{dynamische Optimalität} viel Literatur angesammelt. Hier wurde nur auf einen sehr kleinen Ausschnitt eingegangen. Zum Beispiel gibt es  weitere untere Schranken für die Ausführungszeit von BST. Außerdem gibt es eine interessante geometrische Sicht auf BST, von der Aussagen über BST und andere Verfahren abgeleitet werden konnten. Mit 
-Es gibt auch deutlich mehr obere Laufzeitschranken, für Zugriffsfolgen mit speziellen Eigenschaften, als sie hier vorgestellt wurden. \\
+Mittlerweile hat sich zum Thema \enquote{dynamische Optimalität} viel Literatur angesammelt. Hier wurde nur auf einen sehr kleinen Ausschnitt eingegangen. Zum Beispiel gibt es  weitere untere Schranken für die Ausführungszeit von BST. Außerdem gibt es eine interessante geometrische Sicht auf BST, von der Aussagen über BST und andere Verfahren abgeleitet werden konnten. Es gibt auch deutlich mehr obere Laufzeitschranken, für Zugriffsfolgen mit speziellen Eigenschaften, als sie hier vorgestellt wurden. \\
 Ob es irgendwann gelingen wird die dynamische Optimalität, des Splay Baum oder irgendeiner anderen Variante eines BST zu beweisen, ist offen. Für den Einsatz bei gewöhnlich großen Schlüsselmengen, müssen dann aber auch die Summanden und Faktoren berücksichtigt werden, die in der $O$ Notation vernachlässigt werden.
 
 
