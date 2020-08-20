@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {4.3}Bit reversal permutation }{36}%
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode}{39}%
-\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack}{40}%
+\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack.}{40}%
 \contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST }{41}%
 \contentsline {paragraph}{Balanced Property}{41}%
 \contentsline {paragraph}{Static Finger Property}{41}%
