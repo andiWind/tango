@@ -426,7 +426,7 @@ Die Reparatur des RBT nach dem Entfernen eines Knotens ist aufwendiger, als die 
 \paragraph{Laufzeit der Grundoperationen}
 Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$ Knoten $h = \mathit{O(\log {n})}$  gilt. Das wird nun gezeigt. 
 
-\begin{Lemma} Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten gilt $h = \mathit{O(\log {n})}$ . 
+\begin{Lemma} Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten gilt $h = \mathit{O\left(\log \left(n\right)\right)}$ . 
 \end{Lemma}
 \begin{proof}
 	Sei $w$ die Wurzel von $T$ und $m$ die Anzahl der inneren Knoten von $T$. 
@@ -1037,9 +1037,16 @@ Nun wird die \textit{access} Operation des Tango Baumes betrachtet. Sei $k$ der 
 	\item Sei $H_5$ der Hilfsbaum, auf dessen Wurzel $p$ zeigt. Führe \textit{join}$\left(H_4, ~H_5\right)$ aus.
 	\item \label{ende} Gib $p$ zurück.
 \end{enumerate}
-Zu klären ist noch, warum im sechsten Punkt, die Wurzel des richtigen Hilfsbaums gefunden werden muss. Seien $u$ und $u_l$ Knoten in $P$, so dass $u_c$ das linke Kind von $u$, aber nicht das preferred child von $u$ ist. Sei $v$ bzw. $v_c$ der Knoten in $T$ mit $\mathit{key}\left(v\right) = \mathit{key}\left(u\right)$ bzw. $\mathit{key}\left(v_c\right) = \mathit{key}\left(u_c\right)$. Sei $H_1$, mit Wurzel $w_1$, der Hilfsbaum der $v$ enthält und $H_2$, mit Wurzel $w_2$, der Hilfsbaum der $v_c$ enthält. Es muss einen Pfad $P = \left(v_0, v_1,.., v_m \right)$ geben, mit $v_0 = w_1$, $v_m = w_2$ und $v_{m-1}$ ist in $H_1$ enthalten. Aufgrund der Links-Rechts-Beziehung in $H_1$, muss $v_m$ entweder das linke Kind von $v$ sein, oder das rechte Kind des Vorgängers $v_v$ von $v$ in $H_1$. \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"Medien/Tango/cutJoin"}
+	\caption{Darstellung von Schritt $3$ und $4$ der \textit{access} Operation. }
+	\label{fig:cutJoin}
+\end{figure}
+Abbildung \ref{fig:cutJoin} zeigt die Schritte $3$ und $4$ des Ablaufes.
+Zu klären ist noch, warum im sechsten Punkt, die Wurzel des richtigen Hilfsbaums gefunden werden muss.\\ Seien $u$ und $u_c$ Knoten in $P$, so dass $u_c$ das linke Kind von $u$, aber nicht das preferred child von $u$ ist. Sei $v$ bzw. $v_c$ der Knoten in $T$ mit $\mathit{key}\left(v\right) = \mathit{key}\left(u\right)$ bzw. $\mathit{key}\left(v_c\right) = \mathit{key}\left(u_c\right)$. Sei $H_1$, mit Wurzel $w_1$, der Hilfsbaum der $v$ enthält und $H_2$, mit Wurzel $w_2$, der Hilfsbaum der $v_c$ enthält. Es muss einen Pfad $P = \left(v_0, v_1,.., v_m \right)$ geben, mit $v_0 = w_1$, $v_m = w_2$ und $v_{m-1}$ ist in $H_1$ enthalten. Aufgrund der Links-Rechts-Beziehung in $H_1$, muss $v_m$ entweder das linke Kind von $v$ sein, oder das rechte Kind des Vorgängers $v_v$ von $v$ in $H_1$. \\
 Sei $v_m$ das rechte Kind von $v_v$. Dann kann $v$ nicht im rechten Teilbaum von $v_v$ liegen (im linken natürlich auch nicht). Angenommen $v$ ist kein Vorfahre von $v_v$, dann muss es einen Knoten $w$ geben, mit $v_v$ liegt im linken Teilbaum von $w$ und $v_v$ im rechten. Ein Widerspruch dazu, dass $v_v$ der Vorgänger von $v$ ist.\\
-Es gibt also in jedem Fall einen Pfad von $v$ zu $w_2$. $w_2$ kann bezogen auf $T$ nur im linken Teilbaum von $v$ enthalten und für alle in $H_1$ enthaltenen Schlüssel $k_1$ gilt entweder $k_1 > \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) $ oder  $ \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) > k_1 $.
+Es gibt also in jedem Fall einen Pfad von $v$ zu $w_2$ in $T$. $w_2$ kann bezogen auf $T$ nur im linken Teilbaum von $v$ enthalten sein. Für alle in $H_1$ enthaltenen Schlüssel $k_1$ gilt entweder $k_1 > \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) $ oder  $ \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) > k_1 $. 
 
 
 \subsection{Laufzeitanalyse für access}
@@ -1051,7 +1058,7 @@ Zunächst wird in zwei Lemmas die Einzeloperation betrachtet, bevor es dann im S
 \end{Lemma}
 \begin{proof}
 	Bezeichne $T_i$ den Tango Baum nach der Ausführung von \textit{access}$\left(x_i\right)$. Zuerst werden die Kosten für das Suchen betrachtet. Der Zeiger $p$ der Operationen startet maximal $k + 1$ mal an der Wurzel des Tango Baum. Für die Länge eines Pfades innerhalb eines Hilfsbaumes gilt $O\left(\log \left( \log  \left(n \right)\right)\right)$, denn für die Anzahl der Knoten eines preferred path gilt $O\left( \log \left(n\right)  \right)$ und ein Hilfsbaum muss ein balancierter BST sein. Die Gesamtkosten ergeben sich damit zu $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.\\
-	Nun werden die Kosten zum erzeugen von $T_i$ aus $T_{i-1}$ betrachtet. Pro Veränderung eines preferred childs kommt es zu Kosten $O\left( \log_2\left(\log_2 \left(n\right)\right)\right)$ aufgrund einer \textit{cut} und einer \textit{join} Operation. Für das Suchen des Hilfsbaumes im bei der letzten Transformation zu $T_i$ (Punkt 6 in der Beschreibung) entstehen auch wieder Kosten von $O\left(\log \left( \log  \left(n \right)\right)\right)$. Somit gilt auch für die Gesamtkosten $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.
+	Nun werden die Kosten zum erzeugen von $T_i$ aus $T_{i-1}$ betrachtet. Pro Veränderung eines preferred childs kommt es zu Kosten $O\left( \log\left(\log \left(n\right)\right)\right)$ aufgrund einer \textit{cut} und einer \textit{join} Operation. Für das Suchen des Hilfsbaumes in Punkt $6$ der Beschreibung, entstehen auch wieder Kosten von $O\left(\log \left( \log  \left(n \right)\right)\right)$. Somit gilt auch für die Gesamtkosten $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.
 	
 	
 \end{proof}
@@ -1069,11 +1076,11 @@ Zunächst wird in zwei Lemmas die Einzeloperation betrachtet, bevor es dann im S
 \end{Satz}
 \begin{proof}
 	Nach Lemma \ref{demaineLemma5} gibt es nicht mehr als  $\mathit{IB}\left(X\right)$ Wechsel der preferred childs von links nach rechts oder umgekehrt. Zudem gibt es maximal $n$ zusätzliche Änderungen bei preferred childs. (Erstzugriff in den Teilbaum). Die Gesamtanzahl der Änderungen von preferred childs ist somit höchstens $\mathit{IB}\left(X\right) + n$. Mit Lemma \ref{demaineLemma4} ergeben sich Gesamtkosten von\\ $O\left(\left(\mathit{IB}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 -n $ aus Satz \ref{satzDemaine1} ergibt sich 
-	$O\left(\left(\mathit{OPT}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq m$ ergibt sich dann die Behauptung.
+	$O\left(\left(\mathit{OPT}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$.\\ Mit $\mathit{OPT}\left(X\right) \geq m$ ergibt sich dann die Behauptung.
 \end{proof}
 \noindent Mit $m \in \Omega\left(n\right)$ gilt dann auch 
-$O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\right)\right)	 \right)$.
-Außerdem kann die angegebene obere Schranke nicht verbessert werden. Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred childs, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchlaufen werden. Somit hat der Tango Baum die balanced Eigenschaft aus Abschnitt \ref{upperBounds} nicht. Somit kann er aufgrund der Implikationen auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das balanced property erfüllen.      
+$O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\right)\right)	 \right)$.\\
+ Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred childs, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum die balanced Eigenschaft aus Abschnitt \ref{upperBounds} nicht. Somit kann er aufgrund der Implikationen auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das balanced property erfüllen.      
 
 \subsection{Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum} \label{vereinigen}
 \begin{figure}[H]
