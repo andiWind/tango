@@ -344,7 +344,7 @@ Betrachtung der Eigenschaften:
 Die Fälle 2 - 6 behandeln nun die Situationen, in denen sowohl $x$ als auch dessen Elternknoten $y$ rote Knoten sind. Da Eigenschaft fünf nach jeder Iteration erfüllt ist muss $y$ einen Geschwisterknoten haben. Denn da zu Beginn einer Iteration nur eine Eigenschaft verletzt sein kann, kann der rote $y$ nicht die Wurzel sein, also muss auch $y$ einen Elternknoten $z$ haben. Da $z$ kein Blatt(Sonderknoten) ist, müssen beide Kinder vorhanden sein.\\
 Außerdem muss $z$ schwarz sein, ansonsten wäre Eigenschaft vier an zwei Knoten verletzt.\\
 
-\noindent\textbf{Fall 2: $y$ hat einen roten Geschwisterknoten: }
+\noindent\textbf{Fall 2: $y$ hat einen roten Geschwisterknoten: } \label{if2}
 \noindent Diesen Fall veranschaulicht Abbildung \ref{fig:EinfügenFixUpFall2}. Es wird $z$ rot gefärbt und beide Kinder von $z$, also $y$ und dessen Geschwisterknoten, schwarz. Die Schwarz-Höhe von $z$ wird um eins erhöht. Somit ist der Elternknoten von $x$ nun schwarz und die Verletzung der Eigenschaft vier wurde an dieser Stelle behoben. Wie sieht es aber mit den Verletzungen insgesamt aus ? \\
 
 Betrachtung der Eigenschaften:
@@ -1138,27 +1138,22 @@ Auch \textit{split (RBT $T$, key $k$)} wird so vorgestellt, wie es für den Tang
 Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leicht erkannt. $v_0$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_0$ ist $v_{1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{1}$ liegen sind somit korrekt zugeordnet. Diese Betrachtung iteriert bis auf $v_k$ getroffen wird. Die Schlüssel im Teilbaum mit Wurzel $v_k$ werden korrekt zugeordnet. 
 
 \paragraph{Laufzeit}
-Der Tango Baum fordert eine Laufzeit von $O(\log(n))$ von seinen Hilfsbäumen für \textit{split}, mit $n$ ist die Anzahl der Knoten von $T$. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2, 3, 5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{concatenate} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\
- Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{concatenate} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{concatenate} war.  $T_{L0}$ steht für den Zustand vor dem ersten Aufruf. $v_i$ ist der Elternknoten der Wurzel von $t_i$ in $T$. Bei einem beispielhaftem \textit{concatenate}$(B_1, b, B_2)$ kann die Schwarz-Höhe der Rückgabe maximal um eins, gegenüber $\max\{ \mathit{bh}(B_1),\mathit{bh}(B_2)  \}$ erhöht sein. Dies ist der Fall wenn $\mathit{bh}(B_1) = \mathit{bh}(B_2)$ gilt, oder bei $\mathit{bh}(B_1)\ne \mathit{bh}(B_2)$ \textit{insertFixup} dazu führt. \\
+Der Tango Baum fordert eine Laufzeit von $O(\log(n))$ von seinen Hilfsbäumen für \textit{split}, mit $n$ ist die Anzahl der Knoten. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2, 3, 5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{concatenate} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{concatenate} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. $T_0$ steht für den linken Teilbaum von $v_k$.  Sei $i \in \{1, 2, l\}$. $T_i$ ist der Zustand von $T_L$, nachdem \textit{concatenate} mit Parameter $t_i$ ausgeführt wurde. $v_i$ ist der Elternknoten der Wurzel von $t_i$.\\
+
+\noindent Es gilt $\mathit{bh} \left(t_i \right) \leq \mathit{bh} \left(v_{i} \right)$, $\mathit{bh} \left(t_i \right) < \mathit{bh} \left(v_{i+1} \right)$ und $\mathit{bh} \left(v_{l} \right) - \mathit{bh} \left(v_{0} \right) = O\left(log\left(n\right)\right) $.\\
+Für $T_i =$ \textit{concatenate}$\left(T_{i-1}, \textit{key}(v_i), t_i\right)$, gilt entweder $\mathit{bh} \left(T_{i} \right) = \max\{\mathit{bh} \left(T_{i-1}\right), \mathit{bh} \left(t_{i} \right) \} $ oder  $\mathit{bh} \left(T_{i} \right) = \max\{\mathit{bh} \left(T_{i-1}\right), \mathit{bh} \left(t_{i} \right) \} + 1$.\\
+ Ist das letztere der Fall, hat die Wurzel von $T_i$ kein rotes Kind, denn entweder ist $\mathit{bh} \left(T_{i-1}\right) = \mathit{bh} \left(t_{i} \right)$, oder \textit{insertFixup} färbte, mit Fall $2$,  beide Kinder schwarz. In dieser Konstellation könnte $\mathit{bh} \left(T_i \right) \geq \mathit{bh} \left(t_{i+1} \right)$ gelten. Für $T_{i+1} =$ \textit{concatenate}$\left(T_{i}, \textit{key}(v_{i+1}), t_{i+1}\right)$ muss dann jedoch $\mathit{bh} \left(T_{i+1} \right) = \max\{\mathit{bh} \left(T_{i}\right), \mathit{bh} \left(t_{i+1} \right) \} $  gelten. Denn \textit{insertFixup} erhöht nur in Fall $2$ die Schwarz-Höhe eines Knoten, dessen Kinder müssten jedoch rot sein, vergleiche Abschnitt \ref{if2}.\\
+ 
+ 
+ 
+ 
+ Es folgt $\mathit{bh} \left(T_{i} \right) \leq \mathit{bh} \left(v_{i+1} \right) + 1$.  Daraus folgt $\mathit{bh} \left(T_{i+1} \right) \leq \mathit{bh} \left(v_{i+2} \right) $.
 
 
-\noindent Dass die zweite Ungleichung gilt, erkennt man direkt. 
-\begin{align}
-\mathit{bh}(T_{Li}) \leq \mathit{bh}(v_{i+1}) \leq\mathit{bh}(t_{i+1}) + 1  
-\end{align}
-Die Erste wird nun durch Induktion gezeigt:\\
-$T_{L0}$ war der linke Teilbaum von $v_1$, der Induktionsanfang ist somit gemacht.\\
-$\mathit{bh}(T_{Li})$ mit $i > 0$  entsteht durch \textit{concatenate}$(T_{Li-1}$, \textit{key}$\left(v_i\right)$, $t_i$).\\ 
-Fall $v_i$ ist rot:
-\begin{align*}
-&\mathit{bh}(t_i) < \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
-\Rightarrow  & \mathit{bh}(T_{Li})  \leq  \mathit{bh}(v_{i}) =  \mathit{bh}(v_{i+1}) 
-\end{align*}
-Fall $v_i$ ist schwarz:
-\begin{align*}
-&\mathit{bh}(t_i) \leq \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
-\Rightarrow  &\mathit{bh}(T_{Li})  \leq \mathit{bh}(v_{i}) + 1 =    \mathit{bh}(v_{i+1})
-\end{align*}
+
+
+
+
 Dadurch gilt
 \begin{align}
 \sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) \vert =  O \left(\log \left(n \right) \right)

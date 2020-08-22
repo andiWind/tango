@@ -37,8 +37,6 @@ import javax.swing.JTextField;
  * Erstellt und verwaltet das Fenster zum anstarten eines Laufzeittests.
  */
 public class RuntimeFrame  extends JFrame{
-   // private List<Integer> workingSet;
-   // private List<String> workingSetStrings;
     private int numOfNodes;
     private int lenOfSeq;
     private int lenOfBRP;
@@ -424,6 +422,7 @@ public class RuntimeFrame  extends JFrame{
         initFrame();
     }
     private void initFrame(){
+        setVisible(false);
         setTitle("Runtime Test");
         setBackground (Color.LIGHT_GRAY);
         setDefaultCloseOperation(HIDE_ON_CLOSE );
@@ -435,11 +434,12 @@ public class RuntimeFrame  extends JFrame{
         buildDinamicFingerPanel();
         buildWorkingSetPanel();
         buildStaticFingerPanel();
-        buildRandomPanel();
         buildSortedPanel();
+        buildRandomPanel();
         add(randomPanel, BorderLayout.CENTER);
         add(startButton, BorderLayout.SOUTH);
-        
+        setVisible(true);
+
     }
     private void buildSortedPanel(){
         sortedPanel = new JPanel();
@@ -468,6 +468,7 @@ public class RuntimeFrame  extends JFrame{
         randomPanel.add(new JLabel("Länge der Zugriffsfolge"));
         randomPanel.add(lenOfSeqText);
         randomPanel.add(new JLabel("(In Millionen)"));
+       
     }
     private void buildBRPPanel(){
         bitReversalPermutationPanel = new JPanel();
