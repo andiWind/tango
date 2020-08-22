@@ -30,7 +30,7 @@
 
  \begin{center}
  	\LARGE{Bachelorarbeit zum Thema\\
- 	Tango Baum}\\
+ 	Tango Bäume}\\
  \bigskip
  \bigskip
  \bigskip
@@ -1046,7 +1046,7 @@ Nun wird die \textit{access} Operation des Tango Baumes betrachtet. Sei $k$ der 
 Abbildung \ref{fig:cutJoin} zeigt die Schritte $3$ und $4$ des Ablaufes.
 Zu klären ist noch, warum im sechsten Punkt, die Wurzel des richtigen Hilfsbaums gefunden werden muss.\\ Seien $u$ und $u_c$ Knoten in $P$, so dass $u_c$ das linke Kind von $u$, aber nicht das preferred child von $u$ ist. Sei $v$ bzw. $v_c$ der Knoten in $T$ mit $\mathit{key}\left(v\right) = \mathit{key}\left(u\right)$ bzw. $\mathit{key}\left(v_c\right) = \mathit{key}\left(u_c\right)$. Sei $H_1$, mit Wurzel $w_1$, der Hilfsbaum der $v$ enthält und $H_2$, mit Wurzel $w_2$, der Hilfsbaum der $v_c$ enthält. Es muss einen Pfad $P = \left(v_0, v_1,.., v_m \right)$ geben, mit $v_0 = w_1$, $v_m = w_2$ und $v_{m-1}$ ist in $H_1$ enthalten. Aufgrund der Links-Rechts-Beziehung in $H_1$, muss $v_m$ entweder das linke Kind von $v$ sein, oder das rechte Kind des Vorgängers $v_v$ von $v$ in $H_1$. \\
 Sei $v_m$ das rechte Kind von $v_v$. Dann kann $v$ nicht im rechten Teilbaum von $v_v$ liegen (im linken natürlich auch nicht). Angenommen $v$ ist kein Vorfahre von $v_v$, dann muss es einen Knoten $w$ geben, mit $v_v$ liegt im linken Teilbaum von $w$ und $v_v$ im rechten. Ein Widerspruch dazu, dass $v_v$ der Vorgänger von $v$ ist.\\
-Es gibt also in jedem Fall einen Pfad von $v$ zu $w_2$ in $T$. $w_2$ kann bezogen auf $T$ nur im linken Teilbaum von $v$ enthalten sein. Für alle in $H_1$ enthaltenen Schlüssel $k_1$ gilt entweder $k_1 > \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) $ oder  $ \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) > k_1 $. 
+Es gibt also in jedem Fall einen Pfad von $v$ zu $w_2$ in $T$. $w_2$ kann bezogen auf $T$ nur im linken Teilbaum von $v$ enthalten sein. Für alle in $H_1$ enthaltenen Schlüssel $k_1$ gilt entweder $k_1 > \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) $ oder \\ $ \mathit{key}\left(v\right) > \mathit{key}\left(v_v\right) > k_1 $. 
 
 
 \subsection{Laufzeitanalyse für access}
@@ -1080,7 +1080,7 @@ Zunächst wird in zwei Lemmas die Einzeloperation betrachtet, bevor es dann im S
 \end{proof}
 \noindent Mit $m \in \Omega\left(n\right)$ gilt dann auch 
 $O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\right)\right)	 \right)$.\\
- Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred childs, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum die balanced Eigenschaft aus Abschnitt \ref{upperBounds} nicht. Somit kann er aufgrund der Implikationen auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das balanced property erfüllen.      
+ Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred childs, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum das balanced property aus Abschnitt \ref{upperBounds} nicht. Damit kann er aufgrund der Implikationen auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das balanced property erfüllen.      
 
 \subsection{Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum} \label{vereinigen}
 \begin{figure}[H]
@@ -1104,7 +1104,7 @@ In den restlichen Fällen ist nun immer zumindest ein Baum vorhanden, der über 
 In diesem Fall wird $T_2$ bei $T_1$, mit Hilfe von $k$, so angefügt, dass die Schwarz-Höhe jedes Knoten unverändert bleibt. Es sei $w_1$ die Wurzel von $T_1$ und $w_2$ die Wurzel von $T_2$. Es sei $P$ ein Pfad $(r_0,r_1,...,r_l)$ in $T_1$, so dass $r_0 = w_1$, $r_l$ ein Blatt ist und $\forall i \in \{1,2,...l\} \colon r_i$  ist rechtes Kind von  $r_{i-1}$ gilt. $P$ ist also der am weitesten rechts liegende Pfad von der Wurzel zu einem Blatt. Sei $x$ der schwarze Knoten in $P$, mit $\mathit{bh}(x) = \mathit{bh}(w_2)$. $x$ muss existieren denn $\mathit{bh}(w_1) \geq \mathit{bh}(w_2)$ und $\mathit{bh}(r_l) \leq  \mathit{bh}(w_2)$, außerdem sind $w_1$ und $r_l$ schwarz.\\
 Nun wird ein neuer roter Knoten $v$ mit Schlüssel $k$ und Schwarz-Höhe \\ $\mathit{bh}(x) + 1$ erzeugt. Als linkes Kind von $v$  wird $x$ gesetzt, als rechtes Kind $w_2$. Ist $x$ die Wurzel in $T_1$, so ist $v$ die Wurzel von $T$. Ansonsten ist $x$ rechtes Kind eines Knoten $y$ und das rechte Kind von $y$ wird auf $v$ gesetzt. Außerdem ist dann $w_1$ die Wurzel von $T$.     \\  
 \noindent\textbf{Fall 3: $bh(T_1) < bh(T_2)$ }\\ 
-Dieser Fall ist fast symmetrisch zu Fall 2, der neue Knoten kann lediglich nicht zur Wurzel von $T$ werden, da $bh(T_1) \neq bh(T_2)$.
+Dieser Fall ist fast symmetrisch zu Fall 2. Der neue Knoten kann lediglich nicht zur Wurzel von $T$ werden, da $bh(T_1) \neq bh(T_2)$.
 
 \paragraph{Resultat nach der Fallbehandlung}
 Dass ein Baum mit Schlüsselmenge  $K_1 \cup K_2 \cup \{k\} $ entstanden ist, erkennt man direkt an den Abbildungen \ref{fig:vereinigen} und \ref{fig:vereinigen2}. Aufgrund der Vorbedingung an die Parameter, muss $T$ auch ein BST sein. Es müssen aber wieder die fünf Eigenschaften eines RBT betrachtet werden:
@@ -1118,15 +1118,14 @@ Dass ein Baum mit Schlüsselmenge  $K_1 \cup K_2 \cup \{k\} $ entstanden ist, er
 Wir sind also in der Situation dass nur entweder Eigenschaft zwei oder vier verletzt sein kann. Wenn Eigenschaft vier verletzt ist dann nur an Knoten $v$. Das ist genau die Situation für die \textit{insertFixup} entworfen wurde.\\
 In Schritt zwei wird also \textit{insertFixup} mit Parameter $v$ aufgerufen und die Wurzel des resultierenden RBT zurückgegeben. 
 \paragraph{Laufzeit}
-Sei $n_1$ die Anzahl der Knoten von $T_1$, sei $n_2$ die Anzahl der Knoten von $T_2$ und $n = n_1 + n_2$. Der Tango Baum fordert von seinen Hilfsbäumen eine Laufzeit von $O(\log \left(n\right))$ für die eben vorgestellte Operation.  Das Ablaufen eines Pfades in $T_1$ oder $T_2$ zum Finden von $x$ liegt in $O(\log (n))$. $v$ erzeugen und in die Struktur einzubinden benötigt konstante Zeit und \textit{insertFixup} benötigt  $O(\log (n))$ Zeit.\\
-$O(\log (n)) + O(1) +O(\log (n)) = O(\log (n
-))$\\
+Sei $n_1$ die Anzahl der Knoten von $T_1$, $n_2$ die Anzahl der Knoten von $T_2$ und $n = n_1 + n_2$. Der Tango Baum fordert von seinen Hilfsbäumen eine Laufzeit von $O(\log \left(n\right))$ für die eben vorgestellte Operation.\\ Für die Kosten zum Finden von $x$ und Ausführen von \\ \textit{insertFixup}  gilt $O(\log (n))$. $v$ erzeugen und in die Struktur einzubinden benötigt konstante Zeit. 
 Die Vorgabe des Tango Baumes wird also eingehalten.\\
-Für den nächsten Abschnitt wird noch eine genauere Betrachtung der Laufzeit benötigt. Es sei $d = \vert \mathit{bh}(T_1) - \mathit{bh}(T_2)  \vert $. Die Suche nach $x$ endet spätestens nach dem ein Pfad der Länge $2d + 1$ betrachtet wurde. Dabei steht die $1$ für den Zugriff auf $x$ selbst. Zu jedem schwarzen Knoten über $x$ könnte noch ein roter kommen.\\
-Nun wird noch auf die Anzahl der Iterationen innerhalb von \textit{insertFixup} eingegangen. Sei $v$ der Parameter von \textit{insertFixup}. Sei $w$ die Wurzel von $T$. $v$ ist ein roter Knoten mit $\mathit{bh}(v) = \mathit{bh}(w) - d + 1$ und liegt nicht tiefer als Ebene $2d + 2$. Deshalb führt \textit{insertFixup} maximal $d + 1$ Iterationen durch.  
+Für den nächsten Abschnitt wird noch eine genauere Betrachtung der Laufzeit benötigt:\\ Es sei $d = \vert \mathit{bh}(T_1) - \mathit{bh}(T_2)  \vert $. Die Suche nach $x$ endet spätestens nach dem ein Pfad der Länge $2d + 1$ betrachtet wurde. Dabei steht die $1$ für den Zugriff auf $x$ selbst. Zu jedem schwarzen Knoten könnte noch ein könnte noch ein roter Knoten dazukommen, bis $x$ erreicht ist\\
+ Jetzt wird noch auf die maximale Anzahl der Iterationen innerhalb \\ \textit{insertFixup} eingegangen.
+ Sei $w$ die Wurzel des vereinigten BST nach Schritt 1. $v$ ist ein roter Knoten mit $\mathit{bh}(w) - \mathit{bh}(v) = d - 1$ und befindet sich in der Baumstruktur nicht tiefer als Ebene $2d + 2$. Deshalb führt \textit{insertFixup} maximal $d + 1$ Iterationen durch.  
 
 \subsection{Tango Baum konformes Aufteilen beim Rot-Schwarz-Baum}
-Auch \textit{split (RBT $T$, key $k$)} wird so vorgestellt, wie es für den Tango Baum notwendig ist. Vorbedingung an die Parameter ist, dass $k$ in der Schlüsselmenge $K$ von $T$ vorhanden ist. Zurückgegeben wird eine Referenz auf den Knoten $v_k$ mit Schlüssel $k$. Linkes Kind von $v_k$ ist die Wurzel eines RBT $T_L$ mit Schlüsselmenge $K_L$, wobei gilt ${K_L=\{i \mid  i\in K \land i <k\}}$. Rechtes Kind von $v_k$ ist die Wurzel eines RBT $T_R$ mit Schlüsselmenge $K_R$, wobei gilt ${K_R = \{i \mid i\in K \land i > k\}}$. \textit{split} gibt also in den meisten Fällen nicht die Wurzel eines RBT zurück. Die Operation setzt zunächst $T_L$ auf den linken Teilbaum von $v_k$ und $T_R$ auf den rechten Teilbaum von $v_k$. Eventuell müssen die Wurzeln von $T_R$ und $T_L$ schwarz gefärbt werden. Sei $(v_0,v_1,..,v_m)$  der Pfad von der Wurzel von $T$ zu $v_k$. Es wird sich nun bei $v_m$ startend Knoten für Knoten in dem Pfad nach oben gearbeitet. Ist der Schlüssel eines Knotens kleiner als $k$, so wird dieser Schlüssel und der linke Teilbaum des Knotens zu $T_L$ hinzugefügt. Dies übernimmt die \textit{concatenate} Operation. Ist der Schlüssel größer als $k$, so wird dieser Schlüssel und der rechte Teilbaum des Knotens zu $T_R$ hinzugefügt. Folgende Aufzählung beschreibt den Vorgang genauer.
+Auch \textit{split (RBT $T$, key $k$)} wird so vorgestellt, wie es für den Tango Baum notwendig ist. Vorbedingung an die Parameter ist, dass $k$ in der Schlüsselmenge $K$ von $T$ vorhanden ist. Zurückgegeben wird eine Referenz auf den Knoten $v_k$ mit Schlüssel $k$. Linkes Kind von $v_k$ ist die Wurzel eines RBT $T_L$ mit Schlüsselmenge $K_L$, wobei gilt ${K_L=\{i \mid  i\in K \land i <k\}}$. Rechtes Kind von $v_k$ ist die Wurzel eines RBT $T_R$ mit Schlüsselmenge $K_R$, wobei gilt ${K_R = \{i \mid i\in K \land i > k\}}$. \textit{split} gibt also in den meisten Fällen nicht die Wurzel eines RBT zurück.\\ Die Operation setzt zunächst $T_L$ auf den linken Teilbaum von $v_k$ und $T_R$ auf den rechten Teilbaum von $v_k$. Eventuell müssen die Wurzeln von $T_R$ und $T_L$ schwarz gefärbt werden. Sei $(v_0,v_1,..,v_m)$  der Pfad von der Wurzel von $T$ zu $v_k$. Es wird sich nun bei $v_m$ startend Knoten für Knoten in dem Pfad nach oben gearbeitet. Ist der Schlüssel eines Knotens kleiner als $k$, so wird dieser Schlüssel und der linke Teilbaum des Knotens zu $T_L$ hinzugefügt. Dies übernimmt die \textit{concatenate} Operation. Ist der Schlüssel größer als $k$, so wird dieser Schlüssel und der rechte Teilbaum des Knotens zu $T_R$ hinzugefügt. Folgende Aufzählung beschreibt den Vorgang genauer.
 
 \begin{enumerate}
 	\item Verwende die \textit{search} Operation um den Knoten $v_k$ mit Schlüssel $k$ zu finden.
@@ -1136,10 +1135,11 @@ Auch \textit{split (RBT $T$, key $k$)} wird so vorgestellt, wie es für den Tang
 	\item Füge $T_R$ rechts an $v$ an, $T_L$ links.
 	\item Gib $v_k$ zurück.
 \end{enumerate}   
-Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leicht erkannt. $v_0$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_0$ ist $v_{1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{1}$ liegen sind somit korrekt zugeordnet. Diese Betrachtung iteriert bis man auf $v_k$ trifft. Die Schlüssel im Teilbaum mit Wurzel $v_k$ werden korrekt zugeordnet. 
+Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leicht erkannt. $v_0$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_0$ ist $v_{1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{1}$ liegen sind somit korrekt zugeordnet. Diese Betrachtung iteriert bis auf $v_k$ getroffen wird. Die Schlüssel im Teilbaum mit Wurzel $v_k$ werden korrekt zugeordnet. 
 
 \paragraph{Laufzeit}
-Der Tango Baum fordert eine Laufzeit von $O(\log(n))$ von seinen Hilfsbäumen für \textit{split}, mit $n$ ist die Anzahl der Knoten. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2, 3, 5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{concatenate} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{concatenate} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{concatenate} war.  $T_{L0}$ steht für den Zustand vor dem ersten Aufruf.\\
+Der Tango Baum fordert eine Laufzeit von $O(\log(n))$ von seinen Hilfsbäumen für \textit{split}, mit $n$ ist die Anzahl der Knoten von $T$. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2, 3, 5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{concatenate} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\
+ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{concatenate} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{concatenate} war.  $T_{L0}$ steht für den Zustand vor dem ersten Aufruf. $v_i$ ist der Elternknoten der Wurzel von $t_i$ in $T$. Bei einem beispielhaftem \textit{concatenate}$(B_1, b, B_2)$ kann die Schwarz-Höhe der Rückgabe maximal um eins, gegenüber $\max\{ \mathit{bh}(B_1),\mathit{bh}(B_2)  \}$ erhöht sein. Dies ist der Fall wenn $\mathit{bh}(B_1) = \mathit{bh}(B_2)$ gilt, oder bei $\mathit{bh}(B_1)\ne \mathit{bh}(B_2)$ \textit{insertFixup} dazu führt. \\
 
 
 \noindent Dass die zweite Ungleichung gilt, erkennt man direkt. 
@@ -1148,11 +1148,11 @@ Der Tango Baum fordert eine Laufzeit von $O(\log(n))$ von seinen Hilfsbäumen f�
 \end{align}
 Die Erste wird nun durch Induktion gezeigt:\\
 $T_{L0}$ war der linke Teilbaum von $v_1$, der Induktionsanfang ist somit gemacht.\\
-$\mathit{bh}(T_{Li})$ mit $i > 0$  entsteht durch \textit{concatenate($T_{Li-1}$, \textit{key}$\left(v_i\right)$, $t_i$)}.\\ 
+$\mathit{bh}(T_{Li})$ mit $i > 0$  entsteht durch \textit{concatenate}$(T_{Li-1}$, \textit{key}$\left(v_i\right)$, $t_i$).\\ 
 Fall $v_i$ ist rot:
 \begin{align*}
 &\mathit{bh}(t_i) < \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
-\Rightarrow  & \mathit{bh}(T_{Li})  \leq  \mathit{bh}(v_{i}) \leq  \mathit{bh}(v_{i+1}) 
+\Rightarrow  & \mathit{bh}(T_{Li})  \leq  \mathit{bh}(v_{i}) =  \mathit{bh}(v_{i+1}) 
 \end{align*}
 Fall $v_i$ ist schwarz:
 \begin{align*}
@@ -1789,14 +1789,16 @@ Ob es irgendwann gelingen wird die dynamische Optimalität, des Splay Baum oder 
 \listoffigures
 \newpage
 \Large
-\noindent Erklärung\bigskip\\
+\noindent Selbstständigkeitserklärung\bigskip\\
 \normalsize
 \noindent Name : Andreas Windorfer\\
-Martikelnummer: q8633657\\
-Thema: Tango Baum \bigskip\\
+Matrikel-Nummer: q8633657\\
+Fach: Informatik\\
+Modul: Bachelorarbeit\\
+Thema: Tango Bäume \bigskip\\
 
 
-\noindent Ich erkläre, dass ich die Bachelorarbeit selbstständig und ohne unzulässige Inanspruchnahme Dritter verfasst habe. Ich habe dabei nur die angegebenen Quellen und Hilfsmittel verwendet und die aus diesen wörtlich oder sinngemäß entnommenen Stellen als solche kenntlich gemacht. Die Versicherung selbstständiger Arbeit gilt auch für enthaltene Zeichnungen, Skizzen oder graphische Darstellungen. Die Bachelorarbeit wurde bisher in gleicher oder ähnlicher Form weder derselben noch einer anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht. Mit der Abgabe der elektronischen Fassung der endgültigen Version der Bachelorarbeit nehme ich zur Kenntnis, dass diese mit Hilfe eines Plagiatserkennungsdienstes auf enthaltene Plagiate geprüft werden kann und ausschließlich für Prüfungszwecke gespeichert wird.\\
+\noindent Ich erkläre, dass ich die Abschlussarbeit selbstständig und ohne unzulässige Inanspruchnahme Dritter verfasst habe. Ich habe dabei nur die angegebenen Quellen und Hilfsmittel verwendet und die aus diesen wörtlich oder sinngemäß entnommenen Stellen als solche kenntlich gemacht. Die Versicherung selbstständiger Arbeit gilt auch für enthaltene Zeichnungen, Skizzen oder graphische Darstellungen. Die Arbeit wurde bisher in gleicher oder ähnlicher Form weder derselben noch einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht. Mit der Abgabe der elektronischen Fassung der endgültigen Version der Arbeit nehme ich zur Kenntnis, dass diese mit Hilfe eines Plagiatserkennungsdienstes auf enthaltene Plagiate geprüft werden kann und ausschließlich für Prüfungszwecke gespeichert wird.\\
 
 \vspace{50pt}
 \noindent\rule{5cm}{.4pt}\hfill\rule{5cm}{.4pt}\par
