@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 AUG 2020 15:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 AUG 2020 19:05
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -964,12 +964,6 @@ en. Sei $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x[]; x[]; ::; x[
 ]$
  []
 
-
-Overfull \hbox (56.84674pt too wide) in paragraph at lines 1301--1306
-\T1/cmr/m/n/12 Über die ge-sam-te Zu-griffs-fol-ge kann das Po-ten-ti-al nicht 
-um mehr als $[][] [][] []$
- []
-
 [74]
 <Medien/Zipper/zipperPathRep.png, id=344, 1221.96526pt x 849.77475pt>
 File: Medien/Zipper/zipperPathRep.png Graphic file (type png)
@@ -1260,7 +1254,7 @@ blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (102 pages, 8908613 bytes).
+Output written on Bachelorarbeit.pdf (102 pages, 8908520 bytes).
 PDF statistics:
  1102 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
