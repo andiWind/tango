@@ -1083,6 +1083,7 @@ $O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\r
  Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred childs, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum das balanced property aus Abschnitt \ref{upperBounds} nicht. Damit kann er aufgrund der Implikationen auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das balanced property erfüllen.      
 
 \subsection{Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum} \label{vereinigen}
+Die Ideen und Angaben zu den Laufzeiten in diesem und dem nächsten Abschnitt stammen aus \cite{conSplit}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[height= 0.6\textwidth]{"Medien/RotSchwarzBaum/vereinigen"}
@@ -1187,7 +1188,7 @@ Die Kosten innerhalb einer Iteration sind konstant, damit ist  $O \left(\log \le
 
 
 \section{Splay Baum}
-Der in \cite{splay} vorgestellte Splay Baum ist ein online BST der ohne zusätzliche Hilfsdaten in seinen Knoten auskommt. Nach einer \textit{access}$\left(k\right)$ Operation, ist der Knoten mit Schlüssel $k$ die Wurzel, des Splaybaum. Es gibt keine Invariante, welche eine bestimmte maximale Höhe garantiert. Splay Bäume können sogar zu Listen entarten. Amortisiert betrachtet verfügen sie dennoch über sehr gute Laufzeiteigenschaften. 
+Der in \cite{splay} vorgestellte Splay Baum ist ein dynamischer BST der ohne zusätzliche Hilfsdaten in seinen Knoten auskommt. Nach einer \textit{access}$\left(k\right)$ Operation, ist der Knoten mit Schlüssel $k$ die Wurzel, des Splaybaum. Es gibt keine Invariante, welche eine bestimmte maximale Höhe garantiert. Splay Bäume können sogar zu Listen entarten. Amortisiert betrachtet verfügen sie dennoch über sehr gute Laufzeiteigenschaften. 
 
 
 \subsection{Die \textit{access} Operation beim Splay Baum }
@@ -1202,7 +1203,7 @@ Sei $p$ der Zeiger der Operation in den BST. Zunächst wird eine gewöhnliche Su
 	\item $v$ ist das rechte Kind der Wurzel (zag-Fall):\\
 	Symmetrisch zu zig.
 	\item $v$ ist ein linkes Kind und $u$ ist ein linkes Kind. (zig-zig-Fall):\\
-	Dieser Fall unterscheidet den Splaybaum vom einem anderen BST (move-to-root), mit schlechteren Laufzeiteigenschaften. Es wird zuerst eine Rechtsrotation auf $u$ ausgeführt und erst danach eine Rechtsrotation auf $v$. Bei move-to-root  ist es genau anders herum. 
+	Dieser Fall unterscheidet den Splay Baum von einem anderen BST (move-to-root), mit schlechteren Laufzeiteigenschaften. Es wird zuerst eine Rechtsrotation auf $u$ ausgeführt und erst danach eine Rechtsrotation auf $v$. Bei move-to-root  ist es genau anders herum. 
 	\item $v$ ist ein rechtes Kind und $u
 	$ ist ein rechtes Kind. (zag-zag-Fall):\\
 	Symmetrisch zu zig-zig.
@@ -1218,7 +1219,7 @@ Die Laufzeit von \textit{access} auf einem BST mit $n$ Knoten ist $O\left(n\righ
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 1.2\textwidth]{"Medien/Splaybaum/zigZag"}
-	\caption{Darstellung von zig, zig-zag und zig-zig. }
+	\caption{Darstellung von zig, zig-zig und zig-zag. }
 	\label{fig:zigZag}
 \end{figure}
 \begin{figure}[H]
@@ -1240,18 +1241,18 @@ verwendet.
 
 
 \newtheorem{Lemma1}{Access Lemma}[section] \label{lemmaSplay}
-\begin{Lemma1}Sei $T$ ein Splay Baum mit $n$ Knoten, Wurzel $w$ und einem Knoten $v$ mit Schlüssel $k$. Es werden den Knoten fest zugeordnete Gewichte angenommen. Die amortisierte Laufzeit von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right) / \mathit{tw}\left(v\right)\right) \right) = O\left(\log\left(n\right)\right)$ \\
+\begin{Lemma1}Sei $T$ ein Splay Baum mit $n$ Knoten, Wurzel $w$ und einem Knoten $v$ mit Schlüssel $k$. Die amortisierte Laufzeit von \textit{splay}$\left(k\right)$ ist maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right) / \mathit{tw}\left(v\right)\right) \right) = O\left(\log\left(n\right)\right)$ \\
 	
 \end{Lemma1}
 \begin{proof}
-	Zunächst wird für \textit{zig}, \textit{zig-zag} und \textit{zig-zig} gezeigt, dass die amortisierten Kosten nicht größer als $3 \left(r\left(v\right)' - r\left(v\right)\right) + 1$ sind. Für die anderen drei Fälle folgt es dann aus der Symmetrie. Im Anschluss wird die gesamte Operation  betrachtet. An Abbildung  \ref{fig:zigZag} ist zu erkennen, dass sich der Wert von $\mathit{tw}\left(\right)$ nur an den Knoten $v$, dessen Elternknoten $u$  und dem Elternknoten $x$ von $u$ verändern kann.  Damit gilt
+	Es werden den Knoten fest zugeordnete Gewichte angenommen. Zunächst wird für \textit{zig}, \textit{zig-zig} und \textit{zig-zag} gezeigt, dass die amortisierten Kosten nicht größer als $3 \left(r\left(v\right)' - r\left(v\right)\right) + 1$ sind. Für die anderen drei Fälle folgt es dann aus der Symmetrie. Im Anschluss wird die gesamte Operation  betrachtet. An Abbildung  \ref{fig:zigZag} ist zu erkennen, dass sich der Wert von $\mathit{tw}\left(\right)$ nur an den Knoten $v$, dessen Elternknoten $u$  und dem Elternknoten $x$ von $u$ verändern kann.  Damit gilt
 	\begin{align*}
 	\Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right)
 	\end{align*}
 	
 	
 	\paragraph{zig} 
-	In diesem Fall existiert $x$ nicht, damit gilt\\  {$ \Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' - r\left(u\right)- r\left(v\right)$}. Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel ist unabhängig von Zustand des Splay Baum, da an ihr alle im Baum vorhandenen Gewichte aufsummiert werden. Deshalb muss  $\mathit{tw}\left(v\right)' =  \mathit{tw}\left(u\right)$ gelten. Daraus folgt $ \Phi' - \Phi  = r\left(u\right)'- r\left(v\right)$. Aus $r\left(v\right)' \geq r\left(u\right)'$ folgt $ \Phi' - \Phi \leq  r\left(v\right)'- r\left(v\right) \leq 3\left(r\left(v\right)'- r\left(v\right)\right) $. Addieren von $1$ aufgrund der Rotation ergibt Kosten $\leq 3\left(r\left(v\right)'- r\left(v\right)\right) + 1$.
+	In diesem Fall existiert $x$ nicht, damit gilt\\  {$ \Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' - r\left(u\right)- r\left(v\right)$}. Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel ist unabhängig von Zustand des Splay Baum, da an ihr alle im Baum vorhandenen Gewichte aufsummiert werden. Deshalb muss  $\mathit{tw}\left(v\right)' =  \mathit{tw}\left(u\right)$ gelten. Daraus folgt $ \Phi' - \Phi  = r\left(u\right)'- r\left(v\right)$. Aus $r\left(v\right)' \geq r\left(u\right)'$ folgt \\ $ \Phi' - \Phi \leq  r\left(v\right)'- r\left(v\right) \leq 3\left(r\left(v\right)'- r\left(v\right)\right) $. Addieren von $1$ aufgrund der Rotation ergibt Kosten $\leq 3\left(r\left(v\right)'- r\left(v\right)\right) + 1$.
 	\paragraph{zig-zig} 
 	Es müssen zwei Rotationen ausgeführt werden, deshalb entstehen amortisierte Kosten von
 	\begin{align*}
@@ -1267,7 +1268,7 @@ verwendet.
 	\Leftrightarrow & -2 \geq -2r\left(v\right)' +  r\left(x\right)' + r\left(v\right)\\
 	\Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(v\right) / \mathit{tw}\left(v'\right)\right)
 	\end{align*}
-	Dass die letzte Ungleichung gilt, kann man an einer Eigenschaft des $\log_2$ ableiten. Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt $\log_2\left(a\right) + \log_2\left(a\right) \leq -2$. An Abbildung \ref{fig:zigZag} ist zu erkennen, dass sich $\mathit{tw}\left(v\right)$ vom Ausgangszustand zum Zwischenzustand hin nicht verändert. $\mathit{tw}\left(x'\right)$ ist ebenfalls unverändert zum Zwischenschritt. Es kann also bei beiden Knoten mit den Werten aus dem Zwischenschritt gearbeitet werden.  $\mathit{tw}\left(v'\right) = \mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right) + w\left(u\right) $. Daraus folgt $\left(\left(x'\right) + \left(v\right)\right) /  \mathit{tw}\left(v'\right) < 1$ und mit der Eigenschaft von $\log_2$ folgen die Ungleichungen.
+	Dass die letzte Ungleichung gilt, kann man an einer Eigenschaft des $\log_2$ ableiten. Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt $\log_2\left(a\right) + \log_2\left(a\right) \leq -2$. An Abbildung \ref{fig:zigZag} ist zu erkennen, dass sich $\mathit{tw}\left(v\right)$ vom Ausgangszustand zum Zwischenzustand hin nicht verändert. $\mathit{tw}\left(x'\right)$ ist ebenfalls unverändert zum Zwischenschritt. Es kann also bei beiden Knoten mit den Werten aus dem Zwischenschritt gearbeitet werden. Bezeichne $u^*$ den Knoten $u$ im Zwischenschritt, dann gilt $ \mathit{tw}\left(u^*\right) = \mathit{tw}\left(v'\right)$. \\  $\mathit{tw}\left(v'\right) = \mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right) + w\left(u\right) $. Daraus folgt $\left(\mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right)\right) /  \mathit{tw}\left(v'\right) < 1$ und mit der Eigenschaft von $\log_2$ folgen die Ungleichungen.
 	
 	\paragraph{zig-zag} 
 	\begin{align*}
@@ -1278,7 +1279,7 @@ verwendet.
 	\begin{align*}
 	&  2 + r\left(u\right)' +r\left(x\right)' - 2 r\left(v\right) \leq  2\left(r\left(v\right)'- r\left(v\right)\right)\\
 	\Leftrightarrow &2 \leq 2r\left(v\right)' -  r\left(x\right)' - r\left(u\right)'\\
-	\Leftrightarrow &-2 \leq -2\left(v\right)' +  r\left(x\right)' + r\left(u\right)'\\
+	\Leftrightarrow &-2 \geq -2\left(v\right)' +  r\left(x\right)' + r\left(u\right)'\\
 	\Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(u'\right) / \mathit{tw}\left(v'\right)\right)
 	\end{align*}
 	Mit der $\log_2$ Regal aus zig-zig und Abbildung \ref{fig:zigZag} folgt die Behauptung.
@@ -1286,13 +1287,15 @@ verwendet.
 \end{proof}
 
 \subsection{Dynamische Optimalitäts Vermutung}
-Der Splay Baum erfüllt working set und dynamig finger aus Abschnitt \ref{upperBounds} und auch noch einige weitere in dieser Arbeit nicht aufgeführte Eigenschaften. Für dynamic finger ist ein sehr aufwändiger Beweis in \cite{dynFinger} enthalten. working set wurde bereits in \cite{splay} gezeigt. Dieser Beweis wird hier vorgestellt. Die anderen Eigenschaften (außer dynamisch optimal) aus Kapitel \ref{upperBounds} folgen dann aus diesen beiden. Aufgrund dieser oberen Schranken wurde in \cite{splay} die Vermutung aufgestellt, dass der Splay Baum dynamisch optimal ist. Bewiesen ist bisher nur, dass er $\log \left(n\right)$-competitive ist, dies folgt aus dem access lemma. Würde für eine solche obere Schranke gezeigt werden, dass der Splay Baum diese nicht einhalten kann, jedoch ein anderer BST schon, wäre die Vermutung zur dynamischen Optimalität widerlegt. Auch das ist bis heute nicht geschehen. 
+Der Splay Baum erfüllt working set und dynamig finger aus Abschnitt \ref{upperBounds} und auch noch einige weitere in dieser Arbeit nicht aufgeführte Eigenschaften. Für dynamic finger ist ein sehr aufwändiger Beweis in \cite{dynFinger} enthalten. working set wurde bereits in \cite{splay} gezeigt. Dieser Beweis wird hier vorgestellt. Die anderen Eigenschaften (außer dynamisch optimal) aus Kapitel \ref{upperBounds} folgen dann aus diesen beiden. Aufgrund dieser oberen Schranken wurde in \cite{splay} die Vermutung aufgestellt, dass der Splay Baum dynamisch optimal ist. Bewiesen ist bisher nur, dass er $\log \left(n\right)$-competitive ist, dies folgt aus dem access lemma. Würde für eine solche obere Schranke gezeigt werden, dass der Splay Baum diese nicht einhalten kann, jedoch ein anderer BST schon, wäre die Vermutung zur dynamischen Optimalität widerlegt. Auch das ist bis heute nicht geschehen. \\
 
-
+\noindent Wiederholung der Definition von $w_i$ zu einer Zugriffsfolge $X = x_1, x_2,.., x_m$ aus Kapitel \ref{upperBounds}:\\
+Für $x_i$ sei $J_i = \{j \in \mathbb{N} \vert j < i \land x_j = x_i \}$.
+Sei $t_{xi} = \max \left(J\right)$, falls $J$ nicht leer ist, ansonsten $t_{xi} = 0$. $t_{xi}$ liefert also den Index des vorherigen Zugriffes auf $x_i$, falls ein solcher existiert. Sei ${w_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$.
 
 \newtheorem{Satz2}{working set}[section] \label{workingSetSplay}
-\begin{Satz2} Es sei $T$ ein Splay Baum mit $n$ Knoten. Sei $X = x_1,x_2,..,x_m$ eine für $T$ erstellte Zugriffsfolge, mit $m \geq n$. Sei ${w_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$ definiert, wie in Kapitel \ref{upperBounds}. Dann gilt für die amortisierte Laufzeit \\
-	$O\left( n \log\left(n\right) + \sum_{i = 1}^{m} \log\left( w_i\right) \right)$.
+\begin{Satz2} Es sei $T$ ein Splay Baum mit $n$ Knoten. Sei $X = x_1,x_2,..,x_m$ eine für $T$ erstellte Zugriffsfolge. Dann gilt für die amortisierte Laufzeit \\
+	$O\left( n \log\left(n\right) + m +\sum_{i = 1}^{m} \log\left( w_i\right) \right)$.
 \end{Satz2}
 \begin{proof}
 	Den Knoten werden die Gewichte $1, 1/2^2,1/2^3 .., 1/2^n$ zugeordnet. Diesmal ist die Zuordnung nicht fest. Nach jeder \textit{access} Operation können sich Gewichte ändern. Sei $i$ der kleinste Index mit $x_i = \mathit{key}\left(v\right)$ für einen Knoten $v$. Sei $a = \vert\{x_l \vert l < i\}\vert$, dann wird $v$ zum Start das Gewicht $1 / 2^{a+1}$ zugeordnet. Auf Knoten auf deren Schlüssel nicht zugegriffen wird, verteilen sich die kleinsten Gewichte beliebig. $\mathit{tw}\left(v\right)$ und $\Phi$ sind definiert wie beim access lemma.\\
@@ -1361,7 +1364,7 @@ In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben und d
 Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsbaum für den Tango Baum. Außerdem wurde die \textit{access} Operation des Splay Baum implementiert, um Laufzeittest zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm, über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet. Abbildung \ref{fig:klassen} stellt ein Klassendiagramm dar.
 \begin{figure}[H]
 	\centering
-	\includegraphics[height= 1.7\textwidth]{"Medien/laufzeittest/MainGUI"}
+	\includegraphics[height= 1.5\textwidth]{"Medien/laufzeittest/MainGUI"}
 	\caption{Oberfläche zum Tango Baum}
 	\label{fig:TangoBaumGui}
 \end{figure}

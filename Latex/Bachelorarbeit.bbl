@@ -37,6 +37,11 @@ Parinya Chalermsook, Mayank Goswami, L{\'{a}}szl{\'{o}} Kozma, Kurt Mehlhorn,
 \newblock The landscape of bounds for binary search trees.
 \newblock {\em CoRR}, abs/1603.04892, 2016.
 
+\bibitem{conSplit}
+Robert~Endre Tarjan.
+\newblock {\em Data Structures and Network Algorithms}.
+\newblock Society for Industrial and Applied Mathematics, USA, 1983.
+
 \bibitem{dynFinger}
 Richard Cole, Bud Mishra, Jeanette Schmidt, and Alan Siegel.
 \newblock On the dynamic finger conjecture for splay trees. part i: Splay

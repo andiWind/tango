@@ -35,7 +35,7 @@
 \contentsline {figure}{\numberline {34}{\ignorespaces Beispielhaftes \textit {concatenate} zweier RBT unterschiedlicher Schwarz-Höhe, nach Schritt 1. \relax }}{63}%
 \contentsline {figure}{\numberline {35}{\ignorespaces Beispielhaftes \textit {concatenate} zweier RBT gleicher Schwarz-Höhe, nach Schritt 1 \relax }}{64}%
 \contentsline {figure}{\numberline {36}{\ignorespaces Beispielhaftes \textit {split} eines RBT mit Parameter $v$ \relax }}{69}%
-\contentsline {figure}{\numberline {37}{\ignorespaces Darstellung von zig, zig-zag und zig-zig. \relax }}{71}%
+\contentsline {figure}{\numberline {37}{\ignorespaces Darstellung von zig, zig-zig und zig-zag. \relax }}{71}%
 \contentsline {figure}{\numberline {38}{\ignorespaces Eine einzige \textit {splay } Operation.\cite {splay}\relax }}{71}%
 \contentsline {figure}{\numberline {39}{\ignorespaces Pfadrepräsentation beim Zipper Baum, basiert auf einer Abbildung aus \cite {zipper}. \relax }}{76}%
 \contentsline {figure}{\numberline {40}{\ignorespaces zig Segmente sind grün dargestellt. zag Segmente blau \relax }}{77}%
