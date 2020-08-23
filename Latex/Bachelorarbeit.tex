@@ -1138,33 +1138,30 @@ Auch \textit{split (RBT $T$, key $k$)} wird so vorgestellt, wie es für den Tang
 Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leicht erkannt. $v_0$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_0$ ist $v_{1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{1}$ liegen sind somit korrekt zugeordnet. Diese Betrachtung iteriert bis auf $v_k$ getroffen wird. Die Schlüssel im Teilbaum mit Wurzel $v_k$ werden korrekt zugeordnet. 
 
 \paragraph{Laufzeit}
-Der Tango Baum fordert eine Laufzeit von $O(\log(n))$ von seinen Hilfsbäumen für \textit{split}, mit $n$ ist die Anzahl der Knoten. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2, 3, 5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{concatenate} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{concatenate} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. $T_0$ steht für den linken Teilbaum von $v_k$.  Sei $i \in \{1, 2, l\}$. $T_i$ ist der Zustand von $T_L$, nachdem \textit{concatenate} mit Parameter $t_i$ ausgeführt wurde. $v_i$ ist der Elternknoten der Wurzel von $t_i$.\\
+Der Tango Baum fordert eine Laufzeit von $O(\log(n))$ von seinen Hilfsbäumen für \textit{split}, mit $n$ ist die Anzahl der Knoten. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2, 3, 5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{concatenate} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{concatenate} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. $T_0$ steht für den linken Teilbaum von $v_k$.  Sei $i \in \{0, 1, l\}$. $T_i$ ist der Zustand von $T_L$, nachdem \textit{concatenate} mit Parameter $t_i$ ausgeführt wurde. $v_i$ ist der Elternknoten der Wurzel von $t_i$.\\
 
 \noindent Es gilt $\mathit{bh} \left(t_i \right) \leq \mathit{bh} \left(v_{i} \right)$, $\mathit{bh} \left(t_i \right) < \mathit{bh} \left(v_{i+1} \right)$ und $\mathit{bh} \left(v_{l} \right) - \mathit{bh} \left(v_{0} \right) = O\left(log\left(n\right)\right) $.\\
-Für $T_i =$ \textit{concatenate}$\left(T_{i-1}, \textit{key}(v_i), t_i\right)$, gilt entweder $\mathit{bh} \left(T_{i} \right) = \max\{\mathit{bh} \left(T_{i-1}\right), \mathit{bh} \left(t_{i} \right) \} $ oder  $\mathit{bh} \left(T_{i} \right) = \max\{\mathit{bh} \left(T_{i-1}\right), \mathit{bh} \left(t_{i} \right) \} + 1$.\\
- Ist das letztere der Fall, hat die Wurzel von $T_i$ kein rotes Kind, denn entweder ist $\mathit{bh} \left(T_{i-1}\right) = \mathit{bh} \left(t_{i} \right)$, oder \textit{insertFixup} färbte, mit Fall $2$,  beide Kinder schwarz. In dieser Konstellation könnte $\mathit{bh} \left(T_i \right) \geq \mathit{bh} \left(t_{i+1} \right)$ gelten. Für $T_{i+1} =$ \textit{concatenate}$\left(T_{i}, \textit{key}(v_{i+1}), t_{i+1}\right)$ muss dann jedoch $\mathit{bh} \left(T_{i+1} \right) = \max\{\mathit{bh} \left(T_{i}\right), \mathit{bh} \left(t_{i+1} \right) \} $  gelten. Denn \textit{insertFixup} erhöht nur in Fall $2$ die Schwarz-Höhe eines Knoten, dessen Kinder müssten jedoch rot sein, vergleiche Abschnitt \ref{if2}.\\
+Nun wird durch Induktion über $i$ gezeigt das eine der beiden folgenden Aussagen immer gelten muss:\\
+\bigskip
+\begin{enumerate}
+	\item  $\mathit{bh} \left(T_{i} \right) \leq  \mathit{bh} \left(v_{i+1} \right)$
+	\item $\mathit{bh} \left(T_{i} \right) =  \mathit{bh} \left(t_{v+1} \right) +1$ und beide Kinder der Wurzel von $T_i$ sind schwarz und $\mathit{bh} \left(v_{i} \right) = \mathit{bh} \left(v_{i+1} \right)$
+\end{enumerate}
+$T_0$ ist der linke Teilbaum von $v_k$ und $\mathit{bh} \left(v_{1} \right) > \mathit{bh} \left(T_{0} \right)$.\\
+Induktionsschritt:\\
+$T_i =$ \textit{concatenate}$\left(T_{i-1}, \textit{key}(v_i), t_i\right)$.\\
+\textbf{Fall 1:}\\
+Es gilt entweder $\mathit{bh} \left(T_{i} \right) = \max\{\mathit{bh} \left(T_{i-1}\right), \mathit{bh} \left(t_{i} \right) \} $  oder \\ $\mathit{bh} \left(T_{i} \right) = \max\{\mathit{bh} \left(T_{i-1}\right), \mathit{bh} \left(t_{i} \right) \} + 1$. Ist das Erstere der Fall, ist nichts mehr zu zeigen. Beim anderen Fall galt entweder  $\mathit{bh} \left(T_{i-1} \right) =  \mathit{bh} \left(t_{i} \right)$ oder \\ \textit{insertFixup} hat die Schwarz-Höhe der Wurzel um eins erhöht. In beiden Fällen hat die Wurzel von $T_i$ zwei schwarze Kinder, vergleiche Abschnitt \ref{if2}. Gilt  $\mathit{bh} \left(v_{i} \right) < \mathit{bh} \left(v_{i+1} \right)$, ist Aussage eins korrekt, ansonsten Aussage zwei.\\
+\textbf{Fall 2:}\\
+ $\mathit{bh} \left(T_{i} \right) = \mathit{bh} \left(T_{i-1} \right)$ denn $\mathit{bh} \left(T_{i-1} \right) > \mathit{bh} \left(t_{i} \right)$ und \textit{insertFixup} kann die Schwarz-Höhe eines RBT  ohne rotes Kind der Wurzel nicht erhöhen, vergleiche Abschnitt \ref{if2}. Mit  $\mathit{bh} \left(v_{i} \right) = \mathit{bh} \left(v_{i+1} \right)$ muss  $\mathit{bh} \left(v_{i+1} \right) < \mathit{bh} \left(v_{i+2} \right)$ gelten. Somit ist für $T_i$ die Aussage eins korrekt.\\
+
  
- 
- 
- 
- Es folgt $\mathit{bh} \left(T_{i} \right) \leq \mathit{bh} \left(v_{i+1} \right) + 1$.  Daraus folgt $\mathit{bh} \left(T_{i+1} \right) \leq \mathit{bh} \left(v_{i+2} \right) $.
 
-
-
-
-
-
-Dadurch gilt
+\noindent Dadurch gilt
 \begin{align}
 \sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) \vert =  O \left(\log \left(n \right) \right)
 \end{align}
-denn
-\begin{align*}
-&\sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) \vert \overset{\textit{1}}{\leq}
-\sum_{i = 1}^{l} \left( \mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) + 2\right)\\
-\leq &\sum_{i = 1}^{l} \left( \mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(t_{i-1} \right) + 2\right)
-=  \mathit{bh} \left(t_{l} \right) -\mathit{bh} \left(t_{0} \right) + 2 \cdot l  = O \left(\log \left(n \right) \right)
-\end{align*}
+
 
 \noindent Der Gesamtaufwand für das Suchen von $v$ in allen $l$ Aufrufen berechnet sich mit: 
 \begin{align*}

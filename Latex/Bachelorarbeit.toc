@@ -44,7 +44,7 @@
 \contentsline {paragraph}{Laufzeit}{67}%
 \contentsline {section}{\numberline {6}Splay Baum}{69}%
 \contentsline {subsection}{\numberline {6.1}Die \textit {access} Operation beim Splay Baum }{69}%
-\contentsline {paragraph}{\textit {splay} Operation}{69}%
+\contentsline {paragraph}{\textit {splay} Operation}{70}%
 \contentsline {subsection}{\numberline {6.2}Amortisierte Laufzeitanalyse von \textit {splay }}{72}%
 \contentsline {paragraph}{zig}{72}%
 \contentsline {paragraph}{zig-zig}{72}%
