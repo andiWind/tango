@@ -1140,12 +1140,12 @@ Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leicht erkannt. $v_0$ und ei
 \paragraph{Laufzeit}
 Der Tango Baum fordert eine Laufzeit von $O(\log(n))$ von seinen Hilfsbäumen für \textit{split}, mit $n$ ist die Anzahl der Knoten. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2, 3, 5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{concatenate} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{concatenate} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. $T_0$ steht für den linken Teilbaum von $v_k$.  Sei $i \in \{0, 1, l\}$. $T_i$ ist der Zustand von $T_L$, nachdem \textit{concatenate} mit Parameter $t_i$ ausgeführt wurde. $v_i$ ist der Elternknoten der Wurzel von $t_i$.\\
 
-\noindent Es gilt $\mathit{bh} \left(t_i \right) \leq \mathit{bh} \left(v_{i} \right)$, $\mathit{bh} \left(t_i \right) < \mathit{bh} \left(v_{i+1} \right)$ und $\mathit{bh} \left(v_{l} \right) - \mathit{bh} \left(v_{0} \right) = O\left(log\left(n\right)\right) $.\\
+\noindent Es gilt $\mathit{bh} \left(t_i \right) \leq \mathit{bh} \left(v_{i} \right)$, $\mathit{bh} \left(t_i \right) < \mathit{bh} \left(v_{i+1} \right)$.\\
 Nun wird durch Induktion über $i$ gezeigt das eine der beiden folgenden Aussagen immer gelten muss:\\
 \bigskip
 \begin{enumerate}
 	\item  $\mathit{bh} \left(T_{i} \right) \leq  \mathit{bh} \left(v_{i+1} \right)$
-	\item $\mathit{bh} \left(T_{i} \right) =  \mathit{bh} \left(t_{v+1} \right) +1$ und beide Kinder der Wurzel von $T_i$ sind schwarz und $\mathit{bh} \left(v_{i} \right) = \mathit{bh} \left(v_{i+1} \right)$
+	\item $\mathit{bh} \left(T_{i} \right) =  \mathit{bh} \left(v_{i+1} \right) +1$ und beide Kinder der Wurzel von $T_i$ sind schwarz und $\mathit{bh} \left(v_{i} \right) = \mathit{bh} \left(v_{i+1} \right)$
 \end{enumerate}
 $T_0$ ist der linke Teilbaum von $v_k$ und $\mathit{bh} \left(v_{1} \right) > \mathit{bh} \left(T_{0} \right)$.\\
 Induktionsschritt:\\
@@ -1157,22 +1157,22 @@ Es gilt entweder $\mathit{bh} \left(T_{i} \right) = \max\{\mathit{bh} \left(T_{i
 
  
 
-\noindent Dadurch gilt
+\noindent Aus $\mathit{bh} \left(t_{i} \right) < \mathit{bh} \left(T_{i-1} \right)$ folgt daher  ,$\vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{i-1} \right) \vert = O\left(1\right) $ \\ und daraus
 \begin{align}
-\sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) \vert =  O \left(\log \left(n \right) \right)
+\sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{i-1} \right) \vert =  O \left(\log \left(n \right) \right) 
 \end{align}
 
 
 \noindent Der Gesamtaufwand für das Suchen von $v$ in allen $l$ Aufrufen berechnet sich mit: 
 \begin{align*}
-\sum_{i = 1}^{l}  2 \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert + 1 =
-2 \left( \sum_{i = 1}^{l}   \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert \right)+ l
+\sum_{i = 1}^{l}  2 \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{i-1}) \vert + 1 =
+2 \left( \sum_{i = 1}^{l}   \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{i-1}) \vert \right)+ l
 = O \left(\log \left(n \right) \right)
 \end{align*}
 \noindent Für die Anzahl der Iterationen von \textit{insertFixup} in allen $l$ Aufrufen gilt: 
 \begin{align*}
-\sum_{i = 1}^{l}   \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert +1 =
-\sum_{i = 1}^{l}  \left( \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert \right) + l 
+\sum_{i = 1}^{l}   \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{i-1}) \vert +1 =
+\sum_{i = 1}^{l}  \left( \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{i-1}) \vert \right) + l 
 = O \left(\log \left(n \right) \right)
 \end{align*}
 Die Kosten innerhalb einer Iteration sind konstant, damit ist  $O \left(\log \left(n \right) \right)$ eine ober Schranke für die Gesamtkosten zum konstruieren von $T_L$. Für $T_R$ gilt analog das Gleiche. Für die Gesamtkosten von \textit{concatenate} innerhalb \textit{split} gilt $O \left(\log \left(n \right) \right)$, denn neben den Kosten für die Suche und \textit{insertFixup} fallen pro Aufruf lediglich konstante Kosten an. Damit ist $O \left(\log \left(n \right) \right)$ eine obere Schranke für die Kosten von Punkt 4 und somit auch für \textit{split}. Der hier vorgestellte RBT hält also die Anforderung des Tango Baumes bezüglich der Laufzeit von \textit{split} ein.

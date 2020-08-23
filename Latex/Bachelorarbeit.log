@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 AUG 2020 08:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 AUG 2020 10:33
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -910,11 +910,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 1150--1157
 
  []
 
-
-Overfull \hbox (2.91464pt too wide) detected at line 1171
-[]
- []
-
 <Medien/RotSchwarzBaum/aufteilen.png, id=316, 1930.21124pt x 1853.12325pt>
 File: Medien/RotSchwarzBaum/aufteilen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/aufteilen.png>
@@ -1265,7 +1260,7 @@ blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (102 pages, 8909233 bytes).
+Output written on Bachelorarbeit.pdf (102 pages, 8909238 bytes).
 PDF statistics:
  1106 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
