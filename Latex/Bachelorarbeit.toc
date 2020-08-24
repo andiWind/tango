@@ -31,7 +31,7 @@
 \contentsline {paragraph}{Dynamic Finger Property}{43}%
 \contentsline {section}{\numberline {5}Tango Baum}{44}%
 \contentsline {subsection}{\numberline {5.1}Interleave Lower Bound}{45}%
-\contentsline {subsection}{\numberline {5.2}Aufbau des Tango Baums}{49}%
+\contentsline {subsection}{\numberline {5.2}Aufbau des Tango Baumes}{49}%
 \contentsline {subsection}{\numberline {5.3}Die \textit {access} Operation beim Tango Baum}{53}%
 \contentsline {paragraph}{cut Operation}{55}%
 \contentsline {paragraph}{join Operation}{58}%

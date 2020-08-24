@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  17 AUG 2020 08:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 AUG 2020 15:06
 entering extended mode
 **./wiederweg.tex
 (wiederweg.tex
@@ -380,11 +380,10 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  38i,6n,43p,831b,265s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\e
-crm1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/e
-c/dpi600\ecrm1440.pk>
-Output written on wiederweg.pdf (2 pages, 43676 bytes).
+crm1440.pk>
+Output written on wiederweg.pdf (2 pages, 42503 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
+ 37 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

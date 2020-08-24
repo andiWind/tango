@@ -27,26 +27,26 @@
 \contentsline {figure}{\numberline {26}{\ignorespaces Tango Baum zu dem Beispiel. \relax }}{52}%
 \contentsline {figure}{\numberline {27}{\ignorespaces Preferred childs nach \textit {access}$\left (9\right )$. \relax }}{53}%
 \contentsline {figure}{\numberline {28}{\ignorespaces Tango Baum nach \textit {access}$\left (9\right )$. \relax }}{53}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Ablauf von \textit {cut($d$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert \relax }}{57}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Ablauf von \textit {cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert \relax }}{58}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Ablauf von \textit {join($H_1$, $H_2$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert \relax }}{60}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Ablauf von \textit {join($H_1$, $H_2$)} bei fehlendem $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}, Wurzeln von Hilfsbäumen werden mit einem Kreis markiert \relax }}{60}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Ablauf von \textit {cut($d$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{57}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Ablauf von \textit {cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{58}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Ablauf von \textit {join($H_1$, $H_2$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert \relax }}{60}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Ablauf von \textit {join($H_1$, $H_2$)} bei fehlendem $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{60}%
 \contentsline {figure}{\numberline {33}{\ignorespaces Darstellung von Schritt $3$ und $4$ der \textit {access} Operation. \relax }}{62}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Beispielhaftes \textit {concatenate} zweier RBT unterschiedlicher Schwarz-Höhe, nach Schritt 1. \relax }}{64}%
-\contentsline {figure}{\numberline {35}{\ignorespaces Beispielhaftes \textit {concatenate} zweier RBT gleicher Schwarz-Höhe, nach Schritt 1 \relax }}{65}%
-\contentsline {figure}{\numberline {36}{\ignorespaces Beispielhaftes \textit {split} eines RBT mit Parameter $v$ \relax }}{70}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Beispielhaftes \textit {concatenate} zweier RBTs unterschiedlicher Schwarz-Höhe, nach Schritt 1. \relax }}{64}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Beispielhaftes \textit {concatenate} zweier RBTs gleicher Schwarz-Höhe, nach Schritt 1. \relax }}{65}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Beispielhaftes \textit {split} eines RBTs mit Parameter $v$. \relax }}{70}%
 \contentsline {figure}{\numberline {37}{\ignorespaces Darstellung von zig, zig-zig und zig-zag. \relax }}{72}%
 \contentsline {figure}{\numberline {38}{\ignorespaces Eine einzige \textit {splay } Operation.\cite {splay}\relax }}{72}%
 \contentsline {figure}{\numberline {39}{\ignorespaces Pfadrepräsentation beim Zipper Baum, basiert auf einer Abbildung aus \cite {zipper}. \relax }}{77}%
-\contentsline {figure}{\numberline {40}{\ignorespaces zig Segmente sind grün dargestellt. zag Segmente blau \relax }}{78}%
+\contentsline {figure}{\numberline {40}{\ignorespaces zig Segmente sind grün dargestellt. zag Segmente blau. \relax }}{78}%
 \contentsline {figure}{\numberline {41}{\ignorespaces Extraktionsprozess beim Zipper Baum. \relax }}{79}%
-\contentsline {figure}{\numberline {42}{\ignorespaces Referenzbaum mit grün gezeichneten preferred paths \relax }}{80}%
+\contentsline {figure}{\numberline {42}{\ignorespaces Referenzbaum mit grün gezeichneten preferred paths. \relax }}{80}%
 \contentsline {figure}{\numberline {43}{\ignorespaces Beispielhafter Multisplay Baum zu Abbildung \ref {fig:referenzTree}.\relax }}{80}%
 \contentsline {figure}{\numberline {44}{\ignorespaces Oberfläche zum Tango Baum\relax }}{82}%
 \contentsline {figure}{\numberline {45}{\ignorespaces \textit {access} Operationen anstoßen.\relax }}{83}%
 \contentsline {figure}{\numberline {46}{\ignorespaces Laufzeittest anstoßen.\relax }}{83}%
 \contentsline {figure}{\numberline {47}{\ignorespaces Ergebnisanzeige eines Laufzeittests.\relax }}{84}%
-\contentsline {figure}{\numberline {48}{\ignorespaces Wesentliche Klassen der Implementierung. Methoden zum direkten lesen bzw. schreiben von Attributen sind nicht dargestellt. \relax }}{84}%
+\contentsline {figure}{\numberline {48}{\ignorespaces Wesentliche Klassen der Implementierung. Methoden zum direkten lesen, bzw. schreiben von Attributen sind nicht dargestellt. \relax }}{84}%
 \contentsline {figure}{\numberline {49}{\ignorespaces Zur Ausführung verwendbaren Speicher erweitert.\relax }}{86}%
 \contentsline {figure}{\numberline {50}{\ignorespaces Laufzeittest mit zufälliger Zugriffsfolge.\relax }}{87}%
 \contentsline {figure}{\numberline {51}{\ignorespaces Laufzeittest bit reversal permutation.\relax }}{88}%
