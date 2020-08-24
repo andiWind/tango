@@ -754,10 +754,10 @@ Zeit ausführt. Der Name kommt daher, dass es sich hierbei um eine untere Schran
 \paragraph{Working Set Property}
 Ein BST mit dem working set property führt Zugriffsfolgen schnell aus, bei denen auf die gleichen Schlüssel in kurzen Abständen zugegriffen wird.
 Für $x_i$ sei $J_i = \{j \in \mathbb{N} \vert j < i \land x_j = x_i \}$.
-Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{xi} = 0$. $t_{xi}$ liefert also den Index des vorherigen Zugriffes auf $x_i$, falls ein solcher existiert. Sei ${w_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$.
+Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{xi} = 0$. $t_{xi}$ liefert also den Index des vorherigen Zugriffes auf $x_i$, falls ein solcher existiert. Sei ${a_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$.
 Ein BST erfüllt das working set propery wenn für seine amortisierte Laufzeit für $X$
 \begin{align*}
-O\left(n \log\left( n\right) + m +\sum_{i = 1}^{m} \log \left(w_i\right) \right)
+O\left(n \log\left( n\right) + m +\sum_{i = 1}^{m} \log \left(a_i\right) \right)
 \end{align*} 
 gilt. 
 
@@ -1291,16 +1291,16 @@ Der Splay Baum erfüllt working set und dynamig finger aus Abschnitt \ref{upperB
 
 \noindent Wiederholung der Definition von $w_i$ zu einer Zugriffsfolge $X = x_1, x_2,.., x_m$ aus Kapitel \ref{upperBounds}:\\
 Für $x_i$ sei $J_i = \{j \in \mathbb{N} \vert j < i \land x_j = x_i \}$.
-Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{xi} = 0$. $t_{xi}$ liefert also den Index des vorherigen Zugriffes auf $x_i$, falls ein solcher existiert. Sei ${w_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$.
+Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{xi} = 0$. $t_{xi}$ liefert also den Index des vorherigen Zugriffes auf $x_i$, falls ein solcher existiert. Sei ${a_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$.
 
 \newtheorem{Satz2}{working set}[section] \label{workingSetSplay}
 \begin{Satz2} Es sei $T$ ein Splay Baum mit $n$ Knoten. Sei $X = x_1,x_2,..,x_m$ eine für $T$ erstellte Zugriffsfolge. Dann gilt für die amortisierte Laufzeit \\
-	$O\left( n \log\left(n\right) + m +\sum_{i = 1}^{m} \log\left( w_i\right) \right)$.
+	$O\left( n \log\left(n\right) + m +\sum_{i = 1}^{m} \log\left( a_i\right) \right)$.
 \end{Satz2}
 \begin{proof}
 	Den Knoten werden die Gewichte $1, 1/2^2,1/3^2 .., 1/n^2$ zugeordnet. Diesmal ist die Zuordnung nicht fest. Nach jeder \textit{access} Operation können sich Gewichte ändern. Sei $i$ der kleinste Index mit $x_i = \mathit{key}\left(v\right)$ für einen Knoten $v$. Sei $a = \vert\{x_l \vert l < i\}\vert$, dann wird $v$ zum Start das Gewicht $1 / 2^{a+1}$ zugeordnet. Auf Knoten auf deren Schlüssel nicht zugegriffen wird, verteilen sich die kleinsten Gewichte beliebig. $\mathit{tw}\left(v\right)$ und $\Phi$ sind definiert wie beim access lemma.\\
 	Nach einer \textit{access} $\left(x_j\right)$ Operation, werden die Gewichte neu zugeordnet. Der Knoten $v_j$ mit Schlüssel $x_j$ erhält das Gewicht $1/1$. Sei $1/k^2$ das Gewicht von $v_j$ vor \textit{access} $\left(x_j\right)$. Sei $u$ ein Knoten mit $w\left(u\right) = 1 / k^*$ mit \\ $k^* \in \{1, 4,.., \left(k-1\right)^2\}$ direkt vor dem Zugriff $x_j$. Dann ist $1 /\left(k^* + 1\right)^2$ das Gewicht von $u$ nach dem Zugriff $x_j$. Die Gewichte der restlichen Knoten bleiben unverändert. Zu beachten ist, dass nach einer solchen Neuzuordnung die Menge der im Baum enthaltenen Gewichte unverändert bleibt. \\
-	Diese Verteilung der Gewichte garantiert, dass direkt vor  \textit{access} $\left(x_j\right)$, $v_j$ ein Gewicht von ${1 /w_i}^2$ hat, somit gilt $\mathit{tw}\left(v_j\right) \geq {1 /w_i}^2$ . Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel vom $T$ ist $W = \sum_{i = 1}^{n} 1/ n^2 < 2 = O\left(1\right) $. Diese Werte in das Access Lemma eingesetzt, ergibt Kosten von $O\left(\log\left(1 / \left({1 /w_i}^2\right)\right)\right) = O\left(\log\left({w_i}^2 \right)\right) = O\left(log\left(w_i\right)\right)$.\\
+	Diese Verteilung der Gewichte garantiert, dass direkt vor  \textit{access} $\left(x_j\right)$, $v_j$ ein Gewicht von ${1 /a_i}^2$ hat, somit gilt $\mathit{tw}\left(v_j\right) \geq {1 /a_i}^2$ . Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel vom $T$ ist $W = \sum_{i = 1}^{n} 1/ n^2 < 2 = O\left(1\right) $. Diese Werte in das Access Lemma eingesetzt, ergibt Kosten von $O\left(\log\left(1 / \left({1 /a_i}^2\right)\right)\right) = O\left(\log\left({a_i}^2 \right)\right) = O\left(log\left(a_i\right)\right)$.\\
 	 Durch die nachfolgende Neuzuordnung der Gewichte kann $\Phi$ nur kleinere Werte annehmen, denn nur das Gewicht der neuen Wurzel erhöht sich, $\mathit{tw}\left(\right)$ ist für die Wurzel aber konstant.\\
 	Der Rang eines Knoten kann über die gesamte Zugriffsfolge nicht um mehr als $\log_2\left(n^2 W\right) = O\left(log\left(n\right)\right)$ kleiner werden. Denn $W$ ist der maximale Wert von $\mathit{tw}\left(\right)$ und  der minimale ist $1 /n^2$. Daraus folgt eine maximale Verringerung des Potentials von $T$ von $O\left(n \log \left(n\right)\right)$. 
 \end{proof}
@@ -1311,11 +1311,11 @@ Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{
 Hier werden kurz zwei Variationen zum Tango Baum vorgestellt. Zum einen der Zipper Baum. Er wurde in \cite{zipper} vorgestellt und ist ebenfalls $\log\left(\log\left(n\right)\right)$-competitive,  garantiert aber auch  $O\left(\log \left(n\right)\right)$ im worst case, bei einer einzelnen \textit{access} Operation. $n$ steht wieder für die Anzahl der Knoten von $T$. Zum anderem den Multisplay Baum \cite{multisplay}. Bei diesem wird ein preferred path durch einen Splay Baum repräsentiert. Amortisiert betrachtet erreicht er $O\left(\log \left(n\right)\right)$ bei \textit{access} und ist  $\log\left(\log\left(n\right)\right)$-competitive. 
 
 \subsection{Zipper Baum}
-Der Zipper Baum basiert auf dem Tango Baum und nutzt auch preferred paths aus einem Referenzbaum $P$. Aufbau und Pflege der preferred paths in $P$ unterscheiden sich nicht vom Tango Baum.  Ihre Repräsentation im eigentlichen BST $T$, macht den wesentlichen Unterschied zu einem Tango Baum aus. Abbildung \ref{fig:zipperPathRep} stellt eine solche beispielhaft dar.  Sei $v$ ein Knoten in $T$, dann ist in diesem Kapitel $v^*$ der Knoten in $P$, mit $\mathit{key}\left(v\right) =\mathit{key}\left(v^*\right)$. Die Repräsentation eines preferred path  $P_p = {p_1}^*,{p_2}^*,..,{p_m}^*$ in $T$ stellt einen Hilfsbaum $H$ dar, der in zwei Teile unterteilt wird, dem \textbf{zipper} und dem \textbf{bottom tree}.  Der bottom tree ist ein balancierter BST der genau die Schlüssel enthält, die in $P_p$ enthalten sind jedoch nicht im zipper. Der zipper besteht aus zwei Teilen, dem \textbf{top zipper} $z_t$ und dem \textbf{bottom zipper} $z_b$. $z_t$ und $z_b$ dürfen jeweils maximal $\log_2\left(\log_2\left(n\right)\right)$ Knoten enthalten. Gemeinsam müssen enthalten sie zumindest $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten, wenn ein bottom tree existiert. Bei weniger als $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten im Hilfsbaum existiert kein bottom tree. Es wird im folgenden angenommen, dass ein bottom tree existiert. \\
-$P_p$ wird in \textbf{zig Segmente} und \textbf{zag Segmente} unterteilt. zig Segmente entsprechen den längst möglichen Pfaden von Knoten mit rechten Kindern in $P_p$. zag Segmente entsprechen den längst möglichen Pfaden von Knoten mit linken Kindern in $P_p$. Das Blatt in $P_p$ wird dem Segment seines Elternknoten zugeordnet. In Abbildung  \ref{fig:preferredPathZigZag} sind zig und zag Segmente dargestellt.\\
-Sei $S_{zig}$ die Folge der in zig Segmenten enthalten Knoten, aufsteigend sortiert nach der Tiefe und $S_{zag}$ die Folge der in zag Segmenten enthalten Knoten, aufsteigend sortiert nach der Tiefe.  Sei $n_t$ bzw. $n_b$ die Anzahl der Knoten von $z_t$ bzw. $z_b$. $z_t$ repräsentiert Knoten  $P_t = {p_1{}^*}^*,{p_2}^*{,..}^*,{p_{n_t}}^*$ und $z_b$ die Knoten  $P_b = {p_{n_t + 1}}^*,{p_{n_t + 2}}^*,..,{p_{n_t + n_b}}^*$.
-Sei ${t_l}^*$ bzw. ${t_r}^*$ der Knoten in $S_{zig}$ bzw. $S_{zag}$ mit der kleinsten Tiefe. $t_l$ ist die Wurzel von $H$. $t_r$ ist das rechte Kind von $t_l$. Der linke Teilbaum von $t_l$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in  $S_{zig}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein linkes Kind hat. Der rechte Teilbaum von $t_r$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in $S_{zag}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein rechtes Kind hat. \\
-$z_b$ wird analog aus $P_b$ erzeugt und seien $b_l$ und $b_r$ die Knoten in $z_b$ entsprechend zu $t_l$ und $t_r$ in $z_t$. $b_l$ ist das linke Kind von $t_r$. Die Wurzel des bottom Tree ist das linke Kind von $t_r$. Dass die Links-Rechts-Beziehung eingehalten wird ergibt aus den Aufbau der zig und zag Segmente. Es ist leicht zu erkennen, dass die Wurzel des bottom tree in konstanter Zeit erreicht werden kann.
+Der Zipper Baum basiert auf dem Tango Baum und nutzt auch preferred paths aus einem Referenzbaum $P$. Aufbau und Pflege der preferred paths in $P$ unterscheiden sich nicht vom Tango Baum.  Ihre Repräsentation im eigentlichen BST $T$, macht den wesentlichen Unterschied zu einem Tango Baum aus. Abbildung \ref{fig:zipperPathRep} stellt eine solche beispielhaft dar.  Sei $v$ ein Knoten in $T$, dann ist in diesem Kapitel $v^*$ der Knoten in $P$, mit $\mathit{key}\left(v\right) =\mathit{key}\left(v^*\right)$. Die Repräsentation eines preferred path  $P_p = \left({p_1}^*,{p_2}^*,..,{p_m}^*\right)$ in $T$ stellt einen Hilfsbaum $H$ dar, der in zwei Teile unterteilt ist, dem \textbf{zipper} und dem \textbf{bottom tree}.  Der bottom tree ist ein balancierter BST der genau die Schlüssel enthält, die in $P_p$ enthalten sind jedoch nicht im zipper. Der zipper besteht aus zwei Teilen, dem \textbf{top zipper} $z_t$ und dem \textbf{bottom zipper} $z_b$. $z_t$ und $z_b$ dürfen jeweils maximal $\log_2\left(\log_2\left(n\right)\right)$ Knoten enthalten. Gemeinsam  enthalten sie zumindest $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten, wenn ein bottom tree existiert. Bei weniger als $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten im Hilfsbaum existiert kein bottom tree. Es wird im folgenden angenommen, dass ein bottom tree existiert. \\
+$P_p$ wird in \textbf{zig Segmente} und \textbf{zag Segmente} unterteilt. zig Segmente entsprechen den längst möglichen Pfaden von Knoten mit rechten Kindern in $P_p$. zag Segmente entsprechen den längst möglichen Pfaden von Knoten mit linken Kindern in $P_p$. ${p_m}^*$ wird dem Segment seines Elternknoten zugeordnet. In Abbildung  \ref{fig:preferredPathZigZag} sind zig und zag Segmente dargestellt.\\
+Sei $S_{zig}$ die Folge der in zig Segmenten enthalten Knoten, aufsteigend sortiert nach der Tiefe und $S_{zag}$ die Folge der in zag Segmenten enthalten Knoten, aufsteigend sortiert nach der Tiefe.  Sei $n_t$ bzw. $n_b$ die Anzahl der Knoten von $z_t$ bzw. $z_b$. $z_t$ repräsentiert Knoten  $P_t = \left({p_1}^*,{p_2}^*,..,p_{n_t}^*\right)$ und $z_b$ die Knoten  $P_b = \left({p_{n_t + 1}}^*,{p_{n_t + 2}}^*,..,{p_{n_t + n_b}}^*\right)$.
+Sei ${t_l}^*$ bzw. ${t_r}^*$ der Knoten in $S_{zig}$ bzw. $S_{zag}$ mit der größten Tiefe. $t_l$ ist die Wurzel von $H$. $t_r$ ist das rechte Kind von $t_l$. Der linke Teilbaum von $t_l$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in  $S_{zig}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein linkes Kind hat. Der rechte Teilbaum von $t_r$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in $S_{zag}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein rechtes Kind hat. \\
+$z_b$ wird analog aus $P_b$ erzeugt und seien $b_l$ und $b_r$ die Knoten in $z_b$ entsprechend zu $t_l$ und $t_r$ in $z_t$. $b_l$ ist das linke Kind von $t_r$. Die Wurzel des bottom Tree ist das linke Kind von $b_r$. Dass die Links-Rechts-Beziehung eingehalten wird ergibt aus den Aufbau der zig und zag Segmente. Es ist leicht zu erkennen, dass die Wurzel des bottom tree in konstanter Zeit erreicht werden kann.
 \begin{figure}[H]
 	\centering2
 	\includegraphics[width= 0.8\textwidth]{"Medien/Zipper/zipperPathRep"}
@@ -1331,8 +1331,8 @@ $z_b$ wird analog aus $P_b$ erzeugt und seien $b_l$ und $b_r$ die Knoten in $z_b
 
 \paragraph{Besonderheiten bei \textit{access}}
 Sei $l$ die Anzahl der Knoten des top zipper.
-Beim Suchen nach einem Schlüssel in einem Hilfsbaum $H$, wird dessen top zipper, mit $l$ Knoten, soweit wie notwendig, in einen Pfad gewandelt, der $p_1, p_2, .., p_l$ entspricht. Ist der top zipper vollständig in einen Pfad umgewandelt, wird der Vorgang beim bottom zipper fortgesetzt. Dieser hat dann die Stellung des top zipper. Außerdem wird dann ein \textbf{Extraktionsprozess} angestoßen, der $\log\left(\log\left(n\right)\right)$ Knoten aus dem bottom tree auslagert, um einen neuen bottom zipper zu erzeugen. Ein Extraktionsprozess ist in Abbildung \ref{fig:extractHybrid} dargestellt. $l'$ ist der größte Schlüssel der kleiner ist, als die Schlüssel der zu extrahierenden Knoten. $r'$ entsprechend der kleinste Schlüssel der größer ist, als diese Schlüssel.  \\
-Ein Knoten aus dem top zipper kann dem Pfad in konstanter Zeit hinzugefügt werden. Ist bei \textit{access}$\left(k\right)$ der top zipper aufgebracht, sind bereits Kosten von $O\left(\log\left(\log\left(n\right)\right)\right)$ entstanden. Sei $P_p$ der preferred path den $H$ repräsentiert. Ist der gesuchte Knoten im top zipper enthalten, entstehen in $P$ aufgrund der Knoten von $P_p$ asymptotisch betrachtet die gleichen Kosten, wie in $H$. Befindet sich der gesuchte Knoten im bottom zipper oder dem bottom tree entstehen in $H$ ebenfalls Kosten von  $O\left(\log\left(\log\left(n\right)\right)\right)$. Deshalb entstehen asymptotisch betrachtet in $H$ und innerhalb $P_p$ die gleichen Kosten. Hieraus wird abgeleitet, dass eine \textit{access} Operation in $O\left(\log\left(n\right)\right)$ Zeit ausgeführt werden kann.
+Beim Suchen nach einem Schlüssel in einem Hilfsbaum $H$, wird dessen top zipper, soweit wie notwendig, in einen Pfad gewandelt, der $\left(p_1, p_2, .., p_l\right)$ entspricht. Ist der top zipper vollständig in einen Pfad umgewandelt, wird der Vorgang beim bottom zipper fortgesetzt. Dieser hat dann die Stellung des top zipper. Außerdem wird dann ein \textbf{Extraktionsprozess} angestoßen, der $\log\left(\log\left(n\right)\right)$ Knoten aus dem bottom tree auslagert, um einen neuen bottom zipper zu erzeugen. Für dessen Laufzeit ist entscheidend, dass die Wurzel des bottom tree in konstanter Zeit erreicht werden kann. Ein Extraktionsprozess ist in Abbildung \ref{fig:extractHybrid} dargestellt. $l'$ ist der größte Schlüssel der kleiner ist, als die Schlüssel der zu extrahierenden Knoten. $r'$ entsprechend der kleinste Schlüssel der größer ist, als diese Schlüssel.  \\
+Der nächste Knoten aus dem zipper kann dem Pfad in konstanter Zeit hinzugefügt werden. Ist der gesuchte Knoten $p_v$  im zipper enthalten, entstehen um ${p_v}^*$ in  $P$ zu erreichen, asymptotisch betrachtet die gleichen Kosten, wie in $H$. Ist in $H$ der zipper aufgebracht, sind bereits Kosten von $O\left(\log\left(\log\left(n\right)\right)\right)$ entstanden. Befindet sich der gesuchte Knoten im  bottom tree entstehen in $H$ ebenfalls Kosten von  $O\left(\log\left(\log\left(n\right)\right)\right)$. Diese müssen auch in $P$ entstehen, da dann $v > \log_2\left(\log_2\left(n\right)\right) /2$  gelten muss. Deshalb entstehen asymptotisch betrachtet in $H$ und innerhalb $P$ die gleichen Kosten. In $P$ ist jeder Knoten in $O\left(\log\left(n\right)\right)$ Zeit erreichbar, deshalb ist dies auch für  $T$ der Fall. 
 
 
 \begin{figure}[H]
@@ -1342,7 +1342,7 @@ Ein Knoten aus dem top zipper kann dem Pfad in konstanter Zeit hinzugefügt werd
 	\label{fig:extractHybrid}
 \end{figure}
 \subsection{Multisplay Baum}
-Ein preferred path wird hier durch einen Splay Baum dargestellt, um dessen Laufzeiteigenschaften nutzen zu können. Da der Splay Baum kein balancierter Baum ist, gibt es zusätzliche mögliche Zustände im Vergleich zu einem Tango Baum mit der gleichen Knotenzahl. Zu den genannten Eigenschaften bezüglich der Laufzeit sind Beweise in \cite{multisplay} enthalten. Der Multisplay Baum erfüllt die working set Eigenschaft \cite{porpMultiSplay}. 
+Ein preferred path wird hier durch einen Splay Baum dargestellt, um dessen Laufzeiteigenschaften nutzen zu können. Da der Splay Baum kein balancierter Baum ist, gibt es zusätzliche mögliche Zustände im Vergleich zu einem Tango Baum mit der gleichen Knotenzahl. Die Darstellung des Hilfsbaumes mit der Wurzel des Gesamtbaumes in Abbildung \ref{fig:pfadRepresentation}, wäre so beim Tango Baum nicht möglich. Zu den genannten Eigenschaften bezüglich der Laufzeit sind Beweise in \cite{multisplay} enthalten. Der Multisplay Baum erfüllt die working set Eigenschaft \cite{porpMultiSplay}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 0.8\textwidth]{"Medien/Multisplay/referenzTree"}
@@ -1370,7 +1370,7 @@ Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsb
 \end{figure}
 
 \noindent Abbildung \ref{fig:TangoBaumGui} zeigt das Hauptfenster. Oben ist ein Referenzbaum zu einem Tango Baum mit  $15$ Knoten dargestellt, unten der Tango Baum. Preferred Childs und die Wurzeln von Hilfsbäumen sind grün dargestellt.
-
+Diese Ansicht dient dazu, die Beziehung zwischen Referenzbaum und Tango Baum darzustellen.
 
 \begin{figure}[H]
 	\centering
@@ -1414,10 +1414,10 @@ Der Splay Baum startet genau wie der Tango Baum vollständig balanciert, auch we
 Der TangoNode enthält bereits alle zwingend notwendigen Attribute eines Knoten im Tango Baum. 
 
 \paragraph{TangoAuxTree}
-Klassen deren Objekte als Hilfsbaum im Tango Baum eingesetzt werden sollen, müssen diese Klasse erweitern. \textit{setTree} wird benötigt, da die Klasse TangoTree die BST Struktur nur über das Attribut \enquote{auxTree} erreicht. Gibt es eine Veränderung an der Wurzel des Tango Baum, wird die BST Struktur von \enquote{auxTree} neu gesetzt. \textit{updateDepthsPath} pflegt die Attribute \enquote{minDepth} und \enquote{minDepth} der TangoNode.
+Klassen deren Objekte als Hilfsbaum im Tango Baum eingesetzt werden sollen, müssen diese Klasse erweitern. \textit{setTree} wird benötigt, da die Klasse TangoTree die BST Struktur nur über das Attribut \enquote{auxTree} erreicht. Gibt es eine Veränderung an der Wurzel des Tango Baum, wird die BST Struktur von \enquote{auxTree} neu gesetzt. \textit{updateDepthsPath} pflegt die Attribute \enquote{minDepth} und \enquote{maxDepth} der TangoNode.
 
 \paragraph{TangoTree}
-\enquote{auxTree} macht die Wurzel des Tango Baum erreichbar. Außerdem können über diesen Attribut die \textit{split} und \textit{join} Operationen aufgerufen werden. \enquote{auxTreeClass} entspricht der Klasse der eingesetzten Hilfsbäumen. Diese wird dem Constructor übergeben. Somit kann der RBT einfach durch eine andere geeignete Struktur ersetzt werden.
+\enquote{auxTree} macht die Wurzel des Tango Baum erreichbar. Außerdem können über dieses Attribut die \textit{split} und \textit{join} Operationen aufgerufen werden. \enquote{auxTreeClass} entspricht der Klasse der eingesetzten Hilfsbäumen. Diese wird dem Constructor übergeben. Somit kann der RBT einfach durch eine andere geeignete Struktur ersetzt werden.
 
 \paragraph{RedBlackTree und RBTNode}
 Erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu RBT beschrieben.
@@ -1438,7 +1438,7 @@ Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann 
 
 
 
-Es werden Tests zu fünf Arten von Zugriffsfolgen durchgeführt. Zunächst wird immer der Aufbau der Zugriffsfolge beschrieben und dann die Ergebnisse präsentiert. $n$ entspricht der Anzahl der Knoten, $m$ der Länge der Zugriffsfolge. Die Schlüsselmengen haben immer die Form $\{1,2,..,n\}$. Bei jeder Testart wurde zu jeder Knotenzahl, beim Tango Baum und Splay Baum immer exakt die gleiche Zugriffsfolge verwendet.  $m$ ist die Länge der Zugrissfolge. Gibt es keine Abhängigkeit von $m$ zu $n$, so wurde für $m$ immer $40$ Millionen verwendet. Der Splay Baum wird durchweg die kürzeren Zeiten liefern. Eine mögliche Erklärung für die vergleichsweise oft hohen Zeiten des Tango Baum ist, dass dieser erst bei noch größeren Instanzen einen Vorteil, aus der Unterteilung in Hilfsbäume ziehen kann.  
+Es werden Tests zu fünf Arten von Zugriffsfolgen durchgeführt. Zunächst wird immer der Aufbau der Zugriffsfolge beschrieben und dann die Ergebnisse präsentiert. $n$ entspricht der Anzahl der Knoten, $m$ der Länge der Zugriffsfolge. Die Schlüsselmengen haben immer die Form $\{1,2,..,n\}$. Bei jeder Testart wurde zu jeder Knotenzahl, beim Tango Baum und Splay Baum immer exakt die gleiche Zugriffsfolge verwendet. Gibt es keine Abhängigkeit von $m$ zu $n$, so wurde für $m$ immer $40$ Millionen verwendet. Der Splay Baum wird durchweg die kürzeren Zeiten liefern. Eine mögliche Erklärung für die vergleichsweise oft hohen Zeiten des Tango Baum ist, dass dieser erst bei noch größeren Instanzen, einen Vorteil aus der Unterteilung in Hilfsbäume erzeugen kann.  
 
 \subsubsection{Zufällige Zugriffsfolge}
 Die Zugriffsfolgen werden von einem Pseudozufallsgenerator erzeugt. 
@@ -1568,6 +1568,7 @@ Beim ersten Test wird Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwe
 	\end{center}
 \end{table}
 \noindent Nun ist $n = 10.000.000$ fest, und es werden unterschiedliche Werte für $a$ verwendet.
+Es ist zu erkennen, dass die Zeit des Splay Baum ansteigt, obwohl $n$ und $m$ konstant sind.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/dynamicfingerNfest"}
@@ -1598,7 +1599,7 @@ Beim ersten Test wird Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwe
 	\end{center}
 \end{table}
 \subsubsection{Working Set}
-Das working set enthält $5$ Prozent der Schlüssel des BST. Diese wurden gleichmäßig über die enthaltenen Schlüssel verteilt. Wird z.B. jeder dritte Schlüssel benötigt wird das working set also mit $1, 4, 7$ usw. aufgebaut.  Die Zugriffsfolge besteht nur aus Schlüsseln des working set. Die Auswahl daraus geschieht dann für jede \textit{access} Operation wieder zufällig.
+Das working set enthält $5$ Prozent der Schlüssel des BST. Diese wurden gleichmäßig über die enthaltenen Schlüssel verteilt. Wird z.B. jeder dritte Schlüssel benötigt wird das working set also mit $1, 4, 7$ usw. aufgebaut.  Die Zugriffsfolge besteht nur aus Schlüsseln des working set. Die Auswahl daraus geschieht dann für jedes Element der Zugriffsfolge wieder zufällig.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/workingset"}
@@ -1624,7 +1625,7 @@ Das working set enthält $5$ Prozent der Schlüssel des BST. Diese wurden gleich
 		\caption{Laufzeittest working set} 
 	\end{center}
 \end{table}
-\noindent Hier ist $n = 1.000.000$ fest und der Prozentwert $p$ für die Anzahl der Schlüssel im working set veränderlich.
+\noindent Hier ist $n = 1.000.000$ fest und der Prozentwert $p$ für die Anzahl der Schlüssel im working set veränderlich. Wieder steigen die Zeiten des Splay Baum leicht an.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/workingset2"}
