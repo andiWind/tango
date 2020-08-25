@@ -1,0 +1,66 @@
+\begin{thebibliography}{10}
+
+\bibitem{splay}
+Daniel~Dominic Sleator and Robert~Endre Tarjan.
+\newblock Self-adjusting binary search trees.
+\newblock {\em J. ACM}, 32(3):652--686, July 1985.
+
+\bibitem{demainDinamicOpti}
+Erik~D. Demaine, Dion. Harmon, John. Iacono, and Mihai. Patrascu.
+\newblock Dynamic optimality—almost.
+\newblock {\em SIAM Journal on Computing}, 37(1):240--251, 2007.
+
+\bibitem{algEinf}
+Thomas~H. Cormen, Charles~E. Leiserson, Ronald~L. Rivest, and Clifford Stein.
+\newblock {\em Introduction to Algorithms, Third Edition}.
+\newblock The MIT Press, 3rd edition, 2009.
+
+\bibitem{nRotations}
+Karel Culik and Derick Wood.
+\newblock A note on some tree similarity measures.
+\newblock {\em Information Processing Letters}, 15(1):39 -- 42, 1982.
+
+\bibitem{wilberLowerBounds}
+Wilber Robert.
+\newblock Lower bounds for accessing binary search trees with rotations.
+\newblock {\em SIAM Journal on Computing}, 18(1):56--67, 1989.
+
+\bibitem{staticOptimal}
+Norman Abramson.
+\newblock {\em {Information theory and coding}}.
+\newblock McGraw-Hill electronic sciences series. McGraw-Hill, New York, NY,
+  1963.
+
+\bibitem{upperBounds}
+Parinya Chalermsook, Mayank Goswami, L{\'{a}}szl{\'{o}} Kozma, Kurt Mehlhorn,
+  and Thatchaphol Saranurak.
+\newblock The landscape of bounds for binary search trees.
+\newblock {\em CoRR}, abs/1603.04892, 2016.
+
+\bibitem{conSplit}
+Robert~Endre Tarjan.
+\newblock {\em Data Structures and Network Algorithms}.
+\newblock Society for Industrial and Applied Mathematics, USA, 1983.
+
+\bibitem{dynFinger}
+Richard Cole, Bud Mishra, Jeanette Schmidt, and Alan Siegel.
+\newblock On the dynamic finger conjecture for splay trees. part i: Splay
+  sorting log n-block sequences.
+\newblock {\em SIAM Journal on Computing}, 30(1):1--43, 2000.
+
+\bibitem{zipper}
+Prosenjit Bose, Karim Douïeb, Vida Dujmović, and Rolf Fagerberg.
+\newblock An o(log log n)-competitive binary search tree with optimal
+  worst-case access times.
+\newblock {\em Algorithm Theory - SWAT 2010}, page 38–49, 2010.
+
+\bibitem{multisplay}
+Daniel~Dominic Sleator and Chengwen~Chris Wang.
+\newblock Dynamic optimality and multi-splay trees.
+\newblock Technical report, 2004.
+
+\bibitem{porpMultiSplay}
+Jonathan Derryberry, Daniel Sleator, and Chengwen~Chris Wang.
+\newblock Properties of multi-splay trees, 2009.
+
+\end{thebibliography}

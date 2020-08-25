@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{nRotations}
+Karel Culik and Derick Wood.
+\newblock A note on some tree similarity measures.
+\newblock {\em Information Processing Letters}, 15(1):39 -- 42, 1982.
+
+\bibitem{wilberLowerBounds}
+Robert. Wilber.
+\newblock Lower bounds for accessing binary search trees with rotations.
+\newblock {\em SIAM Journal on Computing}, 18(1):56--67, 1989.
+
+\bibitem{staticOptimal}
+Norman Abramson.
+\newblock {\em {Information theory and coding}}.
+\newblock McGraw-Hill electronic sciences series. McGraw-Hill, New York, NY,
+  1963.
+
+\bibitem{upperBounds}
+Parinya Chalermsook, Mayank Goswami, L{\'{a}}szl{\'{o}} Kozma, Kurt Mehlhorn,
+  and Thatchaphol Saranurak.
+\newblock The landscape of bounds for binary search trees.
+\newblock {\em CoRR}, abs/1603.04892, 2016.
+
+\end{thebibliography}

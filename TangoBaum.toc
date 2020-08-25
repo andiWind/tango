@@ -1,0 +1,9 @@
+\babel@toc {german}{}
+\contentsline {section}{\numberline {1}Tango Baum}{3}%
+\contentsline {subsection}{\numberline {1.1}Interleave Lower Bound}{3}%
+\contentsline {subsection}{\numberline {1.2}Aufbau des Tango Baum}{7}%
+\contentsline {subsection}{\numberline {1.3}Die \textit {access} Operation beim Tango Baum}{11}%
+\contentsline {paragraph}{cut Operation}{13}%
+\contentsline {paragraph}{join Operation}{14}%
+\contentsline {paragraph}{access Operation}{15}%
+\contentsline {subsection}{\numberline {1.4}Laufzeitanalyse für access}{16}%
