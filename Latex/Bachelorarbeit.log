@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  26 AUG 2020 11:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  26 AUG 2020 19:04
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -758,7 +758,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 629--632
  []
 
 \c@Korollar1=\count281
-[37] [38] [39]
+[37] [38]
+Overfull \hbox (20.50803pt too wide) in paragraph at lines 710--711
+\T1/cmr/m/n/12 der Ope-ra-ti-on ver-ur-sach-te Ver-än-de-rung am Po-ten-ti-al, 
+[].
+ []
+
+[39]
 Underfull \hbox (badness 10000) in paragraph at lines 728--730
 
  []
@@ -767,11 +773,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 728--730
 <Medien/DynOpt/upperBounds.png, id=201, 592.614pt x 811.23074pt>
 File: Medien/DynOpt/upperBounds.png Graphic file (type png)
 <use Medien/DynOpt/upperBounds.png>
-Package pdftex.def Info: Medien/DynOpt/upperBounds.png  used on input line 779.
+Package pdftex.def Info: Medien/DynOpt/upperBounds.png  used on input line 778.
 
 (pdftex.def)             Requested size: 234.00238pt x 320.32741pt.
  [42]
-Overfull \hbox (17.8177pt too wide) in paragraph at lines 790--791
+Overfull \hbox (17.8177pt too wide) in paragraph at lines 789--790
 \T1/cmr/m/n/12 Sei $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x[]; 
 x[]; :; x[]$ \T1/cmr/m/n/12 ei-ne Zu-griffs-fol-ge und sei $\OML/cmm/m/it/12 K 
 \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 k \OMS/cmsy/m/n/12 2 \U/ms
@@ -780,7 +786,7 @@ b/m/n/12 N\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 k[]\OMS/cmsy/m/n/12 g$\T1/cmr/m/n/
  []
 
 [43 <./Medien/DynOpt/upperBounds.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 793--795
+Underfull \hbox (badness 10000) in paragraph at lines 792--794
 
  []
 
@@ -788,7 +794,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 793--795
 File: Medien/Tango/lowerBoundTree.png Graphic file (type png)
 <use Medien/Tango/lowerBoundTree.png>
 Package pdftex.def Info: Medien/Tango/lowerBoundTree.png  used on input line 80
-2.
+1.
 (pdftex.def)             Requested size: 390.0pt x 125.51674pt.
 [44] [45 <./Medien/Tango/lowerBoundTree.png>] [46]
 <Medien/Tango/transitionPoints.png, id=221, 1962.73276pt x 675.12225pt>
@@ -858,12 +864,6 @@ File: Medien/Tango/join2.png Graphic file (type png)
 Package pdftex.def Info: Medien/Tango/join2.png  used on input line 1024.
 (pdftex.def)             Requested size: 390.0pt x 223.85834pt.
  [58]
-Overfull \hbox (3.0258pt too wide) in paragraph at lines 1029--1030
-\T1/cmr/m/n/12 Sei $\OML/cmm/m/it/12 n$ \T1/cmr/m/n/12 die An-zahl der Kno-ten 
-von $\OML/cmm/m/it/12 H$\T1/cmr/m/n/12 . Je-der der neun Schrit-te kann in $\OM
-L/cmm/m/it/12 O []$
- []
-
 [59 <./Medien/Tango/join.png> <./Medien/Tango/join2.png>]
 <Medien/Tango/cutJoin.png, id=282, 1408.0605pt x 649.82774pt>
 File: Medien/Tango/cutJoin.png Graphic file (type png)
@@ -895,7 +895,13 @@ Package pdftex.def Info: Medien/RotSchwarzBaum/vereinigen2.png  used on input l
 ine 1097.
 (pdftex.def)             Requested size: 234.0006pt x 234.00238pt.
 [63 <./Medien/RotSchwarzBaum/vereinigen.png>] [64 <./Medien/RotSchwarzBaum/vere
-inigen2.png>] [65]
+inigen2.png>]
+Overfull \hbox (2.55995pt too wide) in paragraph at lines 1124--1129
+\T1/cmr/m/it/12 insertFixup \T1/cmr/m/n/12 ein-ge-gan-gen. Sei $\OML/cmm/m/it/1
+2 w$ \T1/cmr/m/n/12 die Wur-zel des ver-ei-nig-ten BST nach [].
+ []
+
+[65]
 Overfull \hbox (7.86269pt too wide) in paragraph at lines 1130--1130
 []\T1/cmr/bx/n/14.4 Tango Baum kon-for-mes Auf-tei-len beim Rot-Schwarz-
  []
@@ -906,65 +912,76 @@ Underfull \hbox (badness 10000) in paragraph at lines 1144--1145
  []
 
 [67]
-Overfull \hbox (1.97984pt too wide) in paragraph at lines 1153--1160
+Underfull \hbox (badness 10000) in paragraph at lines 1153--1156
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1157--1159
+
+ []
+
+
+Overfull \hbox (1.97984pt too wide) in paragraph at lines 1160--1162
 [] [] \OT1/cmr/m/n/12 = [] []$ \T1/cmr/m/n/12 denn $[] [] \OML/cmm/m/it/12 > []
  []$ \T1/cmr/m/n/12 und \T1/cmr/m/it/12 in-sert-Fi-xup \T1/cmr/m/n/12 kann die 
 Schwarz-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1153--1160
+Underfull \hbox (badness 10000) in paragraph at lines 1160--1162
 
  []
 
-<Medien/RotSchwarzBaum/aufteilen.png, id=314, 1930.21124pt x 1853.12325pt>
+[68]
+<Medien/RotSchwarzBaum/aufteilen.png, id=317, 1930.21124pt x 1853.12325pt>
 File: Medien/RotSchwarzBaum/aufteilen.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/aufteilen.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/aufteilen.png  used on input lin
-e 1186.
+e 1188.
 (pdftex.def)             Requested size: 312.00119pt x 299.53134pt.
-[68] [69 <./Medien/RotSchwarzBaum/aufteilen.png>]
+ [69 <./Medien/RotSchwarzBaum/aufteilen.png>]
 <Medien/Splaybaum/zigZag.png, id=322, 4129.62825pt x 2044.0365pt>
 File: Medien/Splaybaum/zigZag.png Graphic file (type png)
 <use Medien/Splaybaum/zigZag.png>
-Package pdftex.def Info: Medien/Splaybaum/zigZag.png  used on input line 1222.
+Package pdftex.def Info: Medien/Splaybaum/zigZag.png  used on input line 1224.
 (pdftex.def)             Requested size: 467.99881pt x 231.64401pt.
 
-Overfull \hbox (77.99881pt too wide) in paragraph at lines 1222--1223
+Overfull \hbox (77.99881pt too wide) in paragraph at lines 1224--1225
  [][] 
  []
 
 <Medien/Splaybaum/splay.png, id=323, 673.91776pt x 417.9615pt>
 File: Medien/Splaybaum/splay.png Graphic file (type png)
 <use Medien/Splaybaum/splay.png>
-Package pdftex.def Info: Medien/Splaybaum/splay.png  used on input line 1228.
+Package pdftex.def Info: Medien/Splaybaum/splay.png  used on input line 1230.
 (pdftex.def)             Requested size: 390.0pt x 241.87575pt.
 [70] [71 <./Medien/Splaybaum/zigZag.png> <./Medien/Splaybaum/splay.png>]
 \c@Lemma1=\count282
 
-Underfull \hbox (badness 10000) in paragraph at lines 1245--1246
+Underfull \hbox (badness 10000) in paragraph at lines 1247--1248
 
  []
 
 
-Overfull \hbox (52.98946pt too wide) detected at line 1264
+Overfull \hbox (52.98946pt too wide) detected at line 1266
 []
  []
 
 [72]
-Overfull \hbox (54.17792pt too wide) detected at line 1278
+Overfull \hbox (54.17792pt too wide) detected at line 1280
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1291--1292
+Underfull \hbox (badness 10000) in paragraph at lines 1293--1294
 
  []
 
 [73]
 \c@Satz2=\count283
 
-Overfull \hbox (9.7803pt too wide) in paragraph at lines 1298--1300
+Overfull \hbox (9.7803pt too wide) in paragraph at lines 1300--1302
 []\T1/cmr/bx/n/12 working set 6.1. []\T1/cmr/m/it/12 Es sei $\OML/cmm/m/it/12 T
 $ \T1/cmr/m/it/12 ein Splay Baum mit $\OML/cmm/m/it/12 n$ \T1/cmr/m/it/12 Kno-t
 en. Sei $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x[]; x[]; ::; x[
@@ -976,14 +993,14 @@ en. Sei $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 x[]; x[]; ::; x[
 File: Medien/Zipper/zipperPathRep.png Graphic file (type png)
 <use Medien/Zipper/zipperPathRep.png>
 Package pdftex.def Info: Medien/Zipper/zipperPathRep.png  used on input line 13
-22.
+24.
 (pdftex.def)             Requested size: 312.00119pt x 216.96848pt.
  [75]
 <Medien/Zipper/preferredPathZigZag.png, id=347, 1714.60574pt x 2399.364pt>
 File: Medien/Zipper/preferredPathZigZag.png Graphic file (type png)
 <use Medien/Zipper/preferredPathZigZag.png>
 Package pdftex.def Info: Medien/Zipper/preferredPathZigZag.png  used on input l
-ine 1328.
+ine 1330.
 (pdftex.def)             Requested size: 195.06941pt x 272.99881pt.
  [76 <./Medien/Zipper/zipperPathRep.png>] [77 <./Medien/Zipper/preferredPathZig
 Zag.png>]
@@ -991,22 +1008,22 @@ Zag.png>]
 File: Medien/Zipper/hybrid/extractHybrid.png Graphic file (type png)
 <use Medien/Zipper/hybrid/extractHybrid.png>
 Package pdftex.def Info: Medien/Zipper/hybrid/extractHybrid.png  used on input 
-line 1341.
+line 1343.
 (pdftex.def)             Requested size: 351.7448pt x 195.0pt.
 <Medien/Multisplay/referenzTree.png, id=357, 1300.86pt x 670.30424pt>
 File: Medien/Multisplay/referenzTree.png Graphic file (type png)
 <use Medien/Multisplay/referenzTree.png>
 Package pdftex.def Info: Medien/Multisplay/referenzTree.png  used on input line
- 1349.
+ 1351.
 (pdftex.def)             Requested size: 312.00119pt x 160.7638pt.
 <Medien/Multisplay/pfadRepresentation.png, id=358, 2766.7365pt x 1043.69925pt>
 File: Medien/Multisplay/pfadRepresentation.png Graphic file (type png)
 <use Medien/Multisplay/pfadRepresentation.png>
 Package pdftex.def Info: Medien/Multisplay/pfadRepresentation.png  used on inpu
-t line 1355.
+t line 1357.
 (pdftex.def)             Requested size: 390.0pt x 147.12021pt.
  [78 <./Medien/Zipper/hybrid/extractHybrid.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1360--1361
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1363
 
  []
 
@@ -1016,7 +1033,7 @@ ion.png>]
 File: Medien/laufzeittest/MainGUI.png Graphic file (type png)
 <use Medien/laufzeittest/MainGUI.png>
 Package pdftex.def Info: Medien/laufzeittest/MainGUI.png  used on input line 13
-68.
+70.
 (pdftex.def)             Requested size: 314.12572pt x 585.0pt.
  [80]
 Overfull \vbox (16.59999pt too high) has occurred while \output is active []
@@ -1027,19 +1044,19 @@ Overfull \vbox (16.59999pt too high) has occurred while \output is active []
 File: Medien/laufzeittest/accessGUI.png Graphic file (type png)
 <use Medien/laufzeittest/accessGUI.png>
 Package pdftex.def Info: Medien/laufzeittest/accessGUI.png  used on input line 
-1378.
+1380.
 (pdftex.def)             Requested size: 117.00119pt x 58.50119pt.
 <Medien/laufzeittest/RuntimeGui.png, id=378, 378.213pt x 206.57175pt>
 File: Medien/laufzeittest/RuntimeGui.png Graphic file (type png)
 <use Medien/laufzeittest/RuntimeGui.png>
 Package pdftex.def Info: Medien/laufzeittest/RuntimeGui.png  used on input line
- 1386.
+ 1388.
 (pdftex.def)             Requested size: 390.0pt x 213.02026pt.
 <Medien/laufzeittest/ResultGUI.png, id=379, 231.86626pt x 116.23425pt>
 File: Medien/laufzeittest/ResultGUI.png Graphic file (type png)
 <use Medien/laufzeittest/ResultGUI.png>
 Package pdftex.def Info: Medien/laufzeittest/ResultGUI.png  used on input line 
-1396.
+1398.
 (pdftex.def)             Requested size: 155.99762pt x 78.20287pt.
  [82 <./Medien/laufzeittest/accessGUI.png> <./Medien/laufzeittest/RuntimeGui.pn
 g>]
@@ -1047,17 +1064,17 @@ g>]
 File: Medien/laufzeittest/klassen.png Graphic file (type png)
 <use Medien/laufzeittest/klassen.png>
 Package pdftex.def Info: Medien/laufzeittest/klassen.png  used on input line 14
-04.
+06.
 (pdftex.def)             Requested size: 390.0pt x 337.40059pt.
  [83 <./Medien/laufzeittest/ResultGUI.png> <./Medien/laufzeittest/klassen.png>]
 <Medien/laufzeittest/optionSpeicher.png, id=391, 483.0045pt x 355.92975pt>
 File: Medien/laufzeittest/optionSpeicher.png Graphic file (type png)
 <use Medien/laufzeittest/optionSpeicher.png>
 Package pdftex.def Info: Medien/laufzeittest/optionSpeicher.png  used on input 
-line 1431.
+line 1433.
 (pdftex.def)             Requested size: 390.0pt x 287.39453pt.
  [84]
-Overfull \hbox (4.38232pt too wide) in paragraph at lines 1435--1435
+Overfull \hbox (4.38232pt too wide) in paragraph at lines 1437--1437
 []\T1/cmr/bx/n/14.4 Laufzeittests zwi-schen Tan-go Baum und Splay Baum 
  []
 
@@ -1065,28 +1082,28 @@ Overfull \hbox (4.38232pt too wide) in paragraph at lines 1435--1435
 File: Medien/laufzeittest/diagramm/randomaccess.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/randomaccess.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/randomaccess.png  used on
- input line 1448.
+ input line 1450.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
 [85 <./Medien/laufzeittest/optionSpeicher.png>]
 <Medien/laufzeittest/diagramm/brp.png, id=401, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/brp.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/brp.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/brp.png  used on input li
-ne 1477.
+ne 1479.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [86 <./Medien/laufzeittest/diagramm/randomaccess.png>]
 <Medien/laufzeittest/diagramm/staticfinger.png, id=406, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/staticfinger.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/staticfinger.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/staticfinger.png  used on
- input line 1512.
+ input line 1514.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [87 <./Medien/laufzeittest/diagramm/brp.png>]
 <Medien/laufzeittest/diagramm/dynamicfinger.png, id=411, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/dynamicfinger.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/dynamicfinger.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/dynamicfinger.png  used o
-n input line 1546.
+n input line 1548.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [88 <./Medien/laufzeittest/diagramm/staticfinger.png>]
 <Medien/laufzeittest/diagramm/dynamicfingerNfest.png, id=416, 433.62pt x 289.08
@@ -1095,21 +1112,21 @@ File: Medien/laufzeittest/diagramm/dynamicfingerNfest.png Graphic file (type pn
 g)
 <use Medien/laufzeittest/diagramm/dynamicfingerNfest.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/dynamicfingerNfest.png  u
-sed on input line 1575.
+sed on input line 1577.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [89 <./Medien/laufzeittest/diagramm/dynamicfinger.png>]
 <Medien/laufzeittest/diagramm/workingset.png, id=421, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/workingset.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/workingset.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/workingset.png  used on i
-nput line 1606.
+nput line 1608.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [90 <./Medien/laufzeittest/diagramm/dynamicfingerNfest.png>]
 <Medien/laufzeittest/diagramm/workingset2.png, id=426, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/workingset2.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/workingset2.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/workingset2.png  used on 
-input line 1632.
+input line 1634.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [91 <./Medien/laufzeittest/diagramm/workingset.png>] [92 <./Medien/laufzeittes
 t/diagramm/workingset2.png>]
@@ -1117,13 +1134,13 @@ t/diagramm/workingset2.png>]
 File: Medien/laufzeittest/diagramm/kleinGros.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/kleinGros.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/kleinGros.png  used on in
-put line 1666.
+put line 1668.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
 <Medien/laufzeittest/diagramm/sorted1.png, id=437, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/sorted1.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/sorted1.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/sorted1.png  used on inpu
-t line 1694.
+t line 1696.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [93 <./Medien/laufzeittest/diagramm/kleinGros.png>] [94 <./Medien/laufzeittest
 /diagramm/sorted1.png>]
@@ -1131,17 +1148,17 @@ t line 1694.
 File: Medien/laufzeittest/diagramm/sorted2.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/sorted2.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/sorted2.png  used on inpu
-t line 1723.
+t line 1725.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [95 <./Medien/laufzeittest/diagramm/sorted2.png>]
 <Medien/laufzeittest/diagramm/sorted3.png, id=451, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/sorted3.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/sorted3.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/sorted3.png  used on inpu
-t line 1752.
+t line 1754.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
 
-Overfull \hbox (14.52644pt too wide) in paragraph at lines 1749--1754
+Overfull \hbox (14.52644pt too wide) in paragraph at lines 1751--1756
 \T1/cmr/m/n/12 Aufsteigend und ab-stei-gend sor-tiert, ge-schach-telt. Die Zu-g
 riffs-fol-ge ist $\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; n; \OT1/cmr/m/n/12 2\OML/
 cmm/m/it/12 ; n \OMS/cmsy/m/n/12  
@@ -1150,47 +1167,47 @@ cmm/m/it/12 ; n \OMS/cmsy/m/n/12  
 <anhang.pdf, id=452, 597.50829pt x 845.0471pt>
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf>
-Package pdftex.def Info: anhang.pdf  used on input line 1778.
+Package pdftex.def Info: anhang.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf>
-Package pdftex.def Info: anhang.pdf  used on input line 1778.
+Package pdftex.def Info: anhang.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 <anhang.pdf, id=455, page=1, 597.50829pt x 845.0471pt>
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 1778.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 1780.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 1778.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 1780.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 [96 <./Medien/laufzeittest/diagramm/sorted3.png>]
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 1778.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 1780.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 1778.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 1780.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 1778.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 1780.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [97 <./anhang.pdf>]
 <anhang.pdf, id=491, page=2, 597.50829pt x 845.0471pt>
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 2>
-Package pdftex.def Info: anhang.pdf , page2 used on input line 1778.
+Package pdftex.def Info: anhang.pdf , page2 used on input line 1780.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 2>
-Package pdftex.def Info: anhang.pdf , page2 used on input line 1778.
+Package pdftex.def Info: anhang.pdf , page2 used on input line 1780.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 2>
-Package pdftex.def Info: anhang.pdf , page2 used on input line 1778.
+Package pdftex.def Info: anhang.pdf , page2 used on input line 1780.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [98 <./anhang.pdf>] [99] (Bachelorarbeit.lof [100]
 Overfull \hbox (20.04707pt too wide) in paragraph at lines 35--35
@@ -1209,12 +1226,12 @@ m/n/12 zwei-er RBTs glei-cher Schwarz-Höhe,
 \openout4 = `Bachelorarbeit.lof'.
 
  [101]
-Underfull \hbox (badness 10000) in paragraph at lines 1789--1796
+Underfull \hbox (badness 10000) in paragraph at lines 1791--1798
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1798--1799
+Underfull \hbox (badness 10000) in paragraph at lines 1800--1801
 
  []
 
@@ -1261,7 +1278,7 @@ gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
 blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (103 pages, 8836857 bytes).
+Output written on Bachelorarbeit.pdf (103 pages, 8844237 bytes).
 PDF statistics:
  1098 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
