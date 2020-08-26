@@ -1,0 +1,373 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage{float}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{csquotes}
+\usepackage[font=small,labelfont=bf]{caption}
+
+%\usepackage[pages=some]{background} % Draft Wasserzeichen mit Option pages=all sonst pages=some
+
+
+
+\title{Bachelorarbeit}
+\author{
+	Andreas Windorfer\\
+}
+\date{\today}
+
+
+\begin {document}
+
+
+\maketitle
+\newpage
+
+\newpage
+\tableofcontents
+
+
+\newpage
+
+
+\section{Rot-Schwarz-Baum}
+Der Rot-Schwarz-Baum gehört zur Gruppe der \textbf{balancierten BST} und erfüllt alle Eigenschaften um ihn als Hilfsstruktur im Tango Baum zu verwenden. Genau das ist auch die Rolle des Rot-Schwarz-Baumes in dieser Ausarbeitung. Damit die Beschreibungen nicht zu kleinteilig werden, wird darauf verzichtet, die Pflege der \textit{depth} Variablen und der Zeiger auf andere Hilfsbäume zu beschreiben. Bei balancierten BST gilt für die Höhe $h = \mathit{O(\log n)}$, mit $n =$ Anzahl der Knoten. Jeder Knoten benötigt ein zusätzliches Attribut, um eine Farbinformation zu speichern. Der Name der Datenstruktur kommt daher, dass die beiden durch das zusätzliche Attribut unterschiedenen Zustände als \textit{rot} und \textit{schwarz} bezeichnet werden. Die Farbe ist also eine Eigenschaft der Knoten und im folgenden wird einfach von roten bzw. schwarzen Knoten gesprochen. Als Blätter werden schwarze Sonderknoten verwendet, deren Schlüssel auf einen Wert außerhalb des Universums, hier \textit{null}, gesetzt wird, um sie eindeutig erkennen zu können. $\mathit{null}$ gehört nicht zur Schlüsselmenge des RBT. Fehlende Kinder von Knoten mit gewöhnlichem Schlüssel werden durch solche Blätter ersetzt.  
+
+\noindent Folgende zusätzliche Eigenschaften müssen bei einem Rot-Schwarz-Baum erfüllt sein. 
+
+\begin{enumerate}
+	\item Jeder Knoten ist entweder rot oder schwarz.
+	\item Die Wurzel ist schwarz.
+	\item Jedes Blatt (Sonderknoten) ist schwarz.
+	\item Der Elternknoten eines roten Knotens ist schwarz.
+	\item Für jeden Knoten gilt, dass alle Pfade, die an ihm starten und an einem Blatt (Sonderknoten) enden, die gleiche Anzahl an schwarzen Knoten enthalten. 
+\end{enumerate}  
+Sei $(v_0,v_1,...,v_n)$ ein Pfad von einem Knoten $v_0$ zu einem Blatt $v_n$. Die Anzahl der schwarzen Knoten innerhalb $(v_1,...,v_n)$ wird als \textbf{Schwarz-Höhe} $\mathit{bh(v_0)}$ von Knoten $v_0$ bezeichnet. Die eigene Farbe des betrachteten Knotens bleibt dabei also außen vor. Dadurch hat ein Knoten die gleiche Schwarz-Höhe wie ein rotes Kind und eine um eins erhöhte Schwarz-Höhe gegenüber einem schwarzen Kind. Die Schwarz-Höhe der Wurzel entspricht der \textbf{Schwarz-Höhe des Baumes~ $bh(T)$}, wobei ein leerer Baum Schwarz-Höhe $0$ hat. Die Schwarz-Höhe eines Knoten $x$ ist genau dann eindeutig wenn er Eigenschaft 5 nicht verletzt. Hält $x$ Eigenschaft 5 ein und sei $i$ die Anzahl schwarzer Knoten in den entsprechenden Pfaden, so gilt $\mathit{bh(x)} = i$ wenn $x$ rot ist und $\mathit{bh(x)} = i - 1$ wenn $x$ schwarz ist. Ist $\mathit{bh(x)}$ eindeutig, so enthält jeder Pfad der mit $x$ startet und an einem Blatt endet $\mathit{bh(x)} + 1$ schwarze Knoten, wenn $x$ schwarz ist und  $\mathit{bh(x)}$ schwarze Knoten wenn $x$ rot ist.\\ Jeder Knoten speichert seine Schwarz-Höhe als weiteres Attribut, da wir dieses in Abschnitt \ref{vereinigen} benötigen. Natürlich muss das Attribut, dann auch gesetzt und gepflegt werden, wobei es bei Sonderknoten fest mit $0$ belegt ist. Im folgenden wird \textbf{RBT} (Red Black Tree) als Abkürzung für Rot Schwarz Baum verwendet. Aufgrund der Sonderknoten gibt es eine etwas spezielle Situation, bei einem RBT mit Höhe 1. Diese Konstellation ist nur mit einem einzelnen Sonderknoten erreichbar, so dass man statt dessen auch einfach den leeren Baum verwenden könnte. Auch diese Konstellation erfüllt aber die Eigenschaften, so dass sie kein Problem darstellt. \\
+
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/IOBaum"}
+	\caption{Rot-Schwarz-Baum ohne Verletzung von Eigenschaften. }
+	\label{fig:IOBaum}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/NIOBaumZweiRote"}
+	\caption{Rot-Schwarz-Baum bei dem Eigenschaft vier und fünf verletzt sind. }
+	\label{fig:NIOBaumZweiRote}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/NIOBaumPfadlänge"}
+	\caption{Rot-Schwarz-Baum bei dem Eigenschaft fünf verletzt ist.  }
+	\label{fig:NIOBaumPfadlänge}
+\end{figure}
+\subsection{Grundoperationen}
+\paragraph{Suchen im Rot-Schwarz-Baum}
+Die Suche unterscheidet sich nur in einem Punkt von der in \ref{BST Operationen} vorgestellten. Wird nach einem Schlüssel gesucht, der im RBT nicht vorhanden ist, so wird einer der Sonderknoten erreicht. In diesem Fall wird die Suche abgebrochen und eine leere Referenz zurückzugeben. Die Operation verändert den RBT nicht. 
+
+\paragraph{Einfügen in den Rot-Schwarz-Baum}
+\textit{insert} wird für eine Hilfsstruktur zum Tango Baum eigentlich nicht benötigt. Für \textit{concatenate} wird später jedoch eine Hilfsoperation benötigt, die am Besten zu \textit{insert} beschrieben werden kann.
+Sei $k$ der einzufügende Schlüssel. Zunächst wird wie beim Suchen vorgegangen. Wird $k$ gefunden wird der RBT nicht verändert. Ansonsten wird ein Sonderknoten $b$ erreicht. Ein neu erzeugter roter Knoten $v_k$ mit Schlüssel $k$ und Schwarz-Höhe $1$ nimmt den Platz von $b$ ein. $k$ werden Sonderknoten als linkes und rechtes Kind angefügt. $k$ ist nun im Baum enthalten, es muss jedoch auf mögliche Verletzungen der fünf Eigenschaften geachtet werden. Welche können betroffen sein ?
+
+\begin{enumerate}
+	\item Es ist immer noch jeder Knoten entweder rot oder schwarz.
+	\item Wurde in den leeren Baum eingefügt, so ist der neu eingefügte rote Knoten die Wurzel, was eine Verletzung darstellt.  Waren bereits Knoten im Baum vorhanden blieb die Wurzel unverändert.
+	\item Aufgrund der Sonderknoten sind die Blätter immer noch schwarz.
+	\item Der Baum wird nur direkt an der Einfügestelle verändert. Der neue Knoten hat schwarze Kindknoten, er könnte jedoch einen roten Elternknoten haben, so dass diese Eigenschaft verletzt wäre.
+	\item Die Schwarz-Höhe von $v_k$ ist korrekt gesetzt. Die Schwarz-Höhe keines anderen Knotens hat sich verändert, denn den Platz eines schwarzen Knoten mit Schwarz-Höhe $0$ nimmt nun ein roter Knoten mit Schwarz-Höhe $1$ ein. Eigenschaft fünf bleibt also erhalten. 
+\end{enumerate}  
+
+\noindent Es können also die Eigenschaften zwei und vier betroffen sein. Jedoch nur eine von ihnen, denn Eigenschaft zwei wird genau dann verletzt wenn der neue Knoten die Wurzel des Baumes ist, dann kann er aber keinen roten Elternknoten haben.
+
+ \noindent Zur Korrektur wird zum Ende von \textit{insert} eine zusätzliche Operation, \textbf{insertFixup(Node $v_{in}$)} aufgerufen. Diese Operation arbeitet sich von $v_i$ startend, solange in einer Schleife nach oben im BST durch, bis alle Eigenschaften wieder erfüllt sind. Die Schleifenbedingung ist, dass eine Verletzung vorliegt. Dazu muss geprüft werden ob der betrachtete Knoten $x$ die rote Wurzel des Gesamtbaumes ist, oder ob er und sein Elternknoten beide rot sind. Vor dm ersten Durchlauf wird $x = v_{in}$ gesetzt. Innerhalb der Schleife werden sechs Fälle unterschieden. Im folgenden wird auf vier Fälle detailliert eingegangen. Die restlichen zwei verhalten sich symmetrisch zu einem solchen. Jeder der Fälle verantwortet, dass zum Start der nächsten Iteration wieder nur maximal eine der beiden Eigenschaften zwei oder vier verletzt sein kann und Eigenschaft vier höchstens an einem Knoten verletzt ist. Die Fallauswertung geschieht in aufsteigender Reihenfolge. Deshalb kann man innerhalb einer Fallbehandlung verwenden, dass die vorherigen Fallbedingungen nicht erfüllt sind. Eigenschaft eins bleibt in der Beschreibung außen vor, da es während der gesamten Ausführungszeit der Operation nur Knoten gibt, die entweder rot oder schwarz sind. \\
+ 
+\noindent\textbf{Fall 1: $x$ ist die rote Wurzel des RBT: }
+Dieser Fall wird behandelt in dem die Wurzel schwarz gefärbt wird. Man muss noch zeigen, dass es durch das Umfärben zu keiner anderen Verletzung gekommen ist.\\
+
+Betrachtung der Eigenschaften:
+\begin{enumerate}
+	\item -
+	\item Die Wurzel wurde schwarz gefärbt.
+	\item Die Blätter (Sonderknoten) sind unverändert.
+	\item Es wurden weder rote Knoten hinzugefügt, noch wurde die Kantenmenge verändert. 
+	\item Das Umfärben der Wurzel kann hierauf keinen Einfluss haben, da sie in der Berechnung der Schwarz-Höhe jedes Knotens außen vor ist.
+\end{enumerate}  
+
+\noindent Es wird also keine Eigenschaft mehr verletzt und die Schleife wird keine weitere Iteration durchführen.\\
+ Die Fälle 2 - 6 behandeln nun die Situationen, in denen sowohl $x$ als auch dessen Elternknoten $y$ rote Knoten sind. Da Eigenschaft fünf nach jeder Iteration erfüllt ist muss $y$ einen Geschwisterknoten haben. Denn da zu Beginn einer Iteration nur eine Eigenschaft verletzt sein kann, kann der rote $y$ nicht die Wurzel sein, also muss auch $y$ einen Vorgänger $z$ haben. Da $z$ kein Blatt(Sonderknoten) ist, müssen beide Kinder vorhanden sein.\\
+  Außerdem muss $z$ schwarz sein, ansonsten wäre Eigenschaft vier an zwei Knoten verletzt.\\
+ 
+\noindent\textbf{Fall 2: $y$ hat einen roten Geschwisterknoten: }
+\noindent Diesen Fall veranschaulicht Abbildung \ref{fig:EinfügenFixUpFall2}. Es wird $z$ rot gefärbt und beide Kinder von $z$, also $y$ und dessen Geschwisterknoten, schwarz. Die Schwarz-Höhe von $z$ wird um eins erhöht. Somit ist der Elternknoten von $x$ nun schwarz und die Verletzung der Eigenschaft vier wurde an dieser Stelle behoben. Wie sieht es aber mit den Verletzungen insgesamt aus ? \\
+
+Betrachtung der Eigenschaften:
+
+\begin{enumerate}
+	\item -
+	\item Wenn $z$ die Wurzel des Baumes ist, wurde sie rot gefärbt und eine Verletzung liegt vor.
+	\item Der rot umgefärbte Knoten $z'$ hat zwei Kinder, somit wurde kein Blatt rot gefärbt.
+	\item  Wenn der rot gefärbte Knoten $z'$ nicht die Wurzel ist, könnte er einen roten Elternknoten haben und Eigenschaft vier ist weiterhin Verletzt. Das Problem liegt nun aber zwei Baumebenen höher.
+	\item  Die Schwarz-Höhen der Vorfahren von $z'$ bleiben unverändert, da jeder Pfad von ihnen zu einem Blatt auch entweder $y'$ oder dessen Geschwisterknoten enthält. $z'$ Schwarz-Höhe steigt um eins gegenüber $z$, bleibt aber eindeutig. An keinem anderen Knoten ändert sich die Schwarz-Höhe. 
+
+\end{enumerate} 
+Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn das Problem noch nicht an der Wurzel ist, liegt es zumindest zwei Ebenen näher daran. $x$ wird auf $z'$ gesetzt. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall1"}
+	\caption{einfügen-fixup. Dargestellt ist Fall 1  }
+	\label{fig:EinfügenFixUpFall1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width= 1\textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall2"}
+	\caption{einfügen-fixup. Dargestellt ist Fall 2  }
+	\label{fig:EinfügenFixUpFall2}
+\end{figure}
+
+\noindent\textbf{Fall 3: $x$ ist ein linkes Kind. $y$ ist ein linkes Kind: }\\
+\noindent Abbildung \ref{fig:EinfügenFixUpFall3} zeigt eine entsprechende Situation. Es wird eine Rechtsrotation auf $y$ ausgeführt. Anschließend wird $z$ rot gefärbt und $y$ schwarz. \\
+
+\noindent Betrachtung der Eigenschaften:\\
+\noindent Dazu werden vier weitere Variablen auf Knoten verwendet. Es zeigt $\mathit{xl}$ auf das linke Kind von $x$,  $\mathit{xr}$ entsprechend das rechte Kind. $\mathit{yr}$ und $zr$ bezeichnen die rechten Kinder von $y$ bzw. $z$. Nachfolgend wird verwendet, dass die Teilbäume mit den Wurzeln $xl$, $xr$, $yr$ und $zr$ durch die Ausführung unverändert bleiben.
+\begin{enumerate}
+	\item -
+	\item Wenn $z$ zu Beginn nicht die Wurzel des Gesamtbaumes war, bleibt diese unverändert. Ansonsten wurde durch die Rotation $y'$ zur neuen Wurzel und $y'$ wurde schwarz gefärbt. 
+	\item  In der zweiten Ebene unter $y'$ befinden sich ausschließlich die unveränderten Teilbäumen mit den Wurzeln $xl'$, $xr'$, $yr'$ oder $zr'$. An den Blättern verändert sich also durch die Ausführung nichts.
+	\item  Knoten $x'$ ist linkes Kind des schwarzen $y'$. Die Teilbäume von $x'$ blieben unverändert. Der linke Teilbaum von $y'$ enthält somit keine aufeinanderfolgenden roten Knoten. Das rechte Kind von $y'$ ist der rote Knoten $z'$. Rechts an $z'$ hängt nun ein unveränderter Teilbaum, dessen Wurzel zuvor Geschwisterknoten von $y$ war. Dieser ist nach Fallunterscheidung ein schwarzer Knoten. Links hängt ebenfalls ein unveränderter Teilbaum, dessen Wurzel zuvor rechter Nachfolger von $y$ war. Der rechte Nachfolger von $y$ muss schwarz sein, ansonsten wäre Eigenschaft vier an zwei Knoten verletzt gewesen. Im Teilbaum mit Wurzel $y$ gibt es also keine aufeinanderfolgenden roten Knoten. Da $y'$ schwarz gefärbt wurde, kann auch außerhalb des Teilbaumes mit $y'$ keine neue Verletzung entstanden sein.
+	\item  Es gilt  $\mathit{bh(xl)} = \mathit{bh(xr)} = \mathit{bh(yr)} =  \mathit{bh(zr)} = \mathit{bh(z)} - 1$. Wie oben bereits erwähnt wird die zweite Ebene unter der Wurzel $y'$ von den unveränderten Teilbäumen $\mathit{xl'}$, $\mathit{xr'}$, $\mathit{yr'}$ und $\mathit{zr'}$ gebildet. Es müssen also lediglich die Knoten $x'$, $y'$ und $z'$ betrachtet werden. Die Kinder von $x'$ und $z'$ sind schwarze Knoten mit der Schwarz-Höhe $\mathit{bh(z)} - 1$. Die Schwarz-Höhen von $x'$ und $z'$ sind also eindeutig und es gilt $\mathit{bh(x')} = \mathit{bh(z')} = \mathit{bh(z)}$. $y'$ Kinder sind die roten Knoten $x'$ und $z'$. Da beide Kinder rot sind gilt $\mathit{bh(y')} = \mathit{bh(x')} = \mathit{bh(z)}$. Somit sind alle Schwarz-Höhen im betrachteten Teilbaum eindeutig. Die neue Wurzel der Teilbaumes $y'$ hat die gleiche Schwarz-Höhe und die gleiche Farbe wie die vorherige Wurzel $z$. Damit kann es auch im Gesamtbaum zu keiner Verletzung der Eigenschaft gekommen sein.
+\end{enumerate} 
+
+\noindent Es ist keine der Eigenschaften verletzt, daher wird es zu keiner Iteration mehr kommen.
+
+
+\noindent\textbf{Fall 4: $x$ ist ein rechtes Kind. $y$ ist ein linkes Kind.: }\\      
+Dieser in Abbildung \ref{fig:EinfügenFixUpFall4} gezeigte Fall wird so umgeformt, dass eine Situation entsteht bei der Fall drei angewendet werden kann. Dazu wird eine Linksrotation an Knoten $x$ durchgeführt.\\
+
+\noindent Betrachtung der Eigenschaften:\\
+Zu Veränderungen kommt es durch die Rotation lediglich im linken Teilbaum von $z$. Es sei $\mathit{xl}$ das linke Kind von $x$,  und $\mathit{xr}$ das rechte Kind von $x$. $\mathit{yl}$ ist das linke Kind von $y$. $\mathit{xl}$, $\mathit{xr}$ und $\mathit{yl}$ müssen schwarz sein, ansonsten wäre Eigenschaft vier mehrfach verletzt gewesen.
+\begin{enumerate}
+	\item -
+	\item Die Wurzel bleibt unverändert.
+	\item  Die Teilbäume mit den Wurzeln $\mathit{xl}$, $\mathit{xr}$ und $\mathit{yl}$ enthalten alle Blätter innerhalb des linken Teilbaumes von $z$. Die Teilbäume  $\mathit{xl}$, $\mathit{xr}$ und $\mathit{yl}$ bleiben durch die Rotation unverändert und $\mathit{xl'}$, $\mathit{xr'}$ und $\mathit{yl'}$ enthalten auch alle Blätter des linken Teilbaumes von $z'$.
+	\item Da $x$ und $y$ rot sind müssen $z$, $\mathit{xl}$ und $\mathit{xr}$ schwarz sein. Nach der Rotation ist $y'$ linkes Kind von $x'$. $x'$ ist Kind vom schwarzen $z'$. Alle verbleibenden Kinder von $x'$ und $y'$ werden durch die unveränderten Teilbäume $\mathit{xl'}$, $\mathit{xr'}$ und $\mathit{yl'}$ gebildet. Deren Wurzeln müssen schwarz sein, ansonsten hätte es in ursprünglichen Baum an mehr als einem Knoten eine Verletzung von Eigenschaft vier gegeben. Durch die Rotation verbleibt es also bei einer Verletzung der Eigenschaft vier in der gleiche Baumebene. Die beiden beteiligten roten Knoten sind nun aber jeweils linke Kinder.   
+	\item $ \mathit{bh(yl)} = \mathit{bh(xl)} = \mathit{bh(xr)} = \mathit{bh(yl')} = \mathit{bh(xl')} = \mathit{bh(xr')} $. Die Schwarz-Höhen von $x$ und $y$ bleiben unverändert. Damit kommt es auch bei $z$ zu keiner Veränderung der Schwarz-Höhe. 
+\end{enumerate}  
+
+\noindent Es sind also weiterhin zwei rote aufeinanderfolgende rote Knoten in den gleichen Baumebenen vorhanden. Diese sind nun aber beides linke Kinder. Der Geschwisterknoten des oberen roten Knotens ist der selbe schwarze Knoten wie vor der Ausführung von Fall 4. Damit kann direkt mit dem bearbeiten von Fall 3 begonnen werden. Es benötigt keine weitere Iteration.\\
+
+\noindent\textbf{Fall 5: $x$ ist ein rechtes Kind. $y$ ist ein rechtes Kind: }\\ 
+	Abbildung \ref{fig:EinfügenFixUpFall5} zeigt den zu Fall 3 Links-Rechts-Symmetrischen Fall 5.\\
+\noindent\textbf{Fall 6:  $x$ ist ein linkes Kind.$y$ ist ein rechtes Kind: }\\ 
+    Abbildung \ref{fig:EinfügenFixUpFall6} zeigt den zu Fall 4 Links-Rechts-Symmetrischen Fall 6.\\
+
+
+\paragraph{Laufzeit}
+\noindent  Sei $h$ die Höhe des Gesamtbaumes vor Aufruf von einfügen-Fixup. Fall 2 kann maximal $h / 2$ mal ausgewählt werden, bevor $x$ oder $y$ an der Wurzel liegt. Nach einer Iteration bei der nicht Fall 2 ausgewählt wird, terminiert einfügen-fixup. Der Aufwand innerhalb jeder Fallbehandlung ist $O(1)$. Für die Gesamtlaufzeit gilt deshalb $\mathit{O(h)}$.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall3"}
+	\caption{einfügen-fixup. Dargestellt ist Fall 3  }
+	\label{fig:EinfügenFixUpFall3}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall4"}
+	\caption{einfügen-fixup. Dargestellt ist Fall 4  }
+	\label{fig:EinfügenFixUpFall4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall5"}
+	\caption{einfügen-fixup. Dargestellt ist Fall 5  }
+	\label{fig:EinfügenFixUpFall5}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1 \textwidth]{"Medien/RotSchwarzBaum/EinfügenFixUpFall6"}
+	\caption{einfügen-fixup. Dargestellt ist Fall 6  }
+	\label{fig:EinfügenFixUpFall6}
+\end{figure}   
+\paragraph{Löschen aus dem Rot-Schwarz-Baum}
+Die Reparatur des RBT nach dem entfernen eines Knotens ist aufwendiger, als die nach dem einfügen. Da der RBT in der Rolle als Hilfsstruktur für den Tango-Baum keine solche Operation benötigt, entfällt die Beschreibung. In \cite{algEinf} ist eine detaillierte Beschreibung enthalten. 
+\paragraph{Laufzeit der Grundoperationen}
+Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$ Knoten $h = \mathit{O(\log {n})}$  gilt. Das wird nun gezeigt. 
+\newtheorem{Lemma2}{Lemma}[section]
+\begin{Lemma2} Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten gilt $h = \mathit{O(\log {n})}$ . 
+\end{Lemma2}
+\begin{proof}
+	Sei $w$ die Wurzel von $T$ und $m$ die Anzahl der inneren Knoten von $T$. 
+	Zunächst wird gezeigt, dass T mindestens $2^\mathit{bh(w)} - 1$ innere Knoten enthält.
+	Dies geschieht mit Induktion über $h$. Für $h = 0$ und  $h = 1$ mit $2^0 - 1 = 0 $ stimmt die Behauptung, denn der Baum ist leer oder ein einzelner Sonderknoten.  
+    Induktionsschritt mit Höhe $h + 1$:\\
+    Sei $T_l$ der linke Teilbaum von $w$ und $T_r$ der rechte Teilbaum von $w$.  
+    Im Induktionsschritt kann nun verwendet werden, dass $h > 1$ gilt und $w$ ein innerer Knoten sein muss. $T_l$ und $T_r$ haben Schwarz-Höhe $\mathit{bh(w)} - 1$ wenn ihre Wurzel schwarz ist und Schwarz-Höhe $\mathit{bh(w)}$ wenn ihre Wurzel rot ist. Ihre Höhe ist $h-1$ und somit enthalten sie nach Induktionsnahme mindestens  $2^\mathit{bh(w)- 1} - 1$ innere Knoten. Aufaddieren ergibt die Behauptung.\\    
+    \begin{align*}
+    &m \geq 2^\mathit{bh(w)- 1} - 1  + 1  + 2^\mathit{bh(w)- 1} - 1 = 2^\mathit{bh(w)} - 1
+    \end{align*}
+   Daraus folgt:\\
+   \begin{align*}
+    \Rightarrow  log_2(m + 1) \geq\mathit{bh(w)}\\ 
+    \end{align*}
+    \noindent Es gilt folgender Zusammenhang, da höchstens jeder zweite Knoten in einem Pfad rot sein kann\\
+    \begin{align*}
+    &\mathit{h(w)} \leq 2 \cdot \mathit{bh(w) } + 1 \\
+    \Rightarrow &\frac{\mathit{h(w)} - 1}{2} \leq\mathit{bh(w) } \\
+    \end{align*}
+    \text{Einsetzen liefert:}\\
+    \begin{align*}
+    &log_2(m + 1) \geq\frac{\mathit{h(w)} - 1}{2} \\
+    \Rightarrow	&2 \cdot log_2(m + 1) + 1 \geq\mathit{h(w)} \\
+    \Rightarrow &\mathit{h(w)} = \mathit{O(\log {m})} 
+    \end{align*}
+  	
+	
+    
+    
+
+    
+     \noindent Es kann nur maximal doppelt so viele Blätter wie innere Knoten geben. Daraus folgt.
+   \begin{align*}
+   &n  \leq 3 m \\
+    \Rightarrow &\mathit{h(w)} = \mathit{O(\log {n})} 
+   \end{align*} 
+  
+   
+\end{proof}
+\noindent \textit{search} und \textit{insert} haben also Laufzeit $\mathit{O(\log {n})}$.
+
+
+\subsection{Tango-Baum konformes vereinigen} \label{vereinigen}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.6\textwidth]{"Medien/RotSchwarzBaum/vereinigen"}
+	\caption{Beispielhaftes vereinigen zweier RBT unterschiedlicher Schwarz-Höhe, nach Schritt 1. }
+	\label{fig:vereinigen}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 0.6\textwidth]{"Medien/RotSchwarzBaum/vereinigen2"}
+	\caption{Beispielhaftes vereinigen zweier RBT gleicher Schwarz-Höhe, nach Schritt 1 }
+	\label{fig:vereinigen2}
+\end{figure}
+\noindent Hier wird die \textit{concatenate(RBT $T_1$, key $k$, RBT $T_2)$} Operation eingeführt, wie es ein Tango-Baum von seiner Hilfsstruktur verlangt. Sei $K_1$ die Schlüsselmenge von $T_1$ und $K_2$ die von $T_2$. Die Operation gibt eine Referenz auf die Wurzel eines vereinigten RBT $T$ mit Schlüsselmenge $K_1 \cup K_2 \cup \{k\} $ zurück, dabei werden $T_1$ und $T_2$ zerstört. An die Parameter wird die Vorbedingung $(\forall i \in K_1: i < k ) \land (\forall j \in K_2: k < j )$ gestellt.\\
+ Es werden im ersten Schritt der Ausführung drei Fälle unterschieden, wobei wieder der erste zutreffende Fall in aufsteigender Reihenfolge ausgewählt wird. \\
+\noindent\textbf{Fall 1: $bh(T_1) = bh(T_2) = 0$ }\\   
+In diesem Fall wird ein roter Knoten $v$ mit Schlüssel $k$ und Schwarz-Höhe $1$ erzeugt. An diesem werden zwei Sonderknoten angefügt. $v$ ist die Wurzel von $T$. \\
+In den restlichen Fällen ist nun immer zumindest ein Baum vorhanden, der über eine Wurzel verfügt. Der RBT mit der geringeren Schwarz-Höhe wird dabei an den mit der höheren \enquote{seitlich angefügt}. Abbildung \ref{fig:vereinigen} zeigt dies beispielhaft. Sind die Schwarz-Höhen gleich wird wie in Abbildung \ref{fig:vereinigen2} vorgegangen. Nun werden die verbleibenden Fälle beschrieben.\\
+\noindent\textbf{Fall 2: $bh(T_2) \leq bh(T_1)$ }\\
+In diesem Fall wird $T_2$ bei $T_1$, mit Hilfe von $k$, so angefügt, dass die Schwarz-Höhe jedes Knoten unverändert bleibt. Es sei $w_1$ die Wurzel von $T_1$. Es sei $P$ ein Pfad $(r_0,r_1,...,r_l)$ in $T_1$, so dass $r_0 = w_1$, $r_l$ ein Blatt ist und $\forall i \in \{1,2,...l\} \colon r_i$  ist rechtes Kind von  $r_{i-1}$ gilt. $P$ ist also der am weitesten rechts liegende Pfad von der Wurzel zu einem Blatt. Sei $x$ der schwarze Knoten in $P$, mit $\mathit{bh}(x) = \mathit{bh}(w_2)$. $x$ muss existieren denn $\mathit{bh}(w_1) \geq \mathit{bh}(w_2)$ und $\mathit{bh}(r_l) \leq  \mathit{bh}(w_2)$, außerdem sind $w_1$ und $r_l$ schwarz.\\
+ Nun wird ein neuer roter Knoten $v$ mit Schlüssel $k$ und Schwarz-Höhe $\mathit{bh}(x) + 1$ erzeugt. Als linkes Kind von $v$  wird $x$ gesetzt, als rechtes Kind $w_2$. Ist $x$ die Wurzel in $T_1$, so ist $v$ die Wurzel von $T$. Ansonsten ist $x$ rechtes Kind eines Knoten $y$ und das rechte Kind von $y$ wird auf $v$ gesetzt. Außerdem ist dann $w_1$ die Wurzel von $T$.     \\  
+\noindent\textbf{Fall 3: $bh(T_1) < bh(T_2)$ }\\ 
+Dieser Fall ist fast symmetrisch zu Fall 2, jedoch kann der neue Knoten nicht zur Wurzel von $T$ werden, da $bh(T_1) \neq bh(T_2)$.
+Es wird $T_1$ bei $T_2$, mit Hilfe von $k$ angefügt. Es sei $w_2$ die Wurzel von $T_2$. Es sei $P$ ein Pfad $(r_0,r_1,...,r_l)$ in $T_2$, so dass $r_0 = w_2$, $r_l$ ein Blatt ist und $\forall i \in \{1,2,...l\} \colon r_i$  ist linkes Kind von  $r_{i-1}$. $P$ ist also der am weitesten links liegende Pfad von der Wurzel zu einem Blatt. Sei $x$ der schwarze Knoten in $P$, mit $\mathit{bh}(x) = \mathit{bh}(w_1)$. $x$ muss existieren denn $\mathit{bh}(w_2) < \mathit{bh}(w_1)$ und $\mathit{bh}(r_l) \leq  \mathit{bh}(w_1)$, außerdem sind $w_2$ und $r_l$ schwarz. Nun wird ein neuer roter Knoten $v$ mit Schlüssel $k$ und Schwarz-Höhe $\mathit{bh}(x) + 1$ erzeugt. Als rechtes Kind von $v$  wird $x$ gesetzt, als linkes Kind $w_2$. $x$ ist linkes Kind eines Knoten $y$ und das linke Kind von $y$ wird auf $v$ gesetzt. $w_2$ ist die Wurzel von $T$. \\   
+\paragraph{Resultat nach der Fallbehandlung}
+Dass ein Baum mit Schlüsselmenge  $K_1 \cup K_2 \cup \{k\} $ entstanden ist, erkennt man direkt an den Abbildungen \ref{fig:vereinigen} und \ref{fig:vereinigen2}. Aufgrund der Vorbedingung an die Parameter, muss $T$ auch ein BST sein. Es müssen aber wieder die fünf Eigenschaften eines RBT betrachtet werden:
+\begin{enumerate}
+	\item Es ist immer noch jeder Knoten entweder rot oder schwarz.
+	\item Gilt $bh(T_1) \neq bh(T_2)$ so wurde mit $w_1$ oder $w_2$ ein schwarzer Knoten zur Wurzel von $T$. Anderenfalls ist $v$ die rote Wurzel von $T$ und diese Eigenschaft ist verletzt.   
+	\item Aufgrund der Sonderknoten sind die Blätter immer noch schwarz.
+	\item Da $T_1$ und $T_2$ RBTs waren muss nur die Situation um $v$ betrachtet werden. $v$ hat in jedem Fall schwarze Kinder. Gilt $bh(T_1) \neq bh(T_2)$ könnte $v$ jedoch einen roten Elternknoten $y$ haben. 
+	\item Die Schwarz-Höhe von $v$ ist korrekt gesetzt. Existiert $y$ so hat sich seine Schwarz-Höhe nicht verändert, denn $v$ ist rot. Bei keinem anderen Knoten hat sich bezüglich bzgl. der Schwarz-Höhe etwas geändert. 
+\end{enumerate} 
+ Wir sind also in der Situation dass nur entweder Eigenschaft zwei oder vier verletzt sein kann. Wenn Eigenschaft vier verletzt ist dann nur an Knoten $v$. Das ist genau die Situation für die \textit{insertFixup} entworfen wurde.\\
+ In Schritt zwei wird also \textit{insertFixup} mit Parameter $v$ aufgerufen und die Wurzel des resultierenden RBT zurückgegeben. 
+\paragraph{Laufzeit}
+Sei $n_1$ die Anzahl der Knoten von $T_1$, sei $n_2$ die Anzahl der Knoten von $T_2$ und $n = n_1 + n_2$. Der Tango-Baum fordert von seiner Hilfsstruktur eine Laufzeit von $O(\log n)$ für die eben vorgestellte Operation.  Das Ablaufen eines Pfades in $T_1$ oder $T_2$ zum Finden von $x$ liegt in $O(\log (n))$. $v$ erzeugen und in die Struktur einzubinden benötigt konstante Zeit und \textit{insertFixup} benötigt  $O(\log (n))$ Zeit.\\
+$O(\log (n)) + O(1) +O(\log (n)) = O(\log (n
+))$\\
+Die Vorgabe des Tango-Baumes wird also eingehalten.\\
+Für das nächste Kapitel wird noch eine genauere Betrachtung der Laufzeit benötigt. Es sei $d = \vert \mathit{bh}(T_1) - \mathit{bh}(T_2)  \vert $. Die Suche nach $x$ endet spätestens nach dem ein Pfad der Länge $2d + 1$ betrachtet wurde. Dabei steht die $1$ für den Zugriff auf $x$ selbst. Zu jedem schwarzen Knoten über $x$ könnte noch ein roter kommen.\\
+Nun wird noch auf die Anzahl der Iterationen innerhalb von \textit{insertFixup} eingegangen. Sei $v$ der Parameter von \textit{insertFixup}. Sei $w$ die Wurzel von $T$. $v$ ist ein roter Knoten mit $\mathit{bh}(v) = \mathit{bh}(w) - d + 1$ und liegt in Ebene $2d + 2$ oder höher. Deshalb führt \textit{insertFixup} maximal $d + 1$ Iterationen durch.  
+
+\subsection{Tango-Baum konformes aufteilen}
+Auch \textit{split (RBT $T$, key $k$)} wird so vorgestellt, wie es als Hilfsstruktur für einen Tango-Baum benötigt wird. Vorbedingung an die Parameter ist, dass $k$ in der Schlüsselmenge $K$ von $T$ vorhanden ist. Zurückgegeben wird eine Referenz auf den Knoten $v_k$ mit Schlüssel $k$. Linkes Kind von $v_k$ ist die Wurzel eines RBT $T_L$ mit Schlüsselmenge $K_L$, wobei gilt ${K_L=\{i \mid  i\in K \land i <k\}}$. Rechtes Kind von $v$ ist die Wurzel eines RBT $T_2$ mit Schlüsselmenge $K_R$, wobei gilt ${K_R = \{i \mid i\in K \land i > k\}}$. \textit{split} gibt also in den meisten Fällen keinen RBT zurück. Die Operation setzt zunächst $T_L$ auf den linken Teilbaum von $v$ und $T_R$ auf den rechten Teilbaum von $v_k$. Eventuell müssen die Wurzeln schwarz gefärbt werden. Sei $(v_0,v_1,..,v_m)$  der Pfad von der Wurzel von $T$ zu $v_k$. Es wird sich nun bei $v_m$ startend Knoten für Knoten in dem Pfad nach oben gearbeitet. Ist der Schlüssel eines Knotens kleiner als $k$, so wird dieser Schlüssel und der linke Teilbaum des Knotens zu $T_L$ hinzugefügt. Dies übernimmt unsere \textit{vereinigen} Operation. Ist der Schlüssel größer als $k$, so wird dieser Schlüssel und der rechte Teilbaum des Knotens zu $T_R$ hinzugefügt. Folgende Aufzählung beschreibt den Vorgang genauer.
+
+\begin{enumerate}
+	\item Verwende die \textit{search} Operation um den Knoten $v_k$ mit Schlüssel $k$ zu finden.
+	\item Setze den linken Teilbaum von $v_k$ als $T_L$, den rechten als $T_R$. Löse beide Teilbäume aus $T$ heraus.
+	\item Färbe die Wurzeln von $T_L$ und $T_R$ schwarz.
+	\item $\forall i \in \{1,2,..,m\}$ absteigend sortiert. Ist der Schlüssel $k_i$ von $v_i$ kleiner als $k$, vereinige $T_L$ mit dem aus $T$ herausgelösten linken Teilbaum von $v_i$, mit  $k_i$ als dritten Parameter. Ansonsten vereinige $T_R$ mit dem aus $T$ herausgelösten rechten Teilbaum von $v_i$, mit  $k_i$ als dritten Parameter. Evtl. muss die Wurzel des herausgelösten Teilbaumes vor dem vereinigen schwarz gefärbt werden. 
+	\item Füge $T_R$ rechts an $v$ an, $T_L$ links.
+	\item Gib $v_k$ zurück.
+\end{enumerate}   
+Das $T_L$ und $T_R$ die gewünschten RBTs sind wird leicht erkannt. $v_0$ und einer der beiden Teilbäume wird korrekt zugeordnet. Die Wurzel des anderen Teilbaumes von $v_0$ ist $v_{1}$. Alle Schlüssel die nicht im Teilbaum mit Wurzel $v_{1}$ liegen sind somit korrekt zugeordnet. Diese Betrachtung iteriert bis man auf $v_k$ trifft. Die Schlüssel im Teilbaum mit Wurzel $v_k$ werden korrekt zugeordnet. 
+
+\paragraph{Laufzeit}
+Der Tango-Baum fordert eine Laufzeit von $O(\log(n))$ von seiner Hilfsstruktur für \textit{split}, mit $n$ ist die Anzahl der Knoten. Punkt 1 kostet $O(\log(n))$. Durchführen von Punkt 2,3,5 und 6 kostet $O(1)$. Punkt 4 führt $O(\log (n))$ Aufrufe von \textit{concatenate} durch. Das ergibt $O(\log (n) \log (n))$, was dann auch eine obere Schranke für die Gesamtlaufzeit ist. Diese Schranke ist für unseren Einsatzzweck jedoch zu hoch.\\ Deshalb wird Punkt 4 nun genauer betrachtet, speziell die Konstruktion von $T_L$. Es sei $l$ die Anzahl der Aufrufe von \textit{concatenate} nach denen $T_L$ neu gesetzt wird. Sei $\{t_1,t_2,..,t_l\}$ die Menge der aus $T$ herausgelösten Teilbäume die für die $l$ Aufrufe verwendet wurden, wobei $t_1$ zum ersten Aufruf gehört, $t_2$ zum zweiten usw.. Mit $T_{Li}$ wird der Zustand von $T_L$ bezeichnet nach dem $t_i$ Parameter von \textit{concatenate} war.  $T_{L0}$ steht für den Zustand vor dem ersten Aufruf.\\
+
+  
+  \noindent Dass die zweite Ungleichung gilt, erkennt man direkt. 
+  \begin{align}
+   \mathit{bh}(T_{Li}) \leq \mathit{bh}(v_{i+1}) \leq\mathit{bh}(t_{i+1}) + 1  
+    \end{align}
+   Die Erste wird nun durch Induktion gezeigt:\\
+  $T_{L0}$ war der linke Teilbaum von $v_1$, der Induktionsanfang ist somit gemacht.\\
+  $\mathit{bh}(T_{Li})$ mit $i > 0$  entsteht durch \textit{concatenate($T_{Li-1}$, \textit{key}$\left(v_i\right)$, $t_i$)}.\\ 
+  Fall $v_i$ ist rot:
+\begin{align*}
+&\mathit{bh}(t_i) < \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
+\Rightarrow  & \mathit{bh}(T_{Li})  \leq  \mathit{bh}(v_{i}) \leq  \mathit{bh}(v_{i+1}) 
+\end{align*}
+  Fall $v_i$ ist schwarz:
+ \begin{align*}
+  &\mathit{bh}(t_i) \leq \mathit{bh}(v_i)  \land  \mathit{bh}(T_{Li-1})  \overset{\textit{IA}}{\leq}  \mathit{bh}(v_{i}) \\
+  \Rightarrow  &\mathit{bh}(T_{Li})  \leq \mathit{bh}(v_{i}) + 1 =    \mathit{bh}(v_{i+1})
+\end{align*}
+Dadurch gilt
+\begin{align}
+  \sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) \vert =  O \left(\log \left(n \right) \right)
+\end{align}
+denn
+ \begin{align*}
+ &\sum_{i = 1}^{l} \vert\mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) \vert \overset{\textit{1}}{\leq}
+ \sum_{i = 1}^{l} \left( \mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(T_{Li-1} \right) + 2\right)\\
+ \leq &\sum_{i = 1}^{l} \left( \mathit{bh} \left(t_{i} \right) -\mathit{bh} \left(t_{i-1} \right) + 2\right)
+ =  \mathit{bh} \left(t_{l} \right) -\mathit{bh} \left(t_{0} \right) + 2 \cdot l  = O \left(\log \left(n \right) \right)
+ \end{align*}
+ 
+\noindent Der Gesamtaufwand für das Suchen von $v$ in allen $l$ Aufrufen berechnet sich mit: 
+\begin{align*}
+ \sum_{i = 1}^{l}  2 \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert + 1 =
+2 \left( \sum_{i = 1}^{l}   \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert \right)+ l
+= O \left(\log \left(n \right) \right)
+\end{align*}
+\noindent Für die Anzahl der Iterationen von \textit{insertFixup} in allen $l$ Aufrufen gilt: 
+\begin{align*}
+\sum_{i = 1}^{l}   \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert +1 =
+\sum_{i = 1}^{l}  \left( \vert\mathit{bh}(t_{i}) -\mathit{bh}(T_{Li-1}) \vert \right) + l 
+= O \left(\log \left(n \right) \right)
+\end{align*}
+Die Kosten innerhalb einer Iteration sind konstant, damit ist  $O \left(\log \left(n \right) \right)$ eine ober Schranke für die Gesamtkosten zum konstruieren von $T_L$. Für $T_R$ gilt analog das Gleiche. Für die Gesamtkosten von \textit{concatenate} innerhalb \textit{split} gilt $O \left(\log \left(n \right) \right)$, denn neben den Kosten für die Suche und \textit{insertFixup} fallen pro Aufruf lediglich konstante Kosten an. Damit ist $O \left(\log \left(n \right) \right)$ eine obere Schranke für die Kosten von Punkt 4 und somit auch für \textit{split}. Der hier vorgestellte RBT hält also die Anforderung des Tango-Baumes bezüglich der Laufzeit von \textit{split} ein.
+
+
+
+
+
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{"Medien/RotSchwarzBaum/aufteilen"}
+	\caption{Beispielhaftes aufteilen eines RBT mit Parameter $v$ }
+	\label{fig:aufteilen}
+\end{figure}
+
+\newpage
+\bibliography{literaturverzeichnis}
+\bibliographystyle{unsrt}
+
+\end {document}
+
+

@@ -1,2 +1,4 @@
-Einleitung:
-Totalordnung erklÃ¤ren
+sequential Access zu dinamische Optimalität hinzufügen
+Kostenmodell von Demaine zu Wilber wechseln
+Auxtree Operationen auf Knoten Parametr umschreiben
+log log n Hilfbits

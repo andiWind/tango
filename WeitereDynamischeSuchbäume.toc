@@ -1,6 +1,0 @@
-\babel@toc {german}{}
-\contentsline {section}{\numberline {1}Weitere binäre Suchbäume}{4}%
-\contentsline {subsection}{\numberline {1.1}Zipper Baum}{4}%
-\contentsline {paragraph}{Besonderheiten bei \textit {access}}{5}%
-\contentsline {subsection}{\numberline {1.2}Multisplay Baum}{6}%
-\contentsline {paragraph}{Die \textit {access} Operation beim Multisplay Baum}{6}%

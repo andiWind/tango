@@ -1,0 +1,3 @@
+offline BST: Zugriffsequenz war vor dem Zusammenbauen bekannt
+online BST: Zugriffsequenz war vor dem Zusammenbauen nicht bekannt
+Standard search algorithm: Zugriff findet immer an der Wurzel statt

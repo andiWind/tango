@@ -1,0 +1,163 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{babelbib}
+\usepackage{csquotes}
+\usepackage[draft]{hyperref}    % korrektes Management von
+                                % PDF-Einstellungen
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{satz}{Satz}
+
+% Dieser Block wird für die *Präsentation* der Lösung benötigt,
+% nicht für die Lösung selbst. Falls dieser Teil dringelassen
+% wird, so muss (PDF)LaTeX via
+%
+%     pdflatex -shell-escape ml3.tex
+%
+% aufgerufen werden, da das "minted" Paket diese Funktionalität
+% benötigt.
+%
+\usepackage{minted}
+
+\begin{document}
+
+%%%%%%%%
+%
+% Der folgende Teil gehört nicht zur eigentlichen Lösung.
+%
+%%%%%%%%
+
+\setcounter{page}{0}
+\section*{Lösungsvorschlag zur Einsendeaufgabe 3, Kurs 1602}
+
+Dies ist der Lösungs\emph{vorschlag} zur Einsendeaufgabe \#3,
+Kurs 1602. Einsendeaufgabe \#3 ist personalisiert, die hier
+präsentierte Lösung weicht deshalb wahrscheinlich von Ihrer
+Aufgabenstellung geringfügig ab, etwa durch andere Formeln in
+Abschnitt~\ref{sec:mathe}, eine andere Tabelle~\ref{tab:2} oder
+andere Einträge im Literaturverzeichnis. Ihre Aufgabenstellung
+sollte aber mit der hier präsentierten Aufgabenstellung
+vergleichbar sein.
+
+\pagebreak
+
+%%%%%%%%
+%
+% Ab hier gehört wieder alles zur eigentlichen Lösung.
+%
+%%%%%%%%
+
+\section{Vorlage 999 zur Einsendeaufgabe 3, Kurs 1602}
+\label{sec:1}
+
+\subsection{Die Aufgabe}\label{sec:11}
+
+In dieser Kurseinheit wird LaTeX vorgestellt. LaTeX ist ein
+\emph{Textsatzprogramm}, welches das Erstellen von
+wissenschaftlichen Texten erleichtert. In dieser Aufgabe sollen
+Sie das vorliegende Dokument möglichst genau mit LaTeX
+nachbilden. So soll insbesondere die Aufteilung in Kapitel
+(hier also in Kapitel \ref{sec:1}, Kapitel~\ref{sec:11}, usw.),
+die Formatierungen und der Text \textbf{exakt} nachgebildet
+werden. Verwenden Sie die Dokumentenklasse \enquote{article}
+mit der Option \enquote{a4paper}.
+
+\subsection{Die Lösung}
+
+Bitte senden Sie folgende Dokumente als Teil der Lösung ein:
+\begin{enumerate}
+	\item die \textbf{original PDF Vorlage} (also diese
+	Datei, als Lösung zu \enquote{Teilaufgabe 3a}),
+	
+	\item das von Ihnen erstellte \textbf{LaTeX Dokument}
+	(also die .tex Datei, als Lösung zu \enquote{Teilaufgabe
+	3b}),
+	
+	\item die von Ihnen erstellte \textbf{Literatur
+	Datenbank} (also die .bib Datei, als Lösung zu
+	\enquote{Teilaufgabe 3c}),
+	
+	\item das von Ihnen \textbf{kompilierte Dokument} (also
+	die erzeugte .pdf Datei, als Lösung zu
+	\enquote{Teilaufgabe 3d}).
+\end{enumerate}
+
+\section{Tabellen}
+
+Tabelle~\ref{tab:2} gibt eine kleine Übersicht über verschiedene
+Charaktere und Gruppierungen in \emph{Der Herr der Ringe}.
+
+\begin{table}[b]
+	\centering
+	\begin{tabular}{|r|c|c|c|c|}
+		\hline 	 	 	
+		& Gollum & Sauron & Legolas & Gandalf\\
+		\hline\hline
+		Hobbit & ja & nein & nein & nein\\
+		\hline
+		Ringträger & am Finger  & am Finger  & nein & in
+		der Hand\\
+		\hline
+		Gemeinschaft des Ringes & nein & nein & ja & ja\\
+		\hline
+	\end{tabular}
+	\caption{Verschiedene Charaktere und Gruppierungen in
+	\emph{Der Herr der Ringe}.}
+	\label{tab:2}
+\end{table}
+
+\section{Formeln}
+\label{sec:mathe}   % wird für die Anmerkung zum
+		    % Lösungsvorschlag benötigt, nicht für die
+		    % Lösung selbst
+
+Die bekannten Fibonacci-Zahlen $F_n$ sind rekursiv definiert
+durch $F_1=F_2=1$ und $F_n=F_{n-1}+F_{n-2}$ für $n\geq 3$.
+Fibonacci-Zahlen treten sowohl in der Natur als auch in vielen
+theoretischen Anwendungen auf. Die Formel in Satz~\ref{satz:3}
+wurde von verschiedenen Mathematikern im 18. und 19. Jahrhundert
+entdeckt.
+
+\begin{satz}\label{satz:3}
+ Es sei $\phi=\frac{1+\sqrt{5}}{2}$ (der goldene Schnitt) und
+ $\psi=\frac{1-\sqrt{5}}{2}$. Dann gilt
+ \[\forall n\in\mathbb{N}:\quad F_n = \frac{\phi^n-\psi^n}%
+   {\sqrt{5}}.\]
+\end{satz}
+
+\section{Zitieren}
+
+In Ihrer Abschlussarbeit werden Sie existierende Literatur
+bearbeiten und zitieren müssen. Das korrekte Formatieren
+übernimmt LaTeX (beziehungsweise BibTeX) für Sie. Dabei werden
+Sie vermutlich nicht aus dem Buch von Tolkien~\cite{Tolkien54}
+zitieren, aber möglicherweise aus einem Buch zum
+Übersetzerbau~\cite{ALSU06}.
+
+\bibliographystyle{babplain-fl}
+\bibliography{ml3}
+
+%%%%%%%%
+%
+% Der folgende Teil gehört nicht mehr zur Lösung; er dient der
+% Anzeige der LaTeX- und BibTeX-Quelldatei in der PDF-Ausgabe.
+%
+%%%%%%%%
+
+\pagebreak
+
+\section*{LaTeX-Code: \texttt{ml3.tex}}
+\inputminted[breaklines, encoding=utf8, frame=single]%
+            {LaTeX}{ml3.tex}
+
+\section*{BibTeX-Code: \texttt{literatur.bib}}
+\inputminted[breaklines, encoding=utf8, frame=single]%
+            {BibTeX}{ml3.bib}
+
+\end{document}

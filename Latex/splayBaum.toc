@@ -1,0 +1,9 @@
+\babel@toc {german}{}
+\contentsline {section}{\numberline {1}Splay Baum}{3}%
+\contentsline {subsection}{\numberline {1.1}\textit {access} Operation }{3}%
+\contentsline {paragraph}{\textit {splay} Operation}{3}%
+\contentsline {subsection}{\numberline {1.2}Amortisierte Laufzeitanalyse von \textit {splay }}{4}%
+\contentsline {paragraph}{zig}{5}%
+\contentsline {paragraph}{zig-zig}{6}%
+\contentsline {paragraph}{zig-zag}{6}%
+\contentsline {subsection}{\numberline {1.3}Dynamische Optimalitäts Vermutung}{7}%

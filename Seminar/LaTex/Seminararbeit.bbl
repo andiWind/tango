@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{ab}
+Norman Abramson.
+\newblock {\em {Information theory and coding}}.
+\newblock McGraw-Hill electronic sciences series. McGraw-Hill, New York, NY,
+  1963.
+
+\bibitem{sl1}
+Daniel~Dominic Sleator and Robert~Endre Tarjan.
+\newblock Self-adjusting binary trees.
+\newblock pages 235--245, 1983.
+
+\bibitem{sl2}
+Daniel~Dominic Sleator and Robert~Endre Tarjan.
+\newblock Self-adjusting binary search trees.
+\newblock {\em J. ACM}, 32(3):652--686, July 1985.
+
+\end{thebibliography}
