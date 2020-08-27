@@ -58,7 +58,7 @@
 \contentsline {section}{\numberline {8}Implementierung und Laufzeittests}{80}%
 \contentsline {subsection}{\numberline {8.1}Implementierung}{80}%
 \contentsline {subsubsection}{\numberline {8.1.1}Beschreibung der Klassen }{83}%
-\contentsline {paragraph}{SplayTree und SplayNode:}{83}%
+\contentsline {paragraph}{SplayTree und SplayNode:}{84}%
 \contentsline {paragraph}{TangoNode:}{84}%
 \contentsline {paragraph}{TangoAuxTree:}{84}%
 \contentsline {paragraph}{TangoTree:}{84}%

@@ -1255,7 +1255,7 @@ verwendet.
 	
 	
 	\paragraph{zig:} 
-	In diesem Fall existiert $x$ nicht, damit gilt\\  {$ \Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' - r\left(u\right)- r\left(v\right)$}. Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel ist unabhängig vom Zustand des Splay Baumes, da an ihr alle im Baum vorhandenen Gewichte aufsummiert werden. Deshalb muss  $\mathit{tw}\left(v\right)' =  \mathit{tw}\left(u\right)$ gelten. Daraus folgt $ \Phi' - \Phi  = r\left(u\right)'- r\left(v\right)$. Aus $r\left(v\right)' \geq r\left(u\right)'$ folgt \\ $ \Phi' - \Phi \leq  r\left(v\right)'- r\left(v\right) \leq 3\left(r\left(v\right)'- r\left(v\right)\right) $. Addieren von $1$ aufgrund der Rotation ergibt Kosten $\leq 3\left(r\left(v\right)'- r\left(v\right)\right) + 1$.
+	In diesem Fall existiert $x$ nicht, damit gilt\\  {$ \Phi' - \Phi  = r\left(u\right)' +r\left(v\right)' - r\left(u\right)- r\left(v\right)$}. Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel ist unabhängig vom Zustand des Splay Baumes, da an ihr alle im Baum vorhandenen Gewichte summiert werden. Deshalb muss  $\mathit{tw}\left(v\right)' =  \mathit{tw}\left(u\right)$ gelten. Daraus folgt $ \Phi' - \Phi  = r\left(u\right)'- r\left(v\right)$. Aus $r\left(v\right)' \geq r\left(u\right)'$ folgt \\ $ \Phi' - \Phi \leq  r\left(v\right)'- r\left(v\right) \leq 3\left(r\left(v\right)'- r\left(v\right)\right) $. Addieren von $1$ aufgrund der Rotation ergibt Kosten $\leq 3\left(r\left(v\right)'- r\left(v\right)\right) + 1$.
 	\paragraph{zig-zig:} 
 	Es müssen zwei Rotationen ausgeführt werden. Deshalb entstehen amortisierte Kosten von
 	\begin{align*}
@@ -1271,7 +1271,7 @@ verwendet.
 	\Leftrightarrow & -2 \geq -2r\left(v\right)' +  r\left(x\right)' + r\left(v\right)\\
 	\Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(v\right) / \mathit{tw}\left(v'\right)\right)
 	\end{align*}
-	Dass die letzte Ungleichung gilt, kann an einer Eigenschaft des $\log_2$ ableitet werden. Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt $\log_2\left(a\right) + \log_2\left(a\right) \leq -2$. An Abbildung \ref{fig:zigZag} ist zu erkennen, dass sich $\mathit{tw}\left(v\right)$ vom Ausgangszustand zum Zwischenzustand hin nicht verändert. $\mathit{tw}\left(x'\right)$ ist ebenfalls unverändert zum Zwischenschritt. Es kann also bei beiden Knoten mit den Werten aus dem Zwischenschritt gearbeitet werden. Bezeichne $u^*$ den Knoten $u$ im Zwischenschritt, dann gilt $ \mathit{tw}\left(u^*\right) = \mathit{tw}\left(v'\right)$. \\  $\mathit{tw}\left(v'\right) = \mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right) + w\left(u\right) $. Daraus folgt $\left(\mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right)\right) /  \mathit{tw}\left(v'\right) < 1$ und mit der Eigenschaft von $\log_2$ folgen die Ungleichungen.
+	Dass die letzte Ungleichung gilt, kann an einer Eigenschaft des $\log_2$ ableitet werden. Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt $\log_2\left(a\right) + \log_2\left(b\right) \leq -2$. An Abbildung \ref{fig:zigZag} ist zu erkennen, dass sich $\mathit{tw}\left(v\right)$ vom Ausgangszustand zum gestrichelt dargestellten Zwischenschritt hin nicht verändert. $\mathit{tw}\left(x'\right)$ ist ebenfalls unverändert zum Zwischenschritt. Es kann also bei beiden Knoten mit den Werten aus dem Zwischenschritt gearbeitet werden. Bezeichne $u^*$ den Knoten $u$ im Zwischenschritt, dann gilt $ \mathit{tw}\left(u^*\right) = \mathit{tw}\left(v'\right)$. \\  Daraus folgt $\mathit{tw}\left(v'\right) = \mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right) + w\left(u\right) $ und daraus \mbox{$\left(\mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right)\right) /  \mathit{tw}\left(v'\right) < 1$} und mit der Eigenschaft von $\log_2$ folgen die Ungleichungen.
 	
 	\paragraph{zig-zag:} 
 	\begin{align*}
@@ -1285,12 +1285,12 @@ verwendet.
 	\Leftrightarrow &-2 \geq -2\left(v\right)' +  r\left(x\right)' + r\left(u\right)'\\
 	\Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(u'\right) / \mathit{tw}\left(v'\right)\right)
 	\end{align*}
-	Mit der $\log_2$ Regel aus zig-zig und Abbildung \ref{fig:zigZag} folgt die Behauptung.
-	Werden die Kosten der Gesamtoperation betrachtet, so bildet sich eine Teleskopsumme, die möglicherweise, wenn ein  zig, bzw. zag Fall enthalten ist, mit eins addiert werden muss. Daraus folgt das Lemma.
+	Mit der $\log_2$ Regel aus zig-zig und Abbildung \ref{fig:zigZag} folgt die Behauptung, wobei diesmal lediglich der Endzustand betrachtet werden muss.
+	Zum Berechnen der Kosten der Gesamtoperation, werden die Kosten der einzelnen Fallbehandlungen summiert. Dabei bildet sich eine Teleskopsumme, die möglicherweise, wenn ein  zig, bzw. zag Fall enthalten ist, mit eins addiert werden muss. Daraus folgt das Lemma.
 \end{proof}
 
 \subsection{Dynamische Optimalitäts Vermutung}
-Der Splay Baum erfüllt working set und dynamig finger aus Abschnitt \ref{upperBounds} und auch noch einige weitere in dieser Arbeit nicht aufgeführte Eigenschaften. Der Beweis für dynamic finger ist sehr aufwändig \cite{dynFinger}. working set wurde bereits in \cite{splay} gezeigt. Dieser Beweis wird hier vorgestellt. Die anderen Eigenschaften (außer dynamisch optimal) aus Kapitel \ref{upperBounds} folgen dann aus diesen beiden. Aufgrund dieser oberen Schranken wurde die Vermutung aufgestellt, dass der Splay Baum dynamisch optimal ist. Bewiesen ist bisher nur, dass er $\log \left(n\right)$-competitive ist. Dies folgt aus dem access lemma. Würde für eine solche obere Schranke gezeigt werden, dass der Splay Baum diese nicht einhalten kann, jedoch ein anderer BST schon, wäre die Vermutung zur dynamischen Optimalität widerlegt. Auch das ist bis heute nicht geschehen. \\
+Der Splay Baum erfüllt working set und dynamic finger aus Abschnitt \ref{upperBounds} und auch noch viele weitere in dieser Arbeit nicht aufgeführte Eigenschaften. Der Beweis für dynamic finger ist sehr aufwändig \cite{dynFinger}. working set wurde bereits bei der Vorstellung des Splay Baumes gezeigt. \cite{splay}. Dieser Beweis wird hier vorgestellt. Die anderen Eigenschaften (außer dynamisch optimal) aus Kapitel \ref{upperBounds} folgen dann aus diesen beiden. Aufgrund dieser oberen Schranken wurde die Vermutung aufgestellt, dass der Splay Baum dynamisch optimal ist. Bewiesen ist bisher nur, dass er $\log \left(n\right)$-competitive ist. Dies folgt aus dem Access Lemma. Würde für eine solche obere Schranke gezeigt werden, dass der Splay Baum diese nicht einhalten kann, jedoch ein anderer BST schon, wäre die Vermutung zur dynamischen Optimalität widerlegt. Auch das ist bis heute nicht geschehen. \\
 
 \noindent Wiederholung der Definition von $w_i$ zu einer Zugriffsfolge $X = x_1, x_2,.., x_m$ aus Kapitel \ref{upperBounds}:\\
 Für $x_i$ sei $J_i = \{j \in \mathbb{N} \vert j < i \land x_j = x_i \}$.
@@ -1301,11 +1301,11 @@ Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{
 	$O\left( n \log\left(n\right) + m +\sum_{i = 1}^{m} \log\left( a_i\right) \right)$.
 \end{Satz2}
 \begin{proof}
-	Den Knoten werden die Gewichte $1, 1/2^2,1/3^2 .., 1/n^2$ zugeordnet. Diesmal ist die Zuordnung nicht fest. Nach jeder \textit{access} Operation können sich Gewichte ändern. Sei $i$ der kleinste Index mit $x_i = \mathit{key}\left(v\right)$ für einen Knoten $v$. Sei $a = \vert\{x_l \vert l < i\}\vert$, dann wird $v$ zum Start das Gewicht $1 / 2^{a+1}$ zugeordnet. Auf Knoten auf deren Schlüssel nicht zugegriffen wird, verteilen sich die kleinsten Gewichte beliebig. $\mathit{tw}\left(v\right)$ und $\Phi$ sind definiert wie beim access lemma.\\
-	Nach einer \textit{access} $\left(x_j\right)$ Operation, werden die Gewichte neu zugeordnet. Der Knoten $v_j$ mit Schlüssel $x_j$ erhält das Gewicht $1/1$. Sei $1/k^2$ das Gewicht von $v_j$ vor \textit{access} $\left(x_j\right)$. Sei $u$ ein Knoten mit $w\left(u\right) = 1 / k^*$ mit \\ $k^* \in \{1, 4,.., \left(k-1\right)^2\}$ direkt vor dem Zugriff $x_j$. Dann ist $1 /\left(k^* + 1\right)^2$ das Gewicht von $u$ nach dem Zugriff $x_j$. Die Gewichte der restlichen Knoten bleiben unverändert. Zu beachten ist, dass nach einer solchen Neuzuordnung die Menge der im Baum enthaltenen Gewichte unverändert bleibt. \\
-	Diese Verteilung der Gewichte garantiert, dass direkt vor  \textit{access} $\left(x_j\right)$, $v_j$ ein Gewicht von ${1 /a_i}^2$ hat, somit gilt $\mathit{tw}\left(v_j\right) \geq {1 /a_i}^2$ . Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel von $T$ ist $W = \sum_{i = 1}^{n} 1/ n^2 < 2 = O\left(1\right) $. Diese Werte in das Access Lemma eingesetzt, ergibt Kosten von $O\left(\log\left(1 / \left({1 /a_i}^2\right)\right)\right) = O\left(\log\left({a_i}^2 \right)\right) = O\left(log\left(a_i\right)\right)$.\\
+	Den Knoten werden die Gewichte $1, 1/2^2,1/3^2 .., 1/n^2$ zugeordnet. Diesmal ist die Zuordnung nicht fest. Nach jeder \textit{access} Operation können sich Gewichte ändern. Sei $i$ der kleinste Index mit $x_i = \mathit{key}\left(v\right)$ für einen Knoten $v$. Sei $b = \vert\{x_l \vert l < i\}\vert$, dann wird $v$ zum Start das Gewicht $1 / 2^{b+1}$ zugeordnet. Auf Knoten auf deren Schlüssel nicht zugegriffen wird, verteilen sich die kleinsten Gewichte beliebig. $\mathit{tw}\left(v\right)$ und $\Phi$ sind definiert wie beim Access Lemma.\\
+	Nach einer \textit{access} $\left(x_j\right)$ Operation, werden die Gewichte neu zugeordnet. Der Knoten $v_j$ mit Schlüssel $x_j$ erhält das Gewicht $1/1$. Sei $1/k^2$ das Gewicht von $v_j$ vor \textit{access} $\left(x_j\right)$. Sei $u$ ein Knoten mit $w\left(u\right) = 1 / k^*$ mit \\ $k^* \in \{1, 4,.., \left(k-1\right)^2\}$ direkt vor \textit{access} $\left(x_j\right)$. Dann ist $1 /\left(k^* + 1\right)^2$ das Gewicht von $u$ nach \textit{access} $\left(x_j\right)$. Die Gewichte der restlichen Knoten bleiben unverändert. Zu beachten ist, dass nach einer solchen Neuzuordnung die Menge der im Baum enthaltenen Gewichte unverändert bleibt. \\
+	Diese Verteilung der Gewichte garantiert, dass direkt vor  \textit{access} $\left(x_j\right)$, $v_j$ ein Gewicht von ${1 /a_i}^2$ hat, somit gilt $\mathit{tw}\left(v_j\right) \geq {1 /a_i}^2$ . Der Wert von $\mathit{tw}\left(\right)$ für die Wurzel von $T$ ist $W = \sum_{i = 1}^{n} 1/ n^2 < 2 = O\left(1\right) $. Diese Werte in das Access Lemma eingesetzt, ergibt Kosten von \\ $O\left(\log\left(1 / \left({1 /a_i}^2\right)\right)\right) = O\left(\log\left({a_i}^2 \right)\right) = O\left(log\left(a_i\right)\right)$.\\
 	 Durch die nachfolgende Neuzuordnung der Gewichte kann $\Phi$ nur kleinere Werte annehmen. Denn nur das Gewicht der neuen Wurzel erhöht sich. $\mathit{tw}\left(\right)$ ist für die Wurzel aber konstant.\\
-	Der Rang eines Knoten kann über die gesamte Zugriffsfolge nicht um mehr als $\log_2\left(n^2 W\right) = O\left(log\left(n\right)\right)$ kleiner werden. Denn $W$ ist der maximale Wert von $\mathit{tw}\left(\right)$ und  der minimale ist $1 /n^2$. Daraus folgt eine maximale Verringerung des Potentials von $T$ von $O\left(n \log \left(n\right)\right)$. 
+	Der Rang eines Knotens kann über die gesamte Zugriffsfolge nicht um mehr als $\log_2\left(n^2 W\right) = O\left(log\left(n\right)\right)$ kleiner werden. Denn $W$ ist der maximale Wert von $\mathit{tw}\left(\right)$ und  der minimale ist $1 /n^2$. Daraus folgt eine maximale Verringerung des Potentials von $T$ von $O\left(n \log \left(n\right)\right)$. 
 \end{proof}
 
 
@@ -1315,7 +1315,7 @@ Hier werden kurz zwei Variationen zum Tango Baum vorgestellt. Zum einen der Zipp
 
 \subsection{Zipper Baum}
 Der Zipper Baum basiert auf dem Tango Baum und nutzt auch preferred paths aus einem Referenzbaum $P$. Aufbau und Pflege der preferred paths in $P$ unterscheiden sich nicht vom Tango Baum.  Ihre Repräsentation im eigentlichen BST $T$ macht den wesentlichen Unterschied zu einem Tango Baum aus. Abbildung \ref{fig:zipperPathRep} stellt eine solche beispielhaft dar.  Sei $v$ ein Knoten in $T$, dann ist in diesem Kapitel $v^*$ der Knoten in $P$, mit $\mathit{key}\left(v\right) =\mathit{key}\left(v^*\right)$. Die Repräsentation eines preferred path  $P_p = \left({p_1}^*,{p_2}^*,..,{p_m}^*\right)$ in $T$ stellt einen Hilfsbaum $H$ dar, der in zwei Teile unterteilt ist, dem \textbf{zipper} und dem \textbf{bottom tree}.  Der bottom tree ist ein balancierter BST, der genau die Schlüssel enthält, die in $P_p$ enthalten sind, jedoch nicht im zipper. Der zipper besteht aus zwei Teilen, dem \textbf{top zipper} $z_t$ und dem \textbf{bottom zipper} $z_b$. $z_t$ und $z_b$ dürfen jeweils maximal $\log_2\left(\log_2\left(n\right)\right)$ Knoten enthalten. Gemeinsam  enthalten sie zumindest $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten, wenn ein bottom tree existiert. Bei weniger als $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten im Hilfsbaum existiert kein bottom tree. Es wird im Folgenden angenommen, dass ein bottom tree existiert. \\
-$P_p$ wird in \textbf{zig Segmente} und \textbf{zag Segmente} unterteilt. zig Segmente entsprechen den längst möglichen Pfaden von Knoten mit rechten Kindern in $P_p$. zag Segmente entsprechen den längst möglichen Pfaden von Knoten mit linken Kindern in $P_p$. ${p_m}^*$ wird dem Segment seines Elternknotens zugeordnet. In Abbildung  \ref{fig:preferredPathZigZag} sind zig und zag Segmente dargestellt.\\
+$P_p$ wird in \textbf{zig Segmente} und \textbf{zag Segmente} unterteilt. Ein zig Segment in $P_p$ ist ein längst möglicher Pfad in $P$, indem nur Knoten aus $P_p$ enthalten sein dürfen, deren rechtes Kind ebenfalls in $P_p$ enthalten ist. zag Segmente werden analog gebildet, wobei das linke Kind ebenfalls in $P_p$ enthalten sein muss, anstatt dem rechten. Dazu gibt es noch die Ausnahme, dass der Knoten mit der größten Tiefe in $P_p$ dem Segment seines Elternknotens zugeordnet wird.\\
 Sei $S_{zig}$ die Folge der in zig Segmenten enthaltenen Knoten, aufsteigend sortiert nach der Tiefe und $S_{zag}$ die Folge der in zag Segmenten enthalten Knoten, aufsteigend sortiert nach der Tiefe.  Sei $n_t$, bzw. $n_b$ die Anzahl der Knoten von $z_t$, bzw. $z_b$. $z_t$ repräsentiert Knoten  $P_t = \left({p_1}^*,{p_2}^*,..,p_{n_t}^*\right)$ und $z_b$ die Knoten  $P_b = \left({p_{n_t + 1}}^*,{p_{n_t + 2}}^*,..,{p_{n_t + n_b}}^*\right)$.
 Sei ${t_l}^*$, bzw. ${t_r}^*$ der Knoten in $S_{zig}$, bzw. $S_{zag}$ mit der größten Tiefe. $t_l$ ist die Wurzel von $H$. $t_r$ ist das rechte Kind von $t_l$. Der linke Teilbaum von $t_l$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in  $S_{zig}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein linkes Kind hat. Der rechte Teilbaum von $t_r$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in $S_{zag}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein rechtes Kind hat. \\
 $z_b$ wird analog aus $P_b$ erzeugt und seien $b_l$ und $b_r$ die Knoten in $z_b$ entsprechend zu $t_l$ und $t_r$ in $z_t$. $b_l$ ist das linke Kind von $t_r$. Die Wurzel des bottom Tree ist das linke Kind von $b_r$. Dass die Links-Rechts-Beziehung eingehalten wird ergibt aus den Aufbau der zig und zag Segmente. Es ist leicht zu erkennen, dass die Wurzel des bottom tree in konstanter Zeit erreicht werden kann.
@@ -1364,7 +1364,7 @@ Zu beachten ist, dass jede BST Darstellung auch eine Splay Baum Darstellung ist.
 \section{Implementierung und Laufzeittests}
 In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben und dann werden noch die Laufzeittests dargestellt. 
 \subsection{Implementierung}
-Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsbaum für den Tango Baum. Außerdem wurde die \textit{access} Operation des Splay Baumes implementiert, um Laufzeittests zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm, über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet. Abbildung \ref{fig:klassen} stellt ein Klassendiagramm dar.
+Implementiert wurde ein Tango Baum, ein Rot Schwarz Baum in der Rolle als Hilfsbaum für den Tango Baum. Außerdem wurde die \textit{access} Operation des Splay Baumes implementiert, um Laufzeittests zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[height= 1.5\textwidth]{"Medien/laufzeittest/MainGUI"}
@@ -1409,7 +1409,7 @@ Diese Ansicht dient dazu, die Beziehung zwischen Referenzbaum und Tango Baum dar
 \end{figure}
 
 \subsubsection{Beschreibung der Klassen }
-
+Abbildung \ref{fig:klassen} stellt ein Klassendiagramm dar.
 \paragraph{SplayTree und SplayNode:}
 Der Splay Baum startet genau wie der Tango Baum vollständig balanciert, auch wenn sich dies bei längeren Zugriffsfolgen praktisch nicht auswirken sollte. Ansonsten gibt es keine Besonderheiten. \textit{access} verhält sich genau wie im Kapitel zum Splay Baum beschrieben. 
 
@@ -1426,8 +1426,7 @@ Klassen deren Objekte als Hilfsbaum im Tango Baum eingesetzt werden sollen, müs
 Diese erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu RBT beschrieben.
 
 \paragraph{RuntimeTest:}
-Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt führt genau einen Laufzeittest durch. Die restlichen Attribute dienen dessen Parametrierung. Die Methoden zum Ausführen eines Tests  geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baumes, der zweite der des Splay Baumes. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}. Ein Datenblatt zu dem verwendeten System ist dem Kapitel angefügt.
-
+Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt führt genau einen Laufzeittest durch. Die restlichen Attribute dienen dessen Parametrierung. Die Methoden zum Ausführen eines Tests  geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baumes, der zweite der des Splay Baumes. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{"Medien/laufzeittest/optionSpeicher"}
@@ -1441,7 +1440,8 @@ Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann 
 
 
 
-Es werden Tests zu fünf Arten von Zugriffsfolgen durchgeführt. Zunächst wird immer der Aufbau der Zugriffsfolge beschrieben und dann die Ergebnisse präsentiert. $n$ entspricht der Anzahl der Knoten, $m$ der Länge der Zugriffsfolge. Die Schlüsselmengen haben immer die Form $\{1,2,..,n\}$. Bei jeder Testart wurde zu jeder Knotenzahl, beim Tango Baum und Splay Baum immer exakt die gleiche Zugriffsfolge verwendet. Gibt es keine Abhängigkeit von $m$ zu $n$, so wurde für $m$ immer $40$ Millionen verwendet. Der Splay Baum wird durchweg die kürzeren Zeiten liefern. Eine mögliche Erklärung für die vergleichsweise oft hohen Zeiten des Tango Baum ist, dass dieser erst bei noch größeren Instanzen einen Vorteil aus der Unterteilung in Hilfsbäume erzeugen kann.  
+Es werden Tests zu fünf Arten von Zugriffsfolgen durchgeführt. Zunächst wird immer der Aufbau der Zugriffsfolge beschrieben und dann die Ergebnisse präsentiert. $n$ entspricht der Anzahl der Knoten, $m$ der Länge der Zugriffsfolge. Die Schlüsselmengen haben immer die Form $\{1,2,..,n\}$. Bei jeder Testart wurde zu jeder Knotenzahl, beim Tango Baum und Splay Baum immer exakt die gleiche Zugriffsfolge verwendet. Gibt es keine Abhängigkeit von $m$ zu $n$, so wurde für $m$ immer $40$ Millionen verwendet.  Ein Datenblatt zu dem verwendeten System ist dem Kapitel angefügt.
+Der Splay Baum wird durchweg die kürzeren Zeiten liefern. Eine mögliche Erklärung für die vergleichsweise oft hohen Zeiten des Tango Baum ist, dass dieser erst bei noch größeren Instanzen einen Vorteil aus der Unterteilung in Hilfsbäume erzeugen kann.  
 
 \subsubsection{Zufällige Zugriffsfolge}
 Die Zugriffsfolgen werden von einem Pseudozufallsgenerator erzeugt. 
@@ -1542,7 +1542,7 @@ Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \text
 
 
 \subsubsection{Dynamic Finger}
-Beim ersten Test wird Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwendet. Der Abstand $a$ zwischen zwei aufeinanderfolgenden Schlüsseln ist also $2$.
+Beim ersten Test wird Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwendet. Der Abstand $a$ zwischen zwei aufeinanderfolgenden Schlüsseln ist \mbox{also $2$}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/dynamicfinger"}
