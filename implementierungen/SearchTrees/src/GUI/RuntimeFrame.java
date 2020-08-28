@@ -117,6 +117,7 @@ public class RuntimeFrame  extends JFrame{
         });
        
         sortedCombo = new JComboBox<>();
+        sortedCombo.setFont(new Font("", 1, 24));
         sortedCombo.addItem("1,2,..,n");
         sortedCombo.addItem("n, n -1,..,1");
         sortedCombo.addItem("1, n, 2, n_1,..., n, 1");

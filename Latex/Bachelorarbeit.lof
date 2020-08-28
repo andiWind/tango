@@ -42,17 +42,17 @@
 \contentsline {figure}{\numberline {41}{\ignorespaces Extraktionsprozess beim Zipper Baum. \relax }}{78}%
 \contentsline {figure}{\numberline {42}{\ignorespaces Referenzbaum mit grün gezeichneten preferred paths. \relax }}{79}%
 \contentsline {figure}{\numberline {43}{\ignorespaces Beispielhafter Multisplay Baum zu Abbildung \ref {fig:referenzTree}.\relax }}{79}%
-\contentsline {figure}{\numberline {44}{\ignorespaces Oberfläche zum Tango Baum\relax }}{81}%
-\contentsline {figure}{\numberline {45}{\ignorespaces \textit {access} Operationen anstoßen.\relax }}{82}%
-\contentsline {figure}{\numberline {46}{\ignorespaces Laufzeittest anstoßen.\relax }}{82}%
-\contentsline {figure}{\numberline {47}{\ignorespaces Ergebnisanzeige eines Laufzeittests.\relax }}{83}%
-\contentsline {figure}{\numberline {48}{\ignorespaces Wesentliche Klassen der Implementierung. Methoden zum direkten lesen, bzw. schreiben von Attributen sind nicht dargestellt. \relax }}{83}%
-\contentsline {figure}{\numberline {49}{\ignorespaces Zur Ausführung verwendbaren Speicher erweitert.\relax }}{85}%
+\contentsline {figure}{\numberline {44}{\ignorespaces Sreenshot des Hauptfensters der GUI. Im oberen Teil befindet sich der Referenzbaum. Im unteren Teil der dazugehörige Tango Baum.\relax }}{80}%
+\contentsline {figure}{\numberline {45}{\ignorespaces Mit diesem Fenster können \textit {access} Operationen, auf dem Tango Baum des Hauptfensters angestoßen werden.\relax }}{81}%
+\contentsline {figure}{\numberline {46}{\ignorespaces Mit diesem Fenster kann ein Laufzeittest ausgewählt, parametriert und angestoßen werden.\relax }}{81}%
+\contentsline {figure}{\numberline {47}{\ignorespaces Mit diesem Fenster wird das Resultat einen eines Laufzeittests dargestellt.\relax }}{82}%
+\contentsline {figure}{\numberline {48}{\ignorespaces Wesentliche Klassen der Implementierung. Methoden zum direkten lesen, bzw. schreiben von Attributen sind nicht dargestellt. \relax }}{82}%
+\contentsline {figure}{\numberline {49}{\ignorespaces Den zur Ausführung verwendbaren Speicher erweitert.\relax }}{84}%
 \contentsline {figure}{\numberline {50}{\ignorespaces Laufzeittest mit zufälliger Zugriffsfolge.\relax }}{86}%
 \contentsline {figure}{\numberline {51}{\ignorespaces Laufzeittest bit reversal permutation.\relax }}{87}%
-\contentsline {figure}{\numberline {52}{\ignorespaces Laufzeittest static finger.\relax }}{88}%
-\contentsline {figure}{\numberline {53}{\ignorespaces Laufzeittest dynamic finger.\relax }}{89}%
-\contentsline {figure}{\numberline {54}{\ignorespaces Laufzeittest dynamic finger, mit unterschiedlichen $a$.\relax }}{90}%
+\contentsline {figure}{\numberline {52}{\ignorespaces Diagramm zum Laufzeittest zu Static Finger.\relax }}{88}%
+\contentsline {figure}{\numberline {53}{\ignorespaces Diagramm zum Laufzeittest zu Dynamic Finger mit konstantem $a$.\relax }}{89}%
+\contentsline {figure}{\numberline {54}{\ignorespaces Diagramm zum Laufzeittest zu Dynamic Finger, mit verschiedenen Werten für $a$.\relax }}{90}%
 \contentsline {figure}{\numberline {55}{\ignorespaces Laufzeittest working set.\relax }}{91}%
 \contentsline {figure}{\numberline {56}{\ignorespaces Laufzeittest working set, mit unterschiedlichem $p$.\relax }}{92}%
 \contentsline {figure}{\numberline {57}{\ignorespaces Laufzeittest alternierend.\relax }}{93}%

@@ -55,20 +55,21 @@
 \contentsline {paragraph}{Besonderheiten bei \textit {access}:}{77}%
 \contentsline {subsection}{\numberline {7.2}Multisplay Baum}{78}%
 \contentsline {paragraph}{Die \textit {access} Operation beim Multisplay Baum:}{79}%
-\contentsline {section}{\numberline {8}Implementierung und Laufzeittests}{80}%
-\contentsline {subsection}{\numberline {8.1}Implementierung}{80}%
-\contentsline {subsubsection}{\numberline {8.1.1}Beschreibung der Klassen }{83}%
-\contentsline {paragraph}{SplayTree und SplayNode:}{84}%
-\contentsline {paragraph}{TangoNode:}{84}%
-\contentsline {paragraph}{TangoAuxTree:}{84}%
-\contentsline {paragraph}{TangoTree:}{84}%
-\contentsline {paragraph}{RedBlackTree und RBTNode:}{84}%
-\contentsline {paragraph}{RuntimeTest:}{84}%
-\contentsline {subsection}{\numberline {8.2}Laufzeittests zwischen Tango Baum und Splay Baum}{85}%
-\contentsline {subsubsection}{\numberline {8.2.1}Zufällige Zugriffsfolge}{85}%
-\contentsline {subsubsection}{\numberline {8.2.2}Bit reversal permutation}{86}%
-\contentsline {subsubsection}{\numberline {8.2.3}Static Finger}{87}%
-\contentsline {subsubsection}{\numberline {8.2.4}Dynamic Finger}{88}%
-\contentsline {subsubsection}{\numberline {8.2.5}Working Set}{90}%
-\contentsline {subsubsection}{\numberline {8.2.6}Weitere Laufzeittests}{93}%
-\contentsline {section}{\numberline {9}Fazit und Ausblick}{99}%
+\contentsline {section}{\numberline {8}Dokumentation zur Implementierung}{80}%
+\contentsline {subsubsection}{\numberline {8.0.1}Beschreibung der Klassen }{82}%
+\contentsline {paragraph}{SplayTree und SplayNode:}{83}%
+\contentsline {paragraph}{TangoNode:}{83}%
+\contentsline {paragraph}{TangoAuxTree:}{83}%
+\contentsline {paragraph}{TangoTree:}{83}%
+\contentsline {paragraph}{RedBlackTree und RBTNode:}{83}%
+\contentsline {paragraph}{RuntimeTest:}{83}%
+\contentsline {section}{\numberline {9}Laufzeitvergleiche zwischen dem Tango Baum und dem Splay Baum.}{84}%
+\contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{85}%
+\contentsline {subsubsection}{\numberline {9.1.1}Durchführung der Laufzeittests.}{86}%
+\contentsline {subsubsection}{\numberline {9.1.2}Zufällige Zugriffsfolge}{86}%
+\contentsline {subsubsection}{\numberline {9.1.3}Bit reversal permutation}{87}%
+\contentsline {subsubsection}{\numberline {9.1.4}Static Finger}{87}%
+\contentsline {subsubsection}{\numberline {9.1.5}Dynamic Finger}{88}%
+\contentsline {subsubsection}{\numberline {9.1.6}Working Set}{90}%
+\contentsline {subsubsection}{\numberline {9.1.7}Weitere Laufzeittests}{93}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{99}%
