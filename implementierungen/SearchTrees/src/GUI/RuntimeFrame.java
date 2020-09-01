@@ -41,7 +41,7 @@ public class RuntimeFrame  extends JFrame{
     private int lenOfSeq;
     private int lenOfBRP;
     private int dynFinger;
-    private float workSetPer;
+    private int workSetDistance;
     private String activePanel ;
     private final JPanel  northPanel;
     private JPanel  sortedPanel;
@@ -64,7 +64,7 @@ public class RuntimeFrame  extends JFrame{
         numOfNodes = 1000;
         lenOfSeq = 1;
         lenOfBRP = 1;
-        workSetPer = 1;
+        workSetDistance = 1;
         activePanel = "randomAccess";
         dynFinger = 1;
         startButton = new JButton();
@@ -91,7 +91,7 @@ public class RuntimeFrame  extends JFrame{
                          tester = new RuntimeTest("dynamicFinger", numOfNodes, dynFinger, null, thisFrame, lenOfSeq );
                            break;
                         case ("workingSet"):
-                            tester = new RuntimeTest("workingSet", numOfNodes, -1, buildWorkingSet(), thisFrame, lenOfSeq ); 
+                            tester = new RuntimeTest("workingSet", numOfNodes, workSetDistance,null, thisFrame, lenOfSeq ); 
                             break;
                         case ("bitReversalPermutation"):
                              tester = new RuntimeTest("bitReversalPermutation", lenOfBRP, -1,  null, thisFrame, -1 );
@@ -151,6 +151,9 @@ public class RuntimeFrame  extends JFrame{
                         numOfNodes = value;
                         numOfNodesSli.setValue(numOfNodes);
                         numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                        if (numOfNodes < workSetDistance - 1 ){
+                            workSetDistance = numOfNodes - 1;
+                        }
                    }
                    else{
                         numOfNodesText.setText( setPointsInNumOfNodes(String.valueOf(numOfNodes)));
@@ -177,6 +180,9 @@ public class RuntimeFrame  extends JFrame{
                         numOfNodes = value;
                         numOfNodesSli.setValue(numOfNodes);
                         numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                         if (numOfNodes < workSetDistance - 1 ){
+                            workSetDistance = numOfNodes - 1;
+                        }
                    }
                    else{
                         numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
@@ -321,20 +327,19 @@ public class RuntimeFrame  extends JFrame{
         workingSetText = new JTextField();
         workingSetText.setFont(new Font("", 1, 20));
         workingSetText.setColumns(43);
-        workingSetText.setText("1.0");
+        workingSetText.setText("1");
         workingSetText.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                   float value = Float.parseFloat(workingSetText.getText());
-                   if (value > 0 && value <= 100) 
-                        workSetPer = value;
+                   int value = Integer.parseInt(workingSetText.getText());
+                   if (value > 0 && value <= numOfNodes - 1) 
+                        workSetDistance = value;
                    else
-                       workingSetText.setText("" + workSetPer);
+                       workingSetText.setText("" + workSetDistance);
                 }    
                 catch(Exception ex){
-                    workingSetText.setText("" + workSetPer);
-                    
+                    workingSetText.setText("" + workSetDistance);
                 }
             }
         });
@@ -348,15 +353,14 @@ public class RuntimeFrame  extends JFrame{
             @Override
             public void focusLost(FocusEvent e) {
                 try{
-                   float value = Float.parseFloat(workingSetText.getText());
-                   if (value > 0 && value <= 100) 
-                        workSetPer = value;
+                   int value = Integer.parseInt(workingSetText.getText());
+                   if (value > 0 && value <= numOfNodes - 1) 
+                        workSetDistance = value;
                    else
-                       workingSetText.setText("" + workSetPer);
+                       workingSetText.setText("" + workSetDistance);
                 }    
                 catch(Exception ex){
-                    workingSetText.setText("" + workSetPer);
-                    
+                    workingSetText.setText("" + workSetDistance);
                 }
             }
         });
@@ -439,7 +443,6 @@ public class RuntimeFrame  extends JFrame{
         buildRandomPanel();
         add(randomPanel, BorderLayout.CENTER);
         add(startButton, BorderLayout.SOUTH);
-        setVisible(true);
 
     }
     private void buildSortedPanel(){
@@ -522,22 +525,12 @@ public class RuntimeFrame  extends JFrame{
         workingSetPanel.add(centerPanel);
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new GridLayout(1, 2));
-        bottomPanel.add(new JLabel("Größe des working set in %"));   
+        bottomPanel.add(new JLabel("Distanz der Schlüssel in der Folge"));   
         bottomPanel.add(workingSetText);      
         workingSetPanel.add(bottomPanel);
        
     }
-    private List<Integer> buildWorkingSet(){       
-        List<Integer> workingSet;
-        workingSet = new LinkedList<>();
-        for(int i = 1; i <= numOfNodes; i++){
-            if(workingSet.size() <  (workSetPer * i / 100)){
-                workingSet.add(i);
-            }
-        }
-      return workingSet;  
-        
-    }
+   
     
     
     private String setPointsInNumOfNodes(String nON){

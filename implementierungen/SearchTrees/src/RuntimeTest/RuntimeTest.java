@@ -57,7 +57,7 @@ public class RuntimeTest extends Thread {
                          break;
                     case ("workingSet"): 
                         try {
-                             result = workingSet(par1, workingSet, repeat);
+                             result = workingSet(par1, par2, repeat);
                             }
                          catch (BuildAuxTreeFaildException ex) {
                         }
@@ -108,34 +108,49 @@ public class RuntimeTest extends Thread {
         exit = false;
         runtimeFrame = rf;
     }
-    /**
+   /**
      * Führt einen Laufzeittest mit einer auf die workingSet Eigenschaft zugeschnittenen Zugriffsfolge aus.
      * @param numOfNodes Anzahl der Knoten.
-     * @param set Schlüssel der Knoten, die zum WorkingSet gehören. Diese werden der Reihe nach der Zugriffsfolge hinzugefügt. Dies Iteriert so oft bis
-     * die Zugriffsfolge lang genug ist.
-     * @param repeat Länge der Zugriffsfolge in Millionen.
+     * @param distance Anzahl der Schlüssel zwischen sich wiederholenden Schlüsseln, inklusive den sich wiederholenden Schllüssel 
+     * @param length Länge der Zugriffsfolge.
      * @return Ein Array der Größe 2. Index 0 -> Laufzeit in ms des TangoTree. Index 1 -> Laufzeit in ms des SplayTree.
      * @throws BuildAuxTreeFaildException 
      */
-    private long[] workingSet (int numOfNodes,  List<Integer> set, int repeat) throws BuildAuxTreeFaildException{
-        int lengthOfSeq = 1000000;
+    private long[] workingSet (int numOfNodes, int distance,  int length) throws BuildAuxTreeFaildException{
         List<Integer> accessSequenz = new LinkedList<>();
         List<Integer> keyList = new LinkedList<>();
         for (int i = 1; i <= numOfNodes ; i++){
             keyList.add(i);
         }
-        while(accessSequenz.size() < lengthOfSeq ){
+        int lengthOfSeq = 1000000 * length;
+        int numOfSets = numOfNodes / distance;
+        int setSize = numOfNodes / numOfSets;
+        
+        int index = 1;
+        while (accessSequenz.size() <  lengthOfSeq){
             if ( exit)
                 return null;
-            for(Integer i : set){
-                accessSequenz.add(i);
+            List<Integer> set = new LinkedList<>();
+            //Das Set bilden aus dem die nächsten Schlüssel hinzugefügt werden.
+            while(set.size() < setSize){
+                set.add(index);
+                if(index <= numOfNodes / 2){
+                    index = numOfNodes / 2 + index ;
+                }
+                else{
+                    index =  index - numOfNodes / 2 + 1;
+                }    
+            }
+            int j = 0;
+            for (int i = 1; i <= lengthOfSeq / numOfSets; i++){
+                accessSequenz.add(set.get(j++));
+                if (j > set.size() - 1)
+                    j = 0;
                 if (accessSequenz.size() >= lengthOfSeq)
                     break;
-            }
-        }
-        
-        return runtimeTest(keyList, accessSequenz, repeat);
-     
+            }   
+        }                 
+        return runtimeTest(keyList, accessSequenz, 1);
     }
     
     /**
@@ -223,14 +238,22 @@ public class RuntimeTest extends Thread {
         }
        
         int value = 1;
+        boolean reversal = false;
         for (int i = 1; i < lengthOfSeq +1; i++){
             if ( exit)
                 return null;
             accessSequenz.add(value);
-            value += keyDistanz;
-            if (value > numOfNodes)
-                value -= numOfNodes;
-            
+            if (!reversal){
+                value += keyDistanz;
+                if(value + keyDistanz > numOfNodes)
+                    reversal = true;
+            }    
+            else{
+                value -= keyDistanz;
+                if(value - keyDistanz < 1)
+                    reversal = false;
+            }    
+             
         }
         
         return runtimeTest(keyList, accessSequenz, repeat);

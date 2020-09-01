@@ -57,9 +57,9 @@
 \contentsline {paragraph}{Die \textit {access} Operation beim Multisplay Baum:}{79}%
 \contentsline {section}{\numberline {8}Dokumentation zur Implementierung}{80}%
 \contentsline {subsubsection}{\numberline {8.0.1}Beschreibung der Klassen }{82}%
-\contentsline {paragraph}{SplayTree und SplayNode:}{83}%
-\contentsline {paragraph}{TangoNode:}{83}%
-\contentsline {paragraph}{TangoAuxTree:}{83}%
+\contentsline {paragraph}{SplayTree und SplayNode:}{82}%
+\contentsline {paragraph}{TangoNode:}{82}%
+\contentsline {paragraph}{TangoAuxTree:}{82}%
 \contentsline {paragraph}{TangoTree:}{83}%
 \contentsline {paragraph}{RedBlackTree und RBTNode:}{83}%
 \contentsline {paragraph}{RuntimeTest:}{83}%
@@ -67,9 +67,9 @@
 \contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{85}%
 \contentsline {subsubsection}{\numberline {9.1.1}Durchführung der Laufzeittests.}{86}%
 \contentsline {subsubsection}{\numberline {9.1.2}Zufällige Zugriffsfolge}{86}%
-\contentsline {subsubsection}{\numberline {9.1.3}Bit reversal permutation}{87}%
-\contentsline {subsubsection}{\numberline {9.1.4}Static Finger}{87}%
-\contentsline {subsubsection}{\numberline {9.1.5}Dynamic Finger}{88}%
-\contentsline {subsubsection}{\numberline {9.1.6}Working Set}{90}%
+\contentsline {subsubsection}{\numberline {9.1.3}Bit Reversal Permutation}{87}%
+\contentsline {subsubsection}{\numberline {9.1.4}Static Finger Property}{88}%
+\contentsline {subsubsection}{\numberline {9.1.5}Dynamic Finger Property}{89}%
+\contentsline {subsubsection}{\numberline {9.1.6}Working Set Property}{91}%
 \contentsline {subsubsection}{\numberline {9.1.7}Weitere Laufzeittests}{93}%
 \contentsline {section}{\numberline {10}Fazit und Ausblick}{99}%

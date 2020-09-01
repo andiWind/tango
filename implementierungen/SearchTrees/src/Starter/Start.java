@@ -23,12 +23,7 @@ public class Start {
      * @param args Keine Parametrierung notwendig.
      */
     public static void main (String[] args) {
-        double test = 0;
-        for (int i = 1; i < 1000000; i++){
-            test += 1 / Math.pow(i, 2);
-        }
-        
-      
+
         new MainGUI();  
  
     }
