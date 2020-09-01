@@ -619,15 +619,15 @@ Sei $w$ der Index des Knotens mit der größten Tiefe in $ v_0,..,v_{n-1}$, mit 
 \noindent Daraus folgt direkt  $\mathit{OPT}\left(X\right) \geq \left({_X(T, Y, X)}\right) $ für beliebige BST $T$.  
 
 
-\subsection{Bit reversal permutation } \label{abschnittBitReversal}
-In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ gibt, so dass für die Laufzeit beliebiger BST $T$ $\Omega\left(m \log\left( n\right)\right)$ gilt, mit $n$ ist die Anzahl der Knoten von $T$. Hier werden speziell die Zugriffsfolgen betrachtet, die als \textbf{bit reversal permutation} bezeichnet werden. 
+\subsection{Bit Reversal Permutation } \label{abschnittBitReversal}
+In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ gibt, so dass für die Laufzeit beliebiger BST $T$ $\Omega\left(m \log\left( n\right)\right)$ gilt, mit $n$ ist die Anzahl der Knoten von $T$. Hier werden speziell die Zugriffsfolgen betrachtet, die als \textbf{Bit Reversal Permutation} bezeichnet werden. 
 Dafür wird die erste untere Schranke von Wilber verwendet und ein Beweis ist ebenfalls in \cite{wilberLowerBounds} enthalten. \\
 Nun wird zunächst auf den Aufbau einer solchen Zugriffsfolge eingegangen. Sei $l \in \mathbb{N}$ und $i \in \{0,1,..,l-1\}$. Eine Folge  $b_{l-1},b_{l-2},..,b_0$ mit $b_i \in \{0,1\}$, kann als Zahl zur Basis $2$ interpretiert werden. $T$ enthält alle Schlüssel die als solche Folge dargestellt werden können. Die Schlüsselmenge von $T$ ist deshalb $K_l = \{0,1,..,2^l -1\}$. 
 Die Funktion $\mathit{br}_l(k)\colon K \rightarrow K$ ist wie folgt definiert. Sei {$b_{l-1},b_{l-2},..,b_{0}$} die Binärdarstellung von $k$, dann gilt:
 \begin{align*}
 \mathit{br}_l(k) = \sum_{i = 0}^{l-1} b_{\left(l-1-i\right)} \cdot 2^i
 \end{align*}
-$\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdarstellung von $k$ zurück. Die bit reversal permutation zu $l$ ist die Zugriffsfolge\\ ${\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)}$. Tabelle \ref{tab:bitReversal} zeigt die bit reveral permutation mit $l  = 4$.\\
+$\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdarstellung von $k$ zurück. Die Bit Reversal Permutation zu $l$ ist die Zugriffsfolge\\ ${\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)}$. Tabelle \ref{tab:bitReversal} zeigt die Bit Reveral Permutation mit $l  = 4$.\\
  Sei $y = \max\left(K_l\right) /2 = 2^{l-1} - 0,5 $. Da $b_0$ in den Binärdarstellungen zu $0, 1,.., 2^l-1$ alterniert, alterniert $b_{l-1}$ in $X$. Aus $2^{l-1} > y$ folgt \\ $\mathit{br}_l(k) < y \Rightarrow \mathit{br}_l(k +1) > y$ und $\mathit{br}_l(k) > y \Rightarrow \mathit{br}_l(k +1) < y$. Da $\vert K_l \vert = 2^l$, sind im vollständig balanciertern lower bound tree $Y$ zu $T$ alle Ebenen vollständig mit Knoten besetzt. Sei $w$ die Wurzel von $Y$. Da im linken Teilbaum von $w$ genau so viele Blätter wie im rechten vorhanden sein müssen, kann nur $y$ der Schlüssel von $w$ sein. Zu einer Zugriffsfolge $X = x_0,x_1,..,x_m$ bezeichnet $X^r_l$ wieder die Zugriffsfolge, die entsteht, wenn aus $X$ alle Schlüssel $k$, mit $k < l \lor k > r$ entfernt werden. $X + i$ mit $i \in \mathbb{N}$ bezeichnet im Folgenden die Folge $x_0 + i, x_1 + i,.., x_m + i$.\\
 
 \begin{table}
@@ -669,7 +669,7 @@ $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdar
 			$15$ &$1111$ &$1111$  &$15$\\
 			\hline
 		\end{tabular}
-		\caption{bit reversal permutation für $l=4$} 
+		\caption{Bit Reversal Permutation für $l=4$} 
 		\label{tab:bitReversal}
 	\end{center}
 \end{table}
@@ -677,7 +677,7 @@ $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdar
 
 
 \newtheorem{Korollar1}{Korollar}[section]
-\begin{Korollar1} Sei $l \in \mathbb{N}$. Sei $T$ ein BST mit Schlüsselmenge\\ ${K_l = \{0,1,..,2^l -1\}}$ und $n = 2^l$. Sei $X = x_0, x_1,..,x_{n-1}$ die bit reversal permutation zu $l$ und $Y$ der vollständig balancierte lower bound tree zu $T$. Dann gilt  $W\left(X,T\right) \geq n \log_2 \left(n\right) + 1 $. 
+\begin{Korollar1} Sei $l \in \mathbb{N}$. Sei $T$ ein BST mit Schlüsselmenge\\ ${K_l = \{0,1,..,2^l -1\}}$ und $n = 2^l$. Sei $X = x_0, x_1,..,x_{n-1}$ die Bit Reversal Permutation zu $l$ und $Y$ der vollständig balancierte lower bound tree zu $T$. Dann gilt  $W\left(X,T\right) \geq n \log_2 \left(n\right) + 1 $. 
 \end{Korollar1}
 \begin{proof}
 	Sei $U$ die Menge der inneren Knoten von $Y$. Mit Satz \ref{satzWilber1} reicht es aus, 
@@ -686,7 +686,7 @@ $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdar
 	\sum_{u \in U} {\mathit{score}\left(u\right)} \geq n \log_2\left( n\right) + 1 - n 
 	\end{align*} 
 	zu zeigen. Dies geschieht mit Induktion über $l$. Für $l = 0$ besteht $Y$ aus einem einzigen Blatt. Damit gilt:\\ $ \sum_{u \in U} {\mathit{score}\left(u\right)} = 0 = n \log_2 \left(n\right) + 1 - n $. \\
-	Nun sei $l > 0$. Sei $w$ die Wurzel von $Y$, mit $k_w = \mathit{key}(w)$. Sei $T_0^{k_w}$ ein BST mit Schlüsselmenge $K_0^{k_w} =\{k \in \mathbb{N}\vert k \leq k_w\} = \{k \in \mathbb{N}\vert k \leq 2^{l-1} - 1\}$ und $T_{k_w}^\infty$ ein BST mit Schlüsselmenge  $ K^\infty_{k_w} = \{k \in \mathbb{N}\vert \exists n \in K_0^{k_w}\colon  k = n + 2^{l-1}\}$. Sei $Y^1$, bzw. $Y^2$ der linke, bzw. rechte Teilbaum von $w$ und $U^1$, bzw. $U^2$ die Menge der inneren Knoten von $Y^1$, bzw. $Y^2$. $Y^1$ und $Y^2$ sind vollständig balancierte lower bound trees zu $T_0^{k_w}$ und $T_{k_w}^\infty$. $X^{k_w}_0$ ist die bit reversal permutation für $T_0^{k_w}$. Außerdem gilt, $X_{k_w}^\infty = X^{k_w}_0 + 2^{l-1}$. Mit der Induktionsvoraussetzung gilt deshalb, für $i \in \{1,2\}$:
+	Nun sei $l > 0$. Sei $w$ die Wurzel von $Y$, mit $k_w = \mathit{key}(w)$. Sei $T_0^{k_w}$ ein BST mit Schlüsselmenge $K_0^{k_w} =\{k \in \mathbb{N}\vert k \leq k_w\} = \{k \in \mathbb{N}\vert k \leq 2^{l-1} - 1\}$ und $T_{k_w}^\infty$ ein BST mit Schlüsselmenge  $ K^\infty_{k_w} = \{k \in \mathbb{N}\vert \exists n \in K_0^{k_w}\colon  k = n + 2^{l-1}\}$. Sei $Y^1$, bzw. $Y^2$ der linke, bzw. rechte Teilbaum von $w$ und $U^1$, bzw. $U^2$ die Menge der inneren Knoten von $Y^1$, bzw. $Y^2$. $Y^1$ und $Y^2$ sind vollständig balancierte lower bound trees zu $T_0^{k_w}$ und $T_{k_w}^\infty$. $X^{k_w}_0$ ist die Bit Reversal Permutation für $T_0^{k_w}$. Außerdem gilt, $X_{k_w}^\infty = X^{k_w}_0 + 2^{l-1}$. Mit der Induktionsvoraussetzung gilt deshalb, für $i \in \{1,2\}$:
 	\begin{align*}
 	\sum_{u \in U^i} {\mathit{score}\left(u\right)} \geq  \frac{n}{2} \log_2 \left(\frac{n}{2} \right) + 1 - \frac{n}{2}  
 	\end{align*}
@@ -1436,10 +1436,10 @@ Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann 
 
 \section {Laufzeitvergleiche zwischen dem Tango Baum und dem Splay Baum.}
 
-Es werden Laufzeittests zu unterschiedlichen Arten von Zugriffsfolgen durchgeführt. Unter anderem solche, die auf eine der Eigenschaften  Static Finger,  Working Set oder Dynamic Finger aus Abschnitt \ref{upperBounds} zugeschnitten sind. Hierzu wird dann entweder eine Zugriffsfolge verwendet, bei der die zur Eigenschaft gehörende obere Schranke niedrige Werte annimmt oder es wird versucht die Reaktion der Laufzeit auf steigende Werte dieser Schranke zu zeigen. Bei Ersterem werden dann die Laufzeiten in Bezug zur Knotenanzahl dargestellt. Bei Letzterem werden dann mehrere Zugriffsfolgen verwendet, bei denen der Wert der oberen Schranke nach und nach ansteigt. Die Länge der Zugriffsfolgen und die Anzahl der Knoten in den Bäumen ist dabei dann konstant. Außerdem wird mit mehreren Varianten sortierter Zugriffsfolgen getestet. Ein Datenblatt zu dem verwendeten System ist dem Kapitel angefügt. \\
+Es werden Laufzeittests zu unterschiedlichen Arten von Zugriffsfolgen durchgeführt. Unter anderem solche, die auf eine der Eigenschaften  Static Finger,  Working Set oder Dynamic Finger aus Abschnitt \ref{upperBounds} zugeschnitten sind. Hierzu werden dann Zugriffsfolgen verwendet, bei denen die jeweilige Eigenschaft für die Laufzeit besonders relevant ist. \\
 
 \subsection{Verwendete Zugriffsfolgen zu den Laufzeittests.}
-Hier werden die verwendeten Zugriffsfolgen zunächst kurz vorgestellt. Auf Details zum Aufbau wird dann im Abschnitt zu dem  jeweiligem Test eingegangen. $n$ entspricht der Anzahl der Knoten und $m$ der Länge der Zugriffsfolge. Als Schlüsselmenge wird $K = \{1,2,..,n\}$ verwendet. Gibt es keine Abhängigkeit von $m$ zu $n$, so haben die Zugriffsfolgen die Länge $40$ Millionen. Die Laufzeittests zu den Punkten $3 - 7$ beziehen sich auf die Eigenschaften eines dynamisch optimalen BST aus Abschnitt \ref{upperBounds}. Hier werden dann Zugriffsfolgen verwendet, bei denen davon ausgegangen werden kann, dass sich die jeweilige Eigenschaft deutlich auf die Laufzeit auswirkt. Folgende Zugriffsfolgen werden verwendet:
+Hier werden die verwendeten Zugriffsfolgen zunächst kurz vorgestellt. Auf Details zum Aufbau wird dann im Abschnitt zu dem  jeweiligem Test eingegangen. $n$ entspricht der Anzahl der Knoten und $m$ der Länge der Zugriffsfolge. Als Schlüsselmenge wird $K = \{1,2,..,n\}$ verwendet. Gibt es keine Abhängigkeit von $m$ zu $n$, so haben die Zugriffsfolgen die Länge $40$ Millionen. 
 
  \begin{enumerate}
  	\item Zufällig erzeugte Zugriffsfolgen.
@@ -1447,11 +1447,10 @@ Hier werden die verwendeten Zugriffsfolgen zunächst kurz vorgestellt. Auf Detai
  	Es werden mehrere solcher in Abschnitt \ref{abschnittBitReversal} beschriebenen Folgen mit unterschiedlich langen Binärdarstellungen der Schlüssel verwendet.
  	\item Zugriffsfolgen zum Static Finger Property: \\
     Hier wird ein Schlüssel $k_F \in K$ gewählt. Die Häufigkeit des Vorkommens eines Schlüssel $k \in K$ in $X$ ist von $\vert k - k_F \vert$ abhängig. Schlüssel zu denen dieser Wert klein ist, sind häufiger enthalten als andere. Es werden solche Zugriffsfolgen für verschiedene $n$ erstellt und die Ergebnisse der beiden Datenstrukturen verglichen. 
-    Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass das Static Finger Property mit steigendem Index der Zugriffsfolge weniger relevant wird. Für diese sieben Folgen ist der Wert für $n$ konstant.
- 	 \item Zugriffsfolge zum Dynamic Finger Property:
- 	Hier werden Zugriffsfolgen verwendet, so dass $\vert x_{i+1} - x_{i} \vert$ für alle $i \in \{1, 2,..,m -1\} $ einen festen parametrierbaren Wert ergibt. Ansonsten wird analog zum Static Finger Property vorgegangen.
+ 	 \item Zugriffsfolge zum Dynamic Finger Property:\\
+ 	Hier werden Zugriffsfolgen verwendet, so dass $\vert x_{i+1} - x_{i} \vert$ für alle $i \in \{1, 2,..,m -1\} $ einen festen parametrierbaren Wert ergibt.  Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass das Dynamic Finger Property mit steigendem Index der Zugriffsfolge weniger relevant wird. Für diese sieben Folgen ist der Wert für $n$ konstant.
  	\item Zugriffsfolge zum Working Set Property:\\
- 	In den hier verwendeten Zugriffsfolgen wiederholen sich die Schlüssel mit einem festen parametrierbaren Abstand. Um Einflüsse der anderen aufgeführten Eigenschaften niedrig zu halten, werden die verwendeten Schlüssel betragsmäßig über die gesamte Schlüsselmenge verteilt. Außerdem folgt auf einem Schlüssel der kleiner ist als $n /2$ einer der größer ist und umgekehrt. Ansonsten wird analog zum Static Finger Property vorgegangen.   
+ 	In den hier verwendeten Zugriffsfolgen wiederholen sich die Schlüssel mit einem festen parametrierbaren Abstand. Um Einflüsse der anderen aufgeführten Eigenschaften niedrig zu halten, werden die verwendeten Schlüssel betragsmäßig über die gesamte Schlüsselmenge verteilt. Außerdem gilt für zwei aufeinanderfolgende Schlüssel $k_1$ und $k_2$ in den meisten Fällen $\vert k_1 - k_2 \vert = n /2$. Ansonsten wird analog zum Dynamic Finger Property vorgegangen.   
   \item Alternierend der kleinste und der größte Schlüssel.
   \item Aufsteigend sortiert:\\
   Jeder Schlüssel wird nur einmal verwendet.
@@ -1466,7 +1465,35 @@ Hier werden die verwendeten Zugriffsfolgen zunächst kurz vorgestellt. Auf Detai
 \subsubsection{Durchführung der Laufzeittests.} 
 
 \subsubsection{Zufällige Zugriffsfolge}
-	Ein Pseudozufallsgenerator erstellt die hier verwendeten Zugriffsfolgen. Für jedes $i \in \{1,2..,m\}$ und $k \in K$ ist die Wahrscheinlichkeit, dass $x_i = k$ gilt, gleich $1 /n$. Es werden jeweils zehn so erzeugte Folgen je verwendeter Schlüsselmenge getestet. Als erstes werden die Zeiten zu den Zugriffsfolgen dargestellt, bei denen der Tango Baum die kürzesten  Laufzeiten erreichte. Dann wird ebenso zum Splay Baum vorgegangen. Außerdem werden noch die Durchschnittswerte aus den jeweils zehn Zugriffsfolgen präsentiert.
+	Ein Pseudozufallsgenerator erstellt die hier verwendeten Zugriffsfolgen. Für jedes $i \in \{1,2..,m\}$ und $k \in K$ ist die Wahrscheinlichkeit, dass $x_i = k$ gilt, gleich $1 /n$. Es werden jeweils zehn so erzeugte Folgen pro verwendeter Schlüsselmenge getestet. Als erstes werden die Zeiten zu den Zugriffsfolgen dargestellt, bei denen der Tango Baum die kürzesten  Laufzeiten erreichte. Dann wird ebenso zum Splay Baum vorgegangen. Außerdem werden noch die Durchschnittswerte aus den jeweils zehn Zugriffsfolgen präsentiert.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/randomaccess"}
+	\caption{Laufzeittest mit zufälliger Zugriffsfolge.}
+ 	
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $138$ &$6$ \\
+			\hline
+			$10^4$  & $342$ &$16$  \\
+			\hline
+			$10^5$  & $353$ &$16$  \\
+			\hline
+			$10^6$  & $469$ &$32$  \\
+			\hline
+			$10^7$  & $736$ &$58$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest mit zufälliger Zugriffsfolge.} 
+	\end{center}
+\end{table}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/randomaccess"}
@@ -1493,13 +1520,40 @@ Hier werden die verwendeten Zugriffsfolgen zunächst kurz vorgestellt. Auf Detai
 		\caption{Laufzeittest mit zufälliger Zugriffsfolge.} 
 	\end{center}
 \end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/randomaccess"}
+	\caption{Laufzeittest mit zufälliger Zugriffsfolge.}
+	
+\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}[c]{|c|c|c|}
+			\hline
+			$n$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			\hline
+			$10^3$ & $138$ &$6$ \\
+			\hline
+			$10^4$  & $342$ &$16$  \\
+			\hline
+			$10^5$  & $353$ &$16$  \\
+			\hline
+			$10^6$  & $469$ &$32$  \\
+			\hline
+			$10^7$  & $736$ &$58$  \\
+			\hline
+		\end{tabular}
+		\caption{Laufzeittest mit zufälliger Zugriffsfolge.} 
+	\end{center}
+\end{table}
+\noindent Beide erreichen bei diesen Zugriffsfolgen im Vergleich zu den meisten noch Folgenden hohe Werte bei der Laufzeit. Da es sich um dynamische BST handelt ist dies auch zu erwarten. Denn der Zustand eines der BST vor einer \textit{access} Operation hängt im wesentlichen von den Parametern der vorherigen \textit{access} Operationen ab. Nur zu Beginn der Folge hat der Startzustand einen deutlichen Einfluss auf diesen Zustand. Bei den hier verwendeten Zugriffsfolgen gibt es keine Abhängigkeiten zwischen dem Parameter einer \textit{access} Operation zu den vorherigen. Beide BSTs können hier aus ihrem dynamisches Verhalten nur wenig Vorteil beziehen.  
 
 \subsubsection{Bit Reversal Permutation}
-Auf der X-Achse wird die Länge der einzelnen Binärdarstellungen $l$ dargestellt. In der Spalte $2^l$ kann die Länge der Zugriffsfolge und die Anzahl der Knoten abgelesen werden. Die Ergebnisse bestätigen, dass es sich um eine aufwändige Zugriffsfolge für BSTs handelt.
+Auf der X-Achse wird die Länge der einzelnen Binärdarstellungen $l$ dargestellt. In der Spalte $2^l$ kann die Länge der Zugriffsfolge und die Anzahl der Knoten abgelesen werden. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/brp"}
-	\caption{Laufzeittest bit reversal permutation.}
+	\caption{Laufzeittest Bit Reversal Permutation.}
 	\label{fig:ResultGUI}
 \end{figure}
 \begin{table}[H]
@@ -1525,12 +1579,14 @@ Auf der X-Achse wird die Länge der einzelnen Binärdarstellungen $l$ dargestell
 			$24$  &$16.777.216$ &$457$ &$35$  \\
 			\hline
 		\end{tabular}
-		\caption{Laufzeittest bit reversal permutation.} 
+		\caption{Laufzeittest Bit Reversal Permutation.} 
 	\end{center}
 \end{table}
+\noindent Wie in Abschnitt \ref{abschnittBitReversal} gezeigt gilt bei diesen Folgen für die Laufzeit eines beliebigen BST $\Omega \left(n \log\left(n\right)\right)$. Der Splay Baum erfüllt das Balanced Property, weshalb für seine Laufzeit auch $O\left(n + n \log\left(n\right)\right)$ gelten muss. Die Ergebnisse bestätigen, dass es sich um aufwändige Zugriffsfolgen für BSTs handelt. Vergleichbare Werte traten nur bei den zufällig erzeugten Zugriffsfolgen auf. 
+
 
 \subsubsection{Static Finger Property}
-Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \textit{access} Operationen. Auf $a+1$ und $a-1$ entfallen dann $1$ Prozent (gemeinsam $2$ Prozent) der restlichen \textit{access} Operationen. Dieses Vorgehen iteriert bis ein Prozent der Anzahl der verbleibenden \textit{access} Operationen weniger als $1$ ergibt. Es wird dann nochmals die Anzahl von Zugriffen auf $a$ hinzugefügt, die benötigt wird, um die gewünschte Länge der Zugriffsfolge zu erreichen.  Die Anordnung der Schlüssel in der Zugriffsfolge erfolgt wieder über einen Pseudozufallsgenerator. 
+Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \textit{access} Operationen. Auf $a+1$ und $a-1$ entfallen dann $1$ Prozent (gemeinsam $2$ Prozent) der restlichen \textit{access} Operationen. Dieses Vorgehen iteriert bis ein Prozent der Anzahl der verbleibenden \textit{access} Operationen weniger als $1$ ergibt. Es wird dann nochmals die Anzahl von Zugriffen auf $a$ hinzugefügt, die benötigt wird, um die gewünschte Länge der Zugriffsfolge zu erreichen. Die Anordnung der Schlüssel in der Zugriffsfolge erfolgt wieder über einen Pseudozufallsgenerator. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/staticfinger"}
@@ -1559,12 +1615,13 @@ Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \text
 	\end{center}
 \end{table}
 
-
+Sei $X$ eine der verwendeten Zugriffsfolgen und $L$ die Menge der in $X$ enthaltenen Schlüssel. $L$ hat eine Kardinalität von $968$. Der Splay Baum erfüllt das Static Finger Property und zusätzlich führt die eingeschränkte Kardinalität von  $L$ gegenüber $K$ zu den niedrigen Laufzeiten.     
+Auch der Tango Baum erreicht hier verglichen mit anderen Zugriffsfolgen kurze Laufzeiten. Auch hier kann die Kardinalität von $L$ zur Erklärung verwendet werden. Bei den größeren Instanzen wird sich das preferred child bei vielen Knoten im Referenzbaum zum Tango Baum entweder gar nicht oder nur bei wenigen \textit{access} Operationen ändern. 
 
 
 
 \subsubsection{Dynamic Finger Property}
-Beim ersten Test wird Zugriffsfolge $1, 3, 5,..,n-1, 1, 3, 5, .., n-1,...$ verwendet. Der Abstand $a$ zwischen zwei aufeinanderfolgenden Schlüsseln ist \mbox{also $2$}.
+Als erstes ist die Anzahl der Knoten wieder variabel und es  werden Zugriffsfolgen der Form  $1, 3, 5,..,n-1, n-3, n-5, ..,1, 3, 5..., n-1,...$ verwendet. Die Differenz $a$ zwischen zwei aufeinanderfolgenden Schlüsseln ist \mbox{also $2$}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/dynamicfinger"}

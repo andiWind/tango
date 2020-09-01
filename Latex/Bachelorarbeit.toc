@@ -19,7 +19,7 @@
 \contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{29}%
 \contentsline {subsection}{\numberline {4.2}Erste untere Schranke von Wilber}{30}%
 \contentsline {paragraph}{lower bound tree:}{30}%
-\contentsline {subsection}{\numberline {4.3}Bit reversal permutation }{37}%
+\contentsline {subsection}{\numberline {4.3}Bit Reversal Permutation }{37}%
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode:}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack:}{40}%
@@ -64,12 +64,12 @@
 \contentsline {paragraph}{RedBlackTree und RBTNode:}{83}%
 \contentsline {paragraph}{RuntimeTest:}{83}%
 \contentsline {section}{\numberline {9}Laufzeitvergleiche zwischen dem Tango Baum und dem Splay Baum.}{84}%
-\contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{85}%
+\contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{84}%
 \contentsline {subsubsection}{\numberline {9.1.1}Durchführung der Laufzeittests.}{86}%
 \contentsline {subsubsection}{\numberline {9.1.2}Zufällige Zugriffsfolge}{86}%
-\contentsline {subsubsection}{\numberline {9.1.3}Bit Reversal Permutation}{87}%
-\contentsline {subsubsection}{\numberline {9.1.4}Static Finger Property}{88}%
-\contentsline {subsubsection}{\numberline {9.1.5}Dynamic Finger Property}{89}%
-\contentsline {subsubsection}{\numberline {9.1.6}Working Set Property}{91}%
-\contentsline {subsubsection}{\numberline {9.1.7}Weitere Laufzeittests}{93}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{99}%
+\contentsline {subsubsection}{\numberline {9.1.3}Bit Reversal Permutation}{88}%
+\contentsline {subsubsection}{\numberline {9.1.4}Static Finger Property}{89}%
+\contentsline {subsubsection}{\numberline {9.1.5}Dynamic Finger Property}{90}%
+\contentsline {subsubsection}{\numberline {9.1.6}Working Set Property}{93}%
+\contentsline {subsubsection}{\numberline {9.1.7}Weitere Laufzeittests}{95}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{101}%
