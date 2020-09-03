@@ -64,12 +64,12 @@
 \contentsline {paragraph}{RedBlackTree und RBTNode:}{83}%
 \contentsline {paragraph}{RuntimeTest:}{83}%
 \contentsline {section}{\numberline {9}Laufzeitvergleiche zwischen dem Tango Baum und dem Splay Baum.}{84}%
-\contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{84}%
+\contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{85}%
 \contentsline {subsubsection}{\numberline {9.1.1}Durchführung der Laufzeittests.}{86}%
 \contentsline {subsubsection}{\numberline {9.1.2}Zufällige Zugriffsfolge}{86}%
 \contentsline {subsubsection}{\numberline {9.1.3}Bit Reversal Permutation}{88}%
 \contentsline {subsubsection}{\numberline {9.1.4}Static Finger Property}{89}%
-\contentsline {subsubsection}{\numberline {9.1.5}Dynamic Finger Property}{90}%
-\contentsline {subsubsection}{\numberline {9.1.6}Working Set Property}{93}%
-\contentsline {subsubsection}{\numberline {9.1.7}Weitere Laufzeittests}{95}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{101}%
+\contentsline {subsubsection}{\numberline {9.1.5}Dynamic Finger Property}{92}%
+\contentsline {subsubsection}{\numberline {9.1.6}Working Set Property}{95}%
+\contentsline {subsubsection}{\numberline {9.1.7}Weitere Laufzeittests}{97}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{103}%

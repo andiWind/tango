@@ -50,14 +50,16 @@
 \contentsline {figure}{\numberline {49}{\ignorespaces Den zur Ausführung verwendbaren Speicher erweitert.\relax }}{84}%
 \contentsline {figure}{\numberline {50}{\ignorespaces Laufzeittest mit zufälliger Zugriffsfolge.\relax }}{86}%
 \contentsline {figure}{\numberline {51}{\ignorespaces Laufzeittest mit zufälliger Zugriffsfolge.\relax }}{87}%
-\contentsline {figure}{\numberline {52}{\ignorespaces Laufzeittest mit zufälliger Zugriffsfolge.\relax }}{87}%
-\contentsline {figure}{\numberline {53}{\ignorespaces Laufzeittest Bit Reversal Permutation.\relax }}{88}%
-\contentsline {figure}{\numberline {54}{\ignorespaces Diagramm zum Laufzeittest zu Static Finger.\relax }}{90}%
-\contentsline {figure}{\numberline {55}{\ignorespaces Diagramm zum Laufzeittest zu Dynamic Finger mit konstantem $a$.\relax }}{91}%
-\contentsline {figure}{\numberline {56}{\ignorespaces Diagramm zum Laufzeittest zu Dynamic Finger, mit verschiedenen Werten für $a$.\relax }}{92}%
-\contentsline {figure}{\numberline {57}{\ignorespaces Laufzeittest working set.\relax }}{93}%
-\contentsline {figure}{\numberline {58}{\ignorespaces Laufzeittest working set, mit unterschiedlichem $p$.\relax }}{94}%
-\contentsline {figure}{\numberline {59}{\ignorespaces Laufzeittest alternierend.\relax }}{95}%
-\contentsline {figure}{\numberline {60}{\ignorespaces Laufzeittest aufsteigend sortiert.\relax }}{96}%
-\contentsline {figure}{\numberline {61}{\ignorespaces Laufzeittest absteigend sortiert.\relax }}{97}%
-\contentsline {figure}{\numberline {62}{\ignorespaces Laufzeittest auf-, bzw. absteigend geschachtelt.\relax }}{98}%
+\contentsline {figure}{\numberline {52}{\ignorespaces Laufzeittest mit zufälliger Zugriffsfolge.\relax }}{88}%
+\contentsline {figure}{\numberline {53}{\ignorespaces Laufzeittest Bit Reversal Permutation.\relax }}{89}%
+\contentsline {figure}{\numberline {54}{\ignorespaces Kürzeste Laufzeiten beider BSTs.\relax }}{90}%
+\contentsline {figure}{\numberline {55}{\ignorespaces Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen.\relax }}{91}%
+\contentsline {figure}{\numberline {56}{\ignorespaces Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen.\relax }}{91}%
+\contentsline {figure}{\numberline {57}{\ignorespaces Diagramm zum Laufzeittest zu Dynamic Finger mit konstantem $a$.\relax }}{93}%
+\contentsline {figure}{\numberline {58}{\ignorespaces Diagramm zum Laufzeittest zu Dynamic Finger, mit verschiedenen Werten für $a$.\relax }}{94}%
+\contentsline {figure}{\numberline {59}{\ignorespaces Laufzeittest working set.\relax }}{95}%
+\contentsline {figure}{\numberline {60}{\ignorespaces Laufzeittest working set, mit unterschiedlichem $p$.\relax }}{96}%
+\contentsline {figure}{\numberline {61}{\ignorespaces Laufzeittest alternierend.\relax }}{97}%
+\contentsline {figure}{\numberline {62}{\ignorespaces Laufzeittest aufsteigend sortiert.\relax }}{98}%
+\contentsline {figure}{\numberline {63}{\ignorespaces Laufzeittest absteigend sortiert.\relax }}{99}%
+\contentsline {figure}{\numberline {64}{\ignorespaces Laufzeittest auf-, bzw. absteigend geschachtelt.\relax }}{100}%
