@@ -56,20 +56,20 @@
 \contentsline {subsection}{\numberline {7.2}Multisplay Baum}{78}%
 \contentsline {paragraph}{Die \textit {access} Operation beim Multisplay Baum:}{79}%
 \contentsline {section}{\numberline {8}Dokumentation zur Implementierung}{80}%
-\contentsline {subsubsection}{\numberline {8.0.1}Beschreibung der Klassen }{82}%
+\contentsline {subsection}{\numberline {8.1}Beschreibung der Klassen }{82}%
 \contentsline {paragraph}{SplayTree und SplayNode:}{82}%
 \contentsline {paragraph}{TangoNode:}{82}%
-\contentsline {paragraph}{TangoAuxTree:}{82}%
+\contentsline {paragraph}{TangoAuxTree:}{83}%
 \contentsline {paragraph}{TangoTree:}{83}%
 \contentsline {paragraph}{RedBlackTree und RBTNode:}{83}%
 \contentsline {paragraph}{RuntimeTest:}{83}%
 \contentsline {section}{\numberline {9}Laufzeitvergleiche zwischen dem Tango Baum und dem Splay Baum.}{84}%
 \contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{85}%
-\contentsline {subsubsection}{\numberline {9.1.1}Durchführung der Laufzeittests.}{86}%
-\contentsline {subsubsection}{\numberline {9.1.2}Zufällige Zugriffsfolge}{86}%
-\contentsline {subsubsection}{\numberline {9.1.3}Bit Reversal Permutation}{88}%
-\contentsline {subsubsection}{\numberline {9.1.4}Static Finger Property}{89}%
-\contentsline {subsubsection}{\numberline {9.1.5}Dynamic Finger Property}{92}%
-\contentsline {subsubsection}{\numberline {9.1.6}Working Set Property}{95}%
-\contentsline {subsubsection}{\numberline {9.1.7}Weitere Laufzeittests}{97}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{103}%
+\contentsline {subsection}{\numberline {9.2}Durchführung der Laufzeittests.}{86}%
+\contentsline {subsubsection}{\numberline {9.2.1}Zufällig erzeugte Zugriffsfolgen}{86}%
+\contentsline {subsubsection}{\numberline {9.2.2}Bit Reversal Permutations}{89}%
+\contentsline {subsubsection}{\numberline {9.2.3}Static Finger Property}{90}%
+\contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{93}%
+\contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{95}%
+\contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{98}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{104}%

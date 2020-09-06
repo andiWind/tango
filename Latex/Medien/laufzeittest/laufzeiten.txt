@@ -20,13 +20,15 @@ n = 10.000:
  2.	474,3	24,7
  3.	553,4	24,5
  4.	502,0	26,3
- 5.	570,7	14,8
- 6.	565,5	25,7
+ 5.	475,9	25,1
+ 6.	243,2 	10,5
  7.	548,8	23,4
- 8.	554,4	24,5
+ 8.	477,7	10,3
  9.	528,4	23,8
-10.	515,4	22,4
-avg:	515,5	23,5
+10.	235,6 	9,9
+avg:	483,1	20,3
+
+
 
 n = 100.000: 
 	Tango	Splay 
@@ -40,7 +42,7 @@ n = 100.000:
  8.	329,3	15,5
  9.	328,6	15,1
 10.	331,6	15,6
-avg:	356,1	17,7
+avg:	438	17,7
 
 n = 1.000.000: 
 	Tango	Splay 
@@ -179,87 +181,112 @@ n = 10.000.000:
 avg:	128,2	4,7
 
 
-n= 1.000.000 p= 2.5:
-tango: 131,3 splay: 4,7
-tango: 140,2 splay: 4,6
-tango: 137,7 splay: 4,6
-tango: 137   splay: 4,6
-tango: 137,5 splay: 4,6
-tango: 137,1 splay: 4,7
-tango: 137,7 splay: 4,7
-tango: 136,9 splay: 4,7
-tango: 137,6 splay: 4,7
-tango: 136,2 splay: 4,6
-avg:   136,9        4,7
 
-n= 1.000.000 p= 3.0:
-tango: 123,6 splay: 4,2
-tango: 124,3 splay: 4,3
-tango: 124,2 splay: 4,3
-tango: 129,5 splay: 4,4
-tango: 139,9 splay: 4,5
-tango: 141   splay: 4,7
-tango: 128,2 splay: 4,4
-tango: 129,9 splay: 4,3
-tango: 126,6 splay: 4,3
-tango: 132,7 splay: 4,3
-avg:   130          4,4
 
-n= 1.000.000 p= 3.5:
-tango: 128,5 splay: 4,5
-tango: 134,4 splay: 4,4
-tango: 128,6 splay: 4,5
-tango: 136,2 splay: 4,4
-tango: 136,6 splay: 4,9
-tango: 133,1 splay: 4,5
-tango: 129   splay: 4,4
-tango: 130,6 splay: 4,5
-tango: 128,5 splay: 4,4
-tango: 130,6 splay: 4,5
-avg:   131,6        4,6
+  
+ 
+ 
+  
+  
+ 
+  n= 10000000p= 5.5 tango: 110331 splay: 4016
+  n= 10000000p= 5.5 tango: 101877 splay: 3894
+  n= 10000000p= 5.5 tango: 109981 splay: 4023
+ 
+
+
+
+
+
+
+
+
+n= 10.000.000 p= 2.5:
+tango: 156,9 splay: 5,7
+tango: 131,5 splay: 4,9
+tango: 143,8 splay: 5,1
+tango: 141,5 splay: 5
+tango: 142,8 splay: 4,9
+tango: 132,3 splay: 4,7
+tango: 134,5 splay: 5,4
+tango: 142,9 splay: 5
+tango: 134,3 splay: 4,7
+tango: 135,5 splay: 4,8
+avg:   139,6        5
+
+
+n= 10.000.000 p= 3.0:
+tango: 141   splay: 7
+tango: 261,6 splay: 4,7
+tango: 274,9 splay: 10
+tango: 171,9 splay: 4,2
+tango: 120,1 splay: 4,4
+tango: 117,2 splay: 4,2
+tango: 119,2 splay: 5,7
+tango: 301   splay: 4,6
+tango: 312,6 splay: 4,7
+tango: 304,8 splay: 4,8
+avg:   212,4        5,4
+
+
+
+n= 10.000.000 p= 3.5:
+tango: 129,3 splay: 4,6
+tango: 134   splay: 6,1
+tango: 132   splay: 4,7
+tango: 130,9 splay: 4,7
+tango: 127,4 splay: 4,6
+tango: 119,9 splay: 4,6
+tango: 119,8 splay: 4,5
+tango: 265,7 splay: 11,2
+tango: 127,5 splay: 4,4
+tango: 143,6 splay: 4,6
+avg:   143          5,4
    
 
-n= 1.000.000 p= 4.0:
-tango: 122,2 splay: 4,2
-tango: 120,8 splay: 4,2
-tango: 120,5 splay: 4,2
-tango: 121,3 splay: 4,1
-tango: 119,7 splay: 4,1
-tango: 122,3 splay: 4,1
-tango: 123,1 splay: 4,1
-tango: 120,6 splay: 4,3
-tango: 123,5 splay: 4,2
-tango: 121,3 splay: 4,2
-avg:   121,5        4,2
+n= 10.000.000 p= 4.0:
+tango: 303,8 splay: 10,3
+tango: 272,6 splay: 4,4
+tango: 234,4 splay: 4,1
+tango: 111,2 splay: 4,3
+tango: 110,7 splay: 4,2
+tango: 110,5 splay: 4,2
+tango: 109   splay: 4,2
+tango: 109,3 splay: 4,1
+tango: 109,3 splay: 4,1
+tango: 109,3 splay: 4,2
+avg:   158        4,8
 
 
-n= 1.000.000 p= 4.5:
-tango: 120,9   splay: 4,3
-tango: 122,6   splay: 4
-tango: 122,1   splay: 4,2
-tango: 120,8   splay: 4,2
-tango: 121,3   splay: 4,2
-tango: 123,2   splay: 4,2
-tango: 121,4   splay: 4,2
-tango: 123,2   splay: 4,1
-tango: 120,4   splay: 4,2
-tango: 120,2   splay: 4,2
-avg:   121,6          4,2
 
-n= 1.000.000 p= 5.0:
-tango: 115,3 splay: 3,9
-tango: 119,7 splay: 4
-tango: 114,7 splay: 4 
-tango: 112,7 splay: 6,2
-tango: 122,3 splay: 4,3
-tango: 122   splay: 4,5
-tango: 112,6 splay: 4,5
-tango: 122,5 splay: 4,3
-tango: 119   splay: 4
-tango: 114,2 splay: 4
-avg:   117,5        4,7
+n= 10.000.000 p= 4.5:
+tango: 110,1 splay: 4,2
+tango: 109,3 splay: 4,2
+tango: 117   splay: 4,2
+tango: 109,2 splay: 4,3
+tango: 116,6 splay: 4,2
+tango: 108,9 splay: 4,1
+tango: 109,4 splay: 4,2
+tango: 108,9 splay: 4,1
+tango: 109,4 splay: 4,1
+tango: 108,9 splay: 4,1
+avg:   110,7        4,2
 
-n= 1.000.000 p= 5.5:
+
+n= 10.000.000 p= 5.0:
+tango: 109,7 splay: 3,9
+tango: 101,8 splay: 3,9
+tango: 109,6 splay: 3,9
+tango: 109,2 splay: 3,9
+tango: 101,8 splay: 4
+tango: 102,1 splay: 3,9
+tango: 102,4 splay: 3,9
+tango: 109,8 splay: 3,9
+tango: 109,7 splay: 4
+tango: 101,7 splay: 3,9
+avg:   105,8        3,9
+
+n= 10.000.000 p= 5.5:
 tango: 118,4 splay: 4,1
 tango: 112,7 splay: 4
 tango: 119,1 splay: 4
