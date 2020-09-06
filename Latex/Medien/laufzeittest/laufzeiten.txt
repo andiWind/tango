@@ -182,25 +182,6 @@ avg:	128,2	4,7
 
 
 
-
-  
- 
- 
-  
-  
- 
-  n= 10000000p= 5.5 tango: 110331 splay: 4016
-  n= 10000000p= 5.5 tango: 101877 splay: 3894
-  n= 10000000p= 5.5 tango: 109981 splay: 4023
- 
-
-
-
-
-
-
-
-
 n= 10.000.000 p= 2.5:
 tango: 156,9 splay: 5,7
 tango: 131,5 splay: 4,9
@@ -286,18 +267,19 @@ tango: 109,7 splay: 4
 tango: 101,7 splay: 3,9
 avg:   105,8        3,9
 
+
 n= 10.000.000 p= 5.5:
-tango: 118,4 splay: 4,1
-tango: 112,7 splay: 4
-tango: 119,1 splay: 4
-tango: 125,1 splay: 4,1
-tango: 115,8 splay: 4,4
-tango: 116,8 splay: 4,4
-tango: 121,7 splay: 4,1
-tango: 119,3 splay: 4,2
-tango: 118,3 splay: 4,4
-tango: 132,6 splay: 4,4
-avg:   120          4,2
+tango: 110,3 splay: 4
+tango: 101,9 splay: 3,9
+tango: 110   splay: 4
+tango: 137,2 splay: 3,9
+tango: 134,4 splay: 3,9
+tango: 98,2  splay: 3,9
+tango: 106,3 splay: 3,9
+tango: 106   splay: 3,8
+tango: 102,4 splay: 3,8
+tango: 108,2 splay: 3,7
+avg:   111,5        3,9
 
 
 dynamic finger k = 2
@@ -326,8 +308,9 @@ n= 100000    tango: 49,8  splay: 1
 n= 1000000   tango: 48,1  splay: 1
 n= 10000000  tango: 53,7  splay: 1,2
 
-n= 10000000 dist= 9  tango: 127,4 splay: 3,2
-n= 10000000 dist= 11 tango: 100,3 splay: 3,5
+
+n= 10000000 dist= 9  tango: 67,8 splay: 1,3
+n= 10000000 dist= 11 tango: 48,1 splay: 1,4
 n= 10000000 dist= 13 tango: 56    splay: 1,6
 n= 10000000 dist= 15 tango: 60,6  splay: 1,7
 n= 10000000 dist= 17 tango: 58    splay: 2

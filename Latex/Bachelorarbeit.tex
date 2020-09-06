@@ -1662,26 +1662,26 @@ Auch der Tango Baum erreicht hier verglichen mit den weiter oben beschriebenen L
 			\hline
 			$p$ in $\%$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
 			\hline
-			$2,5$  & $136,9$ &$4,7$  \\
+			$2,5$  & $139,6$ &$5$  \\
 			\hline
-			$3$  &   $130$ &  $4,4$  \\
+			$3$  &   $212,4$ &  $5,4$  \\
 			\hline
-			$3,5$  & $131,6$ &$4,6$  \\
+			$3,5$  & $143$ &$5,4$  \\
 			\hline
-			$4$ &    $121.5$ &$4,2$ \\
+			$4$ &    $158$ &$4,8$ \\
 			\hline
-			$4,5$  & $121,6$ &$4,2$  \\
+			$4,5$  & $110,7$ &$4,2$  \\
 			\hline
-			$5$  &   $117,5$ &  $4,7$  \\
+			$5$  &   $105,8$ &  $3,9$  \\
 			\hline
-			$5,5$  & $120$ &$4,2$  \\
+			$5,5$  & $111,5$ &$3,9$  \\
 			\hline
 		\end{tabular}
 		\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen.} 
 	\end{center}
 \end{table}
 
-
+\noindent Die Laufzeiten des Splay Baumes werden erwartungsgemäß mit steigendem $p$ kürzer. Beim Tango Baum gibt es auch steigende Werte bei der Laufzeit, trotz steigenden Werten für $p$. Tendenziell werden aber auch seine Laufzeiten mit steigendem $p$ kürzer. Hier muss auch beachtet werden, dass wieder ein Pseudozufallsgenerator verwendet wurde.
 
 
 
@@ -1715,7 +1715,7 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 		\caption{Die Laufzeiten zum  Test zu Dynamic Finger.} 
 	\end{center}
 \end{table}
-\noindent Der Splay Baum liefert wie zu erwarten war, sehr kurze Laufzeiten. Auch der Tango Baum profitiert wieder von dem speziellem Aufbau der Zugriffsfolgen, wie an einem Vergleich der Laufzeiten zu den zufällig erzeugten Zugriffsfolgen erkennbar ist. 
+\noindent Der Splay Baum erfüllt das Dynamic Finger Property und erreicht wie zu erwarten war, sehr kurze Laufzeiten. Auch der Tango Baum profitiert wieder von dem speziellem Aufbau der Zugriffsfolgen, wie an einem Vergleich der Laufzeiten zu den zufällig erzeugten Zugriffsfolgen erkennbar ist. 
 
 
 \noindent Nun ist $n = 10.000.000$ fest und es werden unterschiedliche Werte für $a$ verwendet.
@@ -1748,24 +1748,22 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 			$256$  & $88$ &$20,2$  \\
 			\hline
 		\end{tabular}
-		\caption{Laufzeittest dynamic finger, mit unterschiedlichen $a$.} 
+		\caption{Diagramm zum Laufzeittest zu Dynamic Finger, mit verschiedenen Werten für $a$.} 
 	\end{center}
-\end{table}\noindent Es ist zu erkennen, dass die Zeiten des Splay Baums ansteigen, obwohl $n$ und $m$ konstant sind. Die Zeiten des Tango Baumes zeigen keine deutlich Tendenz, bleiben insg4esamt jedoch vergleichsweise niedrig. Er scheint, dass er zwar  von den festen Abständen profitiert. Es kann jedoch nicht abgeleitet werden, dass ein niedrigerer Wert zu $a$ auch zu kürzeren Laufzeiten führt.  
+\end{table}\noindent Es ist zu erkennen, dass die Zeiten des Splay Baums ansteigen, obwohl $n$ und $m$ konstant sind. Die Zeiten des Tango Baumes zeigen keine deutlich Tendenz, bleiben insgesamt jedoch vergleichsweise niedrig. Die Messwerte legen die Vermutung nahe, dass der Tango Baum von der konstanten Betragsdifferenz zweier aufeinanderfolgender Schlüssel profitiert. Es kann jedoch nicht abgeleitet werden, dass ein niedrigerer Wert bei $a$ auch zu kürzeren Laufzeiten führt.  
 
 
 
 \subsubsection{Working Set Property}
 Die Schlüssel dieser Zugriffsfolgen wiederholen sich mit einem festem parametrierbaren Abstand $a$. 
-Sei  $X = x_1, x_2,.., x_m$ eine verwendete Zugriffsfolge und $i \in \{1,2,..,m\}$. Sei $k$ ein Schlüssel mit $k = x_i$, dann ist entweder $i-a$ der größte Index kleiner $i$, mit $x_{i-a} = x_i$ oder $i$ ist der kleinste Index mit $x_i = k$. Es werden die Teilmengen $t_0, t_1,.. t_b$, mit $b = n / a$, der  Schlüsselmenge gebildet. Sei $l \in \{0, 1,.., b\}$ und $c = a/2$, dann gilt \\ $t_l = \{l * c + 1, l * c + 2,.., l * c + c\} \cup \{l * c + 1 + c, l * c + 2 + c,.., l * c + c + c\}$. Jede Teilmenge enthält also $a$ Elemente. Sei $e_1, e_2,.., e_c, e_{c+1}, e_{c+2},.., e_{c+c} $ die Folge der in $t_l$ enthaltenen Elemente, aufsteigen sortiert nach dem Betrag. Aus $t_l$ wird eine Zugriffsfolge $s_l$ gebildet indem  $e_1, e_{c+1}, e_2,e_{c+2}.., e_c, e_{c + c}$ so oft wiederholt wird bis $s_l$ die Länge $m/b$ hat. Die Gesamtzugriffsfolge ist dann $s_0 \circ s_1 \circ...\circ s_l$. \\
-Durch diesem Aufbau wird erreicht, dass zwar das Working Set Property für die Laufzeit relevant wird, die bereits betrachteten Eigenschaften jedoch nicht. Denn für zwei direkt aufeinanderfolgende Schlüssel in der Zugriffsfolge $k_1$ und $k_2$ gilt in den meisten Fällen $\vert k_1 - k_2\vert \geq n/2 - 1$ 
- und zu jedem enthaltenem Element $e_1$ existiert ein enthaltenes Element $e_2$, so dass $\vert e_1 - e_2 \vert = c$ gilt. Aus $t_l$ wird die Zugriffsfolge $z_l = $ erstellt.  
-
-Hier wird $a = 8$ gesetzt.
+Sei  $X = x_1, x_2,.., x_m$ eine verwendete Zugriffsfolge und $i \in \{1,2,..,m\}$. Sei $k$ ein Schlüssel mit $k = x_i$, dann ist entweder $i-a$ der größte Index kleiner $i$, mit $x_{i-a} = x_i$ oder $i$ ist der kleinste Index mit $x_i = k$. Es werden die Teilmengen $t_0, t_1,.. t_b$, mit $b = n / a$, der  Schlüsselmenge gebildet. Sei $l \in \{0, 1,.., b\}$ und $c = a/2$, dann gilt \\ $t_l = \{l * c + 1, l * c + 2,.., l * c + c\} \cup \{l * c + 1 + c, l * c + 2 + c,.., l * c + c + c\}$. Jede Teilmenge enthält also $a$ Elemente. Sei $e_1, e_2,.., e_c, e_{c+1}, e_{c+2},.., e_{c+c} $ die Folge aller in $t_l$ enthaltenen Elemente, aufsteigen sortiert nach dem Betrag. Aus $t_l$ wird eine Zugriffsfolge $s_l$ gebildet indem  $e_1, e_{c+1}, e_2,e_{c+2}.., e_c, e_{c + c}$ so oft wiederholt wird bis $s_l$ die Länge $m/b$ hat. Die Gesamtzugriffsfolge ist dann $s_0 \circ s_1 \circ...\circ s_l$. \\
+Durch diesen Aufbau wird erreicht, dass zwar das Working Set Property für die Laufzeit relevant wird, die bereits betrachteten Eigenschaften jedoch nicht.\\
+Im ersten Teil wird nun $a = 8$ gesetzt.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/workingset"}
-	\caption{Laufzeittest working set.}
+	\caption{Diagramm zum Laufzeittest zu Working Set, mit konstantem $a$.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1784,24 +1782,27 @@ Hier wird $a = 8$ gesetzt.
 			$10^7$  & $53,7$ &$1,2$  \\
 			\hline
 		\end{tabular}
-		\caption{Laufzeittest working set.} 
+		\caption{Diagramm zum Laufzeittest zu Working Set, mit konstantem $a$.} 
 	\end{center}
 \end{table}
-\noindent Hier ist $n = 1.000.000$ fest und der Prozentwert $p$ für die Anzahl der Schlüssel im working set ist veränderlich. Wieder steigen die Zeiten des Splay Baumes leicht an.
+\noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Zudem werden die Laufzeiten  bei steigendem $n$ nur etwas länger, trotz logarithmischer Skala zu $n$. Der Splay Baum erfüllt das Working Set Property, wodurch die kurzen Laufzeiten zu erklären sind. Nun wird eine mögliche Erklärung zum langsamen ansteigen der Laufzeiten des Tango Baumes angegeben: Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1 = k_3$ und $k_2 \gg k_1$ gilt. Es wird aufeinanderfolgend \textit{access}$\left(k_1\right)$, \textit{access}$\left(k_2\right)$ und \textit{access}$\left(k_3\right)$ ausgeführt. Betrachtet wird nun der Referenzbaum $P$ zum Tango Baum und \textit{access}$\left(k_3\right)$. Sei $P_k = p_1, p_2,.., p_l$ der Pfad von der Wurzel von $P$ zu dem Knoten $v_3$ mit Schlüssel $k_3$. Sei $v_v$ der gemeinsame Vorfahre von $v$ und dem Knoten $v_2$ mit Schlüssel $k_2$. $v_v$ muss der Knoten mit der kleinsten Tiefe sein, bei dem das preferred child wechselt (Eine Ausnahme ist $v_v = v_2$). Sei $u$ ein Knoten in $P_k$ mit größerer Tiefe als $v_v$, sowie \textit{key}$\left(u\right) \neq k_1 \wedge $ \textit{key}$\left(u \right)\neq k_2 $. Es muss entweder \textit{key}$\left(u\right) > k_3 > k_1$ gelten oder  $ k_3 > k_1 >$\textit{key}$\left(u\right)$ gelten und somit müssen $k_1$ und $k_3$ im selben Teilbaum von $u$ enthalten sein. So kann erklärt werden, dass verlängerte Pfade im Referenzbaum, hier nur zu wenigen zusätzlichen Wechsel bei preferred child's führen. \\  
+
+
+\noindent Im zweiten Teil wird $n = 10.000.000$ gesetzt und $a$ ist variabel. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/workingset2"}
-	\caption{Laufzeittest working set, mit unterschiedlichem $p$.}
+	\caption{Laufzeittest working set, mit verschiedenen $p$.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
 		\begin{tabular}[c]{|c|c|c|}
 			\hline
-			$p$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
+			$a$ & Zeit Tango in $\left(s\right)$ &Zeit Splay in $\left(s\right)$ \\
 			\hline
-			$9$  & $127,4$ &$3,2$  \\
+			$9$  & $67,8$ &$1,3$  \\
 			\hline
-			$11$  & $100,3$ &$3,5$  \\
+			$11$  & $48,1$ &$1,4$  \\
 			\hline
 		    $13$  & $56$ &$1,6$  \\
 			\hline
@@ -1814,18 +1815,23 @@ Hier wird $a = 8$ gesetzt.
 			$21$  & $59,5$ &$2$  \\
 			\hline
 		\end{tabular}
-		\caption{Laufzeittest working set.} 
+		\caption{Laufzeittest working set, mit verschiedenen $p$.} 
 	\end{center}
 \end{table}
+
+
+\noindent Die Laufzeiten des Splay Baumes werden mit steigendem $a$ länger, bleiben jedoch insgesamt kurz. Bei den Laufzeiten des Tango Baumes ist keine klare Tendenz auszumachen. Das bestätigt die Vermutung, dass der niedrige Betrag der Differenz der Parameter zweier \textit{access} Operationen, zwischen deren Ausführung nur eine weitere \textit{access} Operation liegt, wesentlich für die kurzen Laufzeiten ist.     
 \newpage
 \subsubsection{Weitere Laufzeittests}
 
-\noindent Alternierend die Schlüssel $1$ und $n$:
+\paragraph{ Alternierend die Schlüssel $1$ und $n$:\\}
+
+\noindent Umgesetzt werden diese Zugriffsfolgen durch solche zum Dynamic Finger Property, bei denen $a = n -1$ für den Abstand $a$ gilt. Relevant für die Laufzeit wird hier jedoch das Working Set Property.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/kleinGros"}
-	\caption{Laufzeittest alternierend.}
+	\caption{Laufzeittest bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1846,14 +1852,19 @@ Hier wird $a = 8$ gesetzt.
 			$1,6 *10^7$  & $46,3$ &$1$  \\
 			\hline
 		\end{tabular}
-		\caption{Laufzeittest alternierend.} 
+		\caption{Laufzeittest bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.} 
 	\end{center}
 \end{table}
-\noindent Aufsteigend sortiert mit insgesamt $n$ Zugriffen:
+\noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Dies war auch zu erwarten. Im Referenzbaum zum Tango Baum wird es ab der dritten \textit{access} Operation, pro Operation nur noch zu einem Wechsel des preferred child's an der Wurzel kommen. Beim Splay Baum ist der Knoten mit dem größten Schlüssel nach der zweiten Operation an der Wurzel. Der Knoten mit dem kleinsten Schlüssel war nach der ersten Operation an der Wurzel. Somit sind ab der dritten Operation jeweils nur noch maximal zwei Rotation notwendig.Zwei Rotationen sind der Fall wenn bei der vorherigen Operation zum Abschluss zig-zig oder zag-zag angewendet wurde, siehe Abbildung \ref{fig:zigZag}.
+
+
+\paragraph{Aufsteigend sortiert mit insgesamt $n$ Zugriffen:}
+Zu beachten ist hier, dass das Dynamic Finger Property relevant wird. 
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/sorted1"}
-	\caption{Laufzeittest aufsteigend sortiert.}
+	\caption{Laufzeittest bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1877,8 +1888,11 @@ Hier wird $a = 8$ gesetzt.
 		\caption{Laufzeittest aufsteigend sortiert.} 
 	\end{center}
 \end{table}
+Beide BSTs erreichten bei den Zugriffsfolgen zum Dynamic Finger Property  vergleichsweise kurze Laufzeiten. Hier kommt hinzu dass die Länge der Zugriffsfolgen abhängig von der Anzahl der Knoten kürzer ist. Das Ergebnis sind erwartbar kurze Laufzeiten.
 \newpage
-\noindent Absteigend sortiert mit insgesamt $n$ Zugriffen:
+\paragraph{Absteigend sortiert mit insgesamt $n$ Zugriffen\\:}
+
+\noindent Auch hier wird das Dynamic Finger Property relevant. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/sorted2"}
@@ -1906,8 +1920,12 @@ Hier wird $a = 8$ gesetzt.
 		\caption{Laufzeittest absteigend sortiert.} 
 	\end{center}
 \end{table}
-\newpage
-\noindent Aufsteigend und absteigend sortiert, geschachtelt. Die Zugriffsfolge ist $1, n, 2, n- 1,...., n - 1, 2, n, 1$.
+\noindent Die Laufzeiten sind ähnlich zu denen der aufsteigend sortierten Zugriffsfolgen und diese können auf die gleiche Art und Weise begründet werden.
+
+
+\paragraph{Aufsteigend und absteigend sortiert, geschachtelt.\\} \noindent Hier werden Zugriffsfolgen mit dem Aufbau $1, n, 2, n- 1,...., n - 1, 2, n, 1$ verwendet.
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{"Medien/laufzeittest/diagramm/sorted3"}
@@ -1929,7 +1947,7 @@ Hier wird $a = 8$ gesetzt.
 		\hline
 		$10^7$  & $25,6$ &$0,7$  \\
 		\hline
-		$1,6 *10^7$  & $162\approx 0,4$ &$1,1$  \\
+		$1,6 *10^7$  & $162$ &$1,1$  \\
 		\hline
 		\end{tabular}
 		\caption{Laufzeittest auf-, bzw. absteigend geschachtelt.} 

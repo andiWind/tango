@@ -57,9 +57,9 @@
 \contentsline {figure}{\numberline {56}{\ignorespaces .\relax }}{92}%
 \contentsline {figure}{\numberline {57}{\ignorespaces Diagramm zum Laufzeittest zu Dynamic Finger mit \mbox {konstantem $a$.}\relax }}{93}%
 \contentsline {figure}{\numberline {58}{\ignorespaces Diagramm zum Laufzeittest zu Dynamic Finger, mit verschiedenen Werten für $a$.\relax }}{94}%
-\contentsline {figure}{\numberline {59}{\ignorespaces Laufzeittest working set.\relax }}{96}%
-\contentsline {figure}{\numberline {60}{\ignorespaces Laufzeittest working set, mit unterschiedlichem $p$.\relax }}{97}%
-\contentsline {figure}{\numberline {61}{\ignorespaces Laufzeittest alternierend.\relax }}{98}%
-\contentsline {figure}{\numberline {62}{\ignorespaces Laufzeittest aufsteigend sortiert.\relax }}{99}%
+\contentsline {figure}{\numberline {59}{\ignorespaces Diagramm zum Laufzeittest zu Working Set, mit konstantem $a$.\relax }}{96}%
+\contentsline {figure}{\numberline {60}{\ignorespaces Laufzeittest working set, mit verschiedenen $p$.\relax }}{97}%
+\contentsline {figure}{\numberline {61}{\ignorespaces Laufzeittest bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.\relax }}{98}%
+\contentsline {figure}{\numberline {62}{\ignorespaces Laufzeittest bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.\relax }}{99}%
 \contentsline {figure}{\numberline {63}{\ignorespaces Laufzeittest absteigend sortiert.\relax }}{100}%
 \contentsline {figure}{\numberline {64}{\ignorespaces Laufzeittest auf-, bzw. absteigend geschachtelt.\relax }}{101}%
