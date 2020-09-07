@@ -70,7 +70,7 @@
 \begin{center}
 \textbf{Zusammenfassung}
 \end{center}
- Bei binären Suchbäumen wird sich besonders für die Ausführungszeit seiner Operationen  interessiert. Hier wird es speziell um die Ausführungszeit von Folgen von \textit{access} Operationen gehen, im Bezug zur Anzahl der Knoten des binären Suchbaumes $n$. Beim 1985  vorgestellten Splay Baum \cite{splay} wird vermutet, dass dieser jede Folge von  \textit{access} Operationen asymptotisch betrachtet, mindestens genau so schnell ausführt, wie jeder andere binäre Suchbaum. Dies wurde als \enquote{Dynamische Optimalitäts Vermutung} bekannt. Bis heute ist offen ob der Splay Baum diese Eigenschaft besitzt.  2007 wurde dann der Tango Baum  \cite{demainDinamicOpti} vorgestellt. Bei ihm ist bekannt, dass er jede solche Folge asymptotisch betrachtet, höchstens um einen Faktor $\log\left(\log\left(n\right)\right)$ langsamer ausführt, als der jeweils schnellste binäre Suchbaum. Um dies zu beweisen wurde die \enquote{Interleave Bound}, eine untere Schranke für die Ausführungszeit solcher Folgen verwendet.  Bis dahin war für keinen binären Suchbaum ein Faktor kleiner als $\log\left(n\right)$ bewiesen und dieser wird von den balancierten binären Suchbäumen trivial erreicht. Der Tango Baum wird im Detail vorgestellt und zusätzlich noch einige Variationen zu ihm. Abschließend werden noch Laufzeittests zwischen dem Tango Baum und dem Splay Baum durchgeführt, wobei der Splay Baum durchgängig die niedrigeren Zeiten liefern wird. 
+ Bei binären Suchbäumen wird sich besonders für die Ausführungszeit seiner Operationen  interessiert. Hier wird es speziell um die Ausführungszeit von Folgen von \textit{access} Operationen gehen, im Bezug zur Anzahl der Knoten des binären Suchbaumes $n$. Beim 1985  vorgestellten Splay Baum \cite{splay} wird vermutet, dass dieser jede Folge von  \textit{access} Operationen asymptotisch betrachtet, mindestens genau so schnell ausführt, wie jeder andere binäre Suchbaum. Dies wurde als \enquote{Dynamische Optimalitäts Vermutung} bekannt. Bis heute ist offen ob der Splay Baum diese Eigenschaft besitzt.  2007 wurde dann der Tango Baum  \cite{demainDinamicOpti} vorgestellt. Bei ihm ist bekannt, dass er jede solche Folge asymptotisch betrachtet, höchstens um einen Faktor $\log\left(\log\left(n\right)\right)$ langsamer ausführt, als der jeweils schnellste binäre Suchbaum. Um dies zu beweisen wurde die \enquote{Interleave Bound}, eine untere Schranke für die Ausführungszeit solcher Folgen verwendet.  Bis dahin war für keinen binären Suchbaum ein Faktor kleiner als $\log\left(n\right)$ bewiesen und dieser wird von den balancierten binären Suchbäumen trivial erreicht. Der Tango Baum wird im Detail vorgestellt und zusätzlich noch zwei Variationen zu ihm. Abschließend werden Laufzeittests zwischen dem Tango Baum und dem Splay Baum durchgeführt, wobei der Splay Baum durchgängig die niedrigeren Zeiten liefern wird. 
 \newpage
 \tableofcontents
 \newpage
@@ -79,9 +79,9 @@
 
 \newpage
 \section{Einleitung}
-Binäre Suchbäume werden vielfältig eingesetzt. Unter anderem zur Lösung des Wörterbuchproblems. Hierbei existiert eine Menge von Schlüsseln, denen Daten zugeordnet sind. Im Telefonbuch wäre ein Name beispielsweise ein Schlüssel, dem als Datum eine Telefonnummer zugeordnet ist. Da solche Mengen von Schlüsseln in der Praxis extrem groß werden können, ist es wichtig, diese möglichst effizient zu verwalten. Auf einen einmal eingefügten Schlüssel kann beliebig oft zugegriffen werden. Vor allem diese Zugriffe müssen deshalb effizient sein. Das binäre Suchen bietet sich hierzu als Möglichkeit an. Die Schlüssel müssen dazu auf irgendeine Art sortiert vorliegen.\\ Beim Telefonbuch wäre das die alphabetische Sortierung. Somit kann mit der Suche eines Namens in etwa der Mitte des Telefonbuches gestartet werden. Nach einem Vergleich können dann zumindest die Schlüssel einer Hälfte des Buches ausgeschlossen werden. Dieses Verhalten iteriert bis der gesuchte Name gefunden ist. Obwohl es viele Varianten von binären Suchbäumen mit zum Teil aufwändigem Verhalten gibt, ahmen sie im Grunde das binäre Suchen nach.\\
+Binäre Suchbäume werden zur Lösung des Wörterbuchproblems eingesetzt. Hierbei existiert eine Menge von Schlüsseln, denen Daten zugeordnet sind. Im Telefonbuch wäre ein Name beispielsweise ein Schlüssel, dem als Datum eine Telefonnummer zugeordnet ist. Da solche Mengen von Schlüsseln in der Praxis extrem groß werden können, ist es wichtig, diese möglichst effizient zu verwalten. Auf einen einmal eingefügten Schlüssel kann beliebig oft zugegriffen werden. Deshalb müssen vor allem diese Zugriffe effizient sein. Das binäre Suchen bietet sich hierzu als Möglichkeit an. Die Schlüssel müssen dazu auf irgendeine Art sortiert vorliegen.\\ Beim Telefonbuch wäre das die alphabetische Sortierung. Somit kann mit der Suche eines Namens in etwa der Mitte des Telefonbuches gestartet werden. Nach einem Vergleich können dann zumindest die Schlüssel einer Hälfte des Buches ausgeschlossen werden. Dieses Verhalten iteriert bis der gesuchte Name gefunden ist. Obwohl es viele Varianten von binären Suchbäumen mit zum Teil aufwändigem Verhalten gibt, ahmen sie im Grunde das binäre Suchen nach.\\
 Binäres Suchen könnte jedoch auch mit einem einfachen Array umgesetzt werden. Hierbei ergibt sich bei Änderungen an der Schlüsselmenge jedoch das Problem, das Array effizient anzupassen. Wird z.B. ein Schlüssel entfernt, müssen alle Nachfolgenden um ein Feld verschoben werden. Beim Einfügen eines Schlüssels könnte sogar ein Umzug in ein größeres Array notwendig werden. Bei binären Suchbäumen können solche Änderungen effizienter durchgeführt werden.\\ 
-Das Auffinden eines Schlüssels erfolgt beim binären Suchbaum  mit einer \mbox{\textit{access}} Operation.  Eine Eigenschaft des binären Suchbaum ist es, dass weiter oben liegende Schlüssel schneller erreicht werden können als andere. Ist bekannt, wie häufig auf welchen Schlüssel zugegriffen wird, kann diese Eigenschaft ausgenutzt werden. Ein Schlüssel wird dann umso weiter oben platziert, je häufiger auf dieses zugegriffen wird. \\
+Das Auffinden eines Schlüssels erfolgt beim binären Suchbaum  mit einer \mbox{\textit{access}} Operation.  Eine Eigenschaft des binären Suchbaum ist es, dass weiter oben liegende Schlüssel schneller erreicht werden können als andere. Ist bekannt, wie häufig auf welchen Schlüssel zugegriffen wird, kann diese Eigenschaft ausgenutzt werden. Ein Schlüssel wird dann umso weiter oben platziert, je häufiger auf ihn zugegriffen wird. \\
 Ein weiterer Versuch gute Laufzeiten zu erreichen sind die dynamischen binären Suchbäume. Im Gegensatz zu statischen binären Suchbäumen ändern diese ihre Struktur auch bei \textit{access} Operationen. Dies macht sie unabhängiger von den oft unbekannten Häufigkeiten der Zugriffe auf die einzelnen Schlüssel. Der Tango Baum ist ein solcher Vertreter, ebenso wie der Splay Baum, der in dieser Arbeit als Vergleichspartner dient.
 
 
@@ -874,12 +874,12 @@ Im zweiten Lemma geht es darum, dass sich der transition point $v$ eines Knoten 
 
 
 \subsection{Aufbau des Tango Baumes} \label{aufbauDesTango}
-Wie bereits erwähnt besteht ein Tango Baum $T$ mit Schlüsselmenge $K$ aus Hilfsbäumen. Eine Anforderung an einen Hilfsbaum mit $n$ Knoten ist es, dass für seine Höhe $h = O\left(\log\left( n\right)\right)$ gilt. $T$ bietet lediglich eine \textit{access} Operation an. Ist $T$ also erst einmal für $K$ erzeugt, ist seine Schlüsselmenge unveränderlich. Sei $P$ der lower bound tree aus Abschnitt \ref{interBound} mit Schlüsselmenge $K$. $P$ wird auch als \textbf{Referenzbaum} für $T$ bezeichnet. $P$ ist kein Hilfsbaum und muss in Implementierungen auch nicht erstellt werden. Er dient aber dazu, den Aufbau von $T$ vor und nach einer \textit{access} Operation zu veranschaulichen. Jeder innere Knoten $p$ in $P$ kann ein \textbf{preferred child} haben.  Wurde während der Ausführungszeit von $X$ noch keine \textit{access} Operation mit einem im Teilbaum mit Wurzel $p$ enthalten Schlüssel als Parameter ausgeführt, so hat $p$ kein preferred child. Ansonsten sei \textit{access}$\left(k\right)$ die zuletzt ausgeführte Operation mit einem Schlüssel, der im Teilbaum mit Wurzel $p$ enthalten ist. Liegt $k$ in der linken Region von $p$, dann ist das linke Kind von $p$, das preferred child von $p$. Ist $k$ in der rechten Region von $p$ enthalten, dann ist das rechte Kind von $p$, das preferred child von $p$. Wir erweitern die Knoten von $P$ mit einer weiteren Variable \textit{prefChild}, welche drei Werte annehmen kann. Sie enthält \textit{none}, wenn ihr Knoten kein preferred Child besitzt, \textit{left} wenn das linke Kind das preferred child ist, ansonsten entsprechend \textit{right}. Hier ist bereits die Kopplung zur interleave lower bound erkennbar. Ein Wechsel von \textit{prefChild}  von \textit{left} zu \textit{right} oder umgekehrt, findet genau dann statt, wenn es zu einem interleave durch den Knoten kommt. Abbildung \ref{fig:prefChilds} stellt einen möglichen Zustand von $P$ zwischen zwei \textit{access} Operationen dar. Dieser Zustand wird in diesem Abschnitt nun als durchgängiges Beispiel dienen. Es ist sofort ersichtlich, dass der Parameter der letzten \textit{access} Operation $8$, $4$, $2$ oder $1$ gewesen sein muss, da die Knoten mit diesen Schlüsseln von der Wurzel aus über preferred childs erreichbar sind. Die Schlüssel $10$ und $9$ können noch nie Parameter einer \textit{access} Operation gewesen sein. Ansonsten müsste der Knoten mit dem Schlüssel $10$ ein preferred child haben. Mit Hilfe der preferred childs lassen sich die \textbf{preferred path} erstellen. Sei $v$ ein Knoten in $P$, der nicht preferred child eines anderen Knotens aus $P$ ist. Dann ist der preferred path zu $v$, der längst mögliche Pfad $\left(v_0, v_1,..,v_l\right)$, mit $v_0 = v$ und $\forall i \in \{1,2,..,l\} \colon v_i \textit{ ist preferred child von }v_{i-1   }$.  
+Wie bereits erwähnt besteht ein Tango Baum $T$ mit Schlüsselmenge $K$ aus Hilfsbäumen. Eine Anforderung an einen Hilfsbaum mit $n$ Knoten ist es, dass für seine Höhe $h = O\left(\log\left( n\right)\right)$ gilt. $T$ bietet lediglich eine \textit{access} Operation an. Ist $T$ also erst einmal für $K$ erzeugt, ist seine Schlüsselmenge unveränderlich. Sei $P$ der lower bound tree aus Abschnitt \ref{interBound} mit Schlüsselmenge $K$. $P$ wird auch als \textbf{Referenzbaum} für $T$ bezeichnet. $P$ ist kein Hilfsbaum und muss in Implementierungen auch nicht erstellt werden. Er dient aber dazu, den Aufbau von $T$ vor und nach einer \textit{access} Operation zu veranschaulichen. Jeder innere Knoten $p$ in $P$ kann ein \textbf{preferred child} haben.  Wurde während der Ausführungszeit von $X$ noch keine \textit{access} Operation mit einem im Teilbaum mit Wurzel $p$ enthalten Schlüssel als Parameter ausgeführt, so hat $p$ kein preferred child. Ansonsten sei \textit{access}$\left(k\right)$ die zuletzt ausgeführte Operation mit einem Schlüssel, der im Teilbaum mit Wurzel $p$ enthalten ist. Liegt $k$ in der linken Region von $p$, dann ist das linke Kind von $p$, das preferred child von $p$. Ist $k$ in der rechten Region von $p$ enthalten, dann ist das rechte Kind von $p$, das preferred child von $p$. Wir erweitern die Knoten von $P$ mit einer weiteren Variable \textit{prefChild}, welche drei Werte annehmen kann. Sie enthält \textit{none}, wenn ihr Knoten kein preferred Child besitzt, \textit{left} wenn das linke Kind das preferred child ist, ansonsten entsprechend \textit{right}. Hier ist bereits die Kopplung zur interleave lower bound erkennbar. Ein Wechsel von \textit{prefChild}  von \textit{left} zu \textit{right} oder umgekehrt, findet genau dann statt, wenn es zu einem interleave durch den Knoten kommt. Abbildung \ref{fig:prefChilds} stellt einen möglichen Zustand von $P$ zwischen zwei \textit{access} Operationen dar. Dieser Zustand wird in diesem Abschnitt nun als durchgängiges Beispiel dienen. Es ist sofort ersichtlich, dass der Parameter der letzten \textit{access} Operation $8$, $4$, $2$ oder $1$ gewesen sein muss, da die Knoten mit diesen Schlüsseln von der Wurzel aus über preferred children erreichbar sind. Die Schlüssel $10$ und $9$ können noch nie Parameter einer \textit{access} Operation gewesen sein. Ansonsten müsste der Knoten mit dem Schlüssel $10$ ein preferred child haben. Mit Hilfe der preferred children lassen sich die \textbf{preferred path} erstellen. Sei $v$ ein Knoten in $P$, der nicht preferred child eines anderen Knotens aus $P$ ist. Dann ist der preferred path zu $v$, der längst mögliche Pfad $\left(v_0, v_1,..,v_l\right)$, mit $v_0 = v$ und $\forall i \in \{1,2,..,l\} \colon v_i \textit{ ist preferred child von }v_{i-1   }$.  
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{"Medien/Tango/prefChilds"}
-	\caption{Die preferred childs werden durch die grünen Pfeile markiert. }
+	\caption{Die preferred children werden durch die grünen Pfeile markiert. }
 	\label{fig:prefChilds}
 \end{figure}
 
@@ -933,7 +933,7 @@ In $P$ sind alle in $h_1$ enthaltenen Schlüssel im Teilbaum mit Wurzel $u$ enth
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{"Medien/Tango/prefChilds2"}
-	\caption{Preferred childs nach  \textit{access}$\left(9\right)$. }
+	\caption{Preferred children nach  \textit{access}$\left(9\right)$. }
 	\label{fig:prefChilds2}
 \end{figure}
 
@@ -1060,7 +1060,7 @@ Zunächst wird in zwei Lemmata die Einzeloperation betrachtet, bevor es dann im 
 \end{Lemma}
 \begin{proof}
 	Bezeichne $T_i$ den Tango Baum nach der Ausführung von \textit{access}$\left(x_i\right)$. Zuerst werden die Kosten für das Suchen betrachtet. Der Zeiger $p$ der Operationen startet maximal $k + 1$ mal an der Wurzel des Tango Baumes. Für die Länge eines Pfades innerhalb eines Hilfsbaumes gilt $O\left(\log \left( \log  \left(n \right)\right)\right)$, denn für die Anzahl der Knoten eines preferred path gilt $O\left( \log \left(n\right)  \right)$ und ein Hilfsbaum muss ein balancierter BST sein. Die Gesamtkosten ergeben sich damit zu $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.\\
-	Nun werden die Kosten zum Erzeugen von $T_i$ aus $T_{i-1}$ betrachtet. Pro Veränderung eines preferred childs kommt es zu Kosten $O\left( \log\left(\log \left(n\right)\right)\right)$ aufgrund einer \textit{cut} und einer \textit{join} Operation. Für das Suchen des Hilfsbaumes in Punkt $6$ der Beschreibung, entstehen auch wieder Kosten von $O\left(\log \left( \log  \left(n \right)\right)\right)$. Somit gilt auch für die Gesamtkosten $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.
+	Nun werden die Kosten zum Erzeugen von $T_i$ aus $T_{i-1}$ betrachtet. Pro Veränderung eines preferred child kommt es zu Kosten $O\left( \log\left(\log \left(n\right)\right)\right)$ aufgrund einer \textit{cut} und einer \textit{join} Operation. Für das Suchen des Hilfsbaumes in Punkt $6$ der Beschreibung, entstehen auch wieder Kosten von $O\left(\log \left( \log  \left(n \right)\right)\right)$. Somit gilt auch für die Gesamtkosten $O\left(\left(k + 1\right) \left(1 + \log \left( \log  \left(n \right)\right)\right)\right)$.
 	
 	
 \end{proof}
@@ -1077,12 +1077,12 @@ Zunächst wird in zwei Lemmata die Einzeloperation betrachtet, bevor es dann im 
 	Für die Laufzeit eines Tango Baumes mit $n$ Knoten, zum Ausführen einer Zugriffsfolge $X = x_1, x_2,.., x_m$ gilt $O\left(\left(\mathit{OPT}\left(X\right) + n\right)  + \left(  1 + \log\left(\log \left(n\right)\right)\right)   \right)$
 \end{Satz}
 \begin{proof}
-	Nach Lemma \ref{demaineLemma5} gibt es nicht mehr als  $\mathit{IB}\left(X\right)$ Wechsel der preferred child's von links nach rechts oder umgekehrt. Zudem gibt es maximal $n$ zusätzliche Änderungen bei preferred child's. (Erstzugriff in den Teilbaum). Die Gesamtanzahl der Änderungen von preferred child's ist somit höchstens $\mathit{IB}\left(X\right) + n$. Mit Lemma \ref{demaineLemma4} ergeben sich Gesamtkosten von\\ $O\left(\left(\mathit{IB}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 -n $ aus Satz \ref{satzDemaine1} ergibt sich 
+	Nach Lemma \ref{demaineLemma5} gibt es nicht mehr als  $\mathit{IB}\left(X\right)$ Wechsel der preferred children von links nach rechts oder umgekehrt. Zudem gibt es maximal $n$ zusätzliche Änderungen bei preferred children. (Erstzugriff in den Teilbaum). Die Gesamtanzahl der Änderungen von preferred children ist somit höchstens $\mathit{IB}\left(X\right) + n$. Mit Lemma \ref{demaineLemma4} ergeben sich Gesamtkosten von\\ $O\left(\left(\mathit{IB}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$. Mit $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 -n $ aus Satz \ref{satzDemaine1} ergibt sich 
 	$O\left(\left(\mathit{OPT}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$.\\ Mit $\mathit{OPT}\left(X\right) \geq m$ ergibt sich dann die Behauptung.
 \end{proof}
 \noindent Mit $m \in \Omega\left(n\right)$ gilt dann auch 
 $O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\right)\right)	 \right)$.\\
- Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred child's, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum das balanced property aus \mbox{Abschnitt \ref{upperBounds}} nicht. Damit kann er aufgrund der Implikationen aus Abbildung \ref{fig:upperBounds} auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das balanced property erfüllen.      
+ Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred children, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum das balanced property aus \mbox{Abschnitt \ref{upperBounds}} nicht. Damit kann er aufgrund der Implikationen aus Abbildung \ref{fig:upperBounds} auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das balanced property erfüllen.      
 
 \subsection{Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum} \label{vereinigen}
 Die Ideen und Angaben zu den Laufzeiten in diesem und dem nächsten Abschnitt stammen aus \cite{conSplit}, von Tarjan.
@@ -1362,7 +1362,7 @@ Ein preferred path wird hier durch einen Splay Baum dargestellt, um dessen Laufz
 Zu beachten ist, dass jede BST Darstellung auch eine Splay Baum Darstellung ist. Anders als beim Tango oder Zipper Baum muss ein neu erzeugter Hilfsbaum also nicht so angepasst werden, dass er weitere Invarianten einhält.  Nach einer \textit{access}$\left(k\right)$ Operation ist der Knoten $v_k$ mit dem Schlüssel $k$ die Wurzel von $T$. Zunächst wird eine gewöhnliche Suche in $T$ durchgeführt, bis der Zeiger $p$ der Operation auf $v_k$ zeigt. Ist $v_k$ gefunden, werden die Pfadrepräsentationen aktualisiert. Hierzu muss der Hilfsbaum, der die Wurzel von $T$ enthält neu erzeugt werden. \\
 
 \section{Dokumentation zur Implementierung}
-In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben. Außerdem  werden noch Laufzeittests zwischen dem Tango Baum und dem Splay Baum durchgeführt. 
+In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben. 
 Implementiert wurde der Tango Baum mit dem Rot-Schwarz-Baum als Hilfsdatenstruktur. Außerdem wurde der Splay Baum implementiert, um Laufzeittests zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet. 
 \begin{figure}[H]
 	\centering
@@ -1371,7 +1371,7 @@ Implementiert wurde der Tango Baum mit dem Rot-Schwarz-Baum als Hilfsdatenstrukt
 	\label{fig:TangoBaumGui}
 \end{figure}
 
-\noindent Abbildung \ref{fig:TangoBaumGui} zeigt das Hauptfenster. Oben ist ein Referenzbaum zu einem Tango Baum mit  $15$ Knoten dargestellt, unten der Tango Baum. Preferred Childs und die Wurzeln von Hilfsbäumen sind grün dargestellt.
+\noindent Abbildung \ref{fig:TangoBaumGui} zeigt das Hauptfenster. Oben ist ein Referenzbaum zu einem Tango Baum mit  $15$ Knoten dargestellt, unten der Tango Baum. Preferred children und die Wurzeln von Hilfsbäumen sind grün dargestellt.
 Diese Ansicht dient dazu, die Beziehung zwischen dem Referenzbaum und dem Tango Baum darzustellen.
 
 \begin{figure}[H]
@@ -1389,7 +1389,7 @@ Diese Ansicht dient dazu, die Beziehung zwischen dem Referenzbaum und dem Tango 
 	\label{fig:RuntimeGui}
 \end{figure}
 
-\noindent Mit dem Menüpunkt \enquote{RuntimeTest} wird das Fenster aus Abbildung \ref{fig:RuntimeGui} geöffnet. Mit diesem werden Laufzeittests zwischen dem Tango Baum und dem Splay Baum  angestoßen. Auf die Parameter und den Aufbau der Zugriffsfolgen wird im Abschnitt zu den Laufzeittests eingegangen. Ungültige Werte, also z. B. ein negative Anzahl an Knoten, werden von den Eingabeelementen nicht angenommen sondern mit dem letzten gültigen Wert überschrieben.
+\noindent Mit dem Menüpunkt \enquote{RuntimeTest} wird das Fenster aus Abbildung \ref{fig:RuntimeGui} geöffnet. Mit diesem können Laufzeittests zwischen dem Tango Baum und dem Splay Baum  durchgeführt werden. Auf die Parameter und den Aufbau der Zugriffsfolgen wird im Abschnitt zu den Laufzeittests eingegangen. Ungültige Werte, also z. B. ein negative Anzahl an Knoten, werden von den Eingabeelementen nicht angenommen sondern mit dem letzten gültigen Wert überschrieben.
 
 
 \begin{figure}[H]
@@ -1416,13 +1416,13 @@ Der Splay Baum startet genau wie der Tango Baum vollständig balanciert, obwohl 
 Der TangoNode enthält bereits alle zwingend notwendigen Attribute eines Knotens im Tango Baum. 
 
 \paragraph{TangoAuxTree:}
-Klassen deren Objekte als Hilfsbaum im Tango Baum eingesetzt werden sollen, müssen diese Klasse erweitern. \textit{setTree} wird benötigt, da die Klasse TangoTree die BST Struktur nur über das Attribut \enquote{auxTree} erreicht. Gibt es eine Veränderung an der Wurzel des Tango Baumes, wird die BST Struktur von \enquote{auxTree} neu gesetzt. \textit{updateDepthsPath} pflegt die Attribute \enquote{minDepth} und \enquote{maxDepth} der TangoNode.
+Klassen deren Objekte als Hilfsbaum im Tango Baum eingesetzt werden sollen, müssen diese Klasse erweitern. \textit{setTree} wird benötigt, da von der Klasse TangoTree abgeleitete Objekte ihre BST Struktur nur über das Attribut \enquote{auxTree} erreichen. Gibt es eine Veränderung an der Wurzel des Tango Baumes, wird die BST Struktur von \enquote{auxTree} neu gesetzt. \textit{updateDepthsPath} pflegt die Attribute \enquote{minDepth} und \enquote{maxDepth} der TangoNode.
 
 \paragraph{TangoTree:}
 \enquote{auxTree} macht die Wurzel des Tango Baum erreichbar. Außerdem können über dieses Attribut die \textit{split} und \textit{join} Operationen aufgerufen werden. \enquote{auxTreeClass} entspricht der Klasse der eingesetzten Hilfsbäumen. Diese wird dem Constructor übergeben. Somit kann der RBT einfach durch eine andere geeignete Struktur ersetzt werden.
 
 \paragraph{RedBlackTree und RBTNode:}
-Diese erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu RBT beschrieben.
+Diese erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu RBT beschrieben. 
 
 \paragraph{RuntimeTest:}
 Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt führt genau einen Laufzeittest durch. Die restlichen Attribute dienen dessen Parametrierung. Die Methoden zum Ausführen eines Tests  geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baumes, der zweite der des Splay Baumes. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}.
@@ -1754,7 +1754,7 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 
 
 
-\subsubsection{Working Set Property}
+\subsubsection{Working Set Property} \label{testWork}
 Die Schlüssel dieser Zugriffsfolgen wiederholen sich mit einem festem parametrierbaren Abstand $a$. 
 Sei  $X = x_1, x_2,.., x_m$ eine verwendete Zugriffsfolge und $i \in \{1,2,..,m\}$. Sei $k$ ein Schlüssel mit $k = x_i$, dann ist entweder $i-a$ der größte Index kleiner $i$, mit $x_{i-a} = x_i$ oder $i$ ist der kleinste Index mit $x_i = k$. Es werden die Teilmengen $t_0, t_1,.. t_b$, mit $b = n / a$, der  Schlüsselmenge gebildet. Sei $l \in \{0, 1,.., b\}$ und $c = a/2$, dann gilt \\ $t_l = \{l * c + 1, l * c + 2,.., l * c + c\} \cup \{l * c + 1 + c, l * c + 2 + c,.., l * c + c + c\}$. Jede Teilmenge enthält also $a$ Elemente. Sei $e_1, e_2,.., e_c, e_{c+1}, e_{c+2},.., e_{c+c} $ die Folge aller in $t_l$ enthaltenen Elemente, aufsteigen sortiert nach dem Betrag. Aus $t_l$ wird eine Zugriffsfolge $s_l$ gebildet indem  $e_1, e_{c+1}, e_2,e_{c+2}.., e_c, e_{c + c}$ so oft wiederholt wird bis $s_l$ die Länge $m/b$ hat. Die Gesamtzugriffsfolge ist dann $s_0 \circ s_1 \circ...\circ s_l$. \\
 Durch diesen Aufbau wird erreicht, dass zwar das Working Set Property für die Laufzeit relevant wird, die bereits betrachteten Eigenschaften jedoch nicht.\\
@@ -1785,7 +1785,7 @@ Im ersten Teil wird nun $a = 8$ gesetzt.
 		\caption{Diagramm zum Laufzeittest zu Working Set, mit konstantem $a$.} 
 	\end{center}
 \end{table}
-\noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Zudem werden die Laufzeiten  bei steigendem $n$ nur etwas länger, trotz logarithmischer Skala zu $n$. Der Splay Baum erfüllt das Working Set Property, wodurch die kurzen Laufzeiten zu erklären sind. Nun wird eine mögliche Erklärung zum langsamen ansteigen der Laufzeiten des Tango Baumes angegeben: Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1 = k_3$ und $k_2 \gg k_1$ gilt. Es wird aufeinanderfolgend \textit{access}$\left(k_1\right)$, \textit{access}$\left(k_2\right)$ und \textit{access}$\left(k_3\right)$ ausgeführt. Betrachtet wird nun der Referenzbaum $P$ zum Tango Baum und \textit{access}$\left(k_3\right)$. Sei $P_k = p_1, p_2,.., p_l$ der Pfad von der Wurzel von $P$ zu dem Knoten $v_3$ mit Schlüssel $k_3$. Sei $v_v$ der gemeinsame Vorfahre von $v$ und dem Knoten $v_2$ mit Schlüssel $k_2$. $v_v$ muss der Knoten mit der kleinsten Tiefe sein, bei dem das preferred child wechselt (Eine Ausnahme ist $v_v = v_2$). Sei $u$ ein Knoten in $P_k$ mit größerer Tiefe als $v_v$, sowie \textit{key}$\left(u\right) \neq k_1 \wedge $ \textit{key}$\left(u \right)\neq k_2 $. Es muss entweder \textit{key}$\left(u\right) > k_3 > k_1$ gelten oder  $ k_3 > k_1 >$\textit{key}$\left(u\right)$ gelten und somit müssen $k_1$ und $k_3$ im selben Teilbaum von $u$ enthalten sein. So kann erklärt werden, dass verlängerte Pfade im Referenzbaum, hier nur zu wenigen zusätzlichen Wechsel bei preferred child's führen. \\  
+\noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Zudem werden die Laufzeiten  bei steigendem $n$ nur etwas länger, trotz logarithmischer Skala zu $n$. Der Splay Baum erfüllt das Working Set Property, wodurch die kurzen Laufzeiten zu erklären sind. Nun wird eine mögliche Erklärung zum langsamen ansteigen der Laufzeiten des Tango Baumes angegeben: Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1 = k_3$ und $k_2 \gg k_1$ gilt. Es wird aufeinanderfolgend \textit{access}$\left(k_1\right)$, \textit{access}$\left(k_2\right)$ und \textit{access}$\left(k_3\right)$ ausgeführt. Betrachtet wird nun der Referenzbaum $P$ zum Tango Baum und \textit{access}$\left(k_3\right)$. Sei $P_k = p_1, p_2,.., p_l$ der Pfad von der Wurzel von $P$ zu dem Knoten $v_3$ mit Schlüssel $k_3$. Sei $v_v$ der gemeinsame Vorfahre von $v$ und dem Knoten $v_2$ mit Schlüssel $k_2$. $v_v$ muss der Knoten mit der kleinsten Tiefe sein, bei dem das preferred child wechselt (Eine Ausnahme ist $v_v = v_2$). Sei $u$ ein Knoten in $P_k$ mit größerer Tiefe als $v_v$, sowie \textit{key}$\left(u\right) \neq k_1 \wedge $ \textit{key}$\left(u \right)\neq k_2 $. Es muss entweder \textit{key}$\left(u\right) > k_3 > k_1$ gelten oder  $ k_3 > k_1 >$\textit{key}$\left(u\right)$ gelten und somit müssen $k_1$ und $k_3$ im selben Teilbaum von $u$ enthalten sein. So kann erklärt werden, dass verlängerte Pfade im Referenzbaum, hier nur zu wenigen zusätzlichen Wechsel bei preferred children führen. \\  
 
 
 \noindent Im zweiten Teil wird $n = 10.000.000$ gesetzt und $a$ ist variabel. 
@@ -1824,8 +1824,8 @@ Im ersten Teil wird nun $a = 8$ gesetzt.
 \newpage
 \subsubsection{Weitere Laufzeittests}
 
-\paragraph{ Alternierend die Schlüssel $1$ und $n$:\\}
-
+\noindent \textbf{Alternierend die Schlüssel $1$ und $n$:\\}
+ \bigskip
 \noindent Umgesetzt werden diese Zugriffsfolgen durch solche zum Dynamic Finger Property, bei denen $a = n -1$ für den Abstand $a$ gilt. Relevant für die Laufzeit wird hier jedoch das Working Set Property.
 
 \begin{figure}[H]
@@ -1855,10 +1855,12 @@ Im ersten Teil wird nun $a = 8$ gesetzt.
 		\caption{Laufzeittest bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.} 
 	\end{center}
 \end{table}
-\noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Dies war auch zu erwarten. Im Referenzbaum zum Tango Baum wird es ab der dritten \textit{access} Operation, pro Operation nur noch zu einem Wechsel des preferred child's an der Wurzel kommen. Beim Splay Baum ist der Knoten mit dem größten Schlüssel nach der zweiten Operation an der Wurzel. Der Knoten mit dem kleinsten Schlüssel war nach der ersten Operation an der Wurzel. Somit sind ab der dritten Operation jeweils nur noch maximal zwei Rotation notwendig.Zwei Rotationen sind der Fall wenn bei der vorherigen Operation zum Abschluss zig-zig oder zag-zag angewendet wurde, siehe Abbildung \ref{fig:zigZag}.
+\noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Dies war auch zu erwarten. Im Referenzbaum zum Tango Baum wird es ab der dritten \textit{access} Operation, pro Operation nur noch zu einem Wechsel des preferred child an der Wurzel kommen. Beim Splay Baum ist der Knoten mit dem größten Schlüssel nach der zweiten Operation an der Wurzel. Der Knoten mit dem kleinsten Schlüssel war nach der ersten Operation an der Wurzel. Somit sind ab der dritten Operation jeweils nur noch maximal zwei Rotation notwendig.Zwei Rotationen sind der Fall wenn bei der vorherigen Operation zum Abschluss zig-zig oder zag-zag angewendet wurde, siehe Abbildung \ref{fig:zigZag}.
+ 
+ \bigskip
 
-
-\paragraph{Aufsteigend sortiert mit insgesamt $n$ Zugriffen:}
+\noindent \textbf{Aufsteigend sortiert mit insgesamt $n$ Zugriffen:}\\
+\bigskip
 Zu beachten ist hier, dass das Dynamic Finger Property relevant wird. 
 
 \begin{figure}[H]
@@ -1874,23 +1876,29 @@ Zu beachten ist hier, dass das Dynamic Finger Property relevant wird.
 			\hline
 			$10^3$ & $\approx 0$ &$\approx 0$ \\
 			\hline
-			$10^4$  & $0,3$ &$\approx 0$  \\
+			$10^4$  & $0,1$ &$\approx 0$  \\
 			\hline
-			$10^5$  & $0,6$ &$\approx 0$  \\
+			$10^5$  & $0,2$ &$\approx 0$  \\
 			\hline
-			$10^6$  & $3$ &$0,1$  \\
+			$10^6$  & $1$ &$0,1$  \\
 			\hline
-			$10^7$  & $9$ &$0,3$  \\
+			$10^7$  & $12.3$ &$0,3$  \\
 			\hline
-			$1,6 *10^7$  & $17$ &$0,4$  \\
+			$1,6 *10^7$  & $16.8$ &$0,4$  \\
 			\hline
 		\end{tabular}
 		\caption{Laufzeittest aufsteigend sortiert.} 
 	\end{center}
 \end{table}
-Beide BSTs erreichten bei den Zugriffsfolgen zum Dynamic Finger Property  vergleichsweise kurze Laufzeiten. Hier kommt hinzu dass die Länge der Zugriffsfolgen abhängig von der Anzahl der Knoten kürzer ist. Das Ergebnis sind erwartbar kurze Laufzeiten.
+\noindent Beide BSTs erreichten bei den Zugriffsfolgen zum Dynamic Finger Property  vergleichsweise kurze Laufzeiten. Hier kommt hinzu dass die Länge der Zugriffsfolgen abhängig von der Anzahl der Knoten kürzer ist. Das Ergebnis sind erwartbar kurze Laufzeiten.
 \newpage
-\paragraph{Absteigend sortiert mit insgesamt $n$ Zugriffen\\:}
+
+\bigskip
+\noindent \textbf{Absteigend sortiert mit insgesamt $n$ Zugriffen:\\}
+
+
+\bigskip
+
 
 \noindent Auch hier wird das Dynamic Finger Property relevant. 
 \begin{figure}[H]
@@ -1908,13 +1916,13 @@ Beide BSTs erreichten bei den Zugriffsfolgen zum Dynamic Finger Property  vergle
 		\hline
 		$10^4$  & $\approx 0$ &$\approx 0$  \\
 		\hline
-		$10^5$  & $0,3$ &$\approx 0$  \\
+		$10^5$  & $0,1$ &$\approx 0$  \\
 		\hline
-		$10^6$  & $5,4$ &$0,1$  \\
+		$10^6$  & $0,8$ &$0.1$  \\
 		\hline
-		$10^7$  & $11,2$ &$0,3$  \\
+		$10^7$  & $13,8$ &$0.3$  \\
 		\hline
-		$1,6 *10^7$  & $15,3$ &$0,5$  \\
+		$1,6 *10^7$  & $15,3$ &$0.5$  \\
 		\hline
 		\end{tabular}
 		\caption{Laufzeittest absteigend sortiert.} 
@@ -1922,8 +1930,11 @@ Beide BSTs erreichten bei den Zugriffsfolgen zum Dynamic Finger Property  vergle
 \end{table}
 \noindent Die Laufzeiten sind ähnlich zu denen der aufsteigend sortierten Zugriffsfolgen und diese können auf die gleiche Art und Weise begründet werden.
 
+ \bigskip
+\noindent \textbf{Aufsteigend und absteigend sortiert, geschachtelt:}
 
-\paragraph{Aufsteigend und absteigend sortiert, geschachtelt.\\} \noindent Hier werden Zugriffsfolgen mit dem Aufbau $1, n, 2, n- 1,...., n - 1, 2, n, 1$ verwendet.
+\bigskip
+\noindent Hier werden Zugriffsfolgen mit dem Aufbau $1, n, 2, n- 1,...., n - 1, 2, n, 1$ verwendet. Die Länge der Zugriffsfolgen ist also $2n$.
 
 
 \begin{figure}[H]
@@ -1939,7 +1950,7 @@ Beide BSTs erreichten bei den Zugriffsfolgen zum Dynamic Finger Property  vergle
 		\hline
 		$10^3$ & $\approx 0$ &$\approx 0$ \\
 		\hline
-		$10^4$  & $\approx 0$ &$\approx 0$  \\
+		$10^4$  & $0.1$ &$\approx 0$  \\
 		\hline
 		$10^5$  & $0,6$ &$\approx 0$  \\
 		\hline
@@ -1953,10 +1964,13 @@ Beide BSTs erreichten bei den Zugriffsfolgen zum Dynamic Finger Property  vergle
 		\caption{Laufzeittest auf-, bzw. absteigend geschachtelt.} 
 	\end{center}
 \end{table}
+  
+\noindent An den größeren Werten für $n$ ist zu erkennen, dass sich die Laufzeiten im Vergleich zu den aufsteigend oder absteigend sortierten Zugriffsfolgen mehr als verdoppeln. Eine Erklärung dafür ist, dass hier das Dynamic Finger Property lediglich beim mittleren Teil relevant wird. Und auch beim mittleren Teil bleibt die Betragsdifferenz zweier aufeinanderfolgender Schlüssel nicht konstant. Bei den Tests zum Dynamic Finger Property, profitierte der Tango Baum eher von einer solchen konstanten Betragsdifferenz profitiert, als von niedrigen Betragsdifferenzen.
 
+  
 \includepdf[pages = -]{anhang}
 \section{Fazit und Ausblick}
-Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Bei ihm wurde die Idee mit den preferred child jedoch als Erstes umgesetzt und hier könnten noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften, folgen. \\
+Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Bei ihm wurde die Idee, auf Grundlage der Interleave Lower Bound einen $\log\left(\log\left(n\right)\right)$-competitive BST zu konstruieren jedoch als Erstes umgesetzt und hier könnten noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften, folgen. \\
 Mittlerweile hat sich zum Thema \enquote{dynamische Optimalität} viel Literatur angesammelt. Hier wurde nur auf einen sehr kleinen Ausschnitt eingegangen. Zum Beispiel gibt es  weitere untere Schranken für die Ausführungszeit von BST. Außerdem gibt es eine interessante geometrische Sicht auf BST, von der Aussagen über BST und andere Verfahren abgeleitet werden konnten. Es gibt auch deutlich mehr obere Laufzeitschranken, für Zugriffsfolgen mit speziellen Eigenschaften, als  hier vorgestellt wurden. \\
 Ob es irgendwann gelingen wird die dynamische Optimalität des Splay Baumes oder irgendeiner anderen Variante eines BST zu beweisen, ist offen. Für den Einsatz bei gewöhnlich großen Schlüsselmengen müssen dann aber auch die Summanden und Faktoren berücksichtigt werden, die innerhalb der $O$ Notation vernachlässigt werden.
 

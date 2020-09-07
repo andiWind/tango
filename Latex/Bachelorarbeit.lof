@@ -22,10 +22,10 @@
 \contentsline {figure}{\numberline {21}{\ignorespaces Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite {upperBounds}. \relax }}{43}%
 \contentsline {figure}{\numberline {22}{\ignorespaces Der lower bound tree zur Zugriffsfolge $1 ,2, .., 15$ \relax }}{45}%
 \contentsline {figure}{\numberline {23}{\ignorespaces Transition point Zuordnung. Links ein lower bound tree, rechts ein möglicher $T_j$. \relax }}{47}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Die preferred childs werden durch die grünen Pfeile markiert. \relax }}{49}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Die preferred children werden durch die grünen Pfeile markiert. \relax }}{49}%
 \contentsline {figure}{\numberline {25}{\ignorespaces Hilfsbäume zu den preferred path aus dem Beispiel. \relax }}{50}%
 \contentsline {figure}{\numberline {26}{\ignorespaces Tango Baum zu dem Beispiel. \relax }}{51}%
-\contentsline {figure}{\numberline {27}{\ignorespaces Preferred childs nach \textit {access}$\left (9\right )$. \relax }}{52}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Preferred children nach \textit {access}$\left (9\right )$. \relax }}{52}%
 \contentsline {figure}{\numberline {28}{\ignorespaces Tango Baum nach \textit {access}$\left (9\right )$. \relax }}{52}%
 \contentsline {figure}{\numberline {29}{\ignorespaces Ablauf von \textit {cut($d$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{56}%
 \contentsline {figure}{\numberline {30}{\ignorespaces Ablauf von \textit {cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{57}%

@@ -61,10 +61,10 @@ private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int 
         }
         return node;
     }
- private int setKeys(SplayNode node ,int[] keys, int count){
+  private int setKeys(SplayNode node ,int[] keys, int count){
         if (node.getLeft() != null)
             count = setKeys(node.getLeft(), keys, count);
-        node.setKey(count++);
+        node.setKey(keys[count++]);
         if (node.getRight() != null)
             count = setKeys(node.getRight(), keys, count );
         return count;

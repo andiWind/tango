@@ -1,0 +1,235 @@
+bit reversal
+
+17:
+ wechsel pref child= 2.031.619
+ rotationen=  3.295.190
+0,61654
+18:
+ wechsel pref child= 4.325.379
+ rotationen= 7.027.318
+0,6155
+19:
+ wechsel pref child= 9.175.043
+ rotationen= 14.927.902
+0,6146
+20:
+ wechsel pref child= 19.398.659
+ rotationen= 31.604.175
+0,6138
+21:
+ wechsel pref child= 40.894.467
+ rotationen= 66.703.641
+0,6131
+22:
+ wechsel pref child= 85.983.235
+ rotationen= 140.400.509
+0,6124
+23:
+ wechsel pref child= 180.355.075
+ rotationen= 294.782.123
+0,6118
+24:
+ wechsel pref child= 377.487.363
+ rotationen= 617.527.046
+0,6113
+
+
+random Access:
+n= 1000
+ wechsel pref child= 4.181.007
+ rotationen= 11.414.510
+0,366
+
+  n= 10000 
+ wechsel pref child= 5.835.475
+ rotationen= 16.227.683
+ 0,36
+
+ n= 100000
+ wechsel pref child= 7.563.312
+ rotationen= 21.032.371
+0.36
+
+  n= 1000000
+ wechsel pref child= 9.733.206
+ rotationen= 25.710.823
+0.38
+
+  n= 10000000
+ wechsel pref child= 12.515.644
+ rotationen= 29.787.468
+0.42
+
+n= 16000000
+ wechsel pref child= 13.152.698
+ rotationen= 30.529.711
+0,43
+
+
+
+ wechsel pref child= 4181032
+ rotationen= 11415135
+  n= 1000p= 2.0 tango: 95 splay: 272
+ wechsel pref child= 5831408
+ rotationen= 16219855
+  n= 10000p= 2.0 tango: 150 splay: 297
+ wechsel pref child= 7563200
+ rotationen= 21034627
+  n= 100000p= 2.0 tango: 312 splay: 584
+ wechsel pref child= 9731534
+ rotationen= 25715952
+  n= 1000000p= 2.0 tango: 486 splay: 1122
+ wechsel pref child= 12515307
+ rotationen= 29785978
+  n= 10000000p= 2.0 tango: 890 splay: 1409
+ wechsel pref child= 13152330
+ rotationen= 30527351
+  n= 16000000p= 2.0 tango: 653 splay: 1635_________________________________________ 
+
+ wechsel pref child= 4183618
+ rotationen= 11414542
+  n= 1000p= 2.0 tango: 75 splay: 158
+ wechsel pref child= 5835533
+ rotationen= 16225765
+  n= 10000p= 2.0 tango: 112 splay: 240
+ wechsel pref child= 7568220
+ rotationen= 21035377
+  n= 100000p= 2.0 tango: 195 splay: 390
+ wechsel pref child= 9737863
+ rotationen= 25717936
+  n= 1000000p= 2.0 tango: 433 splay: 848
+ wechsel pref child= 12524120
+ rotationen= 29789885
+  n= 10000000p= 2.0 tango: 631 splay: 1418
+ wechsel pref child= 13154841
+ rotationen= 30532926
+  n= 16000000p= 2.0 tango: 634 splay: 1621_________________________________________ 
+
+ wechsel pref child= 4180266
+ rotationen= 11415803
+  n= 1000p= 2.0 tango: 72 splay: 151
+ wechsel pref child= 5835408
+ rotationen= 16224897
+  n= 10000p= 2.0 tango: 108 splay: 232
+ wechsel pref child= 7565040
+ rotationen= 21036031
+  n= 100000p= 2.0 tango: 186 splay: 378
+ wechsel pref child= 9729593
+ rotationen= 25711496
+  n= 1000000p= 2.0 tango: 397 splay: 954
+ wechsel pref child= 12516771
+ rotationen= 29784163
+  n= 10000000p= 2.0 tango: 645 splay: 1333
+ wechsel pref child= 13153148
+ rotationen= 30535474
+  n= 16000000p= 2.0 tango: 631 splay: 1593_________________________________________ 
+
+ wechsel pref child= 4179998
+ rotationen= 11415357
+  n= 1000p= 2.0 tango: 75 splay: 155
+ wechsel pref child= 5836425
+ rotationen= 16220823
+  n= 10000p= 2.0 tango: 112 splay: 244
+ wechsel pref child= 7562652
+ rotationen= 21034025
+  n= 100000p= 2.0 tango: 193 splay: 384
+ wechsel pref child= 9734963
+ rotationen= 25721493
+  n= 1000000p= 2.0 tango: 395 splay: 792
+ wechsel pref child= 12516065
+ rotationen= 29789907
+  n= 10000000p= 2.0 tango: 735 splay: 1400
+ wechsel pref child= 13155173
+ rotationen= 30530935
+  n= 16000000p= 2.0 tango: 633 splay: 1617_________________________________________ 
+
+ wechsel pref child= 4184037
+ rotationen= 11419274
+  n= 1000p= 2.0 tango: 75 splay: 156
+ wechsel pref child= 5835243
+ rotationen= 16222482
+  n= 10000p= 2.0 tango: 119 splay: 263
+ wechsel pref child= 7564015
+ rotationen= 21039591
+  n= 100000p= 2.0 tango: 255 splay: 391
+ wechsel pref child= 9734048
+ rotationen= 25724871
+  n= 1000000p= 2.0 tango: 414 splay: 825
+ wechsel pref child= 12516305
+ rotationen= 29791848
+  n= 10000000p= 2.0 tango: 619 splay: 1405
+ wechsel pref child= 13153976
+ rotationen= 30532647
+  n= 16000000p= 2.0 tango: 650 splay: 1555_________________________________________ 
+
+ wechsel pref child= 4183091
+ rotationen= 11414560
+  n= 1000p= 2.0 tango: 77 splay: 155
+ wechsel pref child= 5833267
+ rotationen= 16222041
+  n= 10000p= 2.0 tango: 112 splay: 241
+ wechsel pref child= 7564838
+ rotationen= 21033448
+  n= 100000p= 2.0 tango: 199 splay: 382
+ wechsel pref child= 9729982
+ rotationen= 25710188
+  n= 1000000p= 2.0 tango: 414 splay: 831
+ wechsel pref child= 12520840
+ rotationen= 29788655
+  n= 10000000p= 2.0 tango: 654 splay: 1499
+ wechsel pref child= 13155593
+ rotationen= 30531928
+  n= 16000000p= 2.0 tango: 660 splay: 1553_________________________________________ 
+
+ wechsel pref child= 4183595
+ rotationen= 11417110
+  n= 1000p= 2.0 tango: 75 splay: 168
+ wechsel pref child= 5834358
+ rotationen= 16223889
+  n= 10000p= 2.0 tango: 122 splay: 262
+ wechsel pref child= 7565009
+ rotationen= 21038124
+  n= 100000p= 2.0 tango: 222 splay: 386
+
+
+n= 1000
+wechsel pref child= 4183100
+rotationen= 11417539
+wechsel pref child= 4182459
+rotationen= 11417396
+
+n= 10.000
+wechsel pref child= 5835729
+ rotationen= 16227036
+wechsel pref child= 5836814
+ rotationen= 16223979
+
+n= 100.000 
+wechsel pref child= 7564519
+rotationen= 21028134
+wechsel pref child= 7562709
+rotationen= 21031793
+
+n= 1.000.000
+ wechsel pref child= 9732093
+ rotationen= 25710025
+ wechsel pref child= 9734181
+ rotationen= 25714894
+wechsel pref child= 9733899
+rotationen= 25716830
+
+n= 10.000.000
+ wechsel pref child= 12513683
+ rotationen= 29782036
+ wechsel pref child= 12515276
+ rotationen= 29787204
+wechsel pref child= 12516326
+rotationen= 29782114
+
+n= 16.000.000 
+ wechsel pref child= 13151347
+ rotationen= 30522814
+ wechsel pref child= 13154138
+ rotationen= 30538509
+wechsel pref child= 13148270 
+rotationen= 30524681

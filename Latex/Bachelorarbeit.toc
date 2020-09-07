@@ -72,8 +72,4 @@
 \contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{93}%
 \contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{95}%
 \contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{98}%
-\contentsline {paragraph}{ Alternierend die Schlüssel $1$ und $n$:\\}{98}%
-\contentsline {paragraph}{Aufsteigend sortiert mit insgesamt $n$ Zugriffen:}{99}%
-\contentsline {paragraph}{Absteigend sortiert mit insgesamt $n$ Zugriffen\\:}{100}%
-\contentsline {paragraph}{Aufsteigend und absteigend sortiert, geschachtelt.\\}{100}%
 \contentsline {section}{\numberline {10}Fazit und Ausblick}{104}%
