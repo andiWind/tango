@@ -67,9 +67,9 @@
 \contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{85}%
 \contentsline {subsection}{\numberline {9.2}Durchführung der Laufzeittests.}{86}%
 \contentsline {subsubsection}{\numberline {9.2.1}Zufällig erzeugte Zugriffsfolgen}{86}%
-\contentsline {subsubsection}{\numberline {9.2.2}Bit Reversal Permutations}{89}%
-\contentsline {subsubsection}{\numberline {9.2.3}Static Finger Property}{90}%
-\contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{93}%
-\contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{95}%
-\contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{98}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{104}%
+\contentsline {subsubsection}{\numberline {9.2.2}Bit Reversal Permutations}{90}%
+\contentsline {subsubsection}{\numberline {9.2.3}Static Finger Property}{91}%
+\contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{94}%
+\contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{97}%
+\contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{100}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{106}%
