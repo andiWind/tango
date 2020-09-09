@@ -77,7 +77,7 @@ private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int 
  public SplayTree (List<Integer> keyList){
         int[] keyArray = buildKeyArray(keyList);
         root = buildPerfectBalancedTree(new SplayNode(),keyArray.length,1 );
-        setKeys(root, keyArray, 1);
+        setKeys(root, keyArray, 0);
         
        
     }

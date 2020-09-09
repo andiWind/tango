@@ -1,51 +1,51 @@
 \babel@toc {german}{}
 \contentsline {section}{\numberline {1}Einleitung}{5}%
 \contentsline {section}{\numberline {2}Binäre Suchbäume}{6}%
-\contentsline {subsection}{\numberline {2.1}Definition binärer Suchbaum}{6}%
+\contentsline {subsection}{\numberline {2.1}Die Definition des binären Suchbaumes.}{6}%
 \contentsline {subsection}{\numberline {2.2}Weitere Begriffe und Eigenschaften zum binären Suchbaum}{8}%
 \contentsline {paragraph}{Total geordnete Menge:}{11}%
 \contentsline {paragraph}{Verändern eines BST durch Rotationen:}{12}%
-\contentsline {subsection}{\numberline {2.3}Grundoperationen \textit {search}, \textit {insert} und \textit {delete}}{13}%
-\contentsline {paragraph}{Laufzeit:}{16}%
+\contentsline {subsection}{\numberline {2.3}Die Grundoperationen \textit {search}, \textit {insert} und \textit {delete}}{13}%
+\contentsline {paragraph}{Laufzeit:}{15}%
 \contentsline {paragraph}{Unterschiedliche Baumhöhen:}{16}%
 \contentsline {section}{\numberline {3}Rot-Schwarz-Baum}{17}%
-\contentsline {subsection}{\numberline {3.1}Grundoperationen}{20}%
-\contentsline {paragraph}{Suchen im Rot-Schwarz-Baum:}{20}%
+\contentsline {subsection}{\numberline {3.1}Grundoperationen}{19}%
+\contentsline {paragraph}{Suchen im Rot-Schwarz-Baum:}{19}%
 \contentsline {paragraph}{Einfügen in den Rot-Schwarz-Baum:}{20}%
 \contentsline {paragraph}{Laufzeit:}{27}%
 \contentsline {paragraph}{Löschen aus dem Rot-Schwarz-Baum:}{27}%
 \contentsline {paragraph}{Laufzeit der Grundoperationen:}{27}%
 \contentsline {section}{\numberline {4}Dynamische Optimalität}{28}%
 \contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{29}%
-\contentsline {subsection}{\numberline {4.2}Erste untere Schranke von Wilber}{30}%
+\contentsline {subsection}{\numberline {4.2}Die erste untere Schranke von Wilber.}{30}%
 \contentsline {paragraph}{lower bound tree:}{30}%
-\contentsline {subsection}{\numberline {4.3}Bit Reversal Permutation }{37}%
+\contentsline {subsection}{\numberline {4.3}Bit Reversal Permutation }{36}%
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode:}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack:}{40}%
-\contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST }{41}%
+\contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST. }{41}%
 \contentsline {paragraph}{Balanced Property:}{41}%
 \contentsline {paragraph}{Static Finger Property:}{41}%
 \contentsline {paragraph}{Statisch optimal:}{41}%
 \contentsline {paragraph}{Working Set Property:}{42}%
 \contentsline {paragraph}{Dynamic Finger Property:}{42}%
 \contentsline {section}{\numberline {5}Tango Baum}{43}%
-\contentsline {subsection}{\numberline {5.1}Interleave Lower Bound}{44}%
-\contentsline {subsection}{\numberline {5.2}Aufbau des Tango Baumes}{48}%
-\contentsline {subsection}{\numberline {5.3}Die \textit {access} Operation beim Tango Baum}{52}%
+\contentsline {subsection}{\numberline {5.1}Die Interleave Lower Bound}{44}%
+\contentsline {subsection}{\numberline {5.2}Der Aufbau des Tango Baumes.}{48}%
+\contentsline {subsection}{\numberline {5.3}Die \textit {access} Operation beim Tango Baum.}{52}%
 \contentsline {paragraph}{cut Operation:}{54}%
 \contentsline {paragraph}{join Operation:}{57}%
 \contentsline {paragraph}{access Operation:}{60}%
 \contentsline {subsection}{\numberline {5.4}Laufzeitanalyse für access}{61}%
-\contentsline {subsection}{\numberline {5.5}Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum}{63}%
+\contentsline {subsection}{\numberline {5.5}Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum.}{63}%
 \contentsline {paragraph}{Resultat nach der Fallbehandlung:}{65}%
 \contentsline {paragraph}{Laufzeit:}{66}%
-\contentsline {subsection}{\numberline {5.6}Tango Baum konformes Aufteilen beim Rot-Schwarz-Baum}{66}%
+\contentsline {subsection}{\numberline {5.6}Tango Baum konformes Aufteilen beim Rot-Schwarz-Baum.}{66}%
 \contentsline {paragraph}{Laufzeit:}{67}%
 \contentsline {section}{\numberline {6}Splay Baum}{69}%
-\contentsline {subsection}{\numberline {6.1}Die \textit {access} Operation beim Splay Baum }{70}%
+\contentsline {subsection}{\numberline {6.1}Die \textit {access} Operation beim Splay Baum. }{70}%
 \contentsline {paragraph}{\textit {splay} Operation:}{70}%
-\contentsline {subsection}{\numberline {6.2}Amortisierte Laufzeitanalyse von \textit {splay }}{72}%
+\contentsline {subsection}{\numberline {6.2}Amortisierte Laufzeitanalyse von \textit {splay }.}{72}%
 \contentsline {paragraph}{zig:}{72}%
 \contentsline {paragraph}{zig-zig:}{72}%
 \contentsline {paragraph}{zig-zag:}{73}%

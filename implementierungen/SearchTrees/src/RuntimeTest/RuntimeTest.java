@@ -415,7 +415,6 @@ public class RuntimeTest extends Thread {
                 if ( exit)
                     return null;
                 tangoTree.access(i);
-           
             }
         }
         ret[0] = (System.nanoTime()- startTime) / 1000000 ;
@@ -427,11 +426,9 @@ public class RuntimeTest extends Thread {
                     if ( exit)
                         return null;
                     splayTree.access(i);
-           
                 }
             }    
         ret[1] = (System.nanoTime()- startTime) / 1000000 ;
-        
         return ret;
     }
     private int randomNumber (double[] probs){

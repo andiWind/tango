@@ -4,16 +4,16 @@
 \contentsline {figure}{\numberline {3}{\ignorespaces Ein weiterer binärer Suchbaum \relax }}{9}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Schlüssel sind aufsteigend sortiert ablesbar. \relax }}{9}%
 \contentsline {figure}{\numberline {5}{\ignorespaces Darstellung von Vorgänger und Nachfolger. \relax }}{11}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Linksrotation auf Knoten x. \relax }}{13}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Linksrotation auf Knoten x. \relax }}{12}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Rechtsrotation auf Knoten x. \relax }}{13}%
 \contentsline {figure}{\numberline {8}{\ignorespaces Gegenseitiges Aufheben von Rotationen.\relax }}{13}%
 \contentsline {figure}{\numberline {9}{\ignorespaces Links zeigt eine Suche nach dem Schlüssel 15. Rechts das Einfügen des Schlüssels 13.\relax }}{14}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Löschen des Schlüssels 10\relax }}{16}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Kompletter BST mit 12 Knoten\relax }}{17}%
-\contentsline {figure}{\numberline {12}{\ignorespaces RBT ohne Verletzung von Eigenschaften. \relax }}{19}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Löschen des Schlüssels 10\relax }}{15}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Kompletter BST mit 12 Knoten\relax }}{16}%
+\contentsline {figure}{\numberline {12}{\ignorespaces RBT ohne Verletzung von Eigenschaften. \relax }}{18}%
 \contentsline {figure}{\numberline {13}{\ignorespaces Kein RBT da die Eigenschaften vier und fünf verletzt sind. \relax }}{19}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Kein RBT da die Eigenschaft fünf verletzt ist. \relax }}{20}%
-\contentsline {figure}{\numberline {15}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 1 \relax }}{22}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Kein RBT da die Eigenschaft fünf verletzt ist. \relax }}{19}%
+\contentsline {figure}{\numberline {15}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 1 \relax }}{21}%
 \contentsline {figure}{\numberline {16}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 2 \relax }}{23}%
 \contentsline {figure}{\numberline {17}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 3 \relax }}{24}%
 \contentsline {figure}{\numberline {18}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 4 \relax }}{26}%

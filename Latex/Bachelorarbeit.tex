@@ -89,7 +89,7 @@ Ein weiterer Versuch gute Laufzeiten zu erreichen sind die dynamischen binären 
 \newpage
 \section {Binäre Suchbäume}
 Es gibt viele Varianten von binären Suchbäumen mit unterschiedlichen Eigenschaften und Leistungsdaten. In diesem Kapitel werden binäre Suchbäume im Allgemeinem beschrieben. Außerdem werden Begriffe definiert, die in den nachfolgenden Kapiteln verwendet werden. \\
-\subsection{Definition binärer Suchbaum}
+\subsection {Die Definition des  binären Suchbaumes.}
 Ein \textbf{Baum} $T$ ist ein minimal zusammenhängender gerichteter Graph. Ein Baum ohne Knoten ist ein \textbf{leerer Baum}. In einem nicht leerem Baum gibt es genau einen Knoten ohne eingehende Kante, dieser wird als \textbf{Wurzel}  bezeichnet. Alle anderen Knoten haben genau eine eingehende Kante.  Enthält der Baum eine Kante von Knoten $v_1$ zu Knoten $v_2$, so ist $v_2$ ein \textbf{Kind} von $v_1$ und $v_1$ ist der  \textbf{Elternknoten} von $v_2$. Die Wurzel hat also keinen Elternknoten, alle anderen Knoten genau einen.  Ein \textbf{Pfad} $P$ ist eine Folge von Knoten $(v_0$,$v_1$,...,$v_n)$ mit $\forall i \in \{ 1, 2,..., n \} \colon v_{i-1}$ \textit{ist der Elternknoten von} $v_i$. $n$ ist die \textbf{Länge des Pfades}. $\left(v_0\right)$ ist ein Pfad der Länge $0$. Jeder Knoten $v$ in $T$ ist Wurzel eines \textbf{Teilbaumes} $T(v)$. Dieser entsteht in dem alle Knoten $u$ aus $T$ entfernt werden, zu denen es keinen Pfad mit  $v_0 = v$ und $v_n = u$ gibt. Knoten ohne ausgehende Kante werden \textbf{Blatt} genannt, alle anderen Knoten werden als \textbf{innere Knoten} bezeichnet.\\
 Bei einem \textbf{binärem Baum} kommt folgende Einschränkung hinzu:  \\
 \textit{Ein Knoten hat maximal zwei Kinder.}\\ 
@@ -124,7 +124,7 @@ Entsprechend ihrer Zeichnung werden die Kinder in Binärbäumen als \textbf{link
 	\label{fig:suchbaum2_2}
 \end{figure}
 
-\noindent Da im linken Teilbaum nur kleinere Schlüssel vorhanden sein dürfen und im rechten Teilbaum nur größere, kann die Schlüsselmenge eines binären Suchbaumes, von links nach rechts, in aufsteigend sortierter Form abgelesen werden. Aus Platzgründen passiert es bei Zeichnungen von BSTs manchmal, dass ein Knoten in einem linken Teilbaum weiter rechts steht als die Wurzel des Teilbaumes oder umgekehrt, weshalb bei der Betrachtung solcher Zeichnungen etwas vorsichtig vorgegangen werden muss. Abbildung \ref{fig:linksRechts} enthält keine solche Konstellation.  
+\noindent Da im linken Teilbaum nur kleinere Schlüssel vorhanden sein dürfen und im rechten Teilbaum nur größere, kann die Schlüsselmenge eines binären Suchbaumes, von links nach rechts, in aufsteigend sortierter Form abgelesen werden. Aus Platzgründen passiert es bei Zeichnungen von BSTs manchmal, dass ein Knoten in einem linken Teilbaum weiter rechts liegt als die Wurzel des Teilbaumes oder umgekehrt, weshalb bei der Betrachtung solcher Zeichnungen etwas vorsichtig vorgegangen werden muss. Abbildung \ref{fig:linksRechts} enthält keine solche Konstellation.  
 
 \begin{figure}[H]
 	\centering
@@ -136,15 +136,15 @@ Entsprechend ihrer Zeichnung werden die Kinder in Binärbäumen als \textbf{link
 
 Algorithmus \textit{inorder (Node $v$)}
 \begin{enumerate}
-	\item Existiert ein linkes Kind $\mathit{vl}$ von $v$, rufe $\mathit{inorder(vl)}$ auf. 
+	\item Existiert ein linkes Kind $v_l$ von $v$, rufe \textit{inorder}$\left(v_l\right)$ auf. 
 	\item Gib den Schlüssel von $v$ aus. 
-	\item Existiert ein rechtes Kind $\mathit{vr}$ von $v$, rufe $\mathit{inorder(vr)}$ auf. 
+	\item Existiert ein rechtes Kind $v_lr$ von $v$, rufe  \textit{inorder}$\left(v_r\right)$  auf. 
 \end{enumerate}
 
 \noindent Dass das Verfahren funktioniert, wird sichtbar, durch Induktion über die Anzahl der Knoten $n$.
 Für $n = 1$ funktioniert es, da der einzige im BST enthaltene Schlüssel ausgegeben wird. Wir nehmen nun an, dass die Ausgabe für BSTs mit Knotenzahl $\leq n$ korrekt ist. Sei $T_1$ ein BST mit Knotenanzahl $n + 1$ und Wurzel $w$. Sowohl für den linken, als auch für den rechten Teilbaum von $w$ gilt, dass die Anzahl enthaltener Knoten $\leq n$ ist. Als erstes wird der linke Teilbaum von $w$ korrekt ausgegeben, dann der Schlüssel von $w$ selbst und zuletzt der rechte Teilbaum von $w$. Damit wurde auch für den Gesamtbaum die richtige
 Ausgabe erzeugt. \\
-Als \textbf{Vorgänger} eines Knotens $v$ mit Schlüssel $k_v$, wird der Knoten mit dem größten im BST enthaltenen Schlüssel $k_p$, für den $k_p < k_v$ gilt, bezeichnet. Aus der Inorder-Traversierung kann eine Anleitung zum Finden des Vorgängers abgeleitet werden. Falls ein linker Teilbaum vorhanden ist, wird der größte Schlüssel in diesem, also der am weitesten rechts liegende, direkt vor $k$ ausgegeben. Ansonsten wird der Schlüssel des tiefsten Knotens auf dem Pfad von der Wurzel zu $v$ ausgegeben, bei dem $v$ im rechten Teilbaum liegt. \\
+Als \textbf{Vorgänger} eines Knotens $v$ mit Schlüssel $k_v$, wird der Knoten mit dem größten im BST enthaltenen Schlüssel $k_p$, für den $k_p < k_v$ gilt, bezeichnet. Aus der Inorder-Traversierung kann eine Anleitung zum Finden des Vorgängers abgeleitet werden. Falls ein linker Teilbaum vorhanden ist, wird der größte Schlüssel in diesem, also der am weitesten rechts liegende, direkt vor $k_v$ ausgegeben. Ansonsten wird der Schlüssel des tiefsten Knotens auf dem Pfad von der Wurzel zu $v$ ausgegeben, bei dem $v$ im rechten Teilbaum liegt. \\
 Als \textbf{Nachfolger} von $v$ wird der Knoten mit dem kleinsten im BST enthaltenem Schlüssel $k_s$, für den $k_s > k_v$ gilt, bezeichnet. Da dieser Schlüssel bei der Inorder-Traversierung direkt nach $v$ ausgegeben wird, ist der zugehörige Knoten ganz links im rechten Teilbaum von $v$ zu finden, falls ein solcher vorhanden ist. Ansonsten ist es der tiefste Knoten auf dem Pfad von der Wurzel zu $v$, bei dem $v$ im linkem Teilbaum liegt. Abbildung \ref{fig:VorgängerNachfolger} zeigt Vorgänger und Nachfolger eines Knotens.\\
  Als \textbf{Vorfahre} eines Knotens $v$ werden alle Knoten auf dem Pfad von der Wurzel zu $v$, inklusive $v$ selbst, bezeichnet. 
 
@@ -176,8 +176,7 @@ Wird ein BST durch eine Veränderung in einen anderen BST überführt, kann es p
 
 \noindent\textbf{Rotationen} können verwendet werden, um lokale Änderungen an der Struktur eines BST durchzuführen, ohne eine der geforderten Eigenschaften zu verletzen. Es wird zwischen der Linksrotation und der Rechtsrotation 
 unterschieden. Hier wird zunächst auf die in Abbildung \ref{fig:Linksrotation} dargestellte Linksrotation eingegangen. 
-Sei $x$ der Knoten auf dem eine Linksrotation durchgeführt wird. Sei $z$ der Elternknoten von $x$. $z$ muss existieren, ansonsten darf auf $x$ keine Rotation durchgeführt werden. Sei $B$ der linke Teilbaum von $x$. Nach der Rotation ist $x'$ linkes, bzw. rechtes Kind von dem Knoten, an dem $z$ linkes, bzw. rechtes Kind war. $z'$ ist linkes Kind von $x'$. Die Wurzel von $B '$ ist das rechte Kind von $z'$. Unabhängig von der Anzahl der im BST enthaltenen Knoten und der Ausführungsstelle im BST ist eine Linksrotation daher mit dem Aufwand verbunden, maximal drei Zeiger umzusetzen. Zu beachten ist, dass die Höhen von $x'$ und der Knoten in dessen, ansonsten unverändertem, rechtem Teilbaum jeweils um eins größer sind, als die von $x$ und den Knoten in dessen rechtem Teilbaum. Die Höhe der Knoten im Teilbaum mit Wurzel $z'$ sind jeweils um eins kleiner als vor der Rotation.
-Abbildung \ref{fig:Rechtsrotation} zeigt die symmetrische Rechtsrotation. Dass es durch eine Rotation zu keiner Verletzung der BST Eigenschaften kommt, kann den Abbildungen direkt entnommen werden. In Abbildung \ref{fig:LinksRechtsRotation} ist zu erkennen, dass sich die Wirkung einer Rotation auf $x$ durch eine gegenläufige Rotation auf $z'$ aufheben lässt.  
+Sei $x$ der Knoten auf dem eine Linksrotation durchgeführt wird. Sei $z$ der Elternknoten von $x$. $z$ muss existieren, ansonsten darf auf $x$ keine Rotation durchgeführt werden. Sei $B$ der linke Teilbaum von $x$. Nach der Rotation ist $x'$ das linke, bzw. rechte Kind von dem Knoten, von dem $z$ das linke, bzw. rechte Kind war. $z'$ ist das linke Kind von $x'$. Die Wurzel von $B '$ ist das rechte Kind von $z'$. Unabhängig von der Anzahl der im BST enthaltenen Knoten und der Ausführungsstelle im BST ist eine Linksrotation daher mit dem Aufwand verbunden, maximal drei Zeiger umzusetzen. Abbildung \ref{fig:Rechtsrotation} zeigt die symmetrische Rechtsrotation. Dass es durch eine Rotation zu keiner Verletzung der BST Eigenschaften kommt, kann den Abbildungen direkt entnommen werden. In Abbildung \ref{fig:LinksRechtsRotation} ist zu erkennen, dass sich die Wirkung einer Rotation auf $x$ durch eine gegenläufige Rotation auf $z'$ aufheben lässt.  
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 1\textwidth]{"Medien/Einleitung/Linksrotation"}
@@ -197,7 +196,7 @@ Abbildung \ref{fig:Rechtsrotation} zeigt die symmetrische Rechtsrotation. Dass e
 	\label{fig:LinksRechtsRotation}
 \end{figure}
 
-\subsection{Grundoperationen \textit{search}, \textit{insert} und \textit{delete}} \label{BST Operationen}
+\subsection{Die Grundoperationen \textit{search}, \textit{insert} und \textit{delete}} \label{BST Operationen}
 Hier werden nur die Standardvarianten eines BST gezeigt. Später werden Varianten gezeigt, die von diesem Verhalten zum Teil deutlich abweichen. Innerhalb von Operationen wird häufig von einem Knoten aus direkt
 auf dessen Elternknoten zugegriffen, so dass sich im Baum auch nach oben hin bewegt werden kann. In Implementierungen wird das so umgesetzt, dass es zusätzlich zu den beiden Zeigern auf die Kinder noch einen zum Elternknoten gibt. Innerhalb eines Pfades werden in dieser Arbeit jedoch entweder nur Zeiger auf Kinder oder nur auf Elternknoten verwendet.\\
  Es sei ein BST $T$ gegeben. Die Operation \textit{search(key $k$)} gibt eine Referenz auf den Knoten im BST zurück, dessen Schlüssel mit $k$ übereinstimmt. Die Operation startet an der Wurzel und vergleicht den darin enthaltenen Schlüssel mit dem Gesuchten. Ist der gesuchte Schlüssel kleiner, muss er sich im linken Teilbaum des betrachteten Knotens befinden und die Suche wird bei dessen Wurzel fortgesetzt. Ist der Schlüssel größer, muss er sich im rechten Teilbaum befinden und die Suche wird bei dessen Wurzel fortgesetzt. Dieses Verhalten iteriert solange, bis der gesuchte Schlüssel gefunden ist oder der Teilbaum bei dem die Suche fortgesetzt werden müsste, leer ist. Ist das Letztere der Fall, ist der gesuchte Schlüssel im Baum nicht vorhanden und es wird eine leere Referenz zurückgegeben. In keinem Fall kommt es zu einer Veränderung des BST.\\
@@ -215,7 +214,7 @@ Sei $v$ der Knoten mit Schlüssel $k$.
 	\item $v$ ist ein Blatt: \\
 	$v$ kann ohne weiteres aus dem BST entfernt werden.
 	\item $v$ hat genau ein Kind $c$:\\
-	Ist $v$ die Wurzel kann er entfernt werden und $c$ wird zur neuen Wurzel. Ansonsten ist $v$ entweder ein linkes oder ein rechtes Kind eines Knotens $w$. $c$ nimmt nun den Platz von $v$ im BST ein. Das bedeutet, dass die Kanten von $w$ nach $v$ und von $v$ nach $c$ entfernt werden. Außerdem wird eine Kante von $w$ nach $c$ so eingefügt, dass $c$ wie zuvor $v$, das linke, bzw. rechte Kind von $w$ wird. 
+	Ist $v$ die Wurzel kann er entfernt werden und $c$ wird zur neuen Wurzel. Ansonsten ist $v$ entweder das linke oder das rechte Kind eines Knotens $w$. $c$ nimmt nun den Platz von $v$ im BST ein. Das bedeutet, dass die Kanten von $w$ nach $v$ und von $v$ nach $c$ entfernt werden. Außerdem wird eine Kante von $w$ nach $c$ so eingefügt, dass $c$ wie zuvor $v$, das linke, bzw. rechte Kind von $w$ wird. 
 	\item $v$ hat zwei Kinder:\\
 	Sei $T_l$ der linke Teilbaum von $v$ und $T_r$ der Rechte.
 	Sei $z$ der Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$. Als Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$, kann $z$ kein linkes Kind haben. Ist $z$ ein Blatt wird seine eingehende Kante entfernt. Hat $z$ ein rechtes Kind $z_r$, so nimmt dieses, analog zur Beschreibung im Fall 2, den Platz von $z$ ein. In beiden Fällen ist $z$ nun ein Knoten ohne Kante. Im nächsten Schritt nimmt nun $z$ den Platz von $v$ ein, $T_l$ wird links an $z$ angefügt und $T_r$ rechts. War $v$ zu Beginn die Wurzel, so wird $z'$ zur neuen Wurzel.\\
@@ -314,7 +313,7 @@ Sei $k$ der einzufügende Schlüssel. Zunächst wird wie beim Suchen vorgegangen
 	\item Es ist immer noch jeder Knoten entweder rot oder schwarz.
 	\item Wurde in einen RBT mit leerer Schlüsselmenge eingefügt, so ist der neu erzeugte rote Knoten die Wurzel, was eine Verletzung darstellt. Waren bereits Knoten im Baum vorhanden blieb die Wurzel unverändert.
 	\item Aufgrund der Sonderknoten sind die Blätter immer noch schwarz.
-	\item Der Baum wird nur direkt an der Einfügestelle verändert. Der neue Knoten hat schwarze Kindknoten, er könnte jedoch einen roten Elternknoten haben, so dass diese Eigenschaft verletzt wäre.
+	\item Der Baum wird nur direkt an der Einfügestelle verändert, so dass nur $v_k$ betrachtet werden muss. $v_k$ hat schwarze Kindknoten, er könnte jedoch einen roten Elternknoten haben, so dass diese Eigenschaft verletzt wäre.
 	\item Die Schwarz-Höhe von $v_k$ ist korrekt gesetzt. Waren bereits Knoten im RBT vorhanden, so kann sich ihre Schwarz-Höhe nicht verändert haben, denn den Platz eines schwarzen Knotens mit Schwarz-Höhe $0$ nimmt dann ein roter Knoten mit Schwarz-Höhe $1$ ein. Eigenschaft fünf bleibt also erhalten. 
 \end{enumerate}  
 
@@ -354,7 +353,7 @@ Betrachtung der Eigenschaften:
 	\item Wenn $z$ die Wurzel des Baumes ist, wurde sie rot gefärbt und eine Verletzung liegt vor.
 	\item Der rot umgefärbte Knoten $z'$ hat zwei Kinder. Somit wurde kein Blatt rot gefärbt.
 	\item  Wenn der rot gefärbte Knoten $z'$ nicht die Wurzel ist, könnte er einen roten Elternknoten haben und Eigenschaft vier ist weiterhin verletzt. Das Problem liegt nun aber zwei Baumebenen höher.
-	\item  Die Schwarz-Höhen der Vorfahren von $z'$ bleiben unverändert, da jeder Pfad von ihnen zu einem Blatt auch entweder $y'$ oder dessen Geschwisterknoten enthält. $z'$ Schwarz-Höhe steigt um eins gegenüber $z$, bleibt aber eindeutig. An keinem anderen Knoten ändert sich die Schwarz-Höhe. 
+	\item  Die Schwarz-Höhen der Vorfahren von $z'$ bleiben unverändert, da jeder Pfad von ihnen zu einem Blatt auch entweder $y'$ oder dessen Geschwisterknoten enthält. Die Schwarz-Höhe von $z'$ ist um eins erhöht gegenüber derer von $z$, bleibt aber eindeutig. An keinem anderen Knoten ändert sich die Schwarz-Höhe. 
 	
 \end{enumerate} 
 Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn das Problem noch nicht an der Wurzel ist, liegt es zumindest zwei Ebenen näher daran. $x$ wird auf $z'$ gesetzt. 
@@ -366,7 +365,7 @@ Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn 
 	\label{fig:EinfügenFixUpFall2}
 \end{figure}
 
-\noindent\textbf{Fall 3: $x$ ist ein linkes Kind. $y$ ist ein linkes Kind: }\\
+\noindent\textbf{Fall 3: $x$ ist ein linkes Kind und $y$ ist ein linkes Kind: }\\
 \noindent Abbildung \ref{fig:EinfügenFixUpFall3} zeigt eine entsprechende Situation. Es wird eine Rechtsrotation auf $y$ ausgeführt. Anschließend wird $z$ rot gefärbt und $y$ schwarz. \\
 
 \noindent Betrachtung der Eigenschaften:\\
@@ -382,7 +381,7 @@ Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn 
 	\item Wenn $z$ zu Beginn nicht die Wurzel des Gesamtbaumes war, bleibt diese unverändert. Ansonsten wurde durch die Rotation $y'$ zur neuen Wurzel und $y'$ wurde schwarz gefärbt. 
 	\item  In der zweiten Ebene unter $y'$ befinden sich ausschließlich die unveränderten Teilbäume mit den Wurzeln ${x_l}'$, ${x_r}'$, ${y_r}'$ oder ${z_r}'$. An den Blättern verändert sich also durch die Ausführung nichts.
 	\item  Knoten $x'$ ist das linke Kind des schwarzen $y'$. Die Teilbäume von $x'$ blieben unverändert. Der linke Teilbaum von $y'$ enthält somit keine aufeinanderfolgenden roten Knoten. Das rechte Kind von $y'$ ist der rote Knoten $z'$. Das rechte Kind von $z'$ ist ${z_r}'$.  ${z_r}$ ist Geschwisterknoten von $y$ und muss nach Fallunterscheidung schwarz sein. Das linke Kind von $z'$ ist ${y_r}'$. ${y_r}$ ist das rechte Kind von $y$. Das rechte Kind von $y$ muss schwarz sein, ansonsten wäre Eigenschaft vier an zwei Knoten verletzt gewesen. Die Teilbäume mit den Wurzeln ${z_r}$ und  ${y_r}$ bleiben unverändert. Im Teilbaum mit Wurzel $y'$ gibt es also keine Verletzung dieser Eigenschaft. Da $y'$ schwarz gefärbt wurde, kann auch außerhalb dieses Teilbaumes, durch $y'$ keine neue Verletzung entstanden sein.
-	\item  Es gilt  $\mathit{bh(x_l)} = \mathit{bh(x_r)} = \mathit{bh(y_r)} =  \mathit{bh(z_r)} = \mathit{bh(z)} - 1$. Wie oben bereits erwähnt wird die zweite Ebene unter der Wurzel $y'$ von den unveränderten Teilbäumen ${x_l}'$, ${x_r}'$, ${y_r}'$ und ${z_r}'$ gebildet. Es müssen also lediglich die Knoten $x'$, $y'$ und $z'$ betrachtet werden. Die Kinder von $x'$ und $z'$ sind schwarze Knoten mit der Schwarz-Höhe $\mathit{bh(z)} - 1$. Die Schwarz-Höhen von $x'$ und $z'$ sind also eindeutig und es gilt \mbox{$\mathit{bh(x')} = \mathit{bh(z')} = \mathit{bh(z)}$}. $y'$ Kinder sind die roten Knoten $x'$ und $z'$. Da beide Kinder rot sind gilt auch  $\mathit{bh(y')}  = \mathit{bh(z)}$. Somit sind alle Schwarz-Höhen im betrachteten Teilbaum eindeutig. Die neue Wurzel des Teilbaumes $y'$ hat die gleiche Schwarz-Höhe und die gleiche Farbe wie die vorherige Wurzel $z$. Damit kann es auch im Gesamtbaum zu keiner Verletzung der Eigenschaft gekommen sein.
+	\item  Es gilt  $\mathit{bh(x_l)} = \mathit{bh(x_r)} = \mathit{bh(y_r)} =  \mathit{bh(z_r)} = \mathit{bh(z)} - 1$. Wie oben bereits erwähnt wird die zweite Ebene unter der Wurzel $y'$ von den unveränderten Teilbäumen ${x_l}'$, ${x_r}'$, ${y_r}'$ und ${z_r}'$ gebildet. Es müssen also lediglich die Knoten $x'$, $y'$ und $z'$ betrachtet werden. Die Kinder von $x'$ und $z'$ sind schwarze Knoten mit der Schwarz-Höhe $\mathit{bh(z)} - 1$. Die Schwarz-Höhen von $x'$ und $z'$ sind also eindeutig und es gilt \mbox{$\mathit{bh(x')} = \mathit{bh(z')} = \mathit{bh(z)}$}. Die Kinder von $y'$ sind die roten Knoten $x'$ und $z'$. Da beide Kinder rot sind gilt auch  $\mathit{bh(y')}  = \mathit{bh(z)}$. Somit sind alle Schwarz-Höhen im betrachteten Teilbaum eindeutig. Die neue Wurzel des Teilbaumes $y'$ hat die gleiche Schwarz-Höhe und die gleiche Farbe wie die vorherige Wurzel $z$. Damit kann es auch im Gesamtbaum zu keiner Verletzung der Eigenschaft gekommen sein.
 \end{enumerate} 
 
 \noindent Es ist keine der Eigenschaften verletzt. Daher wird es zu keiner Iteration mehr kommen.
@@ -390,7 +389,7 @@ Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn 
 
 
 
-\noindent\textbf{Fall 4: $x$ ist ein rechtes Kind. $y$ ist ein linkes Kind.: }\\      
+\noindent\textbf{Fall 4: $x$ ist ein rechtes Kind und $y$ ist ein linkes Kind: }\\      
 Dieser in Abbildung \ref{fig:EinfügenFixUpFall4} gezeigte Fall wird so umgeformt, dass eine Situation entsteht bei der Fall drei angewendet werden kann. Dazu wird eine Linksrotation an Knoten $x$ durchgeführt.\\
 \begin{figure}[H]
 	\centering
@@ -399,32 +398,32 @@ Dieser in Abbildung \ref{fig:EinfügenFixUpFall4} gezeigte Fall wird so umgeform
 	\label{fig:EinfügenFixUpFall4}
 \end{figure}
 \noindent Betrachtung der Eigenschaften:\\
-Zu Veränderungen kommt es durch die Rotation lediglich im linken Teilbaum von $z$. Es sei $x_l$ das linke Kind von $x$,  und $x_r$ das rechte Kind von $x$. $y_l$ ist das linke Kind von $y$. $z$, $x_l$, $x_r$ und $y_l$ müssen schwarz sein, ansonsten wäre Eigenschaft vier mehrfach verletzt gewesen.
+Zu Veränderungen kommt es durch die Rotation lediglich im linken Teilbaum von $z$. Es sei $x_l$ das linke Kind von $x$,  und $x_r$ das rechte Kind von $x$. $y_l$ ist das linke Kind von $y$. Die Knoten $z$, $x_l$, $x_r$ und $y_l$ müssen schwarz sein, ansonsten wäre Eigenschaft vier mehrfach verletzt gewesen.
 \begin{enumerate}
 	\item -
 	\item Die Wurzel bleibt unverändert.
 	\item  Die Teilbäume mit den Wurzeln $x_l$, $x_r$ und $y_l$ enthalten alle Blätter innerhalb des linken Teilbaumes von $z$. Diese Teilbäume bleiben durch die Rotation unverändert und ${x_l}'$, ${x_r}'$ und ${y_l}'$ enthalten auch alle Blätter des linken Teilbaumes von $z'$.
-	\item Nach der Rotation ist $y'$ das linke Kind von $x'$. $x'$ ist ein Kind vom schwarzen $z'$. Die weiteren Kinder der Knoten $x'$ und $y'$ sind ${x_l}'$, ${x_r}'$ und ${y_l}'$. Diese müssen schwarz sein, da kein Knoten umgefärbt wurde. Durch die Rotation verbleibt es also bei einer Verletzung der Eigenschaft vier in der gleichen Baumebene. Die beiden beteiligten roten Knoten sind nun aber jeweils linke Kinder.   
-	\item $ \mathit{bh(y_l)} = \mathit{bh(x_l)} = \mathit{bh(x_r)} = \mathit{bh({y_l}')} = \mathit{bh({x_l}')} = \mathit{bh({x_r}')} $. Die Schwarz-Höhen von $x$ und $y$ bleiben unverändert. Damit kommt es auch bei $z$ zu keiner Veränderung der Schwarz-Höhe. 
+	\item Nach der Rotation ist $y'$ das linke Kind von $x'$. $x'$ ist ein Kind vom schwarzen Knoten $z'$. Die weiteren Kinder der Knoten $x'$ und $y'$ sind ${x_l}'$, ${x_r}'$ und ${y_l}'$. Diese müssen schwarz sein, da kein Knoten umgefärbt wurde. Durch die Rotation verbleibt es also bei einer Verletzung der Eigenschaft vier in der gleichen Baumebene. Die beiden beteiligten roten Knoten sind nun aber jeweils linke Kinder.   
+	\item $ \mathit{bh(y_l)} = \mathit{bh(x_l)} = \mathit{bh(x_r)} = \mathit{bh({y_l}')} = \mathit{bh({x_l}')} = \mathit{bh({x_r}')} $. Die Schwarz-Höhen von $x$ und $y$ bleiben deshalb unverändert. Damit kommt es auch bei $z$ zu keiner Veränderung der Schwarz-Höhe. 
 \end{enumerate}  
 
 \noindent Es sind also weiterhin zwei aufeinanderfolgende rote Knoten in den gleichen Baumebenen vorhanden. Diese sind nun aber beides linke Kinder. Der Geschwisterknoten des oberen roten Knotens ist der selbe schwarze Knoten wie vor der Ausführung von Fall 4. Damit kann direkt mit dem Bearbeiten von Fall 3 begonnen werden. Es benötigt keine weitere Iteration.\\
 
-\noindent\textbf{Fall 5: $x$ ist ein rechtes Kind. $y$ ist ein rechtes Kind: }\\ 
+\noindent\textbf{Fall 5: $x$ ist ein rechtes Kind und $y$ ist ein rechtes Kind: }\\ 
 Links-Rechts-Symmetrisch zu Fall 3\\
-\noindent\textbf{Fall 6:  $x$ ist ein linkes Kind.$y$ ist ein rechtes Kind: }\\ 
+\noindent\textbf{Fall 6: $x$ ist ein linkes Kind und $y$ ist ein rechtes Kind: }\\ 
 Links-Rechts-Symmetrisch zu Fall 4\\
 
 
 \paragraph{Laufzeit:}
-\noindent  Sei $h$ die Höhe des Gesamtbaumes vor Aufruf von \textit{insertFixup}. Fall 2 kann maximal $\lfloor h / 2\rfloor$ mal ausgewählt werden, bevor $x$ oder $y$ auf die Wurzel zeigen. Nach einer Iteration bei der nicht Fall 2 ausgewählt wird, terminiert \textit{insertFixup}. Der Aufwand innerhalb jeder Fallbehandlung ist $O(1)$. Für die Gesamtlaufzeit gilt deshalb $\mathit{O(h)}$.
+\noindent  Sei $h$ die Höhe des Gesamtbaumes vor Aufruf von \textit{insertFixup}. Fall 2 kann maximal $\lfloor h / 2\rfloor$ mal ausgewählt werden, bevor $x$ oder $y$ auf die Wurzel zeigen muss. Nach einer Iteration bei der nicht Fall 2 ausgewählt wird, terminiert \textit{insertFixup}. Der Aufwand innerhalb jeder Fallbehandlung ist $O(1)$. Für die Gesamtlaufzeit gilt deshalb $\mathit{O(h)}$.
 
 
   
 \paragraph{Löschen aus dem Rot-Schwarz-Baum:}
-Die Reparatur des RBT nach dem Entfernen eines Knotens ist aufwendiger, als die nach dem Einfügen. Da der RBT in der Rolle als Hilfsbaum im Tango Baum keine solche Operation benötigt, entfällt die Beschreibung. In \cite{algEinf} ist eine detaillierte Beschreibung enthalten. 
+Die Reparatur des RBT nach dem Entfernen eines Knotens ist aufwendiger, als die nach dem Einfügen. Da der RBT in der Rolle als Hilfsbaum im Tango Baum keine solche Operation benötigt, entfällt diese Beschreibung. In \cite{algEinf} ist eine detaillierte Beschreibung enthalten. 
 \paragraph{Laufzeit der Grundoperationen:}
-Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$ Knoten $h = \mathit{O(\log {\left(n\right)})}$  gilt. Das wird nun gezeigt. 
+Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$ Knoten $h = \mathit{O(\log {\left(n\right)})}$  gilt. Das wird nun gezeigt:
 
 \begin{Lemma} Für die Höhe $h$ eines RBT $T$ mit $n$ Knoten gilt $h = \mathit{O\left(\log \left(n\right)\right)}$. 
 \end{Lemma}
@@ -432,9 +431,9 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
 	Sei $w$ die Wurzel von $T$ und $m$ die Anzahl der inneren Knoten von $T$. 
 	Zunächst wird gezeigt, dass T mindestens $2^\mathit{bh(w)} - 1$ innere Knoten enthält.
 	Dies geschieht mit Induktion über $h$. Für $h = 0$ und  $h = 1$ mit $2^0 - 1 = 0 $ stimmt die Behauptung, denn der Baum ist leer oder ein einzelner Sonderknoten. \\ 
-	Induktionsschritt mit Höhe $h + 1$:\\
+	Induktionsschritt:\\
 	Sei $T_l$ der linke Teilbaum von $w$ und $T_r$ der rechte Teilbaum von $w$.  
-	Im Induktionsschritt kann nun verwendet werden, dass $h > 1$ gilt und $w$ ein innerer Knoten sein muss. $T_l$ und $T_r$ haben Schwarz-Höhe $\mathit{bh(w)} - 1$, wenn ihre Wurzel schwarz ist und Schwarz-Höhe $\mathit{bh(w)}$, wenn ihre Wurzel rot ist. Ihre Höhe ist kleiner als $h$ und somit enthalten sie nach der Induktionsnahme mindestens  $2^\mathit{bh(w)- 1} - 1$ innere Knoten. Zusammenfassen ergibt die Behauptung.\\    
+	Im Induktionsschritt kann nun verwendet werden, dass $h > 1$ gilt und $w$ ein innerer Knoten sein muss. $T_l$ und $T_r$ haben die Schwarz-Höhe $\mathit{bh(w)} - 1$, wenn ihre Wurzel schwarz ist und Schwarz-Höhe $\mathit{bh(w)}$, wenn ihre Wurzel rot ist. Ihre Höhe ist kleiner als $h$ und somit enthalten sie nach der Induktionsnahme mindestens  $2^\mathit{bh(w)- 1} - 1$ innere Knoten. Zusammenfassen ergibt die Behauptung.\\    
 	\begin{align*}
 	&m \geq 2^\mathit{bh(w)- 1} - 1  + 1  + 2^\mathit{bh(w)- 1} - 1 = 2^\mathit{bh(w)} - 1
 	\end{align*}
@@ -456,7 +455,7 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
 	
 	
 	
-	\noindent Es kann nur maximal doppelt so viele Blätter wie innere Knoten geben.
+	\noindent Es kann nur maximal doppelt so viele Blätter wie innere Knoten geben:
 	\begin{align*}
 	&n  \leq 3 m \\
 	\Rightarrow &\mathit{h(w)} = \mathit{O\left(\log \left({n}\right)\right)} 
@@ -464,7 +463,7 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
 	
 	
 \end{proof}
-\noindent \textit{search} und \textit{insert} haben also Laufzeit $\mathit{O\left(\log \left({n}\right)\right)}$.
+\noindent \textit{search} und \textit{insert} haben also die Laufzeit $\mathit{O\left(\log \left({n}\right)\right)}$.
 
 
 
@@ -473,7 +472,7 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
 \section{Dynamische Optimalität}
 Dieses Kapitel beschäftigt sich vor allem mit der Laufzeit von Folgen von \textit{access} Operationen, eine speziellere Form der \textit{search} Operation.  
 \subsection{BST Zugriffsfolgen}
-Sei $T$ ein BST mit der Schlüsselmenge $K$. Wird der Parameter von \textit{search} auf $k \in K $ beschränkt, wird  die Operation als \textit{access} bezeichnet. Ein BST der seine Struktur während einer solchen Operation verändern kann, wird als \textbf{dynamisch} bezeichnet. Der RBT ist also kein dynamischer BST. Der Tango Baum ist dynamisch, wie wir noch sehen werden. In diesem Kapitel werden Folgen solcher \textit{access} Operationen auf einem BST mit unveränderlicher Schlüsselmenge betrachtet. Notiert wird eine solche \textbf{Zugriffsfolge} durch Angabe der Parameter. Bei der Zugriffsfolge $x_1,x_2,...x_m$ wird also zunächst \textit{access}$(x_1)$ ausgeführt, dann \textit{access}$(x_2)$ usw. $m$ ist die Länge von $X$. Bei BST wird bezüglich Zugriffsfolgen zwischen online und offline Varianten unterschieden. Bei \textbf{offline BST} ist die Zugriffsfolge zu Beginn bereits bekannt, somit kann ein Startzustand gewählt werden, der die Kosten minimiert. Beim \textbf{online BST} ist die Zugriffsfolge zu Beginn nicht bekannt. Bei einer worst case Laufzeitanalyse muss somit von dem Startzustand ausgegangen werden, bei dem die Kosten am höchsten sind.
+Sei $T$ ein BST mit der Schlüsselmenge $K$. Wird der Parameter von \textit{search} auf $k \in K $ beschränkt, wird  die Operation als \textit{access} bezeichnet. Ein BST der seine Struktur während einer solchen Operation verändern kann, wird als \textbf{dynamisch} bezeichnet. Der RBT ist also kein dynamischer BST. Der Tango Baum ist dynamisch, wie wir noch sehen werden. In diesem Kapitel werden Folgen solcher \textit{access} Operationen auf einem BST mit unveränderlicher Schlüsselmenge betrachtet. Notiert wird eine solche \textbf{Zugriffsfolge} durch Angabe der Parameter. Bei der Zugriffsfolge $x_1,x_2,...x_m$ wird also zunächst \textit{access}$(x_1)$ ausgeführt, dann \textit{access}$(x_2)$ usw.. $m$ ist die Länge von $X$. Bei BST wird bezüglich Zugriffsfolgen zwischen online und offline Varianten unterschieden. Bei \textbf{offline BST} ist die Zugriffsfolge zu Beginn bereits bekannt, somit kann ein Startzustand gewählt werden, der die Kosten minimiert. Beim \textbf{online BST} ist die Zugriffsfolge zu Beginn nicht bekannt. Bei einer worst case Laufzeitanalyse muss somit von einem Startzustand ausgegangen werden, bei dem die Kosten am höchsten sind.
 In dieser Arbeit werden \textit{access} Operation betrachtet die folgende Eigenschaften besitzen:
 
 \begin{enumerate} 
@@ -495,13 +494,13 @@ In dieser Arbeit werden \textit{access} Operation betrachtet die folgende Eigens
 \noindent Als \textbf{dynamisch optimal } wird ein BST bezeichnet, wenn er eine beliebige Zugriffsfolge $X$ in $O\left(\mathit{OPT}\left(X\right)\right)$ Zeit ausführen kann. Ein BST der $X$ in $O\left(c \cdot \mathit{OPT}\left(X\right)\right)$ Zeit ausführt, wird als \textbf{c-competitive} bezeichnet. Es konnte bis heute für keinen BST bewiesen werden, dass er dynamisch optimal ist. Es wurden aber mehrere untere Schranken für $\mathit{OPT}\left(X\right)$ gefunden. Eine davon wird  nun vorgestellt.
 
 
-\subsection{Erste untere Schranke von Wilber} \label{wilberBound}
-Robert Wilber hat zwei Methoden zur Berechnung unterer Schranken für die Laufzeit von Zugriffsfolgen bei BST vorgestellt \cite{wilberLowerBounds}. Hier wird auf die Erste davon eingegangen. Im Folgenden werden BST betrachtet bei denen während einer \textit{access($k$)} Operation, der Knoten mit Schlüssel $k$ durch Rotationen zur Wurzel des BST wird. Ein solcher BST wird als \textbf{standard BST} bezeichnet. Asymptotisch betrachtet entsteht hierdurch kein Verlust der Allgemeinheit. Sei $v_p$ der Knoten auf den $p$ zum Zeitpunkt $t$ direkt vor der Terminierung von \textit{access} zeigt. Sei $d$ die Tiefe von $v_p$ . Dann sind mindestens Kosten von $d + 1$ entstanden. Mit $d$ Rotationen kann $v_p$ zur Wurzel gemacht werden und mit $d$ weiteren Rotationen kann der Zustand zum Zeitpunkt $t$ wieder hergestellt werden.
+\subsection{Die erste untere Schranke von Wilber.} \label{wilberBound}
+Robert Wilber hat zwei Methoden zur Berechnung unterer Schranken für die Laufzeit von Zugriffsfolgen bei BSTs vorgestellt \cite{wilberLowerBounds}. Hier wird auf die Erste davon eingegangen. Im Folgenden werden BSTs betrachtet bei denen während einer \textit{access($k$)} Operation, der Knoten mit Schlüssel $k$ durch Rotationen zur Wurzel des BST wird. Ein solcher BST wird als \textbf{standard BST} bezeichnet. Asymptotisch betrachtet entsteht hierdurch kein Verlust der Allgemeinheit. Sei $v_p$ der Knoten auf den $p$ zum Zeitpunkt $t$ direkt vor der Terminierung von \textit{access} zeigt. Sei $d$ die Tiefe von $v_p$ . Dann sind mindestens Kosten von $d + 1$ entstanden. Mit $d$ Rotationen kann $v_p$ zur Wurzel gemacht werden und mit $d$ weiteren Rotationen kann der Zustand zum Zeitpunkt $t$ wieder hergestellt werden.
 Für einen standard BST $T$ und einer Zugriffsfolge $X$ notieren wir die minimalen Kosten, die zum Ausführen von $X$ entstehen mit $W(X, T)$. Im Folgenden wird angenommen, dass 
 $K = \{  i \in \mathbb{N} \vert i \in \left[j,k\right] \textit{ mit } j,k \in  \mathbb{N} \} $ gilt. Dadurch entsteht kein Verlust der Allgemeinheit, denn anderenfalls könnte die Schlüsselmenge einfach aufsteigend sortiert mit $j$ startend durchnummeriert werden. Eine Rotation wird innerhalb dieses Kapitels mit $\left(i, j\right)$ notiert. $i$ ist dabei der Schlüssel des Knotens $v$ auf dem die Rotation ausgeführt wird. $j$~ist der Schlüssel des Elternknotens von $v$, vor Ausführung der Rotation. Aus einer Folge von Rotationen $R~=~\left(i_1,j_1 \right),\left(i_2,j_2 \right),..,\left(i_m,j_m \right)$ wird die Folge  $R^y_x = \left(i_{1'},j_{1'}\right),\left(i_{2'},j_{2'} \right),..,\left(i_{m'},j_{m'} \right)$ gebildet, in dem aus $R$ jede Rotation entfernt wird, bei der $i\notin \left[x,y\right] \lor j\notin \left[x,y\right]$ gilt. Ähnlich wird aus $X$ die Zugriffsfolge $X^y_x$ gebildet, in dem aus $X$ alle Schlüssel $k$ entfernt werden, für die $k < x  \lor k > y$ gilt.
 
 \paragraph{lower bound tree:} \label{wilberLowerBoundTree}
-Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \vert K\vert  - 1$ Knoten enthält. Seine $\vert K \vert$ Blätter enthalten die Schlüssel aus $K$. Die $\vert K \vert - 1$ inneren Knoten enthalten die Schlüssel aus der Menge $\{r \in R \vert \exists i,j \in K \colon \left( i + 1 = j \land r = i + 0,5\right)\}$. $Y$ kann immer erstellt werden, indem zunächst ein BST $Y_i$ mit den inneren Knoten von $Y$ erzeugt wird. Die Blätter werden dann an den Positionen angefügt, an der die Standardvariante von \textit{insert} angewendet auf $Y_i$ ihren Schlüssel einfügen würde. Dass hierbei für zwei Blätter mit Schlüssel $k_1, k_2$ die gleiche Position gewählt wird ist ausgeschlossen, da es einen inneren Knoten mit Schlüssel $k_i$ so geben muss, dass $\left(k_1 < k_i < k_2\right) \lor \left(k_1 > k_i > k_2 \right)$ gilt. An der Konstruktionsanleitung ist zu erkennen, dass zu den meisten BST mehrere mögliche lower bound trees existieren. Abbildung \ref{fig:lowerBoundTree} zeigt eine beispielhafte Konstellation. \\
+Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \vert K\vert  - 1$ Knoten enthält. Seine $\vert K \vert$ Blätter enthalten die Schlüssel aus $K$. Die $\vert K \vert - 1$ inneren Knoten enthalten die Schlüssel aus der Menge $\{r \in R \vert \exists i,j \in K \colon \left( i + 1 = j \land r = i + 0,5\right)\}$. $Y$ kann immer erstellt werden, indem zunächst ein BST $Y_i$ mit den inneren Knoten von $Y$ erzeugt wird. Die Blätter werden dann an den Positionen angefügt, an der die Standardvariante von \textit{insert} angewendet auf $Y_i$ ihren Schlüssel einfügen würde. Dass hierbei für zwei Blätter mit Schlüssel $k_1, k_2$ die gleiche Position gewählt wird ist ausgeschlossen, da es einen inneren Knoten mit Schlüssel $k_i$ so geben muss, dass $\left(k_1 < k_i < k_2\right) \lor \left(k_1 > k_i > k_2 \right)$ gilt. An der Konstruktionsanleitung ist zu erkennen, dass zu den meisten BSTs mehrere mögliche lower bound trees existieren. Abbildung \ref{fig:lowerBoundTree} zeigt eine beispielhafte Konstellation. \\
 
 
 
@@ -512,28 +511,26 @@ Ein lower bound tree $Y$ zu $T$ ist ein BST, der genau $2 \vert K\vert  - 1$ Kno
 	\label{fig:lowerBoundTree}
 \end{figure}
 
-\noindent Nun wird die Funkion $_X(T, Y, X) $ vorgestellt. Ihre Parameter sind ein BST $T$, ein lower bound tree $Y$ und eine Zugriffsfolge $X$. $Y$ und $X$ müssen passend für $T$ erstellt sein, ansonsten ist $_X(T, Y, X) $ undefiniert. Die Auswertung erfolgt zu einer natürlichen Zahl. Sei $U$ die Menge der inneren Knoten von $Y$ und $m$ die Länge von $X$. Sei $u \in U$ und $l$ der kleinste Schlüssel eines Blattes im Teilbaum mit Wurzel $u$, sowie $r$ der größte Schlüssel eines solchen Blattes. Sei $v$ der gemeinsame Vorfahre der Knoten mit Schlüssel aus $\left[l, r\right]$  in $T$, mit der größten Tiefe. Sei $o$ die Folge $o_0, o_1,..,o_m =  \mathit{key}(v) \circ X^r_l$. $i \in \left[1,m\right]$ ist eine  \mbox{\textit{u-Transition}}, wenn gilt $\left( o_{i-1} < u \land o_i > u \right) \lor \left( o_{i-1} > u \land o_i < u \right)$. Die Funktion $\mathit{score}\left(u\right) \colon U \rightarrow \mathbb{N}$ ist definiert durch $\mathit{score}\left(u\right) = \vert\{i \in \mathbb{N}\ \vert \textit{i ist eine u-Transition}\} \vert$. Mit Hilfe von $\mathit{score}$ kann nun  $_X(T, Y, X) $ definiert werden.
+\noindent Nun wird die Funkion $_X(T, Y, X) $ vorgestellt. Ihre Parameter sind ein BST $T$, ein lower bound tree $Y$ und eine Zugriffsfolge $X$. $Y$ und $X$ müssen passend für $T$ erstellt sein, ansonsten ist $_X(T, Y, X) $ undefiniert. Die Auswertung erfolgt zu einer natürlichen Zahl. Sei $U$ die Menge der inneren Knoten von $Y$ und $m$ die Länge von $X$. Sei $u \in U$ und $l$ der kleinste Schlüssel eines Blattes im Teilbaum mit Wurzel $u$, sowie $r$ der größte Schlüssel eines solchen Blattes. Sei $v$ der gemeinsame Vorfahre der Knoten mit Schlüssel aus $\left[l, r\right]$  in $T$, mit der größten Tiefe. Sei $o$ die Folge $o_0, o_1,..,o_m =  \mathit{key}(v) \circ X^r_l$. $i \in \left[1,m\right]$ ist eine  \mbox{\textbf{u-Transition}}, wenn gilt $\left( o_{i-1} < u \land o_i > u \right) \lor \left( o_{i-1} > u \land o_i < u \right)$. Die Funktion $\mathit{score}\left(u\right) \colon U \rightarrow \mathbb{N}$ ist definiert durch $\mathit{score}\left(u\right) = \vert\{i \in \mathbb{N}\ \vert \textit{i ist eine u-Transition}\} \vert$. Mit Hilfe von $\mathit{score}$ kann nun  $_X(T, Y, X) $ definiert werden.
 
 \begin{align*}
 _X(T, Y, X)  = m + \sum_{u \in U} {\mathit{score}} \left(u\right)
 \end{align*} 
 
-\noindent Im eigentlichen Satz wird $\mathit{W\left(X, T\right)} \geq {_X(T, Y, X)} $ gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt: $v_0$ ist das linke Kind von $v$ und für $i \in \{1, 2,..,n\}$, $v_i$ ist das rechte Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt: $v_0$ ist das rechte Kind von $u$ und $v_i$ ist das linke Kind von $v_{i-1}$.\\ $T^r_l$ ist ein mit $\left[l,r\right]$ von $T$ abgeleiteter BST, so dass er genau die Schlüssel aus $T$ enthält, die in $\left[l, r\right]$ liegen. Sei $v_d$ der gemeinsame Vorfahre der Knoten mit Schlüssel aus  $\left[l,r\right]$ in $T$, mit der größten Tiefe. (Existiert ein solcher nicht ist $T^r_l$ der leere Baum). Es muss $\mathit{key}(v_d) \in \left[l,r\right]$ gelten. Denn hat $v_d$ keine Kinder, ist sein Schlüssel der Einzige aus $\left[l,r\right]$. Hat $v_d$ ein Kind $v_{c}$ und $\mathit{key}(v_d) \notin \left[l,r\right]$, dann wäre $v_{c}$ ein gemeinsamer Vorfahre der entsprechenden Knoten, mit größerer Tiefe. Hat $v_d$ zwei Kinder gibt es drei Fälle:
+\noindent Im eigentlichen Satz wird $\mathit{W\left(X, T\right)} \geq {_X(T, Y, X)} $ gezeigt werden. Dafür werden aber noch ein Lemma und einige Begriffe benötigt. Der \textbf{linke innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt: $v_0$ ist das linke Kind von $v$ und für $i \in \{1, 2,..,n\}$, $v_i$ ist das rechte Kind von $v_{i-1}$. Der \textbf{rechte innere Pfad} $\left(v_0,v_1,..,v_n \right)$ eines Knotens $v$ ist der längst mögliche Pfad für den gilt: $v_0$ ist das rechte Kind von $u$ und $v_i$ ist das linke Kind von $v_{i-1}$.\\ $T^r_l$ ist ein mit $\left[l,r\right]$ von $T$ abgeleiteter BST, so dass er genau die Schlüssel aus $T$ enthält, die in $\left[l, r\right]$ liegen. Sei $v_d$ der gemeinsame Vorfahre der Knoten mit Schlüssel aus  $\left[l,r\right]$ in $T$, mit der größten Tiefe. (Existiert ein solcher nicht, ist $T^r_l$ der leere Baum). Es muss $\mathit{key}(v_d) \in \left[l,r\right]$ gelten. Denn hat $v_d$ keine Kinder, ist sein Schlüssel der Einzige aus $\left[l,r\right]$. Hat $v_d$ genau ein Kind $v_{c}$ und $\mathit{key}(v_d) \notin \left[l,r\right]$, dann wäre $v_{c}$ ein gemeinsamer Vorfahre der entsprechenden Knoten, mit größerer Tiefe. Hat $v_d$ zwei Kinder gibt es drei Fälle:
 \begin{itemize}
-	\item Im linken und rechten Teilbaum von $v_d$ sind Schlüssel aus $\left[l,r\right]$ enthalten. Dann muss aufgrund der Links-Rechts-Beziehung  $\mathit{key}(v_d)$ auch in $\left[l,r\right]$ enthalten sein.
-	\item In genau einem Teilbaum von $v_d$ sind Schlüssel aus $\left[l,r\right]$ enthalten. Sei $v_{c}$ die Wurzel dieses Teilbaumes. Gilt zusätzlich $\mathit{key}(v_d) \notin K^r_l$, dann wäre $v_c$ ein  gemeinsamer Vorfahre der entsprechenden Knoten, mit größerer Tiefe.
-	\item In den beiden Teilbäumen sind keine Schlüssel aus $\left[l,r\right]$ enthalten.  Dann muss $\mathit{key}(v_d)$ der Einzige in $T^r_l$ enthaltene Schlüssel sein.
+	\item Im linken und im rechten Teilbaum von $v_d$ sind Schlüssel aus $\left[l,r\right]$ enthalten. Dann muss aufgrund der Links-Rechts-Beziehung  $\mathit{key}(v_d)$ auch in $\left[l,r\right]$ enthalten sein.
+	\item In genau einem Teilbaum von $v_d$ sind Schlüssel aus $\left[l,r\right]$ enthalten. Sei $v_{c}$ die Wurzel dieses Teilbaumes. Gilt zusätzlich $\mathit{key}(v_d) \notin \left[l , r\right]$, dann wäre $v_c$ ein  gemeinsamer Vorfahre der entsprechenden Knoten, mit größerer Tiefe.
+	\item In den beiden Teilbäumen sind keine Schlüssel aus $\left[l,r\right]$ enthalten.  Dann muss $\mathit{key}(v_d)$ der einzige in $T^r_l$ enthaltene Schlüssel sein.
 \end{itemize}
 
 \noindent Ein Knoten $u_d$ mit Schlüssel $\mathit{key}(v_d)$ bildet die Wurzel von $T^r_l$. Nun wird beschrieben, wie Knoten zu $T^r_l$ hinzugefügt werden.
 Dazu werden zwei Mengen verwendet. $U$ ist eine zu Beginn leere Menge. $W$ enthält zu Beginn $u_d$.
 \begin{enumerate}
 	\item Gilt $U = W$, beende das Verfahren.
-	\item Sei $w \in W$ ein Knoten mit $w \notin U$.  Sei $v$ der Knoten in $T$ mit \mbox{$\mathit{key}(w ) = \mathit{key}(v)$}. Sei $P_l$ der linke innere Pfad von $v$ und $P_r$ der rechte innere Pfad von $v$.
-	\item Ist $P_l$ der leere Pfad weiter mit $5$.
-	\item Sei $k_l$ der Schlüssel des Knotens mit der kleinsten Tiefe in $P_l$, für den gilt $k \geq l$. Erzeuge einen Knoten $w_l$ mit Schlüssel $k_l$ und füge ihn als linkes Kind an $w$ an. Füge $w_l$ zu $W$ hinzu.
-	\item Ist $P_r$ der leere Pfad weiter mit $7$.
-	\item Sei $k_r$ der Schlüssel des Knoten mit der kleinsten Tiefe in $P_r$, für den gilt  $k \leq r$. Erzeuge einen Knoten $w_r$ mit Schlüssel $k_r$ und füge ihn als rechtes Kind an $w$ an. Füge $w_r$ zu $W$ hinzu.	
+	\item Sei $w \in W$ ein Knoten mit $w \notin U$.  Sei $v$ der Knoten in $T$ mit \mbox{$\mathit{key}(w ) = \mathit{key}(v)$}.  
+	\item Existiert das linke Kind von $v$ nicht, weiter mit $4$. Ansonsten sei  $P_l$ der linke innere Pfad von $v$. Sei $k_l$ der Schlüssel des Knotens mit der kleinsten Tiefe in $P_l$, für den gilt $k \geq l$. Erzeuge einen Knoten $w_l$ mit Schlüssel $k_l$ und füge ihn als linkes Kind an $w$ an. Füge $w_l$ zu $W$ hinzu.
+	\item Existiert das rechte Kind von $v$ nicht, weiter mit $5$. Ansonsten sei $P_r$ der rechte innere Pfad von $v$. Sei $k_r$ der Schlüssel des Knotens mit der kleinsten Tiefe in $P_r$, für den gilt  $k \leq r$. Erzeuge einen Knoten $w_r$ mit Schlüssel $k_r$ und füge ihn als rechtes Kind an $w$ an. Füge $w_r$ zu $W$ hinzu.	
 	\item Füge $w$ zu $U$ hinzu, weiter mit $1$
 \end{enumerate}
 Das Verfahren muss terminieren, da die Anzahl der Knoten von $T$ endlich ist. So konstruiert muss $T^r_l$ ein BST sein. Ein Beispiel stellt Abbildung \ref{fig:T_r_l} dar. 
@@ -552,7 +549,7 @@ Das Verfahren muss terminieren, da die Anzahl der Knoten von $T$ endlich ist. So
 Sei $k \in K^r_l$ und $v_k$ der Knoten in $T$ mit $\mathit{key}(v_k) = k$. Es muss einen Pfad $P_T = \left(v_0,..,v_n\right)$ in $T$ geben, mit $v_0 = v_d$ und $v_n = v_k$. Sei $m$ die Anzahl der Knoten in $P_T$, mit einem Schlüssel in  $\left[l,r\right]$. Nun folgt Induktion über $m$.\\
 Für $m = 1$ gilt $k = \mathit{key}\left(v_d\right)$  und $k \in K_2$. \\
 Induktionsschritt:\\
-Sei $w$ der Index des Knotens mit der größten Tiefe in $ v_0,..,v_{n-1}$, mit $\mathit{key}(v_w) \in~K_2$. Nach Induktionsvoraussetzung gibt es einen Knoten $u_w$ mit $\mathit{key}(u_w) = \mathit{key}(v_w)$ in $T^r_l$.  Es sei $\mathit{key}(v_w) > \mathit{key}(v_k)$, der andere Fall ist symmetrisch. Ist $v_k$ das linke Kind von $v_w$, dann enthält das linke Kind von $u_w$ den Schlüssel $\mathit{key}(v_k)$. Anderenfalls gilt für alle $v_j$, mit $w < j < k$, $\mathit{key}(v_j) < l \leq \mathit{key}(v_k)$. Somit muss $v_{w+1}$ ein linkes Kind sein und die Knoten in $P_T$ mit größerer Tiefe als der von $v_{w+1}$ müssen rechte Kinder sein. Damit ist auch in diesem Fall ein Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(v_k)$ das linke Kind von $u_w$.  \\
+Sei $w$ der Index des Knotens mit der größten Tiefe in $ v_0,..,v_{n-1}$, mit $\mathit{key}(v_w) \in~K_2$. Nach Induktionsannahme gibt es einen Knoten $u_w$ mit $\mathit{key}(u_w) = \mathit{key}(v_w)$ in $T^r_l$.  Es sei $\mathit{key}(v_w) > \mathit{key}(v_k)$, der andere Fall ist symmetrisch. Ist $v_k$ das linke Kind von $v_w$, dann enthält das linke Kind von $u_w$ den Schlüssel $\mathit{key}(v_k)$. Anderenfalls gilt für alle $v_j$, mit $w < j < k$, $\mathit{key}(v_j) < l \leq \mathit{key}(v_k)$. Somit muss $v_{w+1}$ ein linkes Kind sein und die Knoten in $P_T$ mit größerer Tiefe als der von $v_{w+1}$ müssen rechte Kinder sein. Damit ist auch in diesem Fall ein Knoten $u_k$ mit $\mathit{key}(u_k) = \mathit{key}(v_k)$ das linke Kind von $u_w$.  \\
 
 \noindent Nun kommen wir zum Lemma:\\
 
@@ -603,7 +600,7 @@ Sei $w$ der Index des Knotens mit der größten Tiefe in $ v_0,..,v_{n-1}$, mit 
 \end{Satz}
 \begin{proof}
 	Sei $U$ die Menge der inneren Knoten von $Y$. Die Kosten zum Ausführen von $X$ sind die \textit{Anzahl der Einzelschritte} $ +~m$. Es reicht also aus zu zeigen, dass mindestens $\sum_{u \in U} {\mathit{score}} \left(u\right)$ Rotationen benötigt werden. Es wird Induktion über  $n = \vert K \vert$ angewendet. Sei $n = 1$, dann gibt es keinen inneren Knoten in $Y$ und $\sum_{u \in U} {\mathit{score}} \left(u\right) = 0$. Der Induktionsanfang ist somit gemacht. Im Folgenden sei $n \geq 2$.\\
-	Sei $R = r_1,r_2,..,r_l$ die Folge der insgesamt durchgeführten Rotationen. Für $i \in \{1,..,l\}$ sei $T_i$ der BST, der entsteht, nachdem $r_i$ auf $T_{i-1}$ ausgeführt wurde. Sei $w$ die Wurzel von $Y$, mit Schlüssel $k_w$. Sei $Y^1$, bzw. $Y^2$ der linke, bzw. rechte Teilbaum von $w$. Es ist zu beachten, dass $Y^1$ ein lower bound tree zu $T_{1}^{k_w}$ ist und  $Y^2$ einer zu $T^\infty_{k_w}$. ${T_{i}}_1^{k_w}$ wird im Folgenden als ${T_i}^1$ bezeichnet und ${T_{i}}_{k_w}^{\infty}$ als ${T_i}^2$. Da $n \geq 2$ muss $w$ ein innerer Knoten sein. Sei  $R^1 = {r^1}_1,{r^1}_2,..,{r^1}_{l^1} = R^{k_w}_1$ und $R^2 = r^2_1,r^2_2,..,r^2_{l^2} = R^\infty_{k_w}$. Mit $M$ wird die Folge bezeichnet, die entsteht, wenn aus $R$ alle Rotationen entfernt werden, die in $R^1$ oder $R^2$ enthalten sind. Sei $l_M$ die Länge von $M$. Es muss $l = l^1 + l^2 + l_M$ gelten, da keine Rotation sowohl in $R^1$, als auch in $R^2$ enthalten sein kann. $X^1$ entsteht durch Entfernen aller Schlüssel $k > k_w$ aus $X$ und  $X^2$ entsteht durch entfernen aller Schlüssel $k < k_w$ aus $X$. Für $j \in \{1,2\}$, sei $U^j$ die Menge der inneren Knoten von $Y^j$. Sei $T^{j*}_0,T^{j*}_1,..,T^{j*}_{t}$ die entstehende Folge, wenn aus $T^{j}_0,T^{j}_1,..,T^{j}_{l}$ die $T^j_i$ entfernt werden, für die $T^j_{i-1} = T^j_i$ gilt.\\ Mit Lemma \ref{lemmaWilber1} kann  $T^{j*}_{t}$ durch Ausführung der Rotation $r^j_t$ auf $T^{j*}_{t-1}$ abgeleitet werden. Dadurch folgt durch dieses Lemma, dass wenn ein Knoten mit Schlüssel $k < w$, bzw. $k > w$ die Wurzel von $T_i$ ist, dann muss die Wurzel von $T^1_i$, bzw. $T^2_i$ auch Schlüssel $k$ haben. $R^j$ bringt also der Reihe nach die Knoten mit den Schlüsseln aus $X^j$ an die Wurzel von $T^j$ und  $X^j$ kann als Zugriffsfolge für $T^j$ aufgefasst werden. Da die Knotenzahl in $T^j$ kleiner $n$ sein muss, gilt mit der Induktionsvoraussetzung  $l^j \geq \sum_{u \in U^j} {\mathit{score}} (u)$.\\
+	Sei $R = r_1,r_2,..,r_l$ die Folge der insgesamt durchgeführten Rotationen. Für $i \in \{1,..,l\}$ sei $T_i$ der BST, der entsteht, nachdem $r_i$ auf $T_{i-1}$ ausgeführt wurde. Sei $w$ die Wurzel von $Y$, mit Schlüssel $k_w$. Sei $Y^1$, bzw. $Y^2$ der linke, bzw. rechte Teilbaum von $w$. Es ist zu beachten, dass $Y^1$ ein lower bound tree zu $T_{1}^{k_w}$ ist und  $Y^2$ einer zu $T^\infty_{k_w}$. ${T_{i}}_1^{k_w}$ wird im Folgenden als ${T_i}^1$ bezeichnet und ${T_{i}}_{k_w}^{\infty}$ als ${T_i}^2$. Da $n \geq 2$ muss $w$ ein innerer Knoten sein. Sei  $R^1 = {r^1}_1,{r^1}_2,..,{r^1}_{l^1} = R^{k_w}_1$ und $R^2 = r^2_1,r^2_2,..,r^2_{l^2} = R^\infty_{k_w}$. Mit $M$ wird die Folge bezeichnet, die entsteht, wenn aus $R$ alle Rotationen entfernt werden, die in $R^1$ oder $R^2$ enthalten sind. Sei $l_M$ die Länge von $M$. Es muss $l = l^1 + l^2 + l_M$ gelten, da keine Rotation sowohl in $R^1$, als auch in $R^2$ enthalten sein kann. $X^1$ entsteht durch Entfernen aller Schlüssel $k > k_w$ aus $X$ und  $X^2$ entsteht durch entfernen aller Schlüssel $k < k_w$ aus $X$. Für $j \in \{1,2\}$, sei $U^j$ die Menge der inneren Knoten von $Y^j$. Sei $T^{j*}_0,T^{j*}_1,..,T^{j*}_{t}$ die entstehende Folge, wenn aus $T^{j}_0,T^{j}_1,..,T^{j}_{l}$ die $T^j_i$ entfernt werden, für die $T^j_{i-1} = T^j_i$ gilt.\\ Mit Lemma \ref{lemmaWilber1} kann  $T^{j*}_{t}$ durch Ausführung der Rotation $r^j_t$ auf $T^{j*}_{t-1}$ abgeleitet werden. Dadurch folgt durch dieses Lemma, dass wenn ein Knoten mit Schlüssel $k < w$, bzw. $k > w$ die Wurzel von $T_i$ ist, dann muss die Wurzel von $T^1_i$, bzw. $T^2_i$ auch Schlüssel $k$ haben. $R^j$ bringt also der Reihe nach die Knoten mit den Schlüsseln aus $X^j$ an die Wurzel von $T^j$ und  $X^j$ kann als Zugriffsfolge für $T^j$ aufgefasst werden. Da die Knotenzahl in $T^j$ kleiner $n$ sein muss, gilt mit der Induktionsannahme  $l^j \geq \sum_{u \in U^j} {\mathit{score}} (u)$.\\
 	Sei $\sigma = \mathit{key}(w) \circ X$. Sei $a$ eine $w$-Transition. Nun wird angenommen, dass $\sigma_{a-1} < \mathit{key}(w)  \land \sigma_{a} > \mathit{key}(w)$. Der andere Fall kann davon problemlos abgeleitet werden. Sei $y$ der Knoten in $T$ mit $\mathit{key}(y) = \sigma_{a-1}$ und $z$ der Knoten in $T$ mit $\mathit{key}(z) = \sigma_{a}$. Nach \textit{access($\sigma_{a-1}$)} ist $y$ die Wurzel von $T$. $z$ muss sich im rechten Teilbaum von $y$ befinden. Nach  \textit{access($\sigma_{a}$)} ist $z$ die Wurzel von $T$. $y$ muss sich im linken Teilbaum von $z$ befinden. Somit muss während \textit{access($\sigma_{a}$)} die Rotation $(\mathit{key}(z),\mathit{key}(y))$ ausgeführt worden sein. $(\mathit{key}(z),\mathit{key}(y))$ muss in $M$ enthalten sein. Für jede $w$-Transition ist also mindestens eine Rotation in $M$ enthalten. Also gilt $l_M \geq  \mathit{score} \left(w\right)$.\\
 	Zusammengefasst ergibt sich:
 	
@@ -686,7 +683,7 @@ $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdar
 	\sum_{u \in U} {\mathit{score}\left(u\right)} \geq n \log_2\left( n\right) + 1 - n 
 	\end{align*} 
 	zu zeigen. Dies geschieht mit Induktion über $l$. Für $l = 0$ besteht $Y$ aus einem einzigen Blatt. Damit gilt:\\ $ \sum_{u \in U} {\mathit{score}\left(u\right)} = 0 = n \log_2 \left(n\right) + 1 - n $. \\
-	Nun sei $l > 0$. Sei $w$ die Wurzel von $Y$, mit $k_w = \mathit{key}(w)$. Sei $T_0^{k_w}$ ein BST mit Schlüsselmenge $K_0^{k_w} =\{k \in \mathbb{N}\vert k \leq k_w\} = \{k \in \mathbb{N}\vert k \leq 2^{l-1} - 1\}$ und $T_{k_w}^\infty$ ein BST mit Schlüsselmenge  $ K^\infty_{k_w} = \{k \in \mathbb{N}\vert \exists n \in K_0^{k_w}\colon  k = n + 2^{l-1}\}$. Sei $Y^1$, bzw. $Y^2$ der linke, bzw. rechte Teilbaum von $w$ und $U^1$, bzw. $U^2$ die Menge der inneren Knoten von $Y^1$, bzw. $Y^2$. $Y^1$ und $Y^2$ sind vollständig balancierte lower bound trees zu $T_0^{k_w}$ und $T_{k_w}^\infty$. $X^{k_w}_0$ ist die Bit Reversal Permutation für $T_0^{k_w}$. Außerdem gilt, $X_{k_w}^\infty = X^{k_w}_0 + 2^{l-1}$. Mit der Induktionsvoraussetzung gilt deshalb, für $i \in \{1,2\}$:
+	Nun sei $l > 0$. Sei $w$ die Wurzel von $Y$, mit $k_w = \mathit{key}(w)$. Sei $T_0^{k_w}$ ein BST mit Schlüsselmenge $K_0^{k_w} =\{k \in \mathbb{N}\vert k \leq k_w\} = \{k \in \mathbb{N}\vert k \leq 2^{l-1} - 1\}$ und $T_{k_w}^\infty$ ein BST mit Schlüsselmenge  $ K^\infty_{k_w} = \{k \in \mathbb{N}\vert \exists n \in K_0^{k_w}\colon  k = n + 2^{l-1}\}$. Sei $Y^1$, bzw. $Y^2$ der linke, bzw. rechte Teilbaum von $w$ und $U^1$, bzw. $U^2$ die Menge der inneren Knoten von $Y^1$, bzw. $Y^2$. $Y^1$ und $Y^2$ sind vollständig balancierte lower bound trees zu $T_0^{k_w}$ und $T_{k_w}^\infty$. $X^{k_w}_0$ ist die Bit Reversal Permutation für $T_0^{k_w}$. Außerdem gilt, $X_{k_w}^\infty = X^{k_w}_0 + 2^{l-1}$. Mit der Induktionsnahme gilt deshalb, für $i \in \{1,2\}$:
 	\begin{align*}
 	\sum_{u \in U^i} {\mathit{score}\left(u\right)} \geq  \frac{n}{2} \log_2 \left(\frac{n}{2} \right) + 1 - \frac{n}{2}  
 	\end{align*}
@@ -730,7 +727,7 @@ Alle drei Operationen haben konstante amortisierte Kosten. Auf jedem Fall gilt $
 
 
 
-\subsection{Eigenschaften eines dynamisch optimalen BST }\label{upperBounds}
+\subsection{Eigenschaften eines dynamisch optimalen BST. }\label{upperBounds}
 Im Folgendem werden einige obere Laufzeitschranken für Zugriffsfolgen vorgestellt. Es ist bekannt, dass es obere Schranken sind, da mit dem Splay Baum ein BST bekannt ist, der jede der Schranken einhält. Der Splay Baum wird später noch vorgestellt. Es wird wieder ohne Verlust der Allgemeinheit eine Schlüsselmenge $K = \{1,2,..,n\}$ angenommen. Wenn nicht anders angegeben wird  $X = x_1,x_2,..,x_m$ als Zugriffsfolge verwendet. 
 
 
@@ -785,7 +782,7 @@ gilt.
 Der Tango Baum ist ein aus BSTs, den \textbf{Hilfsbäumen}, bestehender BST. Auf die Anforderungen an die Hilfsbäume wird in Abschnitt \ref{aufbauDesTango} eingegangen. Der Tango Baum wurde  von Demaine, Harmon, Iacono und Patrascu beschrieben \cite{demainDinamicOpti}, inklusive eines Beweises über seine $\log\left(\log\left(n\right)\right)$-competitiveness. Ebenfalls in \cite{demainDinamicOpti} enthalten ist eine als \textbf{Interleave Lower Bound} bezeichnete Variation der ersten unteren Schranke von Wilber. Da diese für das Verständnis des Tango Baumes wesentlich ist, wird mit ihr gestartet, bevor es zur Beschreibung der Struktur selbst kommt. 
 
 
-\subsection{Interleave Lower Bound} \label{interBound}
+\subsection{Die Interleave Lower Bound} \label{interBound}
 Sei $X = x_1,x_2,.,x_m$ eine Zugriffsfolge und sei $K = \{k \in \mathbb{N} \vert k \textit{ ist in $X$ enthalten}\}$. Auch hier wird ein lower bound tree verwendet. Dieser ist jedoch etwas anders definiert als in \mbox{Abschnitt \ref{wilberBound}}. Hier ist der lower bound tree $Y$ zu einer Zugriffsfolge $X$, der komplette BST mit Schlüsselmenge $K$. Anders als in Abschnitt \ref{wilberBound}  gibt es hier somit zu jeder Zugriffsfolge nur genau einen lower bound tree. Abbildung \ref{fig:demlowerBoundTree} zeigt den lower bound tree zur Zugriffsfolge $1, 2,.., 15$. Zu jedem Knoten $v$ in $Y$ werden zwei Mengen definiert. Die \textbf{linke Region} von $v$ enthält den Schlüssel von $v$, sowie die im linken Teilbaum von $v$ enthaltenen Schlüssel.  Die \textbf{rechte Region} von $v$ enthält die im rechten Teilbaum von $v$ enthaltenen Schlüssel. Sei $l$ der kleinste Schlüssel im Teilbaum mit Wurzel $v$ und $r$ der größte. Sei  $X^r_l = {x_{1'},x_{2'},..,x_{m'}}$ wie in Abschnitt \ref{wilberBound} definiert. $i \in \{2,3,..,m'\}$ ist ein \enquote{\textbf{Interleave} durch $v$} wenn $x_{\left(i -1\right)}$ in der linken Region von $v$ liegt und $x_i$ in der rechten Region von $v$ oder umgekehrt. In $Y$ sind Knoten enthalten, bei denen die rechte Region leer ist. Durch diese kann es keinen Interleave geben. Sei $U$ die Menge der Knoten von $Y$ mit einer nicht leeren rechten Region. Sei \textit{inScore($u$)} die Funktion, die zu dem Knoten $u \in U$ die Anzahl der Interleaves durch $u$ zurückgibt.  Die Funktion \textit{IB$\left(X\right)$} ist definiert durch:
 \begin{align*}
 \mathit{IB}\left(X\right) = \sum_{u \in U} \mathit{inScore}\left(u\right)
@@ -873,7 +870,7 @@ Im zweiten Lemma geht es darum, dass sich der transition point $v$ eines Knoten 
 \end{proof}
 
 
-\subsection{Aufbau des Tango Baumes} \label{aufbauDesTango}
+\subsection{Der Aufbau des Tango Baumes.} \label{aufbauDesTango}
 Wie bereits erwähnt besteht ein Tango Baum $T$ mit Schlüsselmenge $K$ aus Hilfsbäumen. Eine Anforderung an einen Hilfsbaum mit $n$ Knoten ist es, dass für seine Höhe $h = O\left(\log\left( n\right)\right)$ gilt. $T$ bietet lediglich eine \textit{access} Operation an. Ist $T$ also erst einmal für $K$ erzeugt, ist seine Schlüsselmenge unveränderlich. Sei $P$ der lower bound tree aus Abschnitt \ref{interBound} mit Schlüsselmenge $K$. $P$ wird auch als \textbf{Referenzbaum} für $T$ bezeichnet. $P$ ist kein Hilfsbaum und muss in Implementierungen auch nicht erstellt werden. Er dient aber dazu, den Aufbau von $T$ vor und nach einer \textit{access} Operation zu veranschaulichen. Jeder innere Knoten $p$ in $P$ kann ein \textbf{preferred child} haben.  Wurde während der Ausführungszeit von $X$ noch keine \textit{access} Operation mit einem im Teilbaum mit Wurzel $p$ enthalten Schlüssel als Parameter ausgeführt, so hat $p$ kein preferred child. Ansonsten sei \textit{access}$\left(k\right)$ die zuletzt ausgeführte Operation mit einem Schlüssel, der im Teilbaum mit Wurzel $p$ enthalten ist. Liegt $k$ in der linken Region von $p$, dann ist das linke Kind von $p$, das preferred child von $p$. Ist $k$ in der rechten Region von $p$ enthalten, dann ist das rechte Kind von $p$, das preferred child von $p$. Wir erweitern die Knoten von $P$ mit einer weiteren Variable \textit{prefChild}, welche drei Werte annehmen kann. Sie enthält \textit{none}, wenn ihr Knoten kein preferred Child besitzt, \textit{left} wenn das linke Kind das preferred child ist, ansonsten entsprechend \textit{right}. Hier ist bereits die Kopplung zur interleave lower bound erkennbar. Ein Wechsel von \textit{prefChild}  von \textit{left} zu \textit{right} oder umgekehrt, findet genau dann statt, wenn es zu einem interleave durch den Knoten kommt. Abbildung \ref{fig:prefChilds} stellt einen möglichen Zustand von $P$ zwischen zwei \textit{access} Operationen dar. Dieser Zustand wird in diesem Abschnitt nun als durchgängiges Beispiel dienen. Es ist sofort ersichtlich, dass der Parameter der letzten \textit{access} Operation $8$, $4$, $2$ oder $1$ gewesen sein muss, da die Knoten mit diesen Schlüsseln von der Wurzel aus über preferred children erreichbar sind. Die Schlüssel $10$ und $9$ können noch nie Parameter einer \textit{access} Operation gewesen sein. Ansonsten müsste der Knoten mit dem Schlüssel $10$ ein preferred child haben. Mit Hilfe der preferred children lassen sich die \textbf{preferred path} erstellen. Sei $v$ ein Knoten in $P$, der nicht preferred child eines anderen Knotens aus $P$ ist. Dann ist der preferred path zu $v$, der längst mögliche Pfad $\left(v_0, v_1,..,v_l\right)$, mit $v_0 = v$ und $\forall i \in \{1,2,..,l\} \colon v_i \textit{ ist preferred child von }v_{i-1   }$.  
 
 \begin{figure}[H]
@@ -946,7 +943,7 @@ In $P$ sind alle in $h_1$ enthaltenen Schlüssel im Teilbaum mit Wurzel $u$ enth
 \end{figure}
 \noindent Im nächsten Abschnitt wird es vor allem darum gehen, wie eine Transformation, wie die von $T$ zu $T'$, effizient durchgeführt werden kann.
 
-\subsection{Die \textit{access} Operation beim Tango Baum}
+\subsection{Die \textit{access} Operation beim Tango Baum.}
 Die Knoten in einem Tango Baum sind mit zusätzlichen Daten erweitert. Sei $v$ ein Knoten im Tango Baum. Es gibt eine boolesche Variable \textit{isRoot}, die genau dann den Wert \textit{true} hat, wenn $v$ die Wurzel eines Hilfsbaumes ist. In einer Konstante \textit{depth} wird die Tiefe des Knotens mit Schlüssel $\mathit{key}\left(v\right)$ in $P$ gespeichert. Außerdem gibt es noch die Variablen \textit{minDepth} und \textit{maxDepth}. Sei $v$ im Hilfsbaum $H$ enthalten und sei $H_v$ der Teilbaum mit Wurzel $v$ in $H$. Da $H$ die Schlüssel von Knoten aus einem preferred path enthält, können die \textit{depth} Konstanten zweier Knoten in $H$ nicht den gleichen Wert haben. Sei $\mathit{min}$ der kleinste Wert aller \textit{depth} Konstanten in $H_v$, dann entspricht $\mathit{min}$ dem  Wert der \textit{minDepth} Variable von $v$. Sei $\mathit{max}$ der größte Wert aller \textit{depth} Konstanten in $H_v$, dann entspricht $\mathit{max}$ dem  Wert der \textit{maxDepth} Variable von $v$. Auf die Variablen und Konstanten eines Knoten $v$ wird im Folgenden mit dem Punkt als Trennzeichen zugegriffen, z. B. $v$.\textit{depth}. \\
 Nun werden die Anforderungen an einen Hilfsbaum $H$ aufgezählt:
 \begin{enumerate}
@@ -1084,7 +1081,7 @@ Zunächst wird in zwei Lemmata die Einzeloperation betrachtet, bevor es dann im 
 $O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\right)\right)	 \right)$.\\
  Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred children, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum das balanced property aus \mbox{Abschnitt \ref{upperBounds}} nicht. Damit kann er aufgrund der Implikationen aus Abbildung \ref{fig:upperBounds} auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das balanced property erfüllen.      
 
-\subsection{Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum} \label{vereinigen}
+\subsection{Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum.} \label{vereinigen}
 Die Ideen und Angaben zu den Laufzeiten in diesem und dem nächsten Abschnitt stammen aus \cite{conSplit}, von Tarjan.
 \begin{figure}[H]
 	\centering
@@ -1127,7 +1124,7 @@ Für den nächsten Abschnitt wird noch eine genauere Betrachtung der Laufzeit be
  Jetzt wird noch auf die maximale Anzahl der Iterationen innerhalb \\ \textit{insertFixup} eingegangen.
  Sei $w$ die Wurzel des vereinigten BST nach \mbox{Schritt 1}. $v$ ist ein roter Knoten mit $\mathit{bh}(w) - \mathit{bh}(v) = d - 1$ und befindet sich in der Baumstruktur nicht tiefer als Ebene $2d + 2$. Deshalb führt \textit{insertFixup} maximal $d + 1$ Iterationen durch.  
 
-\subsection{Tango Baum konformes Aufteilen beim Rot-Schwarz-Baum}
+\subsection{Tango Baum konformes Aufteilen beim Rot-Schwarz-Baum.}
 Auch \textit{split (RBT $T$, key $k$)} wird so vorgestellt, wie es für den Tango Baum notwendig ist. Vorbedingung an die Parameter ist, dass $k$ in der Schlüsselmenge $K$ von $T$ vorhanden ist. Zurückgegeben wird eine Referenz auf den Knoten ${v_k}'$ mit Schlüssel $k$. Das linke Kind von ${v_k}'$ ist die Wurzel eines RBTs $T_L$ mit Schlüsselmenge $K_L$, wobei gilt ${K_L=\{i \mid  i\in K \land i <k\}}$. Das rechte Kind von ${v_k}'$ ist die Wurzel eines RBTs $T_R$ mit Schlüsselmenge $K_R$, wobei gilt ${K_R = \{i \mid i\in K \land i > k\}}$. \textit{split} gibt also in den meisten Fällen nicht die Wurzel eines RBT zurück.\\ Die Operation setzt zunächst $T_L$ auf den linken Teilbaum von $v_k$ und $T_R$ auf den rechten Teilbaum von $v_k$. Eventuell müssen die Wurzeln von $T_R$ und $T_L$ schwarz gefärbt werden. Sei $(v_0,v_1,..,v_m)$  der Pfad von der Wurzel von $T$ zu $v_k$. Es wird sich nun bei $v_{m-1}$ startend, Knoten für Knoten in dem Pfad nach oben gearbeitet. Ist der Schlüssel eines Knotens kleiner als $k$, so wird dieser Schlüssel und der linke Teilbaum des Knotens zu $T_L$ hinzugefügt. Dies übernimmt die \textit{concatenate} Operation. Ist der Schlüssel größer als $k$, so wird dieser Schlüssel und der rechte Teilbaum des Knotens zu $T_R$ hinzugefügt. Folgende Aufzählung beschreibt den Vorgang genauer:
 
 \begin{enumerate}
@@ -1195,7 +1192,7 @@ Die Kosten innerhalb einer Iteration sind konstant, damit ist  $O \left(\log \le
 Der  Splay Baum \cite{splay} ist ein dynamischer BST, der ohne zusätzliche Hilfsdaten in seinen Knoten auskommt. Nach einer \textit{access}$\left(k\right)$ Operation ist der Knoten mit Schlüssel $k$ die Wurzel, des Splay Baum. Es gibt keine Invariante, welche eine bestimmte maximale Höhe garantiert. Splay Bäume können sogar zu Listen entarten. Amortisiert betrachtet verfügen sie dennoch über sehr gute Laufzeiteigenschaften. 
 
 
-\subsection{Die \textit{access} Operation beim Splay Baum }
+\subsection{Die \textit{access} Operation beim Splay Baum. }
 Die wesentliche Arbeit leistet eine Hilfsoperation namens \textit{splay(key $k$)}. Nach deren Ausführung befindet sich der Knoten mit dem gesuchten Schlüssel $k$ an der Wurzel und es wird nur noch eine Referenz auf ihn zurückgegeben.
 
 \paragraph{\textit{splay} Operation:}
@@ -1232,7 +1229,7 @@ Die Laufzeit von \textit{access} auf einem Splay Baum mit $n$ Knoten ist $O\left
 	\label{fig:splay}
 \end{figure}
 
-\subsection{Amortisierte Laufzeitanalyse von \textit{splay }}
+\subsection{Amortisierte Laufzeitanalyse von \textit{splay }.}
 Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splay Baum $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe der Gewichte aller im Teilbaum mit Wurzel $v$ enthaltenen Knoten. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2 \left( \mathit{tw}\left(v\right)\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
 \begin{align*}
 \Phi = \sum_{v \in V} r\left(v\right)
