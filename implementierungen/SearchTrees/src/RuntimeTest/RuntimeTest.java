@@ -429,6 +429,7 @@ public class RuntimeTest extends Thread {
                 }
             }    
         ret[1] = (System.nanoTime()- startTime) / 1000000 ;
+        
         return ret;
     }
     private int randomNumber (double[] probs){
