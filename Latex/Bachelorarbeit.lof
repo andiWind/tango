@@ -17,20 +17,20 @@
 \contentsline {figure}{\numberline {16}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 2 \relax }}{23}%
 \contentsline {figure}{\numberline {17}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 3 \relax }}{24}%
 \contentsline {figure}{\numberline {18}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 4 \relax }}{26}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Rechts ist ein möglicher lower bound tree zum linken BST dargestellt. \relax }}{31}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Rechts ist ein möglicher Lower Bound Tree zum linken BST dargestellt. \relax }}{31}%
 \contentsline {figure}{\numberline {20}{\ignorespaces Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ . \relax }}{33}%
 \contentsline {figure}{\numberline {21}{\ignorespaces Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite {upperBounds}. \relax }}{43}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Der lower bound tree zur Zugriffsfolge $1 ,2, .., 15$ \relax }}{45}%
-\contentsline {figure}{\numberline {23}{\ignorespaces Transition point Zuordnung. Links ein lower bound tree, rechts ein möglicher $T_j$. \relax }}{47}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Der Lower Bound Tree zur Zugriffsfolge $1 ,2, .., 15$ \relax }}{45}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Transition point Zuordnung. Links ein Lower Bound Tree, rechts ein möglicher $T_j$. \relax }}{47}%
 \contentsline {figure}{\numberline {24}{\ignorespaces Die preferred children werden durch die grünen Pfeile markiert. \relax }}{49}%
 \contentsline {figure}{\numberline {25}{\ignorespaces Hilfsbäume zu den preferred path aus dem Beispiel. \relax }}{50}%
 \contentsline {figure}{\numberline {26}{\ignorespaces Tango Baum zu dem Beispiel. \relax }}{51}%
 \contentsline {figure}{\numberline {27}{\ignorespaces Preferred children nach \textit {access}$\left (9\right )$. \relax }}{52}%
 \contentsline {figure}{\numberline {28}{\ignorespaces Tango Baum nach \textit {access}$\left (9\right )$. \relax }}{52}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Ablauf von \textit {cut($d$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{56}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Ablauf von \textit {cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{57}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Ablauf von \textit {join($H_1$, $H_2$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert \relax }}{59}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Ablauf von \textit {join($H_1$, $H_2$)} bei fehlendem $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{59}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Ablauf von \textit {cut($d$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Die Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{56}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Ablauf von \textit {cut($d$)} bei fehlenden $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Die Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{57}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Ablauf von \textit {join($H_1$, $H_2$)}. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Die Wurzeln von Hilfsbäumen sind mit einem Kreis markiert \relax }}{59}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Ablauf von \textit {join($H_1$, $H_2$)} bei fehlendem $r'$. Die Abbildung basiert auf einer aus \cite {demainDinamicOpti}. Die Wurzeln von Hilfsbäumen sind mit einem Kreis markiert. \relax }}{59}%
 \contentsline {figure}{\numberline {33}{\ignorespaces Darstellung von Schritt $3$ und $4$ der \textit {access} Operation. \relax }}{61}%
 \contentsline {figure}{\numberline {34}{\ignorespaces Beispielhaftes \textit {concatenate} zweier RBTs unterschiedlicher Schwarz-Höhe, nach Schritt 1. \relax }}{63}%
 \contentsline {figure}{\numberline {35}{\ignorespaces Beispielhaftes \textit {concatenate} zweier RBTs gleicher Schwarz-Höhe, nach Schritt 1. \relax }}{64}%

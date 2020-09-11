@@ -18,8 +18,8 @@
 \contentsline {section}{\numberline {4}Dynamische Optimalität}{28}%
 \contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{29}%
 \contentsline {subsection}{\numberline {4.2}Die erste untere Schranke von Wilber.}{30}%
-\contentsline {paragraph}{lower bound tree:}{30}%
-\contentsline {subsection}{\numberline {4.3}Bit Reversal Permutation }{36}%
+\contentsline {paragraph}{Lower Bound Tree:}{30}%
+\contentsline {subsection}{\numberline {4.3}Bit Reversal Permutation }{37}%
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode:}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack:}{40}%
