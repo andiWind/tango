@@ -41,35 +41,35 @@
 \contentsline {paragraph}{Resultat nach der Fallbehandlung:}{65}%
 \contentsline {paragraph}{Laufzeit:}{66}%
 \contentsline {subsection}{\numberline {5.6}Tango Baum konformes Aufteilen beim Rot-Schwarz-Baum.}{66}%
-\contentsline {paragraph}{Laufzeit:}{67}%
-\contentsline {section}{\numberline {6}Splay Baum}{69}%
+\contentsline {paragraph}{Laufzeit:}{68}%
+\contentsline {section}{\numberline {6}Splay Baum}{70}%
 \contentsline {subsection}{\numberline {6.1}Die \textit {access} Operation beim Splay Baum. }{70}%
 \contentsline {paragraph}{\textit {splay} Operation:}{70}%
-\contentsline {subsection}{\numberline {6.2}Amortisierte Laufzeitanalyse von \textit {splay }.}{72}%
-\contentsline {paragraph}{zig:}{72}%
-\contentsline {paragraph}{zig-zig:}{72}%
-\contentsline {paragraph}{zig-zag:}{73}%
-\contentsline {subsection}{\numberline {6.3}Dynamische Optimalitäts Vermutung}{73}%
-\contentsline {section}{\numberline {7}Weitere dynamische Suchbäume}{75}%
-\contentsline {subsection}{\numberline {7.1}Zipper Baum}{75}%
-\contentsline {paragraph}{Besonderheiten bei \textit {access}:}{77}%
-\contentsline {subsection}{\numberline {7.2}Multisplay Baum}{78}%
-\contentsline {paragraph}{Die \textit {access} Operation beim Multisplay Baum:}{79}%
-\contentsline {section}{\numberline {8}Dokumentation zur Implementierung}{80}%
-\contentsline {subsection}{\numberline {8.1}Beschreibung der Klassen }{82}%
-\contentsline {paragraph}{SplayTree und SplayNode:}{82}%
-\contentsline {paragraph}{TangoNode:}{82}%
-\contentsline {paragraph}{TangoAuxTree:}{83}%
-\contentsline {paragraph}{TangoTree:}{83}%
-\contentsline {paragraph}{RedBlackTree und RBTNode:}{83}%
-\contentsline {paragraph}{RuntimeTest:}{83}%
-\contentsline {section}{\numberline {9}Laufzeitvergleiche zwischen dem Tango Baum und dem Splay Baum.}{84}%
-\contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{85}%
-\contentsline {subsection}{\numberline {9.2}Durchführung der Laufzeittests.}{86}%
-\contentsline {subsubsection}{\numberline {9.2.1}Zufällig erzeugte Zugriffsfolgen}{86}%
-\contentsline {subsubsection}{\numberline {9.2.2}Bit Reversal Permutations}{90}%
-\contentsline {subsubsection}{\numberline {9.2.3}Static Finger Property}{91}%
-\contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{94}%
-\contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{97}%
-\contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{100}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{106}%
+\contentsline {subsection}{\numberline {6.2}Amortisierte Laufzeitanalyse von \textit {splay }.}{73}%
+\contentsline {paragraph}{zig:}{73}%
+\contentsline {paragraph}{zig-zig:}{73}%
+\contentsline {paragraph}{zig-zag:}{74}%
+\contentsline {subsection}{\numberline {6.3}Dynamische Optimalitäts Vermutung}{74}%
+\contentsline {section}{\numberline {7}Weitere dynamische Suchbäume}{76}%
+\contentsline {subsection}{\numberline {7.1}Zipper Baum}{76}%
+\contentsline {paragraph}{Besonderheiten bei \textit {access}:}{78}%
+\contentsline {subsection}{\numberline {7.2}Multisplay Baum}{79}%
+\contentsline {paragraph}{Die \textit {access} Operation beim Multisplay Baum:}{80}%
+\contentsline {section}{\numberline {8}Dokumentation zur Implementierung}{81}%
+\contentsline {subsection}{\numberline {8.1}Beschreibung der Klassen }{83}%
+\contentsline {paragraph}{SplayTree und SplayNode:}{83}%
+\contentsline {paragraph}{TangoNode:}{83}%
+\contentsline {paragraph}{TangoAuxTree:}{84}%
+\contentsline {paragraph}{TangoTree:}{84}%
+\contentsline {paragraph}{RedBlackTree und RBTNode:}{84}%
+\contentsline {paragraph}{RuntimeTest:}{84}%
+\contentsline {section}{\numberline {9}Laufzeitvergleiche zwischen dem Tango Baum und dem Splay Baum.}{85}%
+\contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{86}%
+\contentsline {subsection}{\numberline {9.2}Durchführung der Laufzeittests.}{87}%
+\contentsline {subsubsection}{\numberline {9.2.1}Zufällig erzeugte Zugriffsfolgen}{87}%
+\contentsline {subsubsection}{\numberline {9.2.2}Bit Reversal Permutations}{91}%
+\contentsline {subsubsection}{\numberline {9.2.3}Static Finger Property}{92}%
+\contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{95}%
+\contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{98}%
+\contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{101}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{107}%
