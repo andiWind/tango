@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  12 SEP 2020 23:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  13 SEP 2020 10:54
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1236,19 +1236,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1243--1244
 
  []
 
-
-Overfull \hbox (52.98946pt too wide) detected at line 1262
-[]
- []
-
 [73]
-Overfull \hbox (43.84796pt too wide) in paragraph at lines 1269--1271
-\T1/cmr/m/n/12 Daraus folgt $[] [] \OT1/cmr/m/n/12 = [] [] + [] [] + \OML/cmm/m
-/it/12 w []$ \T1/cmr/m/n/12 und dar-aus []
- []
-
-
-Overfull \hbox (54.17792pt too wide) detected at line 1276
+Overfull \hbox (32.21782pt too wide) detected at line 1276
 []
  []
 
@@ -1422,7 +1411,13 @@ File: Medien/laufzeittest/diagramm/dynamicfinger.png Graphic file (type png)
 Package pdftex.def Info: Medien/laufzeittest/diagramm/dynamicfinger.png  used o
 n input line 1723.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
- [95 <./Medien/laufzeittest/diagramm/staticfinger4.png>]
+
+Underfull \hbox (badness 4205) in paragraph at lines 1745--1745
+[]\T1/cmr/bx/n/10.95 Tabelle 10: |\T1/cmr/m/n/10.95 Die Lauf-zei-ten zum Lauf-z
+eit-test zu Dy-na-mic Fin-ger mit
+ []
+
+[95 <./Medien/laufzeittest/diagramm/staticfinger4.png>]
 <Medien/laufzeittest/diagramm/dynamicfingerNfest.png, id=447, 433.62pt x 289.08
 pt>
 File: Medien/laufzeittest/diagramm/dynamicfingerNfest.png Graphic file (type pn
@@ -1455,17 +1450,17 @@ input line 1824.
 File: Medien/laufzeittest/diagramm/kleinGros.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/kleinGros.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/kleinGros.png  used on in
-put line 1863.
+put line 1864.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [101 <./Medien/laufzeittest/diagramm/kleinGros.png>]
 <Medien/laufzeittest/diagramm/sorted1.png, id=475, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/sorted1.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/sorted1.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/sorted1.png  used on inpu
-t line 1898.
+t line 1899.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
  [102 <./Medien/laufzeittest/diagramm/sorted1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1927--1928
+Underfull \hbox (badness 10000) in paragraph at lines 1928--1929
 
  []
 
@@ -1473,59 +1468,59 @@ Underfull \hbox (badness 10000) in paragraph at lines 1927--1928
 File: Medien/laufzeittest/diagramm/sorted2.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/sorted2.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/sorted2.png  used on inpu
-t line 1936.
+t line 1937.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
 <Medien/laufzeittest/diagramm/sorted3.png, id=481, 433.62pt x 289.08pt>
 File: Medien/laufzeittest/diagramm/sorted3.png Graphic file (type png)
 <use Medien/laufzeittest/diagramm/sorted3.png>
 Package pdftex.def Info: Medien/laufzeittest/diagramm/sorted3.png  used on inpu
-t line 1972.
+t line 1973.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
 [103 <./Medien/laufzeittest/diagramm/sorted2.png>]
 <anhang.pdf, id=487, 597.50829pt x 845.0471pt>
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf>
-Package pdftex.def Info: anhang.pdf  used on input line 2001.
+Package pdftex.def Info: anhang.pdf  used on input line 2002.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf>
-Package pdftex.def Info: anhang.pdf  used on input line 2001.
+Package pdftex.def Info: anhang.pdf  used on input line 2002.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 <anhang.pdf, id=490, page=1, 597.50829pt x 845.0471pt>
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 2001.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 2002.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 2001.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 2002.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [104 <./Medien/laufzeittest/diagramm/sorted3.png>]
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 2001.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 2002.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 2001.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 2002.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
-Package pdftex.def Info: anhang.pdf , page1 used on input line 2001.
+Package pdftex.def Info: anhang.pdf , page1 used on input line 2002.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [105 <./anhang.pdf>]
 <anhang.pdf, id=525, page=2, 597.50829pt x 845.0471pt>
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 2>
-Package pdftex.def Info: anhang.pdf , page2 used on input line 2001.
+Package pdftex.def Info: anhang.pdf , page2 used on input line 2002.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 2>
-Package pdftex.def Info: anhang.pdf , page2 used on input line 2001.
+Package pdftex.def Info: anhang.pdf , page2 used on input line 2002.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 2>
-Package pdftex.def Info: anhang.pdf , page2 used on input line 2001.
+Package pdftex.def Info: anhang.pdf , page2 used on input line 2002.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [106 <./anhang.pdf>] [107]
 (Bachelorarbeit.lof [108]
@@ -1551,12 +1546,12 @@ Overfull \hbox (8.057pt too wide) in paragraph at lines 59--59
 \openout5 = `Bachelorarbeit.lof'.
 
  [110]
-Underfull \hbox (badness 10000) in paragraph at lines 2012--2019
+Underfull \hbox (badness 10000) in paragraph at lines 2013--2020
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2021--2022
+Underfull \hbox (badness 10000) in paragraph at lines 2022--2023
 
  []
 
@@ -1568,7 +1563,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  18514 strings out of 480797
  351721 string characters out of 2905362
- 589562 words of memory out of 3000000
+ 590562 words of memory out of 3000000
  34057 multiletter control sequences out of 15000+200000
  553884 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1586,9 +1581,9 @@ pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
 \ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
 /ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
 r/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\font
-s/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTe
-X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\L
-ocal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Program File
+s/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTe
+X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk> <C:\Users\andre\AppData\L
+ocal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
@@ -1603,9 +1598,9 @@ gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
 blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (112 pages, 8870916 bytes).
+Output written on Bachelorarbeit.pdf (112 pages, 8871280 bytes).
 PDF statistics:
- 1141 PDF objects out of 1200 (max. 8388607)
+ 1142 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  358 words of extra memory for PDF output out of 10000 (max. 10000000)
 

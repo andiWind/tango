@@ -21,7 +21,7 @@
 
 \begin {document}
 \begin{center}
-\includegraphics[width= 0.4\textwidth]{Medien/kleinkram/UniLogo}
+ya\includegraphics[width= 0.4\textwidth]{Medien/kleinkram/UniLogo}
 \end{center}
 \bigskip
 
@@ -1188,7 +1188,7 @@ Die Kosten innerhalb einer Iteration sind konstant, damit ist  $O \left(\log \le
 
 
 \section{Splay Baum}
-Der  Splay Baum \cite{splay} ist ein dynamischer BST, der ohne zusätzliche Hilfsdaten in seinen Knoten auskommt. Nach einer \textit{access}$\left(k\right)$ Operation ist der Knoten mit Schlüssel $k$ die Wurzel, des Splay Baum. Es gibt keine Invariante, welche eine bestimmte maximale Höhe garantiert. Splay Bäume können sogar zu Listen entarten. Amortisiert betrachtet verfügen sie dennoch über sehr gute Laufzeiteigenschaften. 
+Der  Splay Baum \cite{splay} ist ein dynamischer BST, der ohne zusätzliche Hilfsdaten in seinen Knoten auskommt. Nach einer \textit{access}$\left(k\right)$ Operation ist der Knoten mit Schlüssel $k$ die Wurzel des Splay Baumes. Es gibt keine Invariante, welche eine bestimmte maximale Höhe garantiert. Splay Bäume können sogar zu Listen entarten. Amortisiert betrachtet verfügen sie dennoch über sehr gute Laufzeiteigenschaften. 
 
 
 \subsection{Die \textit{access} Operation beim Splay Baum. }
@@ -1229,7 +1229,7 @@ Die Laufzeit von \textit{access} auf einem Splay Baum mit $n$ Knoten ist $O\left
 \end{figure}
 
 \subsection{Amortisierte Laufzeitanalyse von \textit{splay }.}
-Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splay Baum $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die Gewicht genannt wird. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe der Gewichte aller im Teilbaum mit der Wurzel $v$ enthaltenen Knoten. Der Rang  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2 \left( \mathit{tw}\left(v\right)\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
+Es wird die Potentialfunktionsmethode aus Kapitel \ref{potentialfunktionsmethode} verwendet. Sei $v$ ein Knoten im Splay Baum $T$. Eine Funktion $w\left(v\right)$ liefert zu jedem Knoten eine reelle Zahl $>0$, die \textbf{Gewicht} genannt wird. Eine Funktion $\mathit{tw}\left(v\right)$ bestimmt die Summe der Gewichte aller im Teilbaum mit der Wurzel $v$ enthaltenen Knoten. Der \textbf{Rang}  $r\left(v\right)$ ist definiert durch $r\left(v\right) = \log_2 \left( \mathit{tw}\left(v\right)\right)$. Sei $V$ die Menge der Knoten von $T$. Als Potentialfunktion wird 
 \begin{align*}
 \Phi = \sum_{v \in V} r\left(v\right)
 \end{align*}
@@ -1255,9 +1255,9 @@ verwendet.
 	\paragraph{zig-zig:} 
 	Es müssen zwei Rotationen ausgeführt werden. Deshalb entstehen amortisierte Kosten von
 	\begin{align*}
-	&2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) &\textit{ ,mit $r\left(x\right) =  r\left(v\right)'$ }\\
-	=& 2 + r\left(u\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right) &\textit{,mit
-		$r\left(v\right)' \geq  r\left(u\right)'$ und $r\left(u\right) \geq  r\left(v\right)$}\\
+	&2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) \textit{ ,mit $r\left(x\right) =  r\left(v\right)'$ }\\
+	=& 2 + r\left(u\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right) \textit{,mit
+		$r\left(v\right)' \geq  r\left(u\right)' \land r\left(u\right) \geq  r\left(v\right)$}\\
 	\leq &  2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) 
 	\end{align*}
 	Nun wird zunächst die Behauptung aufgestellt, dass dieser Ausdruck klein genug ist. Dies wird dann über Äquivalenzen gezeigt:
@@ -1267,11 +1267,11 @@ verwendet.
 	\Leftrightarrow & -2 \geq -2r\left(v\right)' +  r\left(x\right)' + r\left(v\right)\\
 	\Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) + \log_2\left(\mathit{tw}\left(v\right) / \mathit{tw}\left(v'\right)\right)
 	\end{align*}
-	Dass die letzte Ungleichung gilt, kann an einer Eigenschaft des $\log_2$ ableitet werden. Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt $\log_2\left(a\right) + \log_2\left(b\right) \leq -2$. An Abbildung \ref{fig:zigZag} ist zu erkennen, dass sich $\mathit{tw}\left(v\right)$ vom Ausgangszustand zum gestrichelt dargestellten Zwischenschritt hin nicht verändert. $\mathit{tw}\left(x'\right)$ ist ebenfalls unverändert zum Zwischenschritt. Es kann also bei beiden Knoten mit den Werten aus dem Zwischenschritt gearbeitet werden. Bezeichne $u^*$ den Knoten $u$ im Zwischenschritt, dann gilt $ \mathit{tw}\left(u^*\right) = \mathit{tw}\left(v'\right)$. \\  Daraus folgt $\mathit{tw}\left(v'\right) = \mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right) + w\left(u\right) $ und daraus \mbox{$\left(\mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right)\right) /  \mathit{tw}\left(v'\right) < 1$} und mit der Eigenschaft von $\log_2$ folgen die Ungleichungen.
+	Dass die letzte Ungleichung gilt, kann an einer Eigenschaft des $\log_2$ ableitet werden. Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt $\log_2\left(a\right) + \log_2\left(b\right) \leq -2$. An Abbildung \ref{fig:zigZag} ist zu erkennen, dass sich $\mathit{tw}\left(v\right)$ vom Ausgangszustand zum gestrichelt dargestellten Zwischenschritt hin nicht verändert. $\mathit{tw}\left(x'\right)$ ist ebenfalls unverändert zum Zwischenschritt. Es kann also bei beiden Knoten mit den Werten aus dem Zwischenschritt gearbeitet werden. Bezeichne $u^*$ den Knoten $u$ im Zwischenschritt, dann gilt $ \mathit{tw}\left(u^*\right) = \mathit{tw}\left(v'\right)$. \\  Daraus folgt $\mathit{tw}\left(v'\right) = \mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right) + w\left(u\right) $ und daraus \\ \mbox{$\left(\mathit{tw}\left(x'\right) + \mathit{tw}\left(v\right)\right) /  \mathit{tw}\left(v'\right) < 1$} und mit der Eigenschaft von $\log_2$ folgen die Ungleichungen.
 	
 	\paragraph{zig-zag:} 
 	\begin{align*}
-	&2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) &\textit{ ,mit $r\left(x\right) =  r\left(v\right)'$ und $r\left(v\right) \leq  r\left(u\right)$} \\
+	&2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right) \textit{ ,mit $r\left(x\right) =  r\left(v\right)' \land r\left(v\right) \leq  r\left(u\right)$} \\
 	\leq& 2 + r\left(u\right)' +r\left(x\right)' - 2 r\left(v\right)
 	\end{align*}
 	Nun wird wie bei zig-zig vorgegangen:
@@ -1293,7 +1293,7 @@ Für $x_i$ sei $J_i = \{j \in \mathbb{N} \vert j < i \land x_j = x_i \}$.
 Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{xi} = 0$. $t_{xi}$ liefert also den Index des vorherigen Zugriffes auf $x_i$, falls ein solcher existiert. Sei ${a_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$.
 
 \newtheorem{Satz2}{Working Set Property}[section] \label{workingSetSplay}
-\begin{Satz2} Es sei $T$ ein Splay Baum mit $n$ Knoten. Sei $X = x_1,x_2,..,x_m$ eine für $T$ erstellte Zugriffsfolge. Dann gilt für die amortisierte Laufzeit \\
+\begin{Satz2} Es sei $T$ ein Splay Baum mit $n$ Knoten. Sei $X = x_1,x_2,..,x_m$ eine für $T$ erstellte Zugriffsfolge. Dann gilt für die amortisierte Laufzeit zum Ausführen von $X$: \\
 	$O\left( n \log\left(n\right) + m +\sum_{i = 1}^{m} \log\left( a_i\right) \right)$.
 \end{Satz2}
 \begin{proof}
@@ -1307,13 +1307,13 @@ Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{
 
 
 \section {Weitere dynamische Suchbäume}
-Hier werden kurz zwei Variationen zum Tango Baum vorgestellt. Zum einen der Zipper Baum \cite{zipper}. Er ist ebenfalls $\log\left(\log\left(n\right)\right)$-competitive,  garantiert aber auch  $O\left(\log \left(n\right)\right)$ im worst case, bei einer einzelnen \textit{access} Operation. $n$ steht wieder für die Anzahl der Knoten von $T$. Zum anderen den Multisplay Baum \cite{multisplay}. Bei diesem wird ein preferred path durch einen Splay Baum repräsentiert. Amortisiert betrachtet erreicht er $O\left(\log \left(n\right)\right)$ bei \textit{access} und ist  $\log\left(\log\left(n\right)\right)$-competitive. 
+Hier werden kurz zwei Variationen zum Tango Baum vorgestellt. Zum einen den Zipper Baum \cite{zipper}. Er ist ebenfalls $\log\left(\log\left(n\right)\right)$-competitive,  garantiert aber auch  $O\left(\log \left(n\right)\right)$ im worst case, bei einer einzelnen \textit{access} Operation. $n$ steht wieder für die Anzahl der Knoten. Zum anderen den Multisplay Baum \cite{multisplay}. Bei diesem wird ein preferred path durch einen Splay Baum repräsentiert. Amortisiert betrachtet erreicht er $O\left(\log \left(n\right)\right)$ bei \textit{access} und ist  $\log\left(\log\left(n\right)\right)$-competitive. 
 
 \subsection{Zipper Baum}
 Der Zipper Baum basiert auf dem Tango Baum und nutzt auch preferred paths aus einem Referenzbaum $P$. Aufbau und Pflege der preferred paths in $P$ unterscheiden sich nicht vom Tango Baum.  Ihre Repräsentation im eigentlichen BST $T$ macht den wesentlichen Unterschied zu einem Tango Baum aus. Abbildung \ref{fig:zipperPathRep} stellt eine solche beispielhaft dar.  Sei $v$ ein Knoten in $T$, dann ist in diesem Kapitel $v^*$ der Knoten in $P$, mit $\mathit{key}\left(v\right) =\mathit{key}\left(v^*\right)$. Die Repräsentation eines preferred path  $P_p = \left({p_1}^*,{p_2}^*,..,{p_m}^*\right)$ in $T$ stellt einen Hilfsbaum $H$ dar, der in zwei Teile unterteilt ist, dem \textbf{zipper} und dem \textbf{bottom tree}.  Der bottom tree ist ein balancierter BST, der genau die Schlüssel enthält, die in $P_p$ enthalten sind, jedoch nicht im zipper. Der zipper besteht aus zwei Teilen, dem \textbf{top zipper} $z_t$ und dem \textbf{bottom zipper} $z_b$. $z_t$ und $z_b$ dürfen jeweils maximal $\log_2\left(\log_2\left(n\right)\right)$ Knoten enthalten. Gemeinsam  enthalten sie zumindest $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten, wenn ein bottom tree existiert. Bei weniger als $\log_2\left(\log_2\left(n\right)\right) / 2$ Knoten im Hilfsbaum existiert kein bottom tree. Es wird im Folgenden angenommen, dass ein bottom tree existiert. \\
 $P_p$ wird in \textbf{zig Segmente} und \textbf{zag Segmente} unterteilt. Ein zig Segment in $P_p$ ist ein längst möglicher Pfad in $P$, indem nur Knoten aus $P_p$ enthalten sein dürfen, deren rechtes Kind ebenfalls in $P_p$ enthalten ist. zag Segmente werden analog gebildet, wobei das linke Kind ebenfalls in $P_p$ enthalten sein muss, anstatt dem rechten. Dazu gibt es noch die Ausnahme, dass der Knoten mit der größten Tiefe in $P_p$ dem Segment seines Elternknotens zugeordnet wird.\\
 Sei $S_{zig}$ die Folge der in zig Segmenten enthaltenen Knoten, aufsteigend sortiert nach der Tiefe und $S_{zag}$ die Folge der in zag Segmenten enthalten Knoten, aufsteigend sortiert nach der Tiefe.  Sei $n_t$, bzw. $n_b$ die Anzahl der Knoten von $z_t$, bzw. $z_b$. $z_t$ repräsentiert Knoten  $P_t = \left({p_1}^*,{p_2}^*,..,p_{n_t}^*\right)$ und $z_b$ die Knoten  $P_b = \left({p_{n_t + 1}}^*,{p_{n_t + 2}}^*,..,{p_{n_t + n_b}}^*\right)$.
-Sei ${t_l}^*$, bzw. ${t_r}^*$ der Knoten in $S_{zig}$, bzw. $S_{zag}$ mit der größten Tiefe. $t_l$ ist die Wurzel von $H$. $t_r$ ist das rechte Kind von $t_l$. Der linke Teilbaum von $t_l$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in  $S_{zig}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein linkes Kind hat. Der rechte Teilbaum von $t_r$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in $S_{zag}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein rechtes Kind hat. \\
+Sei ${t_l}^*$ der Knoten der größten Tiefe der sowohl in $P_t$ als auch in $S_{zig}$ enthalten ist. Sei ${t_r}^*$ der Knoten der größten Tiefe der sowohl in $P_b$ als auch in $S_{zag}$ enthalten ist. $t_l$ ist die Wurzel von $H$. $t_r$ ist das rechte Kind von $t_l$. Der linke Teilbaum von $t_l$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in  $S_{zig}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein linkes Kind hat. Der rechte Teilbaum von $t_r$  hat Listenform und  enthält die  Knoten, deren Schlüssel auch in $S_{zag}$ enthalten ist, so dass kein Knoten in diesem Teilbaum ein rechtes Kind hat. \\
 $z_b$ wird analog aus $P_b$ erzeugt und seien $b_l$ und $b_r$ die Knoten in $z_b$ entsprechend zu $t_l$ und $t_r$ in $z_t$. $b_l$ ist das linke Kind von $t_r$. Die Wurzel des bottom Tree ist das linke Kind von $b_r$. Dass die Links-Rechts-Beziehung eingehalten wird ergibt aus den Aufbau der zig und zag Segmente. Es ist leicht zu erkennen, dass die Wurzel des bottom tree in konstanter Zeit erreicht werden kann.
 \begin{figure}[H]
 	\centering2
@@ -1358,7 +1358,7 @@ Ein preferred path wird hier durch einen Splay Baum dargestellt, um dessen Laufz
 Zu beachten ist, dass jede BST Darstellung auch eine Splay Baum Darstellung ist. Anders als beim Tango oder Zipper Baum muss ein neu erzeugter Hilfsbaum also nicht so angepasst werden, dass er weitere Invarianten einhält.  Nach einer \textit{access}$\left(k\right)$ Operation ist der Knoten $v_k$ mit dem Schlüssel $k$ die Wurzel von $T$. Zunächst wird eine gewöhnliche Suche in $T$ durchgeführt, bis der Zeiger $p$ der Operation auf $v_k$ zeigt. Ist $v_k$ gefunden, werden die Pfadrepräsentationen aktualisiert. Hierzu muss der Hilfsbaum, der die Wurzel von $T$ enthält neu erzeugt werden. \\
 
 \section{Dokumentation zur Implementierung}
-In diesem Kapitel wird kurz die Implementierung zum Tango Baum beschrieben. 
+In diesem Kapitel wird die Implementierung zum Tango Baum beschrieben. 
 Implementiert wurde der Tango Baum mit dem Rot-Schwarz-Baum als Hilfsdatenstruktur. Außerdem wurde der Splay Baum implementiert, um Laufzeittests zwischen diesem und dem Tango Baum durchführen zu können. Bedient werden kann das Programm über eine einfach gehaltene graphische Oberfläche. Das Programm wurde mit Java 8 übersetzt und als IDE wurde Apache NetBeans 12.0 verwendet. 
 \begin{figure}[H]
 	\centering
@@ -1385,7 +1385,7 @@ Diese Ansicht dient dazu, die Beziehung zwischen dem Referenzbaum und dem Tango 
 	\label{fig:RuntimeGui}
 \end{figure}
 
-\noindent Mit dem Menüpunkt \enquote{RuntimeTest} wird das Fenster aus Abbildung \ref{fig:RuntimeGui} geöffnet. Mit diesem können Laufzeittests zwischen dem Tango Baum und dem Splay Baum  durchgeführt werden. Auf die Parameter und den Aufbau der Zugriffsfolgen wird im Abschnitt zu den Laufzeittests eingegangen. Ungültige Werte, also z. B. ein negative Anzahl an Knoten, werden von den Eingabeelementen nicht angenommen sondern mit dem letzten gültigen Wert überschrieben.
+\noindent Mit dem Menüpunkt \enquote{RuntimeTest} wird das Fenster aus Abbildung \ref{fig:RuntimeGui} geöffnet. Mit diesem können Laufzeittests zwischen dem Tango Baum und dem Splay Baum  durchgeführt werden. Auf die Parameter und den Aufbau der Zugriffsfolgen wird im Abschnitt zu den Laufzeittests eingegangen. Ungültige Werte, also z. B. eine negative Anzahl an Knoten, werden von den Eingabeelementen nicht angenommen sondern mit dem letzten gültigen Wert überschrieben.
 
 
 \begin{figure}[H]
@@ -1418,7 +1418,7 @@ Klassen deren Objekte als Hilfsbaum im Tango Baum eingesetzt werden sollen, müs
 \enquote{auxTree} macht die Wurzel des Tango Baum erreichbar. Außerdem können über dieses Attribut die \textit{split} und \textit{join} Operationen aufgerufen werden. \enquote{auxTreeClass} entspricht der Klasse der eingesetzten Hilfsbäumen. Diese wird dem Constructor übergeben. Somit kann der RBT einfach durch eine andere geeignete Struktur ersetzt werden.
 
 \paragraph{RedBlackTree und RBTNode:}
-Diese erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zu RBT beschrieben. 
+Diese erweitern die abstrakten Klassen. RedBlackTree verhält sich wie im Kapitel zum RBT beschrieben. 
 
 \paragraph{RuntimeTest:}
 Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt führt genau einen Laufzeittest durch. Die restlichen Attribute dienen dessen Parametrierung. Die Methoden zum Ausführen eines Tests  geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baumes, der zweite der des Splay Baumes. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}.
@@ -1442,11 +1442,11 @@ Hier werden die verwendeten Zugriffsfolgen zunächst kurz vorgestellt. Auf Detai
  	\item Die Bit Reversal Permutation:\\
  	Es werden mehrere solcher in Abschnitt \ref{abschnittBitReversal} beschriebenen Folgen mit unterschiedlich langen Binärdarstellungen der Schlüssel verwendet.
  	\item Zugriffsfolgen zum Static Finger Property: \\
-    Hier wird ein Schlüssel $k_F \in K$ gewählt. Die Häufigkeit des Vorkommens eines Schlüssel $k \in K$ in $X$ ist von $\vert k - k_F \vert$ abhängig. Schlüssel zu denen dieser Wert klein ist, sind häufiger enthalten als andere. Es werden solche Zugriffsfolgen für Schlüsselmengen mit unterschiedlicher Kardinalität erstellt und die Ergebnisse der beiden Datenstrukturen verglichen. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass das Static Finger Property mit steigendem Index der Zugriffsfolge weniger relevant wird. Bei diesen sieben Folgen ist der Wert für $n$ konstant.
+    Hier wird ein Schlüssel $k_F \in K$ gewählt. Die Häufigkeit des Vorkommens eines Schlüssel $k \in K$ in $X$ ist von $\vert k - k_F \vert$ abhängig. Schlüssel zu denen dieser Wert klein ist, sind häufiger enthalten als andere. Es werden solche Zugriffsfolgen für Schlüsselmengen mit unterschiedlicher Kardinalität erstellt und die Ergebnisse der beiden Datenstrukturen verglichen. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass das Static Finger Property mit steigendem Index der Zugriffsfolge relevanter wird. Bei diesen sieben Folgen ist der Wert für $n$ konstant.
  	 \item Zugriffsfolge zum Dynamic Finger Property:\\
  	Hier werden Zugriffsfolgen verwendet, so dass $\vert x_{i+1} - x_{i} \vert$ für alle $i \in \{1, 2,..,m -1\} $ einen festen parametrierbaren Wert ergibt.  Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, mit denen analog zum Static Finger Property vorgegangen wird.
  	\item Zugriffsfolge zum Working Set Property:\\
- 	In den hier verwendeten Zugriffsfolgen wiederholen sich die Schlüssel mit einem festen parametrierbaren Abstand. Um Einflüsse der anderen aufgeführten Eigenschaften niedrig zu halten, werden die verwendeten Schlüssel betragsmäßig über die gesamte Schlüsselmenge verteilt. Außerdem gilt für zwei aufeinanderfolgende Schlüssel $k_1$ und $k_2$ in den meiten Fällen $\vert k_1 - k_2 \vert = n /2$. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, mit denen analog zum Static Finger Property vorgegangen wird.
+ 	In den hier verwendeten Zugriffsfolgen wiederholen sich die Schlüssel mit einem festen parametrierbaren Abstand. Um Einflüsse der anderen aufgeführten Eigenschaften niedrig zu halten, werden die verwendeten Schlüssel betragsmäßig über die gesamte Schlüsselmenge verteilt. Außerdem gilt für zwei aufeinanderfolgende Schlüssel $k_1$ und $k_2$ in den meisten Fällen $\vert k_1 - k_2 \vert = n /2$. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, mit denen analog zum Static Finger Property vorgegangen wird.
   \item Aufsteigend sortiert:\\
   Jeder Schlüssel wird nur einmal verwendet.
   \item Absteigend sortiert:\\
@@ -1550,7 +1550,7 @@ Hier werden die verwendetetn Zugriffsfolgen  im Detail beschrieben, außerdem we
 		\caption{Durchschnittliche Laufzeiten zu den jeweils zehn Zugriffsfolgen.} 
 	\end{center}
 \end{table}
-\noindent Beide erreichen bei diesen Zugriffsfolgen im Vergleich zu den meisten noch Folgenden hohe Werte bei der Laufzeit. Da es sich um dynamische BST handelt ist dies auch zu erwarten. Der Zustand der dynamischen BSTs wird im wesentlichen durch  die  bereits ausgeführten \textit{access} Operationen bestimmt. Bei den hier verwendeten Zugriffsfolgen gibt es keine Abhängigkeiten zwischen dem Parameter einer \textit{access} Operation zu denen bereits ausgeführten \textit{access} Operationen. Somit kann durch die Anpassung des Zustandes kein genereller Vorteil generiert werden.\\
+\noindent Beide erreichen bei diesen Zugriffsfolgen im Vergleich zu den meisten noch Folgenden hohe Werte bei der Laufzeit. Da es sich um dynamische BST handelt ist dies auch zu erwarten. Der Zustand der dynamischen BSTs wird im wesentlichen durch  die  bereits ausgeführten \textit{access} Operationen bestimmt. Bei den hier verwendeten Zugriffsfolgen gibt es keine Abhängigkeiten zwischen dem Parameter einer \textit{access} Operation zu denen von bereits ausgeführten \textit{access} Operationen. Somit kann durch die Anpassung des Zustandes kein genereller Vorteil generiert werden.\\
 Jetzt wird noch auf die deutlichen Differenzen zwischen den Werten des Tango Baumes und des Splay Baumes eingegangen. Die Laufzeit des Tango Baumes ist im wesentlichen von der Gesamtanzahl der Veränderungen  bei preferred children $n_T$ in seinem Referenzbaum  abhängig. Die Laufzeit des Splay Baumes ist im wesentlichen von der Anzahl der ausgeführten Rotationen $n_S$ abhängig. Die Tabelle \ref{tab:Ran} stellt die durchschnittlichen Werte von $n_T$ und $n_S$ über jeweils zehn Zugriffsfolgen gegenüber.    
 \begin{table}[H] 
 	\begin{center}
@@ -1575,7 +1575,7 @@ Jetzt wird noch auf die deutlichen Differenzen zwischen den Werten des Tango Bau
 		\label{tab:Ran}
 	\end{center}
 \end{table}
-\noindent In der Spalte $a = n_T / n_S$ gibt es  keinen Wert $< 1/3$. Durchschnittlich muss der Splay Baum, über die jeweils zehn Zugriffsfolgen, also maximal drei Rotationen pro Veränderung an einem preferred child durchführen. Der Tango Baum muss pro Veränderung an einem preferred child eine \textit{cut} und eine \textit{join} Operation ausführen. Dies führt im allgemeinen Fall zu vier \textit{split} und vier \textit{concatenate} Operationen,  die ausgeführt werden müssen. Für $n = 1000$ hat der Referenzbaum des Tango Baumes bereits zehn Ebenen, was in den meisten Fällen dazu führen wird, dass ein Hilfsbaum im Tango Baum neun oder zehn Knoten enthält. Es kann davon ausgegangen werden, dass das Ausführen der acht Operationen deutlich aufwändiger ist, als dass Ausführen der drei Rotationen, zumal es aufgrund der \textit{insertFixup} Operation auch beim Tango Baum mehrere Rotationen pro Veränderung an einem preferred child möglich sind. Abbildung \ref{fig:nT} stellt den Zusammenhang von $n_T$ und $n_S$ zu $n$ graphisch dar. 
+\noindent In der Spalte $a = n_T / n_S$ gibt es  keinen Wert $< 1/3$. Durchschnittlich muss der Splay Baum, über die jeweils zehn Zugriffsfolgen, also maximal drei Rotationen pro Veränderung an einem preferred child durchführen. Der Tango Baum muss pro Veränderung an einem preferred child eine \textit{cut} und eine \textit{join} Operation ausführen. Dies führt im allgemeinen Fall zu vier \textit{split} und vier \textit{concatenate} Operationen,  die ausgeführt werden müssen. Für $n = 1000$ hat der Referenzbaum des Tango Baumes bereits zehn Ebenen, was in den meisten Fällen dazu führen wird, dass der Hilfsbaum mit der Wurzel des Tango Baumes neun oder zehn Knoten enthält. Es kann davon ausgegangen werden, dass das Ausführen der acht Operationen deutlich aufwändiger ist, als dass Ausführen der drei Rotationen, zumal es aufgrund der \textit{insertFixup} Operation auch beim Tango Baum mehrere Rotationen pro Veränderung an einem preferred child möglich sind. Abbildung \ref{fig:nT} stellt den Zusammenhang von $n_T$ und $n_S$ zu $n$ graphisch dar. 
 
 \begin{figure}[H]
 	\centering
@@ -1678,13 +1678,13 @@ Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \text
 \end{table}
 \noindent Sei $X$ eine der verwendeten Zugriffsfolgen und $L$ die Menge der in $X$ enthaltenen Schlüssel. $L$ hat eine Kardinalität von $968$. \\
 Der Splay Baum erfüllt das Static Finger Property und zusätzlich führt die eingeschränkte Kardinalität von  $L$ gegenüber $K$ zu den niedrigen Laufzeiten.     
-Auch der Tango Baum erreicht hier verglichen mit den weiter oben beschriebenen Laufzeittests kurze Laufzeiten. Die zu Beginn des Kapitels angeführte Vermutung, dass der Tango Baum aufgrund seiner $\log\left(\log\left(n\right)\right)$-competiAuch hier kann die Kardinalität von $L$ zur Erklärung verwendet werden. Bei den größeren Instanzen wird sich das preferred child bei vielen Knoten im Referenzbaum zum Tango Baum entweder gar nicht oder nur bei wenigen \textit{access} Operationen ändern. \\
+Auch der Tango Baum erreicht hier verglichen mit den weiter oben beschriebenen Laufzeittests kurze Laufzeiten. Die zu Beginn des Kapitels angeführte Vermutung, dass der Tango Baum aufgrund seiner $\log\left(\log\left(n\right)\right)$-competitiveness, bestätigt sich in diesem Fall. Auch hier kann zusätzlich die Kardinalität von $L$ zur Erklärung verwendet werden. Bei den größeren Instanzen wird sich das preferred child bei vielen Knoten im Referenzbaum zum Tango Baum entweder gar nicht oder nur bei wenigen \textit{access} Operationen ändern. \\
 
-\noindent Nun werden Zugriffsfolgen für $n = 10.000.000$ verwendet. Es werden verschiedene Prozentsätze $p$ zum berechnen der jeweiligen Anzahl des Vorkommens eines Schlüssels in der Zugriffsfolge verwendet. Pro Prozentsatz werden wieder die Durchschnittswerte zu zehn Zugriffsfolgen dargestellt. 
+\noindent Nun werden Zugriffsfolgen für $n = 10.000.000$ verwendet. Es werden verschiedene Prozentsätze $p$ zum Berechnen der jeweiligen Anzahl des Vorkommens eines Schlüssels in der Zugriffsfolge verwendet. Pro Prozentsatz werden wieder die Durchschnittswerte zu zehn Zugriffsfolgen dargestellt. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/staticfinger4}
-	\caption{.}
+	\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1742,7 +1742,7 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 			$1,6 *10^7$  & $83,3$ &$5,2$  \\
 			\hline
 		\end{tabular}
-		\caption{Die Laufzeiten zum  Test zu Dynamic Finger.} 
+		\caption{Die Laufzeiten zum Laufzeittest zu Dynamic Finger mit \mbox{konstantem $a$.}.} 
 	\end{center}
 \end{table}
 \noindent Der Splay Baum erfüllt das Dynamic Finger Property und erreicht wie zu erwarten war, sehr kurze Laufzeiten. Auch der Tango Baum profitiert wieder von dem speziellem Aufbau der Zugriffsfolgen, wie an einem Vergleich der Laufzeiten zu den zufällig erzeugten Zugriffsfolgen erkennbar ist. 
@@ -1780,20 +1780,20 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 		\end{tabular}
 		\caption{Diagramm zum Laufzeittest zu Dynamic Finger, mit verschiedenen Werten für $a$.} 
 	\end{center}
-\end{table}\noindent Es ist zu erkennen, dass die Zeiten des Splay Baums ansteigen, obwohl $n$ und $m$ konstant sind. Die Zeiten des Tango Baumes zeigen keine deutlich Tendenz, bleiben insgesamt jedoch vergleichsweise niedrig. Die Messwerte legen die Vermutung nahe, dass der Tango Baum von der konstanten Betragsdifferenz zweier aufeinanderfolgender Schlüssel profitiert. Es kann jedoch nicht abgeleitet werden, dass ein niedrigerer Wert bei $a$ auch zu kürzeren Laufzeiten führt.  
+\end{table}\noindent Es ist zu erkennen, dass die Zeiten des Splay Baumes ansteigen, obwohl $n$ und $m$ konstant sind. Die Zeiten des Tango Baumes zeigen keine deutlich Tendenz, bleiben insgesamt jedoch vergleichsweise niedrig. Die Messwerte legen die Vermutung nahe, dass der Tango Baum von der konstanten Betragsdifferenz zweier aufeinanderfolgender Schlüssel profitiert. Es kann jedoch nicht abgeleitet werden, dass ein niedrigerer Wert bei $a$ auch zu kürzeren Laufzeiten führt.  
 
 
 
 \subsubsection{Working Set Property} \label{testWork}
 Die Schlüssel dieser Zugriffsfolgen wiederholen sich mit einem festem parametrierbaren Abstand $a$. 
-Sei  $X = x_1, x_2,.., x_m$ eine verwendete Zugriffsfolge und $i \in \{1,2,..,m\}$. Sei $k$ ein Schlüssel mit $k = x_i$, dann ist entweder $i-a$ der größte Index kleiner $i$, mit $x_{i-a} = x_i$ oder $i$ ist der kleinste Index mit $x_i = k$. Es werden die Teilmengen $t_0, t_1,.. t_b$, mit $b = n / a$, der  Schlüsselmenge gebildet. Sei $l \in \{0, 1,.., b\}$ und $c = a/2$, dann gilt \\ $t_l = \{l * c + 1, l * c + 2,.., l * c + c\} \cup \{l * c + 1 + c, l * c + 2 + c,.., l * c + c + c\}$. Jede Teilmenge enthält also $a$ Elemente. Sei $e_1, e_2,.., e_c, e_{c+1}, e_{c+2},.., e_{c+c} $ die Folge aller in $t_l$ enthaltenen Elemente, aufsteigen sortiert nach dem Betrag. Aus $t_l$ wird eine Zugriffsfolge $s_l$ gebildet indem  $e_1, e_{c+1}, e_2,e_{c+2}.., e_c, e_{c + c}$ so oft wiederholt wird bis $s_l$ die Länge $m/b$ hat. Die Gesamtzugriffsfolge ist dann $s_0 \circ s_1 \circ...\circ s_l$. \\
+Sei  $X = x_1, x_2,.., x_m$ eine verwendete Zugriffsfolge und $i \in \{1,2,..,m\}$. Sei $k$ ein Schlüssel mit $k = x_i$, dann ist entweder $i-a$ der größte Index kleiner $i$, mit $x_{i-a} = x_i$ oder $i$ ist der kleinste Index mit $x_i = k$. Es werden die Teilmengen $t_0, t_1,.. t_b$, mit $b = n / a$, der  Schlüsselmenge gebildet. Sei $l \in \{0, 1,.., b\}$, $c = a/2$ und $d = n /2$, dann gilt \\ $t_l = \{l * c + 1, l * c + 2,.., l * c + c\} \cup \{l * c + 1 + d, l * c + 2 + d,.., l * c + c + d\}$. Jede Teilmenge enthält also $a$ Elemente. Sei $e_1, e_2,.., e_c, e_{c+1}, e_{c+2},.., e_{c+c} $ die Folge aller in $t_l$ enthaltenen Elemente, aufsteigen sortiert nach dem Betrag. Aus $t_l$ wird eine Zugriffsfolge $s_l$ gebildet indem  $e_1, e_{c+1}, e_2,e_{c+2}.., e_c, e_{c + c}$ so oft wiederholt wird bis $s_l$ die Länge $m/b$ hat. Die Gesamtzugriffsfolge ist dann $s_0 \circ s_1 \circ...\circ s_l$. \\
 Durch diesen Aufbau wird erreicht, dass zwar das Working Set Property für die Laufzeit relevant wird, die bereits betrachteten Eigenschaften jedoch nicht.\\
 Im ersten Teil wird nun $a = 8$ gesetzt.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/workingset}
-	\caption{Diagramm zum Laufzeittest zu Working Set, mit konstantem $a$.}
+	\caption{Diagramm zum Laufzeittest zu Working Set, mit konstantem Wert für $a$.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1812,7 +1812,7 @@ Im ersten Teil wird nun $a = 8$ gesetzt.
 			$10^7$  & $53,7$ &$1,2$  \\
 			\hline
 		\end{tabular}
-		\caption{Diagramm zum Laufzeittest zu Working Set, mit konstantem $a$.} 
+		\caption{Tabelle zum Laufzeittest zu Working Set, mit variablem Wert für $a$.} 
 	\end{center}
 \end{table}
 \noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Zudem werden die Laufzeiten  bei steigendem $n$ nur etwas länger, trotz logarithmischer Skala zu $n$. Der Splay Baum erfüllt das Working Set Property, wodurch die kurzen Laufzeiten zu erklären sind. Nun wird eine mögliche Erklärung zum langsamen ansteigen der Laufzeiten des Tango Baumes angegeben: Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1 = k_3$ und $k_2 \gg k_1$ gilt. Es wird aufeinanderfolgend \textit{access}$\left(k_1\right)$, \textit{access}$\left(k_2\right)$ und \textit{access}$\left(k_3\right)$ ausgeführt. Betrachtet wird nun der Referenzbaum $P$ zum Tango Baum und \textit{access}$\left(k_3\right)$. Sei $P_k = p_1, p_2,.., p_l$ der Pfad von der Wurzel von $P$ zu dem Knoten $v_3$ mit Schlüssel $k_3$. Sei $v_v$ der gemeinsame Vorfahre von $v$ und dem Knoten $v_2$ mit Schlüssel $k_2$. $v_v$ muss der Knoten mit der kleinsten Tiefe sein, bei dem das preferred child wechselt (Eine Ausnahme ist $v_v = v_2$). Sei $u$ ein Knoten in $P_k$ mit größerer Tiefe als $v_v$, sowie \textit{key}$\left(u\right) \neq k_1 \wedge $ \textit{key}$\left(u \right)\neq k_2 $. Es muss entweder \textit{key}$\left(u\right) > k_3 > k_1$ gelten oder  $ k_3 > k_1 >$\textit{key}$\left(u\right)$ gelten und somit müssen $k_1$ und $k_3$ im selben Teilbaum von $u$ enthalten sein. So kann erklärt werden, dass verlängerte Pfade im Referenzbaum, hier nur zu wenigen zusätzlichen Wechsel bei preferred children führen. \\  
@@ -1822,7 +1822,7 @@ Im ersten Teil wird nun $a = 8$ gesetzt.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/workingset2}
-	\caption{Laufzeittest working set, mit verschiedenen $p$.}
+	\caption{Diagramm zum Laufzeittest zu Working Set, mit konstantem Wert für $a$.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1845,7 +1845,7 @@ Im ersten Teil wird nun $a = 8$ gesetzt.
 			$21$  & $59,5$ &$2$  \\
 			\hline
 		\end{tabular}
-		\caption{Laufzeittest working set, mit verschiedenen $p$.} 
+		\caption{Tabelle zum Laufzeittest zu Working Set, mit variablem Wert für $a$.} 
 	\end{center}
 \end{table}
 
@@ -1856,6 +1856,7 @@ Im ersten Teil wird nun $a = 8$ gesetzt.
 
 \noindent \textbf{Alternierend die Schlüssel $1$ und $n$:\\}
  \bigskip
+ 
 \noindent Umgesetzt werden diese Zugriffsfolgen durch solche zum Dynamic Finger Property, bei denen $a = n -1$ für den Abstand $a$ gilt. Relevant für die Laufzeit wird hier jedoch das Working Set Property.
 
 \begin{figure}[H]
@@ -2000,7 +2001,7 @@ Zu beachten ist hier, dass das Dynamic Finger Property relevant wird.
   
 \includepdf[pages = -]{anhang}
 \section{Fazit und Ausblick}
-Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Bei ihm wurde die Idee, auf Grundlage der Interleave Lower Bound einen $\log\left(\log\left(n\right)\right)$-competitive BST zu konstruieren jedoch als Erstes umgesetzt und hier könnten noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften, folgen. \\
+Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Bei ihm wurde die Idee, auf Grundlage der Interleave Lower Bound einen $\log\left(\log\left(n\right)\right)$-competitiveness\textbf{competi}tive BST zu konstruieren jedoch als Erstes umgesetzt und hier könnten noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften, folgen. \\
 Mittlerweile hat sich zum Thema \enquote{dynamische Optimalität} viel Literatur angesammelt. Hier wurde nur auf einen sehr kleinen Ausschnitt eingegangen. Zum Beispiel gibt es  weitere untere Schranken für die Ausführungszeit von BST. Außerdem gibt es eine interessante geometrische Sicht auf BST, von der Aussagen über BST und andere Verfahren abgeleitet werden konnten. Es gibt auch deutlich mehr obere Laufzeitschranken, für Zugriffsfolgen mit speziellen Eigenschaften, als  hier vorgestellt wurden. \\
 Ob es irgendwann gelingen wird die dynamische Optimalität des Splay Baumes oder irgendeiner anderen Variante eines BST zu beweisen, ist offen. Für den Einsatz bei gewöhnlich großen Schlüsselmengen müssen dann aber auch die Summanden und Faktoren berücksichtigt werden, die innerhalb der $O$ Notation vernachlässigt werden.
 
