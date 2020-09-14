@@ -2,7 +2,7 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces Ein binärer Suchbaum. \relax }}{7}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Kein binärer Suchbaum. \relax }}{7}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Ein weiterer binärer Suchbaum \relax }}{9}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Schlüssel sind aufsteigend sortiert ablesbar. \relax }}{9}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Die Schlüssel sind aufsteigend sortiert ablesbar. \relax }}{9}%
 \contentsline {figure}{\numberline {5}{\ignorespaces Darstellung von Vorgänger und Nachfolger. \relax }}{11}%
 \contentsline {figure}{\numberline {6}{\ignorespaces Linksrotation auf Knoten x. \relax }}{12}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Rechtsrotation auf Knoten x. \relax }}{13}%
@@ -61,6 +61,6 @@
 \contentsline {figure}{\numberline {60}{\ignorespaces Diagramm zum Laufzeittest zu Working Set, mit konstantem Wert für $a$.\relax }}{98}%
 \contentsline {figure}{\numberline {61}{\ignorespaces Diagramm zum Laufzeittest zu Working Set, mit konstantem Wert für $a$.\relax }}{100}%
 \contentsline {figure}{\numberline {62}{\ignorespaces Laufzeittest bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.\relax }}{101}%
-\contentsline {figure}{\numberline {63}{\ignorespaces Laufzeittest bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.\relax }}{102}%
-\contentsline {figure}{\numberline {64}{\ignorespaces Laufzeittest absteigend sortiert.\relax }}{103}%
-\contentsline {figure}{\numberline {65}{\ignorespaces Laufzeittest auf-, bzw. absteigend geschachtelt.\relax }}{104}%
+\contentsline {figure}{\numberline {63}{\ignorespaces Diagramm zu den aufsteigend sortierten Zugriffsfolgen.\relax }}{102}%
+\contentsline {figure}{\numberline {64}{\ignorespaces Diagramm zu den absteigend sortierten Zugriffsfolgen.\relax }}{103}%
+\contentsline {figure}{\numberline {65}{\ignorespaces Diagramm zu aufsteigend, bzw.absteigend geschachtelt sortierten Zugriffsfolgen.\relax }}{104}%

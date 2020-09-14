@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  13 SEP 2020 10:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  14 SEP 2020 22:41
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -752,7 +752,7 @@ Package pdftex.def Info: Medien/Einleitung/suchbaum2_2.png  used on input line
 120.
 (pdftex.def)             Requested size: 390.0pt x 247.3016pt.
 [8]
-<Medien/Einleitung/linksRechts.png, id=56, 1983.8115pt x 705.23476pt>
+<Medien/Einleitung/linksRechts.png, id=55, 1983.8115pt x 705.23476pt>
 File: Medien/Einleitung/linksRechts.png Graphic file (type png)
 <use Medien/Einleitung/linksRechts.png>
 Package pdftex.def Info: Medien/Einleitung/linksRechts.png  used on input line 
@@ -764,7 +764,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 133--134
  []
 
 [9 <./Medien/Einleitung/suchbaum2_2.png> <./Medien/Einleitung/linksRechts.png>]
-<Medien/Einleitung/VorgängerNachfolger.png, id=62, 1520.079pt x 859.41075pt>
+<Medien/Einleitung/VorgängerNachfolger.png, id=61, 1520.079pt x 859.41075pt>
 File: Medien/Einleitung/VorgängerNachfolger.png Graphic file (type png)
 <use Medien/Einleitung/VorgängerNachfolger.png>
 Package pdftex.def Info: Medien/Einleitung/VorgängerNachfolger.png  used on in
@@ -786,26 +786,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 173--174
  []
 
 [11 <./Medien/Einleitung/VorgängerNachfolger.png>]
-<Medien/Einleitung/Linksrotation.png, id=70, 2197.61024pt x 691.98524pt>
+<Medien/Einleitung/Linksrotation.png, id=69, 2197.61024pt x 691.98524pt>
 File: Medien/Einleitung/Linksrotation.png Graphic file (type png)
 <use Medien/Einleitung/Linksrotation.png>
 Package pdftex.def Info: Medien/Einleitung/Linksrotation.png  used on input lin
 e 180.
 (pdftex.def)             Requested size: 390.0pt x 122.7992pt.
-<Medien/Einleitung/Rechtsrotation.png, id=71, 2322.87825pt x 708.84825pt>
+<Medien/Einleitung/Rechtsrotation.png, id=70, 2322.87825pt x 708.84825pt>
 File: Medien/Einleitung/Rechtsrotation.png Graphic file (type png)
 <use Medien/Einleitung/Rechtsrotation.png>
 Package pdftex.def Info: Medien/Einleitung/Rechtsrotation.png  used on input li
 ne 186.
 (pdftex.def)             Requested size: 390.0pt x 119.00998pt.
-<Medien/Einleitung/LinksRechtsRotation.png, id=72, 2331.30975pt x 708.84825pt>
+<Medien/Einleitung/LinksRechtsRotation.png, id=71, 2331.30975pt x 708.84825pt>
 File: Medien/Einleitung/LinksRechtsRotation.png Graphic file (type png)
 <use Medien/Einleitung/LinksRechtsRotation.png>
 Package pdftex.def Info: Medien/Einleitung/LinksRechtsRotation.png  used on inp
 ut line 192.
 (pdftex.def)             Requested size: 390.0pt x 118.57733pt.
  [12 <./Medien/Einleitung/Linksrotation.png>]
-<Medien/Einleitung/SuchenEinfügen.png, id=77, 2214.47325pt x 744.381pt>
+<Medien/Einleitung/SuchenEinfügen.png, id=76, 2214.47325pt x 744.381pt>
 File: Medien/Einleitung/SuchenEinfügen.png Graphic file (type png)
 <use Medien/Einleitung/SuchenEinfügen.png>
 Package pdftex.def Info: Medien/Einleitung/SuchenEinfügen.png  used on input l
@@ -818,14 +818,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--208
 
 [13 <./Medien/Einleitung/Rechtsrotation.png> <./Medien/Einleitung/LinksRechtsRo
 tation.png>] [14 <./Medien/Einleitung/SuchenEinfügen.png>]
-<Medien/Einleitung/löschen.png, id=89, 2298.186pt x 689.57625pt>
+<Medien/Einleitung/löschen.png, id=88, 2298.186pt x 689.57625pt>
 File: Medien/Einleitung/löschen.png Graphic file (type png)
 <use Medien/Einleitung/löschen.png>
 Package pdftex.def Info: Medien/Einleitung/löschen.png  used on input line 227
 .
 (pdftex.def)             Requested size: 390.0pt x 117.01596pt.
  [15 <./Medien/Einleitung/löschen.png>]
-<Medien/Einleitung/kompletterBaum.png, id=94, 2047.04774pt x 658.8615pt>
+<Medien/Einleitung/kompletterBaum.png, id=93, 2047.04774pt x 658.8615pt>
 File: Medien/Einleitung/kompletterBaum.png Graphic file (type png)
 <use Medien/Einleitung/kompletterBaum.png>
 Package pdftex.def Info: Medien/Einleitung/kompletterBaum.png  used on input li
@@ -852,19 +852,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 280--281
  []
 
 [17]
-<Medien/RotSchwarzBaum/IOBaum.png, id=103, 1432.75275pt x 691.98524pt>
+<Medien/RotSchwarzBaum/IOBaum.png, id=102, 1432.75275pt x 691.98524pt>
 File: Medien/RotSchwarzBaum/IOBaum.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/IOBaum.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/IOBaum.png  used on input line 2
 86.
 (pdftex.def)             Requested size: 390.0pt x 188.35898pt.
-<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=104, 1504.4205pt x 691.98524pt>
+<Medien/RotSchwarzBaum/NIOBaumZweiRote.png, id=103, 1504.4205pt x 691.98524pt>
 File: Medien/RotSchwarzBaum/NIOBaumZweiRote.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumZweiRote.png>
 Package pdftex.def Info: Medien/RotSchwarzBaum/NIOBaumZweiRote.png  used on inp
 ut line 292.
 (pdftex.def)             Requested size: 390.0pt x 179.38397pt.
-<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=105, 1444.79774pt x 876.27374p
+<Medien/RotSchwarzBaum/NIOBaumPfadlänge.png, id=104, 1444.79774pt x 876.27374p
 t>
 File: Medien/RotSchwarzBaum/NIOBaumPfadlänge.png Graphic file (type png)
 <use Medien/RotSchwarzBaum/NIOBaumPfadlänge.png>
@@ -1006,12 +1006,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 546--551
 
  []
 
-
+[33 <./Medien/DynOpt/T_r_l.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 552--553
 
  []
 
-[33 <./Medien/DynOpt/T_r_l.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 574--576
 
  []
@@ -1563,11 +1563,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  18514 strings out of 480797
  351721 string characters out of 2905362
- 590562 words of memory out of 3000000
+ 591562 words of memory out of 3000000
  34057 multiletter control sequences out of 15000+200000
  553884 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,18n,77p,2870b,532s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 68i,18n,77p,2878b,532s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecrm1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecbi1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -1581,9 +1581,9 @@ pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
 \ecbx1728.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
 /ec/dpi600\ecti1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
 r/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andre\AppData\Local\MiKTeX\2.9\font
-s/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\Local\MiKTe
-X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk> <C:\Users\andre\AppData\L
-ocal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk><C:/Program File
+s/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andre\AppData\Local\MiKTe
+X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andre\AppData\L
+ocal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
@@ -1598,7 +1598,7 @@ gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
 blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (112 pages, 8871280 bytes).
+Output written on Bachelorarbeit.pdf (112 pages, 8871224 bytes).
 PDF statistics:
  1142 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
