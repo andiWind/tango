@@ -5,7 +5,7 @@
 \contentsline {subsection}{\numberline {2.2}Weitere Begriffe und Eigenschaften zum binären Suchbaum}{8}%
 \contentsline {paragraph}{Total geordnete Menge:}{11}%
 \contentsline {paragraph}{Verändern eines BSTs durch Rotationen:}{12}%
-\contentsline {subsection}{\numberline {2.3}Die Grundoperationen \textit {search}, \textit {insert} und \textit {delete}}{13}%
+\contentsline {subsection}{\numberline {2.3}Die Grundoperationen \textit {search}, \textit {insert} und \textit {delete}.}{13}%
 \contentsline {paragraph}{Laufzeit:}{15}%
 \contentsline {paragraph}{Unterschiedliche Baumhöhen:}{16}%
 \contentsline {section}{\numberline {3}Rot-Schwarz-Baum}{17}%
@@ -21,7 +21,7 @@
 \contentsline {paragraph}{Lower Bound Tree:}{30}%
 \contentsline {subsection}{\numberline {4.3}Bit Reversal Permutation }{37}%
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{39}%
-\contentsline {paragraph}{Potentialfunktionmethode:}{39}%
+\contentsline {paragraph}{Potentialfunktionmethode:}{40}%
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack:}{40}%
 \contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST. }{41}%
 \contentsline {paragraph}{Balanced Property:}{41}%
