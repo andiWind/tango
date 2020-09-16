@@ -57,8 +57,8 @@
 \contentsline {paragraph}{Die \textit {access} Operation beim Multisplay Baum:}{80}%
 \contentsline {section}{\numberline {8}Dokumentation zur Implementierung}{81}%
 \contentsline {subsection}{\numberline {8.1}Beschreibung der Klassen }{83}%
-\contentsline {paragraph}{SplayTree und SplayNode:}{83}%
-\contentsline {paragraph}{TangoNode:}{83}%
+\contentsline {paragraph}{SplayTree und SplayNode:}{84}%
+\contentsline {paragraph}{TangoNode:}{84}%
 \contentsline {paragraph}{TangoAuxTree:}{84}%
 \contentsline {paragraph}{TangoTree:}{84}%
 \contentsline {paragraph}{RedBlackTree und RBTNode:}{84}%
@@ -69,7 +69,7 @@
 \contentsline {subsubsection}{\numberline {9.2.1}Zufällig erzeugte Zugriffsfolgen}{87}%
 \contentsline {subsubsection}{\numberline {9.2.2}Bit Reversal Permutations}{91}%
 \contentsline {subsubsection}{\numberline {9.2.3}Static Finger Property}{92}%
-\contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{95}%
+\contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{96}%
 \contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{98}%
 \contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{101}%
 \contentsline {section}{\numberline {10}Fazit und Ausblick}{107}%
