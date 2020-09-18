@@ -5,7 +5,14 @@
  */
 package GUI;
 
+
+import RuntimeTest.BitReversalTest;
+import RuntimeTest.DynamicFingerTest;
+import RuntimeTest.RandomTest;
 import RuntimeTest.RuntimeTest;
+import RuntimeTest.SortedTest;
+import RuntimeTest.StaticFingerTest;
+import RuntimeTest.WorkingSetTest;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -20,8 +27,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.util.LinkedList;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -82,30 +87,30 @@ public class RuntimeFrame  extends JFrame{
                      
                     switch(activePanel){
                         case ("randomAccess"):
-                            tester = new RuntimeTest("randomAccess", numOfNodes,  -1, null, thisFrame, lenOfSeq );
+                            tester = new RandomTest( numOfNodes,  lenOfSeq,  thisFrame);
                             break;
                         case ("staticFinger"):
-                          tester = new RuntimeTest("staticFinger", numOfNodes,  -1, null, thisFrame, lenOfSeq );
+                          tester = new StaticFingerTest( numOfNodes,  lenOfSeq, thisFrame );
                           break;
                         case ("dynamicFinger"):
-                         tester = new RuntimeTest("dynamicFinger", numOfNodes, dynFinger, null, thisFrame, lenOfSeq );
+                            tester = new DynamicFingerTest( numOfNodes, dynFinger, lenOfSeq, thisFrame );
                            break;
                         case ("workingSet"):
-                            tester = new RuntimeTest("workingSet", numOfNodes, workSetDistance,null, thisFrame, lenOfSeq ); 
+                            tester = new WorkingSetTest( numOfNodes, workSetDistance, lenOfSeq, thisFrame); 
                             break;
                         case ("bitReversalPermutation"):
-                             tester = new RuntimeTest("bitReversalPermutation", lenOfBRP, -1,  null, thisFrame, -1 );
+                             tester = new BitReversalTest( lenOfBRP, thisFrame );
                              break;
                         case ("sorted"):
 
                             if (sortedCombo.getSelectedItem().equals("1,2,..,n")){
-                                tester = new RuntimeTest("sorted", numOfNodes, 1,  null, thisFrame, -1 ); 
+                                tester = new SortedTest( numOfNodes, 1,  thisFrame ); 
                             }  
                             else if (sortedCombo.getSelectedItem().equals("n, n -1,..,1"))   {
-                                tester = new RuntimeTest("sorted", numOfNodes, 2,  null, thisFrame, -1 ); 
+                                tester = new SortedTest( numOfNodes, 2,  thisFrame ); 
                             } 
                             else{
-                                tester = new RuntimeTest("sorted", numOfNodes, 3,  null, thisFrame, -1 ); 
+                                tester = new SortedTest( numOfNodes, 3,  thisFrame );  
                             }
 
                             break;

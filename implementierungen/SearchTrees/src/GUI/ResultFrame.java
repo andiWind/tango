@@ -15,15 +15,34 @@ import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
  * @author andreas
  * Fenster zur Darstellung des Ergebnis, eines Laufzeittests
  */
+
 public class ResultFrame extends JFrame {
-    private JLabel tango;
-    private JLabel splay;
+    private  final JLabel tango;
+    private final JLabel splay;
+    
+    private String getTimeString(long time){
+        long value = time % 1000;
+        if (value != 0){
+            if(value % 100 > 49){
+                value = value - (value % 100 ) + 100;
+            }
+            else
+                value = value - (value % 100 );
+        }
+        if (value != 0){
+            value = value / 100;
+        }
+        String t = time / 1000 + "," + value;
+        return time / 1000 + "," + value;
+    }
+
+    
     void setTime (long timeTango, long timeSplay){
-        tango.setText("Zeit Tango " + timeTango / 1000 + " s");
-        splay.setText("Zeit Splay " + timeSplay / 1000 + " s");
+        tango.setText("Zeit Tango " + getTimeString(timeTango) +  " s");
+        splay.setText("Zeit Splay " +  getTimeString(timeSplay) + " s");
      
     }
-    ResultFrame(String testName){ 
+    ResultFrame( String testName){ 
       
        tango = new JLabel ("Zeit Tango " + "____"+ " s");
        splay = new JLabel ("Zeit Splay " + "____"+ " s");
