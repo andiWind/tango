@@ -25,6 +25,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
@@ -133,8 +135,8 @@ public class RuntimeFrame  extends JFrame{
         numOfNodesSli.addMouseMotionListener(new MouseMotionListener(){
             @Override
             public void mouseDragged(MouseEvent e) {
-                numOfNodes = numOfNodesSli.getValue();
-                numOfNodesText.setText("" + setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                changeNumOfNodes(numOfNodesSli.getValue());
+               
             }
 
             @Override
@@ -152,17 +154,8 @@ public class RuntimeFrame  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try{
                    int  value = Integer.parseInt(numOfNodesText.getText().replaceAll("\\.", ""));
-                   if (value > -1){
-                        numOfNodes = value;
-                        numOfNodesSli.setValue(numOfNodes);
-                        numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
-                        if (numOfNodes < workSetDistance - 1 ){
-                            workSetDistance = numOfNodes - 1;
-                        }
-                   }
-                   else{
-                        numOfNodesText.setText( setPointsInNumOfNodes(String.valueOf(numOfNodes)));
-                   }
+                   changeNumOfNodes(value);
+                   
                 }    
                 catch(Exception ex){
                     numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
@@ -181,17 +174,7 @@ public class RuntimeFrame  extends JFrame{
             public void focusLost(FocusEvent e) {
                  try{
                    int  value = Integer.parseInt(numOfNodesText.getText().replaceAll("\\.", ""));
-                   if (value > -1){
-                        numOfNodes = value;
-                        numOfNodesSli.setValue(numOfNodes);
-                        numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
-                         if (numOfNodes < workSetDistance - 1 ){
-                            workSetDistance = numOfNodes - 1;
-                        }
-                   }
-                   else{
-                        numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
-                   }
+                   changeNumOfNodes(value);
                 }    
                 catch(Exception ex){
                     numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
@@ -208,7 +191,7 @@ public class RuntimeFrame  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try{
                    int value = Integer.parseInt(lenOfSeqText.getText());
-                   if(value > -1){
+                   if(value > 0){
                        lenOfSeq = Integer.parseInt(lenOfSeqText.getText());
                    }
                    else
@@ -232,7 +215,7 @@ public class RuntimeFrame  extends JFrame{
             public void focusLost(FocusEvent e) {
                  try{
                    int value = Integer.parseInt(lenOfSeqText.getText());
-                   if(value > -1){
+                   if(value > 0){
                        lenOfSeq = Integer.parseInt(lenOfSeqText.getText());
                    }
                    else
@@ -296,7 +279,7 @@ public class RuntimeFrame  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try{
                     int value = Integer.parseInt(dymFingerText.getText());
-                   if (value > -1) 
+                   if (value > 0 && value < numOfNodes) 
                         dynFinger = Integer.parseInt(dymFingerText.getText());
                    else
                        dymFingerText.setText("" + dynFinger);
@@ -318,7 +301,7 @@ public class RuntimeFrame  extends JFrame{
             public void focusLost(FocusEvent e) {
                 try{
                     int value = Integer.parseInt(dymFingerText.getText());
-                   if (value > -1) 
+                   if (value > 0 && value < numOfNodes) 
                         dynFinger = Integer.parseInt(dymFingerText.getText());
                    else
                        dymFingerText.setText("" + dynFinger);
@@ -369,7 +352,7 @@ public class RuntimeFrame  extends JFrame{
                 }
             }
         });
-        
+      
         
         northPanel = new JPanel();
         northPanel.setLayout(new FlowLayout());
@@ -467,7 +450,22 @@ public class RuntimeFrame  extends JFrame{
         
         
     }
-    
+    private void changeNumOfNodes(int value){
+        if (value > 0){
+                        numOfNodes = value;
+                        numOfNodesSli.setValue(numOfNodes);
+                        numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                        if (numOfNodes < workSetDistance - 1 ){
+                            workSetDistance = numOfNodes - 1;
+                        }
+                        if (numOfNodes < dynFinger - 1 ){
+                            dynFinger = numOfNodes - 1;
+                        }
+                   }
+                   else{
+                        numOfNodesText.setText( setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                   }
+    }
     private void buildRandomPanel(){
         randomPanel = new JPanel();
         randomPanel.setLayout(new GridLayout(2, 3));
