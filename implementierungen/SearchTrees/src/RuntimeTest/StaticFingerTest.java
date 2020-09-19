@@ -18,8 +18,8 @@ public class StaticFingerTest extends RuntimeTest {
   int numOfNodes;
   int repeat;  
     
-    public StaticFingerTest(int n, int r, RuntimeFrame rf){
-        super(rf, "Ergebnis StaticFinger");
+    public StaticFingerTest(int n, int r, RuntimeFrame rf, boolean d){
+        super(rf, "Ergebnis StaticFinger", d);
         numOfNodes = n;
         repeat  = r; 
         

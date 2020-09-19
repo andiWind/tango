@@ -19,8 +19,8 @@ public class WorkingSetTest extends RuntimeTest {
   int distance;
   int length;  
     
-    public WorkingSetTest(int n, int d,  int l, RuntimeFrame rf){
-        super(rf, "Ergebnis WorkingSet");
+    public WorkingSetTest(int n, int d,  int l, RuntimeFrame rf, boolean de){
+        super(rf, "Ergebnis WorkingSet", de);
         numOfNodes = n;
         distance = d;
         length  = l; 

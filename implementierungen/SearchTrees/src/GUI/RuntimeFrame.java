@@ -15,7 +15,6 @@ import RuntimeTest.StaticFingerTest;
 import RuntimeTest.WorkingSetTest;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -25,10 +24,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -36,6 +34,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.JRadioButton;
 
 
 /**
@@ -44,6 +43,7 @@ import javax.swing.JTextField;
  * Erstellt und verwaltet das Fenster zum anstarten eines Laufzeittests.
  */
 public class RuntimeFrame  extends JFrame{
+    private boolean details;
     private int numOfNodes;
     private int lenOfSeq;
     private int lenOfBRP;
@@ -59,6 +59,7 @@ public class RuntimeFrame  extends JFrame{
     private JPanel  workingSetPanel;
     private JPanel  bitReversalPermutationPanel;
     private final JSlider numOfNodesSli;
+    private final JRadioButton detailButton;
     private final JTextField numOfNodesText;
     private final JTextField dymFingerText;
     private final JTextField lenOfBRPText;
@@ -89,30 +90,30 @@ public class RuntimeFrame  extends JFrame{
                      
                     switch(activePanel){
                         case ("randomAccess"):
-                            tester = new RandomTest( numOfNodes,  lenOfSeq,  thisFrame);
+                            tester = new RandomTest( numOfNodes,  lenOfSeq,  thisFrame, details);
                             break;
                         case ("staticFinger"):
-                          tester = new StaticFingerTest( numOfNodes,  lenOfSeq, thisFrame );
+                          tester = new StaticFingerTest( numOfNodes,  lenOfSeq, thisFrame, details );
                           break;
                         case ("dynamicFinger"):
-                            tester = new DynamicFingerTest( numOfNodes, dynFinger, lenOfSeq, thisFrame );
+                            tester = new DynamicFingerTest( numOfNodes, dynFinger, lenOfSeq, thisFrame, details );
                            break;
                         case ("workingSet"):
-                            tester = new WorkingSetTest( numOfNodes, workSetDistance, lenOfSeq, thisFrame); 
+                            tester = new WorkingSetTest( numOfNodes, workSetDistance, lenOfSeq, thisFrame, details); 
                             break;
                         case ("bitReversalPermutation"):
-                             tester = new BitReversalTest( lenOfBRP, thisFrame );
+                             tester = new BitReversalTest( lenOfBRP, thisFrame, details );
                              break;
                         case ("sorted"):
 
                             if (sortedCombo.getSelectedItem().equals("1,2,..,n")){
-                                tester = new SortedTest( numOfNodes, 1,  thisFrame ); 
+                                tester = new SortedTest( numOfNodes, 1,  thisFrame, details ); 
                             }  
                             else if (sortedCombo.getSelectedItem().equals("n, n -1,..,1"))   {
-                                tester = new SortedTest( numOfNodes, 2,  thisFrame ); 
+                                tester = new SortedTest( numOfNodes, 2,  thisFrame, details ); 
                             } 
                             else{
-                                tester = new SortedTest( numOfNodes, 3,  thisFrame );  
+                                tester = new SortedTest( numOfNodes, 3,  thisFrame , details);  
                             }
 
                             break;
@@ -355,7 +356,7 @@ public class RuntimeFrame  extends JFrame{
       
         
         northPanel = new JPanel();
-        northPanel.setLayout(new FlowLayout());
+        northPanel.setLayout(new GridLayout(2,2));
         northPanel.add(new JLabel("Grundauswahl der Zugriffsfolge für den Laufzeittest:"));
         mainCombo = new JComboBox<>();
         mainCombo.addItem("randomAccess");
@@ -412,6 +413,15 @@ public class RuntimeFrame  extends JFrame{
             }
         });
         northPanel.add(mainCombo);
+        northPanel.add(new JLabel("Anzahl der pref. Children Veränderungen bzw. Rotationen anzeigen:"));
+        detailButton = new JRadioButton();
+        detailButton.addItemListener(new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                details = e.getStateChange() == ItemEvent.SELECTED;
+            }    
+        });
+        northPanel.add(detailButton);
         initFrame();
     }
     private void initFrame(){
@@ -486,7 +496,7 @@ public class RuntimeFrame  extends JFrame{
     public void setResult(long[] result, String testName){
           startButton.setText("Start");
           ResultFrame resultFrame = new ResultFrame(testName);
-          resultFrame.setTime(result[0], result[1]);
+          resultFrame.setValues(result);
     }
     //Zu jedem Test gibt es ein Panel
     private void buildStaticFingerPanel(){

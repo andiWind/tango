@@ -19,6 +19,7 @@ import java.util.List;
 public class SplayTree  {
     private SplayNode root;
 
+    
 //Gleiches Vorgehen wie beim TangoBaum
 private int[] buildKeyArray(List <Integer> keyList){
        List<Integer> nullList = new LinkedList<Integer>();

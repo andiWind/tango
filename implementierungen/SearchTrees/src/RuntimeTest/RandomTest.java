@@ -19,8 +19,8 @@ public class RandomTest extends RuntimeTest {
   int lengthOfSeq;
  
     
-    public RandomTest(int n, int r, RuntimeFrame rf){
-        super(rf, "Ergebnis Random");
+    public RandomTest(int n, int r, RuntimeFrame rf, boolean d){
+        super(rf, "Ergebnis Random", d);
         numOfNodes = n; 
         lengthOfSeq = r;
     } 

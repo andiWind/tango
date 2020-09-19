@@ -17,8 +17,10 @@ import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
  */
 
 public class ResultFrame extends JFrame {
-    private  final JLabel tango;
-    private final JLabel splay;
+    private  final JLabel tangoTime;
+    private  final JLabel tangoCount;
+    private final JLabel splayTime;
+    private final JLabel splayCount;
     
     private String getTimeString(long time){
         long value = time % 1000;
@@ -37,15 +39,34 @@ public class ResultFrame extends JFrame {
     }
 
     
-    void setTime (long timeTango, long timeSplay){
-        tango.setText("Zeit Tango " + getTimeString(timeTango) +  " s");
-        splay.setText("Zeit Splay " +  getTimeString(timeSplay) + " s");
+    void setValues (long[] result){
+        if(result.length < 4){
+            if(result[0] == -1)
+                tangoTime.setText("Fehler beim bilden des Tango Baumes.");
+            else
+                tangoTime.setText("Zu wenig Speicher vorhanden.");
+            add(tangoTime);
+            return;
+        }
+        
+        tangoTime.setText("Zeit Tango " + getTimeString(result[0]) +  " s");
+        splayTime.setText("Zeit Splay " +  getTimeString(result[1]) + " s");
+        if (result[2] != -1){
+            tangoCount.setText(setPoints(""+ result[2]) +  " Veränderungen  bei preferred Children.");
+            splayCount.setText(setPoints(""+ result[3]) +  " Rotationen beim Splay Baum. Das Auswerten dieses Wertes hat einen leichten negativen Einfluss auf die Laufzeit des Splay Baumes.");
+            add(tangoTime);
+            add(splayTime);
+            add(tangoCount);
+            add(splayCount);
+        }
      
     }
     ResultFrame( String testName){ 
       
-       tango = new JLabel ("Zeit Tango " + "____"+ " s");
-       splay = new JLabel ("Zeit Splay " + "____"+ " s");
+       tangoTime = new JLabel ("Zeit Tango " + "____"+ " s");
+       splayTime = new JLabel ("Zeit Splay " + "____"+ " s");
+       tangoCount = new JLabel();
+       splayCount = new JLabel();
        initFrame(testName);
        
     }
@@ -54,11 +75,18 @@ public class ResultFrame extends JFrame {
         setTitle("Ergebnis " + testName);
         setBackground (Color.LIGHT_GRAY);
         setDefaultCloseOperation(HIDE_ON_CLOSE );
-        setSize(400,200);
-        setLayout(new GridLayout(2,1));
-        add(tango);
-        add(splay);
+        setSize(900,200);
+        setLayout(new GridLayout(4,1));
         setVisible(true);
        
+    }
+    private String setPoints(String num){
+        String ret = "";
+        for (int i = 1; i <= num.length(); i++){
+            ret = num.substring(num.length() - i , num.length() - i + 1 ) + ret;
+            if (i  % 3 == 0 && i < num.length())
+                ret = "." + ret;
+        }
+        return ret;
     }
 }

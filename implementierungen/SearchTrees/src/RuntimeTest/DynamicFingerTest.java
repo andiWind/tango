@@ -19,8 +19,8 @@ public class DynamicFingerTest extends RuntimeTest {
   int distance;
   int repeat;  
     
-    public DynamicFingerTest(int n, int d,  int r, RuntimeFrame rf){
-        super(rf, "Ergebnis DynamicFinger");
+    public DynamicFingerTest(int n, int d,  int r, RuntimeFrame rf, boolean de){
+        super(rf, "Ergebnis DynamicFinger", de);
         numOfNodes = n;
         distance = d;
         repeat  = r; 

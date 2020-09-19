@@ -18,8 +18,8 @@ public class SortedTest extends RuntimeTest {
   int numOfNodes;
   int typ;
     
-    public SortedTest(int n, int t, RuntimeFrame rf){
-        super(rf, "");
+    public SortedTest(int n, int t, RuntimeFrame rf,  boolean d){
+        super(rf, "", d);
         typ = t;
         if(typ == 1)
             testName = "aufsteigend sortiert";

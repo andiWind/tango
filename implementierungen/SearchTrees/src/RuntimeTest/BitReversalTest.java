@@ -18,8 +18,8 @@ public class BitReversalTest extends RuntimeTest {
   int numOfBits;
   
     
-    public BitReversalTest(int n,  RuntimeFrame rf){
-        super(rf, "Ergebnis Bit Reversal Permutation");
+    public BitReversalTest(int n,  RuntimeFrame rf, boolean d){
+        super(rf, "Ergebnis Bit Reversal Permutation", d);
         numOfBits = n;
        
         

@@ -101,8 +101,7 @@ public class MainGUI extends JFrame{
                 @Override
                  public void mousePressed(MouseEvent e) {
                     runtimeFrame.setVisible(true);
-                    runtimeFrame.setSize( getWidth() /3 , getHeight()/ 3);
-              
+                    runtimeFrame.setSize( getWidth()/ 2 , getHeight()/ 3);
                 }  
                 @Override
                  public void mouseClicked(MouseEvent e) {

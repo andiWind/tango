@@ -9,7 +9,9 @@ import GUI.RuntimeFrame;
 import SplayTree.SplayTree;
 import TangoTree.TangoTree;
 import RedBlackTree.RedBlackTree;
+import SplayTree.SplayTreeCountRot;
 import TangoTree.BuildAuxTreeFaildException;
+import TangoTree.TangoPrefChildCount;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,29 +25,32 @@ public abstract class RuntimeTest extends Thread {
    protected boolean exit;
    protected String testName;
    private long[] result;
+   private final boolean details;
    private RuntimeFrame runtimeFrame;
    
 
   
-   protected RuntimeTest(RuntimeFrame rf, String tn){
+   protected RuntimeTest(RuntimeFrame rf, String tn, boolean d){
        runtimeFrame = rf;
        testName = tn;
+       details = d;
    }
    
    @Override
     public void run () {   
         try{
-            result = startTest();
-            if(!exit)
-                runtimeFrame.setResult(result, testName);
+            result = startTest();   
         }
         catch(BuildAuxTreeFaildException e){
-            
+            result = new long[1];
+            result[0] = -1;
         }
-        catch(Exception e){
-            
+        catch(java.lang.OutOfMemoryError e){
+            result = new long[1];
+            result[0] = -2;
         }
-        
+        if(!exit)
+                runtimeFrame.setResult(result, testName);
    
     }
     
@@ -201,7 +206,9 @@ public abstract class RuntimeTest extends Thread {
    
     
     protected long[] runtimeTest (List<Integer> keyList, List<Integer> accessSequenz, int repeat) throws BuildAuxTreeFaildException{
-        long[] ret = new long[2];
+        long[] ret = new long[4];
+        ret[2] = -1;
+        ret[3] = -1; 
         TangoTree tangoTree = new TangoTree(keyList, RedBlackTree.class);
         long startTime = System.nanoTime();
         for (int j = 1; j <= repeat; j++){
@@ -213,16 +220,37 @@ public abstract class RuntimeTest extends Thread {
         }
         ret[0] = (System.nanoTime()- startTime) / 1000000 ;
         tangoTree = null; //speicher freigeben
-        SplayTree splayTree = new SplayTree(keyList);
-        startTime = System.nanoTime();
-            for (int j = 1; j <= repeat; j++){
-                for(Integer i: accessSequenz ){
-                    if ( exit)
-                        return null;
-                    splayTree.access(i);
-                }
-            }    
-        ret[1] = (System.nanoTime()- startTime) / 1000000 ;
+        SplayTree splayTree;
+        SplayTreeCountRot splayTreeCountRot; 
+        if (details){
+            splayTreeCountRot = new SplayTreeCountRot(keyList);
+            startTime = System.nanoTime();
+                for (int j = 1; j <= repeat; j++){
+                    for(Integer i: accessSequenz ){
+                        if ( exit)
+                            return null;
+                        splayTreeCountRot.access(i);
+                    }
+                }  
+            ret[1] = (System.nanoTime()- startTime) / 1000000 ;
+            ret[3] = splayTreeCountRot.getNumOfRotations();
+            // Zählen der Anzahl der Wechsel von prefChilds
+            ret[2] = new TangoPrefChildCount(keyList).numOfPrevChildChanges(accessSequenz, repeat);
+        }
+        else{
+            splayTree = new SplayTree(keyList);
+            startTime = System.nanoTime();
+                for (int j = 1; j <= repeat; j++){
+                    for(Integer i: accessSequenz ){
+                        if ( exit)
+                            return null;
+                        splayTree.access(i);
+                    }
+                }    
+            ret[1] = (System.nanoTime()- startTime) / 1000000 ;
+            }
+        
+        
         
         return ret;
     }
