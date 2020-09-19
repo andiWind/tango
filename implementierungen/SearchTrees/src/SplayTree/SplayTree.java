@@ -14,7 +14,7 @@ import java.util.List;
  *
  * 
  * @author andreas
- *  Klasse zum erstellen eines Splay Baum
+ *  Implementierung des Splay Baumes.
  */
 public class SplayTree  {
     private SplayNode root;
@@ -62,7 +62,7 @@ private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int 
         }
         return node;
     }
-  private int setKeys(SplayNode node ,int[] keys, int count){
+private int setKeys(SplayNode node ,int[] keys, int count){
         if (node.getLeft() != null)
             count = setKeys(node.getLeft(), keys, count);
         node.setKey(keys[count++]);
@@ -71,7 +71,7 @@ private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int 
         return count;
     }  
  /**
- *
+ * 
  * @param keyList Der erzeugte Splay Baum enthält alle in der Liste enthaltenen Schlüssel.   
  * 
  */
@@ -83,10 +83,10 @@ private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int 
        
     }
 
-     /**
- *  
- * @param key Es dürfen nur Werte verwendet werten die als Schlüssel im Tango Baum vorhanden sind.   
- * @return Der Knoten mit dem Schlüssel "key".  
+  /**
+ * 
+ * @param key Es dürfen nur Werte verwendet werten die als Schlüssel im Splay Baum vorhanden sind.   
+ * @return Den Knoten mit dem Schlüssel "key".  
  */ 
 public SplayNode access (int key){
     splay(key);

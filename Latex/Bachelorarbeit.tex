@@ -731,10 +731,10 @@ Hier werden einige obere Laufzeitschranken für Zugriffsfolgen vorgestellt. Es i
 
 
 \paragraph{Balanced Property:}
-Ein BST erfüllt das Balanced Property, wenn er $X$ in amortisiert $O\left(m + \left(m + n\right) \log \left( n\right)  \right)$ Zeit ausführt. 
+Ein BST erfüllt die Balanced Property, wenn er $X$ in amortisiert $O\left(m + \left(m + n\right) \log \left( n\right)  \right)$ Zeit ausführt. 
 
 \paragraph{Static Finger Property:}
-Die Idee hinter dieser Eigenschaft ist, dass es einfacher ist, Zugriffsfolgen schnell auszuführen, wenn ihre Schlüssel betragsmäßig nahe beieinander liegen. Ein BST erfüllt das Static Finger Property wenn zu jedem Schlüssel $k_f \in K$ für die amortisierte Laufzeit von $X$ 
+Die Idee hinter dieser Eigenschaft ist, dass es einfacher ist, Zugriffsfolgen schnell auszuführen, wenn ihre Schlüssel betragsmäßig nahe beieinander liegen. Ein BST erfüllt die Static Finger Property wenn zu jedem Schlüssel $k_f \in K$ für die amortisierte Laufzeit von $X$ 
 \begin{align*}
 O\left( n \log\left( n\right) +m + \sum_{i = 1}^{m} \log \left( \vert k_f - x_i  \vert	+ 1	\right)\right)
 \end{align*}
@@ -749,10 +749,10 @@ O\left(m +\sum_{k = 1}^{n}q(k)\log \left( \frac{m}{q(k)} \right)\right)
 Zeit ausführt. Der Name kommt daher, dass es sich hierbei um eine untere Schranke für die Ausführungszeit von X bei statischen BST handelt \cite{staticOptimal}, solche ändern ihre Struktur während \textit{access} nicht.
 
 \paragraph{Working Set Property:}
-Ein BST mit dem Working Set Property führt Zugriffsfolgen schnell aus, bei denen auf die gleichen Schlüssel in kurzen Abständen zugegriffen wird.
+Ein BST mit der Working Set Property führt Zugriffsfolgen schnell aus, bei denen auf die gleichen Schlüssel in kurzen Abständen zugegriffen wird.
 Für $x_i$ sei $J_i = \{j \in \mathbb{N} \vert j < i \land x_j = x_i \}$.
 Sei $t_{xi} = \max \left(J_i\right)$, falls $J_i$ nicht leer ist, ansonsten $t_{xi} = 0$. $t_{xi}$ liefert also den Index des vorherigen Zugriffes auf $x_i$, falls ein solcher existiert. Sei ${a_i = \vert\{x_j \vert t_{xi} < j \leq i   \} \vert }$.
-Ein BST erfüllt das Working Set Property wenn für seine amortisierte Laufzeit für $X$
+Ein BST erfüllt die Working Set Property wenn für seine amortisierte Laufzeit für $X$
 \begin{align*}
 O\left(n \log\left( n\right) + m +\sum_{i = 1}^{m} \log \left(a_i\right) \right)
 \end{align*} 
@@ -760,8 +760,8 @@ gilt.
 
 
 \paragraph{Dynamic Finger Property:}
-Diese Eigenschaft ist dem Static Finger Property sehr ähnlich.
-Ein BST erfüllt das Dynamic Finger Property, wenn für seine amortisierte Laufzeit für $X$
+Diese Eigenschaft ist der Static Finger Property sehr ähnlich.
+Ein BST erfüllt die Dynamic Finger Property, wenn für seine amortisierte Laufzeit für $X$
 \begin{align*}
 O\left( m + n + \sum_{i = 2}^{m} \log \left(\vert x_{i-1} - x_i  \vert	+ 1	\right)\right)
 \end{align*} 
@@ -1079,7 +1079,7 @@ Zunächst wird mit zwei Lemmata die Einzeloperation betrachtet, bevor es dann im
 \end{proof}
 \noindent Für $m \in \Omega\left(n\right)$ gilt dann auch 
 $O\left(	\mathit{OPT}\left(X\right) 	\left( 1 + \log \left(\log \left(n\right)\right)\right)	 \right)$.\\
- Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred children, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum das Balanced Property aus \mbox{Abschnitt \ref{upperBounds}} nicht. Damit kann er aufgrund der Implikationen aus Abbildung \ref{fig:upperBounds} auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche das Balanced Property erfüllen.      
+ Kommt es bei \textit{access}$\left(x\right)$ zu $\Omega\left(\log\left(n\right)\right)$ Wechsel bei preferred children, muss der Hilfsbaum an der Wurzel des Tango Baumes $\Omega\left(\log\left(n\right)\right)$ mal durchsucht werden. Somit hat der Tango Baum die Balanced Property aus \mbox{Abschnitt \ref{upperBounds}} nicht. Damit kann er aufgrund der Implikationen aus Abbildung \ref{fig:upperBounds} auch die anderen Eigenschaften aus diesem Abschnitt nicht haben. Später werden zwei $\log\left(\log\left(n\right)\right)$-competitve BST vorgestellt, welche die Balanced Property erfüllen.      
 
 \subsection{Tango Baum konformes Vereinigen beim Rot-Schwarz-Baum.} \label{vereinigen}
 Die Ideen und Angaben zu den Laufzeiten in diesem und dem nächsten Abschnitt stammen aus \cite{conSplit}, von Tarjan.
@@ -1291,7 +1291,7 @@ verwendet.
 \end{proof}
 
 \subsection{Dynamische Optimalitäts Vermutung}
-Der Splay Baum erfüllt das Working Set Property und das Dynamic Finger Property aus Abschnitt \ref{upperBounds} und auch noch viele weitere in dieser Arbeit nicht aufgeführte Eigenschaften. Der Beweis zum Dynamic Finger Property ist sehr aufwändig \cite{dynFinger}. Dass der Splay Baum das Working Set Property besitzt, wurde bereits bei seiner Vorstellung gezeigt\cite{splay}. Dieser Beweis wird hier vorgestellt. Die anderen Eigenschaften (außer dynamisch optimal) aus Kapitel \ref{upperBounds} folgen dann aus diesen beiden. Aufgrund dieser oberen Schranken der Laufzeit des Splay Baumes wurde die Vermutung aufgestellt, dass der Splay Baum dynamisch optimal ist. Bewiesen ist bisher nur, dass er $\log \left(n\right)$-competitive ist. Dies folgt aus dem Access Lemma. Würde für eine solche obere Schranke gezeigt werden, dass der Splay Baum diese nicht einhalten kann, jedoch ein anderer BST schon, wäre die Vermutung zur dynamischen Optimalität widerlegt. Auch das ist bis heute nicht geschehen. \\
+Der Splay Baum erfüllt die Working Set Property und die Dynamic Finger Property aus Abschnitt \ref{upperBounds} und auch noch viele weitere in dieser Arbeit nicht aufgeführte Eigenschaften. Der Beweis zur Dynamic Finger Property ist sehr aufwändig \cite{dynFinger}. Dass der Splay Baum die Working Set Property besitzt, wurde bereits bei seiner Vorstellung gezeigt\cite{splay}. Dieser Beweis wird hier vorgestellt. Die anderen Eigenschaften (außer dynamisch optimal) aus Kapitel \ref{upperBounds} folgen dann aus diesen beiden. Aufgrund dieser oberen Schranken der Laufzeit des Splay Baumes wurde die Vermutung aufgestellt, dass der Splay Baum dynamisch optimal ist. Bewiesen ist bisher nur, dass er $\log \left(n\right)$-competitive ist. Dies folgt aus dem Access Lemma. Würde für eine solche obere Schranke gezeigt werden, dass der Splay Baum diese nicht einhalten kann, jedoch ein anderer BST schon, wäre die Vermutung zur dynamischen Optimalität widerlegt. Auch das ist bis heute nicht geschehen. \\
 
 \noindent Wiederholung der Definition von $w_i$ zu einer Zugriffsfolge $X = x_1, x_2,.., x_m$ aus Kapitel \ref{upperBounds}:\\
 Für $x_i$ sei $J_i = \{j \in \mathbb{N} \vert j < i \land x_j = x_i \}$.
@@ -1346,7 +1346,7 @@ Der nächste Knoten aus dem zipper kann dem Pfad in konstanter Zeit hinzugefügt
 	\label{fig:extractHybrid}
 \end{figure}
 \subsection{Multisplay Baum}
-Ein preferred path wird hier durch einen Splay Baum dargestellt, um dessen Laufzeiteigenschaften nutzen zu können. Da der Splay Baum kein balancierter BST ist, gibt es zusätzliche mögliche Zustände im Vergleich zu einem Tango Baum mit der gleichen Knotenzahl. Die Darstellung des Hilfsbaumes mit der Wurzel des Gesamtbaumes in Abbildung \ref{fig:pfadRepresentation}, wäre so beim Tango Baum nicht möglich. Zu den genannten Eigenschaften bezüglich der Laufzeit sind Beweise in \cite{multisplay} enthalten. Der Multisplay Baum erfüllt das Working Set Property \cite{porpMultiSplay}. 
+Ein preferred path wird hier durch einen Splay Baum dargestellt, um dessen Laufzeiteigenschaften nutzen zu können. Da der Splay Baum kein balancierter BST ist, gibt es zusätzliche mögliche Zustände im Vergleich zu einem Tango Baum mit der gleichen Knotenzahl. Die Darstellung des Hilfsbaumes mit der Wurzel des Gesamtbaumes in Abbildung \ref{fig:pfadRepresentation}, wäre so beim Tango Baum nicht möglich. Zu den genannten Eigenschaften bezüglich der Laufzeit sind Beweise in \cite{multisplay} enthalten. Der Multisplay Baum erfüllt die Working Set Property \cite{porpMultiSplay}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 0.8\textwidth]{Medien/Multisplay/referenzTree}
@@ -1446,13 +1446,13 @@ Hier werden die verwendeten Zugriffsfolgen zunächst kurz vorgestellt. Auf Detai
  	\item Zufällig erzeugte Zugriffsfolgen.
  	\item Die Bit Reversal Permutation:\\
  	Es werden mehrere solcher in Abschnitt \ref{abschnittBitReversal} beschriebenen Zugriffsfolgen mit unterschiedlich langen Binärdarstellungen der Schlüssel verwendet.
- 	\item Zugriffsfolgen zum Static Finger Property: \\
-    Hier wird ein Schlüssel $k_F \in K$ gewählt. Die Häufigkeit des Vorkommens eines Schlüssel $k \in K$ in $X$ ist von $\vert k - k_F \vert$ abhängig. Schlüssel zu denen dieser Wert klein ist, sind häufiger enthalten als andere. Es werden solche Zugriffsfolgen für Schlüsselmengen mit unterschiedlicher Kardinalität erstellt und die Ergebnisse der beiden Datenstrukturen verglichen. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass das Static Finger Property mit steigendem Index der Zugriffsfolge relevanter wird. Bei diesen sieben Folgen ist der Wert für $n$ konstant.
- 	 \item Zugriffsfolgen zum Dynamic Finger Property:\\
+ 	\item Zugriffsfolgen zur Static Finger Property: \\
+    Hier wird ein Schlüssel $k_F \in K$ gewählt. Die Häufigkeit des Vorkommens eines Schlüssel $k \in K$ in $X$ ist von $\vert k - k_F \vert$ abhängig. Schlüssel zu denen dieser Wert klein ist, sind häufiger enthalten als andere. Es werden solche Zugriffsfolgen für Schlüsselmengen mit unterschiedlicher Kardinalität erstellt und die Ergebnisse der beiden Datenstrukturen verglichen. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass die Static Finger Property mit steigendem Index der Zugriffsfolge relevanter wird. Bei diesen sieben Folgen ist der Wert für $n$ konstant.
+ 	 \item Zugriffsfolgen zur Dynamic Finger Property:\\
  	Hier werden Zugriffsfolgen verwendet, so dass $\vert x_{i+1} - x_{i} \vert$ für alle \\
- 	 \mbox{$i \in \{1, 2,..,m -1\} $} einen festen parametrierbaren Wert ergibt.  Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass das Dynamic Finger Property mit steigendem Index der Zugriffsfolge weniger relevant wird.
- 	\item Zugriffsfolgen zum Working Set Property:\\
- 	In den hier verwendeten Zugriffsfolgen wiederholen sich die Schlüssel mit einem festen parametrierbaren Abstand. Um Einflüsse der anderen aufgeführten Eigenschaften niedrig zu halten, werden die verwendeten Schlüssel betragsmäßig über die gesamte Schlüsselmenge verteilt. Außerdem gilt für zwei aufeinanderfolgende Schlüssel $k_1$ und $k_2$ in den meisten Fällen $\vert k_1 - k_2 \vert = n /2$. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, mit denen analog zum Dynamic Finger Property vorgegangen wird.
+ 	 \mbox{$i \in \{1, 2,..,m -1\} $} einen festen parametrierbaren Wert ergibt.  Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass die Dynamic Finger Property mit steigendem Index der Zugriffsfolge weniger relevant wird.
+ 	\item Zugriffsfolgen zur Working Set Property:\\
+ 	In den hier verwendeten Zugriffsfolgen wiederholen sich die Schlüssel mit einem festen parametrierbaren Abstand. Um Einflüsse der anderen aufgeführten Eigenschaften niedrig zu halten, werden die verwendeten Schlüssel betragsmäßig über die gesamte Schlüsselmenge verteilt. Außerdem gilt für zwei aufeinanderfolgende Schlüssel $k_1$ und $k_2$ in den meisten Fällen $\vert k_1 - k_2 \vert = n /2$. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, mit denen analog zur Dynamic Finger Property vorgegangen wird.
   \item Aufsteigend sortiert:\\
   Jeder Schlüssel wird nur einmal verwendet.
   \item Absteigend sortiert:\\
@@ -1617,7 +1617,7 @@ Auf der X-Achse wird die Länge der Binärdarstellung der Schlüssel $l$ dargest
 		\caption{Ergebnisse zu den Laufzeittests zur Bit Reversal Permutation.} 
 	\end{center}
 \end{table}
-\noindent Wie in Abschnitt \ref{abschnittBitReversal} gezeigt gilt bei diesen Folgen für die Laufzeit eines beliebigen BST $\Omega \left(n \log\left(n\right)\right)$. Der Splay Baum erfüllt das Balanced Property, weshalb für seine Laufzeit auch $O\left(n + n \log\left(n\right)\right)$ gelten muss. Die Ergebnisse bestätigen, dass es sich um aufwändige Zugriffsfolgen für BSTs handelt. Vergleichbare Werte traten nur bei den zufällig erzeugten Zugriffsfolgen auf. \\
+\noindent Wie in Abschnitt \ref{abschnittBitReversal} gezeigt gilt bei diesen Folgen für die Laufzeit eines beliebigen BST $\Omega \left(n \log\left(n\right)\right)$. Der Splay Baum erfüllt die Balanced Property, weshalb für seine Laufzeit auch $O\left(n + n \log\left(n\right)\right)$ gelten muss. Die Ergebnisse bestätigen, dass es sich um aufwändige Zugriffsfolgen für BSTs handelt. Vergleichbare Werte traten nur bei den zufällig erzeugten Zugriffsfolgen auf. \\
 
 
 
@@ -1627,7 +1627,7 @@ Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \text
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/staticfinger1}
-	\caption{Ergebnisse zu den Zugriffsfolgen zum Static Finger Property mit den kürzesten Laufzeiten beider BSTs.}
+	\caption{Ergebnisse zu den Zugriffsfolgen zur Static Finger Property mit den kürzesten Laufzeiten beider BSTs.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1646,14 +1646,14 @@ Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \text
 			$10^7$  & $125,8$ &$4,7$  \\
 			\hline
 		\end{tabular}
-		\caption{Ergebnisse zu den Zugriffsfolgen zum Static Finger Property mit den kürzesten Laufzeiten beider BSTs.} 
+		\caption{Ergebnisse zu den Zugriffsfolgen zur Static Finger Property mit den kürzesten Laufzeiten beider BSTs.} 
 	\end{center}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/staticfinger3}
-	\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zum Static Finger Property.}
+	\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zur Static Finger Property.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1672,18 +1672,18 @@ Sei $a = \lfloor n / 2\rfloor$.  $a$ ist der Parameter bei $2$ Prozent der \text
 		$10^7$  & $128,2$ &$4,7$  \\
 		\hline
 		\end{tabular}
-		\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zum Static Finger Property.} 
+		\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zur Static Finger Property.} 
 	\end{center}
 \end{table}
 \noindent Sei $X$ eine der verwendeten Zugriffsfolgen und $L$ die Menge der in $X$ enthaltenen Schlüssel. $L$ hat eine Kardinalität von $968$. \\
-Der Splay Baum erfüllt das Static Finger Property und zusätzlich führt die eingeschränkte Kardinalität von  $L$ gegenüber $K$ zu den niedrigen Laufzeiten.     
+Der Splay Baum erfüllt die Static Finger Property und zusätzlich führt die eingeschränkte Kardinalität von  $L$ gegenüber $K$ zu den niedrigen Laufzeiten.     
 Auch der Tango Baum erreicht hier verglichen mit den weiter oben beschriebenen Laufzeittests kurze Laufzeiten. Die zu Beginn des Kapitels angeführte Vermutung, dass der Tango Baum aufgrund seiner $\log\left(\log\left(n\right)\right)$-competitiveness ebenfalls von den speziellen Eigenschaften solcher Zugriffsfolgen profitiert, bestätigt sich in diesem Fall. Auch hier kann zusätzlich die Kardinalität von $L$ zur Erklärung verwendet werden. Bei den größeren Instanzen wird sich das preferred child bei vielen Knoten im Referenzbaum zum Tango Baum entweder gar nicht oder nur bei wenigen \textit{access} Operationen ändern. \\
 
 \noindent Nun werden Zugriffsfolgen für $n = 10.000.000$ verwendet. Es werden verschiedene Prozentsätze $p$ zum Berechnen der jeweiligen Anzahl des Vorkommens eines Schlüssels in der Zugriffsfolge verwendet. Pro Prozentsatz werden wieder die Durchschnittswerte zu zehn Zugriffsfolgen dargestellt. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/staticfinger4}
-	\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zum Static Finger Property mit variablem $p$.}
+	\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zur Static Finger Property mit variablem $p$.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1706,7 +1706,7 @@ Auch der Tango Baum erreicht hier verglichen mit den weiter oben beschriebenen L
 			$5,5$  & $111,5$ &$3,9$  \\
 			\hline
 		\end{tabular}
-		\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zum Static Finger Property mit variablem $p$.} 
+		\caption{Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zur Static Finger Property mit variablem $p$.} 
 	\end{center}
 \end{table}
 
@@ -1720,7 +1720,7 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/dynamicfinger}
-	\caption{Die Ergebnisse zum Laufzeittest zum Dynamic Finger Property mit \mbox{konstantem $a$.}}
+	\caption{Die Ergebnisse zum Laufzeittest zur Dynamic Finger Property mit \mbox{konstantem $a$.}}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1741,10 +1741,10 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 			$1,6 *10^7$  & $83,3$ &$5,2$  \\
 			\hline
 		\end{tabular}
-		\caption{Die Ergebnisse zum Laufzeittest zum Dynamic Finger Property mit \mbox{konstantem $a$.}} 
+		\caption{Die Ergebnisse zum Laufzeittest zur Dynamic Finger Property mit \mbox{konstantem $a$.}} 
 	\end{center}
 \end{table}
-\noindent Der Splay Baum erfüllt das Dynamic Finger Property und erreicht wie zu erwarten war, sehr kurze Laufzeiten. Auch der Tango Baum profitiert wieder von dem speziellem Aufbau der Zugriffsfolgen, wie an einem Vergleich der Laufzeiten zu den zufällig erzeugten Zugriffsfolgen erkennbar ist. 
+\noindent Der Splay Baum erfüllt die Dynamic Finger Property und erreicht wie zu erwarten war, sehr kurze Laufzeiten. Auch der Tango Baum profitiert wieder von dem speziellem Aufbau der Zugriffsfolgen, wie an einem Vergleich der Laufzeiten zu den zufällig erzeugten Zugriffsfolgen erkennbar ist. 
 
 
 \noindent Nun ist $n = 10.000.000$ fest und es werden unterschiedliche Werte für $a$ verwendet.
@@ -1752,7 +1752,7 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/dynamicfingerNfest}
-	\caption{Die Ergebnisse zum Laufzeittest zum Dynamic Finger Property mit variablem $a$.}
+	\caption{Die Ergebnisse zum Laufzeittest zur Dynamic Finger Property mit variablem $a$.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1777,7 +1777,7 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 			$256$  & $88$ &$20,2$  \\
 			\hline
 		\end{tabular}
-		\caption {Die Ergebnisse zum Laufzeittest zum Dynamic Finger Property mit variablem $a$.} 
+		\caption {Die Ergebnisse zum Laufzeittest zur Dynamic Finger Property mit variablem $a$.} 
 	\end{center}
 \end{table}\noindent Es ist zu erkennen, dass die Zeiten des Splay Baumes ansteigen, obwohl $n$ und $m$ konstant sind. Die Zeiten des Tango Baumes zeigen keine deutlich Tendenz, bleiben insgesamt jedoch vergleichsweise niedrig. Die Messwerte legen die Vermutung nahe, dass der Tango Baum von der konstanten Betragsdifferenz zweier aufeinanderfolgender Schlüssel profitiert. Es kann jedoch nicht abgeleitet werden, dass ein niedrigerer Wert bei $a$ auch zu kürzeren Laufzeiten führt.  
 
@@ -1786,13 +1786,13 @@ Im ersten Teil ist die Anzahl der Knoten wieder variabel und es werden Zugriffsf
 \subsubsection{Working Set Property} \label{testWork}
 Die Schlüssel dieser Zugriffsfolgen wiederholen sich mit einem festem parametrierbaren Abstand $a$. 
 Sei  $X = x_1, x_2,.., x_m$ eine verwendete Zugriffsfolge und $i \in \{1,2,..,m\}$. Sei $k$ ein Schlüssel mit $k = x_i$, dann ist entweder $i-a$ der größte Index kleiner $i$, mit $x_{i-a} = k$ oder $i$ ist der kleinste Index mit $x_i = k$. Es werden die Teilmengen $t_0, t_1,.. t_b$, mit $b = n / a$, der  Schlüsselmenge gebildet. Sei $l \in \{0, 1,.., b\}$, $c = a/2$ und $d = n /2$, dann gilt \\ $t_l = \{l * c + 1, l * c + 2,.., l * c + c\} \cup \{l * c + 1 + d, l * c + 2 + d,.., l * c + c + d\}$. Jede Teilmenge enthält also $a$ Elemente. Sei $e_1, e_2,.., e_c, e_{c+1}, e_{c+2},.., e_{c+c} $ die Folge aller in $t_l$ enthaltenen Elemente, aufsteigend sortiert nach dem Betrag. Aus $t_l$ wird eine Zugriffsfolge $s_l$ gebildet indem  $e_1, e_{c+1}, e_2,e_{c+2}.., e_c, e_{c + c}$ so oft wiederholt wird bis $s_l$ die Länge $m/b$ hat. Die Gesamtzugriffsfolge ist dann $s_0 \circ s_1 \circ...\circ s_l$. \\
-Durch diesen Aufbau wird erreicht, dass zwar das Working Set Property für die Laufzeit relevant wird, die bereits betrachteten Eigenschaften jedoch nicht.\\
+Durch diesen Aufbau wird erreicht, dass zwar die Working Set Property für die Laufzeit relevant wird, die bereits betrachteten Eigenschaften jedoch nicht.\\
 Im ersten Teil wird nun $a = 8$ gesetzt.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/workingset}
-	\caption{Die Ergebnisse zum Laufzeittest zum Working Set Property mit konstantem $a$.}
+	\caption{Die Ergebnisse zum Laufzeittest zur Working Set Property mit konstantem $a$.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1811,10 +1811,10 @@ Im ersten Teil wird nun $a = 8$ gesetzt.
 			$10^7$  & $53,7$ &$1,2$  \\
 			\hline
 		\end{tabular}
-		\caption{Die Ergebnisse zum Laufzeittest zum Working Set Property mit konstantem $a$.} 
+		\caption{Die Ergebnisse zum Laufzeittest zur Working Set Property mit konstantem $a$.} 
 	\end{center}
 \end{table}
-\noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Zudem werden die Laufzeiten  bei steigendem $n$ nur etwas länger, trotz logarithmischer Skala zu $n$. Der Splay Baum erfüllt das Working Set Property, wodurch die kurzen Laufzeiten zu erklären sind. Nun wird eine mögliche Erklärung zum langsamen ansteigen der Laufzeiten des Tango Baumes angegeben: \\
+\noindent Beide BSTs erreichen hier ihre bisher kürzesten Laufzeiten. Zudem werden die Laufzeiten  bei steigendem $n$ nur etwas länger, trotz logarithmischer Skala zu $n$. Der Splay Baum erfüllt die Working Set Property, wodurch die kurzen Laufzeiten zu erklären sind. Nun wird eine mögliche Erklärung zum langsamen ansteigen der Laufzeiten des Tango Baumes angegeben: \\
 Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1 = k_3$ und $k_2 \gg k_1$ gilt. Es wird aufeinanderfolgend \textit{access}$\left(k_1\right)$, \textit{access}$\left(k_2\right)$ und \\ \textit{access}$\left(k_3\right)$ ausgeführt. Betrachtet wird nun der Referenzbaum $P$ zum Tango Baum und \textit{access}$\left(k_3\right)$. Sei $P_k = p_1, p_2,.., p_l$ der Pfad von der Wurzel von $P$ zu dem Knoten $v_3$ mit dem Schlüssel $k_3$. Sei $v_v$ der gemeinsame Vorfahre von $v$ und dem Knoten $v_2$ mit dem Schlüssel $k_2$. $v_v$ muss der Knoten mit der kleinsten Tiefe sein, bei dem das preferred child wechselt (Eine Ausnahme ist $v_v = v_2$). Sei $u$ ein Knoten in $P_k$ mit größerer Tiefe als $v_v$, sowie \mbox{\textit{key}$\left(u\right) \neq k_1 \wedge $ \textit{key}$\left(u \right)\neq k_2 $}. Es muss entweder \textit{key}$\left(u\right) > k_3 > k_1$ gelten oder  $ k_3 > k_1 >$\textit{key}$\left(u\right)$ gelten und somit müssen $k_1$ und $k_3$ im selben Teilbaum von $u$ enthalten sein. So kann erklärt werden, dass verlängerte Pfade im Referenzbaum, hier nur zu wenigen zusätzlichen Wechsel bei preferred children führen. \\  
 
 
@@ -1822,7 +1822,7 @@ Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/workingset2}
-	\caption{Die Ergebnisse zum Laufzeittest zum Working Set Property mit variablem $a$.}
+	\caption{Die Ergebnisse zum Laufzeittest zur Working Set Property mit variablem $a$.}
 \end{figure}
 \begin{table}[H]
 	\begin{center}
@@ -1845,7 +1845,7 @@ Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1
 			$21$  & $59,5$ &$2$  \\
 			\hline
 		\end{tabular}
-		\caption{Die Ergebnisse zum Laufzeittest zum Working Set Property mit variablem $a$.} 
+		\caption{Die Ergebnisse zum Laufzeittest zur Working Set Property mit variablem $a$.} 
 	\end{center}
 \end{table}
 
@@ -1855,7 +1855,7 @@ Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1
 \subsubsection{Weitere Laufzeittests}
 \noindent \textbf{Alternierend die Schlüssel $1$ und $n$:\\}
 
-\noindent Umgesetzt werden diese Zugriffsfolgen durch solche zum Dynamic Finger Property, bei denen $a = n -1$ für den Abstand $a$ gilt. Relevant für die Laufzeit wird hier jedoch das Working Set Property.
+\noindent Umgesetzt werden diese Zugriffsfolgen durch solche zur Dynamic Finger Property, bei denen $a = n -1$ für den Abstand $a$ gilt. Relevant für die Laufzeit wird hier jedoch die Working Set Property.
 
 \begin{figure}[H]
 	\centering
@@ -1890,7 +1890,7 @@ Seien $k_1, k_2$ und $k_3$ im Tango Baum enthaltene Schlüssel, so dass $k_1 + 1
 
 \noindent \textbf{Aufsteigend sortiert mit insgesamt $n$ Zugriffen:}\\
 \bigskip
-Zu beachten ist hier, dass das Dynamic Finger Property relevant wird. 
+Zu beachten ist hier, dass die Dynamic Finger Property relevant wird. 
 
 \begin{figure}[H]
 	\centering
@@ -1919,7 +1919,7 @@ Zu beachten ist hier, dass das Dynamic Finger Property relevant wird.
 		\caption{Laufzeittests bei denen aufsteigend sortierte Zugriffsfolgen verwendet werden.} 
 	\end{center}
 \end{table}
-\noindent Beide BSTs erreichten bei den Zugriffsfolgen zum Dynamic Finger Property  vergleichsweise kurze Laufzeiten. Hier kommt hinzu dass die Länge der Zugriffsfolgen abhängig von der Anzahl der Knoten kürzer ist. Das Ergebnis sind erwartbar kurze Laufzeiten.
+\noindent Beide BSTs erreichten bei den Zugriffsfolgen zur Dynamic Finger Property  vergleichsweise kurze Laufzeiten. Hier kommt hinzu dass die Länge der Zugriffsfolgen abhängig von der Anzahl der Knoten kürzer ist. Das Ergebnis sind erwartbar kurze Laufzeiten.
 \newpage
 
 \bigskip
@@ -1929,7 +1929,7 @@ Zu beachten ist hier, dass das Dynamic Finger Property relevant wird.
 \bigskip
 
 
-\noindent Auch hier wird das Dynamic Finger Property relevant. 
+\noindent Auch hier wird die Dynamic Finger Property relevant. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Medien/laufzeittest/diagramm/sorted2}
@@ -1992,7 +1992,7 @@ Zu beachten ist hier, dass das Dynamic Finger Property relevant wird.
 	\end{center} 
 \end{table}
   
-\noindent Die  Werte für die Laufzeit steigt zum Teil auf mehr als das Doppelte an, vor allem bei den großen Instanzen. Eine Erklärung dafür ist, dass hier das Dynamic Finger Property lediglich beim mittleren Teil der Zugriffsfolge relevant wird. Und auch beim mittleren Teil bleibt die Betragsdifferenz zweier aufeinanderfolgender Schlüssel nicht konstant. Bei den Tests zum Dynamic Finger Property profitierte der Tango Baum eher von einer solchen konstanten Betragsdifferenz, als von niedrigen Betragsdifferenzen.
+\noindent Die  Werte für die Laufzeit steigt zum Teil auf mehr als das Doppelte an, vor allem bei den großen Instanzen. Eine Erklärung dafür ist, dass hier die Dynamic Finger Property lediglich beim mittleren Teil der Zugriffsfolge relevant wird. Und auch beim mittleren Teil bleibt die Betragsdifferenz zweier aufeinanderfolgender Schlüssel nicht konstant. Bei den Tests zur Dynamic Finger Property profitierte der Tango Baum eher von einer solchen konstanten Betragsdifferenz, als von niedrigen Betragsdifferenzen.
 
   
 \includepdf[pages = -]{anhang}

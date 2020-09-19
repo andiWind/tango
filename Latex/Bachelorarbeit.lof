@@ -53,13 +53,13 @@
 \contentsline {figure}{\numberline {52}{\ignorespaces Durchschnittliche Laufzeiten zu jeweils zehn zufällig erzeugten Zugriffsfolgen.\relax }}{89}%
 \contentsline {figure}{\numberline {53}{\ignorespaces Hier sind $n_T$ und $n_S$ graphisch dargestellt.\relax }}{91}%
 \contentsline {figure}{\numberline {54}{\ignorespaces Ergebnisse zu den Laufzeittests zur Bit Reversal Permutation.\relax }}{92}%
-\contentsline {figure}{\numberline {55}{\ignorespaces Ergebnisse zu den Zugriffsfolgen zum Static Finger Property mit den kürzesten Laufzeiten beider BSTs.\relax }}{93}%
-\contentsline {figure}{\numberline {56}{\ignorespaces Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zum Static Finger Property.\relax }}{94}%
-\contentsline {figure}{\numberline {57}{\ignorespaces Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zum Static Finger Property mit variablem $p$.\relax }}{95}%
-\contentsline {figure}{\numberline {58}{\ignorespaces Die Ergebnisse zum Laufzeittest zum Dynamic Finger Property mit \mbox {konstantem $a$.}\relax }}{96}%
-\contentsline {figure}{\numberline {59}{\ignorespaces Die Ergebnisse zum Laufzeittest zum Dynamic Finger Property mit variablem $a$.\relax }}{97}%
-\contentsline {figure}{\numberline {60}{\ignorespaces Die Ergebnisse zum Laufzeittest zum Working Set Property mit konstantem $a$.\relax }}{98}%
-\contentsline {figure}{\numberline {61}{\ignorespaces Die Ergebnisse zum Laufzeittest zum Working Set Property mit variablem $a$.\relax }}{100}%
+\contentsline {figure}{\numberline {55}{\ignorespaces Ergebnisse zu den Zugriffsfolgen zur Static Finger Property mit den kürzesten Laufzeiten beider BSTs.\relax }}{93}%
+\contentsline {figure}{\numberline {56}{\ignorespaces Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zur Static Finger Property.\relax }}{94}%
+\contentsline {figure}{\numberline {57}{\ignorespaces Durchschnittliche Laufzeiten über jeweils zehn Zugriffsfolgen zur Static Finger Property mit variablem $p$.\relax }}{95}%
+\contentsline {figure}{\numberline {58}{\ignorespaces Die Ergebnisse zum Laufzeittest zur Dynamic Finger Property mit \mbox {konstantem $a$.}\relax }}{96}%
+\contentsline {figure}{\numberline {59}{\ignorespaces Die Ergebnisse zum Laufzeittest zur Dynamic Finger Property mit variablem $a$.\relax }}{97}%
+\contentsline {figure}{\numberline {60}{\ignorespaces Die Ergebnisse zum Laufzeittest zur Working Set Property mit konstantem $a$.\relax }}{98}%
+\contentsline {figure}{\numberline {61}{\ignorespaces Die Ergebnisse zum Laufzeittest zur Working Set Property mit variablem $a$.\relax }}{100}%
 \contentsline {figure}{\numberline {62}{\ignorespaces Laufzeittests bei denen alternierend der kleinste und der größte Schlüssel verwendet wird.\relax }}{101}%
 \contentsline {figure}{\numberline {63}{\ignorespaces Laufzeittests bei denen aufsteigend sortierte Zugriffsfolgen verwendet werden.\relax }}{102}%
 \contentsline {figure}{\numberline {64}{\ignorespaces Laufzeittests bei denen absteigend sortierte Zugriffsfolgen verwendet werden.\relax }}{103}%

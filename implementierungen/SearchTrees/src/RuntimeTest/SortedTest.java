@@ -12,18 +12,29 @@ import java.util.List;
 
 /**
  *
- * @author andre
+ * @author andreas
+ * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch bei dem entweder eine aufsteigend 
+ * sortierte, eine absteigend sortierte oder eine geschachtelt sortierte Zugriffsfolge verwendet wird. 
  */
+
+ 
+
 public class SortedTest extends RuntimeTest {
   int numOfNodes;
   int typ;
-    
+    /**
+     * Führt einen Laufzeittest mit sortierten Zugriffsfolgen aus.
+     * @param n Anzahl der Knoten.
+     * @param t Untertyp des Laufzeittests: 1 -> aufsteigend, 2 -> absteigend, 3 -> geschachtelt in Einerschritten
+     * @param rf Frame mit dem das Ergebnis dargestellt wird.
+     * @param d Details anzeigen. Wenn "true" werden die Anzahl der Veränderungen bei preferred children im Referenzbaum und die Anzahl der Rotationen beim Splay Baum mit ausgewertet. 
+     */
     public SortedTest(int n, int t, RuntimeFrame rf,  boolean d){
         super(rf, "", d);
         typ = t;
         if(typ == 1)
             testName = "aufsteigend sortiert";
-        else if(typ == 1)
+        else if(typ == 2)
             testName = "absteigend sortiert";
         else{
             testName = "auf- / absteigend sortiert";
@@ -34,6 +45,11 @@ public class SortedTest extends RuntimeTest {
     } 
     
   @Override
+   /**
+   * Bildet die Zugriffsfolge und führt den Laufzeittest aus.
+   *@throws BuildAuxTreeFaildException Fehler beim Erzeugen des Tango Baumes.
+   * @return Daten zum Laufzeittest. [0]Zeit des Tango Baumes, [1]Zeit des Splay Baumes, [2]Anzahl der Veränderungen bei preferred Children im Referenzbaum, [3] Anzahl der Rotationen beim Splay Baum. 
+   */           
      long[] startTest()  throws BuildAuxTreeFaildException{
          List<Integer> accessSequenz = new LinkedList<>();
         List<Integer> keyList = new LinkedList<>();

@@ -19,7 +19,7 @@ import java.util.List;
 /**
  *
  * @author andreas
- * Zeichnet einen Referenzbaum und den zugehörigen TangoBaum 
+ * Zeichnet einen Referenzbaum mit 15 KNoten und den zugehörigen TangoBaum 
  */
 public class TangoCanvas extends Canvas {
     private RefTreeNode refRoot;
@@ -51,7 +51,10 @@ public class TangoCanvas extends Canvas {
             buildRefTree(node.right);
         }
     }
-    //Refenzbam wird selbst gepflegt, dann aufruf in TangoTree
+    /**
+     * Der Referenzbaum wird direkt gepflegt. Dann erfolgt der Aufruf beim Tango BAum
+     * @param key Angeforderter Schlüssel.
+     */
     void access(int key){
         if(key < 1 || key > 15)
             return;
@@ -79,7 +82,6 @@ public class TangoCanvas extends Canvas {
             if (node.prefChild == 1){
                 g.setColor(Color.GREEN);
             }
-           // g.drawLine(posWidth, posHeigth, posWidth - (canWidth - 10)  /(int)Math.pow(2, level + 1), posHeigth + 40 );
            g.drawRect( posWidth - (canWidth - 10)  /(int)Math.pow(2, level + 1), posHeigth, (canWidth - 10)  /(int)Math.pow(2, level + 1), 0  ); 
            g.drawRect( posWidth - (canWidth - 10)  /(int)Math.pow(2, level + 1), posHeigth, 0, 40  ); 
            drawRefTree(g, node.left, posWidth - (canWidth - 10)  /(int)Math.pow(2, level + 1) , posHeigth + 70, level + 1);
@@ -89,14 +91,13 @@ public class TangoCanvas extends Canvas {
              if (node.prefChild == 2){
                 g.setColor(Color.GREEN);
             }
-            //g.drawLine(posWidth, posHeigth,  posWidth + (canWidth - 10) /(int)Math.pow(2, level + 1) , posHeigth + 40);
             g.drawRect( posWidth  , posHeigth, (canWidth - 10)  /(int)Math.pow(2, level + 1), 0  ); 
             g.drawRect( posWidth + (canWidth - 10)  /(int)Math.pow(2, level + 1), posHeigth, 0, 40  ); 
             drawRefTree(g,  node.right, posWidth + (canWidth - 10) /(int)Math.pow(2, level + 1), posHeigth + 70, level + 1);
         }
     }
     /**
-     * Zurücksetzen der Zeichnung
+     * Zurücksetzen der Zeichnungen beider Bäume.
      */
     final void reset (){
         List<Integer> keys = new LinkedList<Integer>();

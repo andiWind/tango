@@ -14,12 +14,14 @@ import TangoTree.TangoNode;
  *
  * 
  * @author andreas
- *  Klasse zum erstellen eines RedBlackTree
+ *  Klasse zum Erstellen eines Rot-Schwarz-Baumes
  */
 public class RedBlackTree extends TangoAuxTree {
     private RBTNode root;
 
-   
+   /**
+    * 
+    */
     public RedBlackTree (){
       
     }
@@ -31,7 +33,8 @@ public class RedBlackTree extends TangoAuxTree {
    
   
     /**
-     * @param key Fügt einen Knoten mit Schlüssel "key" in den RBT ein.
+     * Einfügeoperation
+     * @param key Fügt einen Knoten mit Schlüssel "key" in den Rot-Schwarz-Baum ein.
      */
      @Override
     public void insert (int key){
@@ -53,7 +56,7 @@ public class RedBlackTree extends TangoAuxTree {
         }
         insertFixup(insNode);
     } 
-   //Erstellt aus einem RBT mit zwei roten Knoten in Eltern- Kind-Beziehung wieder eine gültige Darstellung 
+   //Erstellt aus einem Rot-Schwarz-Baum mit zwei roten Knoten in Eltern-Kind-Beziehung oder einer roten Wurzel wieder eine gültige Darstellung
     private void insertFixup (RBTNode node){
         if(node == null)
             return;
@@ -126,9 +129,9 @@ public class RedBlackTree extends TangoAuxTree {
      
     }
 
-    //  Entfert einen Teilbaum aus dem RedBlackTree und fügt ihn an anderer Stelle wieder ein
-     // @param place Darf nicht "null" sein. Einfügestelle
-    //  @param tree  Der verwendete Teilbaum
+    //  Entfert einen Teilbaum aus dem Rot-Schwarz-Baum und fügt ihn an anderer Stelle wieder ein
+     // @param place Darf nicht "null" sein. Dies ist die Einfügestelle
+    //  @param tree  Der verwendete Teilbaum.
 
     private void transplant (RBTNode place, RBTNode tree){
         if (place.getParent() == null ){
@@ -147,7 +150,7 @@ public class RedBlackTree extends TangoAuxTree {
     }
      /**
      * @param startNode Es muss die Wurzel eines RBT übergeben werden.
-     * @param key Der Schlüssel des gesuchten Knoten
+     * @param key Der Schlüssel des gesuchten Knotens.
      * @return Der Knoten mit Schlüssel "key"
      */
     @Override
@@ -173,7 +176,7 @@ public class RedBlackTree extends TangoAuxTree {
   
    
    /**
-     * Spaltet den TangoAuxTree mit Wurzel "tree" in zwei TangoAuxTree "T1" und "T2" auf. Der eine enthält die Schlüssel kleiner "key", der andere die Schlüssel 
+     * Spaltet den TangoAuxTree mit Wurzel "tree" in zwei TangoAuxTree "T1" und "T2" auf. T1 enthält die Schlüssel kleiner "key", T2 die Schlüssel 
      * größer "key"
      * @param node Wurzel eines RBT
      * @param key Der Wert von "key" muss als Schlüssel im RBT mit Wurzel "node"  enthalten sein. 
@@ -181,7 +184,7 @@ public class RedBlackTree extends TangoAuxTree {
      */
     @Override 
     public RBTNode split(TangoNode node, int key) {
-         //Es werden bottom up Teilbäume abgespalten, die dann  mit "merge" zu RBT zusammengefügt werden.
+         //Es werden bottom up Teilbäume abgespalten, die dann  mit "concatnate" zu RBT zusammengefügt werden.
         RBTNode keyNode = search (node, key); 
         if (keyNode == null)
             return null;
@@ -212,14 +215,14 @@ public class RedBlackTree extends TangoAuxTree {
             splitNode.setParent(null);
         ////////////////////////////////////
             if(splitNode.getKey() < key){
-                treeLroot = merge(splitL, splitNode, treeLroot);
+                treeLroot = concatenate(splitL, splitNode, treeLroot);
             }    
             else if (splitNode.getKey() > key){
-                treeRroot =  merge(treeRroot, splitNode, splitR);
+                treeRroot =  concatenate(treeRroot, splitNode, splitR);
             }
             else{
-                treeLroot = merge(splitL, null, treeLroot);
-                treeRroot = merge(treeRroot, null, splitR);
+                treeLroot = concatenate(splitL, null, treeLroot);
+                treeRroot = concatenate(treeRroot, null, splitR);
             }
         } while(nextSplitNode != null && splitNode != node);
         //Nun wird die Rückgabe noch zusammengfügt
@@ -230,7 +233,7 @@ public class RedBlackTree extends TangoAuxTree {
     }
 
     /**
-     * "treeLinput" bzw. "treeRinput" sind Wurzeln von RBT "TR" bzw "TL". Es werden die Knoten von "TR" "TL".und "mid" zu einem RBT
+     * "treeLinput" bzw. "treeRinput" sind die Wurzeln von den Rot-Schwarz-Bäumen  "TR" bzw "TL". Es werden die Knoten von "TR", "TL"und "mid" zu einem Rot-Schwarz-Baum
      * vereinigt.
      * @param treeLinput Jeder Schlüssel in "TL" muss kleiner als der Schlüssel von "mid" sein.
      * @param midInput Der Schlüssel von "mid" muss größer als alle Schlüssel aus "TL" und kleiner als alle Schlüssel aus "TR" sein.
@@ -238,15 +241,15 @@ public class RedBlackTree extends TangoAuxTree {
      * @return Die Wurzel eines RBT der aus den Knoten von "TL", "TR" und "mid" besteht.
      */
     @Override 
-    public RBTNode merge(TangoNode treeLinput, TangoNode midInput, TangoNode treeRinput) {
+    public RBTNode concatnate(TangoNode treeLinput, TangoNode midInput, TangoNode treeRinput) {
         //Fügt treeLinput an treeRInput seitlich an, oder umgekehrt< je nachdem weiche Schwarz-Höhe größer ist
         RBTNode mid = (RBTNode) midInput;
         RBTNode treeLroot = (RBTNode) treeLinput;
         RBTNode treeRroot = (RBTNode) treeRinput;
-        return merge(treeLroot, mid, treeRroot); 
+        return concatenate(treeLroot, mid, treeRroot); 
     }
    
-    private RBTNode merge(RBTNode treeLroot, RBTNode mid, RBTNode treeRroot) {
+    private RBTNode concatenate(RBTNode treeLroot, RBTNode mid, RBTNode treeRroot) {
         //Es kann nichts verbunden werden. 
         if(mid == null){ 
             if(treeLroot != null)
@@ -355,6 +358,7 @@ public class RedBlackTree extends TangoAuxTree {
         fixUpTree.insertFixup(fixUpNodeRB);
         return fixUpTree.getRoot();
     }
+    //Knoten aus dem Rot-Schwarz-Baum abhängen.
     private void detachNode(RBTNode node){
         if (node == null || node.getParent() == null)
             return;

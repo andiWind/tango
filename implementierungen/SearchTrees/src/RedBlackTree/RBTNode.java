@@ -10,7 +10,7 @@ import java.awt.Color;
 /**
  *
  * @author andreas
- * Knoten eines RedBlackTree
+ * Knoten eines Rot-Schwarz-Baumes.
  * 
  */
 public class RBTNode extends TangoNode  {
@@ -22,9 +22,9 @@ public class RBTNode extends TangoNode  {
 
     /**
      * 
-     * @param k Schlüssel des erzeugten Knoten.
-     * @param c Farbe des erzeugten Knoten 
-     * @param bh SchwarzHöhe des neu erzeugten Knoten
+     * @param k Schlüssel des zu erzeugenden Knotens.
+     * @param c Farbe des zu erzeugenden Knotens.
+     * @param bh SchwarzHöhe des zu erzeugenden Knotens
      */
     RBTNode (int k, RBColor c, int bh){
         super(k);
@@ -135,6 +135,7 @@ public class RBTNode extends TangoNode  {
     }
     @Override
     public Color getColorFromGui (){
+        //Erstmal in TangoNode abfragen ob der Knoten als Wurzel grün dargestellt werden soll.
         Color ret = super.getColorFromGui(); 
         if (ret != null)
             return ret;

@@ -26,7 +26,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -40,7 +39,7 @@ import javax.swing.JRadioButton;
 /**
  *
  * @author andreas
- * Erstellt und verwaltet das Fenster zum anstarten eines Laufzeittests.
+ * Erstellt und verwaltet das Fenster zum parametieren und starten eines Laufzeittests.
  */
 public class RuntimeFrame  extends JFrame{
     private boolean details;
@@ -68,6 +67,10 @@ public class RuntimeFrame  extends JFrame{
     private final JButton startButton;
     private final JComboBox<String> mainCombo ;   
     private RuntimeTest tester;
+    
+    /**
+     * Constructor
+     */
     RuntimeFrame(){ 
         numOfNodes = 1000;
         lenOfSeq = 1;
@@ -122,8 +125,7 @@ public class RuntimeFrame  extends JFrame{
                     startButton.setText("Abbruch");
                 }
             }
-        });
-       
+        });   
         sortedCombo = new JComboBox<>();
         sortedCombo.setFont(new Font("", 1, 24));
         sortedCombo.addItem("1,2,..,n");
@@ -144,8 +146,7 @@ public class RuntimeFrame  extends JFrame{
             public void mouseMoved(MouseEvent e) {
                 
             }
-        });
-        
+        });       
         numOfNodesText = new JTextField();
         numOfNodesText.setColumns(20);
         numOfNodesText.setText("" + setPointsInNumOfNodes(String.valueOf(numOfNodes)));
@@ -353,8 +354,6 @@ public class RuntimeFrame  extends JFrame{
                 }
             }
         });
-      
-        
         northPanel = new JPanel();
         northPanel.setLayout(new GridLayout(2,2));
         northPanel.add(new JLabel("Grundauswahl der Zugriffsfolge für den Laufzeittest:"));
@@ -493,6 +492,12 @@ public class RuntimeFrame  extends JFrame{
         bitReversalPermutationPanel.add(lenOfBRPText);
         bitReversalPermutationPanel.add(new JLabel("Anzahl der Bits"));
     }
+    
+    /**
+     * Mit dieser Methode werden die anzuzeigenden Informationen übergeben.
+     * @param result Daten zum Laufzeittest. [0]Zeit Tango Baum, [1]Zeit Splay Baum, [2]Anzahl der Veränderungen bei preferred Children, [3] Anzahl der Rotationen beim Splay Baum 
+     * @param testName Name der als Titel des Fensters verwendet wird. 
+     */
     public void setResult(long[] result, String testName){
           startButton.setText("Start");
           ResultFrame resultFrame = new ResultFrame(testName);

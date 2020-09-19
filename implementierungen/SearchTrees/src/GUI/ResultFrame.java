@@ -13,7 +13,7 @@ import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 
 /** *
  * @author andreas
- * Fenster zur Darstellung des Ergebnis, eines Laufzeittests
+ * Fenster zur Darstellung des Ergebnisses eines Laufzeittests.
  */
 
 public class ResultFrame extends JFrame {
@@ -38,7 +38,10 @@ public class ResultFrame extends JFrame {
         return time / 1000 + "," + value;
     }
 
-    
+   /**
+    * Überträgt die im Array result enthaltenen Informationen ins Ergebnisfenster. 
+    * @param result Array mit den Ergebnissen eines Laufzeittests.
+    */ 
     void setValues (long[] result){
         if(result.length < 4){
             if(result[0] == -1)
@@ -61,6 +64,10 @@ public class ResultFrame extends JFrame {
         }
      
     }
+    /**
+     * Constructor
+     * @param testName Name der als Titel des Ergebnisfensters verwendet wird.
+     */
     ResultFrame( String testName){ 
       
        tangoTime = new JLabel ("Zeit Tango " + "____"+ " s");

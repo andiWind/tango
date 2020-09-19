@@ -14,12 +14,16 @@ import java.util.List;
  *
  * 
  * @author andreas
- *  Klasse zum erstellen eines Splay Baum
+ *  Implementierung des Splay Baumes. Diese Variante enthält einen Rücksetzbaren Zähler für die ANzahl der Rotationen.
  */
 public class SplayTreeCountRot  {
     private SplayNode root;
     private long numOfRotations;
 
+  /**
+   * 
+   * @return Die Anzahl der ausgeführten Rotationen, seit dem letzten Zurücksetzen. 
+   */  
  public long getNumOfRotations(){
      return numOfRotations;
  }   
@@ -79,7 +83,7 @@ private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int 
     }  
  /**
  *
- * @param keyList Der erzeugte Splay Baum enthält alle in der Liste enthaltenen Schlüssel.   
+ * @param keyList Der zu erzeugende Splay Baum enthält alle in der Liste enthaltenen Schlüssel.   
  * 
  */
  public SplayTreeCountRot (List<Integer> keyList){
@@ -92,7 +96,7 @@ private SplayNode buildPerfectBalancedTree (SplayNode node, int numOfNodes, int 
 
      /**
  *  
- * @param key Es dürfen nur Werte verwendet werten die als Schlüssel im Tango Baum vorhanden sind.   
+ * @param key Es dürfen nur Werte verwendet werten die als Schlüssel im Splay Baum vorhanden sind.   
  * @return Der Knoten mit dem Schlüssel "key".  
  */ 
 public SplayNode access (int key){

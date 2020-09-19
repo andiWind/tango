@@ -12,13 +12,20 @@ import java.util.List;
 
 /**
  *
- * @author andre
+ * @author andreas
+ * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch bei dem eine zufällig erzeugte Zugriffsfolge verwendet
+ * wird.
  */
 public class RandomTest extends RuntimeTest {
   int numOfNodes;
   int lengthOfSeq;
  
-    
+  /**
+     * @param n Anzahl der Knoten der BSTs.
+     * @param r Länge der verwendeten Zugriffsfolge in Millionen.
+     * @param rf Frame mit dem das Ergebnis dargestellt wird.
+     * @param d Details anzeigen. Falls "true" werden die Anzahl der Veränderungen bei preferred children und die Anzahl der Rotationen beim Splay Baum mit ausgewertet. 
+   */  
     public RandomTest(int n, int r, RuntimeFrame rf, boolean d){
         super(rf, "Ergebnis Random", d);
         numOfNodes = n; 
@@ -26,6 +33,11 @@ public class RandomTest extends RuntimeTest {
     } 
     
   @Override
+   /**
+   * Bildet die Zugriffsfolge und führt den Laufzeittest aus.
+   * * @throws BuildAuxTreeFaildException Fehler beim Erzeugen des Tango Baumes.
+   * @return Daten zum Laufzeittest. [0]Zeit des Tango Baumes, [1]Zeit des Splay Baumes, [2]Anzahl der Veränderungen bei preferred Children im Referenzbaum, [3] Anzahl der Rotationen beim Splay Baum. 
+   */          
      long[] startTest()  throws BuildAuxTreeFaildException{
         int lOs = 1000000 * this.lengthOfSeq;
         List<Integer> accessSequenz = new LinkedList<Integer>();

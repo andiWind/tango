@@ -9,7 +9,7 @@ package GUI;
 /**
  *
  * @author andreas
- * Erzeugt und verwaltet das Hautpfenster.
+ * Erzeugt und verwaltet das Hautpfenster der GUI.
  */
 import java.awt.*;
 import java.awt.event.*;
@@ -108,11 +108,7 @@ public class MainGUI extends JFrame{
                 }   
             }
         );
-       
-        
-        
-        
-        
+
         accessDialog.setLocation(300, 0);
         initFrame();
         

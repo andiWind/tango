@@ -12,20 +12,28 @@ import java.util.List;
 
 /**
  *
- * @author andre
+ * @author andreas
+ * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum mit einer Bit Reversal Permutation durch.
  */
 public class BitReversalTest extends RuntimeTest {
   int numOfBits;
   
-    
+    /**
+     * @param n Länge der Binärdarstellungen der Elemente der BRP.
+     * @param rf Frame mit dem das Ergebnis dargestellt wird.
+     * @param d Details anzeigen. Falls "true" werden die Anzahl der Veränderungen bei preferred children und die Anzahl der Rotationen beim Splay Baum mit ausgewertet. 
+     */
     public BitReversalTest(int n,  RuntimeFrame rf, boolean d){
         super(rf, "Ergebnis Bit Reversal Permutation", d);
-        numOfBits = n;
-       
-        
+        numOfBits = n;  
     } 
     
   @Override
+  /**
+   * Bildet die Zugriffsfolge und führt den Laufzeittest durch.
+   * @throws BuildAuxTreeFaildException Fehler beim Erzeugen des Tango Baumes
+   * @return Daten zum Laufzeittest. [0]Zeit des Tango Baumes, [1]Zeit des Splay Baumes, [2]Anzahl der Veränderungen bei preferred Children im Referenzbaum, [3] Anzahl der Rotationen beim Splay Baum. 
+   */        
      long[] startTest()  throws BuildAuxTreeFaildException{
        List<Integer> keyList = new LinkedList<Integer>();
         for (int i = 0; i < Math.pow(2, numOfBits); i++){

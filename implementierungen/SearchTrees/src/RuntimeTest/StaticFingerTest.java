@@ -12,12 +12,21 @@ import java.util.List;
 
 /**
  *
- * @author andre
+ * @author andreas
+ * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch bei dem eine Zugriffsfolge verwendet
+ * wird, bei der die Static Finger Property relevant wird.
  */
+
 public class StaticFingerTest extends RuntimeTest {
   int numOfNodes;
   int repeat;  
-    
+    /**
+     * 
+     * @param n Anzahl der Knoten der BSTs.
+     * @param r Länge der verwendeten Zugriffsfolge in Millionen.
+     * @param rf Frame mit dem das Ergebnis dargestellt wird.
+     * @param d Details anzeigen. Wenn "true" werden die Anzahl der Veränderungen bei preferred children im Referenzbaum und die Anzahl der Rotationen beim Splay Baum mit ausgewertet. 
+     */
     public StaticFingerTest(int n, int r, RuntimeFrame rf, boolean d){
         super(rf, "Ergebnis StaticFinger", d);
         numOfNodes = n;
@@ -26,6 +35,13 @@ public class StaticFingerTest extends RuntimeTest {
     } 
     
   @Override
+   /**
+   * Bildet die Zugriffsfolge und führt den Laufzeittest aus.
+   * Auf den mittleren Schlüssel der Schlüsselmenge entfallen 2% der Zugriffe. Auf den nächst kleineren und größeren Schlüssel entfallen insgesamt 2% der restlichen
+   * Zugriffe usw.
+   *@throws BuildAuxTreeFaildException Fehler beim Erzeugen des Tango Baumes.
+   * @return Daten zum Laufzeittest. [0]Zeit des Tango Baumes, [1]Zeit des Splay Baumes, [2]Anzahl der Veränderungen bei preferred Children im Referenzbaum, [3] Anzahl der Rotationen beim Splay Baum. 
+   */          
      long[] startTest()  throws BuildAuxTreeFaildException{
          //Es wird eine Zugriffsfolge erzeugt bei der 2% der Zugriffe auf den mittleren Schlüssel entfallen. Dann 2% der restlichen Zugriffe auf die beiden Schlüssel mit Abstand 1 
         //zum mittleren Schlüssel usw.. Die Reihenfolge der Zugriffe ist dann Zufall.
