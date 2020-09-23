@@ -100,12 +100,11 @@ public class TangoPrefChildCount {
                         }  
                     search = search.left;
                     }
-        
-                    if (!(search.prefChild == 1)){
-                        countPref++;
-                        search.prefChild = 1;
-                    }   
                 }
+                if (!(search.prefChild == 1)){
+                    countPref++;
+                    search.prefChild = 1;
+                }      
             }
         }
          return countPref;
@@ -138,7 +137,7 @@ public class TangoPrefChildCount {
        PerfectTreeNode right;
        int key;
        int depth;
-       int prefChild;
+       int prefChild; //0: keines, 1: das linke, 2: das rechte
     }
  
 }

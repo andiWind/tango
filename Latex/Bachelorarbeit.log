@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 SEP 2020 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 SEP 2020 21:10
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1523,7 +1523,13 @@ Overfull \hbox (2.68329pt too wide) in paragraph at lines 36--36
 m/n/12 zwei-er RBTs glei-cher Schwarz-Höhe, 
  []
 
-[109])
+[109]
+Overfull \hbox (3.23453pt too wide) in paragraph at lines 64--64
+ [][] []\T1/cmr/m/n/12 Laufzeittests, bei de-nen auf-stei-gend sor-tier-te Zu-g
+riffs-fol-gen ver- 
+ []
+
+)
 \tf@lof=\write5
 \openout5 = `Bachelorarbeit.lof'.
 
@@ -1580,7 +1586,7 @@ gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
 blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (112 pages, 8930722 bytes).
+Output written on Bachelorarbeit.pdf (112 pages, 8931130 bytes).
 PDF statistics:
  1147 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
