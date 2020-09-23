@@ -25,7 +25,7 @@ public class SortedTest extends RuntimeTest {
     /**
      * Führt einen Laufzeittest mit sortierten Zugriffsfolgen aus.
      * @param n Anzahl der Knoten.
-     * @param t Untertyp des Laufzeittests: 1 -> aufsteigend, 2 -> absteigend, 3 -> geschachtelt in Einerschritten
+     * @param t Untertyp des Laufzeittests: 1 - aufsteigend, 2 - absteigend, 3 - geschachtelt in Einerschritten
      * @param rf Frame mit dem das Ergebnis dargestellt wird.
      * @param d Details anzeigen. Wenn "true" werden die Anzahl der Veränderungen bei preferred children im Referenzbaum und die Anzahl der Rotationen beim Splay Baum mit ausgewertet. 
      */

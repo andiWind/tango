@@ -79,7 +79,7 @@ public abstract class RuntimeTest extends Thread {
      * 
      * @param keyList Schlüsselmenge der zu erzeugenden BSTs.
      * @param accessSequenz Verwendete Zugriffsfolge zum Laufzeittest.
-     * @param repeat  accessSequenz wird beim Laufzeittest repeat mal abgearbeitet.
+     * @param repeat  accessSequenz wird beim Laufzeittest "repeat" mal abgearbeitet.
      * @return Daten zum Laufzeittest. [0]Zeit des Tango Baumes, [1]Zeit des Splay Baumes, [2]Anzahl der Veränderungen bei preferred Children im Referenzbaum, [3] Anzahl der Rotationen beim Splay Baum. 
      * @throws BuildAuxTreeFaildException Fehler beim Erzeugen des Tango Baumes.
      */
@@ -135,7 +135,7 @@ public abstract class RuntimeTest extends Thread {
     /**
      * Gibt eine Zufallszahl zurück.
      * @param probs Hier können Wahrscheinlichkeiten zwichen 0 und 1 eigetragen werden. Diese Wahrscheinlichkeiten beziehen sich auf den jeweiligen Array Index. Der Index 0 wird nicht berücksichtigt.
-     * @return Eine Zahl > 0 und < probs.length
+     * @return Eine Zahl größer 0 und kleiner "probs.length"
      */
     protected int randomNumber (double[] probs){
         Double random = Math.random();  
@@ -150,7 +150,7 @@ public abstract class RuntimeTest extends Thread {
     /**
      *  Gibt eine Zufallszahl zurück.
      * @param max Begrenzung der Rückgabe nach oben.
-     * @return Eine Zahl > 0 und <= max
+     * @return Eine Zahl größer  0 und kleiner gleich "max"
      */
      protected int randomNumber (int max){
         Double random = Math.random() * max;  

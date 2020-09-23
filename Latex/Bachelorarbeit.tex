@@ -1426,7 +1426,11 @@ Klassen deren Objekte als Hilfsbaum im Tango Baum eingesetzt werden sollen, müs
 Diese erweitern die abstrakten Klassen TangoAuxTree und TangoNode. RedBlackTree verhält sich wie im Kapitel zum Rot-Schwarz-Baum  beschrieben. 
 
 \paragraph{RuntimeTest:}
-Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann ein Test abgebrochen werden. Ein von dieser Klasse erzeugtes Objekt führt genau einen Laufzeittest durch. Die restlichen Attribute dienen dessen Parametrierung. Die Methoden zum Ausführen eines Tests  geben Arrays der Länge 2 zurück. Der erste Wert entspricht der Laufzeit des Tango Baumes, der zweite der des Splay Baumes. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}.
+ Klassen deren Objekte einen Laufzeittest mit dem Tango Baum und dem Splay Baum durchführen sollen, müssen diese Klasse erweitern. Das Attribut \enquote{exit} wird über die GUI gesetzt, worauf hin ein gestarteter Test abgebrochen wird. Die Methode \textit{runtimeTest} führt den eigentlichen Test durch und gibt ein Array mit der maximalen Länge vier zurück. Dieses enthält dann die Ausführungszeiten des Tango Baumes und des Splay Baumes, sowie die Anzahl der Veränderungen bei preferred Children im Referenzbaum zum Tango Baum und die Anzahl der vom Splay Baum ausgeführten Rotationen. Um Programmabbrüchen aufgrund zu wenig Speicher vorzubeugen, wurde bei den Projekteigenschaften die Option \enquote{ -Xmx4096m} gesetzt, Abbildung \ref{fig:optionSpeicher}.
+ 
+ \paragraph{RandomTest:}
+Diese Klasse erweitert die Klasse RuntimeTest. Insgesamt sind in dem Projekt sechs solcher Klassen vorhanden. Prinzipiell unterscheiden diese sich jedoch nicht, weshalb hier nur exemplarisch auf eine dieser Klasse eingegangen wird. Die Methode \textit{startTest} erzeugt eine Zugriffsfolge, bei der jeder enthaltene Schlüssel durch einen Pseudozufallsgenerator ausgewählt wurde. Der Test selbst wird dann von der bereits in der Klasse RuntimeTest implementierten Methode \textit{runtimeTest} ausgeführt. 
+ 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Medien/laufzeittest/optionSpeicher}
@@ -1435,7 +1439,7 @@ Hier ist die Durchführung der Laufzeittests umgesetzt. Mit \enquote{exit} kann 
 \end{figure}
 
 
-\section {Laufzeitvergleiche zwischen dem Tango Baum und dem Splay Baum.}
+\section {Laufzeittests zwischen dem Tango Baum und dem Splay Baum.}
 
 Es werden Laufzeittests zu unterschiedlichen Arten von Zugriffsfolgen durchgeführt. Unter anderem solche, die auf eine der Eigenschaften  Static Finger,  Working Set oder Dynamic Finger aus Abschnitt \ref{upperBounds} zugeschnitten sind. Hierzu werden dann Zugriffsfolgen verwendet, bei denen die jeweilige Eigenschaft für die Laufzeit besonders relevant ist. Der Tango Baum erfüllt die aufgeführten Eigenschaften zwar nicht, jedoch ist er  $\log\left(\log\left(n\right)\right)$-competitive. Ein dynamisch optimaler BST muss diese Eigenschaften erfüllen, dadurch könnte auch der Tango Baum von den speziellen Eigenschaften der Zugriffsfolgen indirekt profitieren.  \\
 
@@ -1999,7 +2003,7 @@ Zu beachten ist hier, dass die Dynamic Finger Property relevant wird.
 \section{Fazit und Ausblick}
 Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Bei ihm wurde die Idee, auf Grundlage der Interleave Lower Bound einen $\log\left(\log\left(n\right)\right)$-competitive BST zu konstruieren jedoch als Erstes umgesetzt und hier könnten noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften folgen. \\
 Mittlerweile hat sich zum Thema \enquote{dynamische Optimalität} viel Literatur angesammelt. Hier wurde nur auf einen sehr kleinen Ausschnitt eingegangen. Zum Beispiel gibt es  weitere untere Schranken für die Ausführungszeit von BSTs. Außerdem gibt es eine interessante geometrische Sicht auf BSTs. Von dieser konnten wichtige Aussagen über BSTs und andere Verfahren abgeleitet werden. Es gibt auch deutlich mehr obere Laufzeitschranken, für Zugriffsfolgen mit speziellen Eigenschaften, als  hier vorgestellt wurden. \\
-Ob es irgendwann gelingen wird die dynamische Optimalität des Splay Baumes oder irgendeiner anderen Variante eines BSTs zu beweisen, ist offen. Für den Einsatz bei gewöhnlich großen Schlüsselmengen müssen dann aber auch die Summanden und Faktoren berücksichtigt werden, die innerhalb der $O$-Notation vernachlässigt werden.
+Ob es irgendwann gelingen wird die dynamische Optimalität des Splay Baumes oder irgendeiner anderen Variante eines BSTs zu beweisen, ist offen. Für den Einsatz in der Praxis, müssen dann aber auch die Summanden und Faktoren berücksichtigt werden, die innerhalb der $O$-Notation vernachlässigt werden.
 
 
 \newpage

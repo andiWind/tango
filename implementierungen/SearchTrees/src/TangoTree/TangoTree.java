@@ -24,9 +24,9 @@ public class TangoTree implements I_GUITree{
     private TangoAuxTree auxTree;
  /**
  *
- * @param keyList Der erzeugte Tango Baum enthält alle in der Liste enthaltenen Schlüssel.   
+ * @param keyList Der erzeugte TangoTree enthält alle in der Liste enthaltenen Schlüssel.   
  * @param auxTreeClass Mit diesem Paramter wird die verwendete Hilfsstruktur festgelegt.  
- * @throws BuildAuxTreeFaildException Beim erstellen einer Instanz von "auxTreeClass" ist ein Fehler aufgetreten. 
+ * @throws BuildAuxTreeFaildException Beim Erstellen einer Instanz von "auxTreeClass" ist ein Fehler aufgetreten. 
  */
     public  TangoTree(List<Integer> keyList, Class<? extends TangoAuxTree > auxTreeClass) throws BuildAuxTreeFaildException{
         //Test AuxTree Class
@@ -109,10 +109,10 @@ public class TangoTree implements I_GUITree{
             node.getRightTango().setParent(node);  
         return node;
     }
-    @Override
-    /**
- *  
- * @param key Es dürfen nur Werte verwendet werten die als Schlüssel im Tango Baum vorhanden sind.   
+  @Override
+  /**
+ *  Der Knoten mit dem Schlüssel "key" wird zurückgegeben und der TangoTree wird aktualisiert.
+ * @param key Es dürfen nur Werte verwendet werden die als Schlüssel im TangoTree vorhanden sind.   
  * @return Der Knoten mit dem Schlüssel "key".  
  */
     public TangoNode access(int key){  

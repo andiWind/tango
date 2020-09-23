@@ -12,7 +12,7 @@ import java.awt.Color;
 /**
  *
  * @author andreas
- * Knoten eines TangoTree
+ * Knoten eines TangoTrees
  */
 public abstract class TangoNode implements I_GUINode{
 
@@ -89,19 +89,31 @@ public abstract class TangoNode implements I_GUINode{
         return parent;
     } 
 
-    //Diese Methoden werden den Auxtrees angeboten um normal innerhalb ihrer Struktur arbeiten zu können
+    /**
+     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees
+     * 
+     * @return 
+     */
     protected TangoNode getParent(){
         if (parent == null || isRoot )
             return null;
         return parent;
     }
-   
+    /**
+     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees
+     * 
+     * @return 
+     */
     protected TangoNode getLeft(){
         if (left == null || left.isRoot )
             return null;
         return left;
     }
-
+ /**
+     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees
+     * 
+     * @return 
+     */
     protected TangoNode getRight(){
         if (right == null || right.isRoot )
             return null;
@@ -109,11 +121,10 @@ public abstract class TangoNode implements I_GUINode{
     }
      
 
-//Diese Methoden können von den Auxtrees verwendet werden, um bei Veränderungen an der Baumstruktur 
-  //die Zeiger nach außen mitzupflegen
+
     /**
-     * 
-     * @return Das linke Kind, wenn dieses die Wurzel eines "Auxtree" ist. 
+     * Gibt das linke Kind zurück, falls dieses die Wurzel eines TangoAuxTrees ist, ansonsten "null"
+     * @return  
      */
     protected TangoNode getAuxTreeLeft(){
         if(getLeftTango() != null && getLeftTango().isRoot()){
@@ -121,9 +132,10 @@ public abstract class TangoNode implements I_GUINode{
         }
         return null;
     }
+   
     /**
-     * 
-     * @return Das rechte Kind, wenn dieses die Wurzel eines "Auxtree" ist. 
+     * Gibt das rechte Kind zurück, falls dieses die Wurzel eines TangoAuxTrees ist, ansonsten "null"
+     * @return  
      */
     protected TangoNode getAuxTreeRight(){
         if(getRightTango() != null && getRightTango().isRoot()){
@@ -131,8 +143,11 @@ public abstract class TangoNode implements I_GUINode{
         }
         return null;
     }
-     //Diese Methode kann von den ableitenden Klassen verwendet werden um bei Veränderungen an der Baumstruktur 
-    //die Zeiger nach ausen mitzupflegen
+     
+    /**
+     * Gibt den Elternknoten zurück, falls dieser die Wurzel eines TangoAuxTrees ist, ansonsten "null"
+     * @return  
+     */
     protected TangoNode getAuxTreeParent(){
        
         if(isRoot() && getParent() != null ){
@@ -145,22 +160,22 @@ public abstract class TangoNode implements I_GUINode{
         return key;
     }
     /**
-     * 
-     * @return Das linke Kind, unabhängig davon in welchem "Auxtree" es sich befindet 
+     * Gibt das linke Kind zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet 
+     * @return 
      */
     TangoNode getLeftTango(){
         return left;
     }
      /**
-     * 
-     * @return Das rechte Kind, unabhängig davon in welchem "Auxtree" es sich befindet 
+     * Gibt das rechte Kind zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet 
+     * @return 
      */
     TangoNode getRightTango(){
         return right; 
     }
-     /**
-     * 
-     * @return Den Elternknoten, unabhängig davon in welchem "Auxtree" er sich befindet 
+    /**
+     * Gibt den Elternknoten zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet 
+     * @return 
      */
     TangoNode getParentTango(){
        return parent;

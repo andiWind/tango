@@ -9,23 +9,21 @@ package TangoTree;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import GUI.I_GUITree;
-import GUI.I_GUINode;
+
 
 
 /**
  *
  * @author andreas
- * Klasse zum erstellen eines Tango Baum
+ * Objekte dieser Klasse bestimmen die Anzahl der Veränderungen an preferred children zu einer Zugriffsfolge.
  */
 public class TangoPrefChildCount {
     PerfectTreeNode refTreeRoot;
   
  /**
  *
- * @param keyList Der erzeugte Tango Baum enthält alle in der Liste enthaltenen Schlüssel.   
- * @param auxTreeClass Mit diesem Paramter wird die verwendete Hilfsstruktur festgelegt.  
- * @throws BuildAuxTreeFaildException Beim erstellen einer Instanz von "auxTreeClass" ist ein Fehler aufgetreten. 
+ * @param keyList Die Elemente von "keyList" müssen genau mit den Schlüsseln des TangoTrees übereinstimmen, zu dem die  Anzahl der Veränderungen an preferred children
+ * bestimmt werden soll.
  */
     public  TangoPrefChildCount(List<Integer> keyList) {
         //Test AuxTree Class
@@ -73,7 +71,13 @@ public class TangoPrefChildCount {
       return ret;
    }
     
-   
+   /**
+    *Bestimmt die Anzahl der Veränderungen an preferred children zu der von "accessSeq" und "repeat" bestimmten Zugriffsfolge. 
+    * @param accessSeq Aufsteigend nach dem Index sortiert bilden die Elemente von  accessSeq" den ersten Teil der Zugriffsfolge. 
+    * @param repeat Die durch "accessSeq" bestimmte Zugriffsfolge wird "repeat" mal wiederholt, so bildet sich die Zugriffsfolge, auf die sich die
+    * der return Wert bezieht.
+    * @return Die Anzahl der Veränderungen an preferred children zu der von "accessSeq" und "repeat" bestimmten Zugriffsfolge.
+    */
     public long numOfPrevChildChanges(List<Integer> accessSeq, int repeat){  
         long countPref = 0;
         for(int i = 0; i < repeat; i++){
@@ -116,7 +120,7 @@ public class TangoPrefChildCount {
             tempWritedNumbers = setKeysInPBT(node.right, sortedKeys, tempWritedNumbers);
         return  tempWritedNumbers;    
     }
-    //Erzeugt die Abbildstruktur. Einziger Aufruf im Konstruktor
+    //Erzeugt die Referenzstruktur. Einziger Aufruf im Konstruktor
     private PerfectTreeNode buildPerfectBalancedTree (PerfectTreeNode node, int numOfNodes, int nodeNumber, int depth ){
         node.depth = depth;
         if (2 * nodeNumber <= numOfNodes){
