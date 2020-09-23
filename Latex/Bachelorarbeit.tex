@@ -68,7 +68,7 @@
 \begin{center}
 \textbf{Zusammenfassung}
 \end{center}
- Bei binären Suchbäumen wird sich besonders für die Ausführungszeit seiner Operationen  interessiert. Hier wird es speziell um die Ausführungszeit von Folgen von \textit{access} Operationen gehen, im Bezug zur Anzahl der Knoten des binären Suchbaumes $n$. Beim 1985  vorgestellten Splay Baum \cite{splay} wird vermutet, dass dieser jede Folge von  \textit{access} Operationen asymptotisch betrachtet, mindestens genau so schnell ausführt, wie jeder andere binäre Suchbaum. Dies wurde als \enquote{Dynamische Optimalitäts Vermutung} bekannt. Bis heute ist offen ob der Splay Baum diese Eigenschaft besitzt.  2007 wurde dann der Tango Baum  \cite{demainDinamicOpti} vorgestellt. Bei ihm ist bekannt, dass er jede solche Folge asymptotisch betrachtet, höchstens um einen Faktor $\log\left(\log\left(n\right)\right)$ langsamer ausführt, als der jeweils schnellste binäre Suchbaum. Um dies zu beweisen wurde die \enquote{Interleave Bound}, eine untere Schranke für die Ausführungszeit solcher Folgen verwendet.  Bis dahin war für keinen binären Suchbaum ein Faktor kleiner als $\log\left(n\right)$ bewiesen und dieser wird von den balancierten binären Suchbäumen trivial erreicht. Der Tango Baum wird im Detail vorgestellt und zusätzlich noch zwei Variationen zu ihm. Abschließend werden Laufzeittests zwischen dem Tango Baum und dem Splay Baum durchgeführt, wobei der Splay Baum durchgängig die niedrigeren Zeiten liefern wird. 
+ Bei binären Suchbäumen sind besonders die Ausführungszeiten ihrer Operationen von Interesse. Hier wird speziell die Ausführungszeit von Folgen von \textit{access} Operationen betrachtet, im Bezug zur Anzahl der Knoten des binären Suchbaumes $n$. Beim 1985  vorgestellten Splay Baum \cite{splay} wird vermutet, dass dieser jede Folge von  \textit{access} Operationen asymptotisch betrachtet, mindestens genau so schnell ausführt, wie jeder andere binäre Suchbaum. Dies wurde als \enquote{Dynamische Optimalitäts Vermutung} bekannt. Bis heute ist offen, ob der Splay Baum diese Eigenschaft besitzt.  2007 wurde dann der Tango Baum  \cite{demainDinamicOpti} vorgestellt. Bei ihm ist bekannt, dass er jede solche Folge asymptotisch betrachtet, höchstens um einen Faktor $\log\left(\log\left(n\right)\right)$ langsamer ausführt, als der jeweils schnellste binäre Suchbaum. Um dies zu beweisen wurde die \enquote{Interleave Bound}, eine untere Schranke für die Ausführungszeit solcher Folgen verwendet.  Bis dahin war für keinen binären Suchbaum ein Faktor kleiner als $\log\left(n\right)$ bewiesen und dieser wird von den balancierten binären Suchbäumen trivial erreicht. Der Tango Baum wird im Detail vorgestellt und zusätzlich noch zwei Variationen zu ihm. Abschließend werden Laufzeittests zwischen dem Tango Baum und dem Splay Baum durchgeführt, wobei der Splay Baum durchgängig die niedrigeren Zeiten liefern wird. 
 \newpage
 \tableofcontents
 \newpage
@@ -77,9 +77,9 @@
 
 \newpage
 \section{Einleitung}
-Binäre Suchbäume werden zur Lösung des Wörterbuchproblems eingesetzt. Hierbei existiert eine Menge von Schlüsseln, denen Daten zugeordnet sind. Im Telefonbuch wäre ein Name beispielsweise ein Schlüssel, dem als Datum eine Telefonnummer zugeordnet ist. Da solche Mengen von Schlüsseln in der Praxis extrem groß werden können, ist es wichtig, diese möglichst effizient zu verwalten. Auf einen einmal eingefügten Schlüssel kann beliebig oft zugegriffen werden. Deshalb müssen vor allem diese Zugriffe effizient sein. Das binäre Suchen bietet sich hierzu als Möglichkeit an. Die Schlüssel müssen dazu auf irgendeine Art sortiert vorliegen.\\ Beim Telefonbuch wird die alphabetische Sortierung verwendet. Somit kann mit der Suche eines Namens in etwa der Mitte des Telefonbuches gestartet werden. Nach einem Vergleich können dann zumindest die Schlüssel einer Hälfte des Buches ausgeschlossen werden. Dieses Verhalten iteriert bis der gesuchte Name gefunden ist. Obwohl es viele Varianten von binären Suchbäumen mit zum Teil aufwändigem Verhalten gibt, ahmen sie im Grunde das binäre Suchen nach.\\
+Binäre Suchbäume werden zur Lösung des Wörterbuchproblems eingesetzt. Hierbei existiert eine Menge von Schlüsseln, denen Daten zugeordnet sind. Im Telefonbuch wäre ein Name beispielsweise ein Schlüssel, dem als Datum eine Telefonnummer zugeordnet ist. Da solche Mengen von Schlüsseln in der Praxis extrem groß werden können, ist es wichtig, diese möglichst effizient zu verwalten. Auf einen einmal eingefügten Schlüssel kann beliebig oft zugegriffen werden. Deshalb müssen vor allem diese Zugriffe effizient sein. Das binäre Suchen bietet sich hierzu als Möglichkeit an. Die Schlüssel müssen dazu auf irgendeine Art und Weise sortiert vorliegen.\\ Beim Telefonbuch wird die alphabetische Sortierung verwendet. Somit kann mit der Suche eines Namens in etwa der Mitte des Telefonbuches gestartet werden. Nach einem Vergleich können dann zumindest die Schlüssel einer Hälfte des Buches ausgeschlossen werden. Dieses Verhalten iteriert bis der gesuchte Name gefunden ist. Obwohl es viele Varianten von binären Suchbäumen mit zum Teil aufwändigem Verhalten gibt, ahmen sie im Grunde das binäre Suchen nach.\\
 Binäres Suchen könnte jedoch auch mit einem einfachen Array umgesetzt werden. Hierbei ergibt sich bei Änderungen an der Schlüsselmenge jedoch das Problem, das Array effizient anzupassen. Wird z.B. ein Schlüssel entfernt, müssen alle Nachfolgenden um ein Feld verschoben werden. Beim Einfügen eines Schlüssels könnte sogar ein Umzug in ein größeres Array notwendig werden. Bei binären Suchbäumen können solche Änderungen effizienter durchgeführt werden.\\ 
-Das Auffinden eines Schlüssels erfolgt beim binären Suchbaum  mit einer \mbox{\textit{access}} Operation.  Eine Eigenschaft des binären Suchbaum ist es, dass weiter oben liegende Schlüssel schneller erreicht werden können als andere. Ist bekannt, wie häufig auf welchen Schlüssel zugegriffen wird, kann diese Eigenschaft ausgenutzt werden. Ein Schlüssel wird dann umso weiter oben platziert, je häufiger auf ihn zugegriffen wird. \\
+Das Auffinden eines Schlüssels erfolgt beim binären Suchbaum  mit einer \mbox{\textit{access}} Operation.  Eine Eigenschaft des binären Suchbaumes ist es, dass weiter oben liegende Schlüssel schneller erreicht werden können als andere. Ist bekannt, wie häufig auf welchen Schlüssel zugegriffen wird, kann diese Eigenschaft ausgenutzt werden. Ein Schlüssel wird dann umso weiter oben platziert, je häufiger auf ihn zugegriffen wird. \\
 Ein weiterer Versuch ein  effizientes Verhalten zu erreichen sind die dynamischen binären Suchbäume. Im Gegensatz zu statischen binären Suchbäumen ändern diese ihre Struktur auch bei \textit{access} Operationen. Dies macht sie unabhängiger von den oft unbekannten Häufigkeiten der Zugriffe auf die einzelnen Schlüssel. Der Tango Baum ist ein solcher Vertreter, ebenso wie der Splay Baum, der in dieser Arbeit als Vergleichspartner dient.
 
 
@@ -88,10 +88,10 @@ Ein weiterer Versuch ein  effizientes Verhalten zu erreichen sind die dynamische
 \section {Binäre Suchbäume}
 Es gibt viele Varianten von binären Suchbäumen mit unterschiedlichen Eigenschaften und Leistungsdaten. In diesem Kapitel werden binäre Suchbäume im Allgemeinem beschrieben. Außerdem werden Begriffe definiert, die in den nachfolgenden Kapiteln verwendet werden. \\
 \subsection {Die Definition des  binären Suchbaumes.}
-Ein \textbf{Baum} $T$ ist ein minimal zusammenhängender gerichteter Graph. Ein Baum ohne Knoten ist ein \textbf{leerer Baum}. In einem nicht leeren Baum gibt es genau einen Knoten ohne eingehende Kante, dieser wird als \textbf{Wurzel}  bezeichnet. Alle anderen Knoten haben genau eine eingehende Kante.  Enthält der Baum eine Kante von Knoten $v_1$ zu Knoten $v_2$, so ist $v_2$ ein \textbf{Kind} von $v_1$ und $v_1$ ist der  \textbf{Elternknoten} von $v_2$. Die Wurzel hat also keinen Elternknoten, alle anderen Knoten genau einen.  Ein \textbf{Pfad} $P$ ist eine Folge von Knoten $(v_0$,$v_1$,...,$v_n)$ mit $\forall i \in \{ 1, 2,..., n \} \colon v_{i-1}$ \textit{ist der Elternknoten von} $v_i$. $n$ ist die \textbf{Länge des Pfades}. $\left(v_0\right)$ ist ein Pfad der Länge $0$. Jeder Knoten $v$ in $T$ ist die Wurzel eines \textbf{Teilbaumes} $T(v)$. Dieser entsteht in dem alle Knoten $u$ aus $T$ entfernt werden, zu denen es keinen Pfad mit  $v_0 = v$ und $v_n = u$ gibt. Knoten ohne ausgehende Kante werden \textbf{Blatt} genannt, alle anderen Knoten werden als \textbf{innere Knoten} bezeichnet.\\
+Ein \textbf{Baum} $T$ ist ein minimal zusammenhängender gerichteter Graph. Ein Baum ohne Knoten ist ein \textbf{leerer Baum}. In einem nicht leeren Baum gibt es genau einen Knoten ohne eingehende Kante. Dieser wird als \textbf{Wurzel}  bezeichnet. Alle anderen Knoten haben genau eine eingehende Kante.  Enthält der Baum eine Kante von Knoten $v_1$ zu Knoten $v_2$, so ist $v_2$ ein \textbf{Kind} von $v_1$ und $v_1$ ist der  \textbf{Elternknoten} von $v_2$. Die Wurzel hat also keinen Elternknoten, alle anderen Knoten genau einen.  Ein \textbf{Pfad} $P$ ist eine Folge von Knoten $(v_0$,$v_1$,...,$v_n)$ mit $\forall i \in \{ 1, 2,..., n \} \colon v_{i-1}$ \textit{ist der Elternknoten von} $v_i$. $n$ ist die \textbf{Länge des Pfades}. $\left(v_0\right)$ ist ein Pfad der Länge $0$. Jeder Knoten $v$ in $T$ ist die Wurzel eines \textbf{Teilbaumes} $T(v)$. Dieser entsteht indem alle Knoten $u$ aus $T$ entfernt werden, zu denen es keinen Pfad mit  $v_0 = v$ und $v_n = u$ gibt. Knoten ohne ausgehende Kante werden \textbf{Blatt} genannt. Jeder andere Knoten wird als \textbf{innerer Knoten} bezeichnet.\\
 Bei einem \textbf{binären Baum} kommt folgende Einschränkung hinzu:  \\
 \textit{Ein Knoten hat maximal zwei Kinder.}\\ 
-Entsprechend ihrer Zeichnung werden die Kinder in Binärbäumen als \textbf{linkes Kind} oder \textbf{rechtes Kind} bezeichnet. Sei $w$ das linke, bzw. rechte Kind von $v$, dann wird der Teilbaum mit der Wurzel $w$ als \textbf{linker Teilbaum} bzw. \textbf{rechter Teilbaum}  von $v$ bezeichnet.  
+Entsprechend ihrer Zeichnung werden die Kinder in Binärbäumen als \textbf{linkes Kind} oder \textbf{rechtes Kind} bezeichnet. Sei $w$ das linke, bzw. rechte Kind von $v$, dann wird der Teilbaum mit der Wurzel $w$ als \textbf{linker Teilbaum}, bzw. \textbf{rechter Teilbaum}  von $v$ bezeichnet.  
 
 \begin{figure}[H]
 	\centering
@@ -140,10 +140,10 @@ Algorithmus \textit{inorder} $($Node $v)$
 \end{enumerate}
 
 \noindent Dass das Verfahren funktioniert, wird sichtbar, durch Induktion über die Anzahl der Knoten $n$.
-Für $n = 1$ funktioniert es, da der einzige im BST enthaltene Schlüssel ausgegeben wird. Wir nehmen nun an, dass die Ausgabe für BSTs mit Knotenzahl $\leq n$ korrekt ist. Sei $T_1$ ein BST mit Knotenanzahl $n + 1$ und Wurzel $w$. Sowohl für den linken, als auch für den rechten Teilbaum von $w$ gilt, dass die Anzahl enthaltener Knoten $\leq n$ ist. Als erstes wird der linke Teilbaum von $w$ korrekt ausgegeben, dann der Schlüssel von $w$ selbst und zuletzt der rechte Teilbaum von $w$. Damit wurde auch für den Gesamtbaum die richtige
+Für $n = 1$ funktioniert es, da der einzige im BST enthaltene Schlüssel ausgegeben wird. Wir nehmen nun an, dass die Ausgabe für BSTs mit Knotenzahl $\leq n$ korrekt ist. Sei $T_1$ ein BST mit Knotenanzahl $n + 1$ und Wurzel $w$. Sowohl für den linken, als auch für den rechten Teilbaum von $w$ gilt, dass die Anzahl der enthaltenen Knoten $\leq n$ ist. Als erstes wird der linke Teilbaum von $w$ korrekt ausgegeben, dann der Schlüssel von $w$ selbst und zuletzt der rechte Teilbaum von $w$. Damit wurde auch für den Gesamtbaum die richtige
 Ausgabe erzeugt. \\
-Als \textbf{Vorgänger} eines Knotens $v$ mit dem Schlüssel $k_v$, wird der Knoten mit dem größten im BST enthaltenen Schlüssel $k_p$, für den $k_p < k_v$ gilt, bezeichnet. Aus der Inorder-Traversierung kann eine Anleitung zum Finden des Vorgängers abgeleitet werden. Falls ein linker Teilbaum vorhanden ist, wird der größte Schlüssel in diesem, also der am weitesten rechts liegende, direkt vor $k_v$ ausgegeben. Ansonsten wird der Schlüssel des tiefsten Knotens auf dem Pfad von der Wurzel zu $v$ ausgegeben, bei dem $v$ im rechten Teilbaum liegt. \\
-Als \textbf{Nachfolger} von $v$ wird der Knoten mit dem kleinsten im BST enthaltenem Schlüssel $k_s$, für den $k_s > k_v$ gilt, bezeichnet. Da dieser Schlüssel bei der Inorder-Traversierung direkt nach $v$ ausgegeben wird, ist der zugehörige Knoten ganz links im rechten Teilbaum von $v$ zu finden, falls ein solcher vorhanden ist. Ansonsten ist es der tiefste Knoten auf dem Pfad von der Wurzel zu $v$, bei dem $v$ im linkem Teilbaum liegt. Abbildung \ref{fig:VorgängerNachfolger} zeigt den Vorgänger und den Nachfolger eines Knotens.\\
+Als \textbf{Vorgänger} eines Knotens $v$ mit dem Schlüssel $k_v$ wird der Knoten mit dem größten im BST enthaltenen Schlüssel $k_p$, für den $k_p < k_v$ gilt, bezeichnet. Aus der Inorder-Traversierung kann eine Anleitung zum Finden des Vorgängers abgeleitet werden. Falls ein linker Teilbaum vorhanden ist, wird der größte Schlüssel in diesem, also der am weitesten rechts liegende, direkt vor $k_v$ ausgegeben. Ansonsten wird der Schlüssel des tiefsten Knotens auf dem Pfad von der Wurzel zu $v$ ausgegeben, bei dem $v$ im rechten Teilbaum liegt. \\
+Als \textbf{Nachfolger} von $v$ wird der Knoten mit dem kleinsten im BST enthaltenen Schlüssel $k_s$, für den $k_s > k_v$ gilt, bezeichnet. Da dieser Schlüssel bei der Inorder-Traversierung direkt nach $v$ ausgegeben wird, ist der zugehörige Knoten ganz links im rechten Teilbaum von $v$ zu finden, falls ein solcher vorhanden ist. Ansonsten ist es der tiefste Knoten auf dem Pfad von der Wurzel zu $v$, bei dem $v$ im linkem Teilbaum liegt. Abbildung \ref{fig:VorgängerNachfolger} zeigt den Vorgänger und den Nachfolger eines Knotens.\\
  Als \textbf{Vorfahre} eines Knotens $v$ werden alle Knoten auf dem Pfad von der Wurzel zu $v$, inklusive $v$ selbst, bezeichnet. 
 
 \begin{figure}[H]
@@ -161,7 +161,7 @@ Für alle $a$,$b$,$c$ $\in M$ gilt:
 \text{3. } & (a,b) \in R  \land  (b,c) \in R \Rightarrow  (a,c) \in R  &\text{  (transitiv)}\\
 \text{4. } & (a,b) \notin R \Rightarrow  (b,a) \in R   &\text{  (total)}\\
 \end{align*}
-Die Eigenschaften 1,2 und 4 werden benötigt, um für zwei beliebige Elemente aus der Menge feststellen zu können, ob sie gleich sind oder bei Ungleichheit, welches Element weiter links bzw. rechts im BST liegen muss. Dafür wird z.B. getestet, ob die Elemente $(a,b)$ und $(b, a)$ in der Relation liegen. Eigenschaft 3 ist notwendig, denn liegt $b$ weiter rechts im BST als $a$ und $c$ liegt weiter rechts als $b$, dann liegt $c$ natürlich auch weiter rechts als $a$. \\
+Die Eigenschaften 1,2 und 4 werden benötigt, um für zwei beliebige Elemente aus der Menge feststellen zu können, ob sie gleich sind oder bei Ungleichheit, welches Element weiter links, bzw. rechts im BST liegen muss. Dafür wird z.B. getestet, ob die Elemente $(a,b)$ und $(b, a)$ in der Relation liegen. Eigenschaft 3 ist notwendig. Denn liegt $b$ weiter rechts im BST als $a$ und $c$ liegt weiter rechts als $b$, dann liegt $c$ natürlich auch weiter rechts als $a$. \\
 Die von uns verwendete \enquote{Kleiner-Gleich-Beziehung} auf den natürlichen Zahlen erfüllt alle Eigenschaften.
 \\
 \\
@@ -170,10 +170,9 @@ Die von uns verwendete \enquote{Kleiner-Gleich-Beziehung} auf den natürlichen Z
 
 
 \paragraph{Verändern eines BSTs durch Rotationen:}
-Wird ein BST durch eine Veränderung in einen anderen BST überführt, kann es passieren, dass sich die Eigenschaften eines Knoten ändern. Um nicht immer erwähnen zu müssen, auf welchen BST sich eine Aussage bezieht, wird es ab jetzt durchgängig so sein, dass sich ein Variablenname ohne angefügten Hochstrich auf den BST vor der Änderung bezieht. Der gleiche Variablenname mit angefügtem Hochstrich bezieht sich dann auf den selben Knoten nach der Änderung. Beispielsweise bezieht sich $x$ auf den Knoten mit dem Schlüssel $k$ in der Ausgangssituation, dann bezieht sich $x'$ auf den Knoten mit dem Schlüssel $k$ nach dem Ausführen der Änderung. \\
+Wird ein BST durch eine Veränderung in einen anderen BST überführt, kann es passieren, dass sich die Eigenschaften eines Knotens ändern. Um nicht immer erwähnen zu müssen, auf welchen BST sich eine Aussage bezieht, wird es ab jetzt durchgängig so sein, dass sich ein Variablenname ohne angefügten Hochstrich auf den BST vor der Änderung bezieht. Der gleiche Variablenname mit angefügtem Hochstrich bezieht sich dann auf den selben Knoten nach der Änderung. Beispielsweise bezieht sich $x$ auf den Knoten mit dem Schlüssel $k$ in der Ausgangssituation, dann bezieht sich $x'$ auf den Knoten mit dem Schlüssel $k$ nach dem Ausführen der Änderung. \\
 
-\noindent\textbf{Rotationen} können verwendet werden, um lokale Änderungen an der Struktur eines BSTs durchzuführen, ohne eine der geforderten Eigenschaften zu verletzen. Es wird zwischen der Linksrotation und der Rechtsrotation 
-unterschieden. Hier wird zunächst auf die in Abbildung \ref{fig:Linksrotation} dargestellte Linksrotation eingegangen. 
+\noindent\textbf{Rotationen} können verwendet werden, um lokale Änderungen an der Struktur eines BSTs durchzuführen, ohne eine der geforderten Eigenschaften zu verletzen. Es wird zwischen der \textbf{Linksrotation} und der textit{Rechtsrotation} unterschieden. Hier wird zunächst auf die in Abbildung \ref{fig:Linksrotation} dargestellte Linksrotation eingegangen. 
 Sei $x$ der Knoten auf dem eine Linksrotation durchgeführt wird. Sei $z$ der Elternknoten von $x$. $z$ muss existieren, ansonsten darf auf $x$ keine Rotation durchgeführt werden. Sei $B$ der linke Teilbaum von $x$. Nach der Rotation ist $x'$ das linke, bzw. rechte Kind von dem Knoten, von dem $z$ das linke, bzw. rechte Kind war. $z'$ ist das linke Kind von $x'$. Die Wurzel von $B '$ ist das rechte Kind von $z'$. Unabhängig von der Anzahl der im BST enthaltenen Knoten und der Ausführungsstelle im BST ist eine Linksrotation daher mit dem Aufwand verbunden, maximal drei Zeiger umzusetzen. Abbildung \ref{fig:Rechtsrotation} zeigt die symmetrische Rechtsrotation. Dass es durch eine Rotation zu keiner Verletzung der BST Eigenschaften kommt, kann den Abbildungen direkt entnommen werden. In Abbildung \ref{fig:LinksRechtsRotation} ist zu erkennen, dass sich die Wirkung einer Rotation auf $x$ durch eine gegenläufige Rotation auf $z'$ aufheben lässt.  
 \begin{figure}[H]
 	\centering
@@ -206,7 +205,7 @@ Bei \textit{insert}$($key $k)$  wird sich zunächst wie bei  \textit{search}$($k
 	\caption{Links zeigt eine Suche nach dem Schlüssel 15. Rechts das Einfügen des Schlüssels 13.}
 	\label{fig:SuchenEinfügen}
 \end{figure}
-\noindent Auch bei \textit{delete}$($key $k)$ wird sich zunächst wie bei  \textit{search}$($key $k)$ verhalten. Ist $k$ im BST nicht vorhanden wird abgebrochen und der BST bleibt unverändert. Ansonsten werden drei Fälle unterschieden.
+\noindent Auch bei \textit{delete}$($key $k)$ wird sich zunächst wie bei  \textit{search}$($key $k)$ verhalten. Ist $k$ im BST nicht vorhanden, wird abgebrochen und der BST bleibt unverändert. Ansonsten werden drei Fälle unterschieden.
 Sei $v$ der Knoten mit dem Schlüssel $k$.
 \begin{enumerate}
 	\item $v$ ist ein Blatt: \\
@@ -215,7 +214,7 @@ Sei $v$ der Knoten mit dem Schlüssel $k$.
 	Ist $v$ die Wurzel kann er entfernt werden und $c$ wird zur neuen Wurzel. Ansonsten ist $v$ entweder das linke oder das rechte Kind eines Knotens $w$. $c$ nimmt nun den Platz von $v$ im BST ein. Das bedeutet, dass die Kanten von $w$ nach $v$ und von $v$ nach $c$ entfernt werden. Außerdem wird eine Kante von $w$ nach $c$ so eingefügt, dass $c$ wie zuvor $v$, das linke, bzw. rechte Kind von $w$ wird. 
 	\item $v$ hat zwei Kinder:\\
 	Sei $T_l$ der linke Teilbaum von $v$ und $T_r$ der Rechte.
-	Sei $z$ der Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$. Als Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$, kann $z$ kein linkes Kind haben. Ist $z$ ein Blatt wird seine eingehende Kante entfernt. Hat $z$ ein rechtes Kind $z_r$, so nimmt dieses, analog zur Beschreibung im Fall 2, den Platz von $z$ ein. In beiden Fällen ist $z$ nun ein Knoten ohne Kante. Im nächsten Schritt nimmt nun $z$ den Platz von $v$ ein, $T_l$ wird links an $z$ angefügt und $T_r$ rechts. War $v$ zu Beginn die Wurzel, so wird $z'$ zur neuen Wurzel.\\
+	Sei $z$ der Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$. Als Knoten mit dem kleinsten Schlüssel im rechten Teilbaum von $v$, kann $z$ kein linkes Kind haben. Ist $z$ ein Blatt wird seine eingehende Kante entfernt. Hat $z$ ein rechtes Kind $z_r$, so nimmt dieses, analog zur Beschreibung im Fall 2, den Platz von $z$ ein. In beiden Fällen ist $z$ nun ein Knoten ohne Kante. Im nächsten Schritt nimmt nun $z$ den Platz von $v$ ein. $T_l$ wird links an $z$ angefügt und $T_r$ rechts. War $v$ zu Beginn die Wurzel, so wird $z'$ zur neuen Wurzel.\\
 	In keinen Teilbäumen eines Knotens außer denen von $z$ kommen Schlüssel hinzu. Um eventuelle Verletzungen von Eigenschaften festzustellen, kann sich also auf $z'$ beschränkt werden. Der linke Teilbaum von $z'$ war der linke Teilbaum von $v$ und der Schlüssel von $v$ ist kleiner als der von $z$. Der rechte Teilbaum von $z$ enthält die Schlüssel des rechten Teilbaumes von $v$ mit Ausnahme des Schlüssels von $z$ selbst. $z$ wurde gerade ausgewählt weil sein Schlüssel der Kleinste in diesem Teilbaum ist. 
 	
 	
@@ -277,7 +276,7 @@ Der Tango Baum besteht intern aus Hilfsbäumen. Der Rot-Schwarz-Baum gehört zur
 	\item Der Elternknoten eines roten Knotens ist schwarz.
 	\item Für jeden Knoten gilt, dass alle Pfade, die an ihm starten und an einem Blatt (Sonderknoten) enden, die gleiche Anzahl an schwarzen Knoten enthalten. 
 \end{enumerate}  
-Sei $(v_0,v_1,...,v_n)$ ein Pfad von einem Knoten $v_0$ zu einem Blatt $v_n$. Die Anzahl der schwarzen Knoten innerhalb $(v_1,...,v_n)$ wird als \textbf{Schwarz-Höhe} $\mathit{bh(v_0)}$ von Knoten $v_0$ bezeichnet. Die eigene Farbe des betrachteten Knotens bleibt dabei also außen vor. Dadurch hat ein Knoten die gleiche Schwarz-Höhe wie ein rotes Kind und eine um eins erhöhte Schwarz-Höhe gegenüber einem schwarzen Kind. Die Schwarz-Höhe der Wurzel entspricht der \textbf{Schwarz-Höhe des Baumes~ $bh(T)$}, wobei ein leerer Baum die Schwarz-Höhe $0$ hat. Die Schwarz-Höhe eines Knotens $x$ ist genau dann eindeutig, wenn er die Eigenschaft 5 nicht verletzt. Hält $x$ die Eigenschaft 5 ein und sei $i$ die Anzahl schwarzer Knoten in den entsprechenden Pfaden, so gilt $\mathit{bh(x)} = i$, wenn $x$ rot ist und $\mathit{bh(x)} = i - 1$ wenn $x$ schwarz ist. Ist $\mathit{bh(x)}$ eindeutig, so enthält jeder Pfad, der mit $x$ startet und an einem Blatt endet, $\mathit{bh(x)} + 1$ schwarze Knoten, wenn $x$ schwarz ist und  $\mathit{bh(x)}$ schwarze Knoten wenn $x$ rot ist.\\ Jeder Knoten speichert seine Schwarz-Höhe als weiteres Attribut, da wir dieses in Abschnitt \ref{vereinigen} benötigen. Natürlich muss das Attribut dann auch gesetzt und gepflegt werden, wobei es bei Sonderknoten fest mit $0$ belegt ist. Im Folgenden wird \textbf{RBT} (Red Black Tree) als Abkürzung für Rot-Schwarz-Baum verwendet. Aufgrund der Sonderknoten gibt es eine etwas spezielle Situation bei einem RBT mit Höhe 1. Diese Konstellation ist nur mit einem einzelnen Sonderknoten erreichbar, so dass statt dessen auch einfach der leere Baum verwendet werden könnte. Auch diese Konstellation erfüllt aber die Eigenschaften, so dass sie kein Problem darstellt. \\
+Sei $(v_0,v_1,...,v_n)$ ein Pfad von einem Knoten $v_0$ zu einem Blatt $v_n$. Die Anzahl der schwarzen Knoten innerhalb $(v_1,...,v_n)$ wird als \textbf{Schwarz-Höhe} $\mathit{bh(v_0)}$ von Knoten $v_0$ bezeichnet. Die eigene Farbe des betrachteten Knotens bleibt dabei also außen vor. Dadurch hat ein Knoten die gleiche Schwarz-Höhe wie ein rotes Kind und eine um eins erhöhte Schwarz-Höhe gegenüber einem schwarzen Kind. Die Schwarz-Höhe der Wurzel entspricht der \textbf{Schwarz-Höhe des Baumes~ $bh(T)$}, wobei ein leerer Baum die Schwarz-Höhe $0$ hat. Die Schwarz-Höhe eines Knotens $x$ ist genau dann eindeutig, wenn er die Eigenschaft 5 nicht verletzt. Hält $x$ die Eigenschaft 5 ein und sei $i$ die Anzahl schwarzer Knoten in den entsprechenden Pfaden, so gilt $\mathit{bh(x)} = i$, wenn $x$ rot ist und $\mathit{bh(x)} = i - 1$, wenn $x$ schwarz ist. Ist $\mathit{bh(x)}$ eindeutig, so enthält jeder Pfad, der mit $x$ startet und an einem Blatt endet, $\mathit{bh(x)} + 1$ schwarze Knoten, wenn $x$ schwarz ist und  $\mathit{bh(x)}$ schwarze Knoten, wenn $x$ rot ist.\\ Jeder Knoten speichert seine Schwarz-Höhe als weiteres Attribut, da wir dieses in Abschnitt \ref{vereinigen} benötigen. Natürlich muss das Attribut dann auch gesetzt und gepflegt werden, wobei es bei Sonderknoten fest mit $0$ belegt ist. Im Folgenden wird \textbf{RBT} (Red Black Tree) als Abkürzung für Rot-Schwarz-Baum verwendet. Aufgrund der Sonderknoten gibt es eine etwas spezielle Situation bei einem RBT mit Höhe 1. Diese Konstellation ist nur mit einem einzelnen Sonderknoten erreichbar, so dass statt dessen auch einfach der leere Baum verwendet werden könnte. Auch diese Konstellation erfüllt aber die Eigenschaften, so dass sie kein Problem darstellt. \\
 
 
 
@@ -290,21 +289,21 @@ Sei $(v_0,v_1,...,v_n)$ ein Pfad von einem Knoten $v_0$ zu einem Blatt $v_n$. Di
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 1\textwidth]{Medien/RotSchwarzBaum/NIOBaumZweiRote}
-	\caption{Kein RBT da die Eigenschaften vier und fünf verletzt sind. }
+	\caption{Kein RBT, da die Eigenschaften vier und fünf verletzt sind. }
 	\label{fig:NIOBaumZweiRote}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 1\textwidth]{Medien/RotSchwarzBaum/NIOBaumPfadlänge}
-	\caption{Kein RBT da die Eigenschaft fünf verletzt ist.  }
+	\caption{Kein RBT, da die Eigenschaft fünf verletzt ist.  }
 	\label{fig:NIOBaumPfadlänge}
 \end{figure}
 \subsection{Grundoperationen}
 \paragraph{Suchen im Rot-Schwarz-Baum:}
-Die Suche unterscheidet sich nur in einem Punkt von der in Abschnitt \ref{BST Operationen} vorgestellten. Wird nach einem Schlüssel gesucht, der im RBT nicht vorhanden ist, so wird einer der Sonderknoten erreicht. In diesem Fall wird die Suche abgebrochen und eine leere Referenz zurückzugeben. Die Operation verändert den RBT nicht. 
+Die Suche unterscheidet sich nur in einem Punkt von der in Abschnitt \ref{BST Operationen} vorgestellten. Wird nach einem Schlüssel gesucht, der im RBT nicht vorhanden ist, so wird einer der Sonderknoten erreicht. In diesem Fall wird die Suche abgebrochen und eine leere Referenz zurückgegeben. Die Operation verändert den RBT nicht. 
 
 \paragraph{Einfügen in den Rot-Schwarz-Baum:}
-\textit{insert} wird für einen Hilfsbaum im Tango Baum eigentlich nicht benötigt. Im Kapitel zum Tango Baum wird später jedoch eine Hilfsoperation benötigt, die am Besten zu \textit{insert} beschrieben werden kann.\\
+\textit{insert} wird für einen Hilfsbaum im Tango Baum eigentlich nicht benötigt. Im Kapitel zum Tango Baum wird später jedoch eine Hilfsoperation benötigt, die am besten zu \textit{insert} beschrieben werden kann.\\
 Sei $k$ der einzufügende Schlüssel. Zunächst wird wie beim Suchen vorgegangen. Wird $k$ gefunden, wird der RBT nicht verändert. Ansonsten wird ein Sonderknoten $b$ erreicht (Annahme der RBT ist nicht leer). Ein neu erzeugter roter Knoten $v_k$ mit dem Schlüssel $k$ und Schwarz-Höhe $1$ nimmt den Platz von $b$ ein. $k$ werden Sonderknoten als linkes und rechtes Kind angefügt. $k$ ist nun im Baum enthalten. Es muss jedoch auf mögliche Verletzungen der fünf Eigenschaften geachtet werden. Welche können betroffen sein ?
 
 \begin{enumerate}
@@ -317,14 +316,14 @@ Sei $k$ der einzufügende Schlüssel. Zunächst wird wie beim Suchen vorgegangen
 
 \noindent Es können also die Eigenschaften zwei und vier betroffen sein. Jedoch nur eine von ihnen, denn Eigenschaft zwei wird genau dann verletzt, wenn der neue Knoten die Wurzel des Baumes ist. Dann kann er aber keinen roten Elternknoten haben.
 
-\noindent Zur Korrektur wird zum Ende von \textit{insert} eine zusätzliche Operation,\\  \mbox{\textit{insertFixup}$($Node $v_{in})$}, aufgerufen. Diese Operation arbeitet sich von $v_{in}$ startend, solange in einer Schleife nach oben im RBT durch, bis alle Eigenschaften wieder erfüllt sind. Die Schleifenbedingung ist, dass eine Verletzung vorliegt. Dazu muss geprüft werden, ob der betrachtete Knoten $x$ die rote Wurzel des Gesamtbaumes ist oder ob er und sein Elternknoten beide rot sind. Vor dem ersten Durchlauf wird $x = v_{in}$ gesetzt. Innerhalb der Schleife werden sechs Fälle unterschieden. Im Folgenden wird auf vier Fälle detailliert eingegangen. Die restlichen zwei verhalten sich symmetrisch zu einem solchen. Jeder der Fälle verantwortet, dass zum Start der nächsten Iteration wieder nur maximal eine der beiden Eigenschaften zwei oder vier verletzt sein kann und Eigenschaft vier höchstens an einem Knoten verletzt ist. Die Fallauswertung geschieht in aufsteigender Reihenfolge. Deshalb kann innerhalb einer Fallbehandlung verwendet werden, dass die vorherigen Fallbedingungen nicht erfüllt sind. Eigenschaft eins bleibt in der Beschreibung außen vor, da es während der gesamten Ausführungszeit der Operation nur Knoten gibt, die entweder rot oder schwarz sind. \\
+\noindent Zur Korrektur wird zum Ende von \textit{insert} eine zusätzliche Operation,\\  \mbox{\textit{insertFixup}$($Node $v_{in})$}, aufgerufen. Diese Operation arbeitet sich von $v_{in}$ startend, solange in einer Schleife nach oben im RBT durch, bis alle Eigenschaften wieder erfüllt sind. Die Schleifenbedingung ist, dass eine Verletzung vorliegt. Dazu muss geprüft werden, ob der betrachtete Knoten $x$ die rote Wurzel des Gesamtbaumes ist oder ob er und sein Elternknoten beide rot sind. Vor dem ersten Durchlauf wird $x = v_{in}$ gesetzt. Innerhalb der Schleife werden sechs Fälle unterschieden. Im Folgenden wird auf vier Fälle detailliert eingegangen. Die restlichen zwei verhalten sich symmetrisch zu einem solchen. Jeder der Fälle verantwortet, dass zum Start der nächsten Iteration wieder nur maximal eine der beiden Eigenschaften zwei oder vier verletzt sein kann und Eigenschaft vier höchstens an einem Knoten verletzt ist. Die Fallauswertung geschieht in aufsteigender Reihenfolge. Deshalb kann innerhalb einer Fallbehandlung verwendet werden, dass die vorherigen Fallbedingungen nicht erfüllt sind. Die Eigenschaft eins bleibt in der Beschreibung außen vor, da es während der gesamten Ausführungszeit der Operation nur Knoten gibt, die entweder rot oder schwarz sind. \\
 
 \noindent\textbf{Fall 1: $x$ ist die rote Wurzel des RBTs: }
-Dieser Fall wird behandelt in dem die Wurzel schwarz gefärbt wird. Es muss noch gezeigt werden, dass es durch das Umfärben zu keiner anderen Verletzung gekommen ist.\\
+Dieser Fall wird behandelt, indem die Wurzel schwarz gefärbt wird. Es muss noch gezeigt werden, dass es durch das Umfärben zu keiner anderen Verletzung gekommen ist.\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6 \textwidth]{Medien/RotSchwarzBaum/EinfügenFixUpFall1}
-	\caption{\textit{insertFixup}. Dargestellt ist Fall 1  }
+	\caption{\textit{insertFixup}. Dargestellt ist der Fall 1.  }
 	\label{fig:EinfügenFixUpFall1}
 \end{figure}
 
@@ -338,7 +337,7 @@ Betrachtung der Eigenschaften:
 \end{enumerate}  
 
 \noindent Es wird also keine Eigenschaft mehr verletzt und die Schleife wird keine weitere Iteration durchführen.\\
-Die Fälle 2 - 6 behandeln nun die Situationen, in denen sowohl $x$ als auch dessen Elternknoten $y$ rote Knoten sind. Da Eigenschaft fünf nach jeder Iteration erfüllt ist, muss $y$ einen Geschwisterknoten haben. Denn da zu Beginn einer Iteration nur eine Eigenschaft verletzt sein kann, kann der rote $y$ nicht die Wurzel sein. Also muss auch $y$ einen Elternknoten $z$ haben. Da $z$ kein Blatt(Sonderknoten) ist, müssen beide Kinder vorhanden sein.\\
+Die Fälle 2 - 6 behandeln nun die Situationen, in denen sowohl $x$ als auch dessen Elternknoten $y$ rote Knoten sind. Da Eigenschaft fünf nach jeder Iteration erfüllt ist, muss $y$ einen Geschwisterknoten haben. Denn da zu Beginn einer Iteration nur eine Eigenschaft verletzt sein kann, kann der rote $y$ nicht die Wurzel sein. Also muss auch $y$ einen Elternknoten $z$ haben. Da $z$ kein Blatt (Sonderknoten) ist, müssen beide Kinder vorhanden sein.\\
 Außerdem muss $z$ schwarz sein, da die Eigenschaft vier ansonsten an zwei Knoten verletzt wäre.\\
 
 \noindent\textbf{Fall 2: $y$ hat einen roten Geschwisterknoten: } \label{if2}
@@ -359,7 +358,7 @@ Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width= 1\textwidth]{Medien/RotSchwarzBaum/EinfügenFixUpFall2}
-	\caption{\textit{insertFixup}. Dargestellt ist Fall 2  }
+	\caption{\textit{insertFixup}. Dargestellt ist der Fall 2.  }
 	\label{fig:EinfügenFixUpFall2}
 \end{figure}
 
@@ -371,14 +370,14 @@ Es kann also wieder nur entweder Eigenschaft zwei oder vier verletzt sein. Wenn 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1 \textwidth]{Medien/RotSchwarzBaum/EinfügenFixUpFall3}
-	\caption{\textit{insertFixup}. Dargestellt ist Fall 3  }
+	\caption{\textit{insertFixup}. Dargestellt ist der Fall 3.  }
 	\label{fig:EinfügenFixUpFall3}
 \end{figure}
 \begin{enumerate}
 	\item -
 	\item Wenn $z$ zu Beginn nicht die Wurzel des Gesamtbaumes war, bleibt diese unverändert. Ansonsten wurde durch die Rotation $y'$ zur neuen Wurzel und $y'$ wurde schwarz gefärbt. 
 	\item  In der zweiten Ebene unter $y'$ befinden sich ausschließlich die unveränderten Teilbäume mit den Wurzeln ${x_l}'$, ${x_r}'$, ${y_r}'$ oder ${z_r}'$. An den Blättern verändert sich also durch die Ausführung nichts.
-	\item  Knoten $x'$ ist das linke Kind des schwarzen $y'$. Die Teilbäume von $x'$ blieben unverändert. Der linke Teilbaum von $y'$ enthält somit keine aufeinanderfolgenden roten Knoten. Das rechte Kind von $y'$ ist der rote Knoten $z'$. Das rechte Kind von $z'$ ist ${z_r}'$.  ${z_r}$ ist der Geschwisterknoten von $y$ und muss nach Fallunterscheidung schwarz sein. Das linke Kind von $z'$ ist ${y_r}'$. ${y_r}$ ist das rechte Kind von $y$. Das rechte Kind von $y$ muss schwarz sein, ansonsten wäre Eigenschaft vier an zwei Knoten verletzt gewesen. Die Teilbäume mit den Wurzeln ${z_r}$ und  ${y_r}$ bleiben unverändert. Im Teilbaum mit der Wurzel $y'$ gibt es also keine Verletzung dieser Eigenschaft. Da $y'$ schwarz gefärbt wurde, kann auch außerhalb dieses Teilbaumes durch $y'$ keine neue Verletzung entstanden sein.
+	\item  Knoten $x'$ ist das linke Kind des schwarzen $y'$. Die Teilbäume von $x'$ blieben unverändert. Der linke Teilbaum von $y'$ enthält somit keine aufeinanderfolgenden roten Knoten. Das rechte Kind von $y'$ ist der rote Knoten $z'$. Das rechte Kind von $z'$ ist ${z_r}'$.  ${z_r}$ ist der Geschwisterknoten von $y$ und muss aufgrund der Fallunterscheidung schwarz sein. Das linke Kind von $z'$ ist ${y_r}'$. ${y_r}$ ist das rechte Kind von $y$. Das rechte Kind von $y$ muss schwarz sein, ansonsten wäre Eigenschaft vier an zwei Knoten verletzt gewesen. Die Teilbäume mit den Wurzeln ${z_r}$ und  ${y_r}$ bleiben unverändert. Im Teilbaum mit der Wurzel $y'$ gibt es also keine Verletzung dieser Eigenschaft. Da $y'$ schwarz gefärbt wurde, kann auch außerhalb dieses Teilbaumes durch $y'$ keine neue Verletzung entstanden sein.
 	\item  Es gilt  $\mathit{bh(x_l)} = \mathit{bh(x_r)} = \mathit{bh(y_r)} =  \mathit{bh(z_r)} = \mathit{bh(z)} - 1$. Wie oben bereits erwähnt wird die zweite Ebene unter der Wurzel $y'$ von den unveränderten Teilbäumen ${x_l}'$, ${x_r}'$, ${y_r}'$ und ${z_r}'$ gebildet. Es müssen also lediglich die Knoten $x'$, $y'$ und $z'$ betrachtet werden. Die Kinder von $x'$ und $z'$ sind schwarze Knoten mit der Schwarz-Höhe $\mathit{bh(z)} - 1$. Die Schwarz-Höhen von $x'$ und $z'$ sind also eindeutig und es gilt \mbox{$\mathit{bh(x')} = \mathit{bh(z')} = \mathit{bh(z)}$}. Die Kinder von $y'$ sind die roten Knoten $x'$ und $z'$. Da beide Kinder rot sind gilt auch  $\mathit{bh(y')}  = \mathit{bh(z)}$. Somit sind alle Schwarz-Höhen im betrachteten Teilbaum eindeutig. Die neue Wurzel des Teilbaumes $y'$ hat die gleiche Schwarz-Höhe und die gleiche Farbe wie die vorherige Wurzel $z$. Damit kann es auch im Gesamtbaum zu keiner Verletzung der Eigenschaft gekommen sein.
 \end{enumerate} 
 
@@ -392,7 +391,7 @@ Dieser in Abbildung \ref{fig:EinfügenFixUpFall4} gezeigte Fall wird so umgeform
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1 \textwidth]{Medien/RotSchwarzBaum/EinfügenFixUpFall4}
-	\caption{\textit{insertFixup}. Dargestellt ist Fall 4  }
+	\caption{\textit{insertFixup}. Dargestellt ist der Fall 4.  }
 	\label{fig:EinfügenFixUpFall4}
 \end{figure}
 \noindent Betrachtung der Eigenschaften:\\
@@ -431,7 +430,7 @@ Zu Beginn des Kapitels wurde erwähnt, dass für die Höhe $h$ eines RBT mit $n$
 	Dies geschieht mit Induktion über $h$. Für $h = 0$ und  $h = 1$ mit $2^0 - 1 = 0 $ stimmt die Behauptung, denn der Baum ist leer oder ein einzelner Sonderknoten. \\ 
 	Induktionsschritt:\\
 	Sei $T_l$ der linke Teilbaum von $w$ und $T_r$ der rechte Teilbaum von $w$.  
-	Im Induktionsschritt kann nun verwendet werden, dass $h > 1$ gilt und $w$ ein innerer Knoten sein muss. $T_l$ und $T_r$ haben die Schwarz-Höhe $\mathit{bh(w)} - 1$, wenn ihre Wurzel schwarz ist und Schwarz-Höhe $\mathit{bh(w)}$, wenn ihre Wurzel rot ist. Ihre Höhe ist kleiner als $h$ und somit enthalten sie nach der Induktionsnahme mindestens  $2^\mathit{bh(w)- 1} - 1$ innere Knoten. Zusammenfassen ergibt die Behauptung.\\    
+	Im Induktionsschritt kann nun verwendet werden, dass $h > 1$ gilt und $w$ ein innerer Knoten sein muss. $T_l$ und $T_r$ haben die Schwarz-Höhe $\mathit{bh(w)} - 1$, wenn ihre Wurzel schwarz ist und Schwarz-Höhe $\mathit{bh(w)}$, wenn ihre Wurzel rot ist. Ihre Höhe ist kleiner als $h$ und somit enthalten sie nach der Induktionsnahme mindestens  $2^\mathit{bh(w)- 1} - 1$ innere Knoten. Zusammenfassen ergibt die Behauptung:\\    
 	\begin{align*}
 	&m \geq 2^\mathit{bh(w)- 1} - 1  + 1  + 2^\mathit{bh(w)- 1} - 1 = 2^\mathit{bh(w)} - 1
 	\end{align*}

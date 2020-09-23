@@ -11,12 +11,12 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces Löschen des Schlüssels 10\relax }}{15}%
 \contentsline {figure}{\numberline {11}{\ignorespaces Kompletter BST mit 12 Knoten\relax }}{16}%
 \contentsline {figure}{\numberline {12}{\ignorespaces RBT ohne Verletzung von Eigenschaften. \relax }}{18}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Kein RBT da die Eigenschaften vier und fünf verletzt sind. \relax }}{19}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Kein RBT da die Eigenschaft fünf verletzt ist. \relax }}{19}%
-\contentsline {figure}{\numberline {15}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 1 \relax }}{21}%
-\contentsline {figure}{\numberline {16}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 2 \relax }}{23}%
-\contentsline {figure}{\numberline {17}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 3 \relax }}{24}%
-\contentsline {figure}{\numberline {18}{\ignorespaces \textit {insertFixup}. Dargestellt ist Fall 4 \relax }}{26}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Kein RBT, da die Eigenschaften vier und fünf verletzt sind. \relax }}{19}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Kein RBT, da die Eigenschaft fünf verletzt ist. \relax }}{19}%
+\contentsline {figure}{\numberline {15}{\ignorespaces \textit {insertFixup}. Dargestellt ist der Fall 1. \relax }}{21}%
+\contentsline {figure}{\numberline {16}{\ignorespaces \textit {insertFixup}. Dargestellt ist der Fall 2. \relax }}{23}%
+\contentsline {figure}{\numberline {17}{\ignorespaces \textit {insertFixup}. Dargestellt ist der Fall 3. \relax }}{24}%
+\contentsline {figure}{\numberline {18}{\ignorespaces \textit {insertFixup}. Dargestellt ist der Fall 4. \relax }}{26}%
 \contentsline {figure}{\numberline {19}{\ignorespaces Rechts ist ein möglicher Lower Bound Tree zum linken BST dargestellt. \relax }}{31}%
 \contentsline {figure}{\numberline {20}{\ignorespaces Links ein BST $T$. Rechts ein davon abgeleiteter BST $T^8_4$ . \relax }}{33}%
 \contentsline {figure}{\numberline {21}{\ignorespaces Implikationen zwischen den Eigenschaften, abgeleitet aus einer Abbildung aus \cite {upperBounds}. \relax }}{43}%
