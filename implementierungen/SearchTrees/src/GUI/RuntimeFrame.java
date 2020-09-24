@@ -412,7 +412,7 @@ public class RuntimeFrame  extends JFrame{
             }
         });
         northPanel.add(mainCombo);
-        northPanel.add(new JLabel("Anzahl der pref. Children Veränderungen bzw. Rotationen anzeigen:"));
+        northPanel.add(new JLabel("Anzahl Veränderungen an pref. children bzw. Rotationen anzeigen:"));
         detailButton = new JRadioButton();
         detailButton.addItemListener(new ItemListener(){
             @Override

@@ -1394,7 +1394,7 @@ Diese Ansicht dient dazu, die Beziehung zwischen dem Referenzbaum und dem Tango 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\textwidth]{Medien/laufzeittest/ResultGUI}
+	\includegraphics[width=0.8\textwidth]{Medien/laufzeittest/ResultGUI}
 	\caption{Mit diesem Fenster wird das Resultat eines Laufzeittests dargestellt.}
 	\label{fig:ResultGUI}
 \end{figure}
@@ -1438,7 +1438,7 @@ Diese Klasse erweitert die Klasse RuntimeTest. Insgesamt sind in dem Projekt sec
 \end{figure}
 
 
-\section {Laufzeittests zwischen dem Tango Baum und dem Splay Baum.}
+\section {Laufzeittests mit dem Tango Baum und dem Splay Baum.}
 
 Es werden Laufzeittests zu unterschiedlichen Arten von Zugriffsfolgen durchgeführt. Unter anderem solche, die auf eine der Eigenschaften  Static Finger,  Working Set oder Dynamic Finger aus Abschnitt \ref{upperBounds} zugeschnitten sind. Hierzu werden dann Zugriffsfolgen verwendet, bei denen die jeweilige Eigenschaft für die Laufzeit besonders relevant ist. Der Tango Baum erfüllt die aufgeführten Eigenschaften zwar nicht, jedoch ist er  $\log\left(\log\left(n\right)\right)$-competitive. Ein dynamisch optimaler BST muss diese Eigenschaften erfüllen. Dadurch könnte auch der Tango Baum von den speziellen Eigenschaften der Zugriffsfolgen indirekt profitieren.  \\
 
@@ -1456,6 +1456,7 @@ Hier werden die verwendeten Zugriffsfolgen zunächst kurz vorgestellt. Auf Detai
  	 \mbox{$i \in \{1, 2,..,m -1\} $} einen festen parametrierbaren Wert ergibt.  Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, so dass die Dynamic Finger Property mit steigendem Index der Zugriffsfolge weniger relevant wird.
  	\item Zugriffsfolgen zur Working Set Property:\\
  	In den hier verwendeten Zugriffsfolgen wiederholen sich die Schlüssel mit einem festen parametrierbaren Abstand. Um Einflüsse der anderen aufgeführten Eigenschaften niedrig zu halten, werden die verwendeten Schlüssel betragsmäßig über die gesamte Schlüsselmenge verteilt. Außerdem gilt für zwei aufeinanderfolgende Schlüssel $k_1$ und $k_2$ in den meisten Fällen $\vert k_1 - k_2 \vert = n /2$. Zusätzlich werden noch Zugriffsfolgen $X_1, X_2,.., X_7$ verwendet, mit denen analog zur Dynamic Finger Property vorgegangen wird.
+  \item Alternierend die Schlüssel $1$ und $n$.
   \item Aufsteigend sortiert:\\
   Jeder Schlüssel wird nur einmal verwendet.
   \item Absteigend sortiert:\\
@@ -1572,7 +1573,7 @@ Jetzt wird noch auf die deutlichen Differenzen zwischen den Werten des Tango Bau
 			$10^7$  & $439.981.567$ &$1.226.490.084$ & $0,36$\\
 			\hline
 		\end{tabular}
-		\caption{Die Spalte $n_T$ enthält die durchschnittliche Anzahl der Veränderung bei preferred children im Referenzbaum zum Tango Baum über zehn Zugriffsfolgen. Die Spalte $n_S$ enthält die durchschnittliche Anzahl der Rotationen beim Splay Baum über zehn Zugriffsfolgen.   }  
+		\caption{Die Spalte $n_T$ enthält die durchschnittliche Anzahl der Veränderungen bei preferred children im Referenzbaum zum Tango Baum über zehn Zugriffsfolgen. Die Spalte $n_S$ enthält die durchschnittliche Anzahl der Rotationen beim Splay Baum über zehn Zugriffsfolgen.   }  
 		\label{tab:Ran}
 	\end{center}
 \end{table}
@@ -1997,12 +1998,22 @@ Zu beachten ist hier, dass die Dynamic Finger Property relevant wird.
   
 \noindent Die  Werte für die Laufzeit steigt zum Teil auf mehr als das Doppelte an, vor allem bei den großen Instanzen. Eine Erklärung dafür ist, dass hier die Dynamic Finger Property lediglich beim mittleren Teil der Zugriffsfolge relevant wird. Und auch beim mittleren Teil bleibt die Betragsdifferenz zweier aufeinanderfolgender Schlüssel nicht konstant. Bei den Tests zur Dynamic Finger Property, profitierte der Tango Baum eher von einer solchen konstanten Betragsdifferenz, als von niedrigen Betragsdifferenzen.
 
+\subsection{Fazit zu den Laufzeittests}
+Hier werden die Ergebnisse der Laufzeittests eingeordnet und mit den bekannten theoretischen Laufzeitschranken verglichen. \\
+Zum einen wurden hier Laufzeiten mit einem realem System ermittelt. Deshalb gibt es Einflüsse auf die ermittelten Laufzeiten, die von beiden Datenstrukturen unabhängig sind, wie z.B. die Speicherverwaltung. Auffällig ist z. B., dass die Laufzeit des Tango Baumes beim Test mit zufällig erzeugten Zugriffsfolgen bei der größten Knotenanzahl verhältnismäßig stark ansteigt. Dies ist auch die Konstellation mit der höchsten Speicherauslastung, da der Tango Baum einen höheren Speicherbedarf als der Splay Baum hat und hier die gesamte Zugriffsfolge im Speicher gehalten wird. Zusätzlich verstärkt die logarithmische x-Skala diesen Eindruck. Denn auch bei dieser Konstellation führte eine Verzehnfachung der Knotenmenge lediglich zu einer in etwa $3,5$-fachen Laufzeit.\\
+Die theoretischen Laufzeitschranken sind mit der O-Notation angegeben. Konkrete Kennlinien dazu könnten mit konstanten Faktoren in der Form angepasst werden und mit konstanten Summanden auf der y-Skala verschoben werden. Bei den zufällig erzeugten Zugriffsfolgen und den Bit Reversal Permutations ist beim Splay Baum aufgrund der logarithmischen x-Skala in etwa eine lineare Kennlinie zu erwarten. Beim Tango Baum ist aufgrund der $\log\left(\log\left(n\right)\right)$-competitiveness zu erwarten, dass die Zeiten bei den großen Instanzen etwas stärker ansteigen als bei den kleinen. Die ermittelten Daten spiegeln dies, mit Ausnahme der größten Tango Baum Instanz bei den zufällig erzeugten Zugriffsfolgen, auch wieder. \\
+Bei den Tests mit variablem $n$ zu den drei speziellen Eigenschaften des Splay Baumes wurden jeweils Zugriffsfolgen gewählt, bei denen der wesentliche Summand zum Bilden der jeweiligen theoretischen Schranke konstant oder annähernd konstant bei einem niedrigem Wert bleibt. Hier ist jedoch zu beachten, dass jeweils auch entweder $n$ oder $n \log\left(n\right)$ als Summand innerhalb der O-Notation enthalten ist. Die gemessenen Laufzeiten zu diesen Zugriffsfolgen sind insgesamt sehr niedrig und der Bereich der eingesetzten Werte für $n$ ist groß, deshalb ist auch beim Splay Baum nicht unbedingt von konstanten Laufzeiten auszugehen. Beim Tango Baum ist aufgrund der  $\log\left(\log\left(n\right)\right)$-competitiveness  von Reaktionen der Laufzeit auf sehr niedrigem Niveau auszugehen. Die ermittelten Werte entsprechen der Working Set Property und der Static Finger Property den Erwartungen. Bei der Dynamic Finger Property steigen die ermittelten Werte des Splay Baumes an, was in diesem speziellen Fall, wie bereits angemerkt, kein Widerspruch sein muss. Passend dazu ist, dass auch die Laufzeiten des Tango Baumes länger werden.   
+
+
+
+
   
 \includepdf[pages = -]{anhang}
-\section{Fazit und Ausblick}
-Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Bei ihm wurde die Idee, auf Grundlage der Interleave Lower Bound einen $\log\left(\log\left(n\right)\right)$-competitive BST zu konstruieren jedoch als Erstes umgesetzt und hier könnten noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften folgen. \\
+\section{Allgemeines Fazit und Ausblick}
+Der Tango Baum hat in den Praxistests im Vergleich zum Splay Baum wenig überzeugend abgeschnitten. Auch der Aufwand zur Implementierung ist für einen BST recht hoch. Mit ihm wurde die Idee, auf Grundlage der Interleave Lower Bound einen $\log\left(\log\left(n\right)\right)$-competitive BST zu konstruieren jedoch als Erstes umgesetzt und somit ein wichtiger Beitrag zur Forschung zur dynamischen Optimalität geleistet. Außerdem könnten hier noch weitere interessante Variationen, mit zusätzlichen guten Laufzeiteigenschaften folgen. \\
 Mittlerweile hat sich zum Thema \enquote{dynamische Optimalität} viel Literatur angesammelt. Hier wurde nur auf einen sehr kleinen Ausschnitt eingegangen. Zum Beispiel gibt es  weitere untere Schranken für die Ausführungszeit von BSTs. Außerdem gibt es eine interessante geometrische Sicht auf BSTs. Von dieser konnten wichtige Aussagen über BSTs und andere Verfahren abgeleitet werden. Es gibt auch deutlich mehr obere Laufzeitschranken für Zugriffsfolgen mit speziellen Eigenschaften, als  hier vorgestellt wurden. \\
 Ob es irgendwann gelingen wird die dynamische Optimalität des Splay Baumes oder irgendeiner anderen Variante eines BSTs zu beweisen, ist offen. Für den Einsatz in der Praxis, müssen dann aber auch die Summanden und Faktoren berücksichtigt werden, die innerhalb der $O$-Notation vernachlässigt werden.
+
 
 
 \newpage

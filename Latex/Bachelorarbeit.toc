@@ -64,7 +64,7 @@
 \contentsline {paragraph}{RedBlackTree und RBTNode:}{84}%
 \contentsline {paragraph}{RuntimeTest:}{84}%
 \contentsline {paragraph}{RandomTest:}{84}%
-\contentsline {section}{\numberline {9}Laufzeittests zwischen dem Tango Baum und dem Splay Baum.}{85}%
+\contentsline {section}{\numberline {9}Laufzeittests mit dem Tango Baum und dem Splay Baum.}{85}%
 \contentsline {subsection}{\numberline {9.1}Verwendete Zugriffsfolgen zu den Laufzeittests.}{86}%
 \contentsline {subsection}{\numberline {9.2}Durchführung der Laufzeittests.}{87}%
 \contentsline {subsubsection}{\numberline {9.2.1}Zufällig erzeugte Zugriffsfolgen}{87}%
@@ -73,4 +73,5 @@
 \contentsline {subsubsection}{\numberline {9.2.4}Dynamic Finger Property}{96}%
 \contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{98}%
 \contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{101}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{107}%
+\contentsline {subsection}{\numberline {9.3}Fazit zu den Laufzeittests}{104}%
+\contentsline {section}{\numberline {10}Allgemeines Fazit und Ausblick}{108}%

@@ -54,11 +54,11 @@ public class ResultFrame extends JFrame {
         
         tangoTime.setText("Zeit Tango " + getTimeString(result[0]) +  " s");
         splayTime.setText("Zeit Splay " +  getTimeString(result[1]) + " s");
+        add(tangoTime);
+        add(splayTime);
         if (result[2] != -1){
             tangoCount.setText(setPoints(""+ result[2]) +  " Veränderungen  bei preferred Children.");
             splayCount.setText(setPoints(""+ result[3]) +  " Rotationen beim Splay Baum. Das Auswerten dieses Wertes hat einen leichten negativen Einfluss auf die Laufzeit des Splay Baumes.");
-            add(tangoTime);
-            add(splayTime);
             add(tangoCount);
             add(splayCount);
         }
