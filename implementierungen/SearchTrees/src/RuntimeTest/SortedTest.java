@@ -20,8 +20,8 @@ import java.util.List;
  
 
 public class SortedTest extends RuntimeTest {
-  int numOfNodes;
-  int typ;
+  private int numOfNodes;
+  private int typ;
     /**
      * Führt einen Laufzeittest mit sortierten Zugriffsfolgen aus.
      * @param n Anzahl der Knoten.

@@ -17,9 +17,9 @@ import java.util.List;
  * wird, bei der zwei aufeinanderfolgende Schlüssel einen festen Abstand haben.
  */
 public class DynamicFingerTest extends RuntimeTest {
-  int numOfNodes;
-  int distance;
-  int repeat;  
+  private int numOfNodes;
+  private int distance;
+  private int repeat;  
     /**
      * @param n Anzahl der Knoten der BSTs
      * @param d Fester Abstand zwischen zwei aufeinanderfolgenden Schlüssel

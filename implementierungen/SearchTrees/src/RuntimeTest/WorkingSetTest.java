@@ -17,9 +17,9 @@ import java.util.List;
  * wird, bei der die Working Set Property relevant wird.
  */
 public class WorkingSetTest extends RuntimeTest {
-  int numOfNodes;
-  int distance;
-  int length;  
+  private int numOfNodes;
+  private int distance;
+  private int length;  
     
   /**
      * 

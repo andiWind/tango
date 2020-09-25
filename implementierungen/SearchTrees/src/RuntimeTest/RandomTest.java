@@ -17,8 +17,8 @@ import java.util.List;
  * wird.
  */
 public class RandomTest extends RuntimeTest {
-  int numOfNodes;
-  int lengthOfSeq;
+  private int numOfNodes;
+  private int lengthOfSeq;
  
   /**
      * @param n Anzahl der Knoten der BSTs.

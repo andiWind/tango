@@ -44,6 +44,7 @@ import javax.swing.JRadioButton;
 public class RuntimeFrame  extends JFrame{
     private boolean details;
     private int numOfNodes;
+    private double statFingerPer;
     private int lenOfSeq;
     private int lenOfBRP;
     private int dynFinger;
@@ -60,6 +61,7 @@ public class RuntimeFrame  extends JFrame{
     private final JSlider numOfNodesSli;
     private final JRadioButton detailButton;
     private final JTextField numOfNodesText;
+    private final JTextField statFingerPerText;
     private final JTextField dymFingerText;
     private final JTextField lenOfBRPText;
     private final JTextField lenOfSeqText;
@@ -75,6 +77,7 @@ public class RuntimeFrame  extends JFrame{
         numOfNodes = 1000;
         lenOfSeq = 1;
         lenOfBRP = 1;
+        statFingerPer = 2;
         workSetDistance = 1;
         activePanel = "randomAccess";
         dynFinger = 1;
@@ -96,7 +99,7 @@ public class RuntimeFrame  extends JFrame{
                             tester = new RandomTest( numOfNodes,  lenOfSeq,  thisFrame, details);
                             break;
                         case ("staticFinger"):
-                          tester = new StaticFingerTest( numOfNodes,  lenOfSeq, thisFrame, details );
+                          tester = new StaticFingerTest( numOfNodes, statFingerPer,  lenOfSeq, thisFrame, details );
                           break;
                         case ("dynamicFinger"):
                             tester = new DynamicFingerTest( numOfNodes, dynFinger, lenOfSeq, thisFrame, details );
@@ -180,6 +183,48 @@ public class RuntimeFrame  extends JFrame{
                 }    
                 catch(Exception ex){
                     numOfNodesText.setText(setPointsInNumOfNodes(String.valueOf(numOfNodes)));
+                    
+                }
+            }
+        });
+        statFingerPerText = new JTextField();
+        statFingerPerText.setColumns(10);
+        statFingerPerText.setText("" + statFingerPer);
+        statFingerPerText.setFont(new Font("", 1, 20));
+        statFingerPerText.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                   double  value = Double.parseDouble(statFingerPerText.getText());
+                   if (value > 0 && value <= 100)
+                       statFingerPer = value;
+                   else
+                       statFingerPerText.setText(statFingerPer + "");
+                }    
+                catch(Exception ex){
+                    statFingerPerText.setText(""+ statFingerPer);
+                    
+                }
+            }
+        });
+        statFingerPerText.addFocusListener(new FocusListener() { 
+    
+            @Override
+            public void focusGained(FocusEvent e) {
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                 try{
+                   double  value = Double.parseDouble(statFingerPerText.getText());
+                   if (value > 0 && value <= 100)
+                       statFingerPer = value;
+                   else
+                       statFingerPerText.setText(statFingerPer + "");
+                }    
+                catch(Exception ex){
+                    statFingerPerText.setText(""+ statFingerPer);
                     
                 }
             }
@@ -506,13 +551,16 @@ public class RuntimeFrame  extends JFrame{
     //Zu jedem Test gibt es ein Panel
     private void buildStaticFingerPanel(){
         staticFingerPanel = new JPanel();
-        staticFingerPanel.setLayout(new GridLayout(2, 3));
+        staticFingerPanel.setLayout(new GridLayout(3, 3));
         staticFingerPanel.add(numOfNodesSli);
         staticFingerPanel.add(numOfNodesText);
         staticFingerPanel.add(new JLabel("Anzahl der Knoten"));
         staticFingerPanel.add(new JLabel("Länge der Zugriffsfolge"));
         staticFingerPanel.add(lenOfSeqText);
         staticFingerPanel.add(new JLabel("(In Millionen)"));
+        staticFingerPanel.add(new JLabel("Verwendeter Prozentsatz"));
+        staticFingerPanel.add(statFingerPerText);
+        staticFingerPanel.add(new JLabel("%"));
     }
     private void buildDinamicFingerPanel(){
         dynamicFingerPanel = new JPanel();

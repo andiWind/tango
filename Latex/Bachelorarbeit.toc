@@ -23,7 +23,7 @@
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode:}{40}%
 \contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack:}{40}%
-\contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BST. }{41}%
+\contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BSTs. }{41}%
 \contentsline {paragraph}{Balanced Property:}{41}%
 \contentsline {paragraph}{Static Finger Property:}{41}%
 \contentsline {paragraph}{Statisch optimal:}{41}%
@@ -74,4 +74,4 @@
 \contentsline {subsubsection}{\numberline {9.2.5}Working Set Property}{98}%
 \contentsline {subsubsection}{\numberline {9.2.6}Weitere Laufzeittests}{101}%
 \contentsline {subsection}{\numberline {9.3}Fazit zu den Laufzeittests}{104}%
-\contentsline {section}{\numberline {10}Allgemeines Fazit und Ausblick}{108}%
+\contentsline {section}{\numberline {10}Allgemeines Fazit und Ausblick}{110}%
