@@ -23,7 +23,7 @@
 \contentsline {figure}{\numberline {22}{\ignorespaces Der Lower Bound Tree zur Zugriffsfolge $1 ,2, .., 15$. \relax }}{45}%
 \contentsline {figure}{\numberline {23}{\ignorespaces Transition point Zuordnung. Links ein Lower Bound Tree, rechts ein möglicher $T_j$. \relax }}{47}%
 \contentsline {figure}{\numberline {24}{\ignorespaces Die preferred children im Referenzbaum werden durch die grünen Pfeile markiert. \relax }}{49}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Die Hilfsbäume zu den preferred path aus dem Beispiel. \relax }}{50}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Die Hilfsbäume zu den preferred paths aus dem Beispiel. \relax }}{50}%
 \contentsline {figure}{\numberline {26}{\ignorespaces Der Tango Baum zu dem Beispiel. \relax }}{51}%
 \contentsline {figure}{\numberline {27}{\ignorespaces Die preferred children nachdem \textit {access}$\left (9\right )$ ausgeführt wurde. \relax }}{52}%
 \contentsline {figure}{\numberline {28}{\ignorespaces Der Tango Baum nachdem \textit {access}$\left (9\right )$ ausgeführt wurde. \relax }}{52}%
