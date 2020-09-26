@@ -526,9 +526,9 @@ Dazu werden zwei Mengen verwendet. $U$ ist eine zu Beginn leere Menge. $W$ enth�
 \begin{enumerate}
 	\item Gilt $U = W$, beende das Verfahren.
 	\item Sei $w \in W$ ein Knoten mit $w \notin U$.  Sei $v$ der Knoten in $T$ mit \mbox{$\mathit{key}(w ) = \mathit{key}(v)$}.  
-	\item Existiert das linke Kind von $v$ nicht, weiter mit Punkt $4$. Ansonsten sei  $P_l$ der linke innere Pfad von $v$. Enthält $P_l$ keinen Knoten mit einem Schlüssel $\geq l$, weiter mit Punkt $4$. Ansonsten sei $k_l$ der Schlüssel des Knotens mit der kleinsten Tiefe in $P_l$, für den gilt $k_l \geq l$. Erzeuge einen Knoten $w_l$ mit dem Schlüssel $k_l$ und füge ihn als das linke Kind an $w$ an. Füge $w_l$ zu $W$ hinzu.
-	\item Existiert das rechte Kind von $v$ nicht, weiter mit Punkt $5$. Ansonsten sei $P_r$ der rechte innere Pfad von $v$. Enthält $P_r$ keinen Knoten mit einem Schlüssel $\leq r$, weiter mit Punkt $5$. Ansonsten sei $k_r$ der Schlüssel des Knotens mit der kleinsten Tiefe in $P_r$, für den gilt  $k_r \leq r$. Erzeuge einen Knoten $w_r$ mit dem Schlüssel $k_r$ und füge ihn als das rechte Kind an $w$ an. Füge $w_r$ zu $W$ hinzu.	
-	\item Füge $w$ zu $U$ hinzu, weiter mit Punkt $1$.
+	\item Existiert das linke Kind von $v$ nicht, weiter bei Punkt $4$. Ansonsten sei  $P_l$ der linke innere Pfad von $v$. Enthält $P_l$ keinen Knoten mit einem Schlüssel $\geq l$, weiter bei Punkt $4$. Ansonsten sei $k_l$ der Schlüssel des Knotens mit der kleinsten Tiefe in $P_l$, für den gilt $k_l \geq l$. Erzeuge einen Knoten $w_l$ mit dem Schlüssel $k_l$ und füge ihn als das linke Kind an $w$ an. Füge $w_l$ zu $W$ hinzu.
+	\item Existiert das rechte Kind von $v$ nicht, weiter bei Punkt $5$. Ansonsten sei $P_r$ der rechte innere Pfad von $v$. Enthält $P_r$ keinen Knoten mit einem Schlüssel $\leq r$, weiter bei Punkt $5$. Ansonsten sei $k_r$ der Schlüssel des Knotens mit der kleinsten Tiefe in $P_r$, für den gilt  $k_r \leq r$. Erzeuge einen Knoten $w_r$ mit dem Schlüssel $k_r$ und füge ihn als das rechte Kind an $w$ an. Füge $w_r$ zu $W$ hinzu.	
+	\item Füge $w$ zu $U$ hinzu, weiter bei Punkt $1$.
 \end{enumerate}
 Das Verfahren muss terminieren, da die Anzahl der Knoten von $T$ endlich ist. So konstruiert muss $T^r_l$ ein BST sein. Ein Beispiel stellt Abbildung \ref{fig:T_r_l} dar. 
 \begin{figure}[H]
@@ -615,15 +615,15 @@ Sei $w$ der Index des Knotens mit der größten Tiefe in $ v_0,..,v_{n-1}$, mit\
 
 
 \subsection{Bit Reversal Permutation } \label{abschnittBitReversal}
-In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit Länge $m$ gibt, so dass für die Laufzeit beliebiger BST $T$ $\Omega\left(m \log\left( n\right)\right)$ gilt, mit $n$ ist die Anzahl der Knoten von $T$. Hier werden speziell die Zugriffsfolgen betrachtet, die als \textbf{Bit Reversal Permutation} bezeichnet werden. 
+In diesem Abschnitt wird gezeigt, dass es Zugriffsfolgen mit der Länge $n$ gibt, die insgesamt $n$ voneinander verschiedene Elemente enthalten, so dass für die Laufzeit zum Ausführen bei einem beliebigen BST $T$ $\Omega\left(n \log\left( n\right)\right)$ gilt. Hier werden speziell die Zugriffsfolgen betrachtet, die als \textbf{Bit Reversal Permutations} bezeichnet werden. 
 Dafür wird die erste untere Schranke von Wilber verwendet und ein Beweis ist ebenfalls in \cite{wilberLowerBounds} enthalten. \\
 Nun wird zunächst auf den Aufbau einer solchen Zugriffsfolge eingegangen. Sei $l \in \mathbb{N}$ und $i \in \{0,1,..,l-1\}$. Eine Folge  $b_{l-1},b_{l-2},..,b_0$ mit $b_i \in \{0,1\}$, kann als Zahl zur Basis $2$ interpretiert werden. $T$ enthält alle Schlüssel die als eine solche Folge dargestellt werden können. Die Schlüsselmenge von $T$ ist deshalb $K_l = \{0,1,..,2^l -1\}$. 
 Die Funktion $\mathit{br}_l(k)\colon K \rightarrow K$ ist wie folgt definiert. Sei {$b_{l-1},b_{l-2},..,b_{0}$} die Binärdarstellung von $k$, dann gilt:
 \begin{align*}
 \mathit{br}_l(k) = \sum_{i = 0}^{l-1} b_{\left(l-1-i\right)} \cdot 2^i
 \end{align*}
-$\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdarstellung von $k$ zurück. Die Bit Reversal Permutation zu $l$ ist die Zugriffsfolge\\ ${\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)}$. Tabelle \ref{tab:bitReversal} zeigt die Bit Reveral Permutation mit $l  = 4$.\\
- Sei $y = \max\left(K_l\right) /2 = 2^{l-1} - 0,5 $. Da $b_0$ in den Binärdarstellungen zu $0, 1,.., 2^l-1$ alterniert, alterniert $b_{l-1}$ in $X$. Aus $2^{l-1} > y$ folgt \\ $\mathit{br}_l(k) < y \Rightarrow \mathit{br}_l(k +1) > y$ und $\mathit{br}_l(k) > y \Rightarrow \mathit{br}_l(k +1) < y$. Da $\vert K_l \vert = 2^l$, sind im vollständig balancierten Lower Bound Tree $Y$ zu $T$ alle Ebenen vollständig mit Knoten besetzt. Sei $w$ die Wurzel von $Y$. Da im linken Teilbaum von $w$ genau so viele Blätter wie im rechten Teilbaum vorhanden sein müssen, kann nur $y$ der Schlüssel von $w$ sein. Zu einer Zugriffsfolge $X = x_0,x_1,..,x_m$ bezeichnet $X^r_l$ wieder die Zugriffsfolge, die entsteht, wenn aus $X$ alle Schlüssel $k$, mit $k < l \lor k > r$ entfernt werden. $X + i$ mit $i \in \mathbb{N}$ bezeichnet im Folgenden die Folge $x_0 + i, x_1 + i,.., x_m + i$.\\
+$\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdarstellung von $k$ zurück. Die Bit Reversal Permutation $X_l$ zu $l$ ist die Zugriffsfolge\\ ${\mathit{br}_l(0),\mathit{br}_l(1),..,\mathit{br}_l(2^l-1)}$. Tabelle \ref{tab:bitReversal} zeigt die Bit Reversal Permutation mit $l  = 4$.\\
+ Sei $y = \max\left(K_l\right) /2 = 2^{l-1} - 0,5 $. Da $b_0$ in den Binärdarstellungen zu $0, 1,.., 2^l-1$ alterniert, alterniert $b_{l-1}$ in $X_l$. Aus $2^{l-1} > y$ folgt \\ $\mathit{br}_l(k) < y \Rightarrow \mathit{br}_l(k +1) > y$ und $\mathit{br}_l(k) > y \Rightarrow \mathit{br}_l(k +1) < y$. Da $\vert K_l \vert = 2^l$, sind im vollständig balancierten Lower Bound Tree $Y$ zu $T$ alle Ebenen vollständig mit Knoten besetzt. Sei $w$ die Wurzel von $Y$. Da im linken Teilbaum von $w$ genau so viele Blätter wie im rechten Teilbaum vorhanden sein müssen, kann nur $y$ der Schlüssel von $w$ sein. Zu einer Zugriffsfolge $X = x_0,x_1,..,x_m$ bezeichnet $X^r_l$ wieder die Zugriffsfolge, die entsteht, wenn aus $X$ alle Schlüssel $k$, mit $k < l \lor k > r$ entfernt werden. $X + i$ mit $i \in \mathbb{N}$ bezeichnet im Folgenden die Folge $x_0 + i, x_1 + i,.., x_m + i$.\\
 
 \begin{table}
 	\begin{center}
@@ -672,7 +672,7 @@ $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdar
 
 
 \newtheorem{Korollar1}{Korollar}[section]
-\begin{Korollar1} Sei $l \in \mathbb{N}$. Sei $T$ ein BST mit der Schlüsselmenge\\ ${K_l = \{0,1,..,2^l -1\}}$ und $n = 2^l$. Sei $X = x_0, x_1,..,x_{n-1}$ die Bit Reversal Permutation zu $l$ und $Y$ der vollständig balancierte Lower Bound Tree zu $T$. Dann gilt  $W\left(X,T\right) \geq n \log_2 \left(n\right) + 1 $. 
+\begin{Korollar1} Sei $l \in \mathbb{N}$. Sei $T$ ein standard BST mit der Schlüsselmenge\\ ${K_l = \{0,1,..,2^l -1\}}$ und $n = 2^l$. Sei $X = x_0, x_1,..,x_{n-1}$ die Bit Reversal Permutation zu $l$ und $Y$ der vollständig balancierte Lower Bound Tree zu $T$. Dann gilt  $W\left(X,T\right) \geq n \log_2 \left(n\right) + 1 $. 
 \end{Korollar1}
 \begin{proof}
 	Sei $U$ die Menge der inneren Knoten von $Y$. Mit Satz \ref{satzWilber1} reicht es aus, 
@@ -702,8 +702,8 @@ $\mathit{br}_l(k)$ gibt also gerade den Wert der \enquote{umgekehrten} Binärdar
 
 \subsection{Amortisierte Laufzeitanalyse}
 Im nächsten Abschnitt werden die Kosten von amortisierten Laufzeitanalysen verwendet. Deshalb wird diese hier nun vorgestellt.
-Sei $i \in \{0,..,m\}$. Bei der \textbf{amortisierten Laufzeitanalyse} wird eine Folge von $m$ Operationen betrachtet. Hierbei kann es sich $m$ mal um die gleiche Operation handeln oder auch um verschiedene. Die \textbf{tatsächlichen Kosten}  $t_i$ stehen für die exakt bestimmten Kosten zum Ausführen der $i$-ten Operation. Durch addieren der tatsächlichen Kosten jeder einzelnen Operation ergeben sich die \textbf{tatsächlichen Gesamtkosten}. Stehen für die Laufzeit der Operationen jeweils nur obere Schranken zur Verfügung, kann mit diesen genau so vorgegangen werden, um eine obere Schranke für die Gesamtlaufzeit zu erhalten. So erzeugte obere Schranken können jedoch unnötig hoch sein. Die Idee bei einer amortisierten Analyse ist es, eingesparte Zeit durch schnell ausgeführte Operationen, den langsameren Operationen zur Verfügung zu stellen. Dabei wird insbesondere der aktuelle Zustand der zugrunde liegenden Datenstruktur vor und nach einer Operation betrachtet. Es gibt drei Methoden zur amortisierten Analyse. Bei BSTs wird in der Regel die \textbf{Potentialfunktionmethode} verwendet.
-\paragraph{Potentialfunktionmethode:} \label{potentialfunktionsmethode} Eine Potentialfunktion $\Phi(D)$ ordnet einem Zustand einer Datenstruktur $D$ eine natürliche Zahl, \textbf{Potential} genannt, zu. Es bezeichnet $\Phi(D_i)$ das Potential von $D$ nach Ausführung der $i$-ten Operation. Die \textbf{amortisierten Kosten} $a_i$ einer Operation berücksichtigen die von der Operation verursachte Veränderung am Potential, \mbox{$a_i = t_i + \Phi(D_{i}) - \Phi(D_{i-1})$}. Um die \textbf{amortisierten Gesamtkosten} $A$ zu berechnen, wird die Summe der amortisierten Kosten aller Operationen gebildet. 
+ Bei der \textbf{amortisierten Laufzeitanalyse} wird eine Folge von $m$ Operationen betrachtet. Hierbei kann es sich $m$ mal um die gleiche Operation handeln oder auch um verschiedene. Sei $i \in \{0,..,m\}$. Die \textbf{tatsächlichen Kosten}  $t_i$ stehen für die exakt bestimmten Kosten zum Ausführen der $i$-ten Operation. Durch das Bilden der Summe der tatsächlichen Kosten jeder einzelnen Operation ergeben sich die \textbf{tatsächlichen Gesamtkosten}. Stehen für die Laufzeit der Operationen jeweils nur obere Schranken zur Verfügung, kann mit diesen genau so vorgegangen werden, um eine obere Schranke für die Gesamtlaufzeit zu erhalten. So ermittelte obere Schranken können jedoch unnötig hoch sein. Die Idee bei einer amortisierten Analyse ist es, eingesparte Zeit durch schnell ausgeführte Operationen, den langsameren Operationen zur Verfügung zu stellen. Dabei wird insbesondere der aktuelle Zustand der zugrunde liegenden Datenstruktur vor und nach einer Operation betrachtet. Es gibt drei Methoden zur amortisierten Analyse. Bei BSTs wird in der Regel die \textbf{Potentialfunktionmethode} verwendet.
+\paragraph{Potentialfunktionmethode:} \label{potentialfunktionsmethode} Eine Potentialfunktion $\Phi(D)$ ordnet einem Zustand einer Datenstruktur $D$ eine natürliche Zahl, \textbf{Potential} genannt, zu. Es bezeichnet $\Phi(D_i)$ das Potential von $D$ nach der Ausführung der $i$-ten Operation. Die \textbf{amortisierten Kosten} $a_i$ einer Operation berücksichtigen die von der Operation verursachte Veränderung am Potential,\\ \mbox{$a_i = t_i + \Phi(D_{i}) - \Phi(D_{i-1})$}. Um die \textbf{amortisierten Gesamtkosten} $A$ zu berechnen, wird die Summe der amortisierten Kosten aller Operationen gebildet. 
 \begin{align*}
 A = \sum_{i = 1}^{m} a_i =  \sum_{i = 1}^{m} \left(t_i + \Phi\left(D_{i}\right) - \Phi\left(D_{i-1}\right)\right) = \Phi\left(D_{m}\right) - \Phi\left(D_{0}\right) + \sum_{i = 1}^{m} t_i 
 \end{align*}
@@ -722,7 +722,7 @@ Der Stack verfügt wie gewöhnlich über eine Operation \textit{push} zum Ablege
 &a_{\mathit{pop}} = t_{\mathit{pop}} + \Phi_{i} - \Phi_{i-1}  &= 0\\
 &a_{\mathit{popAll}} = n \cdot a_{\mathit{pop}} &= 0
 \end{align*}\\
-Alle drei Operationen haben konstante amortisierte Kosten. Auf jeden Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $. Für die Ausführungszeit der Folge gilt deshalb $O(m)$. Das Potential kann aufgrund einer Folge von Operationen um maximal $n$ verringert werden. Deshalb kann $O\left(m + n\right)$ verwendet werden, wenn der Stack zu Beginn nicht leer ist.  \\
+Alle drei Operationen haben konstante amortisierte Kosten. In jedem Fall gilt $ \Phi_m \geq  \Phi_0 = 0 $. Für die Ausführungszeit der Folge gilt deshalb $O(m)$. Das Potential kann aufgrund einer Folge von Operationen um maximal $n$ verringert werden. Deshalb kann $O\left(m + n\right)$ verwendet werden, wenn der Stack zu Beginn nicht leer ist.  \\
 
 
 
