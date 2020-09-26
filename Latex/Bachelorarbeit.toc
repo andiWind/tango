@@ -18,7 +18,7 @@
 \contentsline {section}{\numberline {4}Dynamische Optimalität}{28}%
 \contentsline {subsection}{\numberline {4.1}BST Zugriffsfolgen}{29}%
 \contentsline {subsection}{\numberline {4.2}Die erste untere Schranke von Wilber.}{30}%
-\contentsline {paragraph}{Lower Bound Tree:}{30}%
+\contentsline {paragraph}{Lower Bound Tree:}{31}%
 \contentsline {subsection}{\numberline {4.3}Bit Reversal Permutation }{37}%
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{39}%
 \contentsline {paragraph}{Potentialfunktionmethode:}{40}%
@@ -26,7 +26,7 @@
 \contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BSTs. }{41}%
 \contentsline {paragraph}{Balanced Property:}{41}%
 \contentsline {paragraph}{Static Finger Property:}{41}%
-\contentsline {paragraph}{Statisch optimal:}{41}%
+\contentsline {paragraph}{Statisch optimal:}{42}%
 \contentsline {paragraph}{Working Set Property:}{42}%
 \contentsline {paragraph}{Dynamic Finger Property:}{42}%
 \contentsline {section}{\numberline {5}Tango Baum}{43}%
