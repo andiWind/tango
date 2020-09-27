@@ -21,8 +21,8 @@
 \contentsline {paragraph}{Lower Bound Tree:}{31}%
 \contentsline {subsection}{\numberline {4.3}Bit Reversal Permutation }{37}%
 \contentsline {subsection}{\numberline {4.4}Amortisierte Laufzeitanalyse}{39}%
-\contentsline {paragraph}{Potentialfunktionmethode:}{40}%
-\contentsline {paragraph}{Potentialfunktionmethode am Beispiel eines Stack:}{40}%
+\contentsline {paragraph}{Potentialfunktionsmethode:}{40}%
+\contentsline {paragraph}{Potentialfunktionsmethode am Beispiel eines Stack:}{40}%
 \contentsline {subsection}{\numberline {4.5}Eigenschaften eines dynamisch optimalen BSTs. }{41}%
 \contentsline {paragraph}{Balanced Property:}{41}%
 \contentsline {paragraph}{Static Finger Property:}{41}%

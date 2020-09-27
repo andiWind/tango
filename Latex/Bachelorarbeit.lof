@@ -64,4 +64,4 @@
 \contentsline {figure}{\numberline {63}{\ignorespaces Laufzeittests, bei denen aufsteigend sortierte Zugriffsfolgen verwendet werden.\relax }}{102}%
 \contentsline {figure}{\numberline {64}{\ignorespaces Laufzeittests, bei denen absteigend sortierte Zugriffsfolgen verwendet werden.\relax }}{103}%
 \contentsline {figure}{\numberline {65}{\ignorespaces Laufzeittests, bei denen alternierend aufsteigend und absteigend sortierte Zugriffsfolgen verwendet werden.\relax }}{104}%
-\contentsline {figure}{\numberline {66}{\ignorespaces Werte des variablen Summanden innerhalb der O-Notation zur Static Finger Property, zu den Laufzeittests mit variablem $p$. Es wurde der Logarithmus zur Basis $2$ verwendet. \relax }}{106}%
+\contentsline {figure}{\numberline {66}{\ignorespaces Werte des variablen Summanden innerhalb der O-Notation zur Static Finger Property, zu den Laufzeittests mit variablem $p$. Es wurde der Logarithmus zur Basis $2$ verwendet. Es wurde eine Anzahl der Knoten von 10 Millionen verwendet und Zugriffsfolgen mit der Länge 40 Millionen. \relax }}{106}%
