@@ -13,9 +13,9 @@ import java.util.List;
 
 
 /**
- *
+ *Objekte dieser Klasse bestimmen die Anzahl der Veränderungen an preferred children zu einer Zugriffsfolge.
  * @author andreas
- * Objekte dieser Klasse bestimmen die Anzahl der Veränderungen an preferred children zu einer Zugriffsfolge.
+ * 
  */
 public class TangoPrefChildCount {
     PerfectTreeNode refTreeRoot;

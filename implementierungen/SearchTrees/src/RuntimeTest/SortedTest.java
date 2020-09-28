@@ -11,17 +11,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
- * @author andreas
- * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch bei dem entweder eine aufsteigend 
+ * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch, bei dem entweder eine aufsteigend 
  * sortierte, eine absteigend sortierte oder eine geschachtelt sortierte Zugriffsfolge verwendet wird. 
+ * @author andreas
+ * 
  */
 
  
 
 public class SortedTest extends RuntimeTest {
-  private int numOfNodes;
-  private int typ;
+  private final int numOfNodes;
+  private final int typ;
     /**
      * Führt einen Laufzeittest mit sortierten Zugriffsfolgen aus.
      * @param n Anzahl der Knoten.

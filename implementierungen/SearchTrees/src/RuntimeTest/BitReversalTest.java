@@ -11,12 +11,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ *Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum mit einer Bit Reversal Permutation durch.
  * @author andreas
- * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum mit einer Bit Reversal Permutation durch.
+ * 
  */
 public class BitReversalTest extends RuntimeTest {
-  private int numOfBits;
+  private final int numOfBits;
   
     /**
      * @param n Länge der Binärdarstellungen der Elemente der BRP.

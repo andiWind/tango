@@ -7,9 +7,8 @@
 package GUI;
     
 /**
- *
- * @author andreas
  * Erzeugt und verwaltet das Hautpfenster der GUI.
+ * @author andreas
  */
 import java.awt.*;
 import java.awt.event.*;

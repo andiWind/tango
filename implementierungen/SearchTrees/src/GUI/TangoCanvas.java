@@ -17,9 +17,9 @@ import java.util.List;
 
 
 /**
- *
+ * Zeichnet einen Referenzbaum mit 15 Knoten und den zugehörigen TangoBaum.
  * @author andreas
- * Zeichnet einen Referenzbaum mit 15 KNoten und den zugehörigen TangoBaum 
+ *
  */
 public class TangoCanvas extends Canvas {
     private RefTreeNode refRoot;

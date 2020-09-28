@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  27 SEP 2020 14:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  28 SEP 2020 10:35
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1488,8 +1488,8 @@ File: Medien/laufzeittest/diagramm/staticFinger5.png Graphic file (type png)
 Package pdftex.def Info: Medien/laufzeittest/diagramm/staticFinger5.png  used o
 n input line 2019.
 (pdftex.def)             Requested size: 272.99881pt x 182.00667pt.
- [106 <./Medien/laufzeittest/diagramm/staticFinger5.png>]
-<anhang.pdf, id=503, 597.50829pt x 845.0471pt>
+ [106]
+<anhang.pdf, id=502, 597.50829pt x 845.0471pt>
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf>
 Package pdftex.def Info: anhang.pdf  used on input line 2027.
@@ -1498,7 +1498,7 @@ File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf>
 Package pdftex.def Info: anhang.pdf  used on input line 2027.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
-<anhang.pdf, id=506, page=1, 597.50829pt x 845.0471pt>
+<anhang.pdf, id=505, page=1, 597.50829pt x 845.0471pt>
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
 Package pdftex.def Info: anhang.pdf , page1 used on input line 2027.
@@ -1507,7 +1507,7 @@ File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
 Package pdftex.def Info: anhang.pdf , page1 used on input line 2027.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [107]
+ [107 <./Medien/laufzeittest/diagramm/staticFinger5.png>]
 File: anhang.pdf Graphic file (type pdf)
 <use anhang.pdf, page 1>
 Package pdftex.def Info: anhang.pdf , page1 used on input line 2027.
@@ -1574,7 +1574,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  18539 strings out of 480797
  352800 string characters out of 2905362
- 586573 words of memory out of 3000000
+ 587573 words of memory out of 3000000
  34079 multiletter control sequences out of 15000+200000
  553884 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1609,7 +1609,7 @@ gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
 blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on Bachelorarbeit.pdf (115 pages, 8949158 bytes).
+Output written on Bachelorarbeit.pdf (115 pages, 8949833 bytes).
 PDF statistics:
  1159 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

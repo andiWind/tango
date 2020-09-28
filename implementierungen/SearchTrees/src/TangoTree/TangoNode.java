@@ -10,9 +10,9 @@ import java.awt.Color;
 
 
 /**
- *
- * @author andreas
  * Knoten eines TangoTrees
+ * @author andreas
+ *
  */
 public abstract class TangoNode implements I_GUINode{
 

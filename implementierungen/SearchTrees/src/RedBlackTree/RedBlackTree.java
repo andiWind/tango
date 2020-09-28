@@ -12,9 +12,9 @@ import TangoTree.TangoNode;
 
 /**
  *
- * 
+ * Klasse zum Erstellen eines Rot-Schwarz-Baumes
  * @author andreas
- *  Klasse zum Erstellen eines Rot-Schwarz-Baumes
+ *  
  */
 public class RedBlackTree extends TangoAuxTree {
     private RBTNode root;

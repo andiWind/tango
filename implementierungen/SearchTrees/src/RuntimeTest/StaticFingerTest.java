@@ -11,16 +11,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
- * @author andreas
- * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch bei dem eine Zugriffsfolge verwendet
+ *  Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch, bei dem eine Zugriffsfolge verwendet
  * wird, bei der die Static Finger Property relevant wird.
+ * @author andreas
  */
 
 public class StaticFingerTest extends RuntimeTest {
   private int numOfNodes;
-  private int repeat;  
-  private double percent;
+  private final int repeat;  
+  private final double percent;
     /**
      * 
      * @param n Anzahl der Knoten der BSTs.

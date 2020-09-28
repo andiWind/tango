@@ -11,14 +11,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
- * @author andreas
- * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch bei dem eine zufällig erzeugte Zugriffsfolge verwendet
+ * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch, bei dem eine zufällig erzeugte Zugriffsfolge verwendet
  * wird.
+ * @author andreas
+ * 
  */
 public class RandomTest extends RuntimeTest {
-  private int numOfNodes;
-  private int lengthOfSeq;
+  private final int  numOfNodes;
+  private final int lengthOfSeq;
  
   /**
      * @param n Anzahl der Knoten der BSTs.

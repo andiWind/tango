@@ -14,9 +14,9 @@ import GUI.I_GUINode;
 
 
 /**
- *
+ * Implementierung des Tango Baumes.
  * @author andreas
- *  Implementierung des Tango Baumes.
+ * 
  */
 public class TangoTree implements I_GUITree{
 

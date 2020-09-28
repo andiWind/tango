@@ -8,9 +8,9 @@ import TangoTree.TangoNode;
 import java.awt.Color;
 
 /**
- *
- * @author andreas
  * Knoten eines Rot-Schwarz-Baumes.
+ * @author andreas
+ *
  * 
  */
 public class RBTNode extends TangoNode  {

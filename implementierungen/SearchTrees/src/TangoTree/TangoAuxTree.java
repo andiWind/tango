@@ -9,9 +9,9 @@ package TangoTree;
 
 
 /**
- *
+ *Klassen deren Objekte als Hilfsdatenstruktur im Tango Baum verwendet werden sollen, müssen diese Klasse erweitern.
  * @author andreas
- * Klassen deren Objekte als Hilfsdatenstruktur im Tango Baum verwendet werden sollen, müssen diese Klasse erweitern.
+ * 
  */
 public abstract class TangoAuxTree {
 

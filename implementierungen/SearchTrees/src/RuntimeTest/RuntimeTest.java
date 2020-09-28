@@ -15,10 +15,10 @@ import TangoTree.TangoPrefChildCount;
 import java.util.List;
 
 /**
- *
+ * Klassen deren Instanzen einen Laufzeittest zwischen dem Tango Baum und dem  Splay Baum durchführen, müssen diese Klasse erweitern
+ * Der Laufzeittest wird in einem eigenen Thread ausgeführt.
  * @author andreas
- * Klassen deren Instanzen einen Laufzeittest zwischen dem Tango Baum und dem  Splay Baum durchführen, müssen diese Klasse erweitern. Der Laufzeittest wird in einem eigenen Thread 
- * ausgeführt.
+ *
  */
 public abstract class RuntimeTest extends Thread {
    protected boolean exit;
@@ -76,8 +76,8 @@ public abstract class RuntimeTest extends Thread {
  
    
     /**
-     * 
-     * @param keyList Schlüsselmenge der zu erzeugenden BSTs.
+     * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch.
+     * @param keyList Schlüsselmenge der verwendeten BSTs.
      * @param accessSequenz Verwendete Zugriffsfolge zum Laufzeittest.
      * @param repeat  accessSequenz wird beim Laufzeittest "repeat" mal abgearbeitet.
      * @return Daten zum Laufzeittest. [0]Zeit des Tango Baumes, [1]Zeit des Splay Baumes, [2]Anzahl der Veränderungen bei preferred Children im Referenzbaum, [3] Anzahl der Rotationen beim Splay Baum. 

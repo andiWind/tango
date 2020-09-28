@@ -12,17 +12,17 @@ import java.util.List;
 
 /**
  *
- * @author andreas
- * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch bei dem eine Zugriffsfolge verwendet
+ * Führt einen Laufzeittest zwischen dem Tango Baum und dem Splay Baum durch, bei dem eine Zugriffsfolge verwendet
  * wird, bei der zwei aufeinanderfolgende Schlüssel einen festen Abstand haben.
+ * @author andreas
  */
 public class DynamicFingerTest extends RuntimeTest {
-  private int numOfNodes;
-  private int distance;
-  private int repeat;  
+  private final int numOfNodes;
+  private final int distance;
+  private final int repeat;  
     /**
      * @param n Anzahl der Knoten der BSTs
-     * @param d Fester Abstand zwischen zwei aufeinanderfolgenden Schlüssel
+     * @param d Fester Abstand zwischen zwei aufeinanderfolgender Schlüssel
      * @param r Länge der verwendeten Zugriffsfolge in Millionen.
      * @param rf Frame mit dem das Ergebnis dargestellt wird.
      * @param de Details anzeigen. Fallse "true" werden die Anzahl der Veränderungen bei preferred children und die Anzahl der Rotationen beim Splay Baum mit ausgewertet. 

@@ -12,9 +12,9 @@ import java.util.List;
 
 /**
  *
- * 
- * @author andreas
  *  Implementierung des Splay Baumes.
+ * @author andreas
+ * 
  */
 public class SplayTree  {
     private SplayNode root;

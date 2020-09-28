@@ -37,9 +37,8 @@ import javax.swing.JRadioButton;
 
 
 /**
- *
- * @author andreas
  * Erstellt und verwaltet das Fenster zum parametieren und starten eines Laufzeittests.
+ * @author andreas
  */
 public class RuntimeFrame  extends JFrame{
     private boolean details;
@@ -326,7 +325,7 @@ public class RuntimeFrame  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try{
                     int value = Integer.parseInt(dymFingerText.getText());
-                   if (value > 0 && value < numOfNodes) 
+                   if (value >= 0 && value < numOfNodes) 
                         dynFinger = Integer.parseInt(dymFingerText.getText());
                    else
                        dymFingerText.setText("" + dynFinger);
@@ -348,7 +347,7 @@ public class RuntimeFrame  extends JFrame{
             public void focusLost(FocusEvent e) {
                 try{
                     int value = Integer.parseInt(dymFingerText.getText());
-                   if (value > 0 && value < numOfNodes) 
+                   if (value >= 0 && value < numOfNodes) 
                         dynFinger = Integer.parseInt(dymFingerText.getText());
                    else
                        dymFingerText.setText("" + dynFinger);

@@ -11,15 +11,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
- * @author andreas
- * Führt einen Laufzeittest zwischen Tango Baum und dem Splay Baum durch bei dem eine Zugriffsfolge verwendet
+ * Führt einen Laufzeittest zwischen Tango Baum und dem Splay Baum durch, bei dem eine Zugriffsfolge verwendet
  * wird, bei der die Working Set Property relevant wird.
+ * @author andreas
  */
 public class WorkingSetTest extends RuntimeTest {
-  private int numOfNodes;
-  private int distance;
-  private int length;  
+  private final int numOfNodes;
+  private final int distance;
+  private final int length;  
     
   /**
      * 

@@ -7,9 +7,9 @@ package SplayTree;
 
 
 /**
- *
+ *Knoten eines Splay Baumes
  * @author andreas
- * Knoten eines Splay Baumes
+ * 
  */
 public class SplayNode  {
     private SplayNode left;

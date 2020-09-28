@@ -8,9 +8,8 @@ package GUI;
 import java.awt.Color;
 
 /**
- *
+ ** Getter für die GUI. 
  * @author andreas
- * Getter für die GUI. 
  */
 public interface I_GUINode {
    

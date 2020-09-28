@@ -11,9 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 
-/** *
+/** 
+ *  Fenster zur Darstellung des Ergebnisses eines Laufzeittests.
  * @author andreas
- * Fenster zur Darstellung des Ergebnisses eines Laufzeittests.
  */
 
 public class ResultFrame extends JFrame {
