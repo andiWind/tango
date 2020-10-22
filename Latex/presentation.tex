@@ -1,0 +1,111 @@
+\documentclass[11pt]{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{csquotes}
+\usetheme{Singapore}
+\begin{document}
+	\author{Andreas Windorfer}
+	\title{Tango Bäume}
+	%\subtitle{}
+	%\logo{}
+	%\institute{}
+	\date{\today}
+	%\subject{}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{navigation symbols}{}
+	\begin{frame}{}
+		\titlepage
+	\section{Übersicht}
+	\end{frame}
+		\begin{frame} {Übersicht}
+		\tableofcontents[]   
+		
+	\end{frame}
+	
+	\section{Binärer Suchbaum}
+	
+	
+		\begin{frame} {Binärer Suchbaum}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"Medien/pres/ioSuchbaum"}
+			\end{figure}    
+		\end{frame}
+
+			\begin{frame} {Binärer Suchbaum}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"Medien/pres/suchbaum2_2"}
+			\end{figure}    
+		\end{frame}
+
+			\begin{frame} {Binärer Suchbaum}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"Medien/pres/VorgängerNachfolger"}
+			\end{figure}    
+		\end{frame}
+	
+	\begin{frame} {Binärer Suchbaum}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.75\textwidth]{"Medien/pres/LinksRechtsRotation"}
+			\end{figure}    
+		\end{frame}	
+	
+	\section{Dynamische Optimalität}
+	
+		\begin{frame} {Übersicht}
+			\tableofcontents[currentsection]   
+		\end{frame}
+	
+	   
+    
+    
+  \begin{frame} {	\textit{access}$\left(k\right)$ Operation}
+    \begin{block}{Parameter / Rückgabe:}
+    	\begin{itemize}
+    		\item Parameter $k$: Schlüssel im BST 
+    		\item Rückgabe: Knoten mit Schlüssel $k$
+      \end{itemize}
+    			
+    \end{block}	
+    \pause
+    \begin{block}{Zugriffsfolgen:}
+    	\begin{itemize}
+    		\item   $X = x_1, x_2,..., x_m$ 
+    		\item  \textit{access}$\left(x_1\right)$,   \textit{access}$\left(x_2\right)$, ....,  
+    		\textit{access}$\left(x_m\right)$  
+    	\end{itemize}
+    \end{block}			
+	\pause
+   \begin{block}{dynamische BST:}
+	 \begin{itemize}
+		\item Anpassung der Struktur 	 
+ 	\end{itemize}
+   \end{block}			
+\end{frame}	    
+    
+\begin{frame} {	\textit{access}$\left(k\right)$ Operation}
+	\begin{block}{Einschränkungen}
+		Ein Zeiger $p$ in die Struktur:
+		\begin{itemize}
+			\item Start an der Wurzel  
+			\item Setze $p$ auf ein Kind von $p$ 
+			\item Setze $p$ auf den Elternknoten von $p$ 
+			\item Rotationen 
+		\end{itemize}	
+	\end{block}	
+    \pause 
+		\begin{block}{Berechnung der Kosten}
+		
+		Einheitskosten von \enquote{1}.
+	\end{block}	    	
+\end{frame}	    
+    
+		
+
+\end{document}

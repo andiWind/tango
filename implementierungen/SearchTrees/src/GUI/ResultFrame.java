@@ -45,7 +45,7 @@ public class ResultFrame extends JFrame {
     void setValues (long[] result){
         if(result.length < 4){
             if(result[0] == -1)
-                tangoTime.setText("Fehler beim erzeugen des Tango Baumes. Der Test wurde abgebrochen.");
+                tangoTime.setText("Fehler beim Erzeugen des Tango Baumes. Der Test wurde abgebrochen.");
             else
                 tangoTime.setText("Zu wenig Speicher vorhanden. Der Test wurde abgebrochen.");
             add(tangoTime);

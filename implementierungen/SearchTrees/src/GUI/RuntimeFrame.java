@@ -456,7 +456,7 @@ public class RuntimeFrame  extends JFrame{
             }
         });
         northPanel.add(mainCombo);
-        northPanel.add(new JLabel("Anzahl Veränderungen an pref. children bzw. Rotationen anzeigen:"));
+        northPanel.add(new JLabel("Anzahl der Veränderungen an pref. children bzw. Rotationen anzeigen:"));
         detailButton = new JRadioButton();
         detailButton.addItemListener(new ItemListener(){
             @Override
@@ -525,7 +525,7 @@ public class RuntimeFrame  extends JFrame{
         randomPanel.add(numOfNodesSli);
         randomPanel.add(numOfNodesText);
         randomPanel.add(new JLabel("Anzahl der Knoten"));
-        randomPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        randomPanel.add(new JLabel("Länge der Zugriffsfolge:"));
         randomPanel.add(lenOfSeqText);
         randomPanel.add(new JLabel("(In Millionen)"));
        
@@ -554,10 +554,10 @@ public class RuntimeFrame  extends JFrame{
         staticFingerPanel.add(numOfNodesSli);
         staticFingerPanel.add(numOfNodesText);
         staticFingerPanel.add(new JLabel("Anzahl der Knoten"));
-        staticFingerPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        staticFingerPanel.add(new JLabel("Länge der Zugriffsfolge:"));
         staticFingerPanel.add(lenOfSeqText);
         staticFingerPanel.add(new JLabel("(In Millionen)"));
-        staticFingerPanel.add(new JLabel("Verwendeter Prozentsatz"));
+        staticFingerPanel.add(new JLabel("Verwendeter Prozentsatz:"));
         staticFingerPanel.add(statFingerPerText);
         staticFingerPanel.add(new JLabel("%"));
     }
@@ -567,7 +567,7 @@ public class RuntimeFrame  extends JFrame{
         dynamicFingerPanel.add(numOfNodesSli);
         dynamicFingerPanel.add(numOfNodesText);
         dynamicFingerPanel.add(new JLabel("Anzahl der Knoten"));
-        dynamicFingerPanel.add(new JLabel("Länge der Zugriffsfolge"));
+        dynamicFingerPanel.add(new JLabel("Länge der Zugriffsfolge:"));
         dynamicFingerPanel.add(lenOfSeqText);
         dynamicFingerPanel.add(new JLabel("(In Millionen)"));
         dynamicFingerPanel.add(dymFingerText);
@@ -584,13 +584,13 @@ public class RuntimeFrame  extends JFrame{
         workingSetPanel.add(topPanel);
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new GridLayout(1, 3));
-        centerPanel.add(new JLabel("Länge der Zugriffsfolge"));       
+        centerPanel.add(new JLabel("Länge der Zugriffsfolge:"));       
         centerPanel.add(lenOfSeqText);
         centerPanel.add(new JLabel("(In Millionen)"));
         workingSetPanel.add(centerPanel);
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new GridLayout(1, 2));
-        bottomPanel.add(new JLabel("Distanz der Schlüssel in der Folge"));   
+        bottomPanel.add(new JLabel("Wiederholung nach wie vielen Schlüsseln:"));   
         bottomPanel.add(workingSetText);      
         workingSetPanel.add(bottomPanel);
        

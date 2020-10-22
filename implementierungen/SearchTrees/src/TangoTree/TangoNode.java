@@ -90,7 +90,7 @@ public abstract class TangoNode implements I_GUINode{
     } 
 
     /**
-     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees
+     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees.
      * 
      * @return 
      */
@@ -100,7 +100,7 @@ public abstract class TangoNode implements I_GUINode{
         return parent;
     }
     /**
-     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees
+     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees.
      * 
      * @return 
      */
@@ -110,7 +110,7 @@ public abstract class TangoNode implements I_GUINode{
         return left;
     }
  /**
-     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees
+     * Diese Methode berücksichtigt nur Knoten innerhalb eines TangoAuxTrees.
      * 
      * @return 
      */
@@ -123,7 +123,7 @@ public abstract class TangoNode implements I_GUINode{
 
 
     /**
-     * Gibt das linke Kind zurück, falls dieses die Wurzel eines TangoAuxTrees ist, ansonsten "null"
+     * Gibt das linke Kind zurück, falls dieses die Wurzel eines TangoAuxTrees ist, ansonsten "null".
      * @return  
      */
     protected TangoNode getAuxTreeLeft(){
@@ -134,7 +134,7 @@ public abstract class TangoNode implements I_GUINode{
     }
    
     /**
-     * Gibt das rechte Kind zurück, falls dieses die Wurzel eines TangoAuxTrees ist, ansonsten "null"
+     * Gibt das rechte Kind zurück, falls dieses die Wurzel eines TangoAuxTrees ist, ansonsten "null".
      * @return  
      */
     protected TangoNode getAuxTreeRight(){
@@ -145,7 +145,7 @@ public abstract class TangoNode implements I_GUINode{
     }
      
     /**
-     * Gibt den Elternknoten zurück, falls dieser die Wurzel eines TangoAuxTrees ist, ansonsten "null"
+     * Gibt den Elternknoten zurück, falls dieser die Wurzel eines TangoAuxTrees ist, ansonsten "null".
      * @return  
      */
     protected TangoNode getAuxTreeParent(){
@@ -160,21 +160,21 @@ public abstract class TangoNode implements I_GUINode{
         return key;
     }
     /**
-     * Gibt das linke Kind zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet 
+     * Gibt das linke Kind zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet .
      * @return 
      */
     TangoNode getLeftTango(){
         return left;
     }
      /**
-     * Gibt das rechte Kind zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet 
+     * Gibt das rechte Kind zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet.
      * @return 
      */
     TangoNode getRightTango(){
         return right; 
     }
     /**
-     * Gibt den Elternknoten zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet 
+     * Gibt den Elternknoten zurück, unabhängig davon in welchem "Auxtree"  sich dieses befindet. 
      * @return 
      */
     TangoNode getParentTango(){

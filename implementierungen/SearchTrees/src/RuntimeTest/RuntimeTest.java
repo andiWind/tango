@@ -126,9 +126,10 @@ public abstract class RuntimeTest extends Thread {
                     }
                 }    
             ret[1] = (System.nanoTime()- startTime) / 1000000 ;
-            }
-        
-        
+        }
+        splayTree = null;
+        splayTreeCountRot = null;
+        tangoTree = null;
         
         return ret;
     }

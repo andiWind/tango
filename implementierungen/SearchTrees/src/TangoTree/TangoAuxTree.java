@@ -90,7 +90,7 @@ public abstract class TangoAuxTree {
     }
     /**
      * Führt eine Linksrotation durch.
-     * @param node Von den beiden ander Rotation beteiligten Knoten, muss der im BST höher liegende übergeben werden.
+     * @param node Von den beiden an der Rotation beteiligten Knoten, muss der im BST höher liegende übergeben werden.
      */
      //Der obere Knoten der Rotation wird übergeben
     protected void rotateLeft (TangoNode node){ 
@@ -110,8 +110,8 @@ public abstract class TangoAuxTree {
 
     }
      /**
-     * Führt eine Rechtsrotation durch und pflegt dabei die 
-     * @param node Von den beiden ander Rotation beteiligten Knoten, muss der im BST höher liegende übergeben werden.
+     * Führt eine Rechtsrotation durch.
+     * @param node Von den beiden an der Rotation beteiligten Knoten, muss der im BST höher liegende übergeben werden.
      */
     protected void rotateRight (TangoNode node){ 
       
@@ -421,7 +421,7 @@ public abstract class TangoAuxTree {
      */
     protected abstract TangoNode split( TangoNode Tree, int key);
     /**
-     * "treel" bzw. "treeR" sind Wurzeln von TangoAuxTree "TR" bzw "TL". Es werden die Knoten von "TR" "TL".und "mid" zu einem TangAuxTree
+     * "treel" bzw "treeR" sind Wurzeln von TangoAuxTree "TR" bzw "TL"; Es werden die Knoten von "TR" "TL" und "mid" zu einem TangAuxTree
      * vereinigt.
      * @param treeL Jeder Schlüssel in "TL" muss kleiner als der Schlüssel von "mid" sein.
      * @param mid Der Schlüssel von "mid" muss größer als jeder Schlüssel aus "TL" und kleiner als jeder Schlüssel aus "TR" sein.
@@ -435,7 +435,7 @@ public abstract class TangoAuxTree {
      */
     protected abstract void insert (int key);
     /**
-     * Es wird Knoten im TangoAuxTree mit der Wurzel "root" zurückgegeben dessen Schlüssel mit "key" übereinstimmt. Ist "key" im TangoAuxTree nicht
+     * Es wird der Knoten im TangoAuxTree mit der Wurzel "root" zurückgegeben dessen Schlüssel mit "key" übereinstimmt. Ist "key" im TangoAuxTree nicht
      * enthalten, wird entweder der Knoten mit dem nachst kleinerem oder dem nachst größerem Schlüssel zurückgegeben.
      * @param root Es muss die Wurzel eines TangoAuxTree übergeben werden.
      * @param key siehe oben.
@@ -448,7 +448,7 @@ public abstract class TangoAuxTree {
      */
     protected abstract TangoNode getRoot ();
     /**
-     * Setzt den TangoAuxTree mit Wurzel "node", als neue BST Struktur dieser Instanz. Die bisherige wird verworfen.
+     * Setzt den TangoAuxTree mit Wurzel "node" als neue BST Struktur dieser Instanz, die bisherige wird verworfen.
      * @param node Muss die Wurzel eines TangoAuxTree sein
      */
     protected abstract void setTree (TangoNode node);

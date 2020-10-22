@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- *  Implementierung des Splay Baumes. Diese Variante enthält einen Rücksetzbaren Zähler für die Anzahl der Rotationen.
+ *  Implementierung des Splay Baumes Diese Variante enthält einen rücksetzbaren Zähler für die Anzahl der Rotationen.
  * @author andreas
  * 
  */
