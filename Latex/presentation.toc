@@ -1,4 +1,4 @@
 \babel@toc {ngerman}{}
-\beamer@sectionintoc {1}{Übersicht}{1}{0}{1}
-\beamer@sectionintoc {2}{Binärer Suchbaum}{3}{0}{2}
-\beamer@sectionintoc {3}{Dynamische Optimalität}{7}{0}{3}
+\beamer@sectionintoc {1}{Binärer Suchbaum}{3}{0}{1}
+\beamer@sectionintoc {2}{Dynamische Optimalität}{7}{0}{2}
+\beamer@sectionintoc {3}{Tango Baum}{15}{0}{3}
