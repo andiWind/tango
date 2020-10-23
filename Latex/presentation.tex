@@ -255,5 +255,35 @@
 		\item  Transition point ist $v_r$ bzw. $v_l$ 
 	\end{enumerate}	
 \end{frame}
+\begin{frame} {Transition Point Zuordnung}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{Medien/pres/transitionPoints}
+		\caption{Links ein Lower Bound Tree, rechts ein BST }
+	\end{figure}
+\end{frame}
+
+\begin{frame} {Satz Interleave Lower Bound}
+		Sei $X = x_0, x_1,.., x_m$  eine Zugriffsfolge und $n$ die Anzahl der Knoten im zu $X$ erstellten Lower Bound Tree Y. Dann gilt\\	
+	$\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 - n$ .
+	
+\end{frame}
+
+\begin{frame} {Beweis Interleave Lower Bound}
+	\begin{enumerate}
+		\item Zählen der Berührungen von Transition Points
+		\item Die Anzahl der Berührungen kann für jeden Knoten einzeln bestimmt werden. (Lemma $5.1$ und $5.3$)
+		\pause
+		\item Betrachteter Knoten $u$. \mbox{$X{^r_l}' = x_{i_0},x_{i_1},..,x_{i_p}$} bilden
+		\item $\mathit{inScore}\left(X, u\right) = p$
+		\pause
+		\item  Sei $q \in \mathbb{N}$ mit $1 \leq q \leq \lfloor p / 2 \rfloor$
+		\pause
+		\item  Es folgen mindestens $\lfloor p/2 \rfloor \geq p/2 - 1$ Berührungen des transition points von $u$
+		\pause
+		\item $\mathit{IB}\left(X\right) /2 - \vert U \vert \geq \mathit{IB}\left(X\right) /2 - n$
+	\end{enumerate}
+	
+\end{frame}
 
 \end{document}
