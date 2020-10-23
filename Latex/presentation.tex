@@ -76,7 +76,7 @@
      
      \begin{frame} {	\textit{access}$\left(k\right)$ Operation}
      	\begin{block}{Einschränkungen}
-     		Ein Zeiger $p$ in die Struktur:
+     		Ein Zeiger $p$ (berührter Knoten) in die Struktur:
      		\begin{itemize}
      			\item Setze $p$ auf ein Kind von $p$ 
      			\item Setze $p$ auf den Elternknoten von $p$ 
@@ -206,10 +206,54 @@
 		\item Kein anderer Knoten mit kleinerer Tiefe erfüllt die Eigenschaften eins und zwei. 
 	\end{enumerate}	
 \end{frame}
+\begin{frame} {Transition Points} 
+	Sei $U$ die Menge der Knoten in $P$ mit einer nicht leeren rechten Region.
+	\begin{itemize}
+		\item Lemma 1: Es gibt zu jedem Knoten $u \in U$ genau einen transition point in $T_j$. 	
+		\item Lemma 2: Wird ein transition point nicht berührt, so ist er noch immer der transition point des selben Knotens.
+		\item Lemma 3: Ein Knoten kann nicht der transition point mehrerer Knoten sein. 
+	\end{itemize}	
+\end{frame}
 
+\begin{frame} {Beweis Lemma 1}
+\begin{enumerate}
+	\item  $l$	ist der kleinste Schlüssel der linken Region
+	\item  $r$	ist der größte Schlüssel der rechten Region
+	\pause
+	\item der Teilbaum mit der Wurzel $u$ enthält genau die Schlüssel aus $K^r_l = \{k \in K \vert k \in \left[l,r\right]\}$
+	\pause
+	\item  $v_l$ ist der Vorfahre der Schlüssel der linken Region
+	\item  $v_r$ ist der Vorfahre der Schlüssel der rechten Region
+	\item  $w$ ist der gemeinsame Vorfahre dieser Schlüssel
+\end{enumerate}	
+\end{frame}
 
+\begin{frame} {Beweis Lemma 1}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Medien/pres/linksRechts1}
+\end{figure}
+\end{frame}
+\begin{frame} {Beweis Lemma 1}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{Medien/pres/linksRechts2}
+	\end{figure}
+\end{frame}
 
-
-
+\begin{frame} {Beweis Lemma 1}
+	\begin{enumerate}
+			\item  $l$	ist der kleinste Schlüssel der linken Region
+		\item  $r$	ist der größte Schlüssel der rechten Region
+		\pause
+		\item der Teilbaum mit der Wurzel $u$ enthält genau die Schlüssel aus $K^r_l = \{k \in K \vert k \in \left[l,r\right]\}$
+		\pause
+		\item  $v_l$ ist der Vorfahre der Schlüssel der linken Region
+		\item  $v_r$ ist der Vorfahre der Schlüssel der rechten Region
+		\item  $w$ ist der gemeinsame Vorfahre dieser Schlüssel
+		\item  $w = v_l$ bzw. $w = v_r$	
+		\item  Transition point ist $v_r$ bzw. $v_l$ 
+	\end{enumerate}	
+\end{frame}
 
 \end{document}
