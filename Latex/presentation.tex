@@ -44,7 +44,7 @@
 			\begin{frame} {Binärer Suchbaum}
 			\begin{figure}[h]
 				\centering
-				\includegraphics[width=0.75\textwidth]{"Medien/pres/VorgängerNachfolger"}
+				\includegraphics[width=0.75\textwidth]{"Medien/pres/VorgaengerNachfolger"}
 			\end{figure}    
 		\end{frame}
 	
@@ -158,7 +158,7 @@
 \begin{frame} {Beispiel LBT} 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Medien/pres/lowerBoundTree}
+	\includegraphics[width=1\textwidth]{"Medien/pres/lowerBoundTree"}
 	\caption{Der Lower Bound Tree zur Zugriffsfolge $1 ,2, .., 14$.  }
 	\label{fig:demlowerBoundTree}
 \end{figure}
@@ -231,13 +231,13 @@
 \begin{frame} {Beweis Lemma 1}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Medien/pres/linksRechts1}
+	\includegraphics[width=1\textwidth]{"Medien/pres/linksRechts1"}
 \end{figure}
 \end{frame}
 \begin{frame} {Beweis Lemma 1}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{Medien/pres/linksRechts2}
+		\includegraphics[width=1\textwidth]{"Medien/pres/linksRechts2"}
 	\end{figure}
 \end{frame}
 
@@ -258,7 +258,7 @@
 \begin{frame} {Transition Point Zuordnung}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{Medien/pres/transitionPoints}
+		\includegraphics[width=1\textwidth]{"Medien/pres/transitionPoints"}
 		\caption{Links ein Lower Bound Tree, rechts ein BST }
 	\end{figure}
 \end{frame}
@@ -285,5 +285,189 @@
 	\end{enumerate}
 	
 \end{frame}
+
+
+\begin{frame} {Aufbau des Tango Baumes}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{"Medien/pres/tangoBaum"}
+		\end{figure}
+	Erweiterte Knoten:
+	\begin{multicols}{3}
+		\begin{enumerate}
+			\item \textit{depth}
+			\item \textit{minDepth}
+			\item \textit{maxDepth}
+		\end{enumerate}
+	\end{multicols}
+\end{frame}
+
+\begin{frame} {Aufbau des Tango Baumes}
+	\begin{itemize}
+		\item preferred childs
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/prefChilds"}
+	\end{figure}
+\pause
+	\begin{itemize}
+	\item preferred paths
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=0.2\textwidth]{"Medien/pres/prefPaths"}
+\end{figure}
+\end{frame}
+
+
+\begin{frame} {Aufbau des Tango Baumes}
+		\begin{itemize}
+		\item Hilfsbäume
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/Hilfsbaeume"}
+	\end{figure}
+\end{frame}
+
+\begin{frame} {Aufbau des Tango Baumes}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/tangoBaum"}
+	\end{figure}
+\end{frame}
+
+\begin{frame} {Aufbau des Tango Baumes}
+	\begin{itemize}
+		\item \textit{access}$\left(9\right)$
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/prefChilds"}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame} {Aufbau des Tango Baumes}
+	\begin{itemize}
+		\item \textit{access}$\left(9\right)$
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/prefChilds2"}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame} {Aufbau des Tango Baumes}
+	\begin{itemize}
+		\item \textit{access}$\left(9\right)$
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/prefChilds2"}
+	\end{figure}	
+\end{frame}
+
+\begin{frame} {Aufbau des Tango Baumes}
+		\begin{itemize}
+		\item \textit{access}$\left(9\right)$
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/tangoBaum2"}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame} {\textit{access }Operation}
+		\begin{itemize}
+		\item Suche findet im HB mit der Tango Baum Wurzel satt.
+	\end{itemize}
+	
+	Anforderungen an die DS der Hilfsbäume
+	\begin{enumerate}
+		\item $h = O\left(\log\left(n\right)\right)$
+		\item \textit{concatenate} ( \textit{HB} $H_1$, \textit{Knoten } $v$, \textit{HB} $H_2$)\\
+		Zusammenführen von $T_1$ und $T_2$. Laufzeit $O\left(\log\left(n\right)\right)$
+		\item \textit{split} ( \textit{Schlüssel} $k$ )\\
+		Zerteilen der eigenen Struktur. Laufzeit $O\left(\log\left(n\right)\right)$
+	\end{enumerate}
+ \end{frame}
+
+    \begin{frame} { \textit{concatenate} ( \textit{HB} $H_1$, \textit{Knoten } $v$, \textit{HB} $H_2$)}
+    	\begin{figure}[H]
+    		\centering
+    		\includegraphics[width=1\textwidth]{"Medien/pres/concat"}
+    	\end{figure}
+    \end{frame}
+
+  \begin{frame} {\textit{split} ( \textit{Schlüssel} $k$ )}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/split"}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame} {Hilfsoperationen für \textit{access}}
+	\begin{enumerate}
+		\item\textit{join} (\textit{HB} $T_1$ , \textit{HB} $T_2$)\\
+		Vereinigen von $T_1$ und $T_2$
+		\item\textit{cut} (\textit{depth} $d$ )\\
+		Zerteilen der eigenen Struktur beim Knoten mit Tiefe $d$
+	\end{enumerate}
+	
+\end{frame}
+
+\begin{frame} {\textit{cut} Operation}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/cut"}
+	\end{figure}	
+\end{frame}
+\begin{frame} {\textit{join} Operation}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/join"}
+	\end{figure}	
+\end{frame}
+
+\begin{frame} {\textit{access} Operation}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/cutJoin"}
+	\end{figure}	
+\end{frame}
+
+
+\begin{frame} {Laufzeit von \textit{access}}
+	\begin{enumerate}
+         \item $\mathit{IB}\left(X\right)$ Interleaves führen zu $\mathit{IB}\left(X\right)$  Wechsel bei preferred children von links nach rechts, oder umgekehrt.
+         \item maximal $n$ zusätzliche Wechsel bei preferred children, durch Erstzugriffe in Teilbäume 
+         \pause
+         \item Das ergibt maximal  $\mathit{IB}\left(X\right) + n$ Wechsel bei preferred children 
+         \pause
+         \item Es wird maximal $\mathit{IB}\left(X\right) + n + 1$ mal an der Wurzel des Tango Baumes gestartet.
+         \item Für die Höhe eines Hilfsbaumes gilt $O\left(\log\left(\log\left(n\right)\right)\right)$
+         \pause
+         \item $O\left(\left(\mathit{IB}\left(X\right) + n +m \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$
+         \pause
+         \item 	$O\left(\left(\mathit{OPT}\left(X\right) + n  \right) \left( 1 + \log \left(\log\left(n\right)\right)\right) \right)$, mit $\mathit{OPT}\left(X\right) \geq \mathit{IB}\left(X\right) /2 -n $
+    \end{enumerate} 
+\end{frame}
+
+\begin{frame} {Laufzeit von \textit{access}}
+	Einzelne Access Operation:
+	\begin{enumerate}
+		\item $\Theta\left(\log\left(n\right)\right)$ Wechsel bei preferred children
+		\pause
+		\item $  O \left(\log\left(n\right)   \left( \log \left(\log\left(n\right)\right) + 1\right)\right)$
+		\pause
+		\item Balancierte BSTs erreichen $O \left( \log\left(n\right)\right)$
+	\end{enumerate} 
+\end{frame}
+
 
 \end{document}

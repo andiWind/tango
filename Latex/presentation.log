@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  23 OCT 2020 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.8)  24 OCT 2020 21:09
 entering extended mode
 **./presentation.tex
 (presentation.tex
@@ -1049,7 +1049,7 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 (presentation.toc) [2
 
 ]
-<Medien/pres/ioSuchbaum.png, id=192, 1562.2365pt x 746.79pt>
+<Medien/pres/ioSuchbaum.png, id=261, 1562.2365pt x 746.79pt>
 File: Medien/pres/ioSuchbaum.png Graphic file (type png)
 <use Medien/pres/ioSuchbaum.png>
 Package pdftex.def Info: Medien/pres/ioSuchbaum.png  used on input line 35.
@@ -1057,7 +1057,7 @@ Package pdftex.def Info: Medien/pres/ioSuchbaum.png  used on input line 35.
  [3
 
  <./Medien/pres/ioSuchbaum.png>]
-<Medien/pres/suchbaum2_2.png, id=247, 1344.82425pt x 852.786pt>
+<Medien/pres/suchbaum2_2.png, id=333, 1344.82425pt x 852.786pt>
 File: Medien/pres/suchbaum2_2.png Graphic file (type png)
 <use Medien/pres/suchbaum2_2.png>
 Package pdftex.def Info: Medien/pres/suchbaum2_2.png  used on input line 42.
@@ -1065,16 +1065,16 @@ Package pdftex.def Info: Medien/pres/suchbaum2_2.png  used on input line 42.
  [4
 
  <./Medien/pres/suchbaum2_2.png>]
-<Medien/pres/VorgängerNachfolger.png, id=301, 1520.079pt x 859.41075pt>
-File: Medien/pres/VorgängerNachfolger.png Graphic file (type png)
-<use Medien/pres/VorgängerNachfolger.png>
-Package pdftex.def Info: Medien/pres/VorgängerNachfolger.png  used on input li
+<Medien/pres/VorgaengerNachfolger.png, id=404, 1520.079pt x 859.41075pt>
+File: Medien/pres/VorgaengerNachfolger.png Graphic file (type png)
+<use Medien/pres/VorgaengerNachfolger.png>
+Package pdftex.def Info: Medien/pres/VorgaengerNachfolger.png  used on input li
 ne 49.
 (pdftex.def)             Requested size: 230.46739pt x 130.29608pt.
  [5
 
- <./Medien/pres/VorgängerNachfolger.png>]
-<Medien/pres/LinksRechtsRotation.png, id=355, 2331.30975pt x 708.84825pt>
+ <./Medien/pres/VorgaengerNachfolger.png>]
+<Medien/pres/LinksRechtsRotation.png, id=475, 2331.30975pt x 708.84825pt>
 File: Medien/pres/LinksRechtsRotation.png Graphic file (type png)
 <use Medien/pres/LinksRechtsRotation.png>
 Package pdftex.def Info: Medien/pres/LinksRechtsRotation.png  used on input lin
@@ -1174,7 +1174,7 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <12> not available
 ] [18
 
 ]
-<Medien/pres/lowerBoundTree.png, id=1050, 2047.04774pt x 658.8615pt>
+<Medien/pres/lowerBoundTree.png, id=1391, 2047.04774pt x 658.8615pt>
 File: Medien/pres/lowerBoundTree.png Graphic file (type png)
 <use Medien/pres/lowerBoundTree.png>
 Package pdftex.def Info: Medien/pres/lowerBoundTree.png  used on input line 165
@@ -1201,7 +1201,7 @@ Package pdftex.def Info: Medien/pres/lowerBoundTree.png  used on input line 165
 ] [28
 
 ]
-<Medien/pres/linksRechts1.png, id=1581, 2113.8975pt x 751.00575pt>
+<Medien/pres/linksRechts1.png, id=2092, 2113.8975pt x 751.00575pt>
 File: Medien/pres/linksRechts1.png Graphic file (type png)
 <use Medien/pres/linksRechts1.png>
 Package pdftex.def Info: Medien/pres/linksRechts1.png  used on input line 236.
@@ -1209,7 +1209,7 @@ Package pdftex.def Info: Medien/pres/linksRechts1.png  used on input line 236.
  [29
 
  <./Medien/pres/linksRechts1.png>]
-<Medien/pres/linksRechts2.png, id=1635, 2113.8975pt x 751.00575pt>
+<Medien/pres/linksRechts2.png, id=2163, 2113.8975pt x 751.00575pt>
 File: Medien/pres/linksRechts2.png Graphic file (type png)
 <use Medien/pres/linksRechts2.png>
 Package pdftex.def Info: Medien/pres/linksRechts2.png  used on input line 242.
@@ -1223,7 +1223,7 @@ Package pdftex.def Info: Medien/pres/linksRechts2.png  used on input line 242.
 ] [33
 
 ]
-<Medien/pres/transitionPoints.png, id=1848, 1962.73276pt x 675.12225pt>
+<Medien/pres/transitionPoints.png, id=2444, 1962.73276pt x 675.12225pt>
 File: Medien/pres/transitionPoints.png Graphic file (type png)
 <use Medien/pres/transitionPoints.png>
 Package pdftex.def Info: Medien/pres/transitionPoints.png  used on input line 2
@@ -1244,6 +1244,146 @@ Package pdftex.def Info: Medien/pres/transitionPoints.png  used on input line 2
 ] [40
 
 ]
+<Medien/pres/tangoBaum.png, id=2934, 2345.76375pt x 970.827pt>
+File: Medien/pres/tangoBaum.png Graphic file (type png)
+<use Medien/pres/tangoBaum.png>
+Package pdftex.def Info: Medien/pres/tangoBaum.png  used on input line 303.
+(pdftex.def)             Requested size: 307.28987pt x 127.17482pt.
+ [41
+
+ <./Medien/pres/tangoBaum.png>]
+<Medien/pres/prefChilds.png, id=3005, 1896.48524pt x 691.98524pt>
+File: Medien/pres/prefChilds.png Graphic file (type png)
+<use Medien/pres/prefChilds.png>
+Package pdftex.def Info: Medien/pres/prefChilds.png  used on input line 321.
+(pdftex.def)             Requested size: 307.28987pt x 112.11366pt.
+<Medien/pres/prefPaths.png, id=3006, 184.43906pt x 115.93312pt>
+File: Medien/pres/prefPaths.png Graphic file (type png)
+<use Medien/pres/prefPaths.png>
+Package pdftex.def Info: Medien/pres/prefPaths.png  used on input line 321.
+(pdftex.def)             Requested size: 97.77473pt x 61.45703pt.
+ [42
+
+ <./Medien/pres/prefChilds.png> <./Medien/pres/prefPaths.png>]
+File: Medien/pres/prefChilds.png Graphic file (type png)
+<use Medien/pres/prefChilds.png>
+Package pdftex.def Info: Medien/pres/prefChilds.png  used on input line 321.
+(pdftex.def)             Requested size: 307.28987pt x 112.11366pt.
+File: Medien/pres/prefPaths.png Graphic file (type png)
+<use Medien/pres/prefPaths.png>
+Package pdftex.def Info: Medien/pres/prefPaths.png  used on input line 321.
+(pdftex.def)             Requested size: 97.77473pt x 61.45703pt.
+
+[43
+
+]
+<Medien/pres/Hilfsbaeume.png, id=3149, 1896.48524pt x 591.4095pt>
+File: Medien/pres/Hilfsbaeume.png Graphic file (type png)
+<use Medien/pres/Hilfsbaeume.png>
+Package pdftex.def Info: Medien/pres/Hilfsbaeume.png  used on input line 332.
+(pdftex.def)             Requested size: 307.28987pt x 95.81863pt.
+ [44
+
+ <./Medien/pres/Hilfsbaeume.png>]
+File: Medien/pres/tangoBaum.png Graphic file (type png)
+<use Medien/pres/tangoBaum.png>
+Package pdftex.def Info: Medien/pres/tangoBaum.png  used on input line 339.
+(pdftex.def)             Requested size: 307.28987pt x 127.17482pt.
+ [45
+
+]
+File: Medien/pres/prefChilds.png Graphic file (type png)
+<use Medien/pres/prefChilds.png>
+Package pdftex.def Info: Medien/pres/prefChilds.png  used on input line 350.
+(pdftex.def)             Requested size: 307.28987pt x 112.11366pt.
+ [46
+
+]
+<Medien/pres/prefChilds2.png, id=3358, 1896.48524pt x 691.98524pt>
+File: Medien/pres/prefChilds2.png Graphic file (type png)
+<use Medien/pres/prefChilds2.png>
+Package pdftex.def Info: Medien/pres/prefChilds2.png  used on input line 361.
+(pdftex.def)             Requested size: 307.28987pt x 112.11366pt.
+ [47
+
+ <./Medien/pres/prefChilds2.png>]
+File: Medien/pres/prefChilds2.png Graphic file (type png)
+<use Medien/pres/prefChilds2.png>
+Package pdftex.def Info: Medien/pres/prefChilds2.png  used on input line 371.
+(pdftex.def)             Requested size: 307.28987pt x 112.11366pt.
+ [48
+
+]
+<Medien/pres/tangoBaum2.png, id=3498, 2345.76375pt x 1172.58075pt>
+File: Medien/pres/tangoBaum2.png Graphic file (type png)
+<use Medien/pres/tangoBaum2.png>
+Package pdftex.def Info: Medien/pres/tangoBaum2.png  used on input line 381.
+(pdftex.def)             Requested size: 307.28987pt x 153.60384pt.
+ [49
+
+ <./Medien/pres/tangoBaum2.png>] [50
+
+]
+<Medien/pres/concat.png, id=3639, 1762.78575pt x 1059.96pt>
+File: Medien/pres/concat.png Graphic file (type png)
+<use Medien/pres/concat.png>
+Package pdftex.def Info: Medien/pres/concat.png  used on input line 404.
+(pdftex.def)             Requested size: 307.28987pt x 184.76796pt.
+ [51
+
+ <./Medien/pres/concat.png>]
+<Medien/pres/split.png, id=3710, 1762.78575pt x 608.2725pt>
+File: Medien/pres/split.png Graphic file (type png)
+<use Medien/pres/split.png>
+Package pdftex.def Info: Medien/pres/split.png  used on input line 411.
+(pdftex.def)             Requested size: 307.28987pt x 106.03162pt.
+ [52
+
+ <./Medien/pres/split.png>] [53
+
+]
+<Medien/pres/cut.png, id=3850, 2532.46124pt x 1517.06775pt>
+File: Medien/pres/cut.png Graphic file (type png)
+<use Medien/pres/cut.png>
+Package pdftex.def Info: Medien/pres/cut.png  used on input line 429.
+(pdftex.def)             Requested size: 307.28987pt x 184.07735pt.
+ [54
+
+ <./Medien/pres/cut.png>]
+<Medien/pres/join.png, id=3921, 2752.2825pt x 1441.7865pt>
+File: Medien/pres/join.png Graphic file (type png)
+<use Medien/pres/join.png>
+Package pdftex.def Info: Medien/pres/join.png  used on input line 435.
+(pdftex.def)             Requested size: 307.28987pt x 160.97299pt.
+
+[55
+
+ <./Medien/pres/join.png>]
+<Medien/pres/cutJoin.png, id=3993, 1408.0605pt x 649.82774pt>
+File: Medien/pres/cutJoin.png Graphic file (type png)
+<use Medien/pres/cutJoin.png>
+Package pdftex.def Info: Medien/pres/cutJoin.png  used on input line 442.
+(pdftex.def)             Requested size: 307.28987pt x 141.81233pt.
+ [56
+
+ <./Medien/pres/cutJoin.png>] [57
+
+] [58
+
+]
+[59
+
+] [60
+
+] [61
+
+] [62
+
+] [63
+
+] [64
+
+]
 \tf@nav=\write6
 \openout6 = `presentation.nav'.
 
@@ -1253,19 +1393,19 @@ Package pdftex.def Info: Medien/pres/transitionPoints.png  used on input line 2
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 289.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 289.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 473.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 473.
  (presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 289.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 289.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 473.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 473.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D5B1A18ADB45089CFCCB06C3298D2E6E;159.
  ) 
 Here is how much of TeX's memory you used:
- 20351 strings out of 480797
- 387970 string characters out of 2905362
- 684113 words of memory out of 3000000
- 35740 multiletter control sequences out of 15000+200000
+ 20520 strings out of 480797
+ 390847 string characters out of 2905362
+ 708020 words of memory out of 3000000
+ 35851 multiletter control sequences out of 15000+200000
  611713 words of font info for 85 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,19n,68p,808b,801s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1283,9 +1423,9 @@ msso12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsso8.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on presentation.pdf (40 pages, 1784672 bytes).
+Output written on presentation.pdf (64 pages, 3897834 bytes).
 PDF statistics:
- 2287 PDF objects out of 2487 (max. 8388607)
- 85 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4699 PDF objects out of 5155 (max. 8388607)
+ 133 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 
