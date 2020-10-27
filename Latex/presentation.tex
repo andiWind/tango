@@ -360,15 +360,7 @@
 	
 \end{frame}
 
-\begin{frame} {Aufbau des Tango Baumes}
-	\begin{itemize}
-		\item \textit{access}$\left(9\right)$
-	\end{itemize}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\textwidth]{"Medien/pres/prefChilds2"}
-	\end{figure}	
-\end{frame}
+
 
 \begin{frame} {Aufbau des Tango Baumes}
 		\begin{itemize}
@@ -468,6 +460,194 @@
 		\item Balancierte BSTs erreichen $O \left( \log\left(n\right)\right)$
 	\end{enumerate} 
 \end{frame}
+
+\section{Splay Baum}
+\begin{frame} {Splay Baum}
+	\begin{enumerate}
+		\item dynamisch
+		\item keine zusätzliche Attribute
+		\item kein balancierter BST
+		\item $\log \left(n\right)$-competitive bewiesen
+		\item dynamische Optimalität vermutet
+	\end{enumerate} 
+\end{frame}
+
+\begin{frame} {\textit{access}}
+	\begin{enumerate}
+		\item  \textit{splay} aufrufen
+		\item Knoten an der Wurzel zurückgeben
+	\end{enumerate}
+\end{frame}
+
+\begin{frame} {\textit{access}}
+	\begin{enumerate}
+		\item  \textit{splay} aufrufen
+		\item Knoten an der Wurzel zurückgeben
+	\end{enumerate}
+\end{frame}
+\begin{frame} {\textit{splay}}
+	\begin{itemize}
+		\item  \textit{zig}
+		\item  \textit{zag}
+		\item  \textit{zig-zig}
+		\item  \textit{zag-zag}
+		\item  \textit{zig-zag}
+		\item  \textit{zag-zig}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{\textit{splay}}
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigzag"}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Eine einzige \textit{splay} Operation}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/splay"}
+	
+	\end{figure}
+	{Daniel Dominic Sleator and Robert Endre Tarjan. Self-adjusting binary
+	search trees. J. ACM, 32(3):652-686, July 1985.}
+\end{frame}
+
+
+\begin{frame}{Access Lemma}
+	\begin{figure}[H]
+		Sei $T$ ein Splay Baum mit $n$ Knoten, Wurzel $w$ und einem Knoten $v$ mit dem Schlüssel $k$. Die amortisierten Kosten von \textit{splay}$\left(k\right)$ sind maximal $3 \left(r\left(w\right) - r\left(v\right)\right) + 1 = O\left(\log\left(\mathit{tw}\left(w\right) / \mathit{tw}\left(v\right)\right) \right) = O\left(\log\left(n\right)\right)$. 
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Beweis Access Lemma}
+	\begin{block}{Potentialfunktionsmethode}
+		\begin{itemize}
+			\item Gewichtsfunktion $w\left(v\right) \geq 0$ 
+			\pause 
+			\item $U$ ist Menge der Knoten im Teilbaum mit Wurzel $v$
+			\item $\mathit{tw}\left(v\right) = \sum_{u \in U} w\left(u\right)$
+			\pause 
+			\item Rang $r\left(v\right) = \log_2 \left(tw\left(v\right)\right)$
+			\pause
+			\item $V$ ist Menge der Knoten im Gesamtbaum
+			\item $\Phi = \sum_{v \in V} r\left(v\right)$
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}{Beweis Access Lemma}
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigZigKlein"}
+		
+	\end{figure}
+	
+	\begin{block}{Kosten Einzelschritt}
+		$\leq 3 \left(r\left(v\right)' - r\left(v\right)\right) + 1$
+	\end{block}
+\end{frame}
+
+\begin{frame}{Beweis Access Lemma}
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigZigKlein"}
+		
+	\end{figure}
+	\begin{align*}
+	& 2 + r\left(u\right)' +r\left(v\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)- r\left(x\right)\\
+    = & 2 + r\left(u\right)' +r\left(x\right)' - r\left(u\right)- r\left(v\right)\\
+     \leq &  2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) 
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Beweis Access Lemma}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigZigKlein"}
+		
+	\end{figure}
+	\begin{align*}
+	&	2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) \leq  3\left(r\left(v\right)'- r\left(v\right)\right)\\
+	\end{align*}
+	
+\end{frame}
+
+\begin{frame}{Beweis Access Lemma}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigZigKlein"}
+		
+	\end{figure}
+	\begin{align*}
+	&	2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) \leq  3\left(r\left(v\right)'- r\left(v\right)\right)\\
+	\Leftrightarrow &2 \leq 2r\left(v\right)' -  r\left(x\right)' - r\left(v\right)
+	\end{align*}
+	
+\end{frame}
+
+
+\begin{frame}{Beweis Access Lemma}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigZigKlein"}
+		
+	\end{figure}
+	\begin{align*}
+	&	2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) \leq  3\left(r\left(v\right)'- r\left(v\right)\right)\\	
+	\Leftrightarrow &2 \leq 2r\left(v\right)' -  r\left(x\right)' - r\left(v\right)\\
+	\Leftrightarrow & -2 \geq -2r\left(v\right)' +  r\left(x\right)' + r\left(v\right)
+	\end{align*}
+	
+\end{frame}
+
+
+\begin{frame}{Beweis Access Lemma}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigZigKlein"}
+		
+	\end{figure}
+    \begin{align*}
+         &	2 + r\left(v\right)' + r\left(x\right)' - 2 r\left(v\right) \leq  3\left(r\left(v\right)'- r\left(v\right)\right)\\       
+        \Leftrightarrow &2 \leq 2r\left(v\right)' -  r\left(x\right)' - r\left(v\right)\\
+         \Leftrightarrow & -2 \geq -2r\left(v\right)' +  r\left(x\right)' + r\left(v\right)\\
+        \Leftrightarrow & -2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) +   \log_2\left(\mathit{tw}\left(v\right) / \mathit{tw}\left(v'\right)\right)
+    \end{align*}
+	
+\end{frame}
+\begin{frame}{Beweis Access Lemma}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigZigKlein"}
+		
+	\end{figure}
+
+	$-2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) +   \log_2\left(\mathit{tw}\left(v\right) / \mathit{tw}\left(v'\right)\right)$\\
+	 \bigskip
+
+	 Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt: $\log_2\left(a\right) + \log_2\left(b\right) \leq -2$
+\end{frame}
+\begin{frame}{Beweis Access Lemma}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{"Medien/pres/zigZigKlein"}
+		
+	\end{figure}
+	
+	$-2 \geq \log_2\left(\mathit{tw}\left(x'\right) / \mathit{tw}\left(v'\right)\right) +   \log_2\left(\mathit{tw}\left(v\right) / \mathit{tw}\left(v'\right)\right)$\\
+	\bigskip
+	
+	Für $a,b \in \mathit{R}$ mit $a,b > 0$ und $a + b \leq 1$ gilt: $\log_2\left(a\right) + \log_2\left(b\right) \leq -2$
+\end{frame}
+\begin{frame}{Beweis Access Lemma}
+		\begin{align*}
+		&	3(r'(v) - r(v) ) + 3(r''(v) - r'(v)) + 3(r'''(v) - r''(v))...  + 1 \\
+		= & 3 (r(w) - 3r(v))  + 1 
+	\end{align*}
+\end{frame}
+
+
 
 
 \end{document}
