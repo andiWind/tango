@@ -1,5 +1,0 @@
-\babel@toc {ngerman}{}
-\beamer@sectionintoc {1}{Aufbau des Splaybaum}{2}{0}{1}
-\beamer@sectionintoc {2}{Operationen}{15}{0}{2}
-\beamer@sectionintoc {3}{Laufzeitverhalten}{59}{0}{3}
-\beamer@sectionintoc {4}{Besondere Eigenschaften}{85}{0}{4}

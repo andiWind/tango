@@ -1,5 +1,0 @@
-\babel@toc {german}{}
-\contentsline {section}{\numberline {1}Multisplay Baum}{3}%
-\contentsline {subsection}{\numberline {1.1}Die \textit {access} Operation beim Multisplay Baum}{4}%
-\contentsline {paragraph}{\textit {switch} Operation beim Multisplay Baum}{4}%
-\contentsline {subsection}{\numberline {1.2}Amortisierte Laufzeitanalyse}{6}%

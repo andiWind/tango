@@ -1,0 +1,142 @@
+
+random Access:
+
+n= 1.000
+wechsel pref child= 167.258.114
+ rotationen= 456.625.856
+ wechsel pref child= 167.243.301
+ rotationen= 456.632.779
+wechsel pref child= 167.243.310
+ rotationen= 456.656.838
+wechsel pref child= 167.242.283
+ rotationen= 456.678.573
+wechsel pref child= 167.257.716
+ rotationen= 456.637.655
+wechsel pref child= 167.236.000
+ rotationen= 456.652.990
+ wechsel pref child= 167.255.718
+ rotationen= 456.654.903
+wechsel pref child= 167.250.899
+ rotationen= 456.663.240
+wechsel pref child= 167.249.129
+rotationen= 456663240
+wechsel pref child= 167.239.026
+rotationen= 456.637.655
+-------------------------------
+wDp: 167.247.550
+Rot: 456.650.373
+wdp/ Rot: 0,37
+
+
+
+
+
+n= 10.000
+wechsel pref child= 233.083.987
+ rotationen= 649.068.400
+wechsel pref child= 233.116.114
+ rotationen= 649.046.496
+wechsel pref child= 233.077.843
+ rotationen= 649.055.358
+wechsel pref child= 233.096.346
+ rotationen= 649.055.358
+wechsel pref child= 233.078.763
+ rotationen= 649.075.180
+wechsel pref child= 233.083.110
+ rotationen= 649.046.557
+ wechsel pref child= 233.100.823
+ rotationen= 649.081.604
+ wechsel pref child= 233.081.574
+ rotationen= 649.033.387
+wechsel pref child= 233.104.305
+ rotationen= 16.227.036
+wechsel pref child= 233.104.755
+ rotationen= 649.104.540
+-------------------------------
+wDp: 233.092.762
+Rot: 649.066.234
+wdp/ Rot: 0,36
+
+
+n= 100.000 
+wechsel pref child= 299.551.262
+ rotationen= 842.014.636
+wechsel pref child= 299.556.963
+ rotationen= 842.008.772
+wechsel pref child= 299.553.270
+ rotationen= 841.984.928
+wechsel pref child= 299.549.006
+ rotationen= 842.076.131
+ wechsel pref child= 299.552.129
+ rotationen= 842.027.149
+wechsel pref child= 299.533.804
+ rotationen= 842.022.187
+ wechsel pref child= 299.541.171
+ rotationen= 841.992.573
+wechsel pref child= 299.563.111
+ rotationen= 842.005.384
+wechsel pref child= 299.559.393
+rotationen= 841.999.324
+wechsel pref child= 299.540.102
+rotationen= 842.026.977
+-------------------------------
+wDp: 299.550.021
+Rot: 842.015.806
+wdp/ Rot: 0,36
+
+
+
+n= 1.000.000
+wechsel pref child= 367.109.519
+ rotationen= 1.034.947.177
+wechsel pref child= 367.120.012
+ rotationen= 1.034.900.424
+wechsel pref child= 367.118.930
+ rotationen= 1.034.908.742
+wechsel pref child= 367.128.349
+ rotationen= 1.034.989.246
+wechsel pref child= 367.137.892
+ rotationen= 1.034.956.390
+ wechsel pref child= 367.108.194
+ rotationen= 1.034.931.775
+ wechsel pref child= 367.124.049
+ rotationen= 1.034.886.134
+ wechsel pref child= 367.136.639
+ rotationen= 1.034.934.351
+ wechsel pref child= 367.131.162
+ rotationen= 1.034.940.710
+wechsel pref child= 367.112.237
+rotationen= 1.034.945.242
+-------------------------------
+wDp: 367.122.698
+Rot: 1.034.934.019
+wdp/ Rot: 0,35
+
+
+n= 10.000.000
+wechsel pref child= 439.956.579
+ rotationen= 1.226.503.033
+wechsel pref child= 439.989.109
+ rotationen= 1.226.479.915
+ wechsel pref child= 439.979.482
+ rotationen= 1.226.553.206
+wechsel pref child= 439.962.034
+ rotationen= 1.226.473.058
+ wechsel pref child= 439.974.631
+ rotationen= 1.226.466.651
+wechsel pref child= 439.973.011
+ rotationen= 1.226.446.392
+wechsel pref child= 439.999.235
+ rotationen= 1.226.495.182
+ wechsel pref child= 439.996.095
+ rotationen= 1.226.494.110
+ wechsel pref child= 440.001.307
+ rotationen= 1.226.460.992
+wechsel pref child= 439.984.189
+rotationen= 1.226.528.297
+-------------------------------
+wDp: 439.981.567
+Rot: 1.226.490.084
+wdp/ Rot: 0,36
+
+

@@ -1,3 +1,0 @@
-sequential Access zu dinamische Optimalität hinzufügen
-Kostenmodell von Demaine zu Wilber wechseln
-Auxtree Operationen auf Knoten Pa#
